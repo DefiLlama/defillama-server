@@ -5201,17 +5201,30 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Binance"],
-    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
-    module: "bitfi-cedefi/index.js",
-    twitter: "Bitfi_Org",
-    parentProtocol: "parent#bitfi",
-    listedAt: 1739530444,
-    dimensions: {
-      fees: "bitfi-basis"
+    oraclesBreakdown: [
+    {
+      name: "RedStone",
+      type: "Primary",
+      endDate: "2026-03-03",
+      proof: []
+    },
+    {
+      name: "Chainlink",
+      type: "Primary",
+      startDate: "2026-03-03",
+      proof: ["https://docs.bitfi.one/developer/using-contract/bfusd-oracle", "https://docs.bitfi.one/developer/bfusd-overview/"]
     }
-  },
-  {
-    id: "5786",
+  ],
+  module: "bitfi-cedefi/index.js",
+  twitter: "Bitfi_Org",
+  parentProtocol: "parent#bitfi",
+  listedAt: 1739530444,
+  dimensions: {
+    fees: "bitfi-basis"
+  }
+},
+{
+  id: "5786",
     name: "Doppler Finance",
     address: null,
     symbol: "-",

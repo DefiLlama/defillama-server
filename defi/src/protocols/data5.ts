@@ -2600,13 +2600,13 @@ const data5: Protocol[] = [
     oraclesBreakdown: [
       {
         name: "RedStone",
-        type: "Primary",
-        proof: ["https://docs.neverland.money/smart-contracts#oracle-system"],
+        type: "Secondary",
+        proof: ["https://docs.neverland.money/smart-contracts#redstone-oracles"],
       },
       {
         name: "Chainlink",
-        type: "Secondary",
-        proof: ["https://docs.neverland.money/smart-contracts#oracle-system"],
+        type: "Primary",
+        proof: ["https://docs.neverland.money/smart-contracts#chainlink-oracles"],
       },
     ],
     module: "neverland/index.js",

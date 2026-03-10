@@ -342,6 +342,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
     DGLD: "0xd02f50e1017f493ffffa70c8fcf09e349e11d6c9", // dropped to 0, coingecko mispriced it
+    usBTCd: "0xe07adc4bad16be3e4f6f7511a3e0b0219c73672b", // 0 liquidity
+    BTB: "0x888e85c95c84ca41eef3e4c8c89e8dce03e41488", // 0 liquidity
+    LAWAS: "0x31a531666e0e391e83eb64cda5d9f8633347e5ea", // 0 liquidity
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",

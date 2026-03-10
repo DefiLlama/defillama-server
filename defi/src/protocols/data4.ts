@@ -8446,7 +8446,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid", "Base", "Optimism", "Unichain"],
-    module: "mayan-finance/index.js",
+    module: "dummy.js",
     twitter: "MayanFinance",
     audit_links: ["https://docs.mayan.finance/resources/audits"],
     github: ["mayan-finance"],

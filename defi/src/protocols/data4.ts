@@ -8446,10 +8446,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Solana", "Base", "Optimism"],
-    module: "dummy.js",
+    module: "mayan-finance/index.js",
     twitter: "MayanFinance",
     audit_links: ["https://docs.mayan.finance/resources/audits"],
     github: ["mayan-finance"],
+    listedAt: 1773152175,
     dimensions: {
       fees: "mayan"
     }

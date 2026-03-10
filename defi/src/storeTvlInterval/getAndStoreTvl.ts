@@ -22,6 +22,9 @@ import { elastic } from '@defillama/sdk';
 import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { deadChainsSet } from "../config/deadChains";
+import { getJSON, setJSON } from "./redis";
+import axios from "axios";
+import sluggify from "../utils/sluggify";
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -56,6 +59,8 @@ async function getTvl(
   staleCoins: StaleCoins,
   options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
+  let tvlErrorsObject = options.tvlErrorsObject ?? {}
+
   let chainDashPromise
   let chain
   const symbolToAddresses = options.symbolToAddresses ?? {}
@@ -149,7 +154,12 @@ async function getTvl(
         },
       } as any)
       if (i >= maxRetries - 1) {
-        throw e
+        if (options.runType === 'cron-task') {
+          // if cron-task run, don't throw Error, try to catch errors and process later in caller function
+          tvlErrorsObject[storedKey] = e;
+        } else {
+          throw e
+        }
       } else {
         insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
         continue;
@@ -182,6 +192,15 @@ export function prefixMalformed(address: string) {
   return false
 }
 
+export interface StoreTvlTempCacheInfo {
+  protocolName: string;
+  totalTvl: number;
+  storeKey: string;
+  storeKeyTvl: number;
+  cacheTime: number;
+  invalidCacheTime: number;
+}
+
 type StoreTvlOptions = {
   returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
@@ -192,7 +211,9 @@ type StoreTvlOptions = {
   isRunFromUITool?: boolean
   skipChainsCheck?: boolean,
   runStats?: any,
+  tempCacheInfo?: Array<StoreTvlTempCacheInfo>,
   symbolToAddresses: { [symbol: string]: string[] },
+  tvlErrorsObject?: tvlsObject<Error>,
 }
 
 export type storeTvl2Options = StoreTvlOptions & {
@@ -277,7 +298,9 @@ export async function storeTvl(
   const tokensBalances: tvlsObject<TokensValueLocked> = {};
   const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
   const rawTokenBalances: tvlsObject<TokensValueLocked> = {};
+  const tvlErrorsObject: tvlsObject<Error> = {};
   const symbolToAddresses: { [symbol: string]: string[] } = {};
+
   const chainTvlsToAdd: {
     [name: string]: string[]
   } = {}
@@ -308,7 +331,7 @@ export async function storeTvl(
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
-          { ...options, partialRefill, chainsToRefill, cacheData, runStats, symbolToAddresses })
+          { ...options, partialRefill, chainsToRefill, cacheData, runStats, symbolToAddresses, tvlErrorsObject, })
         let keyToAddChainBalances = tvlType;
         if (tvlType === "tvl" || tvlType === "fetch") {
           keyToAddChainBalances = "tvl"
@@ -324,30 +347,73 @@ export async function storeTvl(
     })
     if (module.tvl || module.fetch) {
       throw new Error("Top level tvl or fetch functions are not allowed outside chain object. Please move them inside the chain object.")
-      let mainTvlIsFetch: boolean;
-      if (module.tvl) {
-        mainTvlIsFetch = false
-      } else {
-        mainTvlIsFetch = true
-      }
-      const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-        usdTokenBalances, rawTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, staleCoins)
-      tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
-    Object.entries(chainTvlsToAdd).map(([tvlType, storedKeys]) => {
-      if (usdTvls[tvlType] === undefined) {
-        usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
-        mergeBalances(tvlType, storedKeys, tokensBalances, { replaceEmptyString: true })
-        mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
-        mergeBalances(tvlType, storedKeys, rawTokenBalances)
+
+
+    for (const [tvlType, storedKeys] of Object.entries(chainTvlsToAdd)) {
+      // get all chain keys and sum to total
+      for (const key of storedKeys) {
+
+        if (tvlErrorsObject[key]) {
+          const tempStoreKeyCache = await getCachedTvlData({ protocol, storeKey: key, options, tvlErrorsObject })
+
+          usdTvls[key] = tempStoreKeyCache.usdTvls;
+          tokensBalances[key] = tempStoreKeyCache.tokensBalances;
+          usdTokenBalances[key] = tempStoreKeyCache.usdTokenBalances;
+          rawTokenBalances[key] = tempStoreKeyCache.rawTokenBalances;
+
+          // if all the data is present, store temp cache for key to use in future if needed
+        } else if (usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
+          const tempStoreKeyResultCaheKey = getCachedTvlDataKey(protocol, key)
+
+          // store temp result cache for key
+          await setJSON(tempStoreKeyResultCaheKey, {
+            usdTvls: usdTvls[key],
+            tokensBalances: tokensBalances[key],
+            usdTokenBalances: usdTokenBalances[key],
+            rawTokenBalances: rawTokenBalances[key],
+            timestamp: getCurrentUnixTimestamp(),
+          }, { throwErrorWhenFailed: false })
+        }
       }
-    })
+
+      usdTvls[tvlType] = storedKeys.reduce((total, key) => total + usdTvls[key], 0)
+      mergeBalances(tvlType, storedKeys, tokensBalances, { replaceEmptyString: true })
+      mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
+      mergeBalances(tvlType, storedKeys, rawTokenBalances)
+    }
+
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
     }
 
     logRunStats()
+
+    if (options.tempCacheInfo && options.tempCacheInfo.length > 0) {
+      const now = getCurrentUnixTimestamp();
+      const earliestCacheTime = Math.min(...options.tempCacheInfo.map(item => item.cacheTime));
+      const timeDiffFromNow = now - earliestCacheTime;
+      
+      const cacheUsageLog = {
+        metadata: {
+          application: 'tvl',
+          type: 'cache-usage',
+          name: protocol.name,
+          id: protocol.id,
+          timestamp: now,
+        },
+        data: {
+          totalCachedItems: options.tempCacheInfo.length,
+          cachedItems: options.tempCacheInfo,
+          aggregatedTvl: options.tempCacheInfo.reduce((sum, item) => sum + item.storeKeyTvl, 0),
+          totalTvl: options.tempCacheInfo[0].totalTvl,
+          earliestCacheUsed: earliestCacheTime,
+          timeDiffFromNowSeconds: timeDiffFromNow,
+        }
+      }
+      await elastic.writeLog('tvl-cache-used', cacheUsageLog)
+    }
 
   } catch (e) {
     // console.error(protocol.name, e);
@@ -395,7 +461,7 @@ export async function storeTvl(
     })
 
     Object.entries(aggData).forEach(([key, value]) => {
-        let minValue = key === 'getLogs' ? 10 : 20
+      let minValue = key === 'getLogs' ? 10 : 20
       if (typeof value === 'number' && value < minValue) {
         delete (aggData as any)[key]; // Remove low count stats to reduce log size
       }
@@ -464,3 +530,58 @@ export async function storeTvl(
   return usdTvls.tvl;
 }
 
+function getCachedTvlDataKey(protocol: Protocol, key: string) {
+  return `storeTvlInterval-cache-${protocol.id}-${key}`
+}
+
+async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }: { options: StoreTvlOptions, storeKey: string, protocol: Protocol, tvlErrorsObject: tvlsObject<Error> }) {
+
+  // cron-task and allow to use temp cache
+  if (options.runType !== 'cron-task' || options.tempCacheInfo === undefined) {
+    throw tvlErrorsObject[storeKey];
+  }
+
+  const totalTvl = await pullTvlNumber(protocol);
+
+  if (totalTvl === null || (totalTvl as number) < 10e3)  // if total tvl is very low, it's better to fail than return cached data
+    throw tvlErrorsObject[storeKey];
+
+  const tempStoreKeyCache = await getJSON(getCachedTvlDataKey(protocol, storeKey), { throwErrorWhenFailed: false });
+
+  // query redis but cache was not found, throw Error
+  if (tempStoreKeyCache === null)
+    throw tvlErrorsObject[storeKey];
+
+  const cacheCheck = isCacheDataFresh(tempStoreKeyCache, totalTvl!);
+  if (!cacheCheck.isFresh) throw tvlErrorsObject[storeKey];
+
+
+  options.tempCacheInfo.push({
+    protocolName: protocol.name,
+    totalTvl: totalTvl!,
+    storeKey,
+    storeKeyTvl: tempStoreKeyCache.usdTvls,
+    cacheTime: tempStoreKeyCache.timestamp,
+    invalidCacheTime: cacheCheck.invalidCacheTime! ?? 0,
+  })
+
+  return tempStoreKeyCache
+
+  function isCacheDataFresh(cacheData: any, totalTvl: number): { isFresh: boolean, invalidCacheTime?: number } {
+    if (!cacheData?.usdTvls || !cacheData?.tokensBalances || !cacheData?.usdTokenBalances || !cacheData?.rawTokenBalances || !cacheData?.timestamp)
+      return { isFresh: false }
+
+    // if the cached tvl is less than 5% of total tvl, consider it fresh regardless of cache age, because it's not significant enough to cause big errors. This is to avoid unnecessary cache invalidation for low tvl protocols.
+    return { isFresh: (cacheData.usdTvls/totalTvl) < (5 /100) }
+  }
+
+  async function pullTvlNumber(protocol: Protocol): Promise<number | null> {
+    try {
+      const response = await axios.get(`https://api.llama.fi/tvl/${sluggify(protocol)}`);
+      return Number(response.data);
+    } catch (e: any) {
+      console.log(e)
+      return null;
+    }
+  }
+}

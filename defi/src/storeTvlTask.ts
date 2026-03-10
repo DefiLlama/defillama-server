@@ -104,7 +104,7 @@ async function main() {
 
       // if (protocolName) runningSet.add(protocolName)
 
-      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', tempCacheInfo, symbolToAddresses: {} })
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', tempCacheInfo, symbolToAddresses: {}, tvlErrorsObject: {} })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
 

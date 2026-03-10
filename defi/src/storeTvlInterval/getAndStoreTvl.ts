@@ -571,45 +571,8 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
     if (!cacheData?.usdTvls || !cacheData?.tokensBalances || !cacheData?.usdTokenBalances || !cacheData?.rawTokenBalances || !cacheData?.timestamp)
       return { isFresh: false }
 
-    return { isFresh: (cacheData.usdTvls/totalTvl) < (5 /100) }  // if the cached tvl is less than 5% of total tvl, consider it fresh regardless of cache age, because it's not significant enough to cause big errors. This is to avoid unnecessary cache invalidation for low tvl protocols.
-
-    const thresholds: Record<number, any> = {
-      1_000_000: { // tvl <= $1M
-        cacheTime: 4 * 24 * 60 * 60, // cache age 4 days
-        chainRatio: 0.001, // 0.1%
-      },
-      10_000_000: { // tvl <= $10M
-        cacheTime: 4 * 24 * 60 * 60, // cache age 4 days
-        chainRatio: 0.001, // 0.1%
-      },
-      50_000_000: { // tvl <= $50M
-        cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
-        chainRatio: 0.0001, // 0.01%
-      },
-      100_000_000: { // tvl <= $100M
-        cacheTime: 3 * 24 * 60 * 60, // cache age 3 days
-        chainRatio: 0.0001, // 0.01%
-      },
-      1_000_000_000: { // tvl <= $1B
-        cacheTime: 2 * 24 * 60 * 60, // cache age 2 days
-        chainRatio: 0.00005, // 0.005% ~ $50k
-      },
-    };
-
-    const current = getCurrentUnixTimestamp();
-    const cacheAge = current - cacheData.timestamp;
-    const storeKeyCacheTvl = Number(cacheData.usdTvls);
-    const ratio = totalTvl > 0 ? storeKeyCacheTvl / totalTvl : 0;
-
-    let thresholdTvl = 1_000_000;
-    for (const value of Object.keys(thresholds)) {
-      if (totalTvl > Number(value)) thresholdTvl = Number(value);
-    }
-
-    if (cacheAge > thresholds[thresholdTvl].cacheTime || ratio >= thresholds[thresholdTvl].chainRatio)
-      return { isFresh: false };
-
-    return { isFresh: true, invalidCacheTime: cacheData.timestamp + thresholds[thresholdTvl].cacheTime };
+    // if the cached tvl is less than 5% of total tvl, consider it fresh regardless of cache age, because it's not significant enough to cause big errors. This is to avoid unnecessary cache invalidation for low tvl protocols.
+    return { isFresh: (cacheData.usdTvls/totalTvl) < (5 /100) }
   }
 
   async function pullTvlNumber(protocol: Protocol): Promise<number | null> {

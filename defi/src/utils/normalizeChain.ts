@@ -5734,6 +5734,14 @@ export const chainCoingeckoIds = {
     url: "https://www.qie.digital/",
     chainId: 1990,
   },
+  "Voi Network": {
+    geckoId: "voi-network",
+    github: ["VoiNetwork"],
+    symbol: "VOI",
+    cmcId: null,
+    twitter: "Voi_Net",
+    url: "https://www.voi.network/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5974,6 +5982,7 @@ const chainLabelMap = {
   "orderly": "Orderly",
   "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
   "qiev3": "QIE",
+  "voi": "Voi Network",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

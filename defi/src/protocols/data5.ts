@@ -13549,7 +13549,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "RedotPay",
     dimensions: {
-      fees: "redotpay",
+      dexs: "redotpay",
     }
   },
   {
@@ -13569,7 +13569,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Cypher_HQ_",
     dimensions: {
-      fees: "cypher-card",
+      dexs: "cypher-card",
     }
   },
   {
@@ -13589,7 +13589,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "BleapApp",
     dimensions: {
-      fees: "bleap-card",
+      dexs: "bleap-card",
     }
   },
   {
@@ -13609,7 +13609,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Nexo",
     dimensions: {
-      fees: "nexo-card",
+      dexs: "nexo-card",
     }
   },
   {
@@ -13629,7 +13629,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "spritzfinance",
     dimensions: {
-      fees: "spritz-card",
+      dexs: "spritz-card",
     }
   },
   {

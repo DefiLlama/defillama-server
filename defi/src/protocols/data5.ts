@@ -8948,7 +8948,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://gmtrade.xyz/referrals/?ref=545",
     referralUrl: "https://gmtrade.xyz/referrals/?ref=545",
-    description: "GMTrade is a decentralized leveraged trading platform built on the Solana blockchain, drawing inspiration from the technical innovations introduced by GMX V2. The platform aims to provide a seamless trading experience with fast transaction times and low fees, while maintaining security and decentralization.",
+    description: "GMTrade is a perpetual DEX built on Solana that supports both crypto and RWA markets. The protocol utilizes isolated liquidity pools combined with a cross-pool coordination system that optimizes liquidity utilization. It aims to provide a seamless trading experience with fast execution and low fees while maintaining security and decentralization.",
     chain: "Solana",
     logo: `${baseIconsUrl}/gmtrade.jpg`,
     audits: "2",

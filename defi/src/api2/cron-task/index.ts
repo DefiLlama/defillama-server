@@ -25,7 +25,7 @@ import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
-import { chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { extraSections, chainKeyToLabelMap } from "../../utils/normalizeChain";
 import { getActiveUsers } from "../routes/getActiveUsers";
 
 const protocolDataMap: { [key: string]: any } = {}
@@ -380,21 +380,10 @@ async function run() {
       function transformOraclesTVS(oraclesTVS: any): any {
         const transformedOraclesTVS = oraclesTVS;
         
-        // staking, pool2, borrowed
-        const keys = new Set();
-        
         for (const [oracle, protocolTvs] of Object.entries(oraclesTVS)) {
-          // we try to get all available key in oraclesTVS object
-          for (const keyAndTvs of Object.values(protocolTvs as any)) {
-            for (const chainAndKey of Object.keys(keyAndTvs as any)) {
-              const [, key] = chainAndKey.split('-');
-              if (key) keys.add(key);
-            }
-          }
-          
           // delete keys from oraclesTVS
           for (const [protocolName, keyAndTvs] of Object.entries(protocolTvs as any)) {
-            for (const key of Array.from(keys) as Array<string>) {
+            for (const key of extraSections) {
               delete transformedOraclesTVS[oracle][protocolName][key];
             }
           }
@@ -435,6 +424,7 @@ async function run() {
         for (const [oracle, chains] of Object.entries(os)) {
           for (const [itemKey, itemValue] of Object.entries(chains as any)) {
             let [chain, key] = itemKey.split('-'); // Ethereum-staking
+            if (extraSections.includes(chain)) continue; // they are: staking, pool2, borrowed, just ignore these cases
             if (key === undefined) key = 'tvl';
 
             // add to total

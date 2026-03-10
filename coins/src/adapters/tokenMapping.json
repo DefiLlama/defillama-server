@@ -14210,10 +14210,16 @@
   },
   "algorand": {
     "213345970": {
-      "name": "algorand",
       "decimals": "8",
       "symbol": "EXOD",
       "to": "coingecko#exod"
+    }
+  },
+  "voi": {
+    "1": {
+      "decimals": "6",
+      "symbol": "VOI",
+      "to": "coingecko#voi-network"
     }
   },
   "qiev3": {

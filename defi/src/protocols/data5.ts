@@ -13729,7 +13729,7 @@ const data5: Protocol[] = [
     twitter: "namoshi_xyz",
     github: ["namoshixyz"],
     dimensions: {
-      fees: "ratio",
+      fees: "namoshi",
     }
   },
   {

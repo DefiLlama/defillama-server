@@ -8433,24 +8433,23 @@ const data4: Protocol[] = [
   },
   {
     id: "5925",
-    name: "Mayan",
+    name: "Mayan DEX Aggregator",
     address: null,
     symbol: "-",
     url: "https://mayan.finance/",
     description:
       "Mayan is a cross-chain swap auction protocol with the goal of offering the best  swap rates using auction mechanism",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mayan.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/mayan-dex-aggregator.jpg`,
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid", "Base", "Optimism", "Unichain"],
+    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid L1", "Base", "Optimism", "Unichain"],
     module: "dummy.js",
     twitter: "MayanFinance",
     audit_links: ["https://docs.mayan.finance/resources/audits"],
-    github: ["mayan-finance"],
-    listedAt: 1773152175,
+    parentProtocol: "parent#mayan-finance",
     dimensions: {
       fees: "mayan"
     }

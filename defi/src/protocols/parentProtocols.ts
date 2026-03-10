@@ -9198,6 +9198,18 @@ const parentProtocols: IParentProtocol[] = [
     ],
     github: ["pareto-credit"], 
   },
+  {
+    id: "parent#mayan-finance",
+    name: "Mayan Finance",
+    url: "https://mayan.finance/",
+    description: "Mayan is a cross-chain swap auction protocol with the goal of offering the best  swap rates using auction mechanism",
+    logo: `${baseIconsUrl}/mayan-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MayanFinance",
+    github: ["mayan-finance"],
+  },
 ];
 
 export default parentProtocols;

@@ -13829,5 +13829,26 @@ const data5: Protocol[] = [
     twitter: "solvrbot",
     listedAt: 1773165907,
   },
+  {
+    id: "7534",
+    name: "Mayan Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://mayan.finance/",
+    description:
+      "Cross-chain swap protocol using Swift intent-based bridging and MCTP",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mayan-bridge.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid L1", "Base", "Optimism", "Unichain"],
+    module: "mayan-finance/index.js",
+    twitter: "MayanFinance",
+    audit_links: ["https://docs.mayan.finance/resources/audits"],
+    listedAt: 1773167661,
+    parentProtocol: "parent#mayan-finance",
+  },
 ];
 export default data5;

@@ -108,6 +108,28 @@ async function getTvl(
             }
           }
         }
+
+        const rawTokenCount = Object.keys(tvlBalances).length
+        const computedTokenCount = Object.keys(tvlResults.usdTokenBalances).length
+        const pricelessTokenRatio = (1 - (computedTokenCount / rawTokenCount)) * 100
+        if (rawTokenCount > 42) {
+          elastic.writeLog('tvl-token-price-stats', {
+            metadata: {
+              application: 'tvl',
+              type: 'token-price-stats',
+              name: protocol.name,
+              id: protocol.id,
+              chain,
+              storedKey,
+            },
+            data: {
+              rawTokenCount,
+              computedTokenCount,
+              pricelessTokenRatio,
+            }
+          })
+        }
+
         if (isStandard) {
           rawTokenBalances[storedKey] = tvlBalances;
         } else {
@@ -123,7 +145,7 @@ async function getTvl(
           }
           rawTokenBalances[storedKey] = normalizedBalances;
         }
-      } else {
+      } else {   // there are no more fetch tvl functions?
         usdTvls[storedKey] = Number(await tvlFunction(api, ethBlock, chainBlocks, api));
       }
       if (
@@ -161,7 +183,7 @@ async function getTvl(
           throw e
         }
       } else {
-        insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
+        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
         continue;
       }
     }
@@ -342,7 +364,7 @@ export async function storeTvl(
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
         const currentTime = getCurrentUnixTimestamp()
-        insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
+        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -394,7 +416,7 @@ export async function storeTvl(
       const now = getCurrentUnixTimestamp();
       const earliestCacheTime = Math.min(...options.tempCacheInfo.map(item => item.cacheTime));
       const timeDiffFromNow = now - earliestCacheTime;
-      
+
       const cacheUsageLog = {
         metadata: {
           application: 'tvl',
@@ -412,12 +434,12 @@ export async function storeTvl(
           timeDiffFromNowSeconds: timeDiffFromNow,
         }
       }
-      await elastic.writeLog('tvl-cache-used', cacheUsageLog)
+      elastic.writeLog('tvl-cache-used', cacheUsageLog)
     }
 
   } catch (e) {
     // console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' })
+    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' })
     logRunStats()
     throw e
   }
@@ -521,11 +543,11 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'store', chain: 'store' })
+    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'store', chain: 'store' })
     return;
   }
 
-  insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { protocol: protocol.name, storedKey: 'all', chain: 'all', elapsedTime: getCurrentUnixTimestamp() - adapterStartTimestamp })
+  // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { protocol: protocol.name, storedKey: 'all', chain: 'all', elapsedTime: getCurrentUnixTimestamp() - adapterStartTimestamp })
   if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }
@@ -572,7 +594,7 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
       return { isFresh: false }
 
     // if the cached tvl is less than 5% of total tvl, consider it fresh regardless of cache age, because it's not significant enough to cause big errors. This is to avoid unnecessary cache invalidation for low tvl protocols.
-    return { isFresh: (cacheData.usdTvls/totalTvl) < (5 /100) }
+    return { isFresh: (cacheData.usdTvls / totalTvl) < (5 / 100) }
   }
 
   async function pullTvlNumber(protocol: Protocol): Promise<number | null> {
@@ -580,7 +602,7 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
       const response = await axios.get(`https://api.llama.fi/tvl/${sluggify(protocol)}`);
       return Number(response.data);
     } catch (e: any) {
-      console.log(e)
+      console.log(e?.message, 'Failed to pull total TVL from API, will not use cache for', protocol.name);
       return null;
     }
   }

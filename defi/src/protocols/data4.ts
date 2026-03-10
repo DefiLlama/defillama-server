@@ -2213,28 +2213,6 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "resolv/index.js",
     twitter: "ResolvLabs",
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary", // provides both market feeds and is the source for Fundamental oracle USD valuations
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "Chainlink",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "Chronicle",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "RedStone",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-    ],
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553,
@@ -5201,7 +5179,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Binance"],
-    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     module: "bitfi-cedefi/index.js",
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
@@ -6066,7 +6043,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Bitcoin","Stacks"],
-    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
@@ -13823,13 +13799,6 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "basisos/index.js",
     twitter: "BasisOS",
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Reference",
-        proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"],
-      },
-    ],
     audit_links: ["https://github.com/Hexens/Smart-Contract-Review-Public-Reports/blob/main/BasisOS-nov-24(Final).pdf"],
     github: ["Logarithm-Labs"],
     listedAt: 1747156379,
@@ -15306,9 +15275,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Avalanche"],
-    oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] },
-    ],
     module: "avant/index.js",
     twitter: "avantprotocol",
     parentProtocol: "parent#avant-protocol",
@@ -15655,18 +15621,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
-      },
-      {
-        name: "Chainlink",
-        type: "Fallback",
-        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
-      },
-    ],
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
@@ -26983,13 +26937,6 @@ const data4: Protocol[] = [
     module: "xsy/index.js",
     twitter: "xsy_fi",
     audit_links: ["https://xsy-1.gitbook.io/xsy-main/audits"],
-    oraclesBreakdown: [
-      {
-        name: "RedStone",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14996"]
-      }
-    ],
     stablecoins: ["xsy-uty"],
     listedAt: 1758064577
   },
@@ -28108,13 +28055,6 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "solstice-usx/index.js",
     twitter: "solsticefi",
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16456"]
-      }
-    ],
     audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
     stablecoins: ["solstice-usx"],
     listedAt: 1759263438,

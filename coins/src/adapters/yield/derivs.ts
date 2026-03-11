@@ -768,6 +768,18 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
     address: "0x04082b283818D9d0dd9Ee8742892eEe5CC396441",
   },
+  'mM1-USD': {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+        target: "0xad316aA927c0970C2e8f0B903211D0bd19A10702",
+      });
+      return rate.answer / 1e8;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xCc5C22C7A6BCC25e66726AeF011dDE74289ED203",
+  },
 };
 
 export async function derivs(timestamp: number) {

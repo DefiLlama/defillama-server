@@ -9216,6 +9216,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MayanFinance",
     github: ["mayan-finance"],
   },
+  {
+    id: "parent#neony-exchange",
+    name: "Neony Exchange",
+    url: "https://www.neony.exchange/",
+    description: "Neony is a Community First perp DEX, with the highest capital effeciency by features like cross-collateral, borrow&lending and tokenized vault",
+    logo: `${baseIconsUrl}/neony-exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NeonyExchange",
+  },
 ];
 
 export default parentProtocols;

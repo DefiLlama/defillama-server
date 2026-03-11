@@ -13846,5 +13846,52 @@ const data5: Protocol[] = [
     listedAt: 1773167661,
     parentProtocol: "parent#mayan-finance",
   },
+  {
+    id: "7535",
+    name: "Neony Exchange Spot",
+    address: null,
+    symbol: "-",
+    url: "https://www.neony.exchange/",
+    description:
+      "Neony Exchange Spot is a decentralized exchange on Neony.",
+    chain: "Neony",
+    logo: `${baseIconsUrl}/neony-exchange-spot.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Order Book"],
+    chains: ["Neony"],
+    module: "dummy.js",
+    twitter: "NeonyExchange",
+    audit_links: ["https://www.neony.exchange/Audit-Report.pdf"],
+    parentProtocol: "parent#neony-exchange",
+    dimensions: {
+      dexs: "neony-spot",
+    }
+  },
+  {
+    id: "7536",
+    name: "Neony Exchange Perp",
+    address: null,
+    symbol: "-",
+    url: "https://www.neony.exchange/",
+    description:
+      "Neony Exchange Perp is a decentralized exchange on Neony.",
+    chain: "Neony",
+    logo: `${baseIconsUrl}/neony-exchange-perp.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Neony"],
+    module: "dummy.js",
+    twitter: "NeonyExchange",
+    audit_links: ["https://www.neony.exchange/Audit-Report.pdf"],
+    parentProtocol: "parent#neony-exchange",
+    dimensions: {
+      derivatives: "neony-perp",
+      "open-interest": "neony",
+    }
+  },
 ];
 export default data5;

@@ -9,6 +9,7 @@ const { spawn, } = require('child_process');
 
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
+import { apiTestFormChoices, runApiTests, stopApiTests } from './api-tests';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
 import { setConfig } from './utils/config';
@@ -17,7 +18,7 @@ import getTvlCacheEnv from '../../src/api2/env';
 async function start() {
   await setConfig()
 
-  
+
   let isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
   isProductionMode = isProductionMode && !process.env.UI_TOOL_FORCE_DEV_MODE; // this is needed because of the setConfig()
 
@@ -55,9 +56,10 @@ async function start() {
       // Start React with specific port and environment
       reactApp = spawn(npmPath, ['run', 'start-react'], {
         cwd: reactAppPath,
+        shell: true,
         env: {
           ...process.env,
-          PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002: 5001
+          PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002 : 5001
         }
       });
 
@@ -120,6 +122,8 @@ async function start() {
     console.log('- Stopping React app');
     if (reactApp)
       reactApp.kill();
+    // Stop any running API tests
+    stopApiTests();
     console.log('✅ Cleanup complete\n');
     process.exit(0);
   };
@@ -145,7 +149,7 @@ async function start() {
 
     ws.send(JSON.stringify({
       type: 'init',
-      data: { dimensionFormChoices, tvlProtocolList }
+      data: { dimensionFormChoices, tvlProtocolList, apiTestFormChoices }
     }));
     sendWaitingRecords(ws);
     sendTvlStoreWaitingRecords(ws);
@@ -232,6 +236,13 @@ async function start() {
 
         case 'misc-runCommand':
           runMiscCommand(ws, data.data);
+          break;
+
+        case 'api-test-runCommand':
+          runApiTests(ws, data.data);
+          break;
+        case 'api-test-stop':
+          stopApiTests();
           break;
 
         default: console.error('Unknown message type:', data.type); break;

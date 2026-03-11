@@ -13896,5 +13896,43 @@ const data5: Protocol[] = [
       "open-interest": "neony",
     }
   },
+  {
+    id: "7537",
+    name: "HyperSafe",
+    address: null,
+    symbol: "-",
+    url: "https://hypersafe.tech",
+    description:
+      "Fair Token Launchpad on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/hypersafe.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "hypersafe/index.js",
+    twitter: "hypershares",
+    listedAt: 1773255414,
+  },
+  {
+    id: "7538",
+    name: "WhaleHub",
+    address: "stellar:BLUB-GCYITYIOHQIDYK5ASX5CC7LVC4WOTHMCMPNDCTPARUUFHYDV2EBX55IQ-1",
+    symbol: "BLUB",
+    url: "https://whalehub.io/",
+    description:
+      "Yield optimizer on Stellar blockchain built to maximize $AQUA protocol rewards with the help of whalehub native token BLUB.",
+    chain: "Stellar",
+    logo: `${baseIconsUrl}/whalehub.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Stellar"],
+    module: "whalehub/index.js",
+    twitter: "whalehubdefi",
+    listedAt: 1773255419,
+  },
 ];
 export default data5;

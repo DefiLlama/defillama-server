@@ -345,6 +345,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     usBTCd: "0xe07adc4bad16be3e4f6f7511a3e0b0219c73672b", // 0 liquidity
     BTB: "0x888e85c95c84ca41eef3e4c8c89e8dce03e41488", // 0 liquidity
     LAWAS: "0x31a531666e0e391e83eb64cda5d9f8633347e5ea", // 0 liquidity
+    "vAMM-Ⓔ/7EC": "0xD70e1935e48D0Ad45115C862BF6f4f2E22a790d1", // 0 liquidity
+    "vAMM-TOORBOLG": "0xB37d726d247F9B035B8240b04B76D55df5680D3d" // 0 liquidity
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",

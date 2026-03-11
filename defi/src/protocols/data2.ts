@@ -7405,7 +7405,7 @@ const data2: Protocol[] = [
     name: "Sapphire Mine",
     address: null,
     symbol: "-",
-    url: "https://www.sapphiremine.xyz",
+    url: "https://www.sapphiremine.xyz",// deadUrl
     description: "Polygon Reward Pool with the highest daily returns.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/sapphire-mine.jpg`,
@@ -7417,6 +7417,7 @@ const data2: Protocol[] = [
     module: "sapphiremine.js",
     twitter: "SapphirePolygon",
     listedAt: 1651573344,
+    deadUrl: true,
   },
   {
     id: "1719",
@@ -10818,7 +10819,7 @@ const data2: Protocol[] = [
     name: "Atlendis V1",
     address: null,
     symbol: "-",
-    url: "https://app.atlendis.io",
+    url: "https://app.atlendis.io",// deadUrl
     description: "Atlendis is a capital-efficient DeFi lending protocol that enables crypto loans without collateral.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/atlendis-v1.jpg`,
@@ -10834,6 +10835,7 @@ const data2: Protocol[] = [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf",
     ],
     listedAt: 1656855449,
+    deadUrl: true,
   },
   {
     id: "1876",
@@ -15055,7 +15057,7 @@ const data2: Protocol[] = [
     name: "OpenSky Finance",
     address: null,
     symbol: "OSKY",
-    url: "https://opensky.finance",
+    url: "https://opensky.finance",// deadUrl
     description: "The first integrated peer-to-pool and peer-to-peer NFT lending protocol built on top of aave.com",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/opensky-finance.png`,
@@ -15072,6 +15074,7 @@ const data2: Protocol[] = [
     ],
     twitter: "OpenSkyFinance",
     listedAt: 1662496565,
+    deadUrl: true,
   },
   {
     id: "2068",
@@ -19473,7 +19476,7 @@ const data2: Protocol[] = [
     name: "BarnSwap",
     address: null,
     symbol: "-",
-    url: "https://barnswap.com/#/swap",
+    url: "https://barnswap.com/#/swap",// deadUrl
     description: "AMM DEX on MUUCHAIN",
     chain: "MUUCHAIN",
     logo: `${baseIconsUrl}/barnswap.png`,
@@ -19486,6 +19489,7 @@ const data2: Protocol[] = [
     twitter: "MuuInuOfficial",
     forkedFromIds: ["2197"],
     listedAt: 1667883657,
+    deadUrl: true,
   },
   {
     id: "2258",
@@ -21246,7 +21250,7 @@ const data2: Protocol[] = [
     name: "Lodestar V0", //they want this name
     address: "arbitrum:0xF19547f9ED24aA66b03c3a552D181Ae334FBb8DB",
     symbol: "LODE",
-    url: "https://www.lodestarfinance.io",
+    url: "https://www.lodestarfinance.io",// deadUrl
     description:
       "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
     chain: "Arbitrum",
@@ -21262,6 +21266,7 @@ const data2: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1670424005,
     parentProtocol: "parent#lodestar-finance",
+    deadUrl: true,
   },
   {
     id: "2340",
@@ -25180,7 +25185,7 @@ const data2: Protocol[] = [
     name: "casinocronos",
     address: "cronos:0x95ac4a86c0677971c4125ACe494e3C17a87a4C61",
     symbol: "casino",
-    url: "https://casinocronos.com/#/swap",
+    url: "https://casinocronos.com/#/swap",// deadUrl
     description: "Gambling & Yield farming on Cronos.",
     chain: "Cronos",
     logo: `${baseIconsUrl}/casinocronos.jpg`,
@@ -25193,6 +25198,7 @@ const data2: Protocol[] = [
     twitter: "casinocronos",
     forkedFromIds: ["2197"],
     listedAt: 1676023911,
+    deadUrl: true,
   },
   {
     id: "2524",
@@ -28752,7 +28758,7 @@ const data2: Protocol[] = [
     name: "Arbitrum Exchange V2",
     address: "arbitrum:0xD5954c3084a1cCd70B4dA011E67760B8e78aeE84",
     symbol: "ARX",
-    url: "https://arbidex.fi",
+    url: "https://arbidex.fi",// deadUrl
     description: "Dexs on arbitrum.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/arbitrum-exchange-v2.jpg`,
@@ -28772,7 +28778,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "ArbitrumExchange-v2",
       dexs: "ArbitrumExchange-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2686",

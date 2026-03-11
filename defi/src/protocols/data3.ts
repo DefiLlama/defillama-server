@@ -442,7 +442,7 @@ const data3_0: Protocol[] = [
     name: "SithSwap",
     address: null,
     symbol: "SITH",
-    url: "https://sithswap.com",
+    url: "https://sithswap.com",// deadUrl
     description:
       "SithSwap is an advanced, composable and permissionless stableswap protocol built on Starknet, where users can trade uncorrelated and correlated assets with dynamic fees and extremely low slippage.",
     chain: "Starknet",
@@ -458,7 +458,8 @@ const data3_0: Protocol[] = [
     listedAt: 1679585211,
     dimensions: {
       dexs: "sithswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2720",
@@ -4519,7 +4520,7 @@ const data3_0: Protocol[] = [
     name: "FunBear",
     address: "kava:0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01",
     symbol: "FUNB",
-    url: "https://funbear.net",
+    url: "https://funbear.net",// deadUrl
     description:
       "Funbear is a community-oriented DeFi protocol that rewards its community while expanding the utility of Web3 tools. Funbear works to grow the intrinsic value of each FUNB through market participation to provide long-term value accrual, but also provides a continuous stream of tokens to members who stake their FUNB into the Bear Cave.",
     chain: "Kava",
@@ -4532,6 +4533,7 @@ const data3_0: Protocol[] = [
     module: "funbear/index.js",
     twitter: "funbeario",
     listedAt: 1682603852,
+    deadUrl: true,
   },
   {
     id: "2906",
@@ -5775,7 +5777,7 @@ const data3_0: Protocol[] = [
     name: "Arbitrum Exchange V3",
     address: "arbitrum:0xD5954c3084a1cCd70B4dA011E67760B8e78aeE84",
     symbol: "ARX",
-    url: "https://arbidex.fi",
+    url: "https://arbidex.fi",// deadUrl
     description: "Uniswap V3 fork on Arbitrum.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/arbitrum-exchange-v3.jpg`,
@@ -5792,7 +5794,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "ArbitrumExchange-v3",
       dexs: "ArbitrumExchange-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2963",
@@ -9324,7 +9327,7 @@ const data3_0: Protocol[] = [
     name: "Stealcam",
     address: null,
     symbol: "-",
-    url: "https://www.stealcam.com/",
+    url: "https://www.stealcam.com/",// deadUrl
     description:
       "Stealcam is a mobile camera web app that lets you create and share photos and videos on the blockchain",
     chain: "Arbitrum",
@@ -9338,7 +9341,8 @@ const data3_0: Protocol[] = [
     twitter: "friendtech",
     dimensions: {
       fees: "stealcam"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3124",
@@ -13408,7 +13412,7 @@ const data3_0: Protocol[] = [
     name: "Lodestar V1",
     address: "arbitrum:0xF19547f9ED24aA66b03c3a552D181Ae334FBb8DB",
     symbol: "LODE",
-    url: "https://www.lodestarfinance.io",
+    url: "https://www.lodestarfinance.io",// deadUrl
     description:
       "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
     chain: "Arbitrum",
@@ -13424,6 +13428,7 @@ const data3_0: Protocol[] = [
     twitter: "LodestarFinance",
     parentProtocol: "parent#lodestar-finance",
     listedAt: 1690551992,
+    deadUrl: true,
   },
   {
     id: "3308",
@@ -18241,7 +18246,7 @@ const data3_1: Protocol[] = [
     name: "RexDex",
     address: "0x01A2947D9E6F58572028fA9fC6A2511646345841",
     symbol: "REX",
-    url: "https://rexdex.finance",
+    url: "https://rexdex.finance",// deadUrl
     description:
       "RexDex is a decentralized trading platform that revolutionizes digital asset farming by harnessing the power of Small Arms Syndicate NFTs to supercharge your farming experience. With SAS NFTs, users can boost their yield farming capabilities. This innovative platform offers a decentralized and secure environment for users to stake and trade their assets. Join the future of DeFi with RexDex and take control of your farming journey with Small Arms Syndicate NFTs.",
     chain: "Wanchain",
@@ -18255,6 +18260,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "TheRexDex",
     listedAt: 1694784487,
+    deadUrl: true,
   },
   {
     id: "3527",
@@ -20399,7 +20405,7 @@ const data3_1: Protocol[] = [
     name: "Contrax Finance",
     address: null,
     symbol: "-",
-    url: "https://beta.contrax.finance",
+    url: "https://beta.contrax.finance",// deadUrl
     description:
       "Contrax is a staking and farming auto-compounder on Arbitrum that makes it easy to get started in DeFi with a few clicks and just ETH or USDC for all vaults.",
     chain: "Arbitrum",
@@ -20413,6 +20419,7 @@ const data3_1: Protocol[] = [
     twitter: "Contrax_Finance",
     github: ["Contrax-co"],
     listedAt: 1697105738,
+    deadUrl: true,
   },
   {
     id: "3622",
@@ -24577,7 +24584,7 @@ const data3_1: Protocol[] = [
     name: "Xfai",
     address: "0x4aa41bc1649c9c3177ed16caaa11482295fc7441",
     symbol: "XFIT",
-    url: "https://www.xfai.com",
+    url: "https://www.xfai.com",// deadUrl
     description: "Swap, earn, and create entangled liquidity pools",
     chain: "Linea",
     logo: `${baseIconsUrl}/xfai.jpg`,
@@ -24601,7 +24608,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "xfai",
       dexs: "xfai"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3817",
@@ -26420,7 +26428,7 @@ const data3_1: Protocol[] = [
     name: "Glori Finance",
     address: "arbitrum:0xDF74D76e25FAB06c2CdbA4ebb0e6c82823378bD4",
     symbol: "GLORI",
-    url: "https://www.glori.finance",
+    url: "https://www.glori.finance",// deadUrl
     description: "Algorithmic, autonomous and cross-chain lending protocol built on perpDEX LP token.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/glori-finance.jpg`,
@@ -26442,7 +26450,8 @@ const data3_1: Protocol[] = [
         message: "Glori Finance has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true,
   },
   {
     id: "3903",
@@ -26795,7 +26804,7 @@ const data3_1: Protocol[] = [
     name: "Butter.xyz",
     address: null,
     symbol: "-",
-    url: "https://butter.xyz",
+    url: "https://butter.xyz",// deadUrl
     description:
       "Butter is an AMM token swap on Mantle and a perpetuals exchange with low fees, high liquidity, and a popular rewards program.",
     chain: "Mantle",
@@ -26813,7 +26822,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "butterxyz",
       dexs: "butterxyz"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3919",
@@ -35463,7 +35473,7 @@ const data3_2: Protocol[] = [
     name: "Infusion",
     address: null,
     symbol: "-",
-    url: "https://infusion.finance",
+    url: "https://infusion.finance",// deadUrl
     description: "Infusion is a new AMM protocol that introduces a new standard for the base liquidity layer.",
     chain: "Base",
     logo: `${baseIconsUrl}/infusion.jpg`,
@@ -35483,7 +35493,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "infusion",
       dexs: "infusion"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4295",
@@ -37877,7 +37888,7 @@ const data3_2: Protocol[] = [
     name: "DumpEX",
     address: null,
     symbol: "-",
-    url: "https://www.dumpex.xyz",
+    url: "https://www.dumpex.xyz",// deadUrl
     description:
       "DumpEX is a DEX for tokens and NFTs. It guarantees a floor price for everything and allows you to purchase any asset from DumpEX in a modified Dutch-auction, the Dumpauction.",
     chain: "Avalanche",
@@ -37890,6 +37901,7 @@ const data3_2: Protocol[] = [
     module: "DumpEX/index.js",
     twitter: "DumpEX_xyz",
     listedAt: 1711799284,
+    deadUrl: true,
   },
   {
     id: "4406",
@@ -38277,7 +38289,7 @@ const data3_2: Protocol[] = [
     name: "savmSwap",
     address: null,
     symbol: "-",
-    url: "https://savmswap.io",
+    url: "https://savmswap.io",// deadUrl
     description: "Uniswap V2 fork on SatoshiVM chain",
     chain: "SatoshiVM",
     logo: `${baseIconsUrl}/savmswap.jpg`,
@@ -38292,7 +38304,8 @@ const data3_2: Protocol[] = [
     listedAt: 1712152863,
     dimensions: {
       dexs: "savmswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4423",
@@ -40601,7 +40614,7 @@ const data3_2: Protocol[] = [
     name: "Neptunex",
     address: "blast:0x75483179a38d21f3608e71bbede5ec1314f0067d",
     symbol: "NPTX",
-    url: "https://neptunex.io",
+    url: "https://neptunex.io",// deadUrl
     description: "Blast Native DEX and DEX Aggregator for Optimal Order Routing",
     chain: "Blast",
     logo: `${baseIconsUrl}/neptunex.jpg`,
@@ -40615,13 +40628,14 @@ const data3_2: Protocol[] = [
     twitter: "NeptuneX_io_",
     github: ["NeptuneX-Aggregator"],
     listedAt: 1714142183,
+    deadUrl: true,
   },
   {
     id: "4528",
     name: "Seismic",
     address: null,
     symbol: "-",
-    url: "https://app.seismic.finance/",
+    url: "https://app.seismic.finance/",// deadUrl
     description: "Seismic is a Blast-native lending market",
     chain: "Blast",
     logo: `${baseIconsUrl}/seismic.png`,
@@ -40635,6 +40649,7 @@ const data3_2: Protocol[] = [
     module: "seismic/index.js",
     twitter: "seismicfinance",
     listedAt: 1714228394,
+    deadUrl: true,
   },
   {
     id: "4529",
@@ -41107,7 +41122,7 @@ const data3_2: Protocol[] = [
     name: "Atlendis V2",
     address: null,
     symbol: "",
-    url: "https://www.atlendis.io/",
+    url: "https://www.atlendis.io/",// deadUrl
     description: "Atlendis Labs is redefining private credit in the digital age.",
     chain: "Mode",
     logo: `${baseIconsUrl}/atlendis-v2.jpg`,
@@ -41120,6 +41135,7 @@ const data3_2: Protocol[] = [
     twitter: "AtlendisLabs",
     parentProtocol: "parent#atlendis",
     listedAt: 1714563532,
+    deadUrl: true,
   },
   {
     id: "4552",
@@ -41410,7 +41426,7 @@ const data3_2: Protocol[] = [
     name: "Nuri Legacy",
     address: "scroll:0xaaae8378809bb8815c08d3c59eb0c7d1529ad769",
     symbol: "NURI",
-    url: "https://www.nuri.exchange",
+    url: "https://www.nuri.exchange",// deadUrl
     description:
       "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     chain: "Scroll",
@@ -41428,14 +41444,15 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "nuri-exchange-v1",
       dexs: "nuri-exchange-v1"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4565",
     name: "Nuri CL",
     address: "scroll:0xaaae8378809bb8815c08d3c59eb0c7d1529ad769",
     symbol: "NURI",
-    url: "https://www.nuri.exchange",
+    url: "https://www.nuri.exchange",// deadUrl
     description:
       "NURI is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     chain: "Scroll",
@@ -41453,7 +41470,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "nuri-exchange-v2",
       dexs: "nuri-exchange-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4566",
@@ -42032,7 +42050,7 @@ const data3_2: Protocol[] = [
     name: "Free Protocol",
     address: null,
     symbol: "-",
-    url: "https://free.tech/",
+    url: "https://free.tech/",// deadUrl
     description:
       "Free your assets early with http://free.tech. Instantly liquify your staked assets and unlock extra yield potential.",
     chain: "Ethereum",
@@ -42045,6 +42063,7 @@ const data3_2: Protocol[] = [
     module: "free-protocol/index.js",
     twitter: "FreeLayer2",
     listedAt: 1715625738,
+    deadUrl: true,
   },
   {
     id: "4594",
@@ -42639,7 +42658,7 @@ const data3_2: Protocol[] = [
     name: "Vibrant Finance",
     address: null,
     symbol: "-",
-    url: "https://vibr.finance/home",
+    url: "https://vibr.finance/home",// deadUrl
     description: "The Vibrant Liquidity Nexus for Neon EVM",
     chain: "Neon",
     logo: `${baseIconsUrl}/vibrant-finance.jpg`,
@@ -42651,6 +42670,7 @@ const data3_2: Protocol[] = [
     module: "vibrswap/index.js",
     twitter: "Vibrant_xyz",
     listedAt: 1715942587,
+    deadUrl: true,
   },
   {
     id: "4622",
@@ -43090,7 +43110,7 @@ const data3_2: Protocol[] = [
     name: "Zeno Exchange",
     address: null,
     symbol: "ALT",
-    url: "https://zeno.exchange/metis",
+    url: "https://zeno.exchange/metis",// deadUrl
     description:
       "Premier Decentralized Perpetual Exchange With Cross-Margin, Multi-Asset Collateral, and Gasless Trading on MetisL2.",
     chain: "Metis",
@@ -43107,7 +43127,8 @@ const data3_2: Protocol[] = [
     dimensions: {
       fees: "zeno",
       derivatives: "zeno"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4643",
@@ -45501,7 +45522,7 @@ const data3_3: Protocol[] = [
     name: "Hana Finance",
     address: null,
     symbol: "-",
-    url: "https://www.hana.finance/market",
+    url: "https://www.hana.finance/market",// deadUrl
     description:
       "Taiko's leading native money market. Lend and borrow with ease, and earn attractive passive interest.",
     chain: "Taiko",
@@ -45515,6 +45536,7 @@ const data3_3: Protocol[] = [
     module: "hana-finance/index.js",
     twitter: "Hana_Finance",
     listedAt: 1718102547,
+    deadUrl: true,
   },
   {
     id: "4754",
@@ -46238,7 +46260,7 @@ const data3_3: Protocol[] = [
     name: "Jax Finance",
     address: null,
     symbol: "-",
-    url: "https://www.jax.finance",
+    url: "https://www.jax.finance",// deadUrl
     description:
       "JAX is a decentralized, non-custodial lending protocol initially operating on the Taiko Blockchain, designed to facilitate the interaction between liquidity suppliers and borrowers. Through JAX, liquidity suppliers have the opportunity to contribute to the liquidity pool, earning passive income in return, while borrowers can secure loans in an over-collateralized manner.",
     chain: "Taiko",
@@ -46253,6 +46275,7 @@ const data3_3: Protocol[] = [
     twitter: "Jax_Finance",
     forkedFromIds: ["114"],
     listedAt: 1718798677,
+    deadUrl: true,
   },
   {
     id: "4788",
@@ -51207,7 +51230,7 @@ const data3_3: Protocol[] = [
     name: "Random Reward",
     address: null,
     symbol: "-",
-    url: "https://www.randomreward.xyz",
+    url: "https://www.randomreward.xyz",// deadUrl
     description:
       "Random Rewarder accepts incoming ETH transfers, signing up any address who sends a sufficient amount of ETH for a random reward at the end of a period.",
     chain: "Ethereum",
@@ -51220,6 +51243,7 @@ const data3_3: Protocol[] = [
     module: "RandomReward/index.js",
     twitter: null,
     listedAt: 1724075073,
+    deadUrl: true,
   },
   {
     id: "5015",
@@ -62046,7 +62070,7 @@ const data3_3: Protocol[] = [
     name: "NEBY DEX",
     address: null,
     symbol: "-",
-    url: "https://www.neby.exchange",
+    url: "https://www.neby.exchange",// deadUrl
     description: "NEBY is the premier decentralized exchange (DEX) on the Oasis Network, offering low slippage swaps and high liquidity efficiency powered by concentrated liquidity AMM (clAMM) technology. It features advanced auto-harvesting and auto-compounding mechanisms, enabling flexible liquidity reward management. NEBY is also the first to bridge USDT, USDC, and wETH to the Oasis Network, ensuring a seamless DeFi experience.",
     chain: "Sapphire",
     logo: `${baseIconsUrl}/neby-dex.jpg`,
@@ -62063,7 +62087,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "neby-dex",
       dexs: "neby-dex"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5513",

@@ -7127,7 +7127,7 @@ const data4: Protocol[] = [
     name: "BeraTrax",
     address: null,
     symbol: "-",
-    url: "https://beratrax.com/",
+    url: "https://beratrax.com/",// deadUrl
     description:
       "BeraTrax is the premier way to interact with DeFi on Berachain, all from your mobile device. It’s an upcoming mobile application designed to let you seamlessly enter yield-earning vaults with just a single click.",
     chain: "Berachain",
@@ -7141,6 +7141,7 @@ const data4: Protocol[] = [
     twitter: "beratrax",
     audit_links: ["https://www.cyberscope.io/audits/c5-btx"],
     listedAt: 1741279402,
+    deadUrl: true,
   },
   {
     id: "5871",
@@ -8486,7 +8487,7 @@ const data4: Protocol[] = [
     name: "QuokkaLend",
     address: null,
     symbol: "-",
-    url: "https://app.quokkalend.xyz/",
+    url: "https://app.quokkalend.xyz/",// deadUrl
     description: "Quokkalend is the lending market of Morph chain",
     chain: "Morph",
     logo: `${baseIconsUrl}/quokkalend.jpg`,
@@ -8506,6 +8507,7 @@ const data4: Protocol[] = [
     module: "quokkalend/index.js",
     twitter: "QuokkaLend",
     listedAt: 1742469797,
+    deadUrl: true,
   },
   {
     id: "5929",
@@ -17357,7 +17359,7 @@ const data4: Protocol[] = [
     name: "Jolt",
     address: "optimism:0xd549aa17c5010A33ca5E3D2051b8904B5a279b0A",
     symbol: "JOLT",
-    url: "https://jolt.finance",
+    url: "https://jolt.finance",// deadUrl
     description:
       "Jolt Finance is a permissionless Aave V2 style lending and borrowing protocol on Optimism, enabling users to supply assets for yield or borrow against collateral. It is security-focused, restricts smart contracts from borrowing, employs conservative risk parameters, and uses multisig-controlled, timelocked governance for upgrades. Users also earn reward tokens that provide protocol revenue share.",
     chain: "Optimism",
@@ -17371,6 +17373,7 @@ const data4: Protocol[] = [
     twitter: "jolt_finance",
     forkedFromIds: ["111"],
     listedAt: 1750066518,
+    deadUrl: true,
   },
   {
     id: "6312",
@@ -18820,7 +18823,7 @@ const data4: Protocol[] = [
     name: "Moai V2",
     address: null,
     symbol: "-",
-    url: "https://xrplevm.moai-finance.xyz/swap",
+    url: "https://xrplevm.moai-finance.xyz/swap",// deadUrl
     description:
       "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
     chain: "XRPL EVM",
@@ -18837,14 +18840,15 @@ const data4: Protocol[] = [
     listedAt: 1751364850,
     dimensions: {
       dexs: "moai-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6377",
     name: "Moai V3",
     address: null,
     symbol: "-",
-    url: "https://xrplevm.moai-finance.xyz/swap",
+    url: "https://xrplevm.moai-finance.xyz/swap",// deadUrl
     description:
       "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
     chain: "XRPL EVM",
@@ -18861,7 +18865,8 @@ const data4: Protocol[] = [
     listedAt: 1751364850,
     dimensions: {
       dexs: "moai-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6378",

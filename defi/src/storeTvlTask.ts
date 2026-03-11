@@ -157,6 +157,7 @@ async function main() {
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
   await Promise.all(staleCoinWrites)
+  await notifyTempCacheInfo();
   await preExit()
 }
 
@@ -166,7 +167,7 @@ async function preExit() {
     // await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
     // await storeStaleCoins(staleCoins)
     
-    await notifyTempCacheInfo();
+    // await notifyTempCacheInfo();
   } catch (e) {
     console.error(e)
   }

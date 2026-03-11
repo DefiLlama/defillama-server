@@ -46,7 +46,7 @@ const config = {
   pulsex: { chain: 'pulse', factory: '0x1715a3E4A142d8b698131108995174F37aEBA10D', endpoint: "https://graph.pulsechain.com/subgraphs/name/pulsechain/pulsex", },
   elysium: { chain: 'elsm', factory: '0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE', },
   // zkswap: { chain: 'polygon_zkevm', factory: '0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D', getReservesAbi: alternateGetReservesAbi, },
-  aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
+  // aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
   jibswap: { chain: 'jbc', factory: '0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499', },
   macaron: { chain: "btr", factory: "0x1037e9078df7ab09b9af78b15d5e7aad7c1afdd0", },
   uni_base: {

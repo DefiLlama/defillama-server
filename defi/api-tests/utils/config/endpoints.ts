@@ -67,6 +67,14 @@ export const TVL = {
   INFLOWS: (protocol: string, timestamp: number) => `/inflows/${protocol}/${timestamp}`,
 } as const;
 
+export const TVL_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  PROTOCOL: (protocol: string) => `/v2/metrics/tvl/protocol/${protocol}`,
+  CHARTS: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}`,
+  CHARTS_CHAIN_BREAKDOWN: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}/chain-breakdown`,
+  CHARTS_TOKEN_BREAKDOWN: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}/token-breakdown`,
+} as const;
+
 export const STABLECOINS = {
   BASE_URL: stablecoinsBaseUrl,
   LIST: '/stablecoins/stablecoins',
@@ -109,6 +117,13 @@ export const FEES = {
   OVERVIEW_FEES: '/overview/fees',
   OVERVIEW_FEES_CHAIN: (chain: string) => `/overview/fees/${chain}`,
   SUMMARY_FEES: (protocol: string) => `/summary/fees/${protocol}`,
+} as const;
+
+export const FEES_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  PROTOCOL: (protocol: string) => `/v2/metrics/fees/protocol/${protocol}`,
+  CHARTS: (protocol: string) => `/v2/chart/fees/protocol/${protocol}`,
+  CHARTS_CHAIN_BREAKDOWN: (protocol: string) => `/v2/chart/fees/protocol/${protocol}/chain-breakdown`,
 } as const;
 
 export const BRIDGES = {
@@ -215,6 +230,8 @@ export const endpoints = {
   NARRATIVES,
   TOKEN_LIQUIDITY,
   RWA,
+  TVL_V2,
+  FEES_V2,
 } as const;
 
 export const API_CONFIG = {

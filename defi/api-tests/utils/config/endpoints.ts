@@ -40,7 +40,7 @@ export const BASE_URLS = {
   PERPS: getProApiBaseUrl(),
   ETFS: getProApiBaseUrl(),
   NARRATIVES: getProApiBaseUrl(),
-  RWA: getBaseUrl(process.env.RWA_BASE_URL || 'http://localhost:5002/', 'rwa'),
+  RWA: getProApiBaseUrl() + '/rwa',
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;

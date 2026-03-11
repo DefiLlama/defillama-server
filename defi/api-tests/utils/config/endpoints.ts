@@ -119,6 +119,13 @@ export const FEES = {
   SUMMARY_FEES: (protocol: string) => `/summary/fees/${protocol}`,
 } as const;
 
+export const FEES_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  PROTOCOL: (protocol: string) => `/v2/metrics/fees/protocol/${protocol}`,
+  CHARTS: (protocol: string) => `/v2/chart/fees/protocol/${protocol}`,
+  CHARTS_CHAIN_BREAKDOWN: (protocol: string) => `/v2/chart/fees/protocol/${protocol}/chain-breakdown`,
+} as const;
+
 export const BRIDGES = {
   BASE_URL: BASE_URLS.BRIDGES,
   BRIDGES: '/bridges/bridges',
@@ -224,6 +231,7 @@ export const endpoints = {
   TOKEN_LIQUIDITY,
   RWA,
   TVL_V2,
+  FEES_V2,
 } as const;
 
 export const API_CONFIG = {

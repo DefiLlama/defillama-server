@@ -11860,7 +11860,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7437",
-    name: "Cooler Loans",
+    name: "Olympus Cooler Loans",
     address: "0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5",
     symbol: "OHM",
     url: "https://app.olympusdao.finance/#/lending/cooler",

@@ -1003,6 +1003,7 @@ const data5: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "superstackxyz",
+    deadUrl: true,
     dimensions: {
       fees: "superstack",
       derivatives: "superstack",
@@ -8977,6 +8978,7 @@ const data5: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "coal_works",
+    deadUrl: true,
     dimensions: {
       fees: "coal-works",
     },
@@ -9174,7 +9176,7 @@ const data5: Protocol[] = [
     name: "StackFi",
     address: null,
     symbol: "-",
-    url: "https://stackfi.net/",
+    url: "https://app.stackfi.net/",
     description: "Leverage redefined: Powering a permissionless credit layer . Access up to 10x leverage or earn yield through staking & profit pools.",
     chain: "Base",
     logo: `${baseIconsUrl}/stackfi.jpg`,
@@ -10417,6 +10419,7 @@ const data5: Protocol[] = [
     chains: ["Cronos"],
     module: "dummy.js",
     twitter: "NeptuneHubCro",
+    deadUrl: true,
     dimensions: {
       aggregators: "neptune-swap",
       fees: "neptune-swap",

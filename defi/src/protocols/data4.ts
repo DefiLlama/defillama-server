@@ -1782,7 +1782,8 @@ const data4: Protocol[] = [
     listedAt: 1737088495,
     dimensions: {
       fees: "zarban"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5637",
@@ -3314,7 +3315,7 @@ const data4: Protocol[] = [
     name: "Sirio Finance",
     address: null,
     symbol: "-",
-    url: "https://app.sirio.finance",
+    url: "https://app.sirio.finance",// deadUrl
     description: "The DeFAI Lending & Borrowing Layer of hedera",
     chain: "Hedera",
     logo: `${baseIconsUrl}/sirio-finance.jpg`,
@@ -3338,6 +3339,7 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1738233223,
+    deadUrl: true,
   },
   {
     id: "5707",
@@ -6667,6 +6669,7 @@ const data4: Protocol[] = [
     module: "handofgod/index.js",
     twitter: "HandofGodSonic",
     listedAt: 1740574596,
+    deadUrl: true,
   },
   {
     id: "5850",
@@ -9583,6 +9586,7 @@ const data4: Protocol[] = [
     module: "clutch-market/index.js",
     twitter: "clutchmarkets",
     listedAt: 1743442083,
+    deadUrl: true,
   },
   {
     id: "5976",
@@ -23048,7 +23052,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "superx",
       derivatives: "superX"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6562",
@@ -30109,6 +30114,7 @@ const data4: Protocol[] = [
     module: "yieldbricks/index.js",
     twitter: "YieldBricks",
     listedAt: 1760736594,
+    deadUrl: true,
   },
   {
     id: "6884",

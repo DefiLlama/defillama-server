@@ -3885,7 +3885,7 @@ const data3_0: Protocol[] = [
     name: "CatsApes",
     address: null,
     symbol: "-",
-    url: "https://catsapes.com/",
+    url: "https://catsapes.com/",// deadUrl
     description:
       "Catsapes is a sandbox MMORPG where you can forge a unique path for yourself and your race. Catsapes is a blockchain based fantasy-survival role playing game where the users can explore the planet called Arilia.",
     chain: "Kava",
@@ -3898,6 +3898,7 @@ const data3_0: Protocol[] = [
     module: "catsapes/index.js",
     twitter: "catsapes1",
     listedAt: 1682275045,
+    deadUrl: true,
   },
   {
     id: "2878",
@@ -7370,7 +7371,7 @@ const data3_0: Protocol[] = [
     name: "Dexilla",
     address: null,
     symbol: "-",
-    url: "https://dexilla.com/",
+    url: "https://dexilla.com/",// deadUrl
     description:
       "Dexilla is a revolutionary order book DEX that offers a decentralized and trustless trading experience for users",
     chain: "zkSync Era",
@@ -7384,6 +7385,7 @@ const data3_0: Protocol[] = [
     twitter: "DexillaDAO",
     audit_links: ["https://github.com/dexilla/protocol/blob/main/audits/mythx_all.pdf"],
     listedAt: 1685224615,
+    deadUrl: true,
   },
   {
     id: "3036",
@@ -9786,6 +9788,8 @@ const data3_0: Protocol[] = [
     oracles: ["Witnet"],
     audit_links: ["https://solidity.finance/audits/Pinjam/"],
     listedAt: 1687391349,
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "3146",
@@ -19125,7 +19129,8 @@ const data3_1: Protocol[] = [
     listedAt: 1695767007,
     dimensions: {
       fees: "cipher"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3564",
@@ -56877,7 +56882,8 @@ const data3_3: Protocol[] = [
     chains: ["Sapphire"],
     module: "thorn-protocol/index.js",
     twitter: "thorn_protocol",
-    listedAt: 1729687148
+    listedAt: 1729687148,
+    deadUrl: true,
   },
   {
     id: "5275",
@@ -59427,7 +59433,9 @@ const data3_3: Protocol[] = [
     audit_links: [
       "https://docs.pluto.so/security/audit",
     ],
-    listedAt: 1732137324
+    listedAt: 1732137324,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "5389",

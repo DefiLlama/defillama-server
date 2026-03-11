@@ -4579,6 +4579,7 @@ const data2: Protocol[] = [
     module: "diamond-coin/index.js",
     twitter: "Pumpkittens",
     listedAt: 1648568500,
+    deadUrl: true,
   },
   {
     id: "1589",
@@ -7915,6 +7916,7 @@ const data2: Protocol[] = [
     module: "kinesis/index.js",
     twitter: "KinesisLabs",
     listedAt: 1651867085,
+    deadUrl: true,
   },
   {
     id: "1743",
@@ -10089,7 +10091,7 @@ const data2: Protocol[] = [
     name: "Ratio Finance",
     address: "solana:ratioMVg27rSZbSvBopUvsdrGUzeALUfFma61mpxc8J",
     symbol: "RATIO",
-    url: "https://ratio.finance",
+    url: "https://ratio.finance",// deadUrl
     description:
       "Ratio Finance is a Collateralized Debt Position platform that allows investors to extend the capabilities of their liquidity provisioning efforts by locking their assets into safe & secure vaults, minting USDr (Ratio Finance’s dynamically risk-adjusted stablecoin), and utilizing USDr within the Solana ecosystem.",
     chain: "Solana",
@@ -10104,6 +10106,7 @@ const data2: Protocol[] = [
     twitter: "RatioFinance",
     listedAt: 1655652176,
     stablecoins: ["ratio-stable-coin"],
+    deadUrl: true,
   },
   {
     id: "1842",
@@ -11446,7 +11449,7 @@ const data2: Protocol[] = [
     name: "StarSwap",
     address: "astar:0x8489f4554790F5A103F2B0398537eAEe68B73884",
     symbol: "STAR",
-    url: "https://starswap.net",
+    url: "https://starswap.net",// deadUrl
     description: "StarSwap is the first DEX (native to Astar Network) with NFT Governance",
     chain: "Astar",
     logo: `${baseIconsUrl}/starswap.png`,
@@ -11459,6 +11462,7 @@ const data2: Protocol[] = [
     module: "starswap/index.js",
     twitter: "StarSwap",
     listedAt: 1657923075,
+    deadUrl: true,
   },
   {
     id: "1903",
@@ -25192,7 +25196,7 @@ const data2: Protocol[] = [
     name: "Friends With Benefits",
     address: "0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8",
     symbol: "FWB",
-    url: "https://www.fwb.help/",
+    url: "https://www.fwb.help/",// deadUrl
     description:
       "A new kind of social network - owned by the creatives and builders who believe in the promise of a better internet",
     chain: "Ethereum",
@@ -25207,6 +25211,7 @@ const data2: Protocol[] = [
     twitter: "FWBtweets",
     governanceID: ["snapshot:friendswithbenefits.eth"],
     github: ["friends-with-benefits"],
+    deadUrl: true,
   },
   {
     id: "2525",

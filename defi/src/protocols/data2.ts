@@ -3223,7 +3223,7 @@ const data2: Protocol[] = [
     name: "Metavault DAO",
     address: "0x788B6D2B37Aa51D916F2837Ae25b05f0e61339d1",
     symbol: "MVD",
-    url: "https://metavault.trade",
+    url: "https://metavault.trade",// deadUrl
     description:
       "Metavault is a blockchain-based community controlled investment platform and decentralised venture capital vehicle that allows anyone to invest in the latest and most profitable blockchain, DeFi and metaverse projects and strategies.",
     chain: "Ethereum",
@@ -3237,6 +3237,7 @@ const data2: Protocol[] = [
     twitter: "MetavaultDAO",
     listedAt: 1646854791,
     parentProtocol: "parent#metavault",
+    deadUrl: true,
   },
   {
     id: "1527",
@@ -9207,7 +9208,7 @@ const data2: Protocol[] = [
     name: "Metavault.Trade",
     address: "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
     symbol: "MVX",
-    url: "https://metavault.trade",
+    url: "https://metavault.trade",// deadUrl
     description:
       "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 50x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
     chain: "Polygon",
@@ -9230,7 +9231,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "metavault.trade",
       derivatives: "metavault_trade-metavault-derivative"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1802",
@@ -14638,6 +14640,7 @@ const data2: Protocol[] = [
       "https://github.com/everstake/solana-program-library/blob/master/stake-pool/docs/EverSOL%20SP%20Audit.pdf",
     ],
     listedAt: 1662040454,
+    deadUrl: true,
   },
   {
     id: "2049",
@@ -28129,7 +28132,7 @@ const data2: Protocol[] = [
     name: "Metavault Binary Options",
     address: null,
     symbol: "-",
-    url: "https://metavault.trade/",
+    url: "https://metavault.trade/",// deadUrl
     description:
       "Metavault Binary Options offers short-term, risk-defined contracts known as binary options. These contracts are simpler than at-the-money contracts and involve only two possible outcomes - either the underlying price goes up or goes down, based on the option holder's estimation. ",
     chain: "Ethereum",
@@ -28143,6 +28146,7 @@ const data2: Protocol[] = [
     twitter: "MetavaultDAO",
     parentProtocol: "parent#metavault",
     listedAt: 1678383915,
+    deadUrl: true,
   },
   {
     id: "2657",

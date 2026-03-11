@@ -604,6 +604,7 @@ const parentProtocols: IParentProtocol[] = [
       "snapshot:metavault-dao.eth",
     ],
     github: ["metavaultorg"],
+    deadUrl: true,
   },
   /*
   {

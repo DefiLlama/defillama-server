@@ -9472,6 +9472,7 @@ const data3_0: Protocol[] = [
     ],
     twitter: "TigrisTrades",
     listedAt: 1687208475,
+    deadUrl: true,
   },
   {
     id: "3130",
@@ -23158,7 +23159,7 @@ const data3_1: Protocol[] = [
     name: "Metavault V3",
     address: null,
     symbol: "MVX",
-    url: "https://metavault.trade/apps/swap",
+    url: "https://metavault.trade/apps/swap",// deadUrl
     description: "Spot Trading on Metavault's V3-style DEX",
     chain: "Linea",
     logo: `${baseIconsUrl}/metavault-v3.png`,
@@ -23172,6 +23173,7 @@ const data3_1: Protocol[] = [
     twitter: "MetavaultTRADE",
     listedAt: 1699390593,
     parentProtocol: "parent#metavault",
+    deadUrl: true,
   },
   {
     id: "3751",
@@ -26631,7 +26633,7 @@ const data3_1: Protocol[] = [
     name: "Metavault Derivatives V2",
     address: null,
     symbol: "MVX",
-    url: "https://metavault.trade",
+    url: "https://metavault.trade",// deadUrl
     description: "Derivatives Protocol on the linea Chain",
     chain: "Linea",
     logo: `${baseIconsUrl}/metavault-derivatives-v2.jpg`,
@@ -26649,7 +26651,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "metavault-derivatives-v2",
       derivatives: "metavault-derivatives-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3912",
@@ -30597,7 +30600,7 @@ const data3_1: Protocol[] = [
     name: "NinjaRoll",
     address: "injective:inj1qv98cmfdaj5f382a0klq7ps4mnjp6calzh20h3",
     symbol: "ROLL",
-    url: "https://ninjaroll.org",
+    url: "https://ninjaroll.org",// deadUrl
     description:
       "NinjaRoll is a decentralized gaming platform built on Injective. Unlike traditional games that operate in black boxes, NinjaRoll runs on smart contracts that are fair, transparent, non-custodial, and immutable.",
     chain: "Injective",
@@ -30610,6 +30613,7 @@ const data3_1: Protocol[] = [
     module: "ninjaroll/index.js",
     twitter: "ninjarollorg",
     listedAt: 1706655241,
+    deadUrl: true,
   },
   {
     id: "4084",
@@ -31368,7 +31372,7 @@ const data3_1: Protocol[] = [
     name: "NinjaVault",
     address: null,
     symbol: "-",
-    url: "https://ninjavault.co/",
+    url: "https://ninjavault.co/",// deadUrl
     description:
       "NinjaVault is your go-to portfolio manager, designed to seamlessly track your DeFi assets. With NinjaVault, users can invest in smart vaults boasting compounding yields and trade tokens at unparalleled rates using our decentralized exchange aggregator",
     chain: "Injective",
@@ -31381,6 +31385,7 @@ const data3_1: Protocol[] = [
     module: "ninjavault/index.js",
     twitter: "helloninjavault",
     listedAt: 1707344964,
+    deadUrl: true,
   },
   {
     id: "4116",
@@ -36850,7 +36855,7 @@ const data3_2: Protocol[] = [
     name: "Rosy Stake",
     address: "sapphire:0x6665a6Cae3F52959f0f653E3D04270D54e6f13d8",
     symbol: "ROSY",
-    url: "https://rosytoken.com",
+    url: "https://rosytoken.com",// deadUrl
     description: `Rosy is the first memecoin on Oasis Network. Rosy's "Burnt Steak" protocol" is a memecoin hype protool that allows ROSY token holders to stake and earn Carbon points and to increase the token's deflationary rate.`,
     chain: "Sapphire",
     logo: `${baseIconsUrl}/rosy-stake.jpg`,
@@ -36862,6 +36867,7 @@ const data3_2: Protocol[] = [
     module: "rosy-burnt-steak/index.js",
     twitter: "rosytoken",
     listedAt: 1711377673,
+    deadUrl: true,
   },
   {
     id: "4360",
@@ -52495,7 +52501,7 @@ const data3_3: Protocol[] = [
     name: "Metavault AMM",
     address: "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
     symbol: "MVX",
-    url: "https://metavault.trade",
+    url: "https://metavault.trade",// deadUrl
     description: "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 50x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/metavault-amm.jpg`,
@@ -52510,7 +52516,8 @@ const data3_3: Protocol[] = [
     listedAt: 1724922927,
     dimensions: {
       dexs: "metavault_trade-metavault_trade"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5073",
@@ -54970,7 +54977,7 @@ const data3_3: Protocol[] = [
     name: "Metavault AMM V2",
     address: "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
     symbol: "MVX",
-    url: "https://metavault.trade",
+    url: "https://metavault.trade",// deadUrl
     description:
       "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 50x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
     chain: "Scroll",
@@ -54987,7 +54994,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "metavault-amm-v2",
       dexs: "metavault-amm-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5187",

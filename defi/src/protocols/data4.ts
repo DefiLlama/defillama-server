@@ -15400,7 +15400,7 @@ const data4: Protocol[] = [
     name: "FastJPEG",
     address: null,
     symbol: "-",
-    url: "https://fastjpeg.com/",
+    url: "https://fastjpeg.com/",// deadUrl
     description: `FastJPEG has a simple 3 step process to launch a token`,
     chain: "Base",
     logo: `${baseIconsUrl}/fastjpeg.jpg`,
@@ -15415,7 +15415,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "fastjpeg",
       dexs: "fastjpeg"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6230",
@@ -16606,7 +16607,7 @@ const data4: Protocol[] = [
     name: "TaraPerps",
     address: null,
     symbol: "-",
-    url: "https://taraperps.com/",
+    url: "https://taraperps.com/",// deadUrl
     description: "Perpetual Exchange on Taraxa",
     chain: "Taraxa",
     logo: `${baseIconsUrl}/taraperps.jpg`,
@@ -16626,6 +16627,7 @@ const data4: Protocol[] = [
     module: "taraperps/index.js",
     twitter: "TaraxaPerps",
     listedAt: 1749247243,
+    deadUrl: true,
   },
   {
     id: "6281",

@@ -15290,7 +15290,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Loop Finance",
     address: "terra:terra1nef5jf6c7js9x6gkntlehgywvjlpytm7pcgkn4",
     symbol: "LOOP",
-    url: "https://www.loop.markets",
+    url: "https://www.loop.markets",// deadUrl
     description: "LOOPTokenized Community & DEX on Terra",
     chain: "Terra",
     logo: `${baseIconsUrl}/loop-finance.jpg`,
@@ -15303,6 +15303,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "loop_finance",
     audit_links: ["https://docs.loop.markets/loop-finance/decentralized-exchange/audits"],
     listedAt: 1636441315,
+    deadUrl: true,
   },
   {
     id: "815",

@@ -5742,6 +5742,14 @@ export const chainCoingeckoIds = {
     twitter: "Voi_Net",
     url: "https://www.voi.network/",
   },
+  "Neony": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "NeonyExchange",
+    url: "https://www.neony.exchange/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -413,28 +413,31 @@ export async function storeTvl(
     logRunStats()
 
     if (options.tempCacheInfo && options.tempCacheInfo.length > 0) {
-      const now = getCurrentUnixTimestamp();
-      const earliestCacheTime = Math.min(...options.tempCacheInfo.map(item => item.cacheTime));
-      const timeDiffFromNow = now - earliestCacheTime;
-
-      const cacheUsageLog = {
-        metadata: {
-          application: 'tvl',
-          type: 'cache-usage',
-          name: protocol.name,
-          id: protocol.id,
-          timestamp: now,
-        },
-        data: {
-          totalCachedItems: options.tempCacheInfo.length,
-          cachedItems: options.tempCacheInfo,
-          aggregatedTvl: options.tempCacheInfo.reduce((sum, item) => sum + item.storeKeyTvl, 0),
-          totalTvl: options.tempCacheInfo[0].totalTvl,
-          earliestCacheUsed: earliestCacheTime,
-          timeDiffFromNowSeconds: timeDiffFromNow,
+      const protocolTempCacheInfo = options.tempCacheInfo.filter(i => i.protocolName === protocol.name);
+      if (protocolTempCacheInfo.length > 0) {
+        const now = getCurrentUnixTimestamp();
+        const earliestCacheTime = Math.min(...protocolTempCacheInfo.map(item => item.cacheTime));
+        const timeDiffFromNow = now - earliestCacheTime;
+  
+        const cacheUsageLog = {
+          metadata: {
+            application: 'tvl',
+            type: 'cache-usage',
+            name: protocol.name,
+            id: protocol.id,
+            timestamp: now,
+          },
+          data: {
+            totalCachedItems: protocolTempCacheInfo.length,
+            cachedItems: protocolTempCacheInfo,
+            aggregatedTvl: protocolTempCacheInfo.reduce((sum, item) => sum + item.storeKeyTvl, 0),
+            totalTvl: protocolTempCacheInfo[0].totalTvl,
+            earliestCacheUsed: earliestCacheTime,
+            timeDiffFromNowSeconds: timeDiffFromNow,
+          }
         }
+        elastic.writeLog('tvl-cache-used', cacheUsageLog)
       }
-      elastic.writeLog('tvl-cache-used', cacheUsageLog)
     }
 
   } catch (e) {

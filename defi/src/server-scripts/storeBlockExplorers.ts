@@ -16,6 +16,7 @@ interface ChainlistEntry {
   explorers?: ChainlistExplorer[];
   chainSlug?: string;
   chainId: number
+  isTestnet: boolean;
 }
 
 interface BlockExplorerEntry {
@@ -42,12 +43,13 @@ async function storeBlockExplorers() {
     if (entry.llamaChainId) llamaChainIdIndex.set(entry.llamaChainId, entry);
   }
 
-  const res = await fetch(CHAINLIST_API);
-  const chainlistData = (await res.json()) as ChainlistEntry[];
+  const chainlistData = await fetch(CHAINLIST_API).then(res => res.json()) as ChainlistEntry[];
+
   console.log(`Fetched ${chainlistData.length} chains from chainlist API`);
 
   for (const chain of chainlistData) {
     if (!chain.explorers?.length) continue;
+    if (chain.isTestnet) continue;
 
     const apiExplorers = chain.explorers.map((e) => ({ name: e.name, url: e.url }));
     const existing = chain.chainSlug ? llamaChainIdIndex.get(chain.chainSlug) : undefined;
@@ -60,8 +62,9 @@ async function storeBlockExplorers() {
         }
       }
     } else {
+      const slugDisplayName = chain.chainSlug ? getChainDisplayName(chain.chainSlug, true) : null;
       const newEntry: BlockExplorerEntry = {
-        displayName: chain.name,
+        displayName: slugDisplayName || chain.name,
         llamaChainId: chain.chainSlug ?? null,
         evmChainId: chain.chainId,
         blockExplorers: apiExplorers,

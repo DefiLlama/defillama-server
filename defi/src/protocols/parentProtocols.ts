@@ -604,6 +604,7 @@ const parentProtocols: IParentProtocol[] = [
       "snapshot:metavault-dao.eth",
     ],
     github: ["metavaultorg"],
+    deadUrl: true,
   },
   /*
   {
@@ -1753,13 +1754,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#arbitrum-exchange",
     name: "Arbitrum Exchange",
-    url: "https://arbidex.fi",
+    url: "https://arbidex.fi",// deadUrl
     description: "Dexs on arbitrum.",
     logo: `${baseIconsUrl}/arbitrum-exchange.jpg`,
     gecko_id: "arbitrum-exchange",
     cmcId: null,
     chains: [],
     twitter: "ArbidexFi",
+    deadUrl: true,
   },
   {
     id: "parent#cozy-finance",
@@ -2519,7 +2521,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#lodestar-finance",
     name: "Lodestar Finance",
-    url: "https://www.lodestarfinance.io",
+    url: "https://www.lodestarfinance.io",// deadUrl
     description:
       "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
     logo: `${baseIconsUrl}/lodestar-finance.png`,
@@ -2528,6 +2530,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LodestarFinance",
     governanceID: ["snapshot:lodestarfinance.eth"],
+    deadUrl: true,
   },
   {
     id: "parent#sablier-finance",
@@ -4543,7 +4546,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#atlendis",
     name: "Atlendis",
-    url: "https://www.atlendis.io/",
+    url: "https://www.atlendis.io/",// deadUrl
     description:
       "Atlendis Labs is redefining private credit in the digital age.",
     logo: `${baseIconsUrl}/atlendis.png`,
@@ -4552,6 +4555,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AtlendisLabs",
     github: ["Atlendis"],
+    deadUrl: true,
   },
   {
     id: "parent#fjord-foundry",
@@ -4569,7 +4573,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#nuri-exchange",
     name: "Nuri Exchange",
-    url: "https://www.nuri.exchange",
+    url: "https://www.nuri.exchange",// deadUrl
     description:
       "Nuri is a next-generation AMM designed to serve as Scroll's central liquidity hub, combining the secure and battle-tested superiority of Uniswap v3 with a custom incentive engine, vote-lock governance model, and streamlined user experience.",
     logo: `${baseIconsUrl}/nuri-exchange.jpg`,
@@ -4577,6 +4581,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "NuriExchange",
+    deadUrl: true,
   },
   {
     id: "parent#inception",
@@ -7495,13 +7500,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#moai-finance",
     name: "Moai Finance",
-    url: "https://xrplevm.moai-finance.xyz/swap",
+    url: "https://xrplevm.moai-finance.xyz/swap",// deadUrl
     description: "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
     logo: `${baseIconsUrl}/moai-finance.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "MoaiFinance",
+    deadUrl: true,
   },
   {
     id: "parent#moonshot",
@@ -9064,10 +9070,10 @@ const parentProtocols: IParentProtocol[] = [
   // },
   {
     id: "parent#world-markets-inc",
-    name: "World Markets Inc",
+    name: "World Markets",
     url: "https://world.inc/",
     description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
-    logo: `${baseIconsUrl}/world-markets-inc.jpg`,
+    logo: `${baseIconsUrl}/world-markets.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -9197,6 +9203,18 @@ const parentProtocols: IParentProtocol[] = [
       "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B",
     ],
     github: ["pareto-credit"], 
+  },
+  {
+    id: "parent#mayan-finance",
+    name: "Mayan Finance",
+    url: "https://mayan.finance/",
+    description: "Mayan is a cross-chain swap auction protocol with the goal of offering the best  swap rates using auction mechanism",
+    logo: `${baseIconsUrl}/mayan-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MayanFinance",
+    github: ["mayan-finance"],
   },
 ];
 

@@ -336,10 +336,9 @@ function buildDirectoryResults(
   tastyMetrics: Record<string, number>,
 ) {
   const otherPages = [
-  {
-    "name": "LlamaFeed",
-    "route": "https://llamafeed.io"
-  }].map(page=>({
+  {"name": "LlamaFeed","route": "https://llamafeed.io"},
+  {"name": "Etherscan","route": "https://etherscan.io/"},
+].map(page=>({
     id: `others_${normalize(page.name)}`,
     name: page.name,
     route: page.route,

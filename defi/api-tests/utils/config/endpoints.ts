@@ -40,6 +40,7 @@ export const BASE_URLS = {
   PERPS: getProApiBaseUrl(),
   ETFS: getProApiBaseUrl(),
   NARRATIVES: getProApiBaseUrl(),
+  RWA: getProApiBaseUrl() + '/rwa',
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;
@@ -64,6 +65,14 @@ export const TVL = {
   CHAIN_ASSETS: '/chainAssets',
   TOKEN_PROTOCOLS: (symbol: string) => `/tokenProtocols/${symbol}`,
   INFLOWS: (protocol: string, timestamp: number) => `/inflows/${protocol}/${timestamp}`,
+} as const;
+
+export const TVL_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  PROTOCOL: (protocol: string) => `/v2/metrics/tvl/protocol/${protocol}`,
+  CHARTS: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}`,
+  CHARTS_CHAIN_BREAKDOWN: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}/chain-breakdown`,
+  CHARTS_TOKEN_BREAKDOWN: (protocol: string) => `/v2/chart/tvl/protocol/${protocol}/token-breakdown`,
 } as const;
 
 export const STABLECOINS = {
@@ -108,6 +117,13 @@ export const FEES = {
   OVERVIEW_FEES: '/overview/fees',
   OVERVIEW_FEES_CHAIN: (chain: string) => `/overview/fees/${chain}`,
   SUMMARY_FEES: (protocol: string) => `/summary/fees/${protocol}`,
+} as const;
+
+export const FEES_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  PROTOCOL: (protocol: string) => `/v2/metrics/fees/protocol/${protocol}`,
+  CHARTS: (protocol: string) => `/v2/chart/fees/protocol/${protocol}`,
+  CHARTS_CHAIN_BREAKDOWN: (protocol: string) => `/v2/chart/fees/protocol/${protocol}/chain-breakdown`,
 } as const;
 
 export const BRIDGES = {
@@ -176,6 +192,27 @@ export const TOKEN_LIQUIDITY = {
   HISTORICAL_LIQUIDITY: (token: string) => `/api/historicalLiquidity/${token}`,
 } as const;
 
+export const RWA = {
+  BASE_URL: BASE_URLS.RWA,
+  CURRENT: '/current',
+  LIST: '/list',
+  STATS: '/stats',
+  ID_MAP: '/id-map',
+  CHART_CHAIN_BREAKDOWN: '/chart/chain-breakdown',
+  CHART_CATEGORY_BREAKDOWN: '/chart/category-breakdown',
+  CHART_PLATFORM_BREAKDOWN: '/chart/platform-breakdown',
+  CHART_BY_ID: (id: string) => `/chart/${id}`,
+  CHART_BY_NAME: (name: string) => `/chart/name/${name}`,
+  CHART_BY_CHAIN: (chain: string) => `/chart/chain/${chain}`,
+  CHART_ASSET: (id: string) => `/chart/asset/${id}`,
+  CHART_BY_CATEGORY: (category: string) => `/chart/category/${category}`,
+  CHART_BY_PLATFORM: (platform: string) => `/chart/platform/${platform}`,
+  RWA_BY_ID: (id: string) => `/rwa/${id}`,
+  ASSET_BY_TICKER: (ticker: string) => `/asset/${ticker}`,
+  CATEGORY: (category: string) => `/category/${category}`,
+  CHAIN: (chain: string) => `/chain/${chain}`,
+} as const;
+
 export const endpoints = {
   TVL,
   STABLECOINS,
@@ -192,6 +229,9 @@ export const endpoints = {
   ETFS,
   NARRATIVES,
   TOKEN_LIQUIDITY,
+  RWA,
+  TVL_V2,
+  FEES_V2,
 } as const;
 
 export const API_CONFIG = {

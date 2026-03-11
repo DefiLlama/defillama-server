@@ -77,6 +77,12 @@ export function moolaMarkets(timestamp: number = 0) {
   })
 }
 
+export function aaveMantle(timestamp: number = 0) {
+  return getTokenPrices("mantle", "", null, "v3", timestamp, {
+    lendingPool: "0x458F293454fE0d67EC0655f3672301301DD51422"
+  })
+}
+
 export const adapters = {
   aave,
   geist,
@@ -88,5 +94,6 @@ export const adapters = {
   hyperlend, 
   hypurrfi, 
   sparkLend, 
-  moolaMarkets
+  moolaMarkets,
+  aaveMantle,
 };

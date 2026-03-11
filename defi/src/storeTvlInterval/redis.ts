@@ -1,9 +1,9 @@
 import { createClient, RedisClientType } from 'redis';
 
-const URL = process.env.COMMON_TVL_REDIS_CACHE || 'redis://127.0.0.1:6379';
+const URL = process.env.COMMON_TVL_REDIS_CACHE 
 
 const client: RedisClientType = createClient({
-  url: URL,
+  url: URL || 'redis://127.0.0.1:6379',
 });
 
 client.on('error', (err) => {
@@ -41,6 +41,7 @@ export async function getJSON(key: string, options: RedisOperationOptions): Prom
 let connectPromise: Promise<void> | null = null;
 
 async function startConnection() {
+  if (!URL) throw new Error("COMMON_TVL_REDIS_CACHE environment variable is not set");
   if (client.isOpen) return;
   if (!connectPromise) {
     connectPromise = client.connect().then(() => {
@@ -54,6 +55,7 @@ async function startConnection() {
 }
 
 async function closeConnection() {
+  if (!URL) return;
   console.log("Closing Redis cache connection");
   await client.close();
 }

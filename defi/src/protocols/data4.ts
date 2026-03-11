@@ -1782,7 +1782,8 @@ const data4: Protocol[] = [
     listedAt: 1737088495,
     dimensions: {
       fees: "zarban"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5637",
@@ -2213,28 +2214,6 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "resolv/index.js",
     twitter: "ResolvLabs",
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary", // provides both market feeds and is the source for Fundamental oracle USD valuations
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "Chainlink",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "Chronicle",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-      {
-        name: "RedStone",
-        type: "Secondary", // listed as a market oracle only, not part of the Fundamental oracle
-        proof: ["https://docs.resolv.xyz/litepaper/for-developers/smart-contracts/price-oracles"],
-      },
-    ],
     stablecoins: ["resolv-usd"],
     github: ["resolv-im"],
     listedAt: 1737626553,
@@ -3336,7 +3315,7 @@ const data4: Protocol[] = [
     name: "Sirio Finance",
     address: null,
     symbol: "-",
-    url: "https://app.sirio.finance",
+    url: "https://app.sirio.finance",// deadUrl
     description: "The DeFAI Lending & Borrowing Layer of hedera",
     chain: "Hedera",
     logo: `${baseIconsUrl}/sirio-finance.jpg`,
@@ -3360,6 +3339,7 @@ const data4: Protocol[] = [
       },
     ],
     listedAt: 1738233223,
+    deadUrl: true,
   },
   {
     id: "5707",
@@ -5201,7 +5181,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Binance"],
-    oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], //https://bitfi-2.gitbook.io/bitfi/developer/epoch-and-ratio/underlying-asset-price-variation, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/unstake-bfbtc, https://bitfi-2.gitbook.io/bitfi/developer/using-contract/bfbtc-price-oracle
     module: "bitfi-cedefi/index.js",
     twitter: "Bitfi_Org",
     parentProtocol: "parent#bitfi",
@@ -6066,7 +6045,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Bitcoin","Stacks"],
-    oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://docs.hermetica.fi/resources/faqs/ststxearn/general#q.-will-hermetica-ever-change-the-oracle-for-the-contracts
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
@@ -6691,6 +6669,7 @@ const data4: Protocol[] = [
     module: "handofgod/index.js",
     twitter: "HandofGodSonic",
     listedAt: 1740574596,
+    deadUrl: true,
   },
   {
     id: "5850",
@@ -7148,7 +7127,7 @@ const data4: Protocol[] = [
     name: "BeraTrax",
     address: null,
     symbol: "-",
-    url: "https://beratrax.com/",
+    url: "https://beratrax.com/",// deadUrl
     description:
       "BeraTrax is the premier way to interact with DeFi on Berachain, all from your mobile device. It’s an upcoming mobile application designed to let you seamlessly enter yield-earning vaults with just a single click.",
     chain: "Berachain",
@@ -7162,6 +7141,7 @@ const data4: Protocol[] = [
     twitter: "beratrax",
     audit_links: ["https://www.cyberscope.io/audits/c5-btx"],
     listedAt: 1741279402,
+    deadUrl: true,
   },
   {
     id: "5871",
@@ -8433,24 +8413,23 @@ const data4: Protocol[] = [
   },
   {
     id: "5925",
-    name: "Mayan",
+    name: "Mayan DEX Aggregator",
     address: null,
     symbol: "-",
     url: "https://mayan.finance/",
     description:
       "Mayan is a cross-chain swap auction protocol with the goal of offering the best  swap rates using auction mechanism",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mayan.jpg`,
-    audits: "0",
+    logo: `${baseIconsUrl}/mayan-dex-aggregator.jpg`,
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "DEX Aggregator",
-    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Solana", "Base", "Optimism"],
-    module: "mayan-finance/index.js",
+    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid L1", "Base", "Optimism", "Unichain"],
+    module: "dummy.js",
     twitter: "MayanFinance",
     audit_links: ["https://docs.mayan.finance/resources/audits"],
-    github: ["mayan-finance"],
-    listedAt: 1773152175,
+    parentProtocol: "parent#mayan-finance",
     dimensions: {
       fees: "mayan"
     }
@@ -8508,7 +8487,7 @@ const data4: Protocol[] = [
     name: "QuokkaLend",
     address: null,
     symbol: "-",
-    url: "https://app.quokkalend.xyz/",
+    url: "https://app.quokkalend.xyz/",// deadUrl
     description: "Quokkalend is the lending market of Morph chain",
     chain: "Morph",
     logo: `${baseIconsUrl}/quokkalend.jpg`,
@@ -8528,6 +8507,7 @@ const data4: Protocol[] = [
     module: "quokkalend/index.js",
     twitter: "QuokkaLend",
     listedAt: 1742469797,
+    deadUrl: true,
   },
   {
     id: "5929",
@@ -9608,6 +9588,7 @@ const data4: Protocol[] = [
     module: "clutch-market/index.js",
     twitter: "clutchmarkets",
     listedAt: 1743442083,
+    deadUrl: true,
   },
   {
     id: "5976",
@@ -13824,13 +13805,6 @@ const data4: Protocol[] = [
     chains: ["Arbitrum"],
     module: "basisos/index.js",
     twitter: "BasisOS",
-    oraclesBreakdown: [
-      {
-        name: "Chainlink",
-        type: "Reference",
-        proof: ["https://docs.basisos.org/core-protocol/logarithmoracle/oracle-provider"],
-      },
-    ],
     audit_links: ["https://github.com/Hexens/Smart-Contract-Review-Public-Reports/blob/main/BasisOS-nov-24(Final).pdf"],
     github: ["Logarithm-Labs"],
     listedAt: 1747156379,
@@ -15307,9 +15281,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Avalanche"],
-    oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: ["https://docs.avantprotocol.com/security/security-partners"] },
-    ],
     module: "avant/index.js",
     twitter: "avantprotocol",
     parentProtocol: "parent#avant-protocol",
@@ -15431,7 +15402,7 @@ const data4: Protocol[] = [
     name: "FastJPEG",
     address: null,
     symbol: "-",
-    url: "https://fastjpeg.com/",
+    url: "https://fastjpeg.com/",// deadUrl
     description: `FastJPEG has a simple 3 step process to launch a token`,
     chain: "Base",
     logo: `${baseIconsUrl}/fastjpeg.jpg`,
@@ -15446,7 +15417,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "fastjpeg",
       dexs: "fastjpeg"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6230",
@@ -15656,18 +15628,6 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Basis Trading",
     chains: ["Ethereum"],
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
-      },
-      {
-        name: "Chainlink",
-        type: "Fallback",
-        proof: ["https://docs.smardex.io/ultimate-synthetic-delta-neutral/the-usdn-protocol/oracles"],
-      },
-    ],
     module: "SMARDEX-USDN/index.js",
     twitter: "SmarDex",
     parentProtocol: "parent#smardex-ecosystem",
@@ -16649,7 +16609,7 @@ const data4: Protocol[] = [
     name: "TaraPerps",
     address: null,
     symbol: "-",
-    url: "https://taraperps.com/",
+    url: "https://taraperps.com/",// deadUrl
     description: "Perpetual Exchange on Taraxa",
     chain: "Taraxa",
     logo: `${baseIconsUrl}/taraperps.jpg`,
@@ -16669,6 +16629,7 @@ const data4: Protocol[] = [
     module: "taraperps/index.js",
     twitter: "TaraxaPerps",
     listedAt: 1749247243,
+    deadUrl: true,
   },
   {
     id: "6281",
@@ -17398,7 +17359,7 @@ const data4: Protocol[] = [
     name: "Jolt",
     address: "optimism:0xd549aa17c5010A33ca5E3D2051b8904B5a279b0A",
     symbol: "JOLT",
-    url: "https://jolt.finance",
+    url: "https://jolt.finance",// deadUrl
     description:
       "Jolt Finance is a permissionless Aave V2 style lending and borrowing protocol on Optimism, enabling users to supply assets for yield or borrow against collateral. It is security-focused, restricts smart contracts from borrowing, employs conservative risk parameters, and uses multisig-controlled, timelocked governance for upgrades. Users also earn reward tokens that provide protocol revenue share.",
     chain: "Optimism",
@@ -17412,6 +17373,7 @@ const data4: Protocol[] = [
     twitter: "jolt_finance",
     forkedFromIds: ["111"],
     listedAt: 1750066518,
+    deadUrl: true,
   },
   {
     id: "6312",
@@ -18861,7 +18823,7 @@ const data4: Protocol[] = [
     name: "Moai V2",
     address: null,
     symbol: "-",
-    url: "https://xrplevm.moai-finance.xyz/swap",
+    url: "https://xrplevm.moai-finance.xyz/swap",// deadUrl
     description:
       "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
     chain: "XRPL EVM",
@@ -18878,14 +18840,15 @@ const data4: Protocol[] = [
     listedAt: 1751364850,
     dimensions: {
       dexs: "moai-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6377",
     name: "Moai V3",
     address: null,
     symbol: "-",
-    url: "https://xrplevm.moai-finance.xyz/swap",
+    url: "https://xrplevm.moai-finance.xyz/swap",// deadUrl
     description:
       "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRP ecosystem to harness its untapped liquidity across various side-chains. Its primary aim is to deliver a unified liquidity experience for users, regardless of the chain they are utilizing",
     chain: "XRPL EVM",
@@ -18902,7 +18865,8 @@ const data4: Protocol[] = [
     listedAt: 1751364850,
     dimensions: {
       dexs: "moai-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6378",
@@ -23095,7 +23059,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "superx",
       derivatives: "superX"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6562",
@@ -26984,13 +26949,6 @@ const data4: Protocol[] = [
     module: "xsy/index.js",
     twitter: "xsy_fi",
     audit_links: ["https://xsy-1.gitbook.io/xsy-main/audits"],
-    oraclesBreakdown: [
-      {
-        name: "RedStone",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/14996"]
-      }
-    ],
     stablecoins: ["xsy-uty"],
     listedAt: 1758064577
   },
@@ -28109,13 +28067,6 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "solstice-usx/index.js",
     twitter: "solsticefi",
-    oraclesBreakdown: [
-      {
-        name: "Pyth",
-        type: "Primary",
-        proof: ["https://github.com/DefiLlama/DefiLlama-Adapters/pull/16456"]
-      }
-    ],
     audit_links: ["https://storage.googleapis.com/dapp_prod/audit_reports/halborn_program_audit_250605.pdf"],
     stablecoins: ["solstice-usx"],
     listedAt: 1759263438,
@@ -30170,6 +30121,7 @@ const data4: Protocol[] = [
     module: "yieldbricks/index.js",
     twitter: "YieldBricks",
     listedAt: 1760736594,
+    deadUrl: true,
   },
   {
     id: "6884",

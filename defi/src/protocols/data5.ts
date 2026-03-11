@@ -341,13 +341,6 @@ const data5: Protocol[] = [
     chains: ["Mantle"],
     module: "mi4/index.js",
     twitter: "Mantle_Official",
-    oraclesBreakdown: [
-      {
-        name: "RedStone",
-        type: "Primary",
-        proof: ["https://app.redstone.finance/app/feeds/mantle/mi4_mantle_fundamental/"],
-      },
-    ],
     listedAt: 1761284792,
     dimensions: {
       fees: "mi4",
@@ -1010,6 +1003,7 @@ const data5: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "superstackxyz",
+    deadUrl: true,
     dimensions: {
       fees: "superstack",
       derivatives: "superstack",
@@ -6517,8 +6511,9 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "nickel/index.js",
     twitter: "NickelSupply",
+    listedAt: 1773165757,
     dimensions: {
       fees: "nickel",
     },
@@ -8983,6 +8978,7 @@ const data5: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "coal_works",
+    deadUrl: true,
     dimensions: {
       fees: "coal-works",
     },
@@ -9180,7 +9176,7 @@ const data5: Protocol[] = [
     name: "StackFi",
     address: null,
     symbol: "-",
-    url: "https://stackfi.net/",
+    url: "https://app.stackfi.net/",
     description: "Leverage redefined: Powering a permissionless credit layer . Access up to 10x leverage or earn yield through staking & profit pools.",
     chain: "Base",
     logo: `${baseIconsUrl}/stackfi.jpg`,
@@ -10423,6 +10419,7 @@ const data5: Protocol[] = [
     chains: ["Cronos"],
     module: "dummy.js",
     twitter: "NeptuneHubCro",
+    deadUrl: true,
     dimensions: {
       aggregators: "neptune-swap",
       fees: "neptune-swap",
@@ -10864,13 +10861,13 @@ const data5: Protocol[] = [
   },
   {
     id: "7389",
-    name: "World Markets Inc Spot",
+    name: "World Markets Spot",
     address: null,
     symbol: "-",
     url: "https://world.inc/",
     description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
     chain: "MegaETH",
-    logo: `${baseIconsUrl}/world-markets-inc-spot.jpg`,
+    logo: `${baseIconsUrl}/world-markets-spot.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -12070,13 +12067,13 @@ const data5: Protocol[] = [
   },
   {
     id: "7448",
-    name: "World Markets Inc Perps",
+    name: "World Markets Perps",
     address: null,
     symbol: "-",
     url: "https://world.inc/",
     description: "World Markets is the canonical DEX on MegaETH. It is the world's first PrimeDEX, offering unified cross margin for spot, perpetual futures, and loans - fully onchain. It captures an estimated $50B+ arbitrage opportunity, due to a persistent 5-8% gap between lending APY and futures funding",
     chain: "MegaETH",
-    logo: `${baseIconsUrl}/world-markets-inc-perps.jpg`,
+    logo: `${baseIconsUrl}/world-markets-perps.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -13549,7 +13546,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "RedotPay",
     dimensions: {
-      fees: "redotpay",
+      dexs: "redotpay",
     }
   },
   {
@@ -13569,7 +13566,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Cypher_HQ_",
     dimensions: {
-      fees: "cypher-card",
+      dexs: "cypher-card",
     }
   },
   {
@@ -13589,7 +13586,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "BleapApp",
     dimensions: {
-      fees: "bleap-card",
+      dexs: "bleap-card",
     }
   },
   {
@@ -13609,7 +13606,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Nexo",
     dimensions: {
-      fees: "nexo-card",
+      dexs: "nexo-card",
     }
   },
   {
@@ -13629,7 +13626,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "spritzfinance",
     dimensions: {
-      fees: "spritz-card",
+      dexs: "spritz-card",
     }
   },
   {
@@ -13689,6 +13686,10 @@ const data5: Protocol[] = [
     twitter: null,
     github: ["Sigmabrogz"],
     listedAt: 1773086587,
+    dimensions: {
+      dexs: "velox",
+      fees: "velox",
+    }
   },
   {
     id: "7527",
@@ -13729,8 +13730,121 @@ const data5: Protocol[] = [
     twitter: "namoshi_xyz",
     github: ["namoshixyz"],
     dimensions: {
-      fees: "ratio",
+      fees: "namoshi",
     }
+  },
+  {
+    id: "7529",
+    name: "BasaFish",
+    address: null,
+    symbol: "-",
+    url: "https://basafish.network",
+    description: "BasaFish is a structured yield protocol on Base, offering fixed (ST) and variable (JT) returns backed by real-world assets.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basafish.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Other Fixed Income"],
+    chains: ["Base"],
+    module: "basafish/index.js",
+    twitter: "BasaFishNetwork",
+    github: ["yukeen-ocean"],
+    listedAt: 1773153603,
+  },
+  {
+    id: "7530",
+    name: "Memento",
+    address: null,
+    symbol: "-",
+    url: "https://app.memento.money",
+    description: "Privacy-focused stablecoin yield vaults on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/memento.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana"],
+    module: "memento/index.js",
+    twitter: "mementodotmoney",
+    github: ["MementoMoney"],
+    listedAt: 1773153611,
+  },
+  {
+    id: "7531",
+    name: "DorkFi",
+    address: null,
+    symbol: "-",
+    url: "https://dorkfi.com",
+    description: "DorkFi is a cross-chain borrow/lend protocol deployed on Algorand mainnet and Voi Network (both AVM-compatible chains).",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/dorkfi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Algorand","Voi Network"],
+    module: "dorkfi/index.js",
+    twitter: "Dork_NFTs",
+    listedAt: 1773153849,
+  },
+  {
+    id: "7532",
+    name: "Perpl",
+    address: null,
+    symbol: "-",
+    url: "https://perpl.xyz/",
+    description: "Perpl is a perpetual futures exchange on Monad.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/perpl.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Monad"],
+    module: "perpl/index.js",
+    twitter: "perpltrade",
+    listedAt: 1773154239,
+  },
+  {
+    id: "7533",
+    name: "Solvr",
+    address: null,
+    symbol: "-",
+    url: "https://solvrbot.com",
+    description: "Onchain social network on Base with token staking, tipping, and trading.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/solvr.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Base"],
+    module: "solvr/index.js",
+    twitter: "solvrbot",
+    listedAt: 1773165907,
+  },
+  {
+    id: "7534",
+    name: "Mayan Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://mayan.finance/",
+    description:
+      "Cross-chain swap protocol using Swift intent-based bridging and MCTP",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mayan-bridge.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Polygon", "Hyperliquid L1", "Base", "Optimism", "Unichain"],
+    module: "mayan-finance/index.js",
+    twitter: "MayanFinance",
+    audit_links: ["https://docs.mayan.finance/resources/audits"],
+    listedAt: 1773167661,
+    parentProtocol: "parent#mayan-finance",
   },
 ];
 export default data5;

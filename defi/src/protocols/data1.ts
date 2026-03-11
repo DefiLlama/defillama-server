@@ -2075,7 +2075,7 @@ const data: Protocol[] = [
     name: "Bella Protocol",
     address: "0xa91ac63d040deb1b7a5e4d4134ad23eb0ba07e14",
     symbol: "BEL",
-    url: "https://fs.bella.fi/",
+    url: "https://fs.bella.fi/",// deadUrl
     description:
       "Aiming to help users unleash the liquidity potential and maximize crypto yields across multiple chains, Bella Protocol provides a suite of streamlined tools, including a zkSync-based yield protocol, an Ethereum-based smart liquidity pool, and a Uniswap V3 simulator.",
     chain: "Ethereum",
@@ -2091,6 +2091,7 @@ const data: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/bella_audit_report_2020_48_en_1_0.pdf",
     ],
     github: ["Bella-DeFinTech"],
+    deadUrl: true,
   },
   {
     id: "202",
@@ -2682,7 +2683,7 @@ const data: Protocol[] = [
     name: "FutureSwap",
     address: "0x0e192d382a36de7011f795acc4391cd302003606",
     symbol: "FST",
-    url: "https://www.futureswap.com/",
+    url: "https://www.futureswap.com/",// deadUrl
     description: "Futureswap is a decentralized perpetuals exchange governed by the community.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/futureswap.jpg`,
@@ -2700,6 +2701,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "futureswap",
     },
+    deadUrl: true,
   },
   {
     id: "229",
@@ -4222,7 +4224,7 @@ const data: Protocol[] = [
     name: "BondAppetit",
     address: "0x28A06c02287e657ec3F8e151A13C36A1D43814b0",
     symbol: "BAG",
-    url: "https://bondappetit.io/",
+    url: "https://bondappetit.io/",// deadUrl
     description:
       "BondAppétit, a DeFi protocol for business loans. BondAppétit provides an infrastructure that connects decentralized finance and traditional debt instruments with the participation of regulated securities and cryptocurrency brokers/dealers.",
     chain: "Ethereum",
@@ -4240,6 +4242,7 @@ const data: Protocol[] = [
       "https://github.com/mixbytes/audits_public/tree/4fc7d333e3df57586e0f96cc551819e2c93f3ae9/BondAppetit",
       "https://github.com/HashEx/public_audits/blob/32a680c5b8f3a784ef3273c324e0841341f3abc2/BondApp%C3%A9tit/BondAppetit%20report.pdf",
     ],
+    deadUrl: true,
   },
   {
     id: "301",
@@ -6244,7 +6247,7 @@ const data: Protocol[] = [
     name: "Adamant Finance",
     address: "polygon:0xc3fdbadc7c795ef1d6ba111e06ff8f16a20ea539",
     symbol: "ADDY",
-    url: "https://adamant.finance",
+    url: "https://adamant.finance",// deadUrl
     description:
       "Adamant is a yield optimizer vault that provides users with an easy and safe way to automatically compound their tokens on the Matic/Polygon network and maximize their yields.",
     chain: "Polygon",
@@ -6258,6 +6261,7 @@ const data: Protocol[] = [
     twitter: "AdamantVault",
     audit_links: ["https://adamantfinance.gitbook.io/adamant-finance/audits"],
     github: ["eepdev"],
+    deadUrl: true,
   },
   {
     id: "390",
@@ -12224,7 +12228,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "JetSwap",
     address: "bsc:0x0487b824c8261462F88940f97053E65bDb498446",
     symbol: "WINGS",
-    url: "https://jetswap.finance",
+    url: "https://jetswap.finance",// deadUrl
     description:
       "Jetfuel ecosystem is an all-in-one Defi that's meant to be a one-stop-shop for users, it accounts with an AMM & Yield Farming on Jetswap, Lending/borrowing markets on Fortress, a Yield optimizer on Jetfuel.",
     chain: "Binance",
@@ -12241,7 +12245,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "jetswap",
       dexs: "jetswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "660",
@@ -15290,7 +15295,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Loop Finance",
     address: "terra:terra1nef5jf6c7js9x6gkntlehgywvjlpytm7pcgkn4",
     symbol: "LOOP",
-    url: "https://www.loop.markets",
+    url: "https://www.loop.markets",// deadUrl
     description: "LOOPTokenized Community & DEX on Terra",
     chain: "Terra",
     logo: `${baseIconsUrl}/loop-finance.jpg`,
@@ -15303,6 +15308,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "loop_finance",
     audit_links: ["https://docs.loop.markets/loop-finance/decentralized-exchange/audits"],
     listedAt: 1636441315,
+    deadUrl: true,
   },
   {
     id: "815",
@@ -18375,7 +18381,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Flame DeFi",
     address: "tezos:KT1Wa8yqRBpFCusJWgcQyjhRz7hUQAmFxW7j",
     symbol: "FLAME",
-    url: "https://flamedefi.io",
+    url: "https://flamedefi.io",// deadUrl
     description: "Tezos DeFi platform with YieldFarming, NFT, FlameDex, Decentralized exchange, Gaming and casino",
     chain: "Tezos",
     logo: `${baseIconsUrl}/flamedefi.png`,
@@ -18388,6 +18394,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "FlameDeFi",
     audit_links: ["https://flamedefi.io/images/functori-flamedefi-dex-report-2.1.pdf"],
     listedAt: 1638377772,
+    deadUrl: true,
   },
   {
     id: "958",
@@ -26779,7 +26786,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "WigoSwap",
     address: "fantom:0xE992bEAb6659BFF447893641A378FbbF031C5bD6",
     symbol: "WIGO",
-    url: "https://wigoswap.io/",
+    url: "https://wigoswap.io/",// deadUrl
     description:
       "DeFi hub on Fantom network with LIFETIME farming earnings powered by Gamified Burning Mechanism (GBM)",
     chain: "Fantom",
@@ -26797,7 +26804,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "wigoswap",
       dexs: "wigoswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1352",

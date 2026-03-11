@@ -215,6 +215,7 @@ export function prefixMalformed(address: string) {
 }
 
 export interface StoreTvlTempCacheInfo {
+  protocolId: string;
   protocolName: string;
   totalTvl: number;
   storeKey: string;
@@ -412,31 +413,6 @@ export async function storeTvl(
 
     logRunStats()
 
-    if (options.tempCacheInfo && options.tempCacheInfo.length > 0) {
-      const now = getCurrentUnixTimestamp();
-      const earliestCacheTime = Math.min(...options.tempCacheInfo.map(item => item.cacheTime));
-      const timeDiffFromNow = now - earliestCacheTime;
-
-      const cacheUsageLog = {
-        metadata: {
-          application: 'tvl',
-          type: 'cache-usage',
-          name: protocol.name,
-          id: protocol.id,
-          timestamp: now,
-        },
-        data: {
-          totalCachedItems: options.tempCacheInfo.length,
-          cachedItems: options.tempCacheInfo,
-          aggregatedTvl: options.tempCacheInfo.reduce((sum, item) => sum + item.storeKeyTvl, 0),
-          totalTvl: options.tempCacheInfo[0].totalTvl,
-          earliestCacheUsed: earliestCacheTime,
-          timeDiffFromNowSeconds: timeDiffFromNow,
-        }
-      }
-      elastic.writeLog('tvl-cache-used', cacheUsageLog)
-    }
-
   } catch (e) {
     // console.error(protocol.name, e);
     // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' })
@@ -579,6 +555,7 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
 
 
   options.tempCacheInfo.push({
+    protocolId: protocol.id,
     protocolName: protocol.name,
     totalTvl: totalTvl!,
     storeKey,

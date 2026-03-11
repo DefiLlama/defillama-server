@@ -14,7 +14,7 @@ import { importAdapterDynamic } from "./utils/imports/importAdapter";
 import { elastic, humanizeNumber } from '@defillama/sdk';
 import { getUnixTimeNow } from "./api2/utils/time";
 import { sendMessage } from "./utils/discord";
-import { toUNIXTimestamp } from "./utils/date";
+import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 const path = require('path');
 const v8 = require('v8');
 
@@ -302,6 +302,43 @@ function getErrorString(e: any) {
 }
 
 async function notifyTempCacheInfo() {
+  if (tempCacheInfo && tempCacheInfo.length > 0) {
+    const now = getCurrentUnixTimestamp();
+    const earliestCacheTime = Math.min(...tempCacheInfo.map(item => item.cacheTime));
+    const timeDiffFromNow = now - earliestCacheTime;
+    
+    // find unique protocol
+    const uniqueProtocols: Record<string, { protocolId: string, protocolName: string }> = {};
+    for (const item of tempCacheInfo) {
+      uniqueProtocols[item.protocolId] = {
+        protocolId: item.protocolId,
+        protocolName: item.protocolName,
+      }
+    }
+
+    for (const protocol of Object.values(uniqueProtocols)) {
+      const protocolTempCacheInfo = tempCacheInfo.filter(i => i.protocolId === protocol.protocolId);
+      const cacheUsageLog = {
+        metadata: {
+          application: 'tvl',
+          type: 'cache-usage',
+          name: protocol.protocolName,
+          id: protocol.protocolId,
+          timestamp: now,
+        },
+        data: {
+          totalCachedItems: protocolTempCacheInfo.length,
+          cachedItems: protocolTempCacheInfo,
+          aggregatedTvl: protocolTempCacheInfo.reduce((sum, item) => sum + item.storeKeyTvl, 0),
+          totalTvl: protocolTempCacheInfo[0].totalTvl,
+          earliestCacheUsed: earliestCacheTime,
+          timeDiffFromNowSeconds: timeDiffFromNow,
+        }
+      }
+      elastic.writeLog('tvl-cache-used', cacheUsageLog)
+    }
+  }
+  
   function humanizeTimeDifference(timeDelta: number) {
     const hours = (timeDelta) / 3600
     if (hours <= 24) {

@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { storeR2JSONString } from "../utils/r2";
-import { blockExplorers } from "../blockExplorers";
+import { blockExplorers } from "./blockExplorers";
 import { getChainDisplayName } from "../utils/normalizeChain";
 
 const CHAINLIST_API = "https://chainlist.org/rpcs.json";

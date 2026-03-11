@@ -15,7 +15,7 @@ interface ChainlistEntry {
   name: string;
   explorers?: ChainlistExplorer[];
   chainSlug?: string;
-  chainId: number
+  chainId: number;
   isTestnet: boolean;
 }
 
@@ -69,7 +69,7 @@ async function storeBlockExplorers() {
       .map((e) => ({ name: e.name.trim(), url: stripTrailingSlashes(e.url.trim()) }));
 
     if (!apiExplorers.length) continue;
-    
+
     const existing = chain.chainSlug ? llamaChainIdIndex.get(chain.chainSlug) : undefined;
 
     if (existing) {
@@ -96,10 +96,12 @@ async function storeBlockExplorers() {
   await storeR2JSONString("blockExplorers.json", JSON.stringify(data), 24 * 60 * 60);
 }
 
-storeBlockExplorers().then(() => {
-  console.log("storeBlockExplorers completed successfully");
-  process.exit(0);
-}).catch(e => {
-  console.error("Unexpected error in storeBlockExplorers:", e);
-  process.exit(1);
-});
+storeBlockExplorers()
+  .then(() => {
+    console.log("storeBlockExplorers completed successfully");
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.error("Unexpected error in storeBlockExplorers:", e);
+    process.exit(1);
+  });

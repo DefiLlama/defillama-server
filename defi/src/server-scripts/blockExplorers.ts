@@ -1,266 +1,106 @@
 export const blockExplorers: Record<string, Array<{ name: string; url: string }>> = {
-	ethereum: [
-		{ name: 'Etherscan', url: 'https://etherscan.io' },
-		{ name: 'Blockscout', url: 'https://eth.blockscout.com' },
-	],
-	bsc: [
-		{ name: 'Bscscan', url: 'https://bscscan.com' },
-	],
-	xdai: [
-		{ name: 'GnosisScan', url: 'https://gnosisscan.io' },
-		{ name: 'Blockscout', url: 'https://gnosis.blockscout.com' },
-	],
-	optimism: [
-		{ name: 'Etherscan', url: 'https://optimistic.etherscan.io' },
-		{ name: 'Blockscout', url: 'https://optimism.blockscout.com' },
-	],
-	avax: [
-		{ name: 'Snowtrace', url: 'https://snowtrace.io' },
-	],
-	wan: [
-		{ name: 'Wanscan', url: 'https://wanscan.org' },
-	],
-	polygon: [
-		{ name: 'PolygonScan', url: 'https://polygonscan.com' },
-	],
-	rsk: [
-		{ name: 'Rootstock Explorer', url: 'https://rootstock.blockscout.com' },
-	],
-	solana: [
-		{ name: 'Orb', url: 'https://orbmarkets.io' },
-		{ name: 'Solscan', url: 'https://solscan.io' },
-	],
-	tezos: [
-		{ name: 'TzKT', url: 'https://tzkt.io' },
-	],
-	moonriver: [
-		{ name: 'Blockscout', url: 'https://moonriver.moonscan.io' },
-	],
-	arbitrum: [
-		{ name: 'Arbiscan', url: 'https://arbiscan.io' },
-	],
-	terra: [
-		{ name: 'Terra Finder', url: 'https://finder.terra.money/columbus-4/account' },
-	],
-	okexchain: [
-		{ name: 'Oklink', url: 'https://www.oklink.com/oktc/tokenAddr' },
-	],
-	celo: [
-		{ name: 'Celo', url: 'https://celo.blockscout.com' },
-	],
-	waves: [
-		{ name: 'Waves Explorer', url: 'https://wavesexplorer.com/assets' },
-	],
-	eos: [
-		{ name: 'Unicove', url: 'https://unicove.comeosio.token' },
-	],
-	energyweb: [
-		{ name: 'EnergyWeb', url: 'https://explorer.energyweb.org' },
-	],
-	cronos: [
-		{ name: 'Cronoscan', url: 'https://explorer.cronos.org' },
-	],
-	harmony: [
-		{ name: 'Harmony Explorer', url: 'https://explorer.harmony.one' },
-	],
-	tron: [
-		{ name: 'Tronscan', url: 'https://tronscan.org/#/contract' },
-	],
-	kcc: [
-		{ name: 'KCC Explorer', url: 'https://scan.kcc.io' },
-	],
-	iotex: [
-		{ name: 'IoTeX Explorer', url: 'https://iotexscan.io' },
-	],
-	aurora: [
-		{ name: 'Aurora Explorer', url: 'https://explorer.mainnet.aurora.dev' },
-	],
-	boba: [
-		{ name: 'Boba Explorer', url: 'https://bobascan.com' },
-	],
-	elrond: [
-		{ name: 'MultiversX Explorer', url: 'https://explorer.multiversx.com/tokens' },
-	],
-	xdc: [
-		{ name: 'XDC Explorer', url: 'https://xdcscan.com' },
-	],
-	cardano: [
-		{ name: 'Cardanoscan', url: 'https://cardanoscan.io' },
-	],
-	astar: [
-		{ name: 'Blockscout', url: 'https://blockscout.com/astar' },
-	],
-	algorand: [
-		{ name: 'Allo', url: 'https://allo.info/asset' },
-	],
-	klaytn: [
-		{ name: 'Kaiascan', url: 'https://kaiascan.io' },
-	],
-	proton: [
-		{ name: 'XPR Network Explorer', url: 'https://explorer.xprnetwork.org/tokens' },
-	],
-	ethereumclassic: [
-		{ name: 'ETC Blockscout', url: 'https://etc.blockscout.com' },
-	],
-	dfk: [
-		{ name: 'DFK Chain Explorer', url: 'https://subnets.avax.network/defi-kingdoms' },
-	],
-	rei: [
-		{ name: 'ReiScan', url: 'https://scan.rei.network' },
-	],
-	dogechain: [
-		{ name: 'Doge Chain Explorer', url: 'https://explorer.dogechain.dog' },
-	],
-	hedera: [
-		{ name: 'HashScan', url: 'https://hashscan.io/mainnet' },
-	],
-	starcoin: [
-		{ name: 'Stcscan', url: 'https://stcscan.io/main/tokens/detail' },
-	],
-	arbitrum_nova: [
-		{ name: 'Arbitrum Nova Blockscout', url: 'https://arbitrum-nova.blockscout.com' },
-	],
-	ultron: [
-		{ name: 'ulxscan', url: 'https://ulxscan.com' },
-	],
-	tombchain: [
-		{ name: 'Tombchain Explorer', url: 'https://tombscout.com' },
-	],
-	ethpow: [
-		{ name: 'ETHW Explorer', url: 'https://www.oklink.com/ethereum-pow' },
-	],
-	neo: [
-		{ name: 'ONEGATE', url: 'https://explorer.onegate.space/NEP17tokeninfo' },
-	],
-	bittorrent: [
-		{ name: 'BTTCSCAN', url: 'https://bttcscan.com' },
-	],
-	core: [
-		{ name: 'Scan Coredao', url: 'https://scan.coredao.org' },
-	],
-	era: [
-		{ name: 'ZKsync Era Explorer', url: 'https://explorer.zksync.io' },
-		{ name: 'Blockscout', url: 'https://zksync.blockscout.com' },
-	],
-	map: [
-		{ name: 'Maposcan', url: 'https://maposcan.io' },
-	],
-	conflux: [
-		{ name: 'Conflux Scan', url: 'https://evm.confluxscan.org' },
-	],
-	thorchain: [
-		{ name: 'Thorchain Explorer', url: 'https://thorchain.net' },
-	],
-	sui: [
-		{ name: 'Suiscan', url: 'https://suiscan.xyz/mainnet/coin' },
-	],
-	pulse: [
-		{ name: 'PulseChain Scan', url: 'https://scan.pulsechain.com' },
-	],
-	onus: [
-		{ name: 'OnusChain Explorer', url: 'https://explorer.onuschain.io' },
-	],
-	starknet: [
-		{ name: 'Voyager', url: 'https://voyager.online/contract' },
-	],
-	linea: [
-		{ name: 'LineaScan', url: 'https://lineascan.build' },
-	],
-	mantle: [
-		{ name: 'Mantle Explorer', url: 'https://mantlescan.xyz' },
-	],
-	base: [
-		{ name: 'Basescan', url: 'https://basescan.org' },
-		{ name: 'Blockscout', url: 'https://base.blockscout.com' },
-	],
-	op_bnb: [
-		{ name: 'opBNBScan', url: 'https://opbnbscan.com' },
-	],
-	shibarium: [
-		{ name: 'ShibariumScan', url: 'https://www.shibariumscan.io' },
-	],
-	beam: [
-		{ name: 'Beam Subnet Explorer', url: 'https://subnets.avax.network/beam' },
-	],
-	nos: [
-		{ name: 'NOS Blockscout', url: 'https://explorer.l2.trustless.computer' },
-	],
-	scroll: [
-		{ name: 'Scrollscan', url: 'https://scrollscan.com' },
-	],
-	radixdlt: [
-		{ name: 'Radix Dashboard', url: 'https://dashboard.radixdlt.com/resource' },
-	],
-	lightlink_phoenix: [
-		{ name: 'LightLink Explorer', url: 'https://phoenix.lightlink.io' },
-	],
-	aptos: [
-		{ name: 'Aptoscan', url: 'https://aptoscan.com/account' },
-	],
-	zeta: [
-		{ name: 'Zetascan', url: 'https://zetascan.com' },
-	],
-	merlin: [
-		{ name: 'Merlin Explorer', url: 'https://scan.merlinchain.io' },
-	],
-	blast: [
-		{ name: 'Blastscan', url: 'https://blastscan.io' },
-	],
-	mode: [
-		{ name: 'Modescan', url: 'https://modescan.io' },
-	],
-	btr: [
-		{ name: 'BTRscan', url: 'https://www.btrscan.com' },
-	],
-	degen: [
-		{ name: 'DegenExplorer', url: 'https://explorer.degen.tips' },
-	],
-	rari: [
-		{ name: 'Rari Blockscout', url: 'https://mainnet.explorer.rarichain.org' },
-	],
-	xai: [
-		{ name: 'XAI Blockscout', url: 'https://explorer.xai-chain.net' },
-	],
-	sanko: [
-		{ name: 'Sanko Blockscout', url: 'https://explorer.sanko.xyz' },
-	],
-	fuse: [
-		{ name: 'Fuse Blockscout', url: 'https://explorer.fuse.io' },
-	],
-	shape: [
-		{ name: 'Shape Explorer', url: 'https://shapescan.xyz' },
-	],
-	abstract: [
-		{ name: 'Abscan', url: 'https://abscan.org' },
-	],
-	zero_network: [
-		{ name: 'ZERO Network Explorer', url: 'https://explorer.zero.network' },
-	],
-	redstone: [
-		{ name: 'Redstone Explorer', url: 'https://explorer.redstone.xyz' },
-	],
-	ink: [
-		{ name: 'Ink Explorer', url: 'https://explorer.inkonchain.com' },
-	],
-	sophon: [
-		{ name: 'Sophon Explorer', url: 'https://explorer.sophon.xyz' },
-	],
-	soneium: [
-		{ name: 'Soneium Blockscout', url: 'https://soneium.blockscout.com' },
-	],
-	berachain: [
-		{ name: 'Beratrail', url: 'https://beratrail.io' },
-	],
-	sty: [
-		{ name: 'Storyscan', url: 'https://www.storyscan.xyz' },
-	],
-	hemi: [
-		{ name: 'Hemi Block Explorer', url: 'https://explorer.hemi.xyz' },
-	],
-	ogpu: [
-		{ name: 'Ogpuscan', url: 'https://ogpuscan.io' },
-	],
-	keeta: [
-		{ name: 'Keeta Explorer', url: 'https://explorer.keeta.com' },
-	],
-}
+  ethereum: [
+    { name: "Etherscan", url: "https://etherscan.io" },
+    { name: "Blockscout", url: "https://eth.blockscout.com" },
+  ],
+  bsc: [{ name: "Bscscan", url: "https://bscscan.com" }],
+  xdai: [
+    { name: "GnosisScan", url: "https://gnosisscan.io" },
+    { name: "Blockscout", url: "https://gnosis.blockscout.com" },
+  ],
+  optimism: [
+    { name: "Etherscan", url: "https://optimistic.etherscan.io" },
+    { name: "Blockscout", url: "https://optimism.blockscout.com" },
+  ],
+  avax: [{ name: "Snowtrace", url: "https://snowtrace.io" }],
+  wan: [{ name: "Wanscan", url: "https://wanscan.org" }],
+  polygon: [{ name: "PolygonScan", url: "https://polygonscan.com" }],
+  rsk: [{ name: "Rootstock Explorer", url: "https://rootstock.blockscout.com" }],
+  solana: [
+    { name: "Orb", url: "https://orbmarkets.io" },
+    { name: "Solscan", url: "https://solscan.io" },
+  ],
+  tezos: [{ name: "TzKT", url: "https://tzkt.io" }],
+  moonriver: [{ name: "Blockscout", url: "https://moonriver.moonscan.io" }],
+  arbitrum: [{ name: "Arbiscan", url: "https://arbiscan.io" }],
+  terra: [{ name: "Terra Finder", url: "https://finder.terra.money/columbus-4/account" }],
+  okexchain: [{ name: "Oklink", url: "https://www.oklink.com/oktc/tokenAddr" }],
+  celo: [{ name: "Celo", url: "https://celo.blockscout.com" }],
+  waves: [{ name: "Waves Explorer", url: "https://wavesexplorer.com/assets" }],
+  eos: [{ name: "Unicove", url: "https://unicove.comeosio.token" }],
+  energyweb: [{ name: "EnergyWeb", url: "https://explorer.energyweb.org" }],
+  cronos: [{ name: "Cronoscan", url: "https://explorer.cronos.org" }],
+  harmony: [{ name: "Harmony Explorer", url: "https://explorer.harmony.one" }],
+  tron: [{ name: "Tronscan", url: "https://tronscan.org/#/contract" }],
+  kcc: [{ name: "KCC Explorer", url: "https://scan.kcc.io" }],
+  iotex: [{ name: "IoTeX Explorer", url: "https://iotexscan.io" }],
+  aurora: [{ name: "Aurora Explorer", url: "https://explorer.mainnet.aurora.dev" }],
+  boba: [{ name: "Boba Explorer", url: "https://bobascan.com" }],
+  elrond: [{ name: "MultiversX Explorer", url: "https://explorer.multiversx.com/tokens" }],
+  xdc: [{ name: "XDC Explorer", url: "https://xdcscan.com" }],
+  cardano: [{ name: "Cardanoscan", url: "https://cardanoscan.io" }],
+  astar: [{ name: "Blockscout", url: "https://blockscout.com/astar" }],
+  algorand: [{ name: "Allo", url: "https://allo.info/asset" }],
+  klaytn: [{ name: "Kaiascan", url: "https://kaiascan.io" }],
+  proton: [{ name: "XPR Network Explorer", url: "https://explorer.xprnetwork.org/tokens" }],
+  ethereumclassic: [{ name: "ETC Blockscout", url: "https://etc.blockscout.com" }],
+  dfk: [{ name: "DFK Chain Explorer", url: "https://subnets.avax.network/defi-kingdoms" }],
+  rei: [{ name: "ReiScan", url: "https://scan.rei.network" }],
+  dogechain: [{ name: "Doge Chain Explorer", url: "https://explorer.dogechain.dog" }],
+  hedera: [{ name: "HashScan", url: "https://hashscan.io/mainnet" }],
+  starcoin: [{ name: "Stcscan", url: "https://stcscan.io/main/tokens/detail" }],
+  arbitrum_nova: [{ name: "Arbitrum Nova Blockscout", url: "https://arbitrum-nova.blockscout.com" }],
+  ultron: [{ name: "ulxscan", url: "https://ulxscan.com" }],
+  tombchain: [{ name: "Tombchain Explorer", url: "https://tombscout.com" }],
+  ethpow: [{ name: "ETHW Explorer", url: "https://www.oklink.com/ethereum-pow" }],
+  neo: [{ name: "ONEGATE", url: "https://explorer.onegate.space/NEP17tokeninfo" }],
+  bittorrent: [{ name: "BTTCSCAN", url: "https://bttcscan.com" }],
+  core: [{ name: "Scan Coredao", url: "https://scan.coredao.org" }],
+  era: [
+    { name: "ZKsync Era Explorer", url: "https://explorer.zksync.io" },
+    { name: "Blockscout", url: "https://zksync.blockscout.com" },
+  ],
+  map: [{ name: "Maposcan", url: "https://maposcan.io" }],
+  conflux: [{ name: "Conflux Scan", url: "https://evm.confluxscan.org" }],
+  thorchain: [{ name: "Thorchain Explorer", url: "https://thorchain.net" }],
+  sui: [{ name: "Suiscan", url: "https://suiscan.xyz/mainnet/coin" }],
+  pulse: [{ name: "PulseChain Scan", url: "https://scan.pulsechain.com" }],
+  onus: [{ name: "OnusChain Explorer", url: "https://explorer.onuschain.io" }],
+  starknet: [{ name: "Voyager", url: "https://voyager.online/contract" }],
+  linea: [{ name: "LineaScan", url: "https://lineascan.build" }],
+  mantle: [{ name: "Mantle Explorer", url: "https://mantlescan.xyz" }],
+  base: [
+    { name: "Basescan", url: "https://basescan.org" },
+    { name: "Blockscout", url: "https://base.blockscout.com" },
+  ],
+  op_bnb: [{ name: "opBNBScan", url: "https://opbnbscan.com" }],
+  shibarium: [{ name: "ShibariumScan", url: "https://www.shibariumscan.io" }],
+  beam: [{ name: "Beam Subnet Explorer", url: "https://subnets.avax.network/beam" }],
+  nos: [{ name: "NOS Blockscout", url: "https://explorer.l2.trustless.computer" }],
+  scroll: [{ name: "Scrollscan", url: "https://scrollscan.com" }],
+  radixdlt: [{ name: "Radix Dashboard", url: "https://dashboard.radixdlt.com/resource" }],
+  lightlink_phoenix: [{ name: "LightLink Explorer", url: "https://phoenix.lightlink.io" }],
+  aptos: [{ name: "Aptoscan", url: "https://aptoscan.com/account" }],
+  zeta: [{ name: "Zetascan", url: "https://zetascan.com" }],
+  merlin: [{ name: "Merlin Explorer", url: "https://scan.merlinchain.io" }],
+  blast: [{ name: "Blastscan", url: "https://blastscan.io" }],
+  mode: [{ name: "Modescan", url: "https://modescan.io" }],
+  btr: [{ name: "BTRscan", url: "https://www.btrscan.com" }],
+  degen: [{ name: "DegenExplorer", url: "https://explorer.degen.tips" }],
+  rari: [{ name: "Rari Blockscout", url: "https://mainnet.explorer.rarichain.org" }],
+  xai: [{ name: "XAI Blockscout", url: "https://explorer.xai-chain.net" }],
+  sanko: [{ name: "Sanko Blockscout", url: "https://explorer.sanko.xyz" }],
+  fuse: [{ name: "Fuse Blockscout", url: "https://explorer.fuse.io" }],
+  shape: [{ name: "Shape Explorer", url: "https://shapescan.xyz" }],
+  abstract: [{ name: "Abscan", url: "https://abscan.org" }],
+  zero_network: [{ name: "ZERO Network Explorer", url: "https://explorer.zero.network" }],
+  redstone: [{ name: "Redstone Explorer", url: "https://explorer.redstone.xyz" }],
+  ink: [{ name: "Ink Explorer", url: "https://explorer.inkonchain.com" }],
+  sophon: [{ name: "Sophon Explorer", url: "https://explorer.sophon.xyz" }],
+  soneium: [{ name: "Soneium Blockscout", url: "https://soneium.blockscout.com" }],
+  berachain: [{ name: "Beratrail", url: "https://beratrail.io" }],
+  sty: [{ name: "Storyscan", url: "https://www.storyscan.xyz" }],
+  hemi: [{ name: "Hemi Block Explorer", url: "https://explorer.hemi.xyz" }],
+  ogpu: [{ name: "Ogpuscan", url: "https://ogpuscan.io" }],
+  keeta: [{ name: "Keeta Explorer", url: "https://explorer.keeta.com" }],
+};

@@ -26,6 +26,12 @@ interface BlockExplorerEntry {
   blockExplorers: Array<{ name: string; url: string }>;
 }
 
+function stripTrailingSlashes(url: string): string {
+  return url.replace(/\/+$/, "");
+}
+
+// Bidirectional containment: treats URLs as duplicates if one contains the other
+// (e.g. "etherscan.io" vs "etherscan.io/token") to catch prefix/suffix variants.
 function urlAlreadyExists(existing: Array<{ name: string; url: string }>, newUrl: string): boolean {
   return existing.some((e) => e.url.includes(newUrl) || newUrl.includes(e.url));
 }
@@ -35,7 +41,7 @@ async function storeBlockExplorers() {
     displayName: getChainDisplayName(chainId, true),
     llamaChainId: chainId,
     evmChainId: null,
-    blockExplorers: explorers,
+    blockExplorers: explorers.map((e) => ({ name: e.name, url: stripTrailingSlashes(e.url) })),
   }));
 
   const llamaChainIdIndex = new Map<string, BlockExplorerEntry>();
@@ -43,15 +49,27 @@ async function storeBlockExplorers() {
     if (entry.llamaChainId) llamaChainIdIndex.set(entry.llamaChainId, entry);
   }
 
-  const chainlistData = await fetch(CHAINLIST_API).then(res => res.json()) as ChainlistEntry[];
-
-  console.log(`Fetched ${chainlistData.length} chains from chainlist API`);
+  let chainlistData: ChainlistEntry[] = [];
+  try {
+    const res = await fetch(CHAINLIST_API);
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    chainlistData = (await res.json()) as ChainlistEntry[];
+    console.log(`Fetched ${chainlistData.length} chains from chainlist API`);
+  } catch (e) {
+    console.error("Failed to fetch chainlist API, skipping store:", e);
+    return;
+  }
 
   for (const chain of chainlistData) {
     if (!chain.explorers?.length) continue;
     if (chain.isTestnet) continue;
 
-    const apiExplorers = chain.explorers.map((e) => ({ name: e.name, url: e.url }));
+    const apiExplorers = chain.explorers
+      .filter((e) => e?.name?.trim() && e?.url?.trim())
+      .map((e) => ({ name: e.name.trim(), url: stripTrailingSlashes(e.url.trim()) }));
+
+    if (!apiExplorers.length) continue;
+    
     const existing = chain.chainSlug ? llamaChainIdIndex.get(chain.chainSlug) : undefined;
 
     if (existing) {

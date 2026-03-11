@@ -5,6 +5,8 @@ import { getUniV2Adapter } from "../../utils/uniV2";
 const sushiFactory = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
 const alternateGetReservesAbi =
   "function getReserves() view returns (uint112 _reserve0, uint112 _reserve1)";
+const uint256GetReservesAbi =
+  "function getReserves() view returns (uint256 _reserve0, uint256 _reserve1, uint256 _blockTimestampLast)";
 
 const config = {
   uniswap: { endpoint: sdk.graph.modifyEndpoint('A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum'), chain: 'ethereum' },
@@ -33,20 +35,20 @@ const config = {
   wemix: { chain: 'wemix', factory: '0xe1F36C7B919c9f893E2Cd30b471434Aa2494664A', },
   // solidly: { chain: 'fantom', factory: '0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28', },
   diffusion: { chain: 'evmos', factory: '0x6abdda34fb225be4610a2d153845e09429523cd2', },
-  equalizer: { chain: 'fantom', factory: '0xc6366efd0af1d09171fe0ebf32c7943bb310832a', hasStablePools: true, },
+  equalizer: { chain: 'fantom', factory: '0xc6366efd0af1d09171fe0ebf32c7943bb310832a', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
   camelot: { chain: 'arbitrum', factory: '0x6eccab422d763ac031210895c81787e87b43a652', },
-  velocore: { chain: 'era', factory: '0xe140eac2bb748c8f456719a457f26636617bb0e9', hasStablePools: true, },
-  mute: { chain: 'era', factory: '0x40be1cba6c5b47cdf9da7f963b6f761f4c60627d', hasStablePools: true, stablePoolSymbol: 'vMLP', },
+  velocore: { chain: 'era', factory: '0xe140eac2bb748c8f456719a457f26636617bb0e9', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
+  mute: { chain: 'era', factory: '0x40be1cba6c5b47cdf9da7f963b6f761f4c60627d', hasStablePools: true, stablePoolSymbol: 'vMLP', getReservesAbi: uint256GetReservesAbi, },
   spacefi: { chain: 'era', factory: '0x0700fb51560cfc8f896b2c812499d17c5b0bf6a7', },
   // gemswap: { chain: 'era', factory: '0x065c8703132F2A38Be3d2dbF7Be6BE455930560c', },
-  glacier: { chain: 'avax', factory: '0xac7b7eac8310170109301034b8fdb75eca4cc491', hasStablePools: true, },
-  thena: { chain: 'bsc', factory: '0xAFD89d21BdB66d00817d4153E055830B1c2B3970', hasStablePools: true, },
-  fvm: { chain: 'fantom', factory: '0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A', hasStablePools: true, },
-  velocimeter: { chain: 'base', factory: '0xe21Aac7F113Bd5DC2389e4d8a8db854a87fD6951', hasStablePools: true, },
+  glacier: { chain: 'avax', factory: '0xac7b7eac8310170109301034b8fdb75eca4cc491', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
+  thena: { chain: 'bsc', factory: '0xAFD89d21BdB66d00817d4153E055830B1c2B3970', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
+  fvm: { chain: 'fantom', factory: '0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
+  velocimeter: { chain: 'base', factory: '0xe21Aac7F113Bd5DC2389e4d8a8db854a87fD6951', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
   pulsex: { chain: 'pulse', factory: '0x1715a3E4A142d8b698131108995174F37aEBA10D', endpoint: "https://graph.pulsechain.com/subgraphs/name/pulsechain/pulsex", },
   elysium: { chain: 'elsm', factory: '0x5bec5d65fAba8E90e4a74f3da787362c60F22DaE', },
   // zkswap: { chain: 'polygon_zkevm', factory: '0x51A0D4B81400581d8722627daFCd0c1Ff9357d1D', getReservesAbi: alternateGetReservesAbi, },
-  aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, },
+  aerodrome: { chain: 'base', factory: '0x420DD381b31aEf6683db6B902084cB0FFECe40Da', hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
   jibswap: { chain: 'jbc', factory: '0x4BBdA880C5A0cDcEc6510f0450c6C8bC5773D499', },
   macaron: { chain: "btr", factory: "0x1037e9078df7ab09b9af78b15d5e7aad7c1afdd0", },
   uni_base: {
@@ -59,10 +61,10 @@ const config = {
   // equalizerSonic: { chain: 'sonic', factory: '0xDDD9845Ba0D8f38d3045f804f67A1a8B9A528FcC' },
   bulbaswap: { chain: "morph", factory: "0x8D2A8b8F7d200d75Bf5F9E84e01F9272f90EFB8b" },
   kodiakv2: { chain: 'berachain', factory: '0x5e705e184d233ff2a7cb1553793464a9d0c3028f' },
-  swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663' },
-  shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8' },
+  swapx: { chain: 'sonic', factory: '0x05c1be79d3aC21Cc4B727eeD58C9B2fF757F5663', getReservesAbi: uint256GetReservesAbi, },
+  shadow: { chain: 'sonic', factory: '0x2dA25E7446A70D7be65fd4c053948BEcAA6374c8', getReservesAbi: uint256GetReservesAbi, },
   hyperswapv2: { chain: 'hyperliquid', factory: '0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48' },
-  etherex: { chain: "linea", factory: "0xC0b920f6f1d6122B8187c031554dc8194F644592", hasStablePools: true },
+  etherex: { chain: "linea", factory: "0xC0b920f6f1d6122B8187c031554dc8194F644592", hasStablePools: true, getReservesAbi: uint256GetReservesAbi, },
   pulsex2: { chain: 'pulse', factory: '0x29eA7545DEf87022BAdc76323F373EA1e707C523' },
 };
 

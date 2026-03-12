@@ -117,10 +117,13 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 function addImportsDataToMapping() {
   const allImportsSquashed: any = {}
   Object.entries(dimensions_imports).forEach(([adapterType, imports]) => {
+
     Object.entries(imports).forEach(([adapterKey, adapterObj]: any) => {
       adapterObj.module = { default: adapterObj.module }
       allImportsSquashed[adapterKey] = adapterObj
     })
+
+    if (!dimensionsConfig[adapterType]) dimensionsConfig[adapterType] = {}
 
     dimensionsConfig[adapterType].imports = imports
   })

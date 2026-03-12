@@ -18530,9 +18530,9 @@ const data3_1: Protocol[] = [
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",
     dimensions: {
-      fees: "thena-perp",
-      derivatives: "thena-perp",
-      'open-interest': "thena-perp",
+      fees: "thena-perps",
+      derivatives: "thena-perps",
+      'open-interest': "thena-perps",
     }
   },
   {

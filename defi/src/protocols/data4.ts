@@ -29249,7 +29249,9 @@ const data4: Protocol[] = [
     twitter: "SpookySwap",
     parentProtocol: "parent#spookyswap",
     dimensions: {
-      derivatives: "spooky-perps"
+      derivatives: "spooky-perps",
+      'open-interest': "spooky-perps",
+      fees: "spooky-perps",
     }
   },
   {
@@ -29270,7 +29272,9 @@ const data4: Protocol[] = [
     twitter: "XpanseTrade",
     parentProtocol: "parent#xpanse",
     dimensions: {
-      derivatives: "xpanse-perps"
+      derivatives: "xpanse-perps",
+      'open-interest': "xpanse-perps",
+      fees: "xpanse-perps",
     }
   },
   {
@@ -29290,7 +29294,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "LodeTrade",
     dimensions: {
-      derivatives: "lode-perps"
+      derivatives: "lode-perps",
+      'open-interest': "lode-perps",
+      fees: "lode-perps",
     }
   },
   {
@@ -29312,7 +29318,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "TrebleSwap",
     dimensions: {
-      derivatives: "treble-perps"
+      derivatives: "treble-perps",
+      'open-interest': "treble-perps",
+      fees: "treble-perps",
     }
   },
   {
@@ -29333,7 +29341,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "BefiLabs",
     dimensions: {
-      derivatives: "befy-perps"
+      derivatives: "befy-perps",
+      'open-interest': "befy-perps",
+      fees: "befy-perps",
     }
   },
   {
@@ -29354,7 +29364,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "gryps_trade",
     dimensions: {
-      derivatives: "gryps-perps"
+      derivatives: "gryps-perps",
+      'open-interest': "gryps-perps",
+      fees: "gryps-perps",
     },
     deadUrl: true
   },
@@ -29376,7 +29388,9 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "vibe_trading",
     dimensions: {
-      derivatives: "vibe-perps"
+      derivatives: "vibe-perps",
+      'open-interest': "vibe-perps",
+      fees: "vibe-perps",
     },
   },
   // {

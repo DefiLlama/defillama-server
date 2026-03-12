@@ -9828,6 +9828,14 @@ const data5: Protocol[] = [
     category: "Derivatives",
     chains: ["Linea"],
     module: "denaria/index.js",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        startDate: "2026-03-12",
+        proof: ["https://docs.denaria.finance/additional/partner-integration/"],
+      }
+    ],
     twitter: "DenariaFinance",
     audit_links: ["https://docs.denaria.finance/additional/security_audits"],
     listedAt: 1769793447,

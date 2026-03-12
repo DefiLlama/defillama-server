@@ -9,6 +9,8 @@ const cacheDir = path.join(__dirname, '.cache')
 const lastRunFile = path.join(cacheDir, '.cron-task-github-last-run-v3')
 
 export async function pullDevMetricsData() {
+  return; // we stopped pulling github data
+  /* 
   try {
     if (!shouldRunTask()) {
       console.log('Dev metrics: Task was already run within the last day.')
@@ -33,7 +35,7 @@ export async function pullDevMetricsData() {
   } catch (error) {
     console.error('Dev metrics: Error pulling data', error)
     return []
-  }
+  } */
 }
 
 

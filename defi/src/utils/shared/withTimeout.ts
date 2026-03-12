@@ -1,9 +1,13 @@
 export const withTimeout = (millis: number, promise: any, id: string = "") => {
-  const timeout = new Promise((resolve, reject) =>
-    setTimeout(() => {
+  let timeoutId: NodeJS.Timeout;
+  
+  const timeout = new Promise((_, reject) => {
+    timeoutId = setTimeout(() => {
       reject(`${id} timed out after ${millis / 1000} s.`);
-      resolve;
-    }, millis)
-  );
-  return Promise.race([promise, timeout]);
+    }, millis);
+  });
+  
+  return Promise.race([promise, timeout]).finally(() => {
+    clearTimeout(timeoutId);
+  });
 };

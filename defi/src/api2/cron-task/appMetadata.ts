@@ -7,14 +7,16 @@
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 
-import fetch from "node-fetch";
 // import { pullDevMetricsData } from "./githubMetrics";
-import { chainNameToIdMap, extraSections } from "../../utils/normalizeChain";
+import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
 import { bridgeCategoriesSet } from "../../utils/excludeProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./types";
 import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
+import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
+import { runWithRuntimeLogging } from "../utils";
+import { TagCatetgoryMap } from "../../protocols/tags";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -49,7 +51,10 @@ protocols.forEach((protocol: any) => {
   if (protocol.category) categoriesSet.add(protocol.category);
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
-    parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
+    if (!parentProtocolsInfoMap[protocol.parentProtocol]) {
+      console.log('Warning: parent protocol not found for ', protocol.name, protocol.parentProtocol);
+    } else
+      parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   } else {
     if (protocol.gecko_id) {
       protocolsWithGeckoIdSet.add(protocol.id);
@@ -59,7 +64,6 @@ protocols.forEach((protocol: any) => {
   }
 });
 
-const fetchJson = async (url: string) => fetch(url).then((res) => res.json());
 const slugMap: any = {
   Binance: "BSC",
 };
@@ -76,12 +80,14 @@ const slug = (tokenName = "") => {
 };
 
 export async function storeAppMetadata() {
+
   console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
   try {
-    await pullRaisesDataIfMissing();
+    // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
+
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -111,6 +117,7 @@ async function _storeAppMetadata() {
   const finalChains: Record<string, IChainMetadata> = {};
   let lendingProtocols = 0;
 
+  console.time("_storeMetadataFile fetch all data");
   const [
     tvlData,
     dimensionsChainAggData,
@@ -130,6 +137,8 @@ async function _storeAppMetadata() {
     volumeData,
     perpsData,
     openInterestData,
+    normalizedVolumeData,
+    activeLiquidityData,
     aggregatorsData,
     optionsNotionalData,
     optionsPremiumData,
@@ -147,44 +156,49 @@ async function _storeAppMetadata() {
     safeHarborData,
     entitiesData,
     nftStatsData,
+    tokenRightsData
   ] = await Promise.all([
-    readRouteData("/lite/protocols2"),
-    readRouteData("/dimensions/chain-agg-data"),
-    fetchJson(YIELD_POOLS_API).then((res) => res.data ?? []),
-    fetchJson(PROTOCOLS_EXPENSES_API).catch(() => []),
-    readRouteData("/treasuries").catch(() => []),
-    fetchJson(LIQUIDITY_API).catch(() => []),
-    readRouteData("/hacks").catch(() => []),
-    fetchJson(NFT_MARKETPLACES_STATS_API).catch(() => []),
-    readRouteData("/raises").catch(() => ({ raises: [] })),
-    fetchJson(ACTIVE_USERS_API).catch(() => ({})),
-    readRouteData("/dimensions/fees/df-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dhr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dbr-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/fees/dtt-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/dexs/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/derivatives/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/open-interest/doi-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/aggregators/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/options/dnv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/options/dpv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/aggregator-derivatives/dv-lite").catch(() => ({ protocols: {} })),
-    readRouteData("/dimensions/bridge-aggregators/dbv-lite").catch(() => ({ protocols: {} })),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsProtocolsList`).catch(() => []),
-    fetchJson(`https://defillama-datasets.llama.fi/emissionsBreakdown`).catch(() => { }),
-    fetchJson(`${BRIDGES_API}?includeChains=true`).catch(() => ({ chains: [], bridges: [] })),
-    fetchJson(CHAINS_ASSETS).catch(() => ({})),
-    readRouteData("/chains").catch(() => []),
-    readRouteData("/forks").catch(() => ({ forks: {} })),
-    fetchJson(STABLECOINS_API)
-      .catch(() => ({ peggedAssets: [], chains: [] })),
-    readRouteData("/oracles").catch(() => ({ oracles: {} })),
-    fetchJson(CHAIN_NFTS).catch(() => ({})),
+    readCachedRouteData({ route: "/lite/protocols2" }),
+    readCachedRouteData({ route: "/dimensions/chain-agg-data" }),
+    cachedJSONPull({ endpoint: YIELD_POOLS_API, defaultResponse: { data: [] } }).then((res) => res.data ?? []),
+    cachedJSONPull({ endpoint: PROTOCOLS_EXPENSES_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/treasuries", defaultResponse: [] }),
+    cachedJSONPull({ endpoint: LIQUIDITY_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/hacks", defaultResponse: [] }),
+    cachedJSONPull({ endpoint: NFT_MARKETPLACES_STATS_API, defaultResponse: [] }),
+    readCachedRouteData({ route: "/raises", defaultResponse: { raises: [] } }),
+    cachedJSONPull({ endpoint: ACTIVE_USERS_API, defaultResponse: {} }),
+    readCachedRouteData({ route: "/dimensions/fees/df-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dhr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dbr-lite" }),
+    readCachedRouteData({ route: "/dimensions/fees/dtt-lite" }),
+    readCachedRouteData({ route: "/dimensions/dexs/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/derivatives/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/open-interest/doi-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dnvol-lite" }),
+    readCachedRouteData({ route: "/dimensions/normalized-volume/dal-lite" }),
+    readCachedRouteData({ route: "/dimensions/aggregators/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/options/dnv-lite" }),
+    readCachedRouteData({ route: "/dimensions/options/dpv-lite" }),
+    readCachedRouteData({ route: "/dimensions/aggregator-derivatives/dv-lite" }),
+    readCachedRouteData({ route: "/dimensions/bridge-aggregators/dbv-lite" }),
+    cachedJSONPull({ endpoint: `https://defillama-datasets.llama.fi/emissionsProtocolsList`, defaultResponse: [] }),
+    cachedJSONPull({ endpoint: `https://defillama-datasets.llama.fi/emissionsBreakdown`, defaultResponse: {} }),
+    cachedJSONPull({ endpoint: `${BRIDGES_API}?includeChains=true`, defaultResponse: { chains: [], bridges: [] } }),
+    cachedJSONPull({ endpoint: CHAINS_ASSETS, defaultResponse: {} }),
+    readCachedRouteData({ route: "/chains", defaultResponse: [] }),
+    readCachedRouteData({ route: "/forks", defaultResponse: { forks: {} } }),
+    cachedJSONPull({ endpoint: STABLECOINS_API, defaultResponse: { peggedAssets: [], chains: [] } }),
+    readCachedRouteData({ route: "/oracles", defaultResponse: { oracles: {} } }),
+    cachedJSONPull({ endpoint: CHAIN_NFTS, defaultResponse: {} }),
     sdk.cache.readCache(SAFE_HARBOR_PROJECTS_CACHE_KEY, { readFromR2Cache: true }).catch(() => ({})),
-    fetchJson("https://api.llama.fi/entities").catch(() => []),
+    cachedJSONPull({ endpoint: "https://api.llama.fi/entities", defaultResponse: [] }),
     getNftStats(),
+    readCachedRouteData({ route: "/token-rights" }).catch(() => []),
   ]);
+
+  console.timeEnd("_storeMetadataFile fetch all data");
 
   await _storeMetadataFile();
   await storeRouteData("/_fe/static/safe-harbor-projects", safeHarborData);
@@ -202,13 +216,17 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
+      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
+      const hasInflows = (hasTvl && !protocolInfo.misrepresentedToken) ? true : false
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
-        tvl: protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false,
+        tvl: hasTvl,
+        inflows: hasInflows,
+        ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
-        ...(bridgeCategoriesSet.has(protocol.category) ? { bridge: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
 
       if (protocol.parentProtocol) {
@@ -218,7 +236,9 @@ async function _storeAppMetadata() {
         ];
         finalProtocols[protocol.parentProtocol] = {
           ...finalProtocols[protocol.parentProtocol],
-          ...(protocol.tvl != null ? { tvl: true } : {}),
+          ...(hasTvl ? { tvl: true } : {}),
+          ...(hasBorrowed ? { borrowed: true } : {}),
+          ...(hasInflows ? { inflows: true } : {}),
         };
       }
 
@@ -235,6 +255,12 @@ async function _storeAppMetadata() {
       }
     }
     for (const protocol of tvlData.parentProtocols) {
+      if (!finalProtocols[protocol.id]) {
+        console.warn(`Parent Protocol ${protocol.id} not found in finalProtocols`)
+        finalProtocols[protocol.id] = {
+          ...protocol
+        }
+      }
       const { name: _, ...rest } = finalProtocols[protocol.id];
       const slugName: string = slug(protocol.name);
       finalProtocols[protocol.id] = {
@@ -246,7 +272,7 @@ async function _storeAppMetadata() {
           : false,
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
+        ...(forksData.forks[protocol.name] ? { forks: true } : {})
       };
     }
 
@@ -283,6 +309,9 @@ async function _storeAppMetadata() {
     }
 
     for (const protocol of liquidityData) {
+      if (protocolInfoMap[protocol.id]?.wrongLiquidity || parentProtocolsInfoMap[protocol.id]?.wrongLiquidity) {
+        continue;
+      }
       finalProtocols[protocol.id] = {
         ...finalProtocols[protocol.id],
         liquidity: true,
@@ -544,6 +573,58 @@ async function _storeAppMetadata() {
       };
     }
 
+    for (const protocol of normalizedVolumeData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        normalizedVolume: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          normalizedVolume: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of normalizedVolumeData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        normalizedVolume: true,
+      };
+    }
+
+    for (const protocol of activeLiquidityData.protocols) {
+      finalProtocols[protocol.defillamaId] = {
+        ...finalProtocols[protocol.defillamaId],
+        activeLiquidity: true,
+      };
+
+      if (protocol.parentProtocol) {
+        finalProtocols[protocol.parentProtocol] = {
+          ...finalProtocols[protocol.parentProtocol],
+          activeLiquidity: true,
+        };
+      }
+
+      if (protocolChainSetMap[protocol.defillamaId]) {
+        for (const chain of protocol.chains ?? []) {
+          protocolChainSetMap[protocol.defillamaId].add(chain);
+        }
+      }
+    }
+    for (const chain of activeLiquidityData.allChains ?? []) {
+      finalChains[slug(chain)] = {
+        ...(finalChains[slug(chain)] ?? { name: chain }),
+        activeLiquidity: true,
+      };
+    }
+
     for (const protocol of aggregatorsData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -674,7 +755,15 @@ async function _storeAppMetadata() {
       };
     }
 
-    const bridges = new Set(bridgesData.bridges.map((b: any) => b.displayName));
+
+    const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
+
+    for (const protocolId in finalProtocols) {
+      const protocolSlug = (finalProtocols[protocolId] as any)?.name;
+      if (protocolSlug && bridgesBySlug.has(protocolSlug)) {
+        finalProtocols[protocolId] = { ...finalProtocols[protocolId], bridge: true };
+      }
+    }
     const allNftMarketplaces = new Set(nftMarketplacesData.map((market: any) => market.exchangeName));
     const allEmissionsProtocols = new Set(emmissionsData);
     for (const protocolNameAndId of nameAndIds) {
@@ -693,12 +782,6 @@ async function _storeAppMetadata() {
         };
       }
 
-      if (bridges.has(protocolName)) {
-        finalProtocols[protocolId] = {
-          ...finalProtocols[protocolId],
-          bridge: true,
-        };
-      }
 
       if (allNftMarketplaces.has(protocolName)) {
         finalProtocols[protocolId] = {
@@ -706,6 +789,15 @@ async function _storeAppMetadata() {
           nfts: true,
         };
       }
+    }
+
+    for (const tokenRight of tokenRightsData) {
+      const protocolId = tokenRight['DefiLlama ID']
+      if (!protocolId || !finalProtocols[protocolId]) continue
+      finalProtocols[protocolId] = {
+        ...finalProtocols[protocolId],
+        tokenRights: true
+      };
     }
 
     const chainProtocolCount: any = {};
@@ -772,7 +864,7 @@ async function _storeAppMetadata() {
     }
 
     Object.keys(finalChains).forEach((chain) => {
-      finalChains[chain].dimAgg = dimensionsChainAggData[chain] ?? {};
+      finalChains[chain].dimAgg = dimensionsChainAggData[getChainKeyFromLabel(chain)] ?? {};
     });
 
     const sortedChainData = Object.keys(finalChains)
@@ -807,6 +899,8 @@ async function _storeAppMetadata() {
       dexAggregators: { protocols: 0, chains: 0 },
       perps: { protocols: 0, chains: 0 },
       openInterest: { protocols: 0, chains: 0 },
+      normalizedVolume: { protocols: 0, chains: 0 },
+      activeLiquidity: { protocols: 0, chains: 0 },
       perpAggregators: { protocols: 0, chains: 0 },
       optionsPremiumVolume: { protocols: 0, chains: 0 },
       optionsNotionalVolume: { protocols: 0, chains: 0 },
@@ -867,6 +961,12 @@ async function _storeAppMetadata() {
       }
       if (protocol.openInterest) {
         totalTrackedByMetric.openInterest.protocols += 1;
+      }
+      if (protocol.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.protocols += 1;
+      }
+      if (protocol.activeLiquidity) {
+        totalTrackedByMetric.activeLiquidity.protocols += 1;
       }
       if (protocol.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.protocols += 1;
@@ -951,6 +1051,12 @@ async function _storeAppMetadata() {
       if (chain.openInterest) {
         totalTrackedByMetric.openInterest.chains += 1;
       }
+      if (chain.normalizedVolume) {
+        totalTrackedByMetric.normalizedVolume.chains += 1;
+      }
+      if (chain.activeLiquidity) {
+        totalTrackedByMetric.activeLiquidity.chains += 1;
+      }
       if (chain.perpsAggregators) {
         totalTrackedByMetric.perpAggregators.chains += 1;
       }
@@ -984,6 +1090,7 @@ async function _storeAppMetadata() {
     await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
       categories: Array.from(categoriesSet),
       tags: Array.from(tagsSet),
+      tagCategoryMap: TagCatetgoryMap,
     });
 
     console.log("finished building metadata");
@@ -1005,18 +1112,14 @@ const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
 
 async function getNftStats() {
   const [collections, marketplaces, chains] = await Promise.all([
-    fetchJson("https://nft.llama.fi/collections")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson("https://nft.llama.fi/exchangeStats")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson("https://nft.llama.fi/mints")
-      .then((res) => res.length)
-      .catch(() => 0),
-    fetchJson(CHAIN_NFTS)
-      .then((res) => Object.keys(res).length)
-      .catch(() => 0),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/collections", defaultResponse: [] })
+      .then((res) => res.length),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/exchangeStats", defaultResponse: [] })
+      .then((res) => res.length),
+    // cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
+    //   .then((res) => res.length),  // this route doesnt work, plus we were reading only three items in the .all response
+    cachedJSONPull({ endpoint: CHAIN_NFTS })
+      .then((res) => Object.keys(res).length),
   ]);
   return {
     collections,
@@ -1024,3 +1127,13 @@ async function getNftStats() {
     chains,
   };
 }
+
+runWithRuntimeLogging(storeAppMetadata, {
+  application: 'cron-task',
+  type: 'app-metadata',
+}).catch(console.error).then(() => process.exit(0))
+
+setTimeout(() => {
+  console.log('Running for more than 5 minutes, exiting.');
+  process.exit(1);
+}, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises

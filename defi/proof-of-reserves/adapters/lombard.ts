@@ -1,6 +1,6 @@
 import { getBitcoinReservesAdapter } from '../utils/bitcoin';
 
-const protocolId = 'lombard';
+const protocolId = 'lombard-lbtc';
 
 const mintedTokens = [
   {

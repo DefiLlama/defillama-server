@@ -22,13 +22,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
     [jEURx]: { price: eurUSDPrice / 1e8 },
   };
   const writes: Write[] = [];
-  console.log({
-    chain,
-    timestamp,
-    writes,
-    pricesObject,
-    projectName: "jeurx",
-  });
+
   return getWrites({
     chain,
     timestamp,

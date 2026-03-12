@@ -1,4 +1,4 @@
-// exactly same as storeNewTvl.ts but with reads data from postgres instead of dynamodb
+// exactly same as storeNewTvl.ts but reads data from postgres instead of dynamodb
 
 import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
@@ -10,7 +10,6 @@ import {
   HOUR,
 } from "../utils/date";
 import { hourlyTvl, dailyTvl, hourlyUsdTokensTvl } from "../utils/getLastRecord";
-import { reportError } from "../utils/error";
 import { TokensValueLocked, tvlsObject } from "../types";
 import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
@@ -42,7 +41,8 @@ export default async function (
 
   if (currentTvl < 0) {
     const errorMessage = `TVL for ${protocol.name} is negative TVL(${currentTvl}), fix the adapter.`
-    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+    if (!(tvl?.bitcoin < 0))   // TODO: there is some bitcoin bug that cause negative tvl sometimes, this needs to be fixed, but it is known issue so not spamming the team webhook for now
+      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
     throw new Error(errorMessage);
   }
 
@@ -96,6 +96,54 @@ export default async function (
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl
       )}`;
+
+      const buildSpikeDetails = () => {
+
+
+        try {
+
+          const symToAddr: { [symbol: string]: string[] } = debugData?.symbolToAddresses ?? {};
+          let spikedTokens: { coin: string, value: number, prevValue: number, pctChange: number }[] = [];
+          let newTokens: { coin: string, value: number }[] = [];
+          ;[...extraSections, "tvl"].forEach(section => {
+            const currentSection = usdTokenBalances[section];
+            const prevSection = lastHourlyUsdTVLObject?.[section];
+            if (!currentSection) return;
+            Object.entries(currentSection).forEach(([coin, currentVal]) => {
+              const val = Number(currentVal);
+              if (val < 1e4) return; // skip dust
+              const addrs = symToAddr[coin];
+              const label = addrs?.length ? `${coin}(${addrs.join(', ')})` : coin;
+              const prevVal = Number(prevSection?.[coin] ?? 0);
+              if (prevVal === 0 || prevSection?.[coin] === undefined) {
+                if (val > 1e5) newTokens.push({ coin: label, value: val });
+              } else if (val > prevVal * 1.5) {
+                const pctChange = ((val - prevVal) / prevVal) * 100;
+                spikedTokens.push({ coin: label, value: val, prevValue: prevVal, pctChange });
+              }
+            });
+          });
+
+          spikedTokens = spikedTokens.sort((a, b) => (b.value - b.prevValue) - (a.value - a.prevValue));
+          newTokens = newTokens.sort((a, b) => b.value - a.value);
+          let details = '';
+          if (spikedTokens.length) {
+            details += ' spiked tokens: ' + spikedTokens.slice(0, 15).map(t =>
+              `${t.coin}: ${humanizeNumber(t.prevValue)} → ${humanizeNumber(t.value)} (+${t.pctChange.toFixed(0)}%)`
+            ).join(', ');
+          }
+          if (newTokens.length) {
+            details += ' new tokens: ' + newTokens.slice(0, 10).map(t =>
+              `${t.coin}: ${humanizeNumber(t.value)}`
+            ).join(', ');
+          }
+          return details;
+        } catch (e) {
+          console.error('Error building spike details', e)
+          return ''
+        }
+      };
+
       let tvlToCompareAgainst = lastWeeklyTVLRecord;
       if (tvlToCompareAgainst.SK === undefined) {
         tvlToCompareAgainst = lastDailyTVLRecord;
@@ -107,54 +155,98 @@ export default async function (
       }
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
+      let spikeRatio = 5
+      if (currentTvl > 50e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
+
+
       if (
         timeElapsed < (timeLimitDisableHours * HOUR) &&
-        lastHourlyTVL * 5 < currentTvl &&
-        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
+        lastHourlyTVL * spikeRatio < currentTvl &&
+        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * spikeRatio < currentTvl &&
         currentTvl > 1e6
       ) {
-        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
-        if (timeElapsed > (5 * HOUR)) {
+
+        const spikeDetails = buildSpikeDetails();
+        const errorMessage = `TVL for ${protocol.name} has >${spikeRatio}x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours.${spikeDetails}`
+        if (timeElapsed > (3 * HOUR)) {
           if (currentTvl > 10e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           }
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
         }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-        throw new Error(
-          errorMessage
-        );
+        throw new Error(errorMessage)
+
+
       } else {
-        const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
+
+        const spikeDetails = buildSpikeDetails();
+        const errorMessage = `TVL of ${protocol.name} has >2x (${change}).${spikeDetails}`
         if (currentTvl > 10e6) {
           await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
         }
-        reportError(
-          errorMessage,
-          protocol.name
-        );
+        console.error(protocol.name, errorMessage);
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       }
+
     }
+
+
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
-      let tvlFromMissingTokens = 0;
-      let missingTokens = '';
-      [...extraSections, "tvl"].forEach(section => {
-        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
-        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
-          if (usdTokenBalances[section]?.[coin] === undefined) {
-            tvlFromMissingTokens += Number(tvl)
-            missingTokens += `${coin},`
-          }
-        })
-      })
-      if (tvlFromMissingTokens > lastHourlyTVL * 0.25) {
-        console.log(`TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). Current tvl: ${currentTvl}, previous tvl: ${lastHourlyTVL}, tvl from missing tokens: ${tvlFromMissingTokens}`)
-        if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
-          const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour, with >30% coming from dropped tokens (${missingTokens}). It's been disabled.`
-          await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-          throw new Error(errorMessage);
+      const buildDropDetails = () => {
+        try {
+          const symToAddr: { [symbol: string]: string[] } = debugData?.symbolToAddresses ?? {};
+          let missingTokens: { coin: string, value: number, valueHN: string }[] = [];
+          let highValueDrop: { coin: string, value: number, valueHN: string }[] = [];
+          ;[...extraSections, "tvl"].forEach(section => {
+            if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
+            Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
+              const currentTokenUSDTvl = usdTokenBalances[section]?.[coin]
+              const addrs = symToAddr[coin];
+              const label = addrs?.length ? `${coin}(${addrs.join(', ')})` : coin;
+              if (currentTokenUSDTvl === undefined) {
+                missingTokens.push({ coin: label, valueHN: humanizeNumber(tvl as any), value: tvl as number })
+              }
+
+              if (tvl as number > 10e6 && typeof +currentTokenUSDTvl === 'number' && (tvl as number) / 4 > +currentTokenUSDTvl) {
+                const diff = (tvl as number) - (+currentTokenUSDTvl || 0)
+                highValueDrop.push({ coin: label, valueHN: humanizeNumber(diff as any), value: diff as number })
+              }
+            })
+          })
+
+          missingTokens = missingTokens.sort((a, b) => b.value - a.value)
+          let result = missingTokens.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+          result = result.length ? `missing tokens: ${result}` : ""
+          highValueDrop = highValueDrop.sort((a, b) => b.value - a.value)
+          const highValueDropString = highValueDrop.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+          if (highValueDrop.length)
+            result += ` high drop: ${highValueDropString}`
+          return result;
+        } catch (e) {
+          console.error('Error building drop details', e)
+          return ''
         }
+      };
+
+      const missingTokenString = buildDropDetails();
+      const lastHourlyTVLHN = humanizeNumber(lastHourlyTVL)
+      const currentTvlHN = humanizeNumber(currentTvl)
+
+      // if tvl was more than 50M send an high severity alert
+      if (lastHourlyTVL > 50e6) {
+        const ignoredTvl = new Set(['Olympus DAO'])
+        if (!ignoredTvl.has(protocol.name))
+          await sendMessage(`TVL of ${protocol.name} has dropped from ${lastHourlyTVLHN} to ${currentTvlHN}. ${missingTokenString}`, process.env.TEAM_WEBHOOK!)
+      }
+
+      console.log(`TVL for ${protocol.name} has dropped >50% within one hour. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN} . ${missingTokenString}`)
+
+      if (!process.env.UI_TOOL_MODE && lastHourlyTVL > 1e5) {
+        const errorMessage = `TVL for ${protocol.name} has dropped >50% within one hour. It's been disabled. Current tvl: ${currentTvlHN}, previous tvl: ${lastHourlyTVLHN}. ${missingTokenString}`
+        console.log(errorMessage, 'skipping db update')
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(errorMessage);
       }
     }
   }

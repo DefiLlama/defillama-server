@@ -10,7 +10,7 @@ async function main() {
         let lastHeight = 0
         entries.forEach(entry=>{
             if(entry.height < lastHeight){
-                console.log(entry, lastHeight)
+                // console.log(entry, lastHeight)
                 if(DRY_RUN === false){
                     ddb.delete({
                         Key:{

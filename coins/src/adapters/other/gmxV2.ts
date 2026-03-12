@@ -77,7 +77,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       const longConfig = getCallConfig(long)
       const shortConfig = getCallConfig(short)
       if (!indexConfig || !longConfig || !shortConfig) {
-        console.log('missing coin data', index, long, short, market)
+        // console.log('missing coin data', index, long, short, market)
         return;
       }
 

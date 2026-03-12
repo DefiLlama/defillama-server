@@ -5,25 +5,28 @@ import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { IChain, IProtocol } from "../../types";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
-import { craftChainsResponse } from "../../getChains";
+import { craftChainsResponse } from "../routes/getChains";
 import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../../getProtocols";
 import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { getRaisesInternal } from "../../getRaises";
-import { getHacksInternal } from "../../getHacks";
-import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
+import { getRaisesInternal } from "../routes/getRaises";
+import { getHacksInternal } from "../routes/getHacks";
+import { getTokenRightsInternal } from "../routes/getTokenRights";
+import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
-import { getOraclesInternal } from "../../getOracles";
-import { getForksInternal } from "../../getForks";
-import { getCategoriesInternal } from "../../getCategories";
-import { storeLangs } from "../../storeLangs";
+import { getOraclesInternal } from "../routes/getOracles";
+import { getForksInternal } from "../routes/getForks";
+import { getCategoriesInternal } from "../routes/getCategories";
+import { storeLangs } from "../routes/storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
 import { getOutdated } from "../../stats/getOutdated";
 import * as sdk from '@defillama/sdk'
-import { RUN_TYPE } from "../utils";
+import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
+import { extraSections, chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { getActiveUsers } from "../routes/getActiveUsers";
 
 const protocolDataMap: { [key: string]: any } = {}
 
@@ -31,6 +34,7 @@ let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Functi
 let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
 async function run() {
+
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON })
 
@@ -44,7 +48,6 @@ async function run() {
 
 
   const processProtocolsOptions: getHistoricalTvlForAllProtocolsOptionalOptions = {
-    isApi2CronProcess: true,
     protocolList: cache.metadata.protocols,
     getLastTvl: (protocol: any) => protocolDataMap[protocol.id]?.lastHourlyRecord,
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
@@ -69,7 +72,9 @@ async function run() {
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
+  await storeActiveUsers()
   await storeRWAStats()
+
 
   // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
 
@@ -85,44 +90,44 @@ async function run() {
     const latestProtocolItems = await getLatestProtocolItems(hourlyTvl, { filterLast24Hours: true })
     const latestProtocolItemsMap: any = {}
     latestProtocolItems.forEach((data: any) => latestProtocolItemsMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterLast24Hours')
+    // console.timeEnd('getLatestProtocolItems filterLast24Hours')
 
 
     console.time('getLatestProtocolItems filterADayAgo')
     const latestProtocolItemsDayAgo = await getLatestProtocolItems(hourlyTvl, { filterADayAgo: true })
     const latestProtocolItemsDayAgoMap: any = {}
     latestProtocolItemsDayAgo.forEach((data: any) => latestProtocolItemsDayAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterADayAgo')
+    // console.timeEnd('getLatestProtocolItems filterADayAgo')
 
     console.time('getLatestProtocolItems filterAWeekAgo')
-    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(hourlyTvl, { filterAWeekAgo: true })
+    const latestProtocolItemsWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
     const latestProtocolItemsWeekAgoMap: any = {}
     latestProtocolItemsWeekAgo.forEach((data: any) => latestProtocolItemsWeekAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAWeekAgo')
+    // console.timeEnd('getLatestProtocolItems filterAWeekAgo')
 
     console.time('getLatestProtocolItems filterAMonthAgo')
-    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(hourlyTvl, { filterAMonthAgo: true })
+    const latestProtocolItemsMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
     const latestProtocolItemsMonthAgoMap: any = {}
     latestProtocolItemsMonthAgo.forEach((data: any) => latestProtocolItemsMonthAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolItems filterAMonthAgo')
+    // console.timeEnd('getLatestProtocolItems filterAMonthAgo')
 
     console.time('getLatestProtocolTokensUSD filterADayAgo')
     const latestProtocolTokensUSD = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterADayAgo: true, })
     const latestProtocolTokensUSDMap: any = {}
     latestProtocolTokensUSD.forEach((data: any) => latestProtocolTokensUSDMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterADayAgo')
 
     console.time('getLatestProtocolTokensUSD filterAWeekAgo')
-    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAWeekAgo: true })
+    const latestProtocolTokensUSDWeekAgo = await getLatestProtocolItems(dailyTvl, { filterAWeekAgo: true })
     const latestProtocolTokensUSDWeekAgoMap: any = {}
     latestProtocolTokensUSDWeekAgo.forEach((data: any) => latestProtocolTokensUSDWeekAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterAWeekAgo')
 
     console.time('getLatestProtocolTokensUSD filterAMonthAgo')
-    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(hourlyUsdTokensTvl, { filterAMonthAgo: true })
+    const latestProtocolTokensUSDMonthAgo = await getLatestProtocolItems(dailyTvl, { filterAMonthAgo: true })
     const latestProtocolTokensUSDMonthAgoMap: any = {}
     latestProtocolTokensUSDMonthAgo.forEach((data: any) => latestProtocolTokensUSDMonthAgoMap[data.id] = data.data)
-    console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
+    // console.timeEnd('getLatestProtocolTokensUSD filterAMonthAgo')
 
 
     console.time('getAllProtocolItems')
@@ -157,7 +162,7 @@ async function run() {
   async function writeProtocolRoute() {
     console.time('write /protocol/:name')
     const withConcurrency = 25
-    const options = { useNewChainNames: false, useHourlyData: false, skipAggregatedTvl: false }
+    const options = { useNewChainNames: false, skipAggregatedTvl: false }
 
     let items = shuffleArray(Object.entries(cache.protocolSlugMap))
 
@@ -262,11 +267,28 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const excludeProtocolFields = [
+      'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
+      'audits', 'audit_links', 'hallmarks', 'oraclesBreakdown',
+      'cmcId', 'gecko_id', 'methodology', 'dimensions',
+      'module', 'pool2', 'staking',
+      'tvl', 'chainTvls', 'change_1h', 'change_1d', 'change_7d', 'tokenBreakdowns', 'mcap',
+      'listedAt',
+    ]
+
+    // /protocols file is heavy, we create a lite version without some fields
+    const protocolsLite = data.map((p: any) => {
+      const clone = { ...p }
+      excludeProtocolFields.forEach(field => delete clone[field])
+      return clone
+    })
+
     const chainData: IChain[] = await getChainData(false)
     const chainDataV2: IChain[] = await getChainData(true)
     data.push(...(chainData as any))
 
     await storeRouteData('protocols-with-chains', data)
+    await storeRouteData('protocols-lite-v1', protocolsLite)
     await storeRouteData('chains', chainData)
     await storeRouteData('v2/chains', chainDataV2)
 
@@ -297,9 +319,14 @@ async function run() {
     console.time('write /config')
     const data = {
       protocols: cache.metadata.protocols,
+      parentProtocols: cache.metadata.parentProtocols,
       chainCoingeckoIds: cache.metadata.chainCoingeckoIds,
+      treasuries: cache.metadata.treasuries,
+      entities: cache.metadata.entities,
+      chainKeyToLabelMap,
     }
     await storeRouteData('configs', data)
+    await storeRouteData('/_fe/static/configs', data)
 
 
     // this is handled in rest server now
@@ -328,20 +355,178 @@ async function run() {
     console.timeEnd('write /hacks')
   }
 
+  async function writeTokenRights() {
+    console.time('write /token-rights')
+    const data = await getTokenRightsInternal()
+    await storeRouteData('token-rights', data)
+    console.timeEnd('write /token-rights')
+  }
+
   async function writeOracles() {
     const debugString = 'write /oracles'
     console.time(debugString)
     const data = await getOraclesInternal(processProtocolsOptions)
+
+    // keep old cache file for old api routes
     await storeRouteData('oracles', data)
+    
+    // write breakdown oracles cache files for v2 routes
+    await writeOraclesBreakdown(data);
+    
     console.timeEnd(debugString)
+    
+    async function writeOraclesBreakdown(data: any) {
+      // overview data without charts
+      function transformOraclesTVS(oraclesTVS: any): any {
+        const transformedOraclesTVS = oraclesTVS;
+        
+        for (const [oracle, protocolTvs] of Object.entries(oraclesTVS)) {
+          // delete keys from oraclesTVS
+          for (const [protocolName, keyAndTvs] of Object.entries(protocolTvs as any)) {
+            for (const key of extraSections) {
+              delete transformedOraclesTVS[oracle][protocolName][key];
+            }
+          }
+        }
+        
+        return transformedOraclesTVS;
+      }
+
+      await storeRouteData('oracles-v2/overview', {
+        oracles: data.oracles,
+        chainsByOracle: data.chainsByOracle,
+        oraclesTVS: transformOraclesTVS(data.oraclesTVS),
+      })
+      
+      // total chart per key, key => timestamp => value
+      const totalChartByKeys: Record<string, Record<number, number>> = {};
+      // total chart per oracle, oracle => timestamp => value
+      const totalChartByOracles: Record<string, Record<number, number>> = {};
+      // total chart per chain, chain => timestamp => value
+      const totalChartByChains: Record<string, Record<number, number>> = {};
+      
+      // total chart per key, key => timestamp => chain => value
+      const totalChartByKeysAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
+      // total chart per key, key => timestamp => protocol => value
+      const totalChartByKeysAndProtocolBreakdown: Record<string, Record<number, Record<string, number>>> = {};
+      
+      // chart protocol chain-breakdown => key => timestamp => chain => value
+      const totalChartByProtocolsAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
+
+      // chart chain protocol-breakdown => key => timestamp => protocol => value
+      const totalChartByChainsAndProtocolBreakdown: Record<string, Record<number, Record<string, number>>> = {};
+
+      for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
+        const ts = Number(timestamp);
+        const os = oracles as any;
+        
+        // { Chronicle: { Ethereum: 1, Ethereum-staking: 0 } }
+        for (const [oracle, chains] of Object.entries(os)) {
+          for (const [itemKey, itemValue] of Object.entries(chains as any)) {
+            let [chain, key] = itemKey.split('-'); // Ethereum-staking
+            if (extraSections.includes(chain)) continue; // they are: staking, pool2, borrowed, just ignore these cases
+            if (key === undefined) key = 'tvl';
+
+            // add to total
+            ensureItemValue(totalChartByKeys, key, ts, Number(itemValue));
+            ensureItemValue(totalChartByKeys, 'all', ts, Number(itemValue));
+            
+            // add to chain total
+            ensureItemValue(totalChartByChains, `${chain}-${key}`, ts, Number(itemValue));
+            ensureItemValue(totalChartByChains, `${chain}-all`, ts, Number(itemValue));
+            
+            // add to protocol total
+            ensureItemValue(totalChartByOracles, `${oracle}-${key}`, ts, Number(itemValue));
+            ensureItemValue(totalChartByOracles, `${oracle}-all`, ts, Number(itemValue));
+            
+            // add to total chain-breakdown
+            ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, key, ts, chain, Number(itemValue));
+            ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, 'all', ts, chain, Number(itemValue));
+            
+            // add to total protocol-breakdown
+            ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, key, ts, oracle, Number(itemValue))
+            ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, 'all', ts, oracle, Number(itemValue))
+            
+            // add to protocol chain-breakdown
+            ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-${key}`, ts, chain, Number(itemValue))
+            ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-all`, ts, chain, Number(itemValue))
+            
+            // add to chain protocol-breakdown
+            ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-${key}`, ts, oracle, Number(itemValue))
+            ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-all`, ts, oracle, Number(itemValue))
+          }
+        }
+      }
+      
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByKeys)) {
+        await storeRouteData(`oracles-v2/charts/total-${key}`, buildTimeseriesItemValue(valueByTimestamp));
+      }
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByKeysAndChainBreakdown)) {
+        await storeRouteData(`oracles-v2/charts/total-${key}-chain-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByKeysAndProtocolBreakdown)) {
+        await storeRouteData(`oracles-v2/charts/total-${key}-protocol-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+      
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByOracles)) {
+        await storeRouteData(`oracles-v2/charts/protocols/${key}`, buildTimeseriesItemValue(valueByTimestamp));
+      }
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByProtocolsAndChainBreakdown)) {
+        await storeRouteData(`oracles-v2/charts/protocols/${key}-chain-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByChains)) {
+        await storeRouteData(`oracles-v2/charts/chains/${key}`, buildTimeseriesItemValue(valueByTimestamp));
+      }
+      for (const [key, valueByTimestamp] of Object.entries(totalChartByChainsAndProtocolBreakdown)) {
+        await storeRouteData(`oracles-v2/charts/chains/${key}-protocol-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+    }
   }
 
   async function writeForks() {
     const debugString = 'write /forks'
     console.time(debugString)
     const data = await getForksInternal(processProtocolsOptions)
+
+    // keep old cache file for old api routes
     await storeRouteData('forks', data)
+    
+    // write breakdown forks cache files for v2 routes
+    await writeForksBreakdown(data);
+    
     console.timeEnd(debugString)
+    
+    async function writeForksBreakdown(data: any) {
+      // overview data without charts
+      await storeRouteData('forks-v2/overview', data.forks)
+      
+      // key => timestamp => protocol => value
+      const chartByKeys: Record<string, Record<number, Record<string, number>>> = {};
+      
+      // protocol => timestamp => value
+      const chartByProtocols: Record<string, Record<number, number>> = {};
+      
+      for (const [timestamp, forks] of Object.entries(data.chart)) {
+        for (const [protocol, items] of Object.entries(forks as any)) {
+          for (const [key, value] of Object.entries(items as any)) {
+            ensureItemValue(chartByProtocols, `${protocol}-${key}`, Number(timestamp), Number(value));
+            ensureItemValue(chartByProtocols, `${protocol}-all`, Number(timestamp), Number(value));
+            
+            ensureItemValueBreakdown(chartByKeys, `total-${key}-protocol-breakdown`, Number(timestamp), protocol, Number(value));
+            ensureItemValueBreakdown(chartByKeys, 'total-all-protocol-breakdown', Number(timestamp), protocol, Number(value));
+          }
+        }
+      }
+      
+      for (const [key, valueByTimestamp] of Object.entries(chartByKeys)) {
+        await storeRouteData(`forks-v2/charts/${key}`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
+      }
+
+      for (const [key, valueByTimestamp] of Object.entries(chartByProtocols)) {
+        await storeRouteData(`forks-v2/charts/protocols/${key}`, buildTimeseriesItemValue(valueByTimestamp));
+      }
+    }
   }
 
   async function writeCategories() {
@@ -412,11 +597,60 @@ async function storeRWAStats() {
 }
 
 
-run()
+async function storeActiveUsers() {
+  try {
+
+    const debugString = 'write /activeUsers'
+    console.time(debugString)
+    const data = await getActiveUsers()
+    await storeRouteData('/activeUsers', data)
+    console.timeEnd(debugString)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+function ensureItemValue(items: Record<string, Record<number, number>>, key: string, ts: number, value: number) {
+  items[key] = items[key] || {};
+  items[key][ts] = items[key][ts] || 0;
+  items[key][ts] += Number(value);
+}
+
+function ensureItemValueBreakdown(items: Record<string, Record<number, Record<string, number>>>, key: string, ts: number, label: string, value: number) {
+  items[key] = items[key] || {};
+  items[key][ts] = items[key][ts] || {};
+  items[key][ts][label] = items[key][ts][label] || 0;
+  items[key][ts][label] += Number(value);
+}
+
+function buildTimeseriesItemValue(valueByTimestamp: Record<number, number>): Array<Array<number>> {
+  const shortedItem: Array<Array<number>> = [];
+  for (const [timestamp, value] of Object.entries(valueByTimestamp)) {
+    shortedItem.push([Number(timestamp), value]);
+  }
+  return shortedItem.sort((a, b) => a[0] > b[0] ? 1 : -1);
+}
+
+function buildTimeseriesItemValueBreakdown(valueByTimestamp: Record<number, Record<string, number>>): Array<any> {
+  const shortedItem: Array<any> = [];
+  for (const [timestamp, labelsAndValues] of Object.entries(valueByTimestamp)) {
+    shortedItem.push({
+      timestamp: Number(timestamp),
+      ...labelsAndValues,
+    });
+  }
+  return shortedItem.sort((a, b) => a.timestamp > b.timestamp ? 1 : -1);
+}
+
+runWithRuntimeLogging(run, {
+  application: "cron-task",
+  type: 'tvl-data',
+})
   .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)
-    await sendMessage(errorMessage, process.env.DIM_CHANNEL_WEBHOOK!)
+    if (process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      await sendMessage(errorMessage, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
   })
   .then(() => process.exit(0))

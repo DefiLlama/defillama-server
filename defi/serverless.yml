@@ -111,6 +111,8 @@ custom:
     exclude:
       - pg-native
       - pg-hstore
+      - pg
+      - pg-cursor
     # for debugging
     #keepOutputDirectory: true
   prune:
@@ -138,28 +140,6 @@ functions:
       - http:
           path: /{params+}
           method: any
-  # chart:  # moved to api2
-  #   handler: src/getChart.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: charts
-  #         method: get
-  #     - http:
-  #         path: charts/{chain}
-  #         method: get
-  # defaultChart:  # moved to api2
-  #   handler: src/getDefaultChart.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: /v2/historicalChainTvl
-  #         method: get
-  #     - http:
-  #         path: /v2/historicalChainTvl/{chain}
-  #         method: get
   reportError:
     handler: src/reportError.default
     timeout: 30
@@ -249,14 +229,6 @@ functions:
       - http:
           path: contractName2/{chain}/{contract}
           method: get
-  # protocol:  # moved to api2
-  #   handler: src/getProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: protocol/{protocol}
-  #         method: get
   tokenProtocols:
     handler: src/getTokenInProtocols.default
     timeout: 30
@@ -265,50 +237,6 @@ functions:
       - http:
           path: tokenProtocols/{symbol}
           method: get
-  # treasury:  # moved to api2
-  #   handler: src/getTreasury.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: treasury/{protocol}
-  #         method: get
-  # updatedProtocol:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocol/{protocol}
-  #         method: get
-  # updatedProtocolDraft:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: updatedProtocolDraft/{protocol}
-  #         method: get
-  # debugProtocol:  # moved to api2
-  #   handler: src/getUpdatedProtocol.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: debugProtocol/{protocol}
-  #         method: get
-  # protocolTvl:  # moved to api2
-  #   handler: src/getProtocolTvl.default
-  #   events:
-  #     - http:
-  #         path: tvl/{protocol}
-  #         method: get
-  # smolConfig:  # moved to api2
-  #   handler: src/getSmolConfig.default
-  #   events:
-  #     - http:
-  #         path: config/smol/{protocol}
-  #         method: get
   coins:
     handler: src/getCoins.default
     timeout: 30
@@ -317,119 +245,6 @@ functions:
       - http:
           path: coins
           method: post
-  # chains:  # moved to api2
-  #   handler: src/getChains.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: chains
-  #         method: get
-  #     - http:
-  #         path: v2/chains
-  #         method: get
-  # chains2:  # moved to api2
-  #   handler: src/getFormattedChains.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: chains2/{category}
-  #         method: get
-  # inflows:  # moved to api2
-  #   handler: src/getInflows.default
-  #   events:
-  #     - http:
-  #         path: inflows/{protocol}/{timestamp}
-  #         method: get
-  # langs:  # moved to api2
-  #   handler: src/storeLangs.default
-  #   timeout: 60
-  #   memorySize: 2000
-  #   events:
-  #     - schedule: cron(30 0,12 * * ? *)
-  # raises:  # moved to api2
-  #   handler: src/getRaises.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: raises
-  #         method: get
-  #   environment:
-  #     AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
-  # hacks:  # moved to api2
-  #   handler: src/getHacks.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: hacks
-  #         method: get
-  #   environment:
-  #     AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
-  # oracles:  # moved to api2
-  #   handler: src/getOracles.default
-  #   timeout: 120
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: oracles
-  #         method: get
-  # forks:  # moved to api2
-  #   handler: src/getForks.default
-  #   timeout: 120
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: forks
-  #         method: get
-  # categories:  # moved to api2
-  #   handler: src/getCategories.default
-  #   timeout: 30
-  #   memorySize: 2000
-  #   events:
-  #     - http:
-  #         path: categories
-  #         method: get
-  storeLiquidations:
-    handler: src/storeLiquidations.default
-    timeout: 900
-    memorySize: 4500
-    events:
-      # update latest every 20 minutes
-      - schedule: cron(0/20 * * * ? *)
-  # fetchLiquidations:
-  #   handler: src/fetchLiquidations.default
-  #   timeout: 900
-  #   memorySize: 1000
-  # triggerFetchLiquidations:
-  #   handler: src/triggerFetchLiquidations.default
-  #   events:
-  #     - schedule: cron(40 * * * ? *)
-  # dataset:  # moved to api2
-  #   handler: src/getDataset.default
-  #   timeout: 30
-  #   memorySize: 10240
-  #   events:
-  #     - http:
-  #         path: dataset/{protocol}
-  #         method: get
-  # simpleDataset:  # moved to api2
-  #   handler: src/getSimpleChainDataset.default
-  #   timeout: 30
-  #   memorySize: 3000
-  #   events:
-  #     - http:
-  #         path: simpleChainDataset/{chain}
-  #         method: get
-  # config:  # moved to api2
-  #   handler: src/getConfig.default
-  #   timeout: 10
-  #   events:
-  #     - http:
-  #         path: config
-  #         method: get
   storeSortedTokenlist:
     handler: src/storeSortedTokenlist.default
     timeout: 60
@@ -444,14 +259,6 @@ functions:
       - schedule: cron(30 0,12 * * ? *)
     environment:
       tableName: prod-coins-table
-  hourly:
-    handler: src/getHourlyData.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: hourly/{protocol}
-          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:
@@ -469,12 +276,6 @@ functions:
       - http:
           path: cachedExternalResponse
           method: get
-  # storeDataset:
-  #   handler: src/storeCsvDataset.default
-  #   timeout: 900
-  #   memorySize: 10240
-  #   events:
-  #     - schedule: rate(1 day)
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900
@@ -551,15 +352,6 @@ functions:
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-  activeUsers:
-    handler: src/getActiveUsers.default
-    timeout: 90
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-    events:
-      - http:
-          path: activeUsers
-          method: get
   protocolActiveUsers:
     handler: src/getProtocolUsers.default
     timeout: 90

@@ -81,8 +81,8 @@ ${sdk.util.tableToString([...filteredProtocols], printColumns)}
 
 Using this script: https://github.com/DefiLlama/defillama-server/blob/master/defi/proof-of-reserves/cli/check.ts`
 
-  if (process.env.TEAM_WEBHOOK && filteredProtocols.length > 0) {
-    await sendMessage(message, process.env.TEAM_WEBHOOK!, true)
+  if (process.env.DIM_ERROR_CHANNEL_WEBHOOK && filteredProtocols.length > 0) {
+    await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK!, true)
   }
 
   process.exit(0);

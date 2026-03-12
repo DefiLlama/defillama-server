@@ -1,7 +1,8 @@
 import loadAdaptorsData from "../../adaptors/data";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../../adaptors/data/types"
 import { getAllItemsAfter } from "../../adaptors/db-utils/db2";
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 import { protocolsById } from "../../protocols/data";
 
 

@@ -54,19 +54,6 @@ Run general scripts:
 export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/<script>
 ```
 
-If you run into problems updating submodule
-
-```
-git submodule update --init --recursive
-git submodule update --remote --merge
-```
-
-To ignore submodule (on git status for example):
-
-```
-git config submodule.DefiLlama-Adapters.ignore all
-```
-
 ## To run a specific file ex: storeGetProtocols.ts
 
 ```bash

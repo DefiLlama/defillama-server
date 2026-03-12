@@ -50,7 +50,7 @@ const chainToEnum: any = {
 
 async function getPoolIdsFromLogs(api: sdk.ChainApi, options: BalancerOptions) {
   const { poolConfig: { address, fromBlock } } = options
-  console.log('getPoolIdsFromLogs', address, fromBlock)
+  // console.log('getPoolIdsFromLogs', address, fromBlock)
   const logs = await getLogs({
     api,
     target: address,
@@ -60,7 +60,7 @@ async function getPoolIdsFromLogs(api: sdk.ChainApi, options: BalancerOptions) {
   })
   const pools = logs.map((log: any) => log.pool)
   const poolIds = await api.multiCall({ abi: 'function getPoolId() view returns (bytes32)', calls: pools, permitFailure: true, })
-  console.log('poolIds', poolIds.length, logs.length, api.chain)
+  // console.log('poolIds', poolIds.length, logs.length, api.chain)
   return poolIds.filter((id: any) => id)
 }
 
@@ -103,7 +103,7 @@ async function getPoolIds2(api: sdk.ChainApi, options?: BalancerOptions): Promis
   } while (hasMore)
   return addresses.filter((a: string) => {
     if (a.length < 44) {
-      console.log('bad address', a)
+      // console.log('bad address', a)
       return false;
     }
     return true;
@@ -148,8 +148,8 @@ export async function getTokenPrices2(
     supply /= (10 ** decimals[i])
     const price = poolValues[pool] / supply
     if (poolValues[pool] > 1e10 || poolValues[pool] < 1e4) {
-      if (poolValues[pool] > 1e10)
-        console.log('bad balancer pool result? ignoring it', { pool, price, supply, value: poolValues[pool] })
+      // if (poolValues[pool] > 1e10)
+      //   console.log('bad balancer pool result? ignoring it', { pool, price, supply, value: poolValues[pool] })
       return;
     }
     if (price > 0 && price != Infinity) pricesObject[pool] = { price, supply: supplies[i] / 1e24, supplies2: supplies2[i] / 1e24, pool: pools[i], poolValue: poolValues[pool] / 1e6 }

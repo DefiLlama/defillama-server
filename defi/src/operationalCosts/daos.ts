@@ -72,7 +72,7 @@ export default [
     },
     {
         protocolId: "113", // yearn
-        sources: ["https://llamapay.io/yearn"],
+        sources: [], // broken: https://llamapay.io/yearn
         headcount: 25,
         annualUsdCost: {
             salaries: 317535*12,

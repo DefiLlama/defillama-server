@@ -1,19 +1,24 @@
-import { AdapterType, ProtocolType, } from "@defillama/dimension-adapters/adapters/types";
-import { ADAPTER_TYPES, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor } from "./types";
+import { ADAPTER_TYPES, AdapterType, AdaptorData, AdaptorRecordType, AdaptorRecordTypeMapReverse, IJSON, ProtocolAdaptor, ProtocolType } from "./types";
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
-import { setModuleDefaults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
 import protocols from "../../protocols/data";
 import { chainCoingeckoIds, getChainDisplayName } from "../../utils/normalizeChain";
 import { baseIconsUrl } from "../../constants";
 
+
 let dimensionsConfig: any
 getDimensionsConfig()
 
+// TODO: reduce the places this is called to improve performance
 export const importModule = (adaptorType: AdapterType) => async (mod: string) => {
-  const { default: module } = await import('@defillama/dimension-adapters/' + dimensionsConfig[adaptorType].imports[mod].moduleFilePath)
-  setModuleDefaults(module)
-  return module
+  // Dynamically import dimension adapter module, this way, we have time to set up the repo if needed
+  const { setModuleDefaults } = await import('../../../dimension-adapters/adapters/utils/runAdapter')
+  const { importAdapter } = await import('../../../dimension-adapters/adapters/utils/importAdapter')
+  const passedFile = dimensionsConfig[adaptorType].imports[mod].moduleFilePath
+  const result = await importAdapter(adaptorType, mod, '../../' + passedFile)
+  const adapterModule = result.adapter
+  setModuleDefaults(adapterModule)
+  return adapterModule
 }
 
 const exportCache = {} as IJSON<AdaptorData>
@@ -25,6 +30,13 @@ function loadAdaptorsData(adaptorType: AdapterType): AdaptorData {
   return exportCache[adaptorType]
 }
 
+// usually info about the adapter module for dimension metric is specified in 'dimensions' field of the protocol/chain metadata, but in some cases, we need to auto link it based on import key matching protocol id, atm, we are restricting it to these adapter types
+const ADAPTER_TYPES_WITH_CONFIG_ID_AS_KEY = [
+  AdapterType.NFT_VOLUME,
+  AdapterType.ACTIVE_USERS,
+  AdapterType.NEW_USERS
+]
+
 const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 
   // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
@@ -33,9 +45,20 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   const { KEYS_TO_STORE, imports: allImports } = dimensionsConfig[adapterType]
   const config: any = {}
   const configMetadataMap: any = {}
+  const canDeriveDimensionsConfigFromKey = ADAPTER_TYPES_WITH_CONFIG_ID_AS_KEY.includes(adapterType)
 
   protocols.forEach((p) => {
-    if (!p.dimensions?.[adapterType]) return;
+
+    if (!p.dimensions?.[adapterType]) {
+      if (!canDeriveDimensionsConfigFromKey) return;
+
+      const idConfigData = (dimensions_imports as any)[adapterType]?.[p.id]
+
+      if (!idConfigData) return;
+      if (!p.dimensions) p.dimensions = {}
+      p.dimensions[adapterType] = p.id
+    }
+
     let { adapterKey, dimConfig } = getDimensionsConfigAndKey(p.dimensions[adapterType])
     dimConfig.id = p.id
     dimConfig.isChain = false
@@ -45,6 +68,17 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   })
 
   Object.entries(chainCoingeckoIds).forEach(([chainName, obj]) => {
+
+
+    if (!obj.dimensions?.[adapterType]) {
+      let id = `chain#${chainName.toLowerCase()}`
+      const idConfigData = (dimensions_imports as any)[adapterType]?.[id]
+      if (!canDeriveDimensionsConfigFromKey || !idConfigData) return;
+      // console.log(`Auto-linking ${adapterType} adapter for chain ${chainName} using id ${id}`)
+      if (!obj.dimensions) obj.dimensions = {}
+      obj.dimensions[adapterType] = id
+    }
+
     if (!obj.dimensions?.[adapterType]) return;
 
     // let id = obj.chainId ?? obj.cmcId  // NOTE: we are instead using adapterKey as id because it is safer than when chain first has cmcId but we end up adding chainId
@@ -113,10 +147,13 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 function addImportsDataToMapping() {
   const allImportsSquashed: any = {}
   Object.entries(dimensions_imports).forEach(([adapterType, imports]) => {
+
     Object.entries(imports).forEach(([adapterKey, adapterObj]: any) => {
       adapterObj.module = { default: adapterObj.module }
       allImportsSquashed[adapterKey] = adapterObj
     })
+
+    if (!dimensionsConfig[adapterType]) dimensionsConfig[adapterType] = {}
 
     dimensionsConfig[adapterType].imports = imports
   })
@@ -124,10 +161,17 @@ function addImportsDataToMapping() {
 
   Object.keys(dimensionsConfig).forEach((adapterType) => {
     if (adapterType === AdapterType.DERIVATIVES) return; // derivatives use dexs imports
+    if (adapterType === AdapterType.OPEN_INTEREST) return; // OI prioritizes dexs imports (if present) over rest (other than oi itself), so first, we need to build dex imports
+
     dimensionsConfig[adapterType].imports = { ...allImportsSquashed, ...dimensionsConfig[adapterType].imports }
   })
 
+
   dimensionsConfig[AdapterType.DERIVATIVES].imports = dimensionsConfig[AdapterType.DEXS].imports
+
+  // the order matters, wait for other imported to be built before running this
+  dimensionsConfig[AdapterType.OPEN_INTEREST].imports = { ...allImportsSquashed, ...dimensionsConfig[AdapterType.DEXS].imports, ...dimensionsConfig[AdapterType.OPEN_INTEREST].imports }
+
 }
 
 function getDimensionsConfig() {
@@ -149,6 +193,12 @@ function getDimensionsConfig() {
         [AdaptorRecordType.openInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.openInterestAtEnd],
         [AdaptorRecordType.shortOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.shortOpenInterestAtEnd],
         [AdaptorRecordType.longOpenInterestAtEnd]: AdaptorRecordTypeMapReverse[AdaptorRecordType.longOpenInterestAtEnd],
+      },
+    },
+    [AdapterType.NORMALIZED_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyNormalizedVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNormalizedVolume],
+        [AdaptorRecordType.dailyActiveLiquidity]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyActiveLiquidity],
       },
     },
     [AdapterType.FEES]: {
@@ -203,6 +253,23 @@ function getDimensionsConfig() {
         [AdaptorRecordType.totalBridgeVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalBridgeVolume]
       },
     },
+    [AdapterType.ACTIVE_USERS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyActiveUsers]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyActiveUsers],
+        [AdaptorRecordType.dailyTransactionsCount]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyTransactionsCount],
+        [AdaptorRecordType.dailyGasUsed]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyGasUsed]
+      }
+    },
+    [AdapterType.NEW_USERS]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyNewUsers]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNewUsers],
+      }
+    },
+    [AdapterType.NFT_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+      },
+    },
   }
 
 
@@ -214,19 +281,35 @@ function getLogoKey(key: string) {
   else return key.toLowerCase()
 }
 
-/*
+/* 
 
 const statsTable: any = {}
-ADAPTER_TYPES.forEach((adapterType) => {
+const loadPromises = ADAPTER_TYPES.map(async (adapterType) => {
+  const importer = importModule(adapterType)
   const { protocolAdaptors } = loadAdaptorsData(adapterType)
   const totalCount = protocolAdaptors.length
   const deadCount = protocolAdaptors.filter(p => p.isDead).length
   const liveCount = totalCount - deadCount
   const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
+  let modules = [] as any[]
+  for (let i = 0; i < protocolAdaptors.length; i++) {
+    const mod = protocolAdaptors[i].module
+    try {
+      const importedModule = await importer(mod)
+      modules.push(importedModule)
+    } catch (e) {
+      console.log(`Error importing module ${mod} for protocol ${protocolAdaptors[i].name}:`, e)
+    }
+  }
+  const v1 = modules.filter((p: any) => p.version !== 2).length
+  const v2 = modules.filter((p: any) => p.version === 2).length
+  const hourly = modules.filter((p: any) => p.version === 2 && p.pullHourly).length
   // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
-  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime }
+  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime, v1, v2, hourly, }
 })
 
-console.table(statsTable)
+Promise.all(loadPromises).then(() => {
+  console.table(statsTable)
+})
 
-*/
+ */

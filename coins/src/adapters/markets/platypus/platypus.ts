@@ -1,4 +1,7 @@
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import getBlock from "../../utils/block";
 import { Result, MultiCallResults } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";

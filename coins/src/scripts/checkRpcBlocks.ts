@@ -1,6 +1,5 @@
 import { getProvider } from "@defillama/sdk";
 import PromisePool from "@supercharge/promise-pool";
-import setEnvSecrets from "../utils/shared/setEnvSecrets";
 import { adaptersRepoChainsJson as chains } from "../getChains";
 import { sendMessage } from "../../../defi/src/utils/discord";
 
@@ -68,7 +67,6 @@ async function logErrors(results: Results) {
 }
 
 async function main() {
-  // await setEnvSecrets();
   const results: { [chain: string]: Rpc[] } = {};
   await collectHeights(results);
   const errors = await logErrors(results);

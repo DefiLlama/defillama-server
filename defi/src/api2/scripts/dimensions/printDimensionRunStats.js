@@ -1,12 +1,40 @@
 const fs = require('fs');
+const sdk = require('@defillama/sdk')
 const allLogs = fs.readFileSync(__dirname + '/../../../../dimensionsRun.log', 'utf8').split('\n')
 const outputFile = __dirname + '/../../../../dimensionsRunStats.log'
 fs.writeFileSync(outputFile, '') // reset file before appending to it
+
+const finalStatsData = {
+  generationTime: new Date().toISOString(),
+}
 
 printBlockLogStats()
 printIndexerLogs()
 printRPCLogs()
 printAdapterStats()
+
+saveStats().catch(console.error).then(() => {
+  process.exit(0)
+})
+
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+async function saveStats() {
+  fs.writeFileSync(__dirname + '/../../../../dimensionsRunStats.json.log', JSON.stringify(finalStatsData), 'utf8');
+  let cacheKey = `dimensionRunStats-latest-all`
+  if (process.env.DIM_ADAPTER_TYPE)
+    cacheKey = `dimensionRunStats-latest-${process.env.DIM_ADAPTER_TYPE}`
+  else if (process.env.DIM_EXCLUDE_ADAPTER_TYPES)
+    cacheKey = `dimensionRunStats-latest-excluding-rest`
+  finalStatsData.cacheKey = cacheKey
+  await sdk.cache.writeCache(cacheKey, finalStatsData, {
+    skipCompression: true,
+    skipR2CacheWrite: false,
+  })
+  process.exit(0)
+}
 
 function printIndexerLogs() {
   log('[Indexer getLogs stats] ')
@@ -15,6 +43,13 @@ function printIndexerLogs() {
   const iErrorNotCaughtUp = allLogs.filter(i => i.startsWith('Error in  indexer getLogs Indexer not up to date'))
   const parsedIErrorNotCaughtUp = iErrorNotCaughtUp.map(parseIndexerOldLogs).filter(i => i)
   const parsedIErrorNotCaughtUp2 = iErrorNotCaughtUp.map(parseIndexerOldLogs).filter(i => !['bsc', 'polygon'].includes(i.chain))
+  finalStatsData.jsonLogs = allLogs.filter(i => i.startsWith('[JSON-log]')).map(i => i.replace('[JSON-log] ', '')).map(i => {
+    try {
+      return JSON.parse(i)
+    } catch (e) {
+      return null
+    }
+  }).filter(i => i)
 
   parsedIErrorNotCaughtUp2.sort((a, b) => b.diff - a.diff)
   log(`query count: ${startedLogs.length}`)
@@ -23,6 +58,10 @@ function printIndexerLogs() {
   log(`skipped because not yet indexed [excluding polygon & bsc]: ${parsedIErrorNotCaughtUp2.length}`)
 
   table(parsedIErrorNotCaughtUp2, undefined, 'Skipped Queries');
+  finalStatsData.indexerNotCaughtUpCount = parsedIErrorNotCaughtUp.length
+  finalStatsData.indexerNotCaughtUpCountExcludingPolygonBSC = parsedIErrorNotCaughtUp2.length
+  finalStatsData.queryCount = startedLogs.length
+  finalStatsData.successQueryCount = endLogs.length
 
   const eventHashStats = {}
   const chainStats = {}
@@ -61,6 +100,8 @@ function printIndexerLogs() {
   eStatsArray.sort((a, b) => b.queryCount - a.queryCount)
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
 
+  finalStatsData.indexerEventHashStats = clone(eStatsArray)
+  finalStatsData.indexerChainStats = clone(cStatsArray)
   table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by event hash')
   table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'addressCount', 'timeTaken'], 'Breakdown by chain')
 
@@ -105,6 +146,8 @@ function printRPCLogs() {
   const endLogs = allLogs.filter(i => i.startsWith('getLogs')).map(parseGetLogsLine).filter(i => i)
   log(`query count: ${startedLogs.length}`)
   log(`success query count: ${endLogs.length}`)
+  finalStatsData.rpcQueryCount = startedLogs.length
+  finalStatsData.rpcSuccessQueryCount = endLogs.length
 
   const eventHashStats = {}
   const chainStats = {}
@@ -140,8 +183,11 @@ function printRPCLogs() {
   eStatsArray.sort((a, b) => b.queryCount - a.queryCount)
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
 
-  table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
+  finalStatsData.rpcEventHashStats = eStatsArray.filter(filterOutSmallStats)
+  finalStatsData.rpcChainStats = cStatsArray.filter(filterOutSmallStats)
+  finalStatsData.rpcChainStatsBreakdownByEventHash = {}
   table(cStatsArray.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], 'Breakdown by chain')
+  table(eStatsArray.filter(filterOutSmallStats), ['hash', 'chains', 'queryCount', 'timeTaken'], 'Breakdown by event hash')
 
 
   eStatsArray.filter(i => i.queryCount > 70 & i.timeTaken > 300).forEach(eStats => {
@@ -149,6 +195,7 @@ function printRPCLogs() {
     const chainStats = Object.values(eStats.chainStats)
     chainStats.sort((a, b) => b.queryCount - a.queryCount)
     chainStats.forEach(i => i.timeTaken = Math.floor(i.timeTaken))
+    finalStatsData.rpcChainStatsBreakdownByEventHash[eStats.hash] = chainStats.filter(filterOutSmallStats)
     table(chainStats.filter(filterOutSmallStats), ['chain', 'queryCount', 'timeTaken'], title)
   })
 
@@ -171,6 +218,7 @@ function printBlockLogStats() {
   const logs = allLogs.filter(i => i.startsWith('chain: ') && i.includes('#calls')).map(parseBlockStatsString).filter(i => i)
 
   log(`block query count: ${logs.length}`)
+  finalStatsData.blockQueryCount = logs.length
 
   const chainStats = {}
 
@@ -195,6 +243,7 @@ function printBlockLogStats() {
     i.timeTaken = Math.floor(i.timeTaken)
   })
   cStatsArray.sort((a, b) => b.queryCount - a.queryCount)
+  finalStatsData.blockLogChainStats = clone(cStatsArray)
 
   table(cStatsArray, ['chain', 'queryCount', 'callCount', 'timeTaken', 'avgTimeTakenInSec', 'avgImpresicionInMins'], 'Breakdown by chain')
 
@@ -215,46 +264,135 @@ function printBlockLogStats() {
   }
 }
 
+
+
+function humanizeDuration(ms) {
+  const totalSeconds = Math.floor(ms / 1000)
+  if (totalSeconds < 1) return '<1s'
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+  const parts = []
+  if (hours) parts.push(`${hours}h`)
+  if (minutes) parts.push(`${minutes}m`)
+  if (seconds) parts.push(`${seconds}s`)
+  return parts.join(' ')
+}
+
+
+
 function printAdapterStats() {
   log('[Adapter type stats] ')
   const startLogs = allLogs.filter(i => i.startsWith('[')).map(parseStartLog).filter(i => i)
   const endLogs = allLogs.filter(i => i.startsWith('[')).map(parseEndLog).filter(i => i)
+  const skippedLogs = allLogs.filter(i => i.startsWith('Skipping')).map(parseSkippedLogs).filter(i => i)
 
   const stats = {}
+  const skippedSet = new Set()
+  function initStat(adapterType) {
+    return { adapterType, started: 0, endCount: 0, notFinished: new Set(), skipped: 0, dead: 0, haveData: 0, skippedSet: new Set(), }
+  }
 
   startLogs.forEach(({ adapterType, name, }) => {
     if (!stats[adapterType])
-      stats[adapterType] = { adapterType, startCount: 0, endCount: 0, notFinished: new Set(), }
+      stats[adapterType] = initStat(adapterType)
     const i = stats[adapterType]
-    i.startCount += 1
+    i.started += 1
     i.notFinished.add(name)
+  })
+
+  skippedLogs.forEach(({ adapterType, name, isDead, haveData }) => {
+    if (!stats[adapterType])
+      stats[adapterType] = initStat(adapterType)
+    const key = `${adapterType}-${name}`
+    skippedSet.add(key)
+    const i = stats[adapterType]
+    i.notFinished.delete(name)
+    i.skipped += 1
+    i.skippedSet.add(name)
+    if (isDead) {
+      i.dead += 1
+    }
+    if (haveData) {
+      i.haveData += 1
+    }
   })
 
   endLogs.forEach(({ adapterType, name, }) => {
     if (!stats[adapterType])
-      stats[adapterType] = { adapterType, startCount: 0, endCount: 0, notFinished: new Set(), }
+      stats[adapterType] = initStat(adapterType)
     const i = stats[adapterType]
     i.endCount += 1
     i.notFinished.delete(name)
   })
 
   const statsArray = Object.values(stats)
-  statsArray.sort((a, b) => b.startCount - a.startCount)
+  statsArray.sort((a, b) => b.started - a.started)
   statsArray.forEach(i => {
-    i.notFinished = Array.from(i.notFinished)
-    i.notFinishedCount = i.notFinished.length
+    i.notFinished = Array.from(i.notFinished).join(',').slice(0, 1000)
+    i.running = i.notFinished.length
   })
 
 
 
-  table(statsArray, ['adapterType', 'startCount', 'notFinishedCount', 'notFinished'], 'Breakdown by adapter type')
+  finalStatsData.adapterStats = clone(statsArray)
+  table(statsArray, ['adapterType', 'started', 'running', 'skipped', 'dead', 'haveData', 'notFinished',], 'Breakdown by adapter type')
+
+
+  const longRunners = []
+  const chainStats = []
+  const longTime = 10 * 60 * 1000
+  function initChainStats(chain) {
+    return {
+      chain,
+      protocols: 0,
+      timeTaken: 0,
+      avgTimeTaken: 0,
+    }
+  }
+
+  endLogs.forEach((log) => {
+    const key = `${log.adapterType}-${log.name}`
+    if (skippedSet.has(key)) return;
+    log.key = key
+    log.timeHN = humanizeDuration(log.timeTakenMS)
+    if (log.timeTakenMS >= longTime) longRunners.push(log)
+
+    log.chains.forEach((chain) => {
+      if (!chainStats[chain]) chainStats[chain] = initChainStats(chain)
+      const cStats = chainStats[chain]
+      cStats.protocols += 1
+      cStats.timeTaken += +log.timeTakenMS
+      cStats.avgTimeTaken = cStats.timeTaken / cStats.protocols
+    })
+  })
+
+  longRunners.sort((a, b) => b.timeTakenMS - a.timeTakenMS)
+  finalStatsData.longRunners = clone(longRunners)
+  table(longRunners.slice(0, 50), ['adapterType', 'name', 'timeHN', 'chains'], 'Longest 50 adapter runs')
+
+  const chainStatsArray = Object.values(chainStats)
+  chainStatsArray.forEach(i => {
+    i.timeTaken = Math.floor(i.timeTaken)
+    i.timeTakenHN = humanizeDuration(i.timeTaken)
+    i.avgTimeTaken = Math.floor(i.avgTimeTaken)
+    i.avgTimeTakenHN = humanizeDuration(i.avgTimeTaken)
+  })
+  chainStatsArray.sort((a, b) => b.avgTimeTaken - a.avgTimeTaken)
+  finalStatsData.chainStats = clone(chainStatsArray)
+  table(chainStatsArray.slice(0, 31), ['chain', 'protocols', 'avgTimeTakenHN', 'timeTakenHN'], 'Breakdown by chain')
 
   function parseEndLog(statsString) {
-    const regex = /\[(.+)\] - (.+) done!$/;
+    if (!statsString.includes('done!')) return null
+    if (!statsString.includes('timeTakenMs')) return null
+    const splits = statsString.split(' | ')
+    const timeTakenMS = +splits.pop().split(': ')[1]
+    const chains = splits.pop().split(': ')[1].trim().split(', ')
+    const regex = /\[(.+)\] - (.+) done! \| /;
     const match = statsString.match(regex);
     if (match) {
       const [, adapterType, name] = match;
-      return { adapterType, name, };
+      return { adapterType, name, timeTakenMS, chains };
     }
     return null;
   }
@@ -267,6 +405,13 @@ function printAdapterStats() {
       return { adapterType, name, };
     }
     return null;
+  }
+  function parseSkippedLogs(statsString) {
+    if (!statsString.includes('Skipping')) return null
+    const isDead = statsString.includes('deadFrom')
+    const haveData = statsString.includes('already have today data')
+    const [adapterType, name] = statsString.replace('Skipping ', '').split('-').map(i => i.trim());
+    return { adapterType, name, isDead, haveData };
   }
 }
 

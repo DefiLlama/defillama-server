@@ -7,6 +7,7 @@ export const config = {
     pools: [
       { version: "v2", pool: "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9" },
       { version: "v3", pool: "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2" },
+      { version: "v3", pool: "0xC13e21B648A5Ee794902342038FF3aDAB66BE987" },  // spark lend
     ],
   },
   polygon: {
@@ -69,7 +70,16 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     projectName: "aave-debt",
   });
 
-  return writes.filter((w: Write) => w.symbol?.toLowerCase().includes("debt"));
+  // previously we have had underlying assets returned so they must be filtered out 
+  // if we filter directly without collecting pksToInclude, historical writes which do not have symbol would be ignored
+  const pksToInclude: Set<string> = new Set();
+  writes.forEach((w: Write) => {
+    if (w.symbol?.toLowerCase().includes("debt")) {
+      pksToInclude.add(w.PK);
+    }
+  });
+
+  return writes.filter((w: Write) => pksToInclude.has(w.PK));
 }
 
 const abi: any = {

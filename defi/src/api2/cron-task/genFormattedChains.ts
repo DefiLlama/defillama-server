@@ -65,8 +65,12 @@ export async function genFormattedChains() {
   for (const chain of res.chains) {
     allChainData[chain] = { tvl: [] }
     try {
-      const data = await readRouteData('/lite/charts/' + chain)
-      if (!data) console.warn('No data for chain', chain)
+      const data = await readRouteData('/lite/charts/' + chain, {
+        skipErrorLog: true,
+      })
+      if (!data) {
+        // console.warn('No data for chain', chain)
+      }
       else allChainData[chain] = data
     } catch (e) {
       console.warn('Error fetching chain data for', chain)

@@ -37,7 +37,7 @@ export async function sanctum(timestamp: number) {
     if (!symbol || !decimals) return;
 
     pricesObject[a] = {
-      underlying: "0x60e14dd50ef2ff19cd1c71b76f1e17054a32f030",
+      underlying: "So11111111111111111111111111111111111111112",
       symbol,
       decimals,
       price: prices.solValues[a] / 10 ** decimals,
@@ -46,7 +46,6 @@ export async function sanctum(timestamp: number) {
 
   const writes: Write[] = [];
   return await getWrites({
-    underlyingChain: "era",
     chain: "solana",
     timestamp,
     pricesObject,

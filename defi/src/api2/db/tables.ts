@@ -29,7 +29,6 @@ const defaultTvlMetricsDataColumns = {
   },
 }
 
-
 class DAILY_TVL extends Model { }
 class DAILY_TOKENS_TVL extends Model { }
 class DAILY_USD_TOKENS_TVL extends Model { }
@@ -40,7 +39,7 @@ class HOURLY_USD_TOKENS_TVL extends Model { }
 class HOURLY_RAW_TOKENS_TVL extends Model { }
 // class JSON_CACHE extends Model { }
 class DIMENSIONS_DATA extends Model { }
-
+class DIMENSIONS_HOURLY_DATA extends Model { }
 
 class TvlMetricsErrors extends Model { }
 class TvlMetricsErrors2 extends Model { }
@@ -59,6 +58,7 @@ export const Tables = {
   HOURLY_RAW_TOKENS_TVL,
   // JSON_CACHE,
   DIMENSIONS_DATA,
+  DIMENSIONS_HOURLY_DATA,
   TvlMetricsErrors,
   TvlMetricsErrors2,
   TvlMetricsCompleted,
@@ -115,6 +115,21 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       allowNull: true, // Assuming 'breakdownByLabelByChain' can be null
       defaultValue: null, // Ensure it defaults to null if not provided
     },
+    tb: { // Token breakdown
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tbl: { // Token breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tblc: { // Token breakdown by label and chain
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
     timeS: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -139,6 +154,64 @@ export function initializeTables(sequelize: Sequelize, mSequalize?: Sequelize) {
       { name: 'dimensions_data_updatedat_index', fields: ['updatedat'], },
       
     ]
+  })
+
+  DIMENSIONS_HOURLY_DATA.init({
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    timestamp: {
+      type: DataTypes.INTEGER,
+    },
+    data: {
+      type: DataTypes.JSON,
+    },
+    bl: { // Breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    blc: { // Breakdown by label by chain
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tb: { // Token breakdown (usdTvl + usdTokenBalances + rawTokenBalances)
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tbl: { // Token breakdown by label
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    tblc: { // Token breakdown by label and chain
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: null,
+    },
+    timeS: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    type: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+  }, {
+    sequelize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+    tableName: 'dimensions_hourly_data',
+    indexes: [
+      { name: 'dimensions_hourly_data_id_index', fields: ['id'] },
+      { name: 'dimensions_hourly_data_type_index', fields: ['type'] },
+      { name: 'dimensions_hourly_data_timestamp_index', fields: ['timestamp'] },
+      { name: 'dimensions_hourly_data_updatedat_index',fields: ['updatedat'] },
+    ],
   })
 
   /* JSON_CACHE.init({

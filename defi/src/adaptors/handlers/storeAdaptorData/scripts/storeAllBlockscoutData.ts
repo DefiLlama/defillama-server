@@ -1,11 +1,11 @@
 import loadAdaptorsData from "../../../data"
-import { chainConfigMap, gasData } from '@defillama/dimension-adapters/helpers/blockscoutFees'
+import { chainConfigMap, gasData } from '../../../../../dimension-adapters/helpers/blockscoutFees'
 
 import { PromisePool } from '@supercharge/promise-pool';
-import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, ProtocolType } from "../../../data/types"
 import { getChainDisplayName } from "../../../../utils/normalizeChain";
-import { httpGet } from "@defillama/dimension-adapters/utils/fetchURL";
-import { handler2, IStoreAdaptorDataHandlerEvent } from "..";
+import { httpGet } from "../../../../../dimension-adapters/utils/fetchURL";
+import { handler2, DimensionRunOptions } from "..";
 
 process.env.BLOCKSCOUT_BULK_MODE = "true"
 
@@ -46,7 +46,7 @@ async function refillAllProtocols() {
         console.log('# records ', chart.length, chainKey)
 
         for (const { date } of chart) {
-          const eventObj: IStoreAdaptorDataHandlerEvent = {
+          const eventObj: DimensionRunOptions = {
             timestamp: Math.floor(+new Date(date) / 1e3),
             adapterType: AdapterType.FEES,
             isDryRun: false,

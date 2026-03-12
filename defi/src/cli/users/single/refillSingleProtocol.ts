@@ -1,4 +1,4 @@
-import { addressList } from "../../../../dimension-adapters/users/list";
+import { addressList } from "../../../dimension_migration/users/list";
 import { getAccountsDBConnection } from "../../../utils/shared/getDBConnection";
 import { storeChainGas } from "../queries/gas";
 import { storeAllNewUsers } from "../queries/newUsers";

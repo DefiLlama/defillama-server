@@ -3,16 +3,17 @@ import {
   getSymbolAndDecimals,
 } from "../../scripts/coingeckoUtils";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
-import setEnvSecrets from "../../utils/shared/setEnvSecrets";
 import { fetch } from "../utils";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import { chainIdMap } from "./celer";
 
 export const layerZeroChainMapping: { [key: string]: string } = {
   "BNB Chain": "bsc",
   "Celo Mainnet": "celo",
   "Klaytn Mainnet Cypress": "klaytn",
-  "zkSync Era Mainnet": "zksync_era",
+  "zkSync Era Mainnet": "era",
+  "zksync_era": "era",
   "Core Blockchain Mainnet": "core",
   "Aurora Mainnet": "aurora",
   DFK: "dfk_chain",
@@ -39,7 +40,32 @@ export const layerZeroChainMapping: { [key: string]: string } = {
   "Arbitrum Nova": "arbitrum_nova",
   Lightlink: "lightlink_phoenix",
   "Plume Mainnet": "plume_mainnet",
+  "worldchain": "wc",
+  "ape": "apechain",
+  "bera": "berachain",
+  "etherlink": "etlk",
+  "swell": "swellchain",
+  "rootstock": "rsk",
+  "cyber": "cyeth",
+  'x_layer': 'xlayer',
+  'story': 'sty',
+  'rari_chain': 'rari',
+  'superposition': 'spn',
+  'cronosevm': 'cronos',
+  'gravity_bridge': 'gravitybridge',
 };
+
+const validChains = [
+  'solana', 'aptos',
+]
+const ignoredChainsSet = new Set([
+  'iota evm', 'islander', 'gravitybridge', 'plumephoenix'
+])
+
+Object.keys(layerZeroChainMapping).forEach((key) => {
+  const value = layerZeroChainMapping[key];
+  layerZeroChainMapping[key.toLowerCase()] = value;
+});
 
 const nonEvmMapping: { [key: string]: string } = {
   solana: "solana",
@@ -112,7 +138,6 @@ export default async function main() {
 }
 
 async function getMoreLayerZeroMappings(mappings: any[]) {
-  await setEnvSecrets();
   const solanaTokensPromise = cacheSolanaTokens();
 
   const res = await fetch(
@@ -123,8 +148,11 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
   const additionalMappings: { [chain: string]: string[] } = {};
   const tokenQueries: { [chain: string]: string[] } = {};
   res.map(({ from, to }: any) => {
-    const [chain, address] = to.split(":");
-    const [sourceChain, sourceAddress] = from.split(":");
+    let [chain, address] = to.split(":");
+    let [sourceChain, sourceAddress] = from.split(":");
+    if (layerZeroChainMapping[chain]) chain = layerZeroChainMapping[chain];
+    if (layerZeroChainMapping[sourceChain])
+      sourceChain = layerZeroChainMapping[sourceChain];
 
     if (!(sourceChain in tokenQueries)) tokenQueries[sourceChain] = [];
     tokenQueries[sourceChain].push(sourceAddress.toLowerCase());
@@ -152,6 +180,16 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
   });
 
   const oftTokens: { [chain: string]: string } = {};
+  const validChainsSet = new Set(Object.values(chainIdMap).concat(validChains));
+
+  Object.keys(tokenQueries).forEach((chain) => {
+    if (ignoredChainsSet.has(chain)) {
+      console.log("Ignoring chain in tokenQueries:", chain);
+      delete tokenQueries[chain];
+    }
+  });
+
+  console.log(Object.keys(tokenQueries).filter(chain => !validChainsSet.has(chain)), 'tokenQueries');
   await Promise.all(
     Object.keys(tokenQueries).map((chain: string) =>
       multiCall({
@@ -179,6 +217,16 @@ async function getMoreLayerZeroMappings(mappings: any[]) {
 
   await solanaTokensPromise;
   const decimals: { [coin: string]: string } = {};
+  Object.keys(decimalQueries).forEach((chain) => {
+    if (ignoredChainsSet.has(chain)) {
+      console.log("Ignoring chain in decimalQueries:", chain);
+      delete decimalQueries[chain];
+    }
+  });
+
+  console.log(Object.keys(decimalQueries).filter(chain => !validChainsSet.has(chain)), 'tokenQueries');
+
+  
   await Promise.all(
     Object.keys(decimalQueries).map((chain: string) =>
       multiCall({

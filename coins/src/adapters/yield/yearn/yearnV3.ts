@@ -1,4 +1,7 @@
-import { call, multiCall } from "@defillama/sdk/build/abi/index";
+
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import abi from "./abiVaultV3.json";
 import abiRegistry from "./abiRegistry.json";
 import {
@@ -22,29 +25,16 @@ const manualVaults: { [chain: string]: string[] } = {
   katana: [],
   polygon: [],
 };
-const registries: {
-  [chain: string]: { target: string; fromBlock: number };
-} = {
-  ethereum: {
-    target: "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
-    fromBlock: 21176924,
-  },
-  arbitrum: {
-    target: "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
-    fromBlock: 273947409,
-  },
-  base: {
-    target: "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
-    fromBlock: 22344791,
-  },
-  katana: {
-    target: "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
-    fromBlock: 2852031,
-  },
-  polygon: {
-    target: "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
-    fromBlock: 64224620,
-  },
+const registries: string[] = [
+  '0xff31A1B020c868F6eA3f61Eb953344920EeCA3af',
+  '0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038'
+];
+const fromBlocks: { [chain: string]: number } = {
+  ethereum: 21176924,
+  arbitrum: 273947409,
+  base: 22344791,
+  katana: 2852031,
+  polygon: 64224620,
 };
 interface TokenKeys {
   symbol: string;
@@ -136,18 +126,17 @@ export async function fetchAllEndorsedVaults(
   chain: string,
   block: number | undefined,
 ): Promise<VaultKeys[]> {
-  const { target } = registries[chain];
-
   // Call getAllEndorsedVaults to get all vault addresses
-  const allEndorsedVaults = await call({
+  const allEndorsedVaults = await multiCall({
     abi: abiRegistry.getAllEndorsedVaults,
-    target,
+    calls: registries.map((target: string) => ({ target })),
     chain: chain as any,
     block,
+    permitFailure: true 
   });
 
   // Flatten the 2D array to get all vault addresses
-  const vaultAddresses: string[] = allEndorsedVaults.output.flat();
+  const vaultAddresses: string[] = allEndorsedVaults.output.map((r: any) => r.output).flat(4).filter((v: string) => v != null);
 
   // Add manual vaults if any
   vaultAddresses.push(...manualVaults[chain as keyof typeof manualVaults]);

@@ -4,13 +4,12 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { getCachedLiqsR2, getExternalLiqsR2, storeCachedLiqsR2, storeLiqsR2 } from "./utils/r2";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 export const standaloneProtocols: string[] = ["venus", "maker"];
 export const excludedProtocols: string[] = ["angle", "euler"];
 
+// WARNING: This is deprecated, the feature is scraped.
 async function handler() {
-  await setEnvSecrets()
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
     Object.entries(adaptersModules)

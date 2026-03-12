@@ -1,6 +1,6 @@
 try {
   require("dotenv").config();
-} catch (e) {}
+} catch (e) {} 
 module.exports = {
   ETHEREUM_RPC: process.env.ETHEREUM_RPC,
   BSC_RPC: process.env.BSC_RPC,

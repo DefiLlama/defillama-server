@@ -1,6 +1,6 @@
 // import { Op, col, fn } from "sequelize";
 import { getAllDimensionsRecordsOnDate, init } from "../../../adaptors/db-utils/db2";
-import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType, } from "../../../adaptors/data/types"
 import loadAdaptorsData from "../../../adaptors/data"
 import { ADAPTER_TYPES } from "../../../adaptors/data/types";
 

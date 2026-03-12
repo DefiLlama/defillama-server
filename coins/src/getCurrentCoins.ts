@@ -21,6 +21,9 @@ const handler = async (event: any): Promise<IResponse> => {
   const response = {} as CoinsResponse;
   const coinsWithRedirect = {} as { [redirect: string]: any[] };
   coins.forEach((coin) => {
+    if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
+      coin.decimals = Number(coin.decimals);
+
     if (coin.redirect === undefined) {
       if (isFresh(coin.timestamp, searchWidth)) {
         PKTransforms[coin.PK].forEach((coinName) => {
@@ -47,6 +50,10 @@ const handler = async (event: any): Promise<IResponse> => {
       coinsWithRedirect[redirectedCoin.PK].forEach((ogCoin) => {
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
           PKTransforms[ogCoin.PK].forEach((coin) => {
+
+            if (typeof ogCoin.decimals === 'string' && !isNaN(Number(ogCoin.decimals)))
+              ogCoin.decimals = Number(ogCoin.decimals);
+
             response[coin] = {
               decimals: ogCoin.decimals,
               symbol: ogCoin.symbol.replace(/\0/g, ""),

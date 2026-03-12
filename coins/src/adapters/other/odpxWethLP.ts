@@ -2,7 +2,8 @@ import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
-import { call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api.abi;
 // odpxWETH-USDC
 const chain = "arbitrum";
 const orangeVault = "0xe1B68841E764Cc31be1Eb1e59d156a4ED1217c2C";

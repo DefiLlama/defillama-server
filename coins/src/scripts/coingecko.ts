@@ -4,12 +4,13 @@ import {
   Coin,
   CoinMetadata,
   iterateOverPlatforms,
+  lowercase,
   staleMargin,
 } from "../utils/coingeckoPlatforms";
 import sleep from "../utils/shared/sleep";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
-import { batchReadPostgres, getRedisConnection } from "../../coins2";
+import { getRedisConnection } from "../../coins2";
 import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
 import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
@@ -20,7 +21,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
-import axios from "axios";
+import * as sdk from "@defillama/sdk";
 
 // Kill the script after 5 minutes to prevent infinite execution
 const TIMEOUT_MS = 10 * 60 * 1000; // 5 minutes in milliseconds
@@ -60,7 +61,7 @@ async function storeCoinData(coinData: Write[]) {
       adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
-  await Promise.all([
+  const [_, ddbWriteResult] = await Promise.all([
     produceKafkaTopics(
       items.map((i) => {
         const { volume, ...rest } = i;
@@ -69,6 +70,8 @@ async function storeCoinData(coinData: Write[]) {
     ),
     batchWrite(items, false),
   ]);
+
+  sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko current price entries`);
 }
 
 async function storeHistoricalCoinData(coinData: Write[]) {
@@ -79,7 +82,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     confidence: c.confidence,
     volume: c.volume,
   }));
-  await Promise.all([
+  const [_, ddbWriteResult] = await Promise.all([
     produceKafkaTopics(
       items.map((i) => ({
         adapter: "coingecko",
@@ -90,6 +93,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     ),
     batchWrite(items, false),
   ]);
+  sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko historical price entries`);
 }
 
 const aggregatedPlatforms: string[] = [];
@@ -185,6 +189,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     confidentCoins.push(w);
   });
 
+  sdk.log(`Of ${writes.length} coingecko current prices, ${confidentCoins.length} are confident updates`);
+
   await storeCoinData(confidentCoins);
   await storeHistoricalCoinData(confidentCoins);
   const filteredCoins = coins.filter(
@@ -206,7 +212,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           i = chain.toLowerCase();
         }
 
-        return `${i}:${address}`;
+        return `${i}:${lowercase(address, i)}`;
       }).filter(i => i),
     )
     .flat() as string[]
@@ -265,7 +271,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             const chain = PK.substring(PK.indexOf("#") + 1, PK.indexOf(":"));
             if (ignoredChainSet.has(chain)) return;
             const normalizedPK = !chainsThatShouldNotBeLowerCased.includes(chain) ? PK.toLowerCase() : PK;
-            const platformData = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
+            const platformData: any = coinPlatformData[normalizedPK] ?? coinPlatformData[PK] ?? {}
             if (platformData && platformData?.confidence > 0.99) return;
 
             const created = getCurrentUnixTimestamp();
@@ -280,13 +286,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
               decimals = symbolAndDecimals.decimals;
               symbol = symbolAndDecimals.symbol;
             }
-            if (decimals == undefined) return;
+            if (isNaN(decimals) || decimals == '' || decimals == null) return;
 
             const item = {
               PK: normalizedPK,
               SK: 0,
               created,
-              decimals,
+              decimals: Number(decimals),
               symbol,
               redirect: cgPK(coin.id),
               confidence: 0.99,
@@ -336,25 +342,7 @@ async function getAndStoreHourly(
   }
   const PK = cgPK(coin.id);
 
-  const prevWritenItems = await batchReadPostgres(
-    `coingecko:${coin.id}`,
-    toUNIXTimestamp(coinData.prices[0][0]),
-    toUNIXTimestamp(coinData.prices[coinData.prices.length - 1][0]),
-  );
-  if (
-    prevWritenItems.length > 0 &&
-    prevWritenItems[prevWritenItems.length - 1].confidence > 29700
-  )
-    return;
-  const writtenTimestamps = Object.values(prevWritenItems).map(
-    (c: any) => c.timestamp,
-  );
-
   const items = coinData.prices
-    .filter((price) => {
-      const ts = toUNIXTimestamp(price[0]);
-      return !writtenTimestamps[ts];
-    })
     .map((price) => ({
       SK: toUNIXTimestamp(price[0]),
       PK,
@@ -362,7 +350,7 @@ async function getAndStoreHourly(
       confidence: 0.99,
     }));
 
-  await Promise.all([
+  const [_ , ddbWriteResult] = await Promise.all([
     produceKafkaTopics(
       items.map(
         (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
@@ -371,6 +359,7 @@ async function getAndStoreHourly(
     ),
     batchWrite(items, false),
   ]);
+  sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko historical price entries`);
 }
 
 async function fetchCoingeckoData(
@@ -427,31 +416,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     await cacheSolanaTokens();
     console.log("solana tokens received")
     const step = 500;
-    
-          // Retry logic for the coins list request
-      let coins: Coin[] = [];
-      let retryCount = 0;
-      const maxRetries = 3;
-      
-      while (retryCount < maxRetries) {
-        try {
-          console.log(`Attempting to fetch coins list (attempt ${retryCount + 1}/${maxRetries})`);
-          const response = await fetch(
-            `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true&x_cg_pro_api_key=${process.env.CG_KEY}`
-          ).then(r=>r.json());
-          coins = response as Coin[];
-          console.log(`Successfully fetched ${coins.length} coins`);
-          break;
-        } catch (e: any) {
-          retryCount++;
-          console.error(`/coins/list error details (attempt ${retryCount}):`, e.message);
-          
-          if (retryCount >= maxRetries) {
-            throw new Error(`Failed to fetch coins list after ${maxRetries} attempts: ${e.message}`);
-          }
-        }
-      }
 
+    setTimer();
+    let coins: any = await retryCoingeckoRequest('coins/list?include_platform=true', 5)
     // coins = coins.filter((coin) => coin.id == 'euro-coin');
     // if (!coins.length) process.exit(0)
 

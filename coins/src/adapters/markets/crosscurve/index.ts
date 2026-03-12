@@ -2,7 +2,8 @@ import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { CoinData, Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import providers from "@defillama/sdk/build/providers.json";
-import { call } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api2.abi
 import {
   addToDBWritesList,
   getTokenAndRedirectData,
@@ -84,6 +85,11 @@ export async function crosscurve(timestamp: number = 0) {
   > = {};
 
   const allTokens = Object.values(config).flatMap((chain) => chain.tokens);
+  const chainTokens: Record<number, Record<string, CrossCurveConfigToken>> = {};
+  allTokens.forEach((token) => {
+    chainTokens[token.chainId] ??= {};
+    chainTokens[token.chainId][token.address.toLowerCase()] = token;
+  });
 
   await Promise.all(
     Object.values(config).map(async (chainConfig) => {
@@ -269,26 +275,34 @@ export async function crosscurve(timestamp: number = 0) {
         let tvl = 0;
 
         for (let j = 0; j < coins.length; j++) {
-          const coin = coins[j];
+          const coin = coins[j].toLowerCase();
           const balance = balances[i][j];
+          const token = chainTokens[chainId][coin];
+
+          if (!token) {
+            console.warn(
+              `Token not found for coin: ${coin} on chain ${chainId}`
+            );
+            return;
+          }
 
           let price = prices.find(
-            (data) => data.address.toLowerCase() === coin.toLowerCase()
+            (data) => data.address.toLowerCase() === coin
           )?.price;
 
           if (!price) {
-            price = synthPrices[chainId]?.[coin.toLowerCase()];
+            price = synthPrices[chainId]?.[coin];
           }
 
           if (!price) {
-            price = lpPrices[chainId]?.[coin.toLowerCase()];
+            price = lpPrices[chainId]?.[coin];
           }
 
           if (!price) {
             return;
           }
 
-          tvl += (balance / 10 ** lp.decimals) * price;
+          tvl += (balance / 10 ** token.decimals) * price;
         }
 
         const price = tvl / (supplies[i] / 10 ** lp.decimals);

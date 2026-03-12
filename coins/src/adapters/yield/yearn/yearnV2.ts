@@ -1,4 +1,7 @@
-import { call, multiCall } from "@defillama/sdk/build/abi/index";
+
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import abi from "./abi.json";
 import {
   addToDBWritesList,

@@ -14,7 +14,7 @@ const chain = 'cardano'
 const api: AxiosInstance = axios.create({
   baseURL: "https://cardano-mainnet.blockfrost.io/api/v0",
   headers: {
-    project_id: 'mai' + 'nnetcxT8VaeCgVMzMTSe' + 'zZijWlVkyh6XytpS',
+    project_id: process.env.BLOCKFROST_PROJECT_ID ?? 'mai' + 'nnetBfkdsCOvb4BS' + 'VA6pb1D43ptQ7t3cLt06',
     "Content-Type": "application/json",
   },
   timeout: 300000,
@@ -47,7 +47,7 @@ async function getMetadata(tokens: string[]) {
     }
 
   }
-  if (cacheUpdated) 
+  if (cacheUpdated)
     await setCache('wingriders-metadata', 'cardano', cache)
   return cache
 }

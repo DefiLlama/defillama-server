@@ -1,4 +1,4 @@
-import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
+import { storeTvl, StoreTvlTempCacheInfo } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
 import protocols from "./protocols/data";
 import entities from "./protocols/entities";
@@ -8,11 +8,13 @@ import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, } from "./utils/getLastRecord";
-import { closeConnection, getLatestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } from "./api2/db";
+import { closeConnection, getLatestProtocolItems, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { importAdapterDynamic } from "./utils/imports/importAdapter";
-import { elastic } from '@defillama/sdk';
+import { elastic, humanizeNumber } from '@defillama/sdk';
 import { getUnixTimeNow } from "./api2/utils/time";
+import { sendMessage } from "./utils/discord";
+import { toUNIXTimestamp } from "./utils/date";
 const path = require('path');
 const v8 = require('v8');
 
@@ -21,7 +23,9 @@ const maxRetries = 2;
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 const projectPath = path.resolve(__dirname, '../');
 const runOnlyAdapters = process.env.RUN_ONLY_ADAPTERS ? process.env.RUN_ONLY_ADAPTERS.split(',').map((a: string) => a.trim()) : []
+const forcedRun = process.env.FORCED_RUN === 'true' || false
 const allProtocolData: any = {}
+const tempCacheInfo: Array<StoreTvlTempCacheInfo> = [];
 
 async function main() {
   console.log('Heap Size Limit (MB):', v8.getHeapStatistics().heap_size_limit / 1024 / 1024);
@@ -100,8 +104,7 @@ async function main() {
 
       // if (protocolName) runningSet.add(protocolName)
 
-
-      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', })
+      await storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries, undefined, undefined, undefined, undefined, { runType: 'cron-task', tempCacheInfo, symbolToAddresses: {}, tvlErrorsObject: {} })
       staleCoinWrites.push(storeStaleCoins(staleCoins))
     } catch (e: any) {
 
@@ -118,7 +121,7 @@ async function main() {
       console.log('FAILED: ', protocol?.name, errorString)
 
       await elastic.addErrorLog({
-        error: e as any,
+        errorStringFull: JSON.stringify(e as any),
         errorString: typeof errorString === 'string' ? errorString : '',
         errorStack,
         metadata,
@@ -154,6 +157,7 @@ async function main() {
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
   await Promise.all(staleCoinWrites)
+  await notifyTempCacheInfo();
   await preExit()
 }
 
@@ -162,6 +166,8 @@ async function preExit() {
     await saveSdkInternalCache() // save sdk cache to r2
     // await sendMessage(`storing ${Object.keys(staleCoins).length} coins`, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
     // await storeStaleCoins(staleCoins)
+    
+    // await notifyTempCacheInfo();
   } catch (e) {
     console.error(e)
   }
@@ -221,6 +227,9 @@ async function saveSdkInternalCache() {
 
 
 function filterProtocol(adapterModule: any, protocol: any) {
+
+  if (forcedRun) return true;
+
   // skip running protocols that are dead/rugged or dont have tvl
   if (protocol.module === 'dummy.js' || protocol.rugged || adapterModule.deadFrom)
     return false;
@@ -261,11 +270,13 @@ process.on('uncaughtException', (err) => {
   console.log('UNHANDLED EXCEPTION! Shutting down...');
 })
 
+const tvlTimeoutMinutes = +(process.env.TVL_TIMEOUT_MINUTES ?? 45);
+
 setTimeout(async () => {
   console.log('Timeout! Shutting down...');
   preExit()
   process.exit(1);
-}, 1000 * 60 * 45); // 45 minutes
+}, 1000 * 60 * tvlTimeoutMinutes); // 45 minutes
 
 function getErrorString(e: any) {
   try {
@@ -290,3 +301,49 @@ function getErrorString(e: any) {
     return e
   }
 }
+
+async function notifyTempCacheInfo() {
+  function humanizeTimeDifference(timeDelta: number) {
+    const hours = (timeDelta) / 3600
+    if (hours <= 24) {
+      return `${Math.round(hours)} hours`
+    } else {
+      return `${Math.round(hours / 24)} days`
+    }
+  }
+  
+  // notify cron-task result cache info if any
+  function printItems(items: Array<StoreTvlTempCacheInfo>, { title, now = toUNIXTimestamp(Date.now()), maxLengthProtocolName = 31 }: { title?: string, now?: number, maxLengthProtocolName?: number } = {}) {
+    const sorted = items.sort((a, b) => a.totalTvl > b.totalTvl ? -1 : 1);
+    const tableData = sorted.map((data) => {
+      const res: any = {}
+      if (data.protocolName.length > maxLengthProtocolName) data.protocolName = data.protocolName.slice(0, maxLengthProtocolName - 3) + '...'
+      res.Name = data.protocolName
+      // res['Last Update'] = data.lastUpdate ? humanizeTimeDifference(now - data.lastUpdate) : '-'
+      res['Store Key'] = data.storeKey
+      res['Store Key Cache Tvl'] = data.storeKeyTvl ? humanizeNumber(data.storeKeyTvl) : 'No TVL'
+      res['Total Tvl'] = data.totalTvl ? humanizeNumber(data.totalTvl) : 'No TVL'
+      res['Last Cache'] = data.cacheTime ? humanizeTimeDifference(now - data.cacheTime) : '-'
+      res['Invalid Cache In'] = data.invalidCacheTime ? humanizeTimeDifference(data.invalidCacheTime - now) : '-'
+      return res
+    })
+  
+    return sdk.util.tableToString(tableData, { title, columns: ['Name', 'Store Key', 'Store Key Cache Tvl', 'Total Tvl', 'Last Cache', 'Invalid Cache In'] })
+  }
+
+  function buildTempCacheMessage(items: Array<StoreTvlTempCacheInfo>): string {
+    const maxDisplay = 101
+    const responseStrings = [
+      printItems(items.slice(0, maxDisplay)),
+      items.length > maxDisplay ? `... and ${items.length - maxDisplay} more` : "",
+      'WARN on Tvl cron-task: These adapters failed on latest run, we picked up the last result cache for them. They will fail after result cache is invalid, need to fix ASAP.',
+    ]
+  
+    return responseStrings.filter(i => i?.length).join('\n')
+  }
+  
+  if (tempCacheInfo.length > 0) {
+    await sendMessage(buildTempCacheMessage(tempCacheInfo), process.env.OUTDATED_WEBHOOK, true);
+  }
+}
+

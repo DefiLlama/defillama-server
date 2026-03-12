@@ -26,7 +26,7 @@ async function getTokenPrices(timestamp: number) {
     if (+i.pure_tvl_in_usd < 5_000 || +i.vol_in_usd_24h < 1000) return;
     const coinInfo = coinInfos[i.address]
     if (!coinInfo) {
-      console.log('Metadata not found: ', i.address)
+      // console.log('Metadata not found: ', i.address)
       return;
     }
 

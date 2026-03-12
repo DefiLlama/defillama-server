@@ -1,8 +1,8 @@
 require("dotenv").config();
-import { queryFlipside } from "../../../dimension-adapters/helpers/flipsidecrypto";
+import { queryFlipside } from "../../dimension_migration/helpers/flipsidecrypto";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeUsers } from "../../users/storeUsers";
-import { queryAllium } from "@defillama/dimension-adapters/helpers/allium";
+import { queryAllium } from "../../dimension_migration/helpers/allium";
 
 async function storeUsersInDb(chain:string, usersChart:[string, number][], suffix = " UTC"){
     await PromisePool

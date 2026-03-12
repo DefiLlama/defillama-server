@@ -1,33 +1,82 @@
-import AWS from "aws-sdk";
+import { DynamoDBClient, } from "@aws-sdk/client-dynamodb"
+import { DynamoDBDocument, GetCommandInput, PutCommandInput, QueryCommandInput, UpdateCommandInput, DeleteCommandInput, ScanCommandInput, NumberValue } from "@aws-sdk/lib-dynamodb"
 import sleep from "./sleep";
 
-const client = new AWS.DynamoDB.DocumentClient({
-  ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
-    endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
-    sslEnabled: false,
-    region: "local"
-  })
+const mockDynamoDBClient = new DynamoDBClient({
+  region: "local",
+  endpoint: "http://localhost:8000",
+  credentials: {
+    accessKeyId: "test",
+    secretAccessKey: "test",
+  }
 });
+
+const mockDynamoDBDocument = DynamoDBDocument.from(mockDynamoDBClient, {
+  marshallOptions: {
+    convertClassInstanceToMap: true,
+  }
+});
+
+let ddbClient = mockDynamoDBClient;
+let client = mockDynamoDBDocument;
+
+try {
+  ddbClient = new DynamoDBClient({
+    ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
+      endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
+      sslEnabled: false,
+      region: "local",
+      maxAttempts: 10
+    })
+  });
+
+  client = DynamoDBDocument.from(ddbClient, {
+    marshallOptions: {
+      convertClassInstanceToMap: true,
+    }
+  })
+} catch (e) {
+  if (process.env.LOCAL_TEST)
+    console.info("Running in local test mode, using local DynamoDB instance");
+  else
+    throw e
+}
+
+
 export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
+
+export type DynamoDBItemKey = GetCommandInput["Key"]
 
 const dynamodb = {
   get: (
-    key: AWS.DynamoDB.DocumentClient.Key,
-    params?: Omit<AWS.DynamoDB.DocumentClient.GetItemInput, "TableName">
-  ) => client.get({ TableName, ...params, Key: key }).promise(),
+    key: DynamoDBItemKey,
+    params?: Omit<GetCommandInput, "TableName">
+  ) => client.get({ TableName, ...params, Key: key }).then((value) => {
+    if (value.Item) fixDDBRecords(value.Item)
+    return value
+  }),
   put: (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
-    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
-  ) => client.put({ TableName, ...params, Item: item }).promise(),
-  query: (params: Omit<AWS.DynamoDB.DocumentClient.QueryInput, "TableName">) =>
-    client.query({ TableName, ...params }).promise(),
+    item: PutCommandInput["Item"],
+    params?: Partial<PutCommandInput>
+  ) => client.put({ TableName, ...params, Item: sanitizeForDDBWrite(item) }),
+  query: (params: Omit<QueryCommandInput, "TableName">) =>
+    client.query({ TableName, ...params }).then((value) => {
+      if (value.Items?.length) fixDDBRecords(value.Items)
+      return value
+    }),
   update: (
-    params: Omit<AWS.DynamoDB.DocumentClient.UpdateItemInput, "TableName">
-  ) => client.update({ TableName, ...params }).promise(),
+    params: Omit<UpdateCommandInput, "TableName">
+  ) => client.update({
+    TableName,
+    ...params,
+    ...(params.ExpressionAttributeValues && {
+      ExpressionAttributeValues: sanitizeForDDBWrite(params.ExpressionAttributeValues)
+    })
+  }),
   delete: (
-    params: Omit<AWS.DynamoDB.DocumentClient.DeleteItemInput, "TableName">
-  ) => client.delete({ TableName, ...params }).promise(),
-  batchGet: (keys: AWS.DynamoDB.DocumentClient.KeyList) =>
+    params: Omit<DeleteCommandInput, "TableName">
+  ) => client.delete({ TableName, ...params }),
+  batchGet: (keys: any) =>
     client
       .batchGet({
         RequestItems: {
@@ -35,23 +84,26 @@ const dynamodb = {
             Keys: keys
           }
         }
+      }).then((value) => {
+        if (value.Responses) fixDDBRecords(value.Responses)
+        return value
       })
-      .promise(),
-  scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
-    client.scan({ TableName, ...params }).promise(),
-  getEnvSecrets: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
-  getExtensionTwitterConfig: (key: AWS.DynamoDB.DocumentClient.Key = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }).promise(),
+  ,
+  scan: (params: Omit<ScanCommandInput, "TableName">) =>
+    client.scan({ TableName, ...params }),
+  getEnvSecrets: (key: DynamoDBItemKey = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }),
+  getExtensionTwitterConfig: (key: DynamoDBItemKey = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }),
   putDimensionsData: (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
-    params?: Partial<AWS.DynamoDB.DocumentClient.PutItemInput>
-  ) => client.put({ TableName: 'fees-volume', ...params, Item: item }).promise(),
+    item: PutCommandInput["Item"],
+    params?: Partial<PutCommandInput>
+  ) => client.put({ TableName: 'fees-volume', ...params, Item: sanitizeForDDBWrite(item) }),
   putDimensionsDataBulk: (
-    items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: item } })) } }).promise(),
+    items: PutCommandInput["Item"][],
+  ) => client.batchWrite({ RequestItems: { 'fees-volume': items.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })) } }),
   putEventData: async (
-    item: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap,
+    item: PutCommandInput["Item"],
   ) => {
-    if (!item.PK) {
+    if (!item?.PK) {
       throw new Error("Item must have a PK");
     }
     if (!item.source) {
@@ -61,10 +113,12 @@ const dynamodb = {
     if (!item.SK) {
       throw new Error("Item must have a SK");
     }
+
     item.SK_ORIGNAL = item.SK; // Store original SK for debugging
     item.SK = Math.floor(Date.now() / 1000) // Use current timestamp as SK
+    item.sourceTag = process.env.SOURCE_TAG ?? 'unknown';
     try {
-      let response = await client.put({ TableName: 'prod-event-table', Item: item }).promise()
+      let response = await client.put({ TableName: 'prod-event-table', Item: sanitizeForDDBWrite(item), })
       return response;
     } catch (e: any) {
       console.error("Failed to put event data", item.PK, item.source, e?.message || e);
@@ -103,7 +157,7 @@ async function underlyingBatchWrite(
         [TableName]: items
       }
     })
-    .promise();
+    ;
   const unprocessed = output.UnprocessedItems?.[TableName] ?? [];
   if (unprocessed.length > 0) {
     // Retry algo
@@ -120,38 +174,39 @@ async function underlyingBatchWrite(
 }
 
 function removeDuplicateKeys(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]
+  items: PutCommandInput["Item"][]
 ) {
-  return items.filter((item, index) =>
-    // Could be optimized to O(nlogn) but not worth it
-    items
-      .slice(0, index)
-      .every(
-        (checkedItem) =>
-          !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
-      )
-  );
+  const seenKeys = new Set<string>();
+  return items.filter((item) => {
+    if (!item?.PK) return false
+
+    const key = `${item.PK}#${item.SK}`;
+    if (seenKeys.has(key)) {
+      return false;
+    }
+    seenKeys.add(key);
+    return true;
+  });
 }
 
 const batchWriteStep = 25; // Max items written at once are 25
 // IMPORTANT: Duplicated items will be pruned
 export async function batchWrite(
-  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  items: PutCommandInput["Item"][],
   failOnError: boolean
-) {
-  const writeRequests = [];
+): Promise<{ writeCount: number }> {
+  items = removeDuplicateKeys(items);
+  let writeCount = 0;
   for (let i = 0; i < items.length; i += batchWriteStep) {
     const itemsToWrite = items.slice(i, i + batchWriteStep);
-    const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite);
-    writeRequests.push(
-      underlyingBatchWrite(
-        nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
-        0,
-        failOnError
-      )
-    );
+    writeCount += itemsToWrite.length;
+    await underlyingBatchWrite(
+      itemsToWrite.map((item) => ({ PutRequest: { Item: sanitizeForDDBWrite(item) } })),
+      0,
+      failOnError
+    )
   }
-  await Promise.all(writeRequests);
+  return { writeCount };
 }
 
 const batchGetStep = 100; // Max 100 items per batchGet
@@ -184,6 +239,48 @@ export async function DELETE(keys: { PK: string; SK: number }[]): Promise<void> 
     // console.log('deleting', item.PK, item.SK)
     if (item.PK && (item.SK == 0 || item.SK)) requests.push(dynamodb.delete({ Key: { PK: item.PK, SK: item.SK } }));
   }
-  const a = await Promise.all(requests);
+  await Promise.all(requests);
   return;
+}
+
+/**
+ * when we switched to using aws sdk v3, it started converting numbers into bigint, this reverts that
+ * @param item
+ */
+export function fixDDBRecords(item: any): any {
+  if (Array.isArray(item)) {
+    return item.map(fixDDBRecords)
+  } else if (typeof item === 'bigint') {
+    return Number(item)
+  } else if (typeof item === 'object' && item) {
+    Object.entries(item).forEach(([key, value]) => {
+      item[key] = fixDDBRecords(value)
+    })
+  }
+
+  return item
+}
+
+function sanitizeForDDBWrite(value: any): any {
+  if (value === null || value === undefined) return value;
+  if (value instanceof NumberValue) return value;
+  if (Array.isArray(value)) return value.map(sanitizeForDDBWrite);
+
+  const type = typeof value;
+
+  if (type === "bigint") return NumberValue.from(value.toString());
+
+  if (type === "number") {
+    if (!Number.isFinite(value)) return value.toString();
+    if (Math.abs(value) > Number.MAX_SAFE_INTEGER) return NumberValue.from(value.toString());
+    return value;
+  }
+
+  if (type === "object") {
+    const out: any = {};
+    for (const [k, val] of Object.entries(value)) out[k] = sanitizeForDDBWrite(val);
+    return out;
+  }
+
+  return value;
 }

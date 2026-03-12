@@ -4,8 +4,8 @@ export const searchWidth = DAY;
 
 export const chainsThatShouldNotBeLowerCased = ["solana", "bitcoin", "eclipse"];
 
-export const bridgedTvlMixedCaseChains: string[] = ["solana", "tron", "sui", "aptos", "eclipse"];
+export const bridgedTvlMixedCaseChains: string[] = ["solana", "tron", "sui", "aptos", "eclipse", "stellar"];
 
-export const chainsWithCaseSensitiveDataProviders = ['aptos', 'stacks', 'sui']
+export const chainsWithCaseSensitiveDataProviders = ['aptos', 'stacks', 'sui', 'tron']
 
 export const nullAddress = "0x0000000000000000000000000000000000000000";

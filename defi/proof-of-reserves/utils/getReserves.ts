@@ -1,5 +1,4 @@
 import {getCoinPrices} from './llamaApis';
-import { getTokenSupplies } from '../../DefiLlama-Adapters/projects/helper/solana';
 import { TokenConfig } from '../types';
 import * as sdk from '@defillama/sdk';
 
@@ -27,13 +26,14 @@ export async function getTotalMinted(tokens: Array<TokenConfig>, getUsdValue: bo
 
   for (const token of tokens) {
     if (token.chain === 'solana') {
-      const data = await getTokenSupplies([token.address]);
-      const totalSupply: any = Number((data as any)[token.address]) / (token.decimals ? 10**token.decimals : 1e8);
-      if (getUsdValue) {
-        totalMinted += totalSupply * getCoinPrice(coinPrices, token);
-      } else {
-        totalMinted += totalSupply;
-      }
+      // ignore solana for now
+      // const data = await getTokenSupplies([token.address]);
+      // const totalSupply: any = Number((data as any)[token.address]) / (token.decimals ? 10**token.decimals : 1e8);
+      // if (getUsdValue) {
+      //   totalMinted += totalSupply * getCoinPrice(coinPrices, token);
+      // } else {
+      //   totalMinted += totalSupply;
+      // }
     } else {
       // evm
       const supply = await sdk.api2.abi.call({

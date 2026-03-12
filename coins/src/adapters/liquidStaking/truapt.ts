@@ -9,6 +9,7 @@ const truapt: string =
   "0xaef6a8c3182e076db72d64324617114cacf9a52f28325edc10b483f7f05da0e7";
 
 export async function truAPT(timestamp: number = 0): Promise<Write[]> {
+  if (timestamp != 0) throw new Error("Can't fetch historical data");
   const qtys = await fetch(`https://api.mainnet.aptoslabs.com/v1/view`, {
     method: "POST",
     body: JSON.stringify({
@@ -23,7 +24,7 @@ export async function truAPT(timestamp: number = 0): Promise<Write[]> {
 
   const pricesObject: any = {
     [truapt]: {
-      underlying: "aptos",
+      underlying: "0x1::aptos_coin::AptosCoin",
       price: qtys[0] / (1e8 * qtys[1]),
       symbol: "TruAPT",
       decimals: 8,
@@ -35,6 +36,5 @@ export async function truAPT(timestamp: number = 0): Promise<Write[]> {
     timestamp,
     pricesObject,
     projectName: "truAPT",
-    underlyingChain: "coingecko",
   });
 }

@@ -1,6 +1,6 @@
-import { AdapterType, } from "@defillama/dimension-adapters/adapters/types";
 import protocols from "../../protocols/data";
 import getAdapterConfig from './index'
+import { AdapterType } from "./types";
 const _protocolMap = {} as any
 for (const protocol of protocols) {
   _protocolMap[protocol.id] = protocol

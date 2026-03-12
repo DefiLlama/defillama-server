@@ -5,7 +5,7 @@ import '../../utils/failOnError'
 import * as fs from 'fs'
 import path from 'path';
 import { getAllItemsAfter } from '../../../adaptors/db-utils/db2';
-import { AdapterType } from '@defillama/dimension-adapters/adapters/types';
+import { AdapterType } from "../../../adaptors/data/types"
 
 
 function getRecordMap(allRecords: any[]) {

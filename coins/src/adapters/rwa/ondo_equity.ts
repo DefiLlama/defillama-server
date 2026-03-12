@@ -65,6 +65,9 @@ export async function ondo_equity(timestamp: number): Promise<Write[]> {
   const writes: Write[] = [];
   prices.map(({ timestamp, primaryMarket: { price, symbol } }: PriceRes) => {
     if (timestamp < now - margin) return;
+    
+    // because there are some price items with no addresses
+    if (!pkMap[symbol]) return;
 
     pkMap[symbol].map(({ address, decimals, chain }) => {
       addToDBWritesList(

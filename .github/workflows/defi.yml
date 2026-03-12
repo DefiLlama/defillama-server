@@ -28,29 +28,44 @@ jobs:
     if: ${{ needs.changes.outputs.defi == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: git submodule update --init --recursive
-      - name: Get Node.js
-        uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          node-version: '16'
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          cache-dependency-path: 'defi/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install  --no-frozen-lockfile
+
       - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
       - name: Get jest cache
         uses: actions/cache@v3
         with:
           path: /tmp/jest-cache
           key: ${{ runner.os }}-jest-${{ env.TODAY }}
-      - run: cd DefiLlama-Adapters && git checkout main && git pull
-      - run: cd dimension-adapters && git checkout master && git pull
-      - run: cd emissions-adapters && git checkout master && git pull
-      - run: npm  ci || npm i
+
+
       - name: Run tests
-        run: npm t data  # && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
+        run: pnpm t data  # && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:
           ETHEREUM_RPC: FAKE_ETHEREUM_RPC
           GRAPH_API_KEY: FAKE_GRAPH_API_KEY
+
+
       - name: Deploy infrastructure stack
-        run: npm run deploy:prod
+        run: pnpm run deploy:prod
         env:
           ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
           POLYGON_RPC: ${{ secrets.POLYGON_RPC }}

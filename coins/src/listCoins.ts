@@ -1,11 +1,11 @@
-import { DocumentClient } from "aws-sdk/clients/dynamodb";
+
 import fs from "fs";
 import path from "path";
 import { getCurrentUnixTimestamp } from "./utils/date";
 const file = path.resolve(__dirname, "./coinRepository.json");
 
 export async function storePks(
-  results: DocumentClient.PutItemInputAttributeMap[]
+  results: any[]
 ) {
   let repo = JSON.parse(fs.readFileSync(file).toString());
   results

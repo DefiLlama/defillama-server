@@ -2,7 +2,6 @@ import { getCurrentUnixTimestamp, secondsInDay } from "../../src/utils/date";
 import PromisePool from "@supercharge/promise-pool";
 import findTvls from "../tvl";
 import { overwrite, parsePgData } from "../storeToDb";
-import setEnvSecrets from "../../src/utils/shared/setEnvSecrets";
 import postgres from "postgres";
 import { queryPostgresWithRetry } from "../../src/utils/shared/bridgedTvlPostgres";
 import { ChartData } from "../types";
@@ -16,7 +15,6 @@ const chain: string = "Tron";
 
 let auth: string[] = [];
 async function iniDbConnection() {
-  await setEnvSecrets();
   auth = process.env.PG_AUTH?.split(",") ?? [];
   if (!auth || auth.length != 3) throw new Error("there aren't 3 auth params");
 

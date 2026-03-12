@@ -1,8 +1,8 @@
 import { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getMethodologyDataByBaseAdapter } from "./methodology";
 import { ProtocolAdaptor } from "../types";
-import { Adapter, AdapterType, BaseAdapter, } from "@defillama/dimension-adapters/adapters/types";
+import { Adapter, AdapterType, BaseAdapter, } from "../types";
 import { IParentProtocol } from "../../../protocols/types";
 
 export function notUndefined<T>(x: T | undefined): x is T {
@@ -17,6 +17,7 @@ interface IImportObj {
   module: { default: Adapter },
   codePath: string
   moduleFilePath: string
+  commit?: string
 }
 type IImportsMap = IJSON<IImportObj>
 
@@ -31,12 +32,11 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
-      const isDead = moduleObject.deadFrom || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.deadFrom)
+      const isDead = moduleObject.deadFrom || (Object.values(moduleObject.adapter ?? {}).every((adapter: any) => adapter.deadFrom) && Object.values(moduleObject.adapter ?? {}).length > 0)
       const runAtCurrentTime = moduleObject.runAtCurrTime || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.runAtCurrTime)
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
       let chains: string[] = []
-      let childProtocols: ProtocolAdaptor[] = []
 
       if (!moduleObject) throw new Error(`No module found for ${adapterKey}`)
       if (!protocolId) throw new Error(`No protocol id found for ${adapterKey}` + JSON.stringify(protocol))
@@ -65,7 +65,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         displayName: (protocol as any).displayName ?? protocol!.name,
         protocolType,
         isDead,
-        methodologyURL: 'https://github.com/DefiLlama/dimension-adapters/blob/master/' + adapterObj.codePath,
+        methodologyURL: `https://github.com/DefiLlama/dimension-adapters/blob/${adapterObj.commit ?? "master"}/${adapterObj.codePath}`,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
         _stat_runAtCurrTime: runAtCurrentTime,
@@ -79,7 +79,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const methodology = getMethodologyDataByBaseAdapter(moduleObject, adapterType, infoItem.category)
       if (methodology) infoItem.methodology = methodology
-      if (childProtocols.length > 0) infoItem.childProtocols = childProtocols
+      if (moduleObject.breakdownMethodology) infoItem.breakdownMethodology = moduleObject.breakdownMethodology
 
       response.push(infoItem)
 

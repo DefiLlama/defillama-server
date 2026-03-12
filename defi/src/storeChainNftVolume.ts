@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { PromisePool } from '@supercharge/promise-pool'
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { storeR2JSONString } from "./utils/r2";
-import { chains } from "@defillama/dimension-adapters/nfts/chains";
+import { chains } from "./dimension_migration/nfts/chains";
 import dynamodb from "./utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "./utils/date";
 

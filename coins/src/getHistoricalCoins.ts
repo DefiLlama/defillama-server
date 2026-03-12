@@ -1,6 +1,6 @@
 require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import {getRecordClosestToTimestamp} from "./utils/shared/getRecordClosestToTimestamp";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 import { quantisePeriod } from "./utils/timestampUtils";
 
@@ -36,6 +36,11 @@ const handler = async (
         return;
         // }
       }
+
+
+      if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
+        coin.decimals = Number(coin.decimals);
+
       PKTransforms[coin.PK].forEach((coinName) => {
         response[coinName] = {
           decimals: coin.decimals,

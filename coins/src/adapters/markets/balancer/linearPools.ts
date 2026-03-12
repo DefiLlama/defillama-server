@@ -1,11 +1,13 @@
-import { multiCall } from "@defillama/sdk/build/abi/index";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
 import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
 import abi from "./abi.json";
 import { Result } from "../../utils/sdkInterfaces";
-import { getLogs, lookupBlock } from "@defillama/sdk/build/util";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { getLpPrices, TokenValues } from "./balancer";
+const { lookupBlock, } = sdk.util.blocks
 
 const factories: { [chain: string]: { address: string; fromBlock: number } } = {
   arbitrum: {
@@ -22,7 +24,7 @@ async function getPools(chain: any, block: number): Promise<string[]> {
   const tokens: string[] = [];
 
   (
-    await getLogs({
+    await sdk.getEventLogs({
       target: factories[chain].address,
       topic:
         "0x83a48fbcfc991335314e74d0496aab6a1987e992ddc85dddbcc4d6dd6ef2e9fc",
@@ -32,7 +34,7 @@ async function getPools(chain: any, block: number): Promise<string[]> {
       toBlock: block,
       chain,
     })
-  ).output.map((l: any) => {
+  ).map((l: any) => {
     if (!l.topics || !l.topics[1]) return;
     const token: string = `0x${l.topics[1].substring(26)}`;
     if (!tokens.includes(token)) tokens.push(token);

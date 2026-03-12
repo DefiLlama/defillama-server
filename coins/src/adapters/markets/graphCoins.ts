@@ -34,7 +34,7 @@ function getGraphCoinsAdapter({ chain, endpoint, minVolume = 1e4, minTVL = 1e5, 
     const pricesObject: any = {}
     tokens.forEach((token: any) => {
       if (token.totalValueLockedUSD > 51 * 1e6) {
-        console.log(`coin: ${token.id} has too high TVL (${Number(token.totalValueLockedUSD / 1e6).toFixed(2)}M), skipping`)
+        // console.log(`coin: ${token.id} has too high TVL (${Number(token.totalValueLockedUSD / 1e6).toFixed(2)}M), skipping`)
         return;
       }
       let price = token.totalValueLockedUSD / token.totalValueLocked

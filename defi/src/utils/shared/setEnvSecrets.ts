@@ -1,6 +1,7 @@
 import dynamodb from './dynamodb'
 let envSecretsRes: any
 
+// WARNING: This is deprecated, it is no longer used, set the secret in each pod that you use
 async function setEnvSecrets() {
   try {
     if (!envSecretsRes) envSecretsRes = dynamodb.getEnvSecrets()

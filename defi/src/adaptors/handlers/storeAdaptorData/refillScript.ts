@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 import '../../../api2/utils/failOnError'
-import { Adapter, AdapterType } from "@defillama/dimension-adapters/adapters/types"
+import { Adapter, AdapterType } from "../../data/types"
 import loadAdaptorsData from "../../data"
-import { handler2, IStoreAdaptorDataHandlerEvent } from "."
+import { handler2, DimensionRunOptions } from "."
 import readline from 'readline';
 import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
@@ -126,7 +126,7 @@ async function refillAdapter() {
       const currentTimeS = getTimestampString(lastTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         console.log('missing data on', new Date((lastTimestamp) * 1000).toLocaleDateString())
-        const eventObj: IStoreAdaptorDataHandlerEvent = {
+        const eventObj: DimensionRunOptions = {
           timestamp: lastTimestamp,
           adapterType: adapterType as any,
           isDryRun: DRY_RUN,
@@ -145,7 +145,7 @@ async function refillAdapter() {
     // if (!isVersion2) currentDayEndTimestamp += ONE_DAY_IN_SECONDS 
 
     while (days > 0) {
-      const eventObj: IStoreAdaptorDataHandlerEvent = {
+      const eventObj: DimensionRunOptions = {
         timestamp: currentDayEndTimestamp,
         adapterType: adapterType as any,
         isDryRun: DRY_RUN,
@@ -217,6 +217,11 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
+  const skippedAdapterTypes = [
+    AdapterType.NFT_VOLUME,
+    AdapterType.NEW_USERS,
+    AdapterType.ACTIVE_USERS,
+  ]
   const tasks = await Promise.all(aTypes.map(runAdapterType))
   const allTasks = tasks.flat()
   console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)
@@ -227,6 +232,12 @@ async function refillAllProtocols() {
 
 
   async function runAdapterType(adapterType: AdapterType) {
+
+    if (skippedAdapterTypes.includes(adapterType)) {
+      console.log(`Skipping adapter type ${adapterType} as it's in the skipped list`)
+      return [];
+    }
+
     console.log('Refilling missing datapoints for adapter type:', adapterType)
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {
@@ -258,7 +269,7 @@ async function refillAllProtocols() {
       const currentTimeS = getTimestampString(currentDayEndTimestamp)
       if (!timeSWithData.has(currentTimeS)) {
         // console.log(++i, 'refilling data on', new Date((currentDayEndTimestamp) * 1000).toLocaleDateString(), 'for', protocolName, `[${adapterType}]`)
-        const eventObj: IStoreAdaptorDataHandlerEvent = {
+        const eventObj: DimensionRunOptions = {
           timestamp: currentDayEndTimestamp,
           adapterType,
           isDryRun: false,

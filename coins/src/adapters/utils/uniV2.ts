@@ -91,14 +91,13 @@ export function getUniV2Adapter({
         pairs (where: { 
             reserveUSD_gt: ${minLiquidity}
             ${lastId == "" ? "" : `id_gt: "${lastId}"`}
-            ${
-              timestamp == 0
-                ? ``
-                : `createdAtTimestamp_lt: ${(timestamp * 1000).toString()}`
-            }
+            ${timestamp == 0
+          ? ``
+          : `createdAtTimestamp_lt: ${(timestamp * 1000).toString()}`
+        }
             volumeUSD_gt: ${minVolume}
           } 
-        block: { number: ${block} } 
+        ${ ["uniswap", "uni_base"].includes(project) && timestamp == 0 ? "" : `block: { number: ${block} }`} 
         first: 1000
         ) {
           id
@@ -149,15 +148,42 @@ export function getUniV2Adapter({
       abi: "erc20:symbol",
       target: allData[0].id,
     });
+
+    const underlyingPrices = await getTokenAndRedirectDataMap(Array.from(coreAssetsCache[chain]) ?? [], chain, timestamp);
+    const token0Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token0.id, params: p.id })), permitFailure: true  })
+    const token1Balances = await api.multiCall({ abi: 'erc20:balanceOf', calls: allData.map((p: any) => ({ target: p.token1.id, params: p.id })), permitFailure: true  })
     const writes: Write[] = [];
 
     const tokenData: any = {};
-    allData.forEach((pair: any) => {
+    allData.forEach((pair: any, i: number) => {
       const token0 = pair.token0;
       const token1 = pair.token1;
-      const confidence = calculateConfidence(pair.reserveUSD);
-      const price = pair.reserveUSD / pair.totalSupply;
       const symbol = getLPSymbol(token0.symbol, token1.symbol, LP_SYMBOL);
+
+      const { price, confidence } = findPrice();
+      if (!price) return;
+
+      // return true if subgraph data is inflated
+      function findPrice() {
+        const confidence = calculateConfidence(pair.reserveUSD);
+        const subgraphPrice = pair.reserveUSD / pair.totalSupply;
+        if (!coreAssetsCache[chain]) return { price: subgraphPrice, confidence };
+        
+        let knownToken;
+        if (coreAssetsCache[chain].has(token0.id)) knownToken = token0;
+        else if (coreAssetsCache[chain].has(token1.id)) knownToken = token1;
+        else return { price: undefined, confidence };
+
+        const knownTokenPrice = underlyingPrices[knownToken.id];
+        const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];
+        if (!knownTokenBalance) return { price: subgraphPrice, confidence };
+
+        const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
+
+        if (aum < minLiquidity) return { price: undefined, confidence };
+        const onChainPrice = aum / pair.totalSupply;
+        return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };
+      }
 
       if (confidence > 0.8)
         addToDBWritesList(
@@ -177,8 +203,9 @@ export function getUniV2Adapter({
 
       function addTokenData(token: any) {
         if (skipToken(token)) return;
-        const liquidity = pair.reserveUSD / 2;
-        const supply = token.id === token0.id ? pair.reserve0 : pair.reserve1;
+        if (!price) return;
+        const liquidity = price * pair.totalSupply / 2;
+        const supply = (token.id === token0.id ? token0Balances[i] : token1Balances[i]) / 10 ** token.decimals
         if (!tokenData[token.id]) {
           tokenData[token.id] = {
             metadata: token,
@@ -197,14 +224,7 @@ export function getUniV2Adapter({
         const confidence = calculateConfidence(liquidity, minLiquidity / 2);
         const price = liquidity / supply;
         if (isNaN(price)) {
-          console.log("bug in uni v2 pricing", {
-            id,
-            symbol,
-            supply,
-            liquidity,
-            price,
-            decimals,
-          });
+          // console.log("bug in uni v2 pricing", { id, symbol, supply, liquidity, price, decimals, });
           return;
         }
         if (confidence > 0.8)
@@ -278,6 +298,15 @@ export function getUniV2Adapter({
     if (hasStablePools) uniqueLPNames = true;
     if (uniqueLPNames) lpSymbols = await getTokenInfoMap(chain, pairs);
 
+    let stableFlags: (boolean | null)[] = [];
+    if (hasStablePools) {
+      stableFlags = await api.multiCall({
+        abi: "function stable() view returns (bool)",
+        calls: pairs,
+        permitFailure: true,
+      });
+    }
+
     const writes: Write[] = [];
 
     const tokenData: any = {};
@@ -288,6 +317,7 @@ export function getUniV2Adapter({
       const [reserve0, reserve1] = reserves[idx];
       const token0 = token0s[idx];
       const token1 = token1s[idx];
+
       const t1Data = coinsDataMap[token1];
       const t0Data = coinsDataMap[token0];
       if (!t1Data && !t0Data) return; // we dont know the price of underlying tokens
@@ -298,7 +328,7 @@ export function getUniV2Adapter({
       if (uniqueLPNames) symbol = lpSymbols[pair]?.symbol ?? symbol;
 
       let reserveUSD = 0;
-      const isStablePool = hasStablePools && symbol.includes(stablePoolSymbol);
+      const isStablePool = hasStablePools && (stableFlags[idx] === true || symbol.includes(stablePoolSymbol));
 
       if (isStablePool) {
         if (!t1Data || !t0Data) return; // we dont know the price of underlying tokens

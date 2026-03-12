@@ -7,6 +7,18 @@ cd $( dirname "$0" )
 SCRIPT_DIR="$(pwd)"
 ROOT_DIR=$SCRIPT_DIR/..
 
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT environment variable is set
+if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then
+    echo "***WARNING***: Custom branch deployment requested: $CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Checkout the specified branch
+    git checkout "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+    # Pull latest code from the branch
+    git pull origin "$CUSTOM_GIT_BRANCH_DEPLOYMENT"
+# else
+    # echo "Using default branch deployment: $(git branch --show-current)"
+fi
+
+
 function pre_init_server() {
   unset NODE_ENV  # else dev dependencies wont be installed
 
@@ -17,24 +29,21 @@ function pre_init_server() {
 
   # start un-tool server
   echo "current directory: $(pwd)"
-
-  git pull
-  git submodule update --init --recursive
-  git submodule update --remote --merge
+  
+  git pull -q
+  pnpm -s run load-all-repos
+  pnpm -s run init-defi
 
   CURRENT_COMMIT_HASH=$(git rev-parse HEAD)
   echo "$CURRENT_COMMIT_HASH" >  $ROOT_DIR/.current_commit_hash
 
   echo "Current commit hash: $CURRENT_COMMIT_HASH"
 
-  npm i
-  git checkout HEAD -- package-lock.json # reset any changes to package-lock.json
-  npm run prebuild
 
   cd ui-tool
-  npm i
+  pnpm i
   export REACT_APP_WSS_PORT=5001
-  npm run build
+  pnpm run cached_build
 }
 
 while true;

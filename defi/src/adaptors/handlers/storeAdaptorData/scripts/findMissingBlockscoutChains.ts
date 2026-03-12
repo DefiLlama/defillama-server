@@ -1,5 +1,4 @@
-import { chainConfigMap } from '@defillama/dimension-adapters/helpers/blockscoutFees'
-import defillamaChains from '@defillama/adapters/projects/helper/chains.json'
+import { chainConfigMap } from '../../../../../dimension-adapters/helpers/blockscoutFees'
 import { PromisePool } from '@supercharge/promise-pool'
 
 const axios = require('axios')
@@ -12,10 +11,11 @@ const skippedChainsSet = new Set([
   'soneium',
   'ink',
 ])
-const existingChainSet = new Set(defillamaChains)
 
 
 async function main() {
+  const allChains = await fetch('https://raw.githubusercontent.com/DefiLlama/DefiLlama-Adapters/refs/heads/main/projects/helper/chains.json').then(res => res.json())
+  const existingChainSet = new Set(allChains)
 
   let { data: chainlist } = await axios.get(chainlistURL)
   chainlist = chainlist.filter((i: any) => {

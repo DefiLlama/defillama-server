@@ -1,5 +1,5 @@
 require("dotenv").config();
-import userAdapters from "../../../../dimension-adapters/users/list";
+import userAdapters from "../../../dimension_migration/users/list";
 import { storeUsers } from "../../../users/storeUsers";
 import { shuffleArray } from "../../../utils/shared/shuffleArray";
 import { PromisePool } from '@supercharge/promise-pool'

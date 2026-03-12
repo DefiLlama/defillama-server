@@ -219,18 +219,26 @@ export function moonwell(timestamp: number = 0) {
   ]);
 }
 
-export function orbitv2(timestamp: number = 0) {
-  return getTokenPrices(
-    "blast",
-    "0x1E18C3cb491D908241D0db14b081B51be7B6e652",
-    timestamp,
-  );
-}
+// export function orbitv2(timestamp: number = 0) {
+//   return getTokenPrices(
+//     "blast",
+//     "0x1E18C3cb491D908241D0db14b081B51be7B6e652",
+//     timestamp,
+//   );
+// }
 
 export function segmentFinance(timestamp: number = 0) {
   return getTokenPrices(
     "bob",
     "0xcD7C4F508652f33295F0aEd075936Cd95A4D2911",
+    timestamp,
+  );
+}
+
+export function tropykus(timestamp: number = 0) {
+  return getTokenPrices(
+    "rsk",
+    "0x962308fEf8edFaDD705384840e7701F8f39eD0c0",
     timestamp,
   );
 }
@@ -259,8 +267,9 @@ export const adapters = {
   tenderfi,
   Ovix,
   mare,
-  orbitv2,
+  // orbitv2,
   ironBank,
   segmentFinance,
+  tropykus,
   compoundV3,
 };

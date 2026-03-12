@@ -1,6 +1,6 @@
 import loadAdaptorsData from "../../adaptors/data";
 import { ADAPTER_TYPES } from "../../adaptors/data/types";
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import { AdapterType } from "../../adaptors/data/types"
 
 
 let data: any

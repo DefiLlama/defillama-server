@@ -1,5 +1,4 @@
 
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import loadAdaptorsData from "../../../adaptors/data"
 import { ADAPTER_TYPES } from "../../../adaptors/data/types"
 

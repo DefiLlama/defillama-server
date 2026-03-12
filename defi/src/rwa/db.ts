@@ -245,9 +245,10 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
     // When refilling, fetch existing records so non-historical chain data can be preserved
     let existingRecords: { [id: string]: any } = {};
     if (process.env.RWA_REFILL) {
+        const insertIds = inserts.map((i: any) => i.id);
         const existing = await DAILY_RWA_DATA.findAll({
             attributes: ['id', 'mcap', 'activemcap', 'defiactivetvl'],
-            where: { timestamp: dayTimestamp },
+            where: { timestamp: dayTimestamp, id: insertIds },
             raw: true,
         }) as any[];
         existing.forEach((r: any) => { existingRecords[r.id] = r; });
@@ -280,6 +281,8 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
                         const existingData = JSON.parse(existing[field] ?? '{}');
                         for (const chain of noHistoricalChains) {
                             if (existingData[chain] !== undefined && newData[chain] === undefined) {
+                                console.log(`LINE 284 src/rwa/db.ts TEST THIS CODE BLOCK ID: ${id}, timestamp: ${timestamp}: EXITTING`)
+                                process.exit()
                                 newData[chain] = existingData[chain];
                                 if (field === 'mcap') additionalMcap += Number(existingData[chain]) || 0;
                                 else if (field === 'activemcap') additionalActiveMcap += Number(existingData[chain]) || 0;

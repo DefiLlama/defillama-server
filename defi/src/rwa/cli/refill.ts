@@ -7,6 +7,7 @@ const start = 1742688001; // 23 mar 25
 const end = 1770076801; // 3 feb 26
 
 const ids = ['79'];
+
 async function main() {
     await initPG();
     process.env.RWA_REFILL = 'true';

@@ -4043,6 +4043,7 @@ export const chainCoingeckoIds = {
     twitter: "SonicLabs",
     url: "https://www.soniclabs.com",
     chainId: 146,
+    stablecoins: ["us-sonic-dollar"],
     dimensions: {
       fees: "sonic",
     },
@@ -4909,6 +4910,9 @@ export const chainCoingeckoIds = {
     twitter: "katana",
     url: "https://katana.network/",
     chainId: 747474,
+    dimensions: {
+      fees: "katana",
+    },
   },
   "XRPL EVM": {
     geckoId: null,
@@ -5608,6 +5612,9 @@ export const chainCoingeckoIds = {
     url: "https://www.megaeth.com/",
     chainId: 4326,
     stablecoins: ["megausd"],
+    dimensions: {
+      fees: "megaeth",
+    },
   },
   "Quai": {
     geckoId: "quai-network",

@@ -9125,6 +9125,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "bonkfun",
+    deadUrl: true, // temporary while domain is hijacked
   },
   {
     id: "parent#minswap",

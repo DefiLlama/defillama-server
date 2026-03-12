@@ -16680,7 +16680,8 @@ const data4: Protocol[] = [
     ],
     dimensions: {
       fees: "letsbonk"
-    }
+    },
+    deadUrl: true // temporary while domain is hijacked
   },
   {
     id: "6283",

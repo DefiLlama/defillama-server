@@ -298,6 +298,15 @@ export function getUniV2Adapter({
     if (hasStablePools) uniqueLPNames = true;
     if (uniqueLPNames) lpSymbols = await getTokenInfoMap(chain, pairs);
 
+    let stableFlags: (boolean | null)[] = [];
+    if (hasStablePools) {
+      stableFlags = await api.multiCall({
+        abi: "function stable() view returns (bool)",
+        calls: pairs,
+        permitFailure: true,
+      });
+    }
+
     const writes: Write[] = [];
 
     const tokenData: any = {};
@@ -308,6 +317,7 @@ export function getUniV2Adapter({
       const [reserve0, reserve1] = reserves[idx];
       const token0 = token0s[idx];
       const token1 = token1s[idx];
+
       const t1Data = coinsDataMap[token1];
       const t0Data = coinsDataMap[token0];
       if (!t1Data && !t0Data) return; // we dont know the price of underlying tokens
@@ -318,7 +328,7 @@ export function getUniV2Adapter({
       if (uniqueLPNames) symbol = lpSymbols[pair]?.symbol ?? symbol;
 
       let reserveUSD = 0;
-      const isStablePool = hasStablePools && symbol.includes(stablePoolSymbol);
+      const isStablePool = hasStablePools && (stableFlags[idx] === true || symbol.includes(stablePoolSymbol));
 
       if (isStablePool) {
         if (!t1Data || !t0Data) return; // we dont know the price of underlying tokens

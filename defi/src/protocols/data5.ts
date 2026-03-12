@@ -1799,6 +1799,12 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.rocky.cash/security/audits"],
     github: ["rocky-protocol"],
     listedAt: 1762462631,
+    oraclesBreakdown: [
+      {
+        name: "DIA",
+        type: "Primary",
+        proof: ["https://docs.rocky.cash/developers-hub/onchain-tools/oracles"]
+      } 
   },
   {
     id: "6972",

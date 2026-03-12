@@ -1,7 +1,4 @@
-import {
-  addToDBWritesList,
-  getTokenAndRedirectDataMap,
-} from "../../utils/database";
+import { addToDBWritesList } from "../../utils/database";
 import { Write } from "../../utils/dbInterfaces";
 import axios from "axios";
 
@@ -47,23 +44,30 @@ export async function reflectMoney(timestamp: number = 0): Promise<Write[]> {
   if (timestamp != 0) return [];
   const writes: Write[] = [];
 
-  await Promise.all(stablecoins.map(async (stablecoin: Stablecoin, index: number) => {
-    const mintAddress = stablecoin.mintAddress;
-    const { data } = await axios.get(`https://prod.api.reflect.money/stablecoin/${index}/exchange-rate`);
-    const price = (data.data.base as number) / PRICE_PRECISION;
-
-    addToDBWritesList(
-      writes,
-      stablecoin.chain,
-      mintAddress,
-      price,
-      stablecoin.decimals,
-      stablecoin.symbol,
-      timestamp,
-      "reflect-money-api",
-      0.95
-    );
-  }));
+  await Promise.all(
+    stablecoins.map(async (stablecoin: Stablecoin, index: number) => {
+      try {
+        const { data } = await axios.get(
+          `https://prod.api.reflect.money/stablecoin/${index}/exchange-rate`,
+          { timeout: 10_000 },
+        );
+        const price = (data.data.base as number) / PRICE_PRECISION;
+        addToDBWritesList(
+          writes,
+          stablecoin.chain,
+          stablecoin.mintAddress,
+          price,
+          stablecoin.decimals,
+          stablecoin.symbol,
+          timestamp,
+          "reflect-money-api",
+          0.95,
+        );
+      } catch (e) {
+        console.error(`Failed to fetch price for ${stablecoin.symbol}:`, e);
+      }
+    }),
+  );
 
   return writes;
 }

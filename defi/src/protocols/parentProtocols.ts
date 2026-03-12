@@ -9118,7 +9118,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bonkfun",
     name: "BONK.fun",
-    url: "https://bonk.fun/",
+    url: "", //"https://bonk.fun/",
     description: "Meme token launchpad",
     logo: `${baseIconsUrl}/bonk.fun.jpg`,
     gecko_id: null,

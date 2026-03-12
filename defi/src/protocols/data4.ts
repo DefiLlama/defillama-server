@@ -16660,7 +16660,7 @@ const data4: Protocol[] = [
     previousNames: ["letsBONK.fun"],
     address: null,
     symbol: "-",
-    url: "https://bonk.fun/",
+    url: "", //"https://bonk.fun/",
     description: "Meme token launchpad",
     chain: "Solana",
     logo: `${baseIconsUrl}/bonk.fun-launchpad.jpg`,

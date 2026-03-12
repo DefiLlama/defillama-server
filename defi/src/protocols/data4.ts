@@ -27129,7 +27129,7 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "Governance Incentives",
     chains: ["Celo", "xDai", "Arbitrum", "Base", "Optimism", "Polygon"],
-    module: "Gardens/index.js",
+    module: "gardens/index.js",
     twitter: "gardens_fund",
     treasury: "gardens.js",
     listedAt: 1758218847

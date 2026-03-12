@@ -13934,5 +13934,25 @@ const data5: Protocol[] = [
     twitter: "whalehubdefi",
     listedAt: 1773255419,
   },
+  
+  {
+    id: "7539",
+    name: "Investorus Club",
+    address: "ethereum:0x639F1822e58BbDc38D880f610b4bCeF907A94FCA",
+    symbol: "FinLP",
+    url: "https://investorus.club",
+    description:
+      "Investorus Club is a white-label yield vault powered by DSF.Finance. Users receive ERC-20 share tokens (FinLP) representing their position in the underlying stablecoin strategy built on Curve and Convex. The vault provides non-custodial, on-chain accounting and risk-managed yield optimization.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/investorus-club.png`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "dsf-investorus-club/index.js",
+    twitter: null,
+    listedAt: 1771045285,
+  },
 ];
 export default data5;

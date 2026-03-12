@@ -1,5 +1,6 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../src/utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
+import { noHistoricalChains } from './constants'
 
 class META_RWA_DATA extends Model { }
 export class DAILY_RWA_DATA extends Model { }
@@ -241,11 +242,22 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
     const closestRecord = await findDailyTimestampRecords(dayTimestamp);
     const now = new Date();
 
+    // When refilling, fetch existing records so non-historical chain data can be preserved
+    let existingRecords: { [id: string]: any } = {};
+    if (process.env.RWA_REFILL) {
+        const existing = await DAILY_RWA_DATA.findAll({
+            attributes: ['id', 'mcap', 'activemcap', 'defiactivetvl'],
+            where: { timestamp: dayTimestamp },
+            raw: true,
+        }) as any[];
+        existing.forEach((r: any) => { existingRecords[r.id] = r; });
+    }
+
     const dailyInserts: any[] = [];
     inserts.map((i: any) => {
         const { id, timestamp } = i;
         const closestRecordData = closestRecord[id];
-        const insert = {
+        let insert = {
             ...i,
             timestamp: dayTimestamp,
             timestamp_actual: timestamp,
@@ -253,7 +265,43 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
             updated_at: now,
         };
 
-        if (!closestRecordData) dailyInserts.push(insert);
+        if (process.env.RWA_REFILL || !closestRecordData) {
+            // Merge non-historical chain data from the existing DB record into the new insert
+            if (process.env.RWA_REFILL && existingRecords[id]) {
+                const existing = existingRecords[id];
+                const merged: any = { ...insert };
+                let additionalMcap = 0;
+                let additionalActiveMcap = 0;
+                let additionalDefiActiveTvl = 0;
+
+                for (const field of ['mcap', 'activemcap', 'defiactivetvl'] as const) {
+                    try {
+                        const newData = JSON.parse(insert[field] ?? '{}');
+                        const existingData = JSON.parse(existing[field] ?? '{}');
+                        for (const chain of noHistoricalChains) {
+                            if (existingData[chain] !== undefined && newData[chain] === undefined) {
+                                newData[chain] = existingData[chain];
+                                if (field === 'mcap') additionalMcap += Number(existingData[chain]) || 0;
+                                else if (field === 'activemcap') additionalActiveMcap += Number(existingData[chain]) || 0;
+                                else if (field === 'defiactivetvl') {
+                                    const nested = existingData[chain];
+                                    if (nested && typeof nested === 'object') {
+                                        additionalDefiActiveTvl += Object.values(nested).reduce((s: number, v: any) => s + (Number(v) || 0), 0);
+                                    }
+                                }
+                            }
+                        }
+                        merged[field] = JSON.stringify(newData);
+                    } catch { /* keep original if parse fails */ }
+                }
+
+                merged.aggregatemcap = (insert.aggregatemcap || 0) + additionalMcap;
+                merged.aggregatedactivemcap = (insert.aggregatedactivemcap || 0) + additionalActiveMcap;
+                merged.aggregatedefiactivetvl = (insert.aggregatedefiactivetvl || 0) + additionalDefiActiveTvl;
+                insert = merged;
+            }
+            dailyInserts.push(insert);
+        }
         else if (Math.abs(dayTimestamp - closestRecordData.timestamp_actual) > Math.abs(dayTimestamp - timestamp)) dailyInserts.push(insert);
     })
 

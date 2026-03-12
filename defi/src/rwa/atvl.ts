@@ -65,7 +65,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
           totalSupplies[token] = res[token];
         });
       } catch (e) {
-        console.error(`Failed to fetch supplies for ${chain}: ${e}`);
+        if (!process.env.RWA_REFILL) console.error(`Failed to fetch supplies for ${chain}: ${e}`);
       }
     },
   });
@@ -120,7 +120,7 @@ async function getExcludedBalances(
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {
-        console.error(`Failed to fetch balances for ${chain}`)
+        if (!process.env.RWA_REFILL) console.error(`Failed to fetch balances for ${chain}`)
       }
     },
   });
@@ -200,7 +200,7 @@ function getActiveTvls(
 ) {
   Object.keys(aggregateRawTvls).forEach((pk: string) => {
     if (!assetPrices[pk]) {
-      console.error(`No price for ${pk}`);
+      if (!process.env.RWA_REFILL) console.error(`No price for ${pk}`);
       return;
     }
 
@@ -230,7 +230,7 @@ function getActiveTvls(
           finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName] = {};
         finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
       } catch (e) {
-        console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
+        if (!process.env.RWA_REFILL) console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
       }
     });
   });
@@ -245,7 +245,7 @@ function getOnChainTvlAndActiveMcaps(
   totalSupplies: any,
   excludedAmounts: any
 ) {
-  Object.keys(stablecoinsData).forEach((cgId: string) => {
+   Object.keys(stablecoinsData).forEach((cgId: string) => {
     const rwaId = coingeckoIdToRwaId[cgId];
     if (!finalData[rwaId]) return;
     finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
@@ -271,7 +271,7 @@ function getOnChainTvlAndActiveMcaps(
     const { price, decimals } = assetPrices[pk];
     const supply = totalSupplies[pk];
     if (!supply || !price) {
-      console.error(`No supply or price for ${pk}`);
+      if (!process.env.RWA_REFILL) console.error(`No supply or price for ${pk}`);
       return;
     }
 
@@ -292,7 +292,7 @@ function getOnChainTvlAndActiveMcaps(
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
-      console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
+      if (!process.env.RWA_REFILL) console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
   });
 }
@@ -373,7 +373,7 @@ async function checkCircuitBreakers(
 }
 
 // main entry
-export default async function main(ts: number = 0) {
+export default async function main(ts: number = 0, ids: string[] = []) {
   const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it
@@ -396,6 +396,7 @@ export default async function main(ts: number = 0) {
 
     const id = mapped.id;
     if (!id) return;
+    if (ids.length > 0 && !ids.includes(id)) return;
     if (!mapped.ticker) return;
 
     // Keep raw token identifiers for TVL pipeline BEFORE parsing contracts into {chainLabel: addresses}
@@ -428,7 +429,7 @@ export default async function main(ts: number = 0) {
   // log missed assets
   Object.keys(tokenToProjectMap).forEach((address: string) => {
     if (!assetPrices[address]) {
-      console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
+      if (!process.env.RWA_REFILL) console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
       return;
     }
   });
@@ -467,7 +468,7 @@ export default async function main(ts: number = 0) {
 
   // Circuit breaker: check for big jumps before saving
   const circuitBreaker = await checkCircuitBreakers(filteredFinalData);
-  if (circuitBreaker.triggered) {
+  if (!process.env.RWA_REFILL && circuitBreaker.triggered) {
     const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
     console.error(message);
     await sendMessage(message, process.env.RWA_WEBHOOK!, false);
@@ -479,13 +480,15 @@ export default async function main(ts: number = 0) {
     storeHistorical(res),
   ]);
 
-  console.log(`Exitting atvl.ts`)
+  if (!process.env.RWA_REFILL) console.log(`Exitting atvl.ts`)
 
   return finalData;
 }
 
-main().catch(async (error) => {
-  console.error('Error running the script: ', error);
-  await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
-  process.exit(1);
-}).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts
+if (!process.env.RWA_REFILL) {
+  main().catch(async (error) => {
+    console.error('Error running the script: ', error);
+      await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
+      process.exit(1);
+    }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts
+}

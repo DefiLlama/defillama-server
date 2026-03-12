@@ -4910,9 +4910,9 @@ export const chainCoingeckoIds = {
     twitter: "katana",
     url: "https://katana.network/",
     chainId: 747474,
-    dimensions: {
-      fees: "katana",
-    },
+    // dimensions: {
+    //   fees: "katana",
+    // },
   },
   "XRPL EVM": {
     geckoId: null,

@@ -1505,6 +1505,9 @@ export const chainCoingeckoIds = {
     symbol: "BCH",
     cmcId: "1831",
     url: "https://bch.info/en/",
+    dimensions: {
+      'active-users': 'chain#bch' 
+    }
   },
   "Litecoin": {
     geckoId: "litecoin",
@@ -2226,6 +2229,8 @@ export const chainCoingeckoIds = {
     url: "https://polygon.technology/",
     dimensions: {
       fees: "polygon-zkevm",
+      'active-users': 'chain#polygon_zkevm',
+      'new-users': 'chain#polygon_zkevm',
     },
   },
   "Meta": {
@@ -3140,6 +3145,7 @@ export const chainCoingeckoIds = {
     chainId: 13371,
     dimensions: {
       fees: "imx",
+      'nft-volume': 'chain#immutablex',
     },
   },
   "Zora": {

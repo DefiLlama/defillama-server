@@ -138,6 +138,8 @@ export const handler2 = async (options: DimensionRunOptions) => {
   // Import some utils
   const { importModule, KEYS_TO_STORE, protocolAdaptors } = dataModule
 
+  if (!KEYS_TO_STORE) console.error(`No KEYS_TO_STORE found for adapter type ${adapterType}`)
+
   // Get list of adaptors to run
   let protocols = protocolAdaptors
 
@@ -472,7 +474,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           tbl = tbl ?? built.tbl
           tblc = tblc ?? built.tblc
         }
+
       }
+
 
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)   // remove unmapped record types and convert keys to short names
 

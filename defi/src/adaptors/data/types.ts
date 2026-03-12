@@ -117,7 +117,13 @@ export enum AdaptorRecordType {
     dailyAppFees = "daf",
 
     dailyNormalizedVolume = "dnvol",
-    dailyActiveLiquidity = "dal"
+    dailyActiveLiquidity = "dal",
+
+    dailyActiveUsers = "dau",
+    dailyNewUsers = "dnu",
+    dailyTransactionsCount = "dtc",
+    dailyGasUsed = "dgu",
+
 }
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -132,6 +138,9 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
     [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
     [AdapterType.NORMALIZED_VOLUME]: AdaptorRecordType.dailyNormalizedVolume,
+    [AdapterType.NFT_VOLUME]: AdaptorRecordType.dailyVolume,
+    [AdapterType.ACTIVE_USERS]: AdaptorRecordType.dailyActiveUsers,
+    [AdapterType.NEW_USERS]: AdaptorRecordType.dailyNewUsers,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -186,7 +195,11 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     ],
     [AdapterType.NORMALIZED_VOLUME]: [
         AdaptorRecordType.dailyActiveLiquidity,
-    ]
+    ],
+    [AdapterType.ACTIVE_USERS]: [
+        AdaptorRecordType.dailyTransactionsCount,
+        AdaptorRecordType.dailyGasUsed,
+    ],
 }
 
 const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
@@ -256,16 +269,16 @@ export type DIMENSIONS_ADAPTER_CACHE = {
 }
 
 export interface EmissionsAggRecord {
-  value: number;
-  'by-label'?: IJSON<number>;
+    value: number;
+    'by-label'?: IJSON<number>;
 }
 
 export interface EmissionsProtocolData {
-  id: string; // aave, uniswap, ...
-  yearly: IJSON<EmissionsAggRecord>;
-  quarterly: IJSON<EmissionsAggRecord>;
-  monthly: IJSON<EmissionsAggRecord>;
-  breakdownMethodology?: IJSON<string>;
+    id: string; // aave, uniswap, ...
+    yearly: IJSON<EmissionsAggRecord>;
+    quarterly: IJSON<EmissionsAggRecord>;
+    monthly: IJSON<EmissionsAggRecord>;
+    breakdownMethodology?: IJSON<string>;
 }
 
 export type RecordSummary = {

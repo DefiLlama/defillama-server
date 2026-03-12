@@ -13934,5 +13934,30 @@ const data5: Protocol[] = [
     twitter: "whalehubdefi",
     listedAt: 1773255419,
   },
+  {
+    id: "7539",
+    name: "Bitway",
+    address: "bsc:0x444045b0ee1ee319a660a5e3d604ca0ffa35acaa",
+    symbol: "BTW",
+    url: "https://bitway.com/",
+    description:
+      "Bitway is a capital gateway connecting on-chain liquidity with global markets.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bitway.jpg`,
+    audits: "2",
+    gecko_id: "bitway",
+    cmcId: "39158",
+    category: "Basis Trading",
+    chains: ["Binance"],
+    module: "bitway/index.js",
+    twitter: "BitwayOfficial",
+    github: ["bitwaylabs"],
+    audit_links: [
+      "https://1739587685-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FiSGHwFKn3P0OZY7c7ITh%2Fuploads%2FfD8mPTvBi8WxzPI8e7EV%2FBlocksec_Bitway_Earn_Audit_Report.pdf?alt=media&token=c1c954d9-14a2-401b-a544-d23010c565fa",
+      "https://1739587685-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FiSGHwFKn3P0OZY7c7ITh%2Fuploads%2Fop9YWYBDnxCa0YeBdf8t%2FSalus_BitwayEarn_Audit_Report.pdf?alt=media&token=24a6d106-9f88-4ee3-8a9c-72dffe9aadc8",
+      "https://1739587685-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FiSGHwFKn3P0OZY7c7ITh%2Fuploads%2FCHW9zrkYycSoPABMSaSk%2FSalus_Bitway_Token_Audit_Report.pdf?alt=media&token=11c93464-625d-4282-9cd0-478715ad7108"
+    ],
+    listedAt: 1773325947,
+  },
 ];
 export default data5;

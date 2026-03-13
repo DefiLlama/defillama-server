@@ -116,6 +116,10 @@ export function computeInflowsData({
   for (const token of whitelistedTokens) {
     const currentAmount = currentTvl[token] || 0
     const oldAmount = oldTvl[token] || 0
+    if (!currentAmount || !oldAmount) continue; // skip tokens only present in one snapshot (not a real inflow/outflow)
+    const oldUsdValue = oldUSDTvl[token] || 0
+    const currentUsdValue = currentUSDTvl[token] || 0
+    if (oldUsdValue < minValueToConsiderToken || currentUsdValue < minValueToConsiderToken) continue; // skip tokens that were insignificant in either snapshot (dust/newly tracked)
     const diff = currentAmount - oldAmount
     const priceInfo = priceMap[token]
     if (!priceInfo) continue;

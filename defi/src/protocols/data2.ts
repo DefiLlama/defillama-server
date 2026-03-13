@@ -28362,22 +28362,19 @@ const data2: Protocol[] = [
   {
     name: "Chainlink",
     type: "Primary",
-    chains: [
-      { chain: "polygon", "Linea" },
-    ]
+    chains: [{ chain: "Polygon"}, {chain: "Linea" }],
+    proof: ["https://docs.wefi.xyz/ecosystem"]
   },
   {
     name: "Api3",
     type: "Primary",
-    chains: [
-      { chain: "polygon", "Linea" },
-    ]
+    chains: [{ chain: "Polygon"}, {chain: "Linea" }],
+    proof: ["https://docs.wefi.xyz/ecosystem"]
   },
   {
     name: "DIA",
     type: "Primary",
-    chains: [
-      { chain: "Boba" },
+    chains: [{ chain: "Boba" }],
     proof: ["https://x.com/wefi_xyz/status/1849437762904342743"]
   },
 ]

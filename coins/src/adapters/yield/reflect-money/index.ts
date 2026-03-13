@@ -13,6 +13,8 @@ type Stablecoin = {
   decimals: number;
   /** The chain the token is deployed on (e.g. "solana"). */
   chain: string;
+  /** Index used by the Reflect Money API for this stablecoin. */
+  apiIndex: number;
 };
 
 const stablecoins: Stablecoin[] = [
@@ -21,12 +23,14 @@ const stablecoins: Stablecoin[] = [
     symbol: "USDC+",
     decimals: 6,    
     chain: "solana",
+    apiIndex: 0,
   },
   {
     mintAddress: "uSDtYeMVYuQwhziLKMpdMz74WPFNytoWLGGiU9SDnZx",
     symbol: "USDT+",
     decimals: 6,    
     chain: "solana",
+    apiIndex: 1,
   },
 ];
 
@@ -45,10 +49,10 @@ export async function reflectMoney(timestamp: number = 0): Promise<Write[]> {
   const writes: Write[] = [];
 
   await Promise.all(
-    stablecoins.map(async (stablecoin: Stablecoin, index: number) => {
+    stablecoins.map(async (stablecoin: Stablecoin) => {
       try {
         const { data } = await axios.get(
-          `https://prod.api.reflect.money/stablecoin/${index}/exchange-rate`,
+          `https://prod.api.reflect.money/stablecoin/${stablecoin.apiIndex}/exchange-rate`,
           { timeout: 10_000 },
         );
         const price = (data.data.base as number) / PRICE_PRECISION;

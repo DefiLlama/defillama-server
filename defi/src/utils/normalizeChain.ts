@@ -2229,8 +2229,8 @@ export const chainCoingeckoIds = {
     url: "https://polygon.technology/",
     dimensions: {
       fees: "polygon-zkevm",
-      'active-users': 'chain#polygon_zkevm',
-      'new-users': 'chain#polygon_zkevm',
+      'active-users': 'polygon_zkevm',
+      'new-users': 'polygon_zkevm',
     },
   },
   "Meta": {

@@ -208,7 +208,7 @@ export enum AdapterType {
   AGGREGATOR_DERIVATIVES = 'aggregator-derivatives',
   BRIDGE_AGGREGATORS = 'bridge-aggregators',
   NORMALIZED_VOLUME = 'normalized-volume',
-  NFT_VOLUME = 'nft-volume',
+  // NFT_VOLUME = 'nft-volume',  // not used anywhere?
   ACTIVE_USERS = 'active-users',
   NEW_USERS = 'new-users',
 }

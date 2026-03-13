@@ -218,10 +218,9 @@ async function refillAllProtocols() {
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
   const skippedAdapterTypes = [
-    AdapterType.NFT_VOLUME,
-    AdapterType.NEW_USERS,
     AdapterType.ACTIVE_USERS,
-  ]
+    AdapterType.NEW_USERS,
+  ] as AdapterType[]
   const tasks = await Promise.all(aTypes.map(runAdapterType))
   const allTasks = tasks.flat()
   console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)

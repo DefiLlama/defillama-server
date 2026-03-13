@@ -14018,7 +14018,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://app.perptools.ai/",
-    description: "PERPTools redefines perpetual trading with AI-powered automation, transparent execution, and a frictionless on-chain experience — all in one platform built for traders, by traders.",
+    description: "perptools redefines perpetual trading with AI-powered automation, transparent execution, and a frictionless on-chain experience — all in one platform built for traders, by traders.",
     chain: "Orderly",
     logo: `${baseIconsUrl}/perptools.jpg`,
     audits: "0",
@@ -14031,6 +14031,27 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "perptools",
       "open-interest": "perptools-perp-oi",
+    }
+  },
+  {
+    id: "7543",
+    name: "PigeonHouse",
+    address: "solana:4fSWEw2wbYEUCcMtitzmeGUfqinoafXxkhqZrA9Gpump",
+    symbol: "PIGEON",
+    url: "https://941pigeon.fun",
+    description: "PigeonHouse is a token launchpad on Solana where every trade permanently burns PIGEON tokens.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/pigeonhouse.jpg`,
+    audits: "0",
+    gecko_id: "level941",
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana  "],
+    module: "dummy.js",
+    twitter: "941pigeondotfun",
+    dimensions: {
+      fees: "pigeonhouse",
+      dexs: "pigeonhouse",
     }
   },
 ];

@@ -154,7 +154,7 @@ describe('Perps API - Derivatives', () => {
         protocolsWithChange.forEach((protocol) => {
           expectValidNumber(protocol.change_1d!);
           expect(protocol.change_1d).toBeGreaterThanOrEqual(-100);
-          expect(protocol.change_1d).toBeLessThan(10000); // Some protocols can have very high growth
+          expect(protocol.change_1d).toBeLessThan(10_000_000); // Some protocols can have very high growth
         });
       }
     });

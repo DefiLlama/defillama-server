@@ -13702,7 +13702,7 @@ const data3_0: Protocol[] = [
     cmcId: "21585",
     category: "Services",
     chains: ["Optimism"],
-    module: "dummy.js",
+    module: "safe/index.js",
     treasury: "safe.js",
     twitter: "safe",
     github: ["safe-global"],

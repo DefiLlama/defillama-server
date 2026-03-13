@@ -557,9 +557,11 @@ function removeSpikes(data: HistoricalRecord[]): HistoricalRecord[] {
       const prevVal = lastGoodVal;
       const nextVal = result[nextGoodIdx][key] as number;
 
+      const isZeroDip = currVal < 1;
       for (let k = i; k < nextGoodIdx; k++) {
         const t = (result[k].timestamp - prevTs) / (nextTs - prevTs);
-        (result[k] as any)[key] = prevVal + (nextVal - prevVal) * t;
+        const interpolated = prevVal + (nextVal - prevVal) * t;
+        (result[k] as any)[key] = isZeroDip ? Math.max(interpolated, prevVal) : interpolated;
       }
 
       lastGoodIdx = nextGoodIdx;

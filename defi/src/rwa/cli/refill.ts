@@ -3,9 +3,10 @@ import atvl from '../atvl';
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
 import { fetchTimestampsPG, initPG } from "../db";
 
+// COMMENT OUT ENTRY IN atvl.ts
+// COMPLETE THESE VARS
 const start = 1742688001; // 23 mar 25
 const end = 1770076801; // 3 feb 26
-
 const ids = ['79'];
 
 async function main() {

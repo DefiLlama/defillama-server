@@ -128,7 +128,7 @@ async function getExcludedBalances(
   return excludedAmounts;
 }
 // use stablecoin API to fetch mcaps for stablecoins
-async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+async function fetchStablecoins(timestamp: number, relevantGeckoIds?: Set<string>): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
   const validStablecoinIds: string[] = [];
   const { peggedAssets } = await cachedFetch({
     key: "stablecoin-symbols",
@@ -136,21 +136,34 @@ async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]
   });
 
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+  const seenStablecoinIds = new Set<string>();
+  const idToGeckoId: { [id: string]: string } = {};
   peggedAssets.forEach((coin: any) => {
     const { id, chainCirculating, gecko_id, pegType } = coin;
     if (!chainCirculating || !gecko_id || !pegType) return;
+    idToGeckoId[id] = gecko_id;
     data[gecko_id] = {};
+    let hasData = false;
     Object.keys(chainCirculating).forEach((chain: string) => {
       const circulating = chainCirculating[chain].current;
       if (!circulating) return;
       const mcap = circulating[pegType];
       if (!mcap) return;
-      validStablecoinIds.push(id);
+      hasData = true;
       data[gecko_id][chain] = toFixedNumber(mcap, 0);
     });
+    if (hasData && !seenStablecoinIds.has(id)) {
+      validStablecoinIds.push(id);
+      seenStablecoinIds.add(id);
+    }
   });
 
-  if (timestamp != 0) return await fetchHistoricalStablecoins(timestamp, validStablecoinIds);
+  if (timestamp != 0) {
+    const idsToFetch = relevantGeckoIds
+      ? validStablecoinIds.filter((id) => relevantGeckoIds.has(idToGeckoId[id]))
+      : validStablecoinIds;
+    return await fetchHistoricalStablecoins(timestamp, idsToFetch);
+  }
 
   return data;
 }
@@ -422,7 +435,7 @@ export default async function main(ts: number = 0, ids: string[] = []) {
     coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
     getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
-    fetchStablecoins(timestamp),
+    fetchStablecoins(timestamp, ids.length > 0 ? new Set(Object.keys(coingeckoIdToRwaId)) : undefined),
     getExcludedBalances(ts, finalData, tokenToProjectMap),
   ]);
 
@@ -466,8 +479,8 @@ export default async function main(ts: number = 0, ids: string[] = []) {
 
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
-  // Circuit breaker: check for big jumps before saving
-  const circuitBreaker = await checkCircuitBreakers(filteredFinalData);
+  // Circuit breaker: skip when ids are filtered (partial data makes aggregate comparison meaningless)
+  const circuitBreaker = ids.length === 0 ? await checkCircuitBreakers(filteredFinalData) : { triggered: false, details: [] };
   if (!process.env.RWA_REFILL && circuitBreaker.triggered) {
     const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
     console.error(message);

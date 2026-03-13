@@ -4899,8 +4899,8 @@ const data4: Protocol[] = [
   {
     id: "5775",
     name: "Infrared Finance",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xace9de5af92eb82a97a5973b00eff85024bdcb39",
+    symbol: "IR",
     assetToken: "iBERA",
     url: "https://infrared.finance",
     description:
@@ -4908,8 +4908,8 @@ const data4: Protocol[] = [
     chain: "Berachain",
     logo: `${baseIconsUrl}/infrared-finance.jpg`,
     audits: "0",
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "infrared-finance",
+    cmcId: "39113",
     category: "Liquid Staking",
     chains: ["Berachain"],
     module: "infrared-finance/index.js",

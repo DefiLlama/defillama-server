@@ -27558,6 +27558,9 @@ const data4: Protocol[] = [
     module: "surf-liquid/index.js",
     twitter: "Surf_Liquid",
     listedAt: 1758736221,
+    dimensions: {
+      fees: "surf-liquid"
+    },
     deprecated: true
   },
   {

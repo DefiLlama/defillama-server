@@ -55,7 +55,14 @@ export async function reflectMoney(timestamp: number = 0): Promise<Write[]> {
           `https://prod.api.reflect.money/stablecoin/${stablecoin.apiIndex}/exchange-rate`,
           { timeout: 10_000 },
         );
-        const price = (data.data.base as number) / PRICE_PRECISION;
+
+        const rawBase = data?.data?.base;
+        const base = Number(rawBase);
+        if (!Number.isFinite(base) || base <= 0) {
+          throw new Error(`Invalid exchange-rate payload for ${stablecoin.symbol}: ${JSON.stringify(data)}`);
+        }
+        const price = base / PRICE_PRECISION;
+
         addToDBWritesList(
           writes,
           stablecoin.chain,

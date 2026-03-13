@@ -255,7 +255,7 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
     }
 
     const dailyInserts: any[] = [];
-    inserts.map((i: any) => {
+    inserts.forEach((i: any) => {
         const { id, timestamp } = i;
         const closestRecordData = closestRecord[id];
         let insert = {

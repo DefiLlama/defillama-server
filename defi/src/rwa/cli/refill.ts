@@ -25,10 +25,12 @@ async function main() {
         items: timestamps,
         concurrency: 2,
         processor: async (timestamp: number) => {
-            await atvl(timestamp, ids).catch((e) => {
+            await atvl(timestamp, ids)
+            .then(() => console.log(`Backfilled at timestamp ${timestamp}`))
+            .catch((e) => {
                 console.error(`Error backfilling at timestamp ${timestamp}: ${e}`);
                 errors.push(timestamp);
-            }).then(() => console.log(`Backfilled at timestamp ${timestamp}`));
+            })
         }
     }).catch((e) => {
         console.error(`Error backfilling: ${e}`);

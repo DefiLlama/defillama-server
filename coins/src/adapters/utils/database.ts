@@ -31,7 +31,7 @@ function normalizedPKFor(pk: string): string {
   if (colonIdx === -1) return pk.toLowerCase();
   const chain = body.slice(0, colonIdx).toLowerCase();
   let address = body.slice(colonIdx + 1).toLowerCase();
-  if (chain === "starknet") {
+  if (chain === "starknet" && address.length === 66 && address.startsWith("0x0")) {
     address = address.replace(/^0x0+/, "0x");
   }
   return `asset#${chain}:${address}`;

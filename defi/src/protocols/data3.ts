@@ -14122,6 +14122,7 @@ const data3_0: Protocol[] = [
     module: "dummy.js",
     twitter: "chainlink",
     parentProtocol: "parent#chainlink",
+    disabled: 'Merged fee data into Chainlink Requests',
     dimensions: {
       fees: "chainlink-keepers"
     }
@@ -14144,6 +14145,7 @@ const data3_0: Protocol[] = [
     module: "dummy.js",
     twitter: "chainlink",
     parentProtocol: "parent#chainlink",
+    disabled: 'Merged fee data into Chainlink Requests',
     dimensions: {
       fees: "chainlink-vrf-v1"
     }
@@ -14166,6 +14168,7 @@ const data3_0: Protocol[] = [
     module: "dummy.js",
     twitter: "chainlink",
     parentProtocol: "parent#chainlink",
+    disabled: 'Merged fee data into Chainlink Requests',
     dimensions: {
       fees: "chainlink-vrf-v2"
     }
@@ -21589,6 +21592,7 @@ const data3_1: Protocol[] = [
     module: "dummy.js",
     twitter: "chainlink",
     parentProtocol: "parent#chainlink",
+    disabled: 'Merged fee data into Chainlink Requests',
     listedAt: 1698053519,
     dimensions: {
       fees: "chainlink-ccip"

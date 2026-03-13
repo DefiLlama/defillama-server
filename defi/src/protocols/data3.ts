@@ -31050,7 +31050,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "pingu",
       derivatives: {
-        genuineSpikes: [["2024-05-23", "-"]],
+        genuineSpikes: [["2024-05-23", "-"], ["2026-03-09", "Higher volumes in USOILSPOT/USD pair due to OIL price volatility"]],
         adapter: "pingu"
       }
     }

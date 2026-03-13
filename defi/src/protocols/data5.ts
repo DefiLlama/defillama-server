@@ -10254,7 +10254,10 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "titanbuilderxyz",
     dimensions: {
-      fees: "titan-builder",
+      fees: {
+        genuineSpikes: [["2026-03-12", "Extremely high slippage aave tokens swap ($50M -> $36K)"]],
+        adapter: "titan-builder"
+      }
     },
   },
   {

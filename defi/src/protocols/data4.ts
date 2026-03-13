@@ -12876,8 +12876,11 @@ const data4: Protocol[] = [
     listedAt: 1746030822,
     oraclesBreakdown: [
       {
-        name: "Reflector",
-        type: "Primary",
+        name: "RedStone",
+        proof: [
+          "https://docs.blend.capital/pool-creators/selecting-an-oracle",
+          "https://github.com/blend-capital/oracle-aggregator#supported-oracles",
+         name: "Reflector",
         proof: [
           "https://docs.blend.capital/pool-creators/selecting-an-oracle#well-known-oracles",
           "https://github.com/blend-capital/oracle-aggregator#supported-oracles",

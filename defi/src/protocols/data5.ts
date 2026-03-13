@@ -14012,5 +14012,26 @@ const data5: Protocol[] = [
     github: ["Bitchemicaltech"],
     listedAt: 1773326000,
   },
+  {
+    id: "7542",
+    name: "perptools",
+    address: null,
+    symbol: "-",
+    url: "https://app.perptools.ai/",
+    description: "PERPTools redefines perpetual trading with AI-powered automation, transparent execution, and a frictionless on-chain experience — all in one platform built for traders, by traders.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/perptools.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Orderly"],
+    module: "dummy.js",
+    twitter: "perptools",
+    dimensions: {
+      fees: "perptools",
+      "open-interest": "perptools-perp-oi",
+    }
+  },
 ];
 export default data5;

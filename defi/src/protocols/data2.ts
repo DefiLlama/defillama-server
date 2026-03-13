@@ -28357,8 +28357,27 @@ const data2: Protocol[] = [
     gecko_id: "wefi-finance",
     cmcId: "24771",
     category: "Lending",
-    chains: ["Polygon", "Linea"],
-    oracles: ["Chainlink", "Api3"],
+    chains: ["Polygon", "Linea", "Boba"],
+    oraclesBreakdown: [
+  {
+    name: "Chainlink",
+    type: "Primary",
+    chains: [{ chain: "Polygon"}, {chain: "Linea" }],
+    proof: ["https://docs.wefi.xyz/ecosystem"]
+  },
+  {
+    name: "Api3",
+    type: "Primary",
+    chains: [{ chain: "Polygon"}, {chain: "Linea" }],
+    proof: ["https://docs.wefi.xyz/ecosystem"]
+  },
+  {
+    name: "DIA",
+    type: "Primary",
+    chains: [{ chain: "Boba" }],
+    proof: ["https://x.com/wefi_xyz/status/1849437762904342743"]
+  },
+]
     forkedFromIds: ["114"],
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",

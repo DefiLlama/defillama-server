@@ -3,37 +3,43 @@ import atvl from '../atvl';
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
 import { fetchTimestampsPG, initPG } from "../db";
 
-const start = 1735690215; // 1 Jan 2025
-const end = getCurrentUnixTimestamp()
+// COMMENT OUT ENTRY IN atvl.ts
+// COMPLETE THESE VARS
+const start = 1742688001; // 23 mar 25
+const end = 1770076801; // 3 feb 26
+const ids = ['79'];
 
 async function main() {
     await initPG();
-    const done = await fetchTimestampsPG();
+    process.env.RWA_REFILL = 'true';
     const timestamps: number[] = []
     let workingNumber = end;
-    let finished = 0;
     while (workingNumber > start) {
         const cleanTimestamp = getTimestampAtStartOfDay(workingNumber);
-        if (done.includes(cleanTimestamp)) finished ++
-        if (!done.includes(cleanTimestamp)) timestamps.push(cleanTimestamp);
+        timestamps.push(cleanTimestamp);
         workingNumber -= 86400;
     }
 
+    const errors: number[] = [];
     await runInPromisePool({
         items: timestamps,
-        concurrency: 5,
+        concurrency: 2,
         processor: async (timestamp: number) => {
-            await atvl(timestamp).catch((e) => {
+            await atvl(timestamp, ids)
+            .then(() => console.log(`Backfilled at timestamp ${timestamp}`))
+            .catch((e) => {
                 console.error(`Error backfilling at timestamp ${timestamp}: ${e}`);
-            });
-            console.log(`Backfilled at timestamp ${timestamp}`);
+                errors.push(timestamp);
+            })
         }
     }).catch((e) => {
         console.error(`Error backfilling: ${e}`);
         process.exit();
     })
 
+    console.log(`Error Count: ${errors.length} / ${timestamps.length}`);
+    console.log(`Errors: ${errors.toString()}`);
     process.exit();
 }
 
-main() // ts-node defi/src/rwa/refill.ts
+main() // ts-node defi/src/rwa/cli/refill.ts

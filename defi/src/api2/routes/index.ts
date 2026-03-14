@@ -20,7 +20,6 @@ import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtoc
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 import { readRouteData } from "../cache/file-cache";
 
-import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
 import { getHistory } from "../../dexAggregators/db/getHistory";
@@ -191,8 +190,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 
   router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
-
-  router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
 
   router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
   router.post("/reportSupport", ew(reportSupportHandler)) // TODO: ensure that env vars are set
@@ -731,13 +728,6 @@ export function getForksRoutes(route: 'overview' | 'chart-total') {
     if (!data) return errorResponse(res, 'Request data not found');
     return successResponse(res, data);
   }
-}
-
-
-async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const { protocolId, type } = req.path_parameters
-  const data = await getProtocolUsersHandler(protocolId, type)
-  return successResponse(res, data, 60)
 }
 
 async function getSwapDailyVolumeHandler(req: HyperExpress.Request, res: HyperExpress.Response) {

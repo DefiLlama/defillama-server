@@ -32,7 +32,7 @@ function loadAdaptorsData(adaptorType: AdapterType): AdaptorData {
 
 // usually info about the adapter module for dimension metric is specified in 'dimensions' field of the protocol/chain metadata, but in some cases, we need to auto link it based on import key matching protocol id, atm, we are restricting it to these adapter types
 const ADAPTER_TYPES_WITH_CONFIG_ID_AS_KEY = [
-  // AdapterType.NFT_VOLUME,
+  AdapterType.NFT_VOLUME,
   AdapterType.ACTIVE_USERS,
   AdapterType.NEW_USERS
 ]
@@ -265,11 +265,11 @@ function getDimensionsConfig() {
         [AdaptorRecordType.dailyNewUsers]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNewUsers],
       }
     },
-    // [AdapterType.NFT_VOLUME]: {
-    //   KEYS_TO_STORE: {
-    //     [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
-    //   },
-    // },
+    [AdapterType.NFT_VOLUME]: {
+      KEYS_TO_STORE: {
+        [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
+      },
+    },
   }
 
 

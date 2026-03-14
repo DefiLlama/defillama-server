@@ -4,12 +4,15 @@ let accountsDBConnection: ReturnType<typeof postgres>;
 let errorReportsConnection: ReturnType<typeof postgres>;
 let pgConnection: Promise<ReturnType<typeof postgres>>;
 
+/* migrated the data to dimensions db
+
 export function getAccountsDBConnection() {
   if (!accountsDBConnection) accountsDBConnection = postgres(process.env.ACCOUNTS_DB!);
 
   return accountsDBConnection;
 }
 
+ */
 export function getErrorDBConnection() {
   if (!errorReportsConnection) errorReportsConnection = postgres(process.env.ERROR_REPORTS_DB!);
 

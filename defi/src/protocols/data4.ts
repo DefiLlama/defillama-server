@@ -3266,7 +3266,7 @@ const data4: Protocol[] = [
     address: null,
     // none (pre-tge)
     symbol: "-",
-    url: "https://www.rooster-protocol.xyz/",
+    url: "https://www.rooster.trade/",
     description:
       "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume (Deprecated)",
@@ -28681,7 +28681,7 @@ const data4: Protocol[] = [
     address: null,
     // none (pre-tge)
     symbol: "-",
-    url: "https://www.rooster-protocol.xyz/",
+    url: "https://www.rooster.trade/",
     description:
       "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume Mainnet",

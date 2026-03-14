@@ -29,7 +29,10 @@ const vaultConfig: {
 export function ledgity(timestamp: number = 0): Promise<Write[][]> {
 	return Promise.all(
 		Object.entries(vaultConfig).map(([chain, config]) => {
-			const tokens = [config.lyUSD, config.lyEUR].filter((token): token is string => !!token);
+			const tokens = [config.lyUSD, config.lyEUR].filter(
+				(token): token is string => !!token,
+			);
+			if (!tokens.length) return Promise.resolve([]);
 			return calculate4626Prices(chain, timestamp, tokens, 'ledgity');
 		}),
 	);

@@ -14054,5 +14054,26 @@ const data5: Protocol[] = [
       dexs: "pigeonhouse",
     }
   },
+  {
+    id: "7544",
+    name: "Taco",
+    address: null,
+    symbol: "-",
+    url: "https://app.taco.trade/trade/",
+    description: "Taco is a Trusted Agentic Crypto OS that turns user intent into secure, risk-bounded execution across all markets.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/taco.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "TacoTradeX",
+    dimensions: {
+      fees: "taco-trade",
+      dexs: "taco-trade",
+    }
+  },
 ];
 export default data5;

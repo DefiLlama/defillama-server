@@ -14046,7 +14046,7 @@ const data5: Protocol[] = [
     gecko_id: "level941",
     cmcId: null,
     category: "Launchpad",
-    chains: ["Solana  "],
+    chains: ["Solana"],
     module: "dummy.js",
     twitter: "941pigeondotfun",
     dimensions: {

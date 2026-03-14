@@ -14072,7 +14072,7 @@ const data5: Protocol[] = [
     twitter: "TacoTradeX",
     dimensions: {
       fees: "taco-trade",
-      dexs: "taco-trade",
+      derivatives: "taco-trade",
     }
   },
 ];

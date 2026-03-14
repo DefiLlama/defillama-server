@@ -48,7 +48,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
 
 
-      chains = Object.keys(baseModuleObject)
+      chains = Object.keys(baseModuleObject).filter((key) => key !== 'chain_global')  // skip the special 'chain_global' key which is used for some global properties of the adapter, but is not an actual chain
       
 
       const infoItem: ProtocolAdaptor = {

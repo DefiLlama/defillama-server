@@ -41,6 +41,9 @@ export const BASE_URLS = {
   ETFS: getProApiBaseUrl(),
   NARRATIVES: getProApiBaseUrl(),
   RWA: getProApiBaseUrl() + '/rwa',
+  NFT_VOLUME: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'nft-volume'),
+  ACTIVE_USERS_DIM: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'active-users'),
+  NEW_USERS_DIM: getBaseUrl(process.env.BETA_API_URL || 'https://api.llama.fi', 'new-users'),
 };
 
 const stablecoinsBaseUrl = BASE_URLS.STABLECOINS;
@@ -135,12 +138,6 @@ export const BRIDGES = {
   TRANSACTIONS: (id: string) => `/bridges/transactions/${id}`,
 } as const;
 
-export const USERS = {
-  BASE_URL: BASE_URLS.USERS,
-  ACTIVE_USERS: '/api/activeUsers',
-  USER_DATA: (type: string, protocolId: string) => `/api/userData/${type}/${protocolId}`,
-} as const;
-
 export const MAIN_PAGE = {
   BASE_URL: getProApiBaseUrl(),
   CATEGORIES: '/api/categories',
@@ -192,6 +189,27 @@ export const TOKEN_LIQUIDITY = {
   HISTORICAL_LIQUIDITY: (token: string) => `/api/historicalLiquidity/${token}`,
 } as const;
 
+export const NFT_VOLUME = {
+  BASE_URL: BASE_URLS.NFT_VOLUME,
+  OVERVIEW: '/overview/nft-volume',
+  OVERVIEW_CHAIN: (chain: string) => `/overview/nft-volume/${chain}`,
+  SUMMARY: (protocol: string) => `/summary/nft-volume/${protocol}`,
+} as const;
+
+export const ACTIVE_USERS_DIM = {
+  BASE_URL: BASE_URLS.ACTIVE_USERS_DIM,
+  OVERVIEW: '/overview/active-users',
+  OVERVIEW_CHAIN: (chain: string) => `/overview/active-users/${chain}`,
+  SUMMARY: (protocol: string) => `/summary/active-users/${protocol}`,
+} as const;
+
+export const NEW_USERS_DIM = {
+  BASE_URL: BASE_URLS.NEW_USERS_DIM,
+  OVERVIEW: '/overview/new-users',
+  OVERVIEW_CHAIN: (chain: string) => `/overview/new-users/${chain}`,
+  SUMMARY: (protocol: string) => `/summary/new-users/${protocol}`,
+} as const;
+
 export const RWA = {
   BASE_URL: BASE_URLS.RWA,
   CURRENT: '/current',
@@ -221,7 +239,6 @@ export const endpoints = {
   VOLUMES,
   FEES,
   BRIDGES,
-  USERS,
   MAIN_PAGE,
   UNLOCKS,
   YIELDS_PRO,
@@ -232,6 +249,9 @@ export const endpoints = {
   RWA,
   TVL_V2,
   FEES_V2,
+  NFT_VOLUME,
+  ACTIVE_USERS_DIM,
+  NEW_USERS_DIM,
 } as const;
 
 export const API_CONFIG = {

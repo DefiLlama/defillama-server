@@ -133,7 +133,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   })));
 
 
-  router.get("/activeUsers", defaultFileHandler)
+  // router.get("/activeUsers", defaultFileHandler)   # migrated to dimensions
 
 
 

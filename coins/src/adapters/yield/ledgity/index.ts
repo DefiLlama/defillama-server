@@ -1,3 +1,4 @@
+import { Write } from '../../utils/dbInterfaces';
 import { calculate4626Prices } from '../../utils/erc4626';
 
 const vaultConfig: {
@@ -25,13 +26,10 @@ const vaultConfig: {
 	},
 };
 
-export function ledgity(timestamp: number = 0) {
+export function ledgity(timestamp: number = 0): Promise<Write[][]> {
 	return Promise.all(
-		Object.keys(vaultConfig).map((chain) => {
-			const config = vaultConfig[chain];
-			if (!config) return [];
-
-			const tokens = Object.values(config);
+		Object.entries(vaultConfig).map(([chain, config]) => {
+			const tokens = [config.lyUSD, config.lyEUR].filter((token): token is string => !!token);
 			return calculate4626Prices(chain, timestamp, tokens, 'ledgity');
 		}),
 	);

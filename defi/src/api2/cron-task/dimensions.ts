@@ -58,7 +58,7 @@ const timeData = {
 async function run() {
   // emissions data: pull from R2, aggregate data and save to cache
   const { error: storeEmissionsCacheError } = await storeEmissionsCache()
-  
+
   // Go over all types
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
 
@@ -96,7 +96,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK!)
     }
   }
-  
+
   // store what all metrics are available for each protocol
   const protocolSummaryMetadata: { [key: string]: Set<string> } = {}
 
@@ -247,6 +247,17 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
     adapterData.lastUpdated = getUnixTimeNow()
     // console.timeEnd(timeKey3)
 
+    function addToGlobalChainList(chains: string[] | string = [], isChainKey = false) {
+      if (typeof chains === 'string') chains = [chains]
+
+      // convert keys to labels
+      if (isChainKey) chains = chains.map(getChainLabelFromKey)
+
+      chains.forEach((chain) => {
+        if (!chainMappingToVal.hasOwnProperty(chain)) chainMappingToVal[chain] = 0
+      })
+    }
+
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
 
       if (isParentProtocol) skipChainSummary = true
@@ -287,6 +298,11 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)
+
+      // sometimes a chain is dead and we stop tracking it in the protocol, and if we dont initialize it here, it wont be included in the 'allChains' list
+      addToGlobalChainList(protocol.info.chains)
+      const protocolChainKeySet = new Set(info.chains ?? [])
+
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
@@ -300,7 +316,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
 
       // compute & add monthly/quarterly/annual aggregate records
       addAggregateRecords(protocol)
-      
+
       // validate and detect invalid financial statement records
       validateAggregateRecords(protocol, invalidFinancialStatementRecords)
 
@@ -383,6 +399,18 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
             protocolRecord.lastOneYearData.push(recordData)
 
           Object.entries(chains).forEach(([chain, value]: any) => {
+
+
+            // we find a chain for which we used to track data but no longer do
+            if (!protocolChainKeySet.has(chain)) {
+              // console.log(`Found a chain ${chain} in the records of protocol ${protocolName} (${protocolId}) for adapter ${adapterType} `)
+              const chainLabel = getChainLabelFromKey(chain)
+              addToGlobalChainList(chainLabel)
+              protocol.info.chains.push(chainLabel)
+              protocolChainKeySet.add(chain)
+            }
+
+
             if (skipChainSummary) return;
             if (!value) return; // skip zero values
             if (!summary.chainSummary![chain])
@@ -408,7 +436,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         let protocolLatestRecord = undefined
 
         // sometimes like immediately after midnight, we still wont have today's data, if we have previous day's data, use that
-        if (!todayRecord && yesterdayRecord) 
+        if (!todayRecord && yesterdayRecord)
           todayRecord = yesterdayRecord
 
         // all summary data is computed using records upto yesterday, but to show past 24h data we need to use today's data if it exists, so we are doing this hack
@@ -635,8 +663,8 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
 
   info.linkedProtocols = [info.name].concat(childProtocols)
   info.childProtocols = []
-  
-  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', 'defaultChartView', ]
+
+  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', 'defaultChartView',]
 
 
   childProtocolData.forEach(({ records, info: childData }: any) => {

@@ -14075,5 +14075,23 @@ const data5: Protocol[] = [
       derivatives: "taco-trade",
     }
   },
+  {
+    id: "7545",
+    name: "QIEDex",
+    address: null,
+    symbol: "-",
+    url: "https://www.dex.qie.digital/#/stake",
+    description: "Trade with confidence on our high-performance DEX. Enjoy lightning-fast swaps, competitive rates, and advanced DeFi features.",
+    chain: "QIE",
+    logo: `${baseIconsUrl}/qiedex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["QIE"],
+    module: "qie-dex/index.js",
+    twitter: null,
+    listedAt: 1773568599
+  },
 ];
 export default data5;

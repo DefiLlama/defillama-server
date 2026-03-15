@@ -14093,5 +14093,23 @@ const data5: Protocol[] = [
     twitter: "dex_qi",
     listedAt: 1773568599
   },
+  {
+    id: "7546",
+    name: "Mento V3",
+    address: null,
+    symbol: "-",
+    url: "https://app.mento.org/swap/celo",
+    description: "Mento is building the largest FX infrastructure, bringing world currencies onchain through its robust multi-currency stablecoin platform.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/mento-v3.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Monad", "Celo"],
+    module: "mento-v3/index.js",
+    twitter: "MentoLabs",
+    listedAt: 1773583724
+  },
 ];
 export default data5;

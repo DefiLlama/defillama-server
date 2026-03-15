@@ -9228,6 +9228,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NeonyExchange",
   },
+  {
+    id: "parent#mento",
+    name: "Mento",
+    url: "https://www.mento.org/",
+    description: "Mento is building the largest FX infrastructure, bringing world currencies onchain through its robust multi-currency stablecoin platform.",
+    logo: `${baseIconsUrl}/mento.png`,
+    gecko_id: "mento",
+    cmcId: null,
+    chains: [],
+    twitter: "MentoLabs",
+    stablecoins: ["celo-dollar", "celo-euro"],
+    github: ["mento-protocol"],
+  },
 ];
 
 export default parentProtocols;

@@ -8795,24 +8795,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "504",
-    name: "Mento",
+    name: "Mento Algo",
     address: "celo:0x7ff62f59e3e89ea34163ea1458eebcc81177cfb6",
     symbol: "MENTO",
     url: "https://www.mento.org/",
     description:
       "Mento, an open source and permissionless protocol live on the Celo network. It facilitates the launch of stablecoins such as cUSD, cEUR, and cREAL",
     chain: "Celo",
-    logo: `${baseIconsUrl}/mento.png`,
+    logo: `${baseIconsUrl}/mento-algo.jpg`,
     audits: "2",
-    gecko_id: "mento",
+    gecko_id: null,
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Celo"],
     module: "mento/index.js",
     twitter: "MentoLabs",
     audit_links: ["https://celo.org/audits"],
-    stablecoins: ["celo-dollar", "celo-euro"],
-    github: ["mento-protocol"],
+    parentProtocol: "parent#mento",
     oraclesBreakdown: [
       {
         name: "cLabs",

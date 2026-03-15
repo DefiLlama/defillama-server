@@ -14109,6 +14109,7 @@ const data5: Protocol[] = [
     chains: ["Monad", "Celo"],
     module: "mento-v3/index.js",
     twitter: "MentoLabs",
+    parentProtocol: "parent#mento",
     listedAt: 1773583724
   },
 ];

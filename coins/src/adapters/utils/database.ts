@@ -19,7 +19,7 @@ const { sliceIntoChunks, } = sdk.util
 
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
-import { sendMessage } from "../../../../defi/src/utils/discord";
+import { sendMessage } from "../../utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 
 const rateLimited = pLimit(10);

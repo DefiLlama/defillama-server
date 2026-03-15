@@ -3,7 +3,7 @@ import ddb from "./utils/shared/dynamodb";
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
-import { sendMessage } from "../../defi/src/utils/discord";
+import { sendMessage } from "./utils/discord";
 import { DAY } from "./utils/processCoin";
 import { getProvider } from "@defillama/sdk/build/general"
 

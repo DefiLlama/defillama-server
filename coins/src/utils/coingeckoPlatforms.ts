@@ -1,4 +1,4 @@
-import { cgPlatformtoChainId as platformMap } from "../../../common/chainToCoingeckoId";
+import { cgPlatformtoChainId as platformMap } from "../../common/chainToCoingeckoId";
 import { CgEntry } from "../adapters/utils/dbInterfaces";
 import { getCurrentUnixTimestamp } from "./date";
 import {

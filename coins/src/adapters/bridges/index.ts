@@ -101,7 +101,7 @@ import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
-import { sendMessage } from "../../../../defi/src/utils/discord";
+import { sendMessage } from "../../../src/utils/discord";
 
 const craftToPK = (to: string) => (to.includes("#") ? to : `asset#${to}`);
 

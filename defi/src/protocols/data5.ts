@@ -14090,7 +14090,7 @@ const data5: Protocol[] = [
     tags: ["AMM"],
     chains: ["QIE"],
     module: "qie-dex/index.js",
-    twitter: null,
+    twitter: "dex_qi",
     listedAt: 1773568599
   },
 ];

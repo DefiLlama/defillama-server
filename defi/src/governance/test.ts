@@ -4,6 +4,7 @@ import '../api2/utils/failOnError'
 import { updateSnapshots, } from './snapshot'
 import { updateTallys, } from './tally'
 import { updateCompounds, } from './compound'
+import { updateCurve, } from './curve'
 
 main().then(() => {
   console.log('done!')
@@ -15,6 +16,7 @@ async function main() {
     updateTallys,
     updateSnapshots,
     updateCompounds,
+    updateCurve,
   }
 
   const promises = Object.entries(funcs).map(async ([key, fun]) => {

@@ -2375,6 +2375,14 @@ export const chainCoingeckoIds = {
     cmcId: "18031",
     github: ["Concordium"],
   },
+  "Chia": {
+    geckoId: "chia",
+    symbol: "XCH",
+    cmcId: "9258",
+    github: ["Chia-Network"],
+    twitter: "chia_project",
+    url: "https://www.chia.net/",
+  },
   "Chihuahua": {
     geckoId: "chihuahua-token",
     symbol: "HUAHUA",

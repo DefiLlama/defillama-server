@@ -334,10 +334,10 @@ function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
   tastyMetrics: Record<string, number>,
+  blockExplorersData: Array<{ displayName: string; llamaChainId: string | null; evmChainId: number | null; blockExplorers: Array<{ name: string; url: string }> }>,
 ) {
   const otherPages = [
-  {"name": "LlamaFeed","route": "https://llamafeed.io"},
-  {"name": "Etherscan","route": "https://etherscan.io/"},
+  {"name": "LlamaFeed","route": "https://llamafeed.io"}
 ].map(page=>({
     id: `others_${normalize(page.name)}`,
     name: page.name,
@@ -423,7 +423,20 @@ function buildDirectoryResults(
     v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
   }));
 
-  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
+  const blockExplorers: Array<SearchResult> = [];
+  for (const entry of blockExplorersData) {
+    if (!entry.blockExplorers?.length) continue;
+    const explorer = entry.blockExplorers[0];
+    blockExplorers.push({
+      id: `block_explorer_${normalize(explorer.name)}_${normalize(entry.displayName)}`,
+      name: `${explorer.name}: ${entry.displayName} Block Explorer`,
+      route: explorer.url,
+      v: tastyMetrics[`/chain/${sluggifyString(entry.displayName)}`] ?? 0,
+      type: "Block Explorer",
+    });
+  }
+
+  const allResults = directoryResults.concat(otherPages).concat(cexs).concat(blockExplorers).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
   const maxV = Math.max(...allResults.map(r => r.v));
   const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
   if (swapEntry) swapEntry.v = maxV;
@@ -1028,19 +1041,6 @@ async function generateSearchList() {
     });
   }
 
-  const blockExplorers: Array<SearchResult> = [];
-  for (const entry of blockExplorersData) {
-    if (!entry.blockExplorers?.length) continue;
-    const explorer = entry.blockExplorers[0];
-    blockExplorers.push({
-      id: `block_explorer_${normalize(explorer.name)}_${normalize(entry.displayName)}`,
-      name: `${explorer.name}: ${entry.displayName} Block Explorer`,
-      route: explorer.url,
-      v: tastyMetrics[`/chain/${sluggifyString(entry.displayName)}`] ?? 0,
-      type: "Block Explorer",
-    });
-  }
-
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
@@ -1054,7 +1054,6 @@ async function generateSearchList() {
     otherPages: otherPages.sort((a, b) => b.v - a.v),
     dats: dats.sort((a, b) => b.v - a.v),
     rwaList: rwaList.sort((a, b) => b.v - a.v),
-    blockExplorers: blockExplorers.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -1073,12 +1072,11 @@ async function generateSearchList() {
       .concat(coins)
       .concat(results.dats)
       .concat(results.rwaList)
-      .concat(results.blockExplorers)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,
       })),
-    directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
+    directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics, blockExplorersData),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))

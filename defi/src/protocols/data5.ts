@@ -14116,5 +14116,25 @@ const data5: Protocol[] = [
     parentProtocol: "parent#mento",
     listedAt: 1773583724
   },
+  {
+    id: "7547",
+    name: "Kreo",
+    address: null,
+    symbol: "-",
+    url: "https://kreo.app/feeds",
+    description: "The safest and fastest way to copy trade, track wallets, and do everything in between on prediction markets.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/kreo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "kreoapp",
+    dimensions: {
+      fees: "kreo",
+    }
+  },
 ];
 export default data5;

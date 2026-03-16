@@ -14100,13 +14100,13 @@ const data5: Protocol[] = [
   {
     id: "7546",
     name: "Mento V3",
-    address: null,
-    symbol: "-",
+    address: "celo:0x7ff62f59e3e89ea34163ea1458eebcc81177cfb6",
+    symbol: "MENTO",
     url: "https://app.mento.org",
     description: "Mento is building the largest FX infrastructure, bringing world currencies onchain through its robust multi-currency stablecoin platform.",
     chain: "Monad",
     logo: `${baseIconsUrl}/mento-v3.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     tags: ["AMM"],
@@ -14114,7 +14114,11 @@ const data5: Protocol[] = [
     module: "mento-v3/index.js",
     twitter: "MentoLabs",
     parentProtocol: "parent#mento",
-    listedAt: 1773583724
+    listedAt: 1773583724,
+    audit_links: [
+      "https://www.chainsecurity.com/security-audit/mento-core-v3",
+      "https://www.chainsecurity.com/security-audit/mento-liquity-v2"
+    ]
   },
 ];
 export default data5;

@@ -14140,5 +14140,25 @@ const data5: Protocol[] = [
       fees: "kreo",
     }
   },
+  {
+    id: "7548",
+    name: "Neony Exchange Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://www.neony.exchange/",
+    description:
+      "Neony Exchange Bridge to Neony Chain.",
+    chain: "Neony",
+    logo: `${baseIconsUrl}/neony-exchange-bridge.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Neony"],
+    module: "dummy.js",
+    twitter: "NeonyExchange",
+    parentProtocol: "parent#neony-exchange",
+    listedAt: 1773676471
+  },
 ];
 export default data5;

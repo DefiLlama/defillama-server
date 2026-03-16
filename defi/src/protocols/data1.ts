@@ -8805,7 +8805,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Mento, an open source and permissionless protocol live on the Celo network. It facilitates the launch of stablecoins such as cUSD, cEUR, and cREAL",
     chain: "Celo",
-    logo: `${baseIconsUrl}/mento-algo.jpg`,
+    logo: `${baseIconsUrl}/mento-v2.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,

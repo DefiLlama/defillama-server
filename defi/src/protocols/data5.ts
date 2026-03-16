@@ -8199,6 +8199,9 @@ const data5: Protocol[] = [
     chains: ["Neutron"],
     module: "hydro-inflow/index.js",
     twitter: "hydromarkets",
+    dimensions: {
+      fees: "hydro-inflow",
+    },
     listedAt: 1768841429
   },
   {

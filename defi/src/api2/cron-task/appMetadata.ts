@@ -1266,7 +1266,7 @@ async function getNftStats() {
     // cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
     //   .then((res) => res.length),  // this route doesnt work, plus we were reading only three items in the .all response
     readCachedRouteData({ route: "/dimensions/nft-volume/dvlite", defaultResponse: { allChains: [] } })
-      .then((res) => res.allChains.length),
+      .then((res) => res ? res.allChains.length : 0),
   ]);
   return {
     collections,

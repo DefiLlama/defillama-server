@@ -9067,6 +9067,11 @@
     }
   },
   "stellar": {
+    "USDM1-CAC743NYRBMS76L2DCPAXZTOEF6EJPKPVEC5OX2SXY7HOWNXISSLUE2C": {
+      "to": "coingecko#usdm1",
+      "decimals": 7,
+      "symbol": "USDM1"
+    },
     "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6-1": {
       "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
       "decimals": 7,

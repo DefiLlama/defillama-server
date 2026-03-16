@@ -14102,7 +14102,7 @@ const data5: Protocol[] = [
     name: "Mento V3",
     address: null,
     symbol: "-",
-    url: "https://app.mento.org/swap/celo",
+    url: "https://app.mento.org",
     description: "Mento is building the largest FX infrastructure, bringing world currencies onchain through its robust multi-currency stablecoin platform.",
     chain: "Monad",
     logo: `${baseIconsUrl}/mento-v3.jpg`,

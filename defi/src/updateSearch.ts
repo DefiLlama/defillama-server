@@ -444,7 +444,8 @@ async function generateSearchList() {
     coinsData,
     datsData,
     rwaListData,
-    rwaTickerToNameMap
+    rwaTickerToNameMap,
+    blockExplorersData
   ]: [
     {
       chains: string[];
@@ -469,7 +470,8 @@ async function generateSearchList() {
       categories: Array<string>
       chains: Array<string>
     },
-    Record<string, string>
+    Record<string, string>,
+    Array<{ displayName: string; llamaChainId: string | null; evmChainId: number | null; blockExplorers: Array<{ name: string; url: string }> }>
   ] = await Promise.all([
     cachedJSONPull("https://api.llama.fi/lite/protocols2"),
     cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
@@ -502,6 +504,7 @@ async function generateSearchList() {
       }
       return final;
     }),
+    cachedJSONPull({ endpoint: "https://defillama-datasets.llama.fi/blockExplorers.json", defaultResponse: [] }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -1025,6 +1028,19 @@ async function generateSearchList() {
     });
   }
 
+  const blockExplorers: Array<SearchResult> = [];
+  for (const entry of blockExplorersData) {
+    if (!entry.blockExplorers?.length) continue;
+    const explorer = entry.blockExplorers[0];
+    blockExplorers.push({
+      id: `block_explorer_${normalize(explorer.name)}_${normalize(entry.displayName)}`,
+      name: `${explorer.name}: ${entry.displayName} Block Explorer`,
+      route: explorer.url,
+      v: tastyMetrics[`/chain/${sluggifyString(entry.displayName)}`] ?? 0,
+      type: "Block Explorer",
+    });
+  }
+
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
@@ -1038,6 +1054,7 @@ async function generateSearchList() {
     otherPages: otherPages.sort((a, b) => b.v - a.v),
     dats: dats.sort((a, b) => b.v - a.v),
     rwaList: rwaList.sort((a, b) => b.v - a.v),
+    blockExplorers: blockExplorers.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -1056,6 +1073,7 @@ async function generateSearchList() {
       .concat(coins)
       .concat(results.dats)
       .concat(results.rwaList)
+      .concat(results.blockExplorers)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,

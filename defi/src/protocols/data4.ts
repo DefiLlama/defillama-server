@@ -3788,7 +3788,7 @@ const data4: Protocol[] = [
     twitter: "AffluentOrg",
     oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], // https://docs.factorial.finance/oracle
     dimensions: {
-      fees: "hydro-inflow",
+      fees: "affluent",
     },
     listedAt: 1738669030,
   },

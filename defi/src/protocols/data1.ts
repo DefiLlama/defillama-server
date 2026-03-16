@@ -119,7 +119,10 @@ const data: Protocol[] = [
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
     dimensions: {
-      fees: "aave-v2"
+      fees: {
+        genuineSpikes: [["2026-03-16", "High borrow APY (1000%+) and 63 days of accumulated interest for the AMPL token"]],
+        adapter: "aave-v2"
+      }
     }
   },
   {

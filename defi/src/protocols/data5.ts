@@ -5965,7 +5965,10 @@ const data5: Protocol[] = [
     parentProtocol: "parent#alphasec",
     dimensions: {
       fees: "alphasec-spot",
-      dexs: "alphasec-spot",
+      dexs: {
+        genuineSpikes: [["2026-03-14", "High volume in the KAIA/USDT pair"]],
+        adapter: "alphasec-spot"
+      }
     },
   },
   {
@@ -14014,7 +14017,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7542",
-    name: "perptools",
+    name: "PERPTools",
     address: null,
     symbol: "-",
     url: "https://app.perptools.ai/",
@@ -14030,6 +14033,7 @@ const data5: Protocol[] = [
     twitter: "perptools",
     dimensions: {
       fees: "perptools",
+      derivatives: "perptools",
       "open-interest": "perptools-perp-oi",
     }
   },

@@ -1,13 +1,15 @@
 
 import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
-import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
 import { getChainKeyFromLabel, getChainLabelFromKey, } from "../../utils/normalizeChain";
 import { sluggifyString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
+import categories from "../../utils/imports/categories.json";
+
+const CATEGORIES = categories as Record<string, any>;
 
 function formatChartData(data: any = {}) {
   const result = [];
@@ -33,21 +35,21 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const includeLabelBreakdown = isProRoute && req.query_parameters.includeLabelBreakdown?.toLowerCase() === 'true'
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
   const rawDataType = req.query_parameters.dataType
-  const rawCategory = req.query_parameters.category
-  const category = (rawCategory === 'dexs' ? 'dexs' : rawCategory) as CATEGORIES
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")
-  if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
 
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
+  
+  const category = req.path_parameters.category ? sluggifyString(req.path_parameters.category) : undefined;
+  if (category && !CATEGORIES[category]) throw new Error("Category not suported")
 
   const response: {
     adaptorType: AdapterType,
     excludeTotalDataChart: boolean,
     excludeTotalDataChartBreakdown: boolean,
-    category?: CATEGORIES,
+    category?: string,
     protocolName?: string,  // applicable only for protocol routes
     chainKeyFilter?: string,   // applicable only for summary routes
     fullChart: boolean,
@@ -378,6 +380,59 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
         return successResponse(res, data.totalDataChart)
       }
     }
+  }
+}
+
+export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, category } = getEventParameters(req, true)
+
+    let responseData: any;
+    
+    if (!category) return errorResponse(res, 'Category not supported', { statusCode: 400 })
+    
+    const protocolSlugs = Object.values(CATEGORIES[category])
+      .map((p: any) => sluggifyString(p.name));
+    
+    if (route === 'overview') {
+      responseData = { protocols: [] };
+      
+      for (const protocolSlug of protocolSlugs) {
+        const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}-lite`
+        const routeFile = `dimensions/${routeSubPath}`
+        const pData = await readRouteData(routeFile)
+        if (pData) responseData.protocols.push(pData)
+      }
+    } else {
+      const chartItems: Record<number, any> = [];
+      
+      for (const protocolSlug of protocolSlugs) {
+        const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}-all`
+        const routeFile = `dimensions/${routeSubPath}`
+        const pData = await readRouteData(routeFile)
+        if (pData) {
+          for (const item of pData.totalDataChart) {
+            if (route === 'chart') {
+              chartItems[Number(item[0])] = chartItems[Number(item[0])] || 0;
+              chartItems[Number(item[0])] = Number(chartItems[Number(item[0])]) + Number(item[1]);
+            } else if (route === 'chart-protocol-breakdown') {
+              const itemKey = pData.name;
+              chartItems[Number(item[0])] = chartItems[Number(item[0])] || {};
+              chartItems[Number(item[0])][itemKey] = chartItems[Number(item[0])][itemKey] || 0;
+              chartItems[Number(item[0])][itemKey] = Number(chartItems[Number(item[0])][itemKey]) + Number(item[1]);
+            }
+          }
+        }
+      }
+      
+      responseData = [];
+      for (const [timestamp, data] of Object.entries(chartItems)) {
+        responseData.push([Number(timestamp), data]);
+        responseData = responseData.sort((a: any, b: any) => a[0] > b[0] ? 1 : -1);
+      }
+    }
+    
+    return successResponse(res, responseData);
   }
 }
 

@@ -16,7 +16,7 @@ import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepre
 import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, getDimensionCategoryRoutes } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 import { readRouteData } from "../cache/file-cache";
 
@@ -180,6 +180,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
   router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
   router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+  
+  router.get("/v2/metrics/:type/category/:category", ew(getDimensionCategoryRoutes('overview')))
+  router.get("/v2/chart/:type/category/:category", ew(getDimensionCategoryRoutes('chart')))
+  router.get("/v2/chart/:type/category/:category/protocol-breakdown", ew(getDimensionCategoryRoutes('chart-protocol-breakdown')))
 
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))

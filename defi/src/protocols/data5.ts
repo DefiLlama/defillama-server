@@ -1282,6 +1282,9 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "obol/index.js",
     twitter: "Obol_Collective",
+    dimensions: {
+      fees: "obol",
+    },
     listedAt: 1762287672,
   },
   {

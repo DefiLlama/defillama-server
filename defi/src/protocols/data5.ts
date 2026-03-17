@@ -14192,7 +14192,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://app.rysk.finance/join?code=DEFILLAMA",
     description:
-      "Tailored options strategies for sophisticated allocators. Generate consistent yield through institutional-grade option income vaults built on Rysk infrastructure",
+      "Rysk Premium is institutional-grade infrastructure for volatility income. It enables capital allocators to deploy curated, custom structured products using options strategies across any asset class. ",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/rysk-premium.jpg`,
     audits: "0",
@@ -14201,7 +14201,7 @@ const data5: Protocol[] = [
     category: "Yield",
     chains: ["Hyperliquid L1"],
     module: "rysk-premium/index.js",
-    twitter: null,
+    twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
     tokensExcludedFromParent: {
       Hyperliquid_L1: ["USDH", "KHYPE"],

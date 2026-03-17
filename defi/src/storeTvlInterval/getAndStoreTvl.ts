@@ -64,6 +64,8 @@ async function getTvl(
   let chainDashPromise
   let chain
   const symbolToAddresses = options.symbolToAddresses ?? {}
+  const skipMissingChains = options.skipMissingChains ?? false
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       chain = storedKey.split('-')[0]
@@ -72,6 +74,10 @@ async function getTvl(
       const api: any = new sdk.ChainApi(params)
       api.api = api
       api.storedKey = storedKey
+      let usdTvl_fromCache: number | undefined = undefined
+      let tokenSymbolTvl_fromCache: { [address: string]: string } | undefined = undefined
+      let tokenUsdTvl_fromCache: { [address: string]: number } | undefined = undefined
+
 
       if (options.runStats)
         options.runStats[storedKey] = api
@@ -80,8 +86,21 @@ async function getTvl(
         let tvlBalances: any
         if (options.partialRefill && !options.chainsToRefill?.includes(storedKey)) {
           tvlBalances = (options.cacheData as any)[storedKey]
-          if (!tvlBalances)
+          let preComputedTvlData = (options.cacheData as any)?.preComputedTvlData
+
+          if (preComputedTvlData) {
+            usdTvl_fromCache = preComputedTvlData.tvlData?.[storedKey]
+            tokenSymbolTvl_fromCache = preComputedTvlData.tokenSymbolData?.[storedKey]
+            tokenUsdTvl_fromCache = preComputedTvlData.tokenUsdData?.[storedKey]
+          }
+
+          if (!tvlBalances) {
+            if (skipMissingChains) {
+              console.info(`Cache data missing for ${storedKey}, but skipMissingChains is true, skipping...`)
+              return;
+            }
             throw new Error('Cache data missing for ' + storedKey)
+          }
         } else {
           tvlBalances = await tvlFunction(api, ethBlock, chainBlocks, api);
           if (tvlBalances === undefined) tvlBalances = api.getBalances()
@@ -94,41 +113,54 @@ async function getTvl(
         const isStandard = Object.entries(tvlBalances).every(
           (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
-        let tvlPromise: ReturnType<any>;
-        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
-        const tvlResults = await tvlPromise;
-        usdTvls[storedKey] = tvlResults.usdTvl;
-        tokensBalances[storedKey] = tvlResults.tokenBalances;
-        usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
-        if (tvlResults.symbolToAddresses) {
-          for (const [sym, addrs] of Object.entries(tvlResults.symbolToAddresses)) {
-            if (!symbolToAddresses[sym]) symbolToAddresses[sym] = [];
-            for (const addr of addrs as string[]) {
-              if (!symbolToAddresses[sym].includes(addr)) symbolToAddresses[sym].push(addr);
+
+
+        if (!options.chainsToRefill?.includes(storedKey) && usdTvl_fromCache !== undefined && tokenSymbolTvl_fromCache && tokenUsdTvl_fromCache) {
+          // console.log('using pre computed data for:', storedKey)
+
+          usdTvls[storedKey] = usdTvl_fromCache
+          tokensBalances[storedKey] = tokenSymbolTvl_fromCache as any
+          usdTokenBalances[storedKey] = tokenUsdTvl_fromCache
+        } else {
+
+          let tvlPromise: ReturnType<any>;
+          tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
+          const tvlResults = await tvlPromise;
+          usdTvls[storedKey] = tvlResults.usdTvl;
+          tokensBalances[storedKey] = tvlResults.tokenBalances;
+          usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
+          if (tvlResults.symbolToAddresses) {
+            for (const [sym, addrs] of Object.entries(tvlResults.symbolToAddresses)) {
+              if (!symbolToAddresses[sym]) symbolToAddresses[sym] = [];
+              for (const addr of addrs as string[]) {
+                if (!symbolToAddresses[sym].includes(addr)) symbolToAddresses[sym].push(addr);
+              }
             }
           }
+
+          const rawTokenCount = Object.keys(tvlBalances).length
+          const computedTokenCount = Object.keys(tvlResults.usdTokenBalances).length
+          const pricelessTokenRatio = (1 - (computedTokenCount / rawTokenCount)) * 100
+          if (rawTokenCount > 42) {
+            elastic.writeLog('tvl-token-price-stats', {
+              metadata: {
+                application: 'tvl',
+                type: 'token-price-stats',
+                name: protocol.name,
+                id: protocol.id,
+                chain,
+                storedKey,
+              },
+              data: {
+                rawTokenCount,
+                computedTokenCount,
+                pricelessTokenRatio,
+              }
+            })
+          }
+
         }
 
-        const rawTokenCount = Object.keys(tvlBalances).length
-        const computedTokenCount = Object.keys(tvlResults.usdTokenBalances).length
-        const pricelessTokenRatio = (1 - (computedTokenCount / rawTokenCount)) * 100
-        if (rawTokenCount > 42) {
-          elastic.writeLog('tvl-token-price-stats', {
-            metadata: {
-              application: 'tvl',
-              type: 'token-price-stats',
-              name: protocol.name,
-              id: protocol.id,
-              chain,
-              storedKey,
-            },
-            data: {
-              rawTokenCount,
-              computedTokenCount,
-              pricelessTokenRatio,
-            }
-          })
-        }
 
         if (isStandard) {
           rawTokenBalances[storedKey] = tvlBalances;
@@ -236,6 +268,7 @@ type StoreTvlOptions = {
   tempCacheInfo?: Array<StoreTvlTempCacheInfo>,
   symbolToAddresses: { [symbol: string]: string[] },
   tvlErrorsObject?: tvlsObject<Error>,
+  skipMissingChains?: boolean,  // sometimes while refilling a protocol with multiple chains, we might be refilling at a point where the protocol was not yet deployed in some of its chains, which would cause the tvlFunction to throw an error for those chains
 }
 
 export type storeTvl2Options = StoreTvlOptions & {
@@ -350,7 +383,7 @@ export async function storeTvl(
           tvlFunctionIsFetch = true
           throw new Error("tvlType 'fetch' is deprecated. Please use 'tvl' instead.")
         }
-        const startTimestamp = getCurrentUnixTimestamp()
+        // const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
           { ...options, partialRefill, chainsToRefill, cacheData, runStats, symbolToAddresses, tvlErrorsObject, })
@@ -358,12 +391,19 @@ export async function storeTvl(
         if (tvlType === "tvl" || tvlType === "fetch") {
           keyToAddChainBalances = "tvl"
         }
+
+        if (options.skipMissingChains && usdTvls[storedKey] === undefined) {
+          // console.info(`TVL data missing for ${storedKey}, but skipMissingChains is true, skipping...`)
+          return;
+        }
+
+
         if (chainTvlsToAdd[keyToAddChainBalances] === undefined) {
           chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
         } else {
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
-        const currentTime = getCurrentUnixTimestamp()
+        // const currentTime = getCurrentUnixTimestamp()
         // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
     })
@@ -386,7 +426,7 @@ export async function storeTvl(
           rawTokenBalances[key] = tempStoreKeyCache.rawTokenBalances;
 
           // if all the data is present, store temp cache for key to use in future if needed
-        } else if (usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
+        } else if (runType === 'cron-task' && usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
           const tempStoreKeyResultCaheKey = getCachedTvlDataKey(protocol, key)
 
           // store temp result cache for key
@@ -418,7 +458,7 @@ export async function storeTvl(
         const now = getCurrentUnixTimestamp();
         const earliestCacheTime = Math.min(...protocolTempCacheInfo.map(item => item.cacheTime));
         const timeDiffFromNow = now - earliestCacheTime;
-  
+
         const cacheUsageLog = {
           metadata: {
             application: 'tvl',

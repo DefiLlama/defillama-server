@@ -8,11 +8,13 @@ const runTypes = [
   // 'rest',
   'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
 const adapterTypes = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options', 'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
 async function genCache() {

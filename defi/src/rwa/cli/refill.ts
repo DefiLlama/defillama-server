@@ -1,17 +1,28 @@
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import atvl from '../atvl';
-import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
-import { fetchTimestampsPG, initPG } from "../db";
+import { getTimestampAtStartOfDay } from "../../utils/date";
+import { initPG } from "../db";
 
-// COMMENT OUT ENTRY IN atvl.ts
-// COMPLETE THESE VARS
-const start = 1742688001; // 23 mar 25
-const end = 1770076801; // 3 feb 26
-const ids = ['79'];
+async function main(
+    startDate: string,
+    endDate: string,
+    ids: string[],
+) {
+    if (!startDate || !endDate || ids.length === 0) {
+        console.error('Missing required arguments');
+        process.exit(1);
+    }
+    const start = Math.floor(new Date(startDate).getTime() / 1000);
+    const end = Math.floor(new Date(endDate).getTime() / 1000);
 
-async function main() {
-    await initPG();
+    if (!start || !end) {
+        console.error('Invalid date range');
+        process.exit(1);
+    }
+
     process.env.RWA_REFILL = 'true';
+
+    await initPG();
     const timestamps: number[] = []
     let workingNumber = end;
     while (workingNumber > start) {
@@ -42,4 +53,4 @@ async function main() {
     process.exit();
 }
 
-main() // ts-node defi/src/rwa/cli/refill.ts
+// main('2025-03-23', '2026-02-03', ['79']) // ts-node defi/src/rwa/cli/refill.ts

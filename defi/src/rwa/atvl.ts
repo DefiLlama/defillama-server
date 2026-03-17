@@ -65,7 +65,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
           totalSupplies[token] = res[token];
         });
       } catch (e) {
-        if (!process.env.RWA_REFILL) console.error(`Failed to fetch supplies for ${chain}: ${e}`);
+        if (process.env.DEBUG_ENABLED) console.error(`Failed to fetch supplies for ${chain}: ${e}`);
       }
     },
   });
@@ -120,7 +120,7 @@ async function getExcludedBalances(
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
       } catch (e) {
-        if (!process.env.RWA_REFILL) console.error(`Failed to fetch balances for ${chain}`)
+        if (process.env.DEBUG_ENABLED) console.error(`Failed to fetch balances for ${chain}`)
       }
     },
   });
@@ -213,7 +213,7 @@ function getActiveTvls(
 ) {
   Object.keys(aggregateRawTvls).forEach((pk: string) => {
     if (!assetPrices[pk]) {
-      if (!process.env.RWA_REFILL) console.error(`No price for ${pk}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No price for ${pk}`);
       return;
     }
 
@@ -243,7 +243,7 @@ function getActiveTvls(
           finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName] = {};
         finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
       } catch (e) {
-        if (!process.env.RWA_REFILL) console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
+        if (process.env.DEBUG_ENABLED) console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
       }
     });
   });
@@ -284,7 +284,7 @@ function getOnChainTvlAndActiveMcaps(
     const { price, decimals } = assetPrices[pk];
     const supply = totalSupplies[pk];
     if (!supply || !price) {
-      if (!process.env.RWA_REFILL) console.error(`No supply or price for ${pk}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No supply or price for ${pk}`);
       return;
     }
 
@@ -305,7 +305,7 @@ function getOnChainTvlAndActiveMcaps(
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
-      if (!process.env.RWA_REFILL) console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
+      if (process.env.DEBUG_ENABLED) console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
   });
 }
@@ -442,7 +442,7 @@ export default async function main(ts: number = 0, ids: string[] = []) {
   // log missed assets
   Object.keys(tokenToProjectMap).forEach((address: string) => {
     if (!assetPrices[address]) {
-      if (!process.env.RWA_REFILL) console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
       return;
     }
   });
@@ -481,7 +481,7 @@ export default async function main(ts: number = 0, ids: string[] = []) {
 
   // Circuit breaker: skip when ids are filtered (partial data makes aggregate comparison meaningless)
   const circuitBreaker = ids.length === 0 ? await checkCircuitBreakers(filteredFinalData) : { triggered: false, details: [] };
-  if (!process.env.RWA_REFILL && circuitBreaker.triggered) {
+  if (process.env.DEBUG_ENABLED && circuitBreaker.triggered) {
     const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
     console.error(message);
     await sendMessage(message, process.env.RWA_WEBHOOK!, false);
@@ -493,7 +493,7 @@ export default async function main(ts: number = 0, ids: string[] = []) {
     storeHistorical(res),
   ]);
 
-  if (!process.env.RWA_REFILL) console.log(`Exitting atvl.ts`)
+  if (process.env.DEBUG_ENABLED) console.log(`Exitting atvl.ts`)
 
   return finalData;
 }

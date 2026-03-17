@@ -1,6 +1,5 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../src/utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
-import { noHistoricalChains } from './constants'
 
 class META_RWA_DATA extends Model { }
 export class DAILY_RWA_DATA extends Model { }
@@ -268,7 +267,7 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
 
         if (process.env.RWA_REFILL || !closestRecordData) {
             // Merge non-historical chain data from the existing DB record into the new insert
-            if (process.env.RWA_REFILL && existingRecords[id]) {
+            if (existingRecords[id]) {
                 const existing = existingRecords[id];
                 const merged: any = { ...insert };
                 let additionalMcap = 0;
@@ -279,9 +278,11 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
                     try {
                         const newData = JSON.parse(insert[field] ?? '{}');
                         const existingData = JSON.parse(existing[field] ?? '{}');
-                        for (const chain of noHistoricalChains) {
-                            if (existingData[chain] !== undefined && newData[chain] === undefined) {
-                                console.log(`LINE 284 src/rwa/db.ts TEST THIS CODE BLOCK ID: ${id}, timestamp: ${timestamp}: EXITTING`)
+                        // Preserve existing chain data when new data is missing — covers both
+                        // non-historical chains and any chain where the RPC failed during refill
+                        for (const chain of Object.keys(existingData)) {
+                            if (newData[chain] === undefined) {
+                                console.log(`LINE 285 src/rwa/db.ts TEST THIS CODE BLOCK ID: ${id}, timestamp: ${timestamp}: EXITTING`)
                                 process.exit()
                                 newData[chain] = existingData[chain];
                                 if (field === 'mcap') additionalMcap += Number(existingData[chain]) || 0;

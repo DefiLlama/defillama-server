@@ -70,7 +70,7 @@ async function fillLast(ws: any, protocol: IProtocol, _options: any) {
 
 
 async function fillOld(ws: any, protocol: IProtocol, options: any) {
-  let { chains, skipBlockFetch, dateFrom, dateTo, parallelCount, maxRetries = 3, breakIfTvlIsZero = false, removeTokenTvl = false, removeTokenTvlSymbols = '' } = options;
+  let { chains, skipBlockFetch, dateFrom, dateTo, parallelCount, maxRetries = 3, breakIfTvlIsZero = false, removeTokenTvl = false, removeTokenTvlSymbols = '', skipMissingChains= false } = options;
 
 
   if (removeTokenTvl) chains = ''
@@ -81,16 +81,20 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
   let needToRsetHistorical = false
   const rawRecords: any = {}
   const usdTvlRecords: any = {}
+  const tokenSymbolRecords: any = {}
+  const tokenUsdRecords: any = {}
   const aggTvlData: any = {} // overall protocol tvl with chain breakdown
   let refillWithCachedData = chains?.length || removeTokenTvl
   const skipSKs: Set<number> = new Set()
+    const timeFilter = {
+      timestampTo: options.dateTo + 86400 * 2,
+      timestampFrom: options.dateFrom - 86400 * 2,
+    }
 
 
   // fetch the final data for comparison
-  const aggCachedRecords = await getProtocolItems(dailyTvl, protocol.id, {
-    timestampTo: options.dateTo + 86400,
-    timestampFrom: options.dateFrom - 86400,
-  })
+  const aggCachedRecords = await getProtocolItems(dailyTvl, protocol.id, timeFilter)
+
   console.log('Pulled ', aggCachedRecords.length, 'agg tvl records for protocol:', protocol.name, 'from:', new Date(options.dateFrom * 1000).toDateString(), 'to:', new Date(options.dateTo * 1000).toDateString())
   aggCachedRecords.forEach((data: any) => aggTvlData[data.SK] = data)
 
@@ -101,14 +105,18 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
 
   if (refillWithCachedData) {
     chains = chains?.split(',')
-    const cacheData = await getProtocolItems(dailyRawTokensTvl, protocol.id, {
-      timestampTo: options.dateTo + 86400,
-      timestampFrom: options.dateFrom - 86400,
-    })
+    const rawTokenTvlRecords = await getProtocolItems(dailyRawTokensTvl, protocol.id, timeFilter)
+    const tokenUsdRecordsFromDB = await getProtocolItems(dailyUsdTokensTvl, protocol.id, timeFilter)
+    const tokenSymbolRecordsFromDB = await getProtocolItems(dailyTokensTvl, protocol.id, timeFilter)
 
-    console.log('Pulled ', cacheData.length, 'raw records for protocol:', protocol.name, 'from:', new Date(options.dateFrom * 1000).toDateString(), 'to:', new Date(options.dateTo * 1000).toDateString())
-    cacheData.forEach((data: any) => rawRecords[data.SK] = data)
+    console.log('Pulled ', rawTokenTvlRecords.length, 'raw records for protocol:', protocol.name, 'from:', new Date(options.dateFrom * 1000).toDateString(), 'to:', new Date(options.dateTo * 1000).toDateString())
+    rawTokenTvlRecords.forEach((data: any) => rawRecords[data.SK] = data)
 
+    console.log('Pulled ', tokenUsdRecordsFromDB.length, 'token usd tvl records for protocol:', protocol.name, 'from:', new Date(options.dateFrom * 1000).toDateString(), 'to:', new Date(options.dateTo * 1000).toDateString())
+    tokenUsdRecordsFromDB.forEach((data: any) => tokenUsdRecords[data.SK] = data)
+
+    console.log('Pulled ', tokenSymbolRecordsFromDB.length, 'token symbol records for protocol:', protocol.name, 'from:', new Date(options.dateFrom * 1000).toDateString(), 'to:', new Date(options.dateTo * 1000).toDateString())
+    tokenSymbolRecordsFromDB.forEach((data: any) => tokenSymbolRecords[data.SK] = data)
 
     if (removeTokenTvl) {
 
@@ -230,6 +238,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
           maxRetries,
           useCurrentPrices: false,
           isRunFromUITool: true,
+          skipMissingChains,
           breakIfTvlIsZero,
           skipBlockData: skipBlockFetch,
           overwriteExistingData: true,
@@ -259,6 +268,12 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
             return;
           }
 
+          cacheData.preComputedTvlData = {
+            tokenUsdData: tokenUsdRecords[unixTimestamp],
+            tokenSymbolData: tokenSymbolRecords[unixTimestamp],
+            tvlData: aggTvlData[unixTimestamp],
+          }
+
           options.cacheData = cacheData
         }
 
@@ -268,8 +283,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
         const id = `${protocol.id}-${response.unixTimestamp}`
         recordItems[id] = { id, ...response }
 
-        if (removeTokenTvl)
-          recordItems[id].existingTvlRecord = aggTvlData[response.unixTimestamp]
+        recordItems[id].existingTvlRecord = aggTvlData[response.unixTimestamp]
 
         sendTvlStoreWaitingRecords(ws)
       })

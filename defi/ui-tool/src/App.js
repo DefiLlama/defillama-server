@@ -624,6 +624,7 @@ const App = () => {
           action: 'refill',
           removeTokenTvl: false,
           removeTokenTvlSymbols: '',
+          skipMissingChains: false,
         }}
         style={{ 'max-width': '400px' }}
       >
@@ -764,6 +765,15 @@ const App = () => {
               style={{ display: tvlRemoveTokensEnabled ? 'block' : 'none' }}
             >
               <Input style={{ width: '100%' }} placeholder="Enter token symbols or address(chain:xxx) (comma separated)" />
+            </Form.Item>
+
+            <Form.Item
+              label="Skip Missing Chains"
+              name="skipMissingChains"
+              valuePropName="checked"
+              layout='horizontal'
+            >
+              <Switch checkedChildren="Yes" unCheckedChildren="No" />
             </Form.Item>
 
           </>

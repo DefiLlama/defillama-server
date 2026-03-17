@@ -383,9 +383,9 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
   }
 }
 
-export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
+export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown' | 'chart-chain-breakdown' | 'chart-chain-total') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType, category } = getEventParameters(req, true)
+    const { adaptorType, dataType, category, chainKeyFilter } = getEventParameters(req, true)
 
     let responseData: any;
     
@@ -411,15 +411,37 @@ export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-
         const routeFile = `dimensions/${routeSubPath}`
         const pData = await readRouteData(routeFile)
         if (pData) {
-          for (const item of pData.totalDataChart) {
-            if (route === 'chart') {
-              chartItems[Number(item[0])] = chartItems[Number(item[0])] || 0;
-              chartItems[Number(item[0])] = Number(chartItems[Number(item[0])]) + Number(item[1]);
-            } else if (route === 'chart-protocol-breakdown') {
-              const itemKey = pData.name;
-              chartItems[Number(item[0])] = chartItems[Number(item[0])] || {};
-              chartItems[Number(item[0])][itemKey] = chartItems[Number(item[0])][itemKey] || 0;
-              chartItems[Number(item[0])][itemKey] = Number(chartItems[Number(item[0])][itemKey]) + Number(item[1]);
+          if (route === 'chart' || route === 'chart-protocol-breakdown') {
+            for (const item of pData.totalDataChart) {
+              if (route === 'chart') {
+                chartItems[Number(item[0])] = chartItems[Number(item[0])] || 0;
+                chartItems[Number(item[0])] = Number(chartItems[Number(item[0])]) + Number(item[1]);
+              } else if (route === 'chart-protocol-breakdown') {
+                const itemKey = pData.name;
+                chartItems[Number(item[0])] = chartItems[Number(item[0])] || {};
+                chartItems[Number(item[0])][itemKey] = chartItems[Number(item[0])][itemKey] || 0;
+                chartItems[Number(item[0])][itemKey] = Number(chartItems[Number(item[0])][itemKey]) + Number(item[1]);
+              }
+            }
+          } else if (route === 'chart-chain-breakdown' || route === 'chart-chain-total') {
+            for (const item of pData.totalDataChartBreakdown) {
+              for (const [chain, versions] of Object.entries(item[1])) {
+                const normalizeChain = getChainKeyFromLabel(chain);
+                if (route === 'chart-chain-breakdown') {
+                  chartItems[Number(item[0])] = chartItems[Number(item[0])] || {};
+                  chartItems[Number(item[0])][chain] = chartItems[Number(item[0])][chain] || 0;
+                  for (const value of Object.values(versions as any)) {
+                    chartItems[Number(item[0])][chain] += Number(value);
+                  }
+                } else if (route === 'chart-chain-total') {
+                  if (normalizeChain === chainKeyFilter) {
+                    chartItems[Number(item[0])] = chartItems[Number(item[0])] || 0;
+                    for (const value of Object.values(versions as any)) {
+                      chartItems[Number(item[0])] += Number(value);
+                    }
+                  }
+                }
+              }
             }
           }
         }

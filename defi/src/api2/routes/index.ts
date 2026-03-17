@@ -184,6 +184,8 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/metrics/:type/category/:category", ew(getDimensionCategoryRoutes('overview')))
   router.get("/v2/chart/:type/category/:category", ew(getDimensionCategoryRoutes('chart')))
   router.get("/v2/chart/:type/category/:category/protocol-breakdown", ew(getDimensionCategoryRoutes('chart-protocol-breakdown')))
+  router.get("/v2/chart/:type/category/:category/chain-breakdown", ew(getDimensionCategoryRoutes('chart-chain-breakdown')))
+  router.get("/v2/chart/:type/category/:category/chain/:chain", ew(getDimensionCategoryRoutes('chart-chain-total')))
 
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))

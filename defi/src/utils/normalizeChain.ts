@@ -1506,7 +1506,7 @@ export const chainCoingeckoIds = {
     cmcId: "1831",
     url: "https://bch.info/en/",
     dimensions: {
-      'active-users': 'chain#bch' 
+      'active-users': 'bch' 
     }
   },
   "Litecoin": {
@@ -3145,7 +3145,7 @@ export const chainCoingeckoIds = {
     chainId: 13371,
     dimensions: {
       fees: "imx",
-      'nft-volume': 'chain#immutablex',
+      'nft-volume': 'immutablex',
     },
   },
   "Zora": {

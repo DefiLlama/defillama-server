@@ -1,4 +1,4 @@
-import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "../../dimension_migration/adapters/types"
+import { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, } from "../types"
 import { Protocol } from "../../protocols/types"
 
 export { AdapterType, ProtocolType, BaseAdapter, Adapter, SimpleAdapter, FetchOptions, FetchResult, }
@@ -138,7 +138,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.BRIDGE_AGGREGATORS]: AdaptorRecordType.dailyBridgeVolume,
     [AdapterType.OPEN_INTEREST]: AdaptorRecordType.openInterestAtEnd,
     [AdapterType.NORMALIZED_VOLUME]: AdaptorRecordType.dailyNormalizedVolume,
-    // [AdapterType.NFT_VOLUME]: AdaptorRecordType.dailyVolume,
+    [AdapterType.NFT_VOLUME]: AdaptorRecordType.dailyVolume,
     [AdapterType.ACTIVE_USERS]: AdaptorRecordType.dailyActiveUsers,
     [AdapterType.NEW_USERS]: AdaptorRecordType.dailyNewUsers,
 }

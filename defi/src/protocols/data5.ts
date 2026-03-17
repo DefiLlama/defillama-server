@@ -14056,7 +14056,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "pigeonhouse/index.js",
     twitter: "941pigeondotfun",
     dimensions: {
       fees: "pigeonhouse",
@@ -14155,7 +14155,7 @@ const data5: Protocol[] = [
       "Neony Exchange Bridge to Neony Chain.",
     chain: "Neony",
     logo: `${baseIconsUrl}/neony-exchange-bridge.jpg`,
-    audits: "2",
+    audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
@@ -14164,6 +14164,26 @@ const data5: Protocol[] = [
     twitter: "NeonyExchange",
     parentProtocol: "parent#neony-exchange",
     listedAt: 1773676471
+  },
+  {
+    id: "7549",
+    name: "YLD",
+    address: null,
+    symbol: "-",
+    url: "https://yldfi.co/",
+    description:
+      "Deposit into ERC-4626 vaults built on Yearn V3 architecture. Auto-compounding strategies that optimize your returns",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yld.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "yld/index.js",
+    twitter: null,
+    github: ["yldfi"],
+    listedAt: 1773748605
   },
 ];
 export default data5;

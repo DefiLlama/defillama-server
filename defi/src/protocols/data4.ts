@@ -27561,7 +27561,6 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "surf-liquid"
     },
-    deprecated: true
   },
   {
     id: "6766",

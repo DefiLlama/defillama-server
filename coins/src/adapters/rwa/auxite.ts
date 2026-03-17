@@ -22,7 +22,7 @@ export async function auxite(timestamp: number = 0) {
       writes,
       "ethereum",
       AUXITE_TOKENS[token],
-      allPrices[i] / 1e6,
+      allPrices[i] / 1e9,
       3,
       token,
       timestamp,

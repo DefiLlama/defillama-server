@@ -11,22 +11,24 @@ const tvlHashKey = 'protocolImportsHash_' + dataHash
 
 
 async function run() {
-  const lastHash = readHashFromFile('data.ts')
-
-
-  if (dataHash === lastHash && fileExists(outPath)) {
-    console.log('No changes in data files, skipping protocol imports generation')
-    return;
+  // if these files exists only
+  if (fs.existsSync(outPath) && fs.existsSync(caterogiesOutPath)) {
+    const lastHash = readHashFromFile('data.ts')
+  
+  
+    if (dataHash === lastHash && fileExists(outPath)) {
+      console.log('No changes in data files, skipping protocol imports generation')
+      return;
+    }
+  
+    const usedCache = await writeFromCache(tvlHashKey, outPath, {
+      successMessage: '[TVL] Using cached protocol imports, skipping generation',
+      errorMessage: '[TVL] Error reading from cache, proceeding to generate protocol imports'
+    })
+  
+    if (usedCache)
+      return;
   }
-
-  const usedCache = await writeFromCache(tvlHashKey, outPath, {
-    successMessage: '[TVL] Using cached protocol imports, skipping generation',
-    errorMessage: '[TVL] Error reading from cache, proceeding to generate protocol imports'
-  })
-
-  if (usedCache)
-    return;
-
 
   // read all the data.ts files and create a combined import file
   // which a later js script will read and turn into json (and mock all the functions)
@@ -42,7 +44,9 @@ async function run() {
       for (const c of categories) {
         const cSlug = sluggifyString(c);
         allCategories[cSlug] = allCategories[cSlug] || [];
-        allCategories[cSlug].push(protocolConfig);
+        allCategories[cSlug].push({
+          name: protocolConfig.name,
+        });
       }
     }
   })

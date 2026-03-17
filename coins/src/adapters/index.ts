@@ -195,4 +195,5 @@ export default {
   ledgity: require("./yield/ledgity"),
   humble: require("./markets/humble"),
   m0: require("./other/m0"),
+  anchored: require("./rwa/anchored"),
 };

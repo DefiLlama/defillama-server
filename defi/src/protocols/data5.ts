@@ -205,7 +205,7 @@ const data5: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Base"],
     module: "shift-protocol/index.js",
-    twitter: "ShiftProtocolLT",
+    twitter: "shiftprotocol_",
     audit_links: [
       "https://github.com/SHIFT-NebulaLabs/shift-contracts/blob/main/audits/shift-sbsecurity-audit-2025.pdf",
     ],

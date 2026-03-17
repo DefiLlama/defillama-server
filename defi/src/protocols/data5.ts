@@ -14185,5 +14185,28 @@ const data5: Protocol[] = [
     github: ["yldfi"],
     listedAt: 1773748605
   },
+  {
+    id: "7550",
+    name: "Rysk Premium",
+    address: null,
+    symbol: "-",
+    url: "https://app.rysk.finance/join?code=DEFILLAMA",
+    description:
+      "Tailored options strategies for sophisticated allocators. Generate consistent yield through institutional-grade option income vaults built on Rysk infrastructure",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/rysk-premium.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Hyperliquid L1"],
+    module: "rysk-premium/index.js",
+    twitter: null,
+    parentProtocol: "parent#rysk-finance",
+    tokensExcludedFromParent: {
+      Hyperliquid_L1: ["USDH", "KHYPE"],
+    },
+    listedAt: 1773748789
+  },
 ];
 export default data5;

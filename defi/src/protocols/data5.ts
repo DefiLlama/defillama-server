@@ -9632,6 +9632,9 @@ const data5: Protocol[] = [
     module: "fira/index.js",
     audit_links: ["https://docs.fira.money/resources-and-ecosystem/contracts-and-audits"],
     twitter: "Fira_Lend",
+    dimensions: {
+      fees: "fira",
+    },
     listedAt: 1769555834
   },
   {

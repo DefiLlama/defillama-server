@@ -1,8 +1,10 @@
 import { distressedAssets } from "../adapters/other/distressed";
 import { padAddress } from "./coingeckoPlatforms";
 import { chainsThatShouldNotBeLowerCased } from "./shared/constants";
+import { resolveChainInCoinId } from "./chainIdMap";
 
 export function lowercaseAddress(coin: string) {
+  coin = resolveChainInCoinId(coin);
   const chain = coin.substring(0, coin.indexOf(":"));
   if (chainsThatShouldNotBeLowerCased.includes(chain)) return coin;
   else if (chain == "gnosis")

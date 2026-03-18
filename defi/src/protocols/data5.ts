@@ -14214,5 +14214,25 @@ const data5: Protocol[] = [
     },
     listedAt: 1773748789
   },
+  {
+    id: "7551",
+    name: "Signals",
+    address: null,
+    symbol: "-",
+    url: "https://signals.wtf",
+    description:
+      "Signals is a range-based prediction market for Bitcoin, built on Citrea. Users predict BTC's daily closing price range using our CLMSR-based automated market maker. Every market settles on-chain, every day.",
+    chain: "Citrea",
+    logo: `${baseIconsUrl}/signals.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Markets",
+    chains: ["Citrea"],
+    module: "signals/index.js",
+    twitter: "signalswtf",
+    github: ["signals-protocol"],
+    listedAt: 1773827054
+  },
 ];
 export default data5;

@@ -22954,7 +22954,10 @@ const data2: Protocol[] = [
     listedAt: 1673037671,
     dimensions: {
       fees: "thena-v1",
-      dexs: "thena"
+      dexs: {
+        genuineSpikes: [["2026-03-15", "Trading surged due to venus exploit incident on THE market"]],
+        adapter: "thena"
+      }
     }
   },
   {

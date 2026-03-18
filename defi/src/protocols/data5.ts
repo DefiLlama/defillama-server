@@ -14315,7 +14315,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Interface",
+    category: "Trading App",
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "_matchaxyz",

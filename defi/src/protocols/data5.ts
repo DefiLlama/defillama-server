@@ -14270,7 +14270,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Trading App",
+    category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: null,
@@ -14279,6 +14279,29 @@ const data5: Protocol[] = [
       aggregators: "bim",
       "bridge-aggregators": "bim",
     },
+  },
+  {
+    id: "7554",
+    name: "Deeptrade",
+    address: null,
+    symbol: "-",
+    url: "https://deeptrade.io/",
+    description:
+      "Deeptrade is a community-driven, open-source, decentralized exchange on Sui blockchain. Built on DeepBook and deployed on Walrus",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/deeptrade.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "_deeptrade",
+    github: ["DeeptradeProtocol"],
+    dimensions: {
+      dexs: "deeptrade",
+    },
+    listedAt: 1773848967
   },
 ];
 export default data5;

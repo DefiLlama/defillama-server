@@ -4,13 +4,14 @@ require("dotenv").config();
 import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getDisplayChainNameCached, } from "../../adaptors/utils/getAllChainsFromAdaptors";
+import { getChainLabelFromKey } from '../../utils/normalizeChain';
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
-import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, } from "../utils/dimensionsUtils";
+import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, validateAggregateRecords, } from "../utils/dimensionsUtils";
+import { storeEmissionsCache, } from "../utils/emissionsUtils";
 import { getNextTimeS, getTimeSDaysAgo, getUnixTimeNow, timeSToUnix, unixTimeToTimeS } from "../utils/time";
 
-import { runWithRuntimeLogging, cronNotifyOnDiscord } from "../utils";
+import { runWithRuntimeLogging, cronNotifyOnDiscord, tableToString } from "../utils";
 import * as sdk from '@defillama/sdk'
 
 import { generateDimensionsResponseFiles } from "../routes/dimensions"
@@ -55,6 +56,9 @@ const timeData = {
 }
 
 async function run() {
+  // emissions data: pull from R2, aggregate data and save to cache
+  const { error: storeEmissionsCacheError } = await storeEmissionsCache()
+
   // Go over all types
   const allCache = await getDimensionsCacheV2() as Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>
 
@@ -76,6 +80,20 @@ async function run() {
         Invalid records detected and removed:
       ${invalidDataRecords.join('\n')}
         `, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
+    }
+    if (storeEmissionsCacheError) {
+      console.log(storeEmissionsCacheError)
+      await sendMessage(`ERROR: while updating emissions cache - ${storeEmissionsCacheError}. Please check dimension cron-task.`, process.env.DIM_ERROR_CHANNEL_WEBHOOK!)
+    }
+  }
+
+  if (process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK) {
+    if (invalidFinancialStatementRecords.length) {
+      await sendMessage(`Invalid financial statement records detected - Please fix them asap:
+
+
+${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key', 'error', 'debug'])}`,
+        process.env.FINANCIAL_STATEMENT_ERROR_CHANNEL_WEBHOOK!)
     }
   }
 
@@ -137,7 +155,7 @@ async function run() {
 
       // remove empty records at the start of each protocol
       // commented out as we want to retain empty records
-      // Object.keys(adapterData.protocols).forEach(removeEmptyRecordsAtStart)
+      Object.keys(adapterData.protocols).forEach(removeEmptyRecordsAtStart)
 
       function removeEmptyRecordsAtStart(protocolId: any) {
         const records = adapterData.protocols[protocolId]?.records
@@ -145,7 +163,7 @@ async function run() {
         // console.log('trying for protocol', protocolId, 'adapterType', adapterType, 'records', Object.keys(records).length)
         const days = Object.keys(records).sort()
 
-        if (days.length < 2) return; // we need at least 2 days of data to do anything
+        if (days.length < 31) return; // ignore small dataset
         days.pop(); // we want to maintain the latest data even if it is zero
 
         let foundDayWithData = false
@@ -159,7 +177,7 @@ async function run() {
           })
 
           if (totalValue === 0) {
-            // delete records[day]
+            delete records[day]
             deleteCount++
           } else {
             // console.log('found day with data', day, 'totalValue', totalValue)
@@ -229,6 +247,17 @@ async function run() {
     adapterData.lastUpdated = getUnixTimeNow()
     // console.timeEnd(timeKey3)
 
+    function addToGlobalChainList(chains: string[] | string = [], isChainKey = false) {
+      if (typeof chains === 'string') chains = [chains]
+
+      // convert keys to labels
+      if (isChainKey) chains = chains.map(getChainLabelFromKey)
+
+      chains.forEach((chain) => {
+        if (!chainMappingToVal.hasOwnProperty(chain)) chainMappingToVal[chain] = 0
+      })
+    }
+
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
 
       if (isParentProtocol) skipChainSummary = true
@@ -268,27 +297,28 @@ async function run() {
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
-      protocol.info.chains = (info.chains ?? []).map(getDisplayChainNameCached)
+      protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)
+
+      // sometimes a chain is dead and we stop tracking it in the protocol, and if we dont initialize it here, it wont be included in the 'allChains' list
+      addToGlobalChainList(protocol.info.chains)
+      const protocolChainKeySet = new Set(info.chains ?? [])
+
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
       const adapterTypeRecords = adapterData.protocols[dimensionProtocolId]?.records ?? {}
-
-      const isBreakdownAdapter = !isParentProtocol && (dimensionProtocolInfo?.childProtocols ?? []).length > 0
 
       if (protocol.info.protocolType === ProtocolType.CHAIN) skipChainSummary = true
 
       if (!records)
         records = adapterTypeRecords
 
-      if (isBreakdownAdapter) {
-        console.log('Fix this code should not reach here, there are no more breakdown adapters')
-        return;
-      }
-
       protocol.records = records
 
       // compute & add monthly/quarterly/annual aggregate records
       addAggregateRecords(protocol)
+
+      // validate and detect invalid financial statement records
+      validateAggregateRecords(protocol, invalidFinancialStatementRecords)
 
 
       const protocolRecordMapWithMissingData = getProtocolRecordMapWithMissingData({ records, info: protocol.info, adapterType, metadata: dimensionProtocolInfo }) as any
@@ -369,6 +399,18 @@ async function run() {
             protocolRecord.lastOneYearData.push(recordData)
 
           Object.entries(chains).forEach(([chain, value]: any) => {
+
+
+            // we find a chain for which we used to track data but no longer do
+            if (!protocolChainKeySet.has(chain)) {
+              // console.log(`Found a chain ${chain} in the records of protocol ${protocolName} (${protocolId}) for adapter ${adapterType} `)
+              const chainLabel = getChainLabelFromKey(chain)
+              addToGlobalChainList(chainLabel)
+              protocol.info.chains.push(chainLabel)
+              protocolChainKeySet.add(chain)
+            }
+
+
             if (skipChainSummary) return;
             if (!value) return; // skip zero values
             if (!summary.chainSummary![chain])
@@ -394,7 +436,7 @@ async function run() {
         let protocolLatestRecord = undefined
 
         // sometimes like immediately after midnight, we still wont have today's data, if we have previous day's data, use that
-        if (!todayRecord && yesterdayRecord) 
+        if (!todayRecord && yesterdayRecord)
           todayRecord = yesterdayRecord
 
         // all summary data is computed using records upto yesterday, but to show past 24h data we need to use today's data if it exists, so we are doing this hack
@@ -535,7 +577,7 @@ async function run() {
                 result[chain][subModuleName] = (result[chain][subModuleName] ?? 0) + value
 
                 if (!skipChainSummary) {
-                  const chainName = getDisplayChainNameCached(chain)
+                  const chainName = getChainLabelFromKey(chain)
                   if (chainMappingToVal[chainName] === undefined) {
                     chainMappingToVal[chainName] = 0
                   }
@@ -621,8 +663,8 @@ function mergeChildRecords(protocol: any, childProtocolData: any[]) {
 
   info.linkedProtocols = [info.name].concat(childProtocols)
   info.childProtocols = []
-  
-  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', 'defaultChartView', ]
+
+  const childFieldsToCopy = ['name', 'displayName', 'defillamaId', 'methodologyURL', 'methodology', 'breakdownMethodology', 'defaultChartView',]
 
 
   childProtocolData.forEach(({ records, info: childData }: any) => {
@@ -684,8 +726,8 @@ function initSummaryItem(isChain = false) {
     earliestTimestamp: undefined,
     chart: {},
     chartBreakdown: {},
-    total24h: 0,
-    total48hto24h: 0,
+    total24h: null,
+    total48hto24h: null,
     chainSummary: {},
     recordCount: 0,
   }
@@ -726,6 +768,7 @@ runWithRuntimeLogging(run, {
 
 const spikeRecords = [] as any[]
 const invalidDataRecords = [] as any[]
+const invalidFinancialStatementRecords = [] as any[]
 
 const NOTIFY_ON_DISCORD = cronNotifyOnDiscord()
 
@@ -869,22 +912,21 @@ type SpikeConfig = {
 }
 
 function mergeSpikeConfigs(childProtocols: any[]) {
-  const genuineSpikesSet = new Set<string>()
+  const spikesMapping: IJSON<string> = {}
   childProtocols.forEach((childConfig: any = {}) => {
     if (Array.isArray(childConfig.genuineSpikes)) {
       childConfig.genuineSpikes.forEach((key: any) => {
-        genuineSpikesSet.add(key)
+        spikesMapping[key[0]] = key[1]
       })
     }
   })
-  const response = [...genuineSpikesSet]
-  return response
+  return Object.entries(spikesMapping)
 }
 
 function getSpikeConfig(protocol: any): SpikeConfig {
   if (!protocol?.genuineSpikes) return {}
   let info = (protocol as any)?.genuineSpikes ?? []
-  const whitelistedSpikeSet = new Set(info.map(unixTimeToTimeS)) as Set<string>
+  const whitelistedSpikeSet = new Set(info.map((i: any) => i[0])) as Set<string>
   return { whitelistedSpikeSet }
 }
 

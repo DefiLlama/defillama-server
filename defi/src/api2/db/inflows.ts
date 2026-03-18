@@ -1,45 +1,24 @@
-import { wrap, IResponse, successResponse, errorResponse } from "../../utils/shared";
-import protocols from "../../protocols/data";
-import sluggify from "../../utils/sluggify";
-import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
+import { getRecordClosestToTimestamp } from "../../utils/shared/getRecordClosestToTimestamp";
 import { hourlyTokensTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import cgSymbols from "../../utils/symbols/symbols.json";
-import { getCurrentUnixTimestamp } from "../../utils/date";
 import { IProtocol } from "../../types";
 import { getInflowRecords } from ".";
 import { humanizeNumber } from "@defillama/sdk";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
-const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const protocolName = event.pathParameters?.protocol?.toLowerCase();
-  const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? [];
-  const timestamp = Number(event.pathParameters?.timestamp);
-  const endTimestamp = Number(event.queryStringParameters?.end ?? getCurrentUnixTimestamp());
-  const protocolData = protocols.find((prot) => sluggify(prot) === protocolName) as IProtocol
-  if (!protocolData) {
-    return errorResponse({ message: "Protocol not found" });
-  }
-
-  return ddbGetInflows({
-    errorResponse: (message: string) => errorResponse({ message }),
-    successResponse, tokensToExclude,
-    protocolData, skipTokenLogs: false, timestamp, endTimestamp,
-  }) as any
-}
-
 export async function ddbGetInflows({ errorResponse, successResponse, protocolData, tokensToExclude, skipTokenLogs, timestamp, endTimestamp, }: {
   errorResponse: any, successResponse: any, protocolData: IProtocol, tokensToExclude: string[], skipTokenLogs: boolean, timestamp: number, endTimestamp: number,
 }) {
 
-  const oldTokens = await getTVLOfRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
-  if (oldTokens.SK === undefined)
+  const oldTokens = await getRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+  if (oldTokens?.SK === undefined)
     return errorResponse("No data at that timestamp");
 
-  const oldUsdTokens = await getTVLOfRecordClosestToTimestamp(hourlyUsdTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
+  const oldUsdTokens = await getRecordClosestToTimestamp(hourlyUsdTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
 
   const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getTVLOfRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {
@@ -125,7 +104,7 @@ export function computeInflowsData({
   })
 
 
-  const tokenDiffUSD: { [token: string]: string } = {}
+  const tokenDiffUSD: { [token: string]: number } = {}
 
   let response: any = {
     outflows: 0,
@@ -154,12 +133,20 @@ export function computeInflowsData({
     response.oldTokens.tvl[token] = oldAmount
     response.currentTokens.tvl[token] = currentAmount
 
-    if (withMetadata)
-      tokenDiffUSD[token] = humanizeNumber(usdDiff)
+    if (withMetadata) 
+      tokenDiffUSD[token] = usdDiff
+
   }
 
-  if (withMetadata)
-    response.tokenDiffUSD = tokenDiffUSD
+  if (withMetadata) {
+    const sortedTokenDiffUSD: { [token: string]: string } = {};
+    Object.entries(tokenDiffUSD)
+      .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
+      .forEach(([token, value]) => {
+        sortedTokenDiffUSD[token] = humanizeNumber(Number(value));
+      });
+    response.tokenDiffUSD = sortedTokenDiffUSD;
+  }
 
   // delete response.tokenDiffUSD
 
@@ -251,8 +238,6 @@ export async function pgGetInflows({ ids, startTimestamp, endTimestamp, withMeta
 
   return response
 }
-
-export default wrap(handler);
 
 const tokenMapping: { [key: string]: string } = {
   WETH: "ETH",

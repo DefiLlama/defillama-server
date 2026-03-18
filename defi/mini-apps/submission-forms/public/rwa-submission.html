@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWA Token Submission | DefiLlama</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --success: #3fb950;
+            --error: #f85149;
+            --warning: #d29922;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 {
+            font-size: 2rem; margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        header p { color: var(--text-secondary); font-size: 1rem; }
+
+        .form-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .form-section { margin-bottom: 30px; }
+        .form-section:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-size: 1.1rem; font-weight: 600;
+            margin-bottom: 20px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title .icon { font-size: 1.2rem; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group:last-child { margin-bottom: 0; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary); }
+        label .required { color: var(--error); margin-left: 2px; }
+        label .hint {
+            font-weight: 400; color: var(--text-secondary);
+            font-size: 0.85rem; display: block; margin-top: 4px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%; padding: 12px 14px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--text-secondary); opacity: 0.7;
+        }
+
+        textarea { min-height: 100px; resize: vertical; }
+
+        select {
+            cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .triple-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+
+        @media (max-width: 768px) { .triple-fields { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .inline-fields { grid-template-columns: 1fr; } }
+
+        .resource-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px; margin-bottom: 15px;
+            position: relative;
+        }
+        .resource-item .form-group { margin-bottom: 15px; }
+        .resource-item .form-group:last-child { margin-bottom: 0; }
+
+        .add-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; background: transparent;
+            border: 1px dashed var(--border-color); border-radius: 8px;
+            color: var(--text-secondary); cursor: pointer;
+            transition: all 0.2s; font-size: 0.9rem;
+        }
+        .add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .remove-btn {
+            background: transparent; border: none; color: var(--error);
+            cursor: pointer; font-size: 0.85rem; padding: 5px;
+            margin-left: auto; display: block;
+        }
+        .remove-btn:hover { text-decoration: underline; }
+
+        /* Toggle switches for boolean fields */
+        .toggle-group {
+            display: flex; gap: 8px; align-items: center;
+        }
+        .toggle-group .toggle-btn {
+            padding: 8px 18px; border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: pointer; font-size: 0.9rem; font-weight: 500;
+            transition: all 0.15s;
+        }
+        .toggle-group .toggle-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+        .toggle-group .toggle-btn.active {
+            border-color: var(--accent); background: rgba(88,166,255,0.15);
+            color: var(--accent);
+        }
+
+        .submit-btn {
+            width: 100%; padding: 16px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            border: none; border-radius: 10px;
+            color: white; font-size: 1.1rem; font-weight: 600;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(88,166,255,0.3); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .alert {
+            padding: 15px 20px; border-radius: 8px;
+            margin-bottom: 20px; display: none;
+        }
+        .alert.success { background: rgba(63,185,80,0.15); border: 1px solid var(--success); color: var(--success); }
+        .alert.error   { background: rgba(248,81,73,0.15);  border: 1px solid var(--error);   color: var(--error); }
+        .alert.show { display: block; }
+
+        footer { text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.9rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RWA Token Submission</h1>
+            <p>Submit your Real-World Asset token information for listing on DefiLlama</p>
+        </header>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="rwaForm">
+
+            <!-- Section 1: Basic Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📋</span> 1. Basic Information</h2>
+
+                    <div class="form-group">
+                        <label>Token Name <span class="required">*</span>
+                            <span class="hint">Full official name of the tokenized asset</span>
+                        </label>
+                        <input type="text" name="tokenName" required placeholder="e.g., Ondo US Dollar Yield Token">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Ticker <span class="required">*</span>
+                                <span class="hint">3-8 uppercase letters, must match onchain listings</span>
+                            </label>
+                            <input type="text" name="ticker" required placeholder="e.g., USYC" style="text-transform: uppercase;">
+                        </div>
+                        <div class="form-group">
+                            <label>Logo URL
+                                <span class="hint">PNG or SVG, min 200x200, transparent bg preferred</span>
+                            </label>
+                            <input type="url" name="logo" placeholder="https://icons.llamao.fi/icons/protocols/ondo-finance?w=48&h=48">
+                        </div>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="url" name="website" placeholder="https://ondo.finance">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter / X Profile</label>
+                            <input type="url" name="twitter" placeholder="https://x.com/ondofinance">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telegram OR Discord
+                            <span class="hint">Official community or team communication channel</span>
+                        </label>
+                        <input type="text" name="telegram" placeholder="https://t.me/projectname  or  https://discord.gg/projectname">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Blockchain Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">⛓️</span> 2. Blockchain Information</h2>
+
+                    <div class="inline-fields" style="margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label>Primary Chain <span class="required">*</span>
+                                <span class="hint">Main blockchain where the canonical token is issued</span>
+                            </label>
+                            <input type="text" name="primaryChain" required placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>All Chains
+                                <span class="hint">All blockchains where the token exists</span>
+                            </label>
+                            <input type="text" name="allChains" placeholder="e.g., ethereum, arbitrum, base">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contracts
+                            <span class="hint">Official token contract addresses in chain:address format</span>
+                        </label>
+                        <div id="contracts">
+                            <div class="resource-item">
+                                <div class="inline-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="contract_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contract Address</label>
+                                        <input type="text" name="contract_address_0" placeholder="0x1234567890abcdef...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addContract()">+ Add Contract</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Internal Addresses
+                            <span class="hint">Issuer-controlled addresses for treasury, minting, custody, etc.</span>
+                        </label>
+                        <div id="internalAddresses">
+                            <div class="resource-item">
+                                <div class="triple-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="internal_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" name="internal_address_0" placeholder="0xabc123...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Label</label>
+                                        <input type="text" name="internal_label_0" placeholder="e.g., Treasury">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addInternalAddress()">+ Add Address</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Asset Classification -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📂</span> 3. Asset Classification</h2>
+
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span>
+                            <span class="hint">Type of real-world asset being tokenized</span>
+                        </label>
+                        <select name="category" required>
+                            <option value="">Select a category...</option>
+                            <option value="US Treasuries">US Treasuries</option>
+                            <option value="Private Credit">Private Credit</option>
+                            <option value="Corporate Bonds">Corporate Bonds</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Commodities">Commodities</option>
+                            <option value="Carbon Credits & Environmental Assets">Carbon Credits & Environmental Assets</option>
+                            <option value="Equities">Equities</option>
+                            <option value="Stablecoins (Fiat-backed)">Stablecoins (Fiat-backed)</option>
+                            <option value="Structured Products">Structured Products</option>
+                            <option value="Funds / ETFs">Funds / ETFs</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="categoryOtherGroup" style="display:none;">
+                        <label>Specify Category</label>
+                        <input type="text" name="categoryOther" placeholder="Describe your asset category">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Market Data -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📊</span> 4. Market Data</h2>
+
+                    <div class="form-group">
+                        <label>CoinGecko ID
+                            <span class="hint">Used to fetch live token price. Write "Not listed" if not on CoinGecko.</span>
+                        </label>
+                        <input type="text" name="coingeckoId" placeholder="e.g., ondo-us-dollar-yield  or  Not listed">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Issuer Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏢</span> 5. Issuer Information</h2>
+
+                    <div class="form-group">
+                        <label>Issuer <span class="required">*</span>
+                            <span class="hint">Full legal entity name issuing the tokenized asset</span>
+                        </label>
+                        <input type="text" name="issuer" required placeholder="e.g., SolBridge Energy Foundation">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Proof & Verification -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🔍</span> 6. Proof & Verification</h2>
+
+                    <div class="form-group">
+                        <label>Attestation
+                            <span class="hint">Proof that underlying assets exist and are properly backed (attestation report, audit, custodian verification, or proof of reserves). Write "None" if unavailable.</span>
+                        </label>
+                        <input type="text" name="attestation" placeholder="https://...  or  None">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Exchange & Access -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏦</span> 7. Exchange & Access</h2>
+
+                    <div class="form-group">
+                        <label>CEX Listing
+                            <span class="hint">Is the token listed on centralized exchanges?</span>
+                        </label>
+                        <div class="toggle-group" data-field="cexListed">
+                            <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                            <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                        </div>
+                        <input type="hidden" name="cexListed" value="">
+                    </div>
+
+                    <div class="form-group" id="cexDetailsGroup" style="display:none;">
+                        <label>Exchange Names
+                            <span class="hint">Which exchanges is it listed on?</span>
+                        </label>
+                        <input type="text" name="cexDetails" placeholder="e.g., Coinbase, Kraken">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>KYC Required to Mint
+                                <span class="hint">Is KYC required to mint/redeem tokens with issuer?</span>
+                            </label>
+                            <div class="toggle-group" data-field="kycToMint">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="kycToMint" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>KYC Whitelist to Hold/Transfer
+                                <span class="hint">Must wallet be approved to hold or receive tokens?</span>
+                            </label>
+                            <div class="toggle-group" data-field="kycWhitelist">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="kycWhitelist" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Transfer & Custody -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🔄</span> 8. Transfer & Custody</h2>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Transferable
+                                <span class="hint">Can tokens be transferred freely between wallets?</span>
+                            </label>
+                            <div class="toggle-group" data-field="transferable">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="transferable" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Self Custody
+                                <span class="hint">Can users hold tokens in their own wallet?</span>
+                            </label>
+                            <div class="toggle-group" data-field="selfCustody">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="selfCustody" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9: Optional but Recommended -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📝</span> 9. Additional Information</h2>
+
+                    <div class="form-group">
+                        <label>Description
+                            <span class="hint">Short explanation of the asset and its backing</span>
+                        </label>
+                        <textarea name="description" placeholder="e.g., USYC is a tokenized money market fund backed by short-duration US Treasuries..."></textarea>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Documentation Link
+                                <span class="hint">Technical or legal docs explaining token structure</span>
+                            </label>
+                            <input type="url" name="documentationLink" placeholder="https://docs.example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" name="contactEmail" placeholder="team@issuer.com">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 10: Redemption Process -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">💱</span> 10. Redemption Process</h2>
+
+                    <div class="form-group">
+                        <label>Redemption Details
+                            <span class="hint">Platform/URL for redemption, minimum amounts, settlement timeline, and any requirements (KYC, whitelisting, etc.). Write "N/A" if not redeemable.</span>
+                        </label>
+                        <textarea name="redemption" placeholder="e.g., Holders redeem via app.ondo.finance with a $5,000 minimum. Settlement takes T+1 to a linked bank account. KYC required."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit RWA Token Information</button>
+        </form>
+
+        <footer>
+            <p>Questions? Reach out on <a href="https://discord.defillama.com" target="_blank">Discord</a> or <a href="https://twitter.com/defillama" target="_blank">Twitter</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let contractCount = 1;
+        let internalCount = 1;
+
+        // ── Toggle button groups ──────────────────────────────────────────────
+        document.querySelectorAll('.toggle-group').forEach(group => {
+            group.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const field = group.dataset.field;
+                    const hidden = group.parentElement.querySelector(`input[name="${field}"]`);
+
+                    // Deselect if clicking the already-active button
+                    if (btn.classList.contains('active')) {
+                        btn.classList.remove('active');
+                        if (hidden) hidden.value = '';
+                    } else {
+                        group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        if (hidden) hidden.value = btn.dataset.value;
+                    }
+
+                    // Show/hide CEX details field
+                    if (field === 'cexListed') {
+                        const cexGroup = document.getElementById('cexDetailsGroup');
+                        cexGroup.style.display = (hidden?.value === 'TRUE') ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+
+        // ── Category "Other" toggle ───────────────────────────────────────────
+        document.querySelector('select[name="category"]').addEventListener('change', (e) => {
+            document.getElementById('categoryOtherGroup').style.display =
+                e.target.value === 'Other' ? 'block' : 'none';
+        });
+
+        // ── Dynamic repeatable fields ─────────────────────────────────────────
+        function addContract() {
+            const container = document.getElementById('contracts');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#contracts')">Remove</button>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="contract_chain_${contractCount}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Contract Address</label>
+                            <input type="text" name="contract_address_${contractCount}" placeholder="0x1234567890abcdef...">
+                        </div>
+                    </div>
+                </div>`;
+            container.insertAdjacentHTML('beforeend', html);
+            contractCount++;
+        }
+
+        function addInternalAddress() {
+            const container = document.getElementById('internalAddresses');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#internalAddresses')">Remove</button>
+                    <div class="triple-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="internal_chain_${internalCount}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="internal_address_${internalCount}" placeholder="0xabc123...">
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" name="internal_label_${internalCount}" placeholder="e.g., Treasury">
+                        </div>
+                    </div>
+                </div>`;
+            container.insertAdjacentHTML('beforeend', html);
+            internalCount++;
+        }
+
+        function removeItem(btn, containerSelector) {
+            const items = document.querySelectorAll(`${containerSelector} .resource-item`);
+            if (items.length > 1) {
+                btn.parentElement.remove();
+            }
+        }
+
+        // ── Alert ─────────────────────────────────────────────────────────────
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type} show`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (type === 'success') {
+                setTimeout(() => { alert.className = 'alert'; }, 5000);
+            }
+        }
+
+        // ── Form submission ───────────────────────────────────────────────────
+        document.getElementById('rwaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const fd = new FormData(form);
+            const data = {};
+
+            // Basic Information
+            data.tokenName = fd.get('tokenName');
+            data.ticker = (fd.get('ticker') || '').toUpperCase();
+            data.logo = fd.get('logo');
+            data.website = fd.get('website');
+            data.twitter = fd.get('twitter');
+            data.telegram = fd.get('telegram');
+
+            // Blockchain Information
+            data.blockchain = {
+                primaryChain: fd.get('primaryChain'),
+                allChains: fd.get('allChains'),
+                contracts: [],
+                internalAddresses: [],
+            };
+
+            for (let i = 0; i < contractCount; i++) {
+                const chain = fd.get(`contract_chain_${i}`);
+                const address = fd.get(`contract_address_${i}`);
+                if (chain || address) {
+                    data.blockchain.contracts.push({ chain: chain || '', address: address || '' });
+                }
+            }
+
+            for (let i = 0; i < internalCount; i++) {
+                const chain = fd.get(`internal_chain_${i}`);
+                const address = fd.get(`internal_address_${i}`);
+                const label = fd.get(`internal_label_${i}`);
+                if (chain || address) {
+                    data.blockchain.internalAddresses.push({
+                        chain: chain || '', address: address || '', label: label || '',
+                    });
+                }
+            }
+
+            // Asset Classification
+            data.category = fd.get('category');
+            if (data.category === 'Other') {
+                const other = fd.get('categoryOther');
+                if (other) data.category = `Other: ${other}`;
+            }
+
+            // Market Data
+            data.coingeckoId = fd.get('coingeckoId');
+
+            // Issuer Information
+            data.issuer = fd.get('issuer');
+
+            // Proof & Verification
+            data.attestation = fd.get('attestation');
+
+            // Exchange & Access
+            data.exchange = {
+                cexListed: fd.get('cexListed'),
+                cexDetails: fd.get('cexDetails'),
+                kycToMint: fd.get('kycToMint'),
+                kycWhitelist: fd.get('kycWhitelist'),
+            };
+
+            // Transfer & Custody
+            data.custody = {
+                transferable: fd.get('transferable'),
+                selfCustody: fd.get('selfCustody'),
+            };
+
+            // Additional Information
+            data.description = fd.get('description');
+            data.documentationLink = fd.get('documentationLink');
+            data.contactEmail = fd.get('contactEmail');
+
+            // Redemption Process
+            data.redemption = fd.get('redemption');
+
+            try {
+                const res = await fetch('/rwa-submission/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    showAlert('Thank you! Your RWA token submission has been received. Our team will review it shortly.', 'success');
+                } else {
+                    showAlert(result.error || 'Submission failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Submit error:', error);
+                showAlert('Network error. Please check your connection and try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit RWA Token Information';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,8 @@ import path from 'path';
 import { METADATA_FILE, PG_CACHE_KEYS } from '../constants';
 import getEnv from '../env';
 import { log, } from '@defillama/sdk'
-import { sliceIntoChunks } from '@defillama/sdk/build/util';
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 export { PG_CACHE_KEYS }
 
 const CACHE_DIR = getEnv().api2CacheDir;
@@ -68,12 +69,14 @@ export async function storeRouteData(subPath: string, data: any) {
 }
 
 export async function readRouteData(subPath: string, {
-  skipErrorLog = false
+  skipErrorLog = false,
+  readAsArrayBuffer = false,
 }: {
   skipErrorLog?: boolean
+  readAsArrayBuffer?: boolean
 } = {}) {
   subPath = fileNameNormalizer(`build/${subPath}`)
-  return readFileData(subPath, { skipErrorLog })
+  return readFileData(subPath, { skipErrorLog, readAsArrayBuffer })
 }
 
 async function storeData(subPath: string, data: any) {
@@ -89,14 +92,22 @@ async function storeData(subPath: string, data: any) {
 }
 
 async function readFileData(subPath: string, {
-  skipErrorLog = false
+  skipErrorLog = false,
+  readAsArrayBuffer = false,
 }: {
-  skipErrorLog?: boolean
+  skipErrorLog?: boolean,
+  readAsArrayBuffer?: boolean,
 } = {}) {
   const filePath = path.join(CACHE_DIR!, subPath)
   try {
-    const data = await fs.promises.readFile(filePath, 'utf8')
-    return JSON.parse(data.toString())
+    let data = await fs.promises.readFile(filePath, readAsArrayBuffer ? null : 'utf8')
+
+    if (readAsArrayBuffer)
+      return data
+
+    data = data.toString()
+
+    return JSON.parse(data)
   } catch (e) {
     if (!skipErrorLog)
       log((e as any)?.message)
@@ -106,7 +117,9 @@ async function readFileData(subPath: string, {
 
 async function deleteFileData(subPath: string) {
   const filePath = path.join(CACHE_DIR!, subPath)
-  return fs.promises.unlink(filePath)
+  return fs.promises.unlink(filePath).catch((e) => {
+    log(`Error deleting file ${filePath}:`, (e as any)?.message)
+  })
 }
 
 function getCacheFile(key: string) {
@@ -127,7 +140,7 @@ export async function writeToPGCache(key: string, data: any) {
 
 // it is no longer needed thanks to change to deleteFromPGCache
 // ANY CHANGE TO THIS VALUE NEEDS TO BE SYNCED WITH A CHANGE ON https://github.com/DefiLlama/born-to-llama/blob/master/src/commands/deleteCache.ts#L30 TOO
-let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.9'  // update the version number to reset the cache
+let TVL_CACHE_FOLDER = 'tvl-cache-daily-v0.11'  // update the version number to reset the cache
 if (process.env.LLAMA_RUN_LOCAL === 'true') {
   TVL_CACHE_FOLDER = 'tvl-cache-daily'
 }

@@ -5,6 +5,7 @@ import getWrites from "../utils/getWrites";
 import { getApi } from "../utils/sdk";
 import { getConnection } from "../solana/utils";
 import { PublicKey } from "@solana/web3.js";
+import rpcProxy from "../utils/rpcProxy";
 
 type Config = {
   chain: string;
@@ -268,7 +269,136 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1::supra_coin::SupraCoin",
     decimals: "8",
     symbol: "stSUPRA",
-  }
+  },
+  stFUEL: {
+    rate: async () => {
+      const abi = {
+        programType: "contract",
+        specVersion: "1",
+        encodingVersion: "1",
+        concreteTypes: [
+          {
+            type: "u64",
+            concreteTypeId:
+              "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0",
+          },
+        ],
+        metadataTypes: [],
+        functions: [
+          {
+            inputs: [],
+            name: "get_sanitized_price",
+            output:
+              "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0",
+            attributes: [
+              {
+                name: "storage",
+                arguments: ["read"],
+              },
+            ],
+          },
+        ],
+        loggedTypes: [],
+        messagesTypes: [],
+        configurables: [],
+      };
+
+      const res = await rpcProxy.fuel.query({
+        contractId:
+          "0x2181f1b8e00756672515807cab7de10c70a9b472a4a9b1b6ca921435b0a1f49b",
+        abi,
+        method: "get_sanitized_price",
+      });
+
+      return res / 1e9;
+    },
+    chain: "fuel",
+    address:
+      "0x5505d0f58bea82a052bc51d2f67ab82e9735f0a98ca5d064ecb964b8fd30c474",
+    underlying: "0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82",
+    decimals: "9",
+    symbol: "stFUEL",
+  },
+  muBOND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/143/tokens/muBOND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`muBOND stale rate`);
+      return rate;
+    },
+    chain: "monad",
+    address: "0x336d414754967c6682b5a665c7daf6f1409e63e8",
+    underlying: "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+    confidence: 1
+  },
+  AZND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/143/tokens/AZND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`AZND stale rate`);
+      return rate;
+    },
+    chain: "monad",
+    address: "0x4917a5ec9fcb5e10f47cbb197abe6ab63be81fe8",
+    underlying: "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+    confidence: 1
+  },
+  MUBOND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/1/tokens/muBOND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`muBOND stale rate`);
+      return rate;
+    },
+    chain: "ethereum",
+    address: "0x09AD9c6DcadCc3aB0b3E107E8E7DA69c2eEa8599",
+    underlying: "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+    confidence: 1
+  },
+  aZND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/1/tokens/AZND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`AZND stale rate`);
+      return rate;
+    },
+    chain: "ethereum",
+    address: "0x52c66B5E7f8Fde20843De900C5C8B4b0F23708A0",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    confidence: 1
+  },
+  stZIG: {
+    rate: async () => {
+      const LCD = "https://public-zigchain-lcd.numia.xyz";
+      const stakerContract =
+        "zig18nnde5tpn76xj3wm53n0tmuf3q06nruj3p6kdemcllzxqwzkpqzqk7ue55";
+      const query = Buffer.from(
+        JSON.stringify({ reverse_st_zig_price: { amount: "1000000" } }),
+      ).toString("base64");
+      const url = `${LCD}/cosmwasm/wasm/v1/contract/${stakerContract}/smart/${encodeURIComponent(query)}`;
+      const { data } = await fetch(url).then((r) => r.json());
+      return Number(data.uzig_amount) / Number(data.stzig_amount);
+    },
+    chain: "zigchain",
+    address:
+      "coin.zig109f7g2rzl2aqee7z6gffn8kfe9cpqx0mjkk7ethmx8m2hq4xpe9snmaam2.stzig",
+    underlying: "uzig",
+    decimals: "6",
+    symbol: "stZIG",
+    confidence: 1
+  },
 };
 
 export async function apiDerivs(timestamp: number) {
@@ -277,20 +407,13 @@ export async function apiDerivs(timestamp: number) {
       deriv(timestamp, k, configs[k]).catch((e) => {
         console.log(e?.message, k);
         return [];
-      }),
-    ),
+      })
+    )
   );
 }
 
 async function deriv(timestamp: number, projectName: string, config: Config) {
-  const {
-    chain,
-    underlying,
-    address,
-    symbol,
-    decimals,
-    confidence,
-  } = config;
+  const { chain, underlying, address, symbol, decimals, confidence } = config;
   let t = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const pricesObject: any = {
     [address]: {

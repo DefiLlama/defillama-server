@@ -1,14 +1,15 @@
 import { canonicalBridgeIds, excludedTvlKeys, protocolBridgeIds, zero, ownTokens, allChainKeys } from "../constants";
 import { getCurrentUnixTimestamp } from "../../src/utils/date";
-import { Chain } from "@defillama/sdk/build/types";
+type Chain = string;
 import { fetchBridgeTokenList, fetchSupplies } from "../utils";
 import { fetchAdaTokens } from "../adapters/ada";
 import { fetchAllTokens as fetchAllTokensFromDB } from "../../src/utils/shared/bridgedTvlPostgres";
 import { withTimeout } from "../../src/utils/shared/withTimeout";
 import { CoinsApiData, FinalData, FinalChainData } from "../types";
 import { McapsApiData } from "../types";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { getBlock, } = sdk.util.blocks
+const { multiCall, } = sdk.api2.abi
 import BigNumber from "bignumber.js";
 import {
   bridgedTvlMixedCaseChains,

@@ -161,6 +161,9 @@ async function PoolToToken(
 const chainBlacklistedPools: any = {
   xdai: [
     '0x8C720914Af9BB379fD7297DAB375c969d76e47D0'
+  ], 
+  ethereum: [
+    '0xab96aa0ee764924f49fbb372f3b4db9c2cb24ea2'
   ]
 }
 

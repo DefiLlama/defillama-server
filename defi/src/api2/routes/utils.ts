@@ -45,9 +45,20 @@ export function errorWrapper(routeFn: any) {
 export async function fileResponse(filePath: string, res: HyperExpress.Response) {
   try {
     res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
-    res.json(await readRouteData(filePath))
+    const ab = await readRouteData(filePath, { readAsArrayBuffer: true })
+    res.set('Content-Type', 'application/json')
+    res.send(ab)
   } catch (e) {
     console.error(e);
     return errorResponse(res, 'Internal server error', { statusCode: 500 })
   }
+}
+
+export function validateProRequest(req: HyperExpress.Request, res: HyperExpress.Response) {
+  if ((req as any).isProRequest) return;
+
+  // throw error if not pro
+  res.status(403)
+  res.send('Pro access required', true)
+  return (req as any).isProRequest === true
 }

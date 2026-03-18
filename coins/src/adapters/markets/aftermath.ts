@@ -1,7 +1,9 @@
 import { Write, } from "../utils/dbInterfaces";
 import { addToDBWritesList, } from "../utils/database";
 import axios from 'axios'
-import { sliceIntoChunks } from "@defillama/sdk/build/util";
+
+import * as sdk from '@defillama/sdk'
+const { sliceIntoChunks, } = sdk.util
 
 export function aftermath(timestamp: number) {
 

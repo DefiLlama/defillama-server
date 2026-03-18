@@ -1,6 +1,8 @@
-import { call } from "@defillama/sdk/build/abi/abi2";
-import { Chain } from "@defillama/sdk/build/general";
-import { Address } from "@defillama/sdk/build/types";
+
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api2.abi
+type Chain = string;
+type Address = string;
 import axios from "axios";
 import nodefetch from "node-fetch";
 import sleep from "../../src/utils/shared/sleep";
@@ -18,8 +20,11 @@ async function fetch(url: string, i: number = 3) {
 let addresses: { [chain: Chain]: Address[] } = {};
 export const arbitrum = async (): Promise<Address[]> => {
   if (addresses.arbitrum) return addresses.arbitrum;
-  const data = await fetch("https://bridge.arbitrum.io/token-list-42161.json");
-  addresses.arbitrum = data.tokens.map((token: any) => token.address.toLowerCase());
+  const data = await fetch("https://tokenlist.arbitrum.io/ArbTokenLists/arbed_arb_whitelist_era.json");
+  addresses.arbitrum = data.tokens
+    .filter((token: any) => token.chainId === 42161)
+    .map((token: any) => token.address.toLowerCase());
+
   return addresses.arbitrum;
 };
 export const nova = async (): Promise<Address[]> => {

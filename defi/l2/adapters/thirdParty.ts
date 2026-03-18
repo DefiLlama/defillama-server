@@ -1,6 +1,6 @@
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import providers from "@defillama/sdk/build/providers.json";
-import { Address } from "@defillama/sdk/build/types";
+type Address = string;
 import { allChainKeys } from "../constants";
 import { bridgedTvlMixedCaseChains } from "../../src/utils/shared/constants";
 import { additional, excluded } from "./manual";

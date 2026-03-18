@@ -1,4 +1,6 @@
-import { multiCall } from "@defillama/sdk/build/abi/abi2";
+
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api2.abi
 import abi from "./abi.json";
 import allContracts from "./contracts.json";
 import {

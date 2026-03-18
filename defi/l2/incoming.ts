@@ -1,5 +1,5 @@
 import { getCurrentUnixTimestamp } from "../src/utils/date";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import BigNumber from "bignumber.js";
 import { DollarValues, TokenTvlData } from "./types";
 import { geckoSymbols, zero } from "./constants";

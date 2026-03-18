@@ -3,8 +3,9 @@ import {
     addToDBWritesList,
     getTokenAndRedirectData
 } from "../utils/database";
-import { multiCall } from "@defillama/sdk/build/abi";
-import { Chain } from "@defillama/sdk/build/general";
+import * as sdk from '@defillama/sdk'
+const { multiCall, } = sdk.api.abi
+type Chain = string;
 import { Write } from "../utils/dbInterfaces";
 
 const HOP_BRIDGES_TOKEN_LIST =

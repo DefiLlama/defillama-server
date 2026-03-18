@@ -9,7 +9,6 @@ import { getAllDimensionsRecordsTimeS } from '../../db-utils/db2';
 import { getTimestampString } from '../../../api2/utils';
 import PromisePool from '@supercharge/promise-pool';
 import { ADAPTER_TYPES } from '../../data/types';
-import { deadChains } from '../../../storeTvlInterval/getAndStoreTvl';
 
 
 // ================== Script Config ==================
@@ -218,6 +217,10 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
+  const skippedAdapterTypes = [
+    AdapterType.ACTIVE_USERS,
+    AdapterType.NEW_USERS,
+  ] as AdapterType[]
   const tasks = await Promise.all(aTypes.map(runAdapterType))
   const allTasks = tasks.flat()
   console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)
@@ -228,6 +231,12 @@ async function refillAllProtocols() {
 
 
   async function runAdapterType(adapterType: AdapterType) {
+
+    if (skippedAdapterTypes.includes(adapterType)) {
+      console.log(`Skipping adapter type ${adapterType} as it's in the skipped list`)
+      return [];
+    }
+
     console.log('Refilling missing datapoints for adapter type:', adapterType)
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {
@@ -267,7 +276,6 @@ async function refillAllProtocols() {
           isRunFromRefillScript: true,
           throwError: true,
           runType: 'refill-all',
-          deadChains,
         }
         runner.push(handler2(eventObj))
         currentDayEndTimestamp -= ONE_DAY_IN_SECONDS

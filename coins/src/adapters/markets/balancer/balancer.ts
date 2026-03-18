@@ -1,5 +1,5 @@
 import * as sdk from "@defillama/sdk";
-import { multiCall } from "@defillama/sdk/build/abi/index";
+const { multiCall, } = sdk.api.abi
 import { request } from "graphql-request";
 import {
   addToDBWritesList,

@@ -185,6 +185,7 @@ export function buildRedirectR2(filename: string, cache?: number) {
 
 export const liquidationsFilename = `liquidations.json`;
 
+// these cache file doesnt exist/not used anywhere?
 export async function deleteProtocolCache(protocolId: string) {
   const cacheKey = (useNewChainNames: boolean, useHourlyData: boolean) =>
     `protocolCache/${protocolId}-${useNewChainNames}-${useHourlyData}`;

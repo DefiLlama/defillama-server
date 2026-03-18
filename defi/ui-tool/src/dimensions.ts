@@ -1,6 +1,7 @@
 import loadAdaptorsData from "../../src/adaptors/data"
 import { AdapterType } from "../../src/adaptors/data/types";
-import { getAllDimensionsRecordsTimeS } from "../../src/adaptors/db-utils/db2";
+import { getAllDimensionsRecordsTimeS, getDimensionsRecordsInRange } from "../../src/adaptors/db-utils/db2";
+import { AdapterRecord2 } from "../../src/adaptors/db-utils/AdapterRecord2";
 import { getTimestampString } from "../../src/api2/utils";
 import { handler2, DimensionRunOptions } from "../../src/adaptors/handlers/storeAdaptorData";
 import PromisePool from '@supercharge/promise-pool';
@@ -34,6 +35,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
   const protocolToRun = args.protocol
   const checkBeforeInsert = args.checkBeforeInsert
   const delayBetweenRuns = args.delayBetweenRuns ?? 0
+  const parallelHourlyProcessCount = args.parallelHourlyProcessCount ?? 1
+  const skipHourlyCache = !!args.skipHourlyCache
   const protocolNames = new Set([protocolToRun])
   if (checkBeforeInsert) args.dryRun = true
 
@@ -82,6 +85,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
           protocolNames,
           isRunFromRefillScript: true,
           checkBeforeInsert,
+          skipHourlyCache,
+          parallelHourlyProcessCount,
         }
         items.push(eventObj)
       }
@@ -98,6 +103,8 @@ export async function runDimensionsRefill(ws: any, args: any) {
         protocolNames,
         isRunFromRefillScript: true,
         checkBeforeInsert,
+        skipHourlyCache,
+        parallelHourlyProcessCount,
       }
       items.push(eventObj)
 
@@ -160,9 +167,8 @@ export async function storeAllWaitingRecords(ws: any) {
     .for(allRecords)
     .process(async ([id, record]: any) => {
       // if (recordItems[id]) delete recordItems[id]  // sometimes users double click or the can trigger this multiple times
-      const { storeRecordV2Function, storeDDBFunctions } = record as any
-      if (storeRecordV2Function) await storeRecordV2Function()
-      if (storeDDBFunctions?.length) await Promise.all(storeDDBFunctions.map((fn: any) => fn()))
+      const { storeFunctions } = record as any
+      if (storeFunctions?.length) await Promise.all(storeFunctions.map((f: any) => f()))
       delete recordItems[id]
     })
 
@@ -202,6 +208,148 @@ function getRecordItem(record: any) {
     })
   } catch (e) {
     console.error('Error parsing record data', e)
+  }
+  return res
+}
+
+// --- Dimension Delete Functionality ---
+
+const deleteRecordsList: any = {}
+
+export async function dimensionsDeleteGetList(ws: any, args: any) {
+  const adapterType = args.adapterType as AdapterType
+  const protocolToRun = args.protocol
+  const fromTimestamp = Number(args.dateFrom)
+  const toTimestamp = Number(args.dateTo)
+
+  if (!Number.isFinite(fromTimestamp) || !Number.isFinite(toTimestamp)) {
+    console.error('Invalid timestamp range: fromTimestamp and toTimestamp must be finite numbers')
+    return
+  }
+
+  if (fromTimestamp > toTimestamp) {
+    console.error('Invalid timestamp range: fromTimestamp must be <= toTimestamp')
+    return
+  }
+
+  const { protocolAdaptors } = loadAdaptorsData(adapterType)
+  const protocol = protocolAdaptors.find((p: any) => p.displayName === protocolToRun || p.module === protocolToRun || p.id === protocolToRun)
+
+  if (!protocol) {
+    console.error(`Protocol "${protocolToRun}" not found for adapter type "${adapterType}"`)
+    return
+  }
+
+  const records = await getDimensionsRecordsInRange({ adapterType, id: protocol.id2, fromTimestamp, toTimestamp })
+
+  console.log('Pulled', records.length, 'dimension records for protocol:', protocol.displayName, 'type:', adapterType, 'from:', new Date(fromTimestamp * 1000).toDateString(), 'to:', new Date(toTimestamp * 1000).toDateString())
+
+  records.forEach((record: any) => {
+    const uniqueId = `${adapterType}#${record.id}#${record.timeS}`
+    deleteRecordsList[uniqueId] = {
+      id: uniqueId,
+      protocolId: record.id,
+      protocolName: protocol.displayName,
+      adapterType,
+      timeS: record.timeS,
+      timestamp: record.timestamp,
+      data: record.data,
+    }
+  })
+
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export async function dimensionsDeleteSelectedRecords(ws: any, ids: any) {
+  await _deleteDimensionRecords(ws, ids)
+}
+
+export async function dimensionsDeleteAllRecords(ws: any) {
+  await _deleteDimensionRecords(ws)
+}
+
+async function _deleteDimensionRecords(ws: any, ids?: any) {
+  if (!ids) ids = Object.keys(deleteRecordsList)
+  if (!ids.length) return
+
+  const validIds = ids.filter((id: string) => deleteRecordsList[id])
+  if (validIds.length === 0) {
+    console.error('No valid records found for deletion')
+    return
+  }
+
+  if (validIds.length !== ids.length) {
+    console.error(`Warning: ${ids.length - validIds.length} invalid IDs were filtered out`)
+  }
+
+  validIds.sort(() => Math.random() - 0.5)
+
+  const { errors } = await PromisePool
+    .withConcurrency(7)
+    .for(validIds)
+    .process(async (id: any) => {
+      const record = deleteRecordsList[id]
+      if (!record) {
+        console.error('Record not found in deleteRecordsList:', id)
+        return
+      }
+
+      const { protocolId, adapterType, timeS, timestamp, data, bl, blc } = record
+
+      try {
+        // TODO: uncomment to enable actual deletion
+        await AdapterRecord2.deleteFromDB({ adapterType, id: protocolId, timeS, timestamp, data, bl, blc })
+        // console.log('[DRY RUN] Would delete dimension record:', adapterType, protocolId, timeS, 'data:', JSON.stringify(record.data?.aggregated ?? {}))
+        delete deleteRecordsList[id]
+      } catch (e) {
+        console.error('Error deleting dimension record:', id, (e as any)?.message || e)
+        throw e
+      }
+    })
+
+  if (errors.length > 0) {
+    console.error('Errors deleting dimension records:', errors.length, errors.map((e: any) => e.message || e))
+  }
+
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export function dimensionsDeleteClearList(ws: any) {
+  console.log('Clearing dimension delete records list', Object.keys(deleteRecordsList).length)
+  Object.keys(deleteRecordsList).forEach((id) => delete deleteRecordsList[id])
+  sendDimensionsDeleteWaitingRecords(ws)
+}
+
+export function sendDimensionsDeleteWaitingRecords(ws: any) {
+  ws.send(JSON.stringify({
+    type: 'dimensions-delete-waiting-records',
+    data: Object.values(deleteRecordsList).map(getDeleteRecordItem),
+  }))
+}
+
+function getDeleteRecordItem(record: any) {
+  const { id, protocolName, timeS, adapterType, data } = record
+  const res: any = {
+    id,
+    protocolName,
+    timeS,
+    adapterType,
+  }
+  try {
+    if (data?.aggregated) {
+      Object.entries(data.aggregated).forEach(([key, d]: any) => {
+        res[key] = humanizeNumber(d.value)
+        res['_' + key] = +d.value
+        if (d.chains) {
+          Object.entries(d.chains).forEach(([chain, value]: any) => {
+            res[`${key}_${chain}`] = humanizeNumber(value)
+            res[`_${key}_${chain}`] = value
+          })
+        }
+      })
+    }
+  } catch (e) {
+    console.error('Error parsing delete record data', e)
   }
   return res
 }

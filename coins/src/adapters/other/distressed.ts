@@ -2,6 +2,8 @@ import { lowercase } from "../../utils/coingeckoPlatforms";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
+    TARA: "0x2f42b7d686ca3effc69778b6ed8493a7787b4d6e", // https://etherscan.io/tx/0xce58cfa4e259fbcdf282eefaad83a769299d3e4899fcf2d11e9c5427e490c852
+    TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
     hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
@@ -58,7 +60,12 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     crvCRVETH: "0xed4064f376cb8d68f770fb1ff088a3d0f3ff5c4d",
     SFUND: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
     NEST: "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
-    GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3"
+    // UNIBTC: '0x004e9c3ef86bc1ca1f0bb5c7662861ee93350568', 
+    // pumpBTC: '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e',
+    HAUST: "0xec3502a9f98f151af52ee6cb423a0afe7bbf5a19", 
+    USPD: "0x476ef9ac6d8673e220d0e8bc0a810c2dc6a2aa84", 
+    yTUSD: '0x73a052500105205d34daf004eab301916da8190f',
+    DGLD: "0xa9299c296d7830a99414d1e5546f5171fa01e9c8",
   },
   // beam: {
   //   WMC: '0xd51bfa777609213a653a2cd067c9a0132a2d316a'
@@ -97,6 +104,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SFUND:"0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
   },
   bsc: {
+    BP: "0xacb8f52dc63bb752a51186d1c55868adbffee9c1", // infinity mint https://bscscan.com/tx/0x6fe1f9a035c334c2c3f44dbb0db220aeb250e5e5532277af61d6eedf6276b8c5
+    'USD+': "0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65", // https://x.com/overnight_fi/status/2000631797848187322
     USD_T: "0x5e0a1d876557cf43c66c08c8a247bc4954eca8bd", // mint out of think air, very low liquiity
     SFUND: "0x477bc8d23c634c154061869478bce96be6045d12",
     SFUND_1: "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60",
@@ -144,13 +153,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     ynCoBTCk: "0x132376b153d3cFf94615fe25712DB12CaAADf547", // SAME , backing 2 tokens and aparently also loop
     MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
     NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7",
-    GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
     MINTME: "0xd652776de7ad802be5ec7bebfafda37600222b48",
   },
   solana: {
+    xSOL: "BdUJucPJyjkHxLMv6ipKNUhSeY3DWrVtgxAES1iSBAov",
     LIBRA: "Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU",
     YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
     SNS: "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
@@ -158,7 +167,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     //WIF: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
     OVOL: "4v3UTV9jibkhPfHi5amevropw6vFKVWo7BmxwQzwEwq6",
     TRUMP: "AwRErBEFGTnohzfLeRSBH9HddQEy2oeRxnWLrbvFFh95",
-    GTBTC: "gtBTCGWvSRYYoZpU9UZj6i3eUGUpgksXzzsbHk2K9So"
   },
   pulse: {
     GLOBO: "0x13568d812d30359756db5e617a7a8eb7eb3917f5",
@@ -218,6 +226,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     BIFI: "0x765277eebeca2e31912c9946eae1021199b39c61",
   },
   polygon: {
+    'USD+': "0x236eec6359fb44cce8f97e99387aa7f8cd5cde1f", // https://x.com/overnight_fi/status/2000631797848187322
     FEVR: "0xe6b9d092223f39013656702a40dbe6b7decc5746",
     BELUGA: "0x47536f17f4ff30e64a96a7555826b8f9e66ec468",
     BIFI: "0xfbdd194376de19a88118e84e279b977f165d01b8",
@@ -229,6 +238,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x49a0400587a7f65072c87c4910449fdcc5c47242",
     JUSD: "0x0ba8a6ce46d369d779299dedade864318097b703",
     SX: "0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79",
+    BITZ: "0x9C6605eEB66bd05858E0cB5204432aA6c7d0fA24", 
+    PLAY: '0x1CCA311B786Dd7906c07414095FA719Eabfd070f'
   },
   moonriver: {
     MIM: "0x0cae51e1032e8461f4806e26332c030e34de3adb",
@@ -244,11 +255,13 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MIM: "0x218c3c3d49d0e7b37aff0d8bb079de36ae61a4c0",
   },
   optimism: {
+    'USD+': "0x73cb180bf0521828d8849bc8CF2B920918e23032", // https://x.com/overnight_fi/status/2000631797848187322
     MIM: "0xb153fb3d196a8eb25522705560ac152eeec57901",
     GRAIN: "0xfd389dc9533717239856190f42475d3f263a270d",
     clBTC: "0x1792865d493fe4dfdd504010d3c0f6da11e8046d", // IS NOT BACKED
   },
   era: {
+    'USD+': "0x8E86e46278518EFc1C5CEd245cBA2C7e3ef11557", // https://x.com/overnight_fi/status/2000631797848187322
     MVX: "0xc8ac6191cdc9c7bf846ad6b52aaaa7a0757ee305",
   },
   metis: {
@@ -318,7 +331,9 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     SOY: "0x9fae2529863bd691b4a7171bdfcf33c7ebb10a65",
   },
   blast: {
+    'USD+': "0x4fee793d435c6d2c10c135983bb9d6d4fc7b9bbd", // got rekt https://blastscan.io/tx/0x7ea97521e9df5837836718f149fcd4bd02633c7ec76e1f03eafeda101a13ecce
     SSS: "0xdfdcdbc789b56f99b0d0692d14dbc61906d9deed",
+    YES: '0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c'
   },
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
@@ -326,13 +341,19 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",
     clBTC: "0x8d2757ea27aabf172da4cca4e5474c76016e3dc5", // IS NOT BACKED
-    GTBTC: "0xc2d09cf86b9ff43cb29ef8ddca57a4eb4410d5f3" //NEED TO CONFIRM COLLATERAL BEFORE PRIOCING
+    DGLD: "0xd02f50e1017f493ffffa70c8fcf09e349e11d6c9", // dropped to 0, coingecko mispriced it
+    usBTCd: "0xe07adc4bad16be3e4f6f7511a3e0b0219c73672b", // 0 liquidity
+    BTB: "0x888e85c95c84ca41eef3e4c8c89e8dce03e41488", // 0 liquidity
+    LAWAS: "0x31a531666e0e391e83eb64cda5d9f8633347e5ea", // 0 liquidity
+    "vAMM-Ⓔ/7EC": "0xD70e1935e48D0Ad45115C862BF6f4f2E22a790d1", // 0 liquidity
+    "vAMM-TOORBOLG": "0xB37d726d247F9B035B8240b04B76D55df5680D3d" // 0 liquidity
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",
   },
-  bera: {
+  berachain: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",
+    // UNIBTC: '0xc3827a4bc8224ee2d116637023b124ced6db6e90'
   },
   hyperliquid: {
     LABUBU: "0x9b96c57bce95f69cd3a1facdfcd9061087f81b96",
@@ -345,6 +366,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   hemi: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
     UBTC: "0x78E26E8b953C7c78A58d69d8B9A91745C2BbB258",
+    UNIBTC: '0xf9775085d726e782e83585033b58606f7731ab18'
     // hemiBTC: "0xaa40c0c7644e0b2b224509571e10ad20d9c4ef28", // IS NOT BACKED
   },
   plume: {
@@ -352,6 +374,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   xsat: {
     ESBTC: "0xaFB068838136358CFa6B54BEa580B86DF70BBA7f",
+  },
+  linea: {
+    SolvBTCb: "0x96155858A02c410c3C814BB32Fdc413b3241b62E", // minted bridge token withou backing assets
+    SolvBTCm: "0x5FFcE65A40f6d3de5332766ffF6A28BF491C868c", // minted bridge token withou backing assets
+    'USD+': "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376", // https://x.com/overnight_fi/status/2000631797848187322
   },
   // merlin: {
   //   'SolvBTC.BBN': "0x1760900aca15b90fa2eca70ce4b4ec441c2cf6c5"
@@ -370,7 +397,29 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   cardano: {
     SUPERIOR: 'a967738feca0f92afa0f781f2db4ec318ee6f06cb515fecf988fabfb0014df105355504552494f52'
-  }
+  },
+  bob: {
+    UNIBTC: '0x236f8c0a61dA474dB21B693fB2ea7AAB0c803894' 
+    //https://explorer.gobob.xyz/address/0x631ae97e24f9F30150d31d958d37915975F12ed8?tab=token_transfers , https://explorer.gobob.xyz/address/0x15ee13E98dcacA45125211d03443B251C322bab5?tab=token_transfers , https://app.pell.network/restake/detail?chainid=60808&address=0x631ae97e24f9F30150d31d958d37915975F12ed8
+  },
+  sui: {
+    BTCvc: '0x647ac1a9d158fed6fe4cba5bf42c51eceb2638518d1a9e71343f8e92ba7349fe::btcvc::BTCVC',
+  },
+  zklink: {
+    SolvBTCb: '0x586E593Ffa60c15Ed722342f3C08cc90410e4fEA', // minted bridge token withou backing assets
+    SolvBTCm: '0xbEAf16cFD8eFe0FC97C2a07E349B9411F5dC272C', // minted bridge token withou backing assets
+  },
+  core: {
+    SolvBTCb: '0x5B1Fb849f1F76217246B8AAAC053b5C7b15b7dc3', // minted bridge token withou backing assets
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
+  scroll: {
+    SolvBTCb: '0x3Ba89d490AB1C0c9CC2313385b30710e838370a4', // minted bridge token withou backing assets
+    SolvBTCm: '0x2365649F604377bA6472579e8c19fACFED13C9DC', // minted bridge token withou backing assets
+  },
+  btr: {
+    SolvBTCm: '0xe04d21d999FaEDf1e72AdE6629e20A11a1ed14FA', // minted bridge token withou backing assets
+  },
 };
 
 export const distressedAssets = Object.fromEntries(

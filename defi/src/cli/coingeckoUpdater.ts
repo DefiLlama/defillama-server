@@ -13,7 +13,6 @@ interface Protocol {
   chain: string;
   logo: string | null;
   audits: string | null;
-  audit_note: string | null;
   gecko_id: string | null;
   cmcId: string | null;
   category: string;

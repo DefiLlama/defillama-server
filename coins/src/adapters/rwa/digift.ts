@@ -42,5 +42,6 @@ export async function digift(timestamp: number = 0) {
   await getTokenPrices("ethereum", timestamp ,writes);
   await getTokenPrices("arbitrum", timestamp, writes);
   await getTokenPrices("plume_mainnet", timestamp, writes);
+  await getTokenPrices("bsc", timestamp, writes);
   return writes;
 }

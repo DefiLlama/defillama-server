@@ -1,11 +1,11 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
 import ddb from "./utils/shared/dynamodb";
-import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
 import { sendMessage } from "../../defi/src/utils/discord";
 import { DAY } from "./utils/processCoin";
+import { getProvider } from "@defillama/sdk/build/general"
 
 interface TimestampBlock {
   height: number;

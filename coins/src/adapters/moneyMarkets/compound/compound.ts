@@ -1,5 +1,6 @@
 const abi = require("./abi.json");
-import { multiCall, call } from "@defillama/sdk/build/abi/index";
+import * as sdk from '@defillama/sdk'
+const { multiCall, call, } = sdk.api.abi
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
@@ -134,11 +135,12 @@ export default async function getTokenPrices(
     const i = tokenInfo.decimals
       .map((d: Result) => d.input.target)
       .indexOf(p.address);
+    const cTokenDecimals = Number(tokenInfo.decimals[i].output);
     addToDBWritesList(
       writes,
       chain,
       cTokens[i].address,
-      p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
+      p.price / 10 ** (18 - cTokenDecimals + Number(underlyingDecimals[i].output)),
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
       timestamp,

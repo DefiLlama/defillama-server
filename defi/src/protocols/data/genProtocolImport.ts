@@ -27,7 +27,7 @@ async function run() {
 
 
   // read all the data.ts files and create a combined import file
-  //  which a later js script will read and turn into json (and mock all the functions)
+  // which a later js script will read and turn into json (and mock all the functions)
   const allProtocols: any[] = []
   const importPromises = DATA_FILES.map(async (file) => {
     const module = await import(`../${file}`)

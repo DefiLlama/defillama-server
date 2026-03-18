@@ -4,15 +4,15 @@ import { canonicalBridgeIds, excludedTvlKeys, geckoSymbols, protocolBridgeIds, z
 import fetch from "node-fetch";
 import { bridgedTvlMixedCaseChains } from "../src/utils/shared/constants";
 import sleep from "../src/utils/shared/sleep";
-import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
-import { Address } from "@defillama/sdk/build/types";
+import * as sdk from '@defillama/sdk'
+const { multiCall, call } = sdk.api2.abi
+type Address = string;
 import * as incomingAssets from "./adapters";
 import { additional, excluded } from "./adapters/manual";
-import { Chain } from "@defillama/sdk/build/general";
+type Chain = string;
 import PromisePool from "@supercharge/promise-pool";
-import { getBlock } from "@defillama/sdk/build/util/blocks";
 import { Connection, PublicKey } from "@solana/web3.js";
-import * as sdk from "@defillama/sdk";
+const { getBlock, } = sdk.util.blocks
 import fetchThirdPartyTokenList from "./adapters/thirdParty";
 import { storeR2JSONString } from "../src/utils/r2";
 const BufferLayout = require("buffer-layout");
@@ -144,7 +144,7 @@ const solEndpoint = (isClient: boolean) => {
   return process.env.SOLANA_RPC;
 };
 
-const endpointMap: any = {
+export const endpointMap: any = {
   solana: solEndpoint,
   renec: renecEndpoint,
   eclipse: eclipseEndpoint,
@@ -154,6 +154,27 @@ function getConnection(chain = "solana") {
   if (!connection[chain]) connection[chain] = new Connection(endpointMap[chain](true));
   return connection[chain];
 }
+
+export async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
+  const chunks = sliceIntoChunks(inputs, chunkSize);
+  const results = [];
+  for (const chunk of chunks) {
+    results.push(...((await fn(chunk)) ?? []));
+    if (sleepTime) await sleep(sleepTime);
+  }
+
+  return results.flat();
+
+  function sliceIntoChunks(arr: any, chunkSize = 100) {
+    const res = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      const chunk = arr.slice(i, i + chunkSize);
+      res.push(chunk);
+    }
+    return res;
+  }
+}
+
 async function getSolanaTokenSupply(
   tokens: string[],
   chain: string,
@@ -192,27 +213,54 @@ async function getSolanaTokenSupply(
   });
 
   return supplies;
-
-  async function runInChunks(inputs: any, fn: any, { chunkSize = 99, sleepTime }: any = {}) {
-    const chunks = sliceIntoChunks(inputs, chunkSize);
-    const results = [];
-    for (const chunk of chunks) {
-      results.push(...((await fn(chunk)) ?? []));
-      if (sleepTime) await sleep(sleepTime);
-    }
-
-    return results.flat();
-
-    function sliceIntoChunks(arr: any, chunkSize = 100) {
-      const res = [];
-      for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
-        res.push(chunk);
-      }
-      return res;
-    }
-  }
 }
+async function getProvenanceSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Provenance adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const PROVENANCE_LCD = "https://api.provenance.io";
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(
+          `${PROVENANCE_LCD}/cosmos/bank/v1beta1/supply/by_denom?denom=${encodeURIComponent(token)}`
+        ).then((r) => r.json());
+        if (res?.amount?.amount) supplies[`provenance:${token}`] = Number(res.amount.amount);
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
+async function getStellarSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Stellar adapter!`);
+  const supplies: { [token: string]: number } = {};
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        // Token format: "{asset_code}-{asset_issuer}" (dash-separated to avoid clashing with chain:address colon)
+        const dashIdx = token.lastIndexOf("-");
+        if (dashIdx === -1) return;
+        const asset_code = token.substring(0, dashIdx);
+        const asset_issuer = token.substring(dashIdx + 1);
+        const res = await fetch(
+          `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
+        ).then((r) => r.json());
+        const record = res?._embedded?.records?.[0];
+        if (record?.balances?.authorized != null) {
+          // Horizon exposes amount in display units with 7 implicit decimal places.
+          // Multiply by 1e7 to align with decimals=7 returned by the price API.
+          supplies[`stellar:${token}`] = Math.round(parseFloat(record.balances.authorized) * 1e7);
+        }
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -299,6 +347,8 @@ export async function fetchSupplies(
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
+    if (chain == "provenance") return await getProvenanceSupplies(tokens, timestamp);
+    if (chain == "stellar") return await getStellarSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);

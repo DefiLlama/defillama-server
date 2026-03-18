@@ -2,7 +2,8 @@ import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { CoinData, Write } from "../../utils/dbInterfaces";
 import { getApi } from "../../utils/sdk";
 import providers from "@defillama/sdk/build/providers.json";
-import { call } from "@defillama/sdk/build/abi/abi2";
+import * as sdk from '@defillama/sdk'
+const { call, } = sdk.api2.abi
 import {
   addToDBWritesList,
   getTokenAndRedirectData,

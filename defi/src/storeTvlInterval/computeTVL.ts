@@ -57,6 +57,7 @@ export default async function (balances: { [address: string]: string }, timestam
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
+  const symbolToAddresses: { [symbol: string]: string[] } = {};
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   const tokenData = await getTokenData(readKeys, timestamp)
   const staleCoinsInclusive: any = {};
@@ -66,19 +67,17 @@ export default async function (balances: { [address: string]: string }, timestam
         const balance = balances[address];
         const { price, decimals } = response;
         if (!price) return;
-        let symbol: string, amount: number;
-        if (response.PK.startsWith('coingecko:')) {
-          symbol = address;
-          amount = Number(balance);
-        } else {
-          symbol = (response.symbol as string).toUpperCase();
-          amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-        }
+        
+        const symbol = (response.symbol as string).toUpperCase();
+        const amount = response.PK.startsWith('coingecko:') ? Number(balance) : new BigNumber(balance).div(10 ** decimals).toNumber();
+        
         const usdAmount = amount * price;
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;
+        if (!symbolToAddresses[symbol]) symbolToAddresses[symbol] = [];
+        if (!symbolToAddresses[symbol].includes(address)) symbolToAddresses[symbol].push(address);
       });
     }
   });
@@ -89,6 +88,7 @@ export default async function (balances: { [address: string]: string }, timestam
     usdTvl,
     tokenBalances,
     usdTokenBalances,
+    symbolToAddresses,
   };
 }
 

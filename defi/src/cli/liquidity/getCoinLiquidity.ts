@@ -244,7 +244,7 @@ async function getLiquidityProtocolsCompared() {
         aggAmount = data?.buyAmount
         if(data.message || !aggAmount){
             const inch = await fetch(
-                        `https://api.1inch.io/v4.0/${inchChainToId[chain]}/quote?fromTokenAddress=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&toTokenAddress=${address}&amount=${
+                        `https://api.1inch.com/v4.0/${inchChainToId[chain]}/quote?fromTokenAddress=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&toTokenAddress=${address}&amount=${
                             "10000000"+"000000000000000000" // 10M eth ~18bn
                         }&slippage=${0.5}`).then(r => r.json()) // CHANGE FOR DEFILLAMA API
             //console.log(inch)

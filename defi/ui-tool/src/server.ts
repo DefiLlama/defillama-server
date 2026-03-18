@@ -7,7 +7,7 @@ process.env.LLAMA_DEBUG_MODE = 'TRUE'
 const WS = require('ws');
 const { spawn, } = require('child_process');
 
-import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
+import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
@@ -17,7 +17,9 @@ import getTvlCacheEnv from '../../src/api2/env';
 async function start() {
   await setConfig()
 
-  const isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
+  
+  let isProductionMode = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod';
+  isProductionMode = isProductionMode && !process.env.UI_TOOL_FORCE_DEV_MODE; // this is needed because of the setConfig()
 
   try {
     getTvlCacheEnv();
@@ -27,7 +29,6 @@ async function start() {
 
 
   const AUTH_PASSWORD = process.env.WS_AUTH_PASSWORD;
-
 
   process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
@@ -56,9 +57,13 @@ async function start() {
         cwd: reactAppPath,
         env: {
           ...process.env,
-          PORT: 5001
+          PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002: 5001
         }
       });
+
+      // Pipe stdout and stderr to terminal
+      reactApp.stdout.pipe(process.stdout);
+      reactApp.stderr.pipe(process.stderr);
     } catch (error) {
       console.error('Error starting React app:', error);
     }
@@ -145,6 +150,7 @@ async function start() {
     sendWaitingRecords(ws);
     sendTvlStoreWaitingRecords(ws);
     sendTvlDeleteWaitingRecords(ws);
+    sendDimensionsDeleteWaitingRecords(ws);
 
     // start streaming logs to the client
     const wrappedLog = (...args: any) => {
@@ -185,6 +191,18 @@ async function start() {
           break;
         case 'reload-table':
           sendWaitingRecords(ws);
+          break;
+        case 'dimensions-delete-get-list':
+          await dimensionsDeleteGetList(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-records':
+          await dimensionsDeleteSelectedRecords(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-all':
+          await dimensionsDeleteAllRecords(ws);
+          break;
+        case 'dimensions-delete-clear-list':
+          dimensionsDeleteClearList(ws);
           break;
 
 

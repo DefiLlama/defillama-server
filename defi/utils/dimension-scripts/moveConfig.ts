@@ -4,6 +4,7 @@ import * as path from "path";
 import { visit } from "ast-types";
 import loadAdaptorsData from "../../src/adaptors/data";
 import { ADAPTER_TYPES } from "../../src/adaptors/data/types";
+import { unixTimeToTimeS } from "../../src/api2/utils/time";
 
 const TS_PARSER = require("recast/parsers/typescript");
 const b = R.builders;
@@ -71,10 +72,10 @@ function initData() {
           case 'cleanRecordsConfig':
             const genuineSpikes = otherConfig.cleanRecordsConfig.genuineSpikes
             if (!genuineSpikes) break;
-            const spikes: any = []
+            const spikes: [string, string][] = []
             Object.entries(genuineSpikes).forEach(([ts, bool]) => {
               if (bool) {
-                spikes.push(ts)
+                spikes.push([unixTimeToTimeS(Number(ts)), "-"])
               }
             })
             if (spikes.length)

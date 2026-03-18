@@ -1,6 +1,6 @@
 import { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getMethodologyDataByBaseAdapter } from "./methodology";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, AdapterType, BaseAdapter, } from "../types";
 import { IParentProtocol } from "../../../protocols/types";
@@ -17,6 +17,7 @@ interface IImportObj {
   module: { default: Adapter },
   codePath: string
   moduleFilePath: string
+  commit?: string
 }
 type IImportsMap = IJSON<IImportObj>
 
@@ -31,7 +32,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
 
       const protocolId = configObj.id
       let moduleObject = allImports[adapterKey].module.default as any
-      const isDead = moduleObject.deadFrom || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.deadFrom)
+      const isDead = moduleObject.deadFrom || (Object.values(moduleObject.adapter ?? {}).every((adapter: any) => adapter.deadFrom) && Object.values(moduleObject.adapter ?? {}).length > 0)
       const runAtCurrentTime = moduleObject.runAtCurrTime || Object.values(moduleObject.adapter ?? {}).some((adapter: any) => adapter.runAtCurrTime)
       let protocol: Protocol | IParentProtocol= configMetadataMap[adapterKey]
       let baseModuleObject = {} as BaseAdapter
@@ -47,7 +48,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
       if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
 
 
-      chains = Object.keys(baseModuleObject)
+      chains = Object.keys(baseModuleObject).filter((key) => key !== 'chain_global')  // skip the special 'chain_global' key which is used for some global properties of the adapter, but is not an actual chain
       
 
       const infoItem: ProtocolAdaptor = {
@@ -64,7 +65,7 @@ export function generateProtocolAdaptorsList2({ allImports, config, adapterType,
         displayName: (protocol as any).displayName ?? protocol!.name,
         protocolType,
         isDead,
-        methodologyURL: 'https://github.com/DefiLlama/dimension-adapters/blob/master/' + adapterObj.codePath,
+        methodologyURL: `https://github.com/DefiLlama/dimension-adapters/blob/${adapterObj.commit ?? "master"}/${adapterObj.codePath}`,
         methodology: undefined,
         _stat_adapterVersion: adapterObj.module.default?.version ?? 1,
         _stat_runAtCurrTime: runAtCurrentTime,

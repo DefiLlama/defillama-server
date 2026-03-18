@@ -86,8 +86,6 @@ async function run() {
 
   const whitelistedSet = new Set([
     'test market',
-    'Rho Markets',
-    'Orbit Protocol',
     'MovePosition',
     'DAOLama',
     'RealT RMM Marketplace V2',

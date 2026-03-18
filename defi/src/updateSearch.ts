@@ -2,11 +2,33 @@ import fetch from "node-fetch";
 import { sluggifyString } from "./utils/sluggify";
 import { storeR2 } from "./utils/r2";
 import { cexsData } from "./protocols/cex";
+import protocols from "./protocols/data";
+import parentProtocolsList from "./protocols/parentProtocols";
 import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
+import { getEnv } from "./api2/env";
+import { rwaSlug } from "./rwa/utils";
+import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
+
+// Split camelCase/PascalCase into space-separated words: "MakerDAO" → "Maker DAO", "DexScreener" → "Dex Screener"
+const splitCamelCase = (str: string) =>
+  str.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2");
+
+// Build search name variants (no-spaces + camelCase-split) for a list of names, excluding duplicates and the original names
+function buildNameVariants(names: string[]): string[] {
+  const originals = new Set(names.map(n => n.toLowerCase()));
+  const variants = new Set<string>();
+  for (const name of names) {
+    const noSpaces = name.replace(/\s+/g, "");
+    const split = splitCamelCase(name);
+    if (!originals.has(noSpaces.toLowerCase())) variants.add(noSpaces);
+    if (!originals.has(split.toLowerCase())) variants.add(split);
+  }
+  return [...variants];
+}
 
 interface SearchResult {
   id: string;
@@ -17,9 +39,13 @@ interface SearchResult {
   logo?: string;
   tvl?: number;
   mcap?: number;
+  volume?: number;
   deprecated?: boolean;
-  type: string;
+  type?: string;
   hideType?: boolean;
+  mcapRank?: number;
+  previousNames?: string[];
+  nameVariants?: string[];
   v: number;
 }
 
@@ -240,6 +266,15 @@ const getProtocolSubSections = ({
     });
   }
 
+  if (metadata?.tokenRights) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenRights`,
+      subName: "Token Rights",
+      route: `/protocol/token-rights/${sluggifyString(protocolData.name)}`,
+    });
+  }
+
   return subSections.map((result) => ({
     ...result,
     v: tastyMetrics[result.route] ?? 0,
@@ -247,7 +282,7 @@ const getProtocolSubSections = ({
   }));
 };
 
-async function getAllCurrentSearchResults() {
+async function getAllCurrentSearchResults(index: string) {
   const allResults: Array<SearchResult> = [];
   let offset = 0;
   const limit = 100e3;
@@ -255,7 +290,7 @@ async function getAllCurrentSearchResults() {
 
   while (hasMore) {
     const res: { total: number; results: Array<SearchResult> } = await fetchJson(
-      `https://search.defillama.com/indexes/pages/documents?limit=${limit}&offset=${offset}`,
+      `https://search-core.defillama.com/indexes/${index}/documents?limit=${limit}&offset=${offset}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
@@ -285,18 +320,131 @@ function getResultsToDelete(currentResults: Array<SearchResult>, newResults: Arr
       return !newResultsSet.has(itemId);
     });
 }
+
+// Build previousNames lookup from raw protocol data (keyed by name)
+const previousNamesMap = new Map<string, string[]>();
+for (const p of protocols) {
+  if (p.previousNames?.length) previousNamesMap.set(p.name, p.previousNames as string[]);
+}
+for (const p of parentProtocolsList) {
+  if ((p as any).previousNames?.length) previousNamesMap.set(p.name, (p as any).previousNames);
+}
+
+function buildDirectoryResults(
+  tvlData: { parentProtocols: any[]; protocols: any[] },
+  parentTvl: Record<string, number>,
+  tastyMetrics: Record<string, number>,
+) {
+  const otherPages = [
+  {"name": "LlamaFeed","route": "https://llamafeed.io"},
+  {"name": "Etherscan","route": "https://etherscan.io/"},
+].map(page=>({
+    id: `others_${normalize(page.name)}`,
+    name: page.name,
+    route: page.route,
+    v: 1000,
+  })) as Array<SearchResult>;
+
+  // Deduplicate by protocol url, preferring parent protocols
+  const stripTrailingSlash = (url: string) => url.replace(/\/+$/, "");
+  const urlToIndex = new Map<string, number>();
+  const directoryResults: Array<SearchResult> = [];
+
+  const deadUrlsBlacklist = new Set<string>();
+
+  for (const parent of tvlData.parentProtocols) {
+    const route = `/protocol/${sluggifyString(parent.name)}`;
+    const prevNames = previousNamesMap.get(parent.name);
+    if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
+    const allNames = [parent.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
+    if (parent.deadUrl) deadUrlsBlacklist.add(parent.url);
+    directoryResults.push({
+      id: `directory_parent_${normalize(parent.name)}`,
+      name: parent.name,
+      ...(parent.symbol && parent.symbol !== "-" ? { symbol: parent.symbol } : {}),
+      tvl: parentTvl[parent.id] ?? 0,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
+      route: parent.deadUrl ? "" : parent.referralUrl ?? parent.url,
+      ...(parent.deprecated ? { deprecated: true } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
+      v: tastyMetrics[route] ?? 0
+    });
+  }
+
+  for (const protocol of tvlData.protocols) {
+    const prevNames = previousNamesMap.get(protocol.name) ?? [];
+    const protocolUrl = protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
+    if (protocolUrl && urlToIndex.has(protocolUrl)) {
+      if(prevNames.length > 0){
+        // Child shares URL with an existing entry — merge its previousNames into the parent
+        const parentIdx = urlToIndex.get(protocolUrl)!;
+        const parentEntry = directoryResults[parentIdx];
+        if (!parentEntry.previousNames) parentEntry.previousNames = [];
+        for (const name of prevNames) {
+          if (name !== parentEntry.name && !parentEntry.previousNames.includes(name)) {
+            parentEntry.previousNames.push(name);
+          }
+        }
+        // Rebuild variants with updated previousNames
+        const allNames = [parentEntry.name, ...parentEntry.previousNames];
+        const variants = buildNameVariants(allNames);
+        parentEntry.nameVariants = variants.length ? variants : undefined;
+      }
+      continue;
+    }
+    if (protocolUrl) urlToIndex.set(protocolUrl, directoryResults.length);
+    const route = `/protocol/${sluggifyString(protocol.name)}`;
+    const allNames = [protocol.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
+    if (protocol.deadUrl) deadUrlsBlacklist.add(protocol.url);
+    directoryResults.push({
+      id: `directory_child_${normalize(protocol.name)}`,
+      name: protocol.name,
+      ...(protocol.symbol && protocol.symbol !== "-" ? { symbol: protocol.symbol } : {}),
+      tvl: protocol.tvl,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
+      route: protocol.deadUrl ? "" : protocolUrl,
+      ...(protocol.deprecated ? { deprecated: true } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
+      v: tastyMetrics[route] ?? 0,
+    });
+  }
+
+  const cexs: Array<SearchResult> = cexsData
+  .filter((c) => c.slug && c.url).map(cex=>({
+    id: `cex_${normalize(cex.name)}`,
+    name: cex.name,
+    ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
+    route: cex.url!,
+    logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+    v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
+  }));
+
+  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
+  const maxV = Math.max(...allResults.map(r => r.v));
+  const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
+  if (swapEntry) swapEntry.v = maxV;
+  return allResults;
+}
+
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
   const [
     tvlData,
     stablecoinsData,
+    bridgesData,
     frontendPages,
     tastyMetrics,
     protocolsMetadata,
     chainsMetadata,
-    currentSearchResults,
     coinsData,
+    datsData,
+    rwaListData,
+    rwaTickerToNameMap
   ]: [
     {
       chains: string[];
@@ -305,23 +453,34 @@ async function generateSearchList() {
       protocols: any[];
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
+    { bridges: Array<{ name: string; displayName: string; icon: string; monthlyVolume: number; slug?: string }> },
     Record<string, Array<{ name: string; route: string }>>,
     Record<string, number>,
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
-    Array<SearchResult>,
-    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>
+    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>,
+    {
+      assetMetadata: Record<string, { name: string; ticker: string }>;
+      institutionMetadata: Record<string, { name: string; ticker: string }>;
+    },
+    {
+      tickers: Array<string>
+      platforms: Array<string>
+      categories: Array<string>
+      chains: Array<string>
+    },
+    Record<string, string>
   ] = await Promise.all([
-    fetchJson("https://api.llama.fi/lite/protocols2"),
-    fetchJson("https://stablecoins.llama.fi/stablecoins"),
-    fetchJson("https://defillama.com/pages.json").catch((e) => {
-      console.log("Error fetching frontend pages", e);
-      return {};
-    }),
-    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url`, {
+    cachedJSONPull("https://api.llama.fi/lite/protocols2"),
+    cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
+    cachedJSONPull("https://bridges.llama.fi/bridges"),
+    cachedJSONPull("https://defillama.com/pages.json"),
+    cachedJSONPull({
+      endpoint: `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`,
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
+      defaultResponse: [],
     })
       .then((res: Array<{ x: string; y: number }>) => {
         const final = {} as Record<string, number>;
@@ -329,15 +488,20 @@ async function generateSearchList() {
           final[xy.x] = xy.y;
         }
         return final;
-      })
-      .catch((e) => {
-        console.log("Error fetching tasty metrics", e);
-        return {};
       }),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    getAllCurrentSearchResults(),
-    fetchJson("https://ask.llama.fi/coins"),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
+    cachedJSONPull("https://ask.llama.fi/coins"),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/list`),
+    cachedJSONPull({ endpoint: `https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/current`, defaultResponse: [] }).then(res => {
+      const final = {} as Record<string, string>;
+      for (const rwa of res) {
+        if (final[rwa.ticker]) continue;
+        final[rwa.ticker] = rwa.assetName;
+      }
+      return final;
+    }),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -366,6 +530,9 @@ async function generateSearchList() {
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
   for (const parent of tvlData.parentProtocols) {
+    const prevNames = previousNamesMap.get(parent.name);
+    const allNames = [parent.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
@@ -373,6 +540,9 @@ async function generateSearchList() {
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(parent.name)}`,
+      ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -394,6 +564,9 @@ async function generateSearchList() {
 
   for (const protocol of tvlData.protocols) {
     if (protocol.name === "LlamaSwap") continue;
+    const prevNames = previousNamesMap.get(protocol.name);
+    const allNames = [protocol.name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
     const result = {
       id: `protocol_${normalize(protocol.name)}`,
       name: protocol.name,
@@ -402,6 +575,8 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,
       ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -419,6 +594,7 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
+  const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
   for (const chain of tvlData.chains) {
@@ -653,12 +829,31 @@ async function generateSearchList() {
       });
     }
 
+    if (metadata?.normalizedVolume) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_normalizedVolume`,
+        subName: "Normalized Volume",
+        route: `/normalized-volume/chain/${sluggifyString(chain)}`,
+      });
+    }
+
+    if (rwaChainsSet.has(chain)) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_rwa`,
+        subName: "RWA",
+        route: `/rwa/chain/${rwaSlug(chain)}`,
+      });
+    }
+
     subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
   }
 
   const categories: Array<SearchResult> = [];
 
   for (const category in categoryTvl) {
+    if (category === "RWA") continue;
     categories.push({
       id: `category_${normalize(category)}`,
       name: category,
@@ -692,6 +887,20 @@ async function generateSearchList() {
     v: tastyMetrics[`/stablecoin/${sluggifyString(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
+
+  const bridges: Array<SearchResult> = [];
+  for (const brg of bridgesData.bridges) {
+    if (brg.slug) continue;
+    bridges.push({
+      id: `bridge_${normalize(brg.name)}`,
+      name: brg.displayName,
+      volume: brg.monthlyVolume,
+      logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
+      route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
+      v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
+      type: "Bridge",
+    });
+  }
 
   const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,
@@ -742,6 +951,7 @@ async function generateSearchList() {
       name: coin.symbol,
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
+      mcapRank: coin.mcap_rank ?? 0,
       v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
       type: "Token Usage",
     });
@@ -751,28 +961,90 @@ async function generateSearchList() {
         name: coin.symbol,
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,
+        mcapRank: coin.mcap_rank ?? 0,
         v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
         type: "Token Yields",
       });
     }
   }
 
+  const dats: Array<SearchResult> = [];
+  for (const asset in (datsData.assetMetadata ?? {})) {
+    dats.push({
+      id: `dat_asset_${normalize(datsData.assetMetadata[asset].name)}`,
+      name: datsData.assetMetadata[asset].name,
+      symbol: datsData.assetMetadata[asset].ticker,
+      route: `/digital-asset-treasuries/${asset}`,
+      v: tastyMetrics[`/digital-asset-treasuries/${asset}`] ?? 0,
+      type: "DAT",
+    });
+  }
+  for (const institution in (datsData.institutionMetadata ?? {})) {
+    dats.push({
+      id: `dat_institution_${normalize(datsData.institutionMetadata[institution].ticker)}`,
+      name: datsData.institutionMetadata[institution].name,
+      symbol: datsData.institutionMetadata[institution].ticker,
+      route: `/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`,
+      v:
+        tastyMetrics[`/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`] ??
+        0,
+      type: "DAT",
+    });
+  }
+
+  const rwaList: Array<SearchResult> = [];
+  for (const ticker of rwaListData.tickers) {
+    const name = rwaTickerToNameMap[ticker];
+    const tickerSlug = rwaSlug(ticker);
+    rwaList.push({
+      id: `rwa_asset_${normalize(tickerSlug)}`,
+      ...(name ? { name, symbol: ticker } : { name: ticker }),
+      route: `/rwa/asset/${tickerSlug}`,
+      v: tastyMetrics[`/rwa/asset/${tickerSlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const platform of rwaListData.platforms) {
+    const platformSlug = rwaSlug(platform);
+    rwaList.push({
+      id: `rwa_platform_${normalize(platformSlug)}`,
+      name: platform,
+      route: `/rwa/platform/${platformSlug}`,
+      v: tastyMetrics[`/rwa/platform/${platformSlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const category of rwaListData.categories) {
+    const categorySlug = rwaSlug(category);
+    rwaList.push({
+      id: `rwa_category_${normalize(categorySlug)}`,
+      name: category,
+      route: `/rwa/category/${categorySlug}`,
+      v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
     stablecoins: stablecoins.sort((a, b) => b.v - a.v),
+    bridges: bridges.sort((a, b) => b.v - a.v),
     metrics: metrics.sort((a, b) => b.v - a.v),
     tools: tools.sort((a, b) => b.v - a.v),
     categories: categories.sort((a, b) => b.v - a.v),
     tags: tags.sort((a, b) => b.v - a.v),
     cexs: cexs.sort((a, b) => b.v - a.v),
     otherPages: otherPages.sort((a, b) => b.v - a.v),
+    dats: dats.sort((a, b) => b.v - a.v),
+    rwaList: rwaList.sort((a, b) => b.v - a.v),
   };
 
   return {
     results: results.chains
       .concat(results.protocols)
       .concat(results.stablecoins)
+      .concat(results.bridges)
       .concat(results.metrics)
       .concat(results.tools)
       .concat(results.categories)
@@ -782,10 +1054,13 @@ async function generateSearchList() {
       .concat(subProtocols)
       .concat(subChains)
       .concat(coins)
+      .concat(results.dats)
+      .concat(results.rwaList)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,
       })),
+    directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
     topResults: results.chains
       .slice(0, 3)
       .concat(results.protocols.slice(0, 3))
@@ -797,64 +1072,69 @@ async function generateSearchList() {
       .map((r) => ({
         ...r,
         v: 0,
-      })),
-    currentSearchResults,
+      }))
   };
 }
 
+async function syncIndex(index: string, newResults: Array<SearchResult>) {
+  const currentResults = await getAllCurrentSearchResults(index);
+  const toDelete = getResultsToDelete(currentResults, newResults);
+
+  if (toDelete.length > 0) {
+    const deleteRes = await fetchJson(`https://search-core.defillama.com/indexes/${index}/documents/delete-batch`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toDelete),
+    });
+
+    const deleteError = deleteRes?.details?.error?.message;
+    if (deleteError) {
+      console.log(`[${index}] delete error:`, deleteError);
+    }
+  }
+
+  if (newResults.length > 0) {
+    const submit = await fetchJson(`https://search-core.defillama.com/indexes/${index}/documents`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newResults),
+    });
+
+    const status = await fetchJson(`https://search-core.defillama.com/tasks/${submit.taskUid}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
+      },
+    });
+
+    const submitError = status?.details?.error?.message;
+    if (submitError) {
+      console.log(`[${index}] submit error:`, submitError);
+    }
+    console.log(`[${index}] status:`, status);
+  }
+}
+
 const main = async () => {
-  const { results, topResults, currentSearchResults } = await generateSearchList();
+  const { results, directoryResults, topResults } = await generateSearchList();
 
   if (results.length === 0) {
     console.log("No results to submit");
     return;
   }
 
-  const resultsToDelete = getResultsToDelete(currentSearchResults, results);
-
-  const deletedResults = await fetchJson(`https://search.defillama.com/indexes/pages/documents/delete-batch`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(resultsToDelete),
-  });
-
-  const deletedResultsErrorMessage = deletedResults?.details?.error?.message;
-  if (deletedResultsErrorMessage) {
-    console.log(deletedResultsErrorMessage);
-  }
-
-  // Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
-  const submit = await fetchJson(`https://search.defillama.com/indexes/pages/documents`, {
-    method: "PUT",
-    headers: {
-      "Authorization": `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(results),
-  });
-
-  const status = await fetchJson(`https://search.defillama.com/tasks/${submit.taskUid}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.SEARCH_MASTER_KEY}`,
-    },
-  });
+  await syncIndex("pages", results);
+  await syncIndex("directory", directoryResults);
 
   await storeR2("searchlist.json", JSON.stringify(topResults), true, false).catch((e) => {
     console.log("Error storing top results search list", e);
   });
-
-  const submitErrorMessage = status?.details?.error?.message;
-  if (submitErrorMessage) {
-    console.log(submitErrorMessage);
-  }
-  console.log(status);
 };
-
-//export default main
-// main()
 
 // Add retry logic to main function
 const executeWithRetry = async () => {

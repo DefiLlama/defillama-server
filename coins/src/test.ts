@@ -1,4 +1,3 @@
-
 // catch unhandled errors
 process.on("uncaughtException", (err) => {
   console.error('uncaught error', err);
@@ -41,12 +40,17 @@ async function main() {
 
   const adapterFn = typeof protocolWrapper === 'function' ? protocolWrapper : protocolWrapper[protocol];
   const results = await adapterFn(0)
-  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
-    results.flat()
-  );
+  let resultsWithoutDuplicates = results.flat()
+  try {
+    resultsWithoutDuplicates = await filterWritesWithLowConfidence(resultsWithoutDuplicates)
+  } catch (e) {
+    if (!process.env.LOCAL_TEST)
+    console.error('Error filtering low confidence writes', e)
+  }
+
 
   const lTable: any = []
-  resultsWithoutDuplicates.forEach(i => {
+  resultsWithoutDuplicates.forEach((i: any) => {
     lTable[i.PK] = { symbol: i.symbol, price: i.price ?? i.redirect, decimals: i.decimals, PK: i.PK }
   })
   /* console.log(`==== Example results ====`);

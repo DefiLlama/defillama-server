@@ -1,4 +1,4 @@
-# Proff-of-Reserves server
+# Proof-of-Reserves server
 
 Some protocols locks assets in source chains and issues assets on destination.
 The total issued assets should be equal or lesser than locked assets on source chains.

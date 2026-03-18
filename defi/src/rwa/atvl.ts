@@ -304,6 +304,9 @@ function findActiveMcaps(
   assetPrices: { price: number; decimals: number },
   chain: string
 ) {
+  if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+    finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices.price);
+  }
   if (!finalData[rwaId][RWA_KEY_MAP.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;
   const thisChainExcluded = excludedAmounts[rwaId][chain];

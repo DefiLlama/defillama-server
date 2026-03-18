@@ -9067,6 +9067,11 @@
     }
   },
   "stellar": {
+    "USDM1-CAC743NYRBMS76L2DCPAXZTOEF6EJPKPVEC5OX2SXY7HOWNXISSLUE2C": {
+      "to": "coingecko#usdm1",
+      "decimals": 7,
+      "symbol": "USDM1"
+    },
     "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6-1": {
       "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
       "decimals": 7,
@@ -12149,6 +12154,11 @@
     }
   },
   "katana": {
+    "0x7F1f4b4b29f5058fA32CC7a97141b8D7e5ABDC2d": {
+      "to": "coingecko#katana-network-token",
+      "decimals": 18,
+      "symbol": "WKAT"
+    },
     "0x4200000000000000000000000000000000000006": {
       "to": "coingecko#ethereum",
       "decimals": 18,
@@ -14284,6 +14294,43 @@
       "to": "coingecko#tether",
       "decimals": 18,
       "symbol": "bUSDT"
+    }
+  }, 
+  "tempo": {
+    "0x20c0000000000000000000000000000000000000": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "pathUSD"
+    }, 
+    "0x20c000000000000000000000b9537d11c60e8b50": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    }, 
+    "0x20c0000000000000000000001621e21f71cf12fb": {
+      "to": "coingecko#euro-coin",
+      "decimals": 6,
+      "symbol": "EURC.e"
+    }, 
+    "0x20c00000000000000000000014f22ca97301eb73": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT0"
+    }, 
+    "0x20c0000000000000000000003554d28269e0f3c2": {
+      "to": "coingecko#frax-usd",
+      "decimals": 6,
+      "symbol": "frxUSD"
+    }, 
+    "0x20c0000000000000000000000520792dcccccccc": {
+      "to": "coingecko#cap-usd",
+      "decimals": 6,
+      "symbol": "cUSD"
+    },
+    "0x20c00000000000000000000031f228af88888888": {
+      "to": "coingecko#staked-cap-usd",
+      "decimals": 6,
+      "symbol": "stcUSD"
     }
   }
 }

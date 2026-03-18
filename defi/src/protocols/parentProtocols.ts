@@ -9228,6 +9228,31 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "NeonyExchange",
   },
+  {
+    id: "parent#mento",
+    name: "Mento",
+    url: "https://www.mento.org/",
+    description: "Mento is building the largest FX infrastructure, bringing world currencies onchain through its robust multi-currency stablecoin platform.",
+    logo: `${baseIconsUrl}/mento.png`,
+    gecko_id: "mento",
+    cmcId: null,
+    chains: [],
+    twitter: "MentoLabs",
+    stablecoins: ["celo-dollar", "celo-euro"],
+    github: ["mento-protocol"],
+  },
+  {
+    id: "parent#bim",
+    name: "BIM",
+    url: "https://exchange.bim.finance/",
+    description: "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    logo: `${baseIconsUrl}/bim.jpg`,
+    gecko_id: "bim-2",
+    cmcId: "24877",
+    chains: [],
+    twitter: "Bim_Exchange",
+    treasury: "bim.js",
+  },
 ];
 
 export default parentProtocols;

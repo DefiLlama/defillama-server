@@ -3787,6 +3787,9 @@ const data4: Protocol[] = [
     module: "factorial/index.js",
     twitter: "AffluentOrg",
     oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], // https://docs.factorial.finance/oracle
+    dimensions: {
+      fees: "affluent",
+    },
     listedAt: 1738669030,
   },
   {
@@ -18874,7 +18877,8 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.fi/",
+    url: "https://defi.xstocks.fi/points?ref=8QG15V04",
+    referralUrl: "https://defi.xstocks.fi/points?ref=8QG15V04",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -19423,22 +19427,22 @@ const data4: Protocol[] = [
   },
   {
     id: "6402",
-    name: "BIM",
+    name: "BIM Yield",
     address: "base:0x555FFF48549C1A25a723Bd8e7eD10870D82E8379",
     symbol: "BIM",
     url: "https://exchange.bim.finance/",
     description:
       "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
     chain: "Base",
-    logo: `${baseIconsUrl}/bim.jpg`,
+    logo: `${baseIconsUrl}/bim-yield.jpg`,
     audits: "2",
-    gecko_id: "bim-2",
-    cmcId: "24877",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Base"],
     module: "bim/index.js",
     twitter: "Bim_Exchange",
-    treasury: "bim.js",
+    parentProtocol: "parent#bim",
     audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
     listedAt: 1751920749,
     dimensions: {
@@ -27561,7 +27565,6 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "surf-liquid"
     },
-    deprecated: true
   },
   {
     id: "6766",

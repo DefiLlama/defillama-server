@@ -6,6 +6,7 @@ import mintedTokens from './tokens';
 const protocolId = 'universal-bridge';
 
 export default {
+  whitelisted: true,
   protocolId: protocolId,
   minted: async function(_: GetPoROptions): Promise<number> {
     return await getTotalMinted(mintedTokens, true);

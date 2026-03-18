@@ -119,7 +119,10 @@ const data: Protocol[] = [
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
     dimensions: {
-      fees: "aave-v2"
+      fees: {
+        genuineSpikes: [["2026-03-16", "High borrow APY (1000%+) and 63 days of accumulated interest for the AMPL token"]],
+        adapter: "aave-v2"
+      }
     }
   },
   {
@@ -8795,24 +8798,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "504",
-    name: "Mento",
+    name: "Mento V2",
     address: "celo:0x7ff62f59e3e89ea34163ea1458eebcc81177cfb6",
     symbol: "MENTO",
-    url: "https://www.mento.org/",
+    url: "https://app.mento.org",
     description:
       "Mento, an open source and permissionless protocol live on the Celo network. It facilitates the launch of stablecoins such as cUSD, cEUR, and cREAL",
     chain: "Celo",
-    logo: `${baseIconsUrl}/mento.png`,
+    logo: `${baseIconsUrl}/mento-v2.jpg`,
     audits: "2",
-    gecko_id: "mento",
+    gecko_id: null,
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Celo"],
     module: "mento/index.js",
     twitter: "MentoLabs",
     audit_links: ["https://celo.org/audits"],
-    stablecoins: ["celo-dollar", "celo-euro"],
-    github: ["mento-protocol"],
+    parentProtocol: "parent#mento",
     oraclesBreakdown: [
       {
         name: "cLabs",
@@ -16998,16 +17000,16 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "894",
     name: "Velora",
     previousNames: ["Paraswap"],
-    address: "0xcAfE001067cDEF266AfB7Eb5A286dCFD277f3dE5",
-    symbol: "PSP",
+    address: "0x4e107a0000db66f0e9fd2039288bf811dd1f9c74",
+    symbol: "VLR",
     url: "https://www.velora.xyz",
     description:
       "Velora is the most comprehensive and flexible trading protocol for Decentralized Finance (DeFi). We use decentralized intents to provide advanced features such as limit orders, super hooks, and chain-abstracted swaps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/velora.jpg`,
     audits: "2",
-    gecko_id: "paraswap",
-    cmcId: "14534",
+    gecko_id: "velora",
+    cmcId: "36629",
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "paraswap.js",

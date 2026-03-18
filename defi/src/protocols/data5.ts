@@ -14301,7 +14301,49 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "deeptrade",
     },
-    listedAt: 1773848967
+  },
+  {
+    id: "7555",
+    name: "Matcha",
+    address: null,
+    symbol: "-",
+    url: "https://matcha.xyz/matcha-auto",
+    description:
+      "Swap crypto without native tokens. Matcha handles the gas for swaps and approvals so you can focus on trading.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/matcha.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "_matchaxyz",
+    dimensions: {
+      fees: "matcha-xyz",
+    },
+  },
+  {
+    id: "7556",
+    name: "Paradex Spot",
+    address: null,
+    symbol: "-",
+    url: "https://app.paradex.trade/r/defillama",
+    description:
+      "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paradex-spot.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Order Book"],
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "paradex",
+    parentProtocol: "parent#paradex",
+    dimensions: {
+      dexs: "paradex-spot",
+    },
   },
 ];
 export default data5;

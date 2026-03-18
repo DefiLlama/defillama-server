@@ -14163,7 +14163,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Bridge",
     chains: ["Neony"],
-    module: "dummy.js",
+    module: "neony/index.js",
     twitter: "NeonyExchange",
     parentProtocol: "parent#neony-exchange",
     listedAt: 1773676471

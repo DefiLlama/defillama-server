@@ -14257,5 +14257,28 @@ const data5: Protocol[] = [
     },
     listedAt: 1773839122
   },
+  {
+    id: "7553",
+    name: "BIM Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://exchange.bim.finance/",
+    description:
+      "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bim-aggregator.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: null,
+    parentProtocol: "parent#bim",
+    dimensions: {
+      aggregators: "bim",
+      "bridge-aggregators": "bim",
+    },
+  },
 ];
 export default data5;

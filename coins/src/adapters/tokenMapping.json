@@ -12154,6 +12154,11 @@
     }
   },
   "katana": {
+    "0x7F1f4b4b29f5058fA32CC7a97141b8D7e5ABDC2d": {
+      "to": "coingecko#katana-network-token",
+      "decimals": 18,
+      "symbol": "WKAT"
+    },
     "0x4200000000000000000000000000000000000006": {
       "to": "coingecko#ethereum",
       "decimals": 18,

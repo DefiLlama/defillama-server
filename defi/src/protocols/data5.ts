@@ -14234,5 +14234,28 @@ const data5: Protocol[] = [
     github: ["signals-protocol"],
     listedAt: 1773827054
   },
+  {
+    id: "7552",
+    name: "Orbit Finance",
+    address: null,
+    symbol: "-",
+    url: "https://orbitdex.io/en",
+    description:
+      "Perpetual futures with up to 300x leverage. Non-custodial, fully on-chain.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/orbit-finance.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["DLMM"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      fees: "orbit-finance",
+      dexs: "orbit-finance",
+    },
+    listedAt: 1773839122
+  },
 ];
 export default data5;

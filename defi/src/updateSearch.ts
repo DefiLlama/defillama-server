@@ -1034,7 +1034,7 @@ async function generateSearchList() {
     });
   }
   const equities: Array<SearchResult> = equitiesData.map((equity) => ({
-    id: `equity_${normalize(equity.name)}`,
+    id: `equity_${normalize(equity.name)}_${normalize(equity.ticker)}`,
     name: equity.name,
     symbol: equity.ticker,
     route: `/equities/${equity.ticker.toLowerCase()}`,

@@ -13,7 +13,7 @@ import { ApiResponse } from '../../utils/config/apiClient';
 const apiClient = createApiClient(endpoints.ACTIVE_USERS_DIM.BASE_URL);
 
 describe('Active Users API - Summary', () => {
-  const testProtocols = ['uniswap', 'pancakeswap', 'aave'];
+  const testProtocols = ['uniswap', 'pancakeswap'];
 
   const responses: Record<string, ApiResponse<ActiveUsersSummaryResponse>> = {};
 

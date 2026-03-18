@@ -7,6 +7,7 @@ async function main(
     startDate: string,
     endDate: string,
     ids: string[],
+    inclusive: boolean = true,
 ) {
     if (!startDate || !endDate || ids.length === 0) {
         console.error('Missing required arguments');
@@ -20,7 +21,7 @@ async function main(
         process.exit(1);
     }
 
-    process.env.RWA_REFILL = 'true';
+    if (inclusive) process.env.RWA_REFILL_INCLUSIVE = 'true';
 
     await initPG();
     const timestamps: number[] = []
@@ -53,4 +54,4 @@ async function main(
     process.exit();
 }
 
-// main('2025-03-23', '2026-02-03', ['79']) // ts-node defi/src/rwa/cli/refill.ts
+// main('2025-01-01', '2026-03-17', ids) // ts-node defi/src/rwa/cli/refill.ts

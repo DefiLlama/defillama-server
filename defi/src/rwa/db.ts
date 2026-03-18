@@ -265,7 +265,7 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
             updated_at: now,
         };
 
-        if (process.env.RWA_REFILL || !closestRecordData) {
+        if (process.env.RWA_REFILL_INCLUSIVE == 'true' || !closestRecordData) {
             // Merge non-historical chain data from the existing DB record into the new insert
             if (existingRecords[id]) {
                 const existing = existingRecords[id];
@@ -282,8 +282,8 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
                         // non-historical chains and any chain where the RPC failed during refill
                         for (const chain of Object.keys(existingData)) {
                             if (newData[chain] === undefined) {
-                                console.log(`LINE 285 src/rwa/db.ts TEST THIS CODE BLOCK ID: ${id}, timestamp: ${timestamp}: EXITTING`)
-                                process.exit()
+                                console.log(`COMMUTITIVE REFILL ON ID: ${id}, timestamp: ${timestamp}`)
+
                                 newData[chain] = existingData[chain];
                                 if (field === 'mcap') additionalMcap += Number(existingData[chain]) || 0;
                                 else if (field === 'activemcap') additionalActiveMcap += Number(existingData[chain]) || 0;

@@ -14332,5 +14332,12 @@
       "decimals": 6,
       "symbol": "stcUSD"
     }
+  },
+  "canton": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#canton-network",
+      "decimals": 18,
+      "symbol": "CC"
+    }
   }
 }

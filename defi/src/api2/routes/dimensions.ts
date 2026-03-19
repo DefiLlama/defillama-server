@@ -397,11 +397,11 @@ export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-
     if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
 
     if (route === 'chart-chain-total') {
-      const chartItems: Record<number, number> = {};
+      const chartItems: Record<string, number> = {};
       for (const [timestamp, chains] of data) {
         for (const [chain, value] of Object.entries(chains)) {
           if (getChainKeyFromLabel(chain) === chainKeyFilter) {
-            chartItems[Number(timestamp)] = Number(value);
+            chartItems[timestamp] = Number(value);
           }
         }
       }

@@ -14209,9 +14209,11 @@ const data5: Protocol[] = [
     module: "rysk-premium/index.js",
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
+    /* why not to exclude: its a different contract, all assets are not tracked under v12 listing. So no double counting
     tokensExcludedFromParent: {
       Hyperliquid_L1: ["USDH", "KHYPE"],
     },
+    */
     listedAt: 1773748789
   },
   {

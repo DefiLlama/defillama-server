@@ -777,7 +777,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     };
   }
 
-  const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
+  const unsortedByChain: { [chain: string]: AggregateStatsChainBucket } = {};
 
   for (const [chain, v] of Object.entries(byChain)) {
     const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
@@ -788,13 +788,17 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
       assetIssuers: Array.from(a.assetIssuers).sort(),
     });
 
-    outByChain[chain] = {
+    unsortedByChain[chain] = {
       base: toAggOut(v.base),
       stablecoinsOnly: toAggOut(v.stablecoinsOnly),
       governanceOnly: toAggOut(v.governanceOnly),
       stablecoinsAndGovernance: toAggOut(v.stablecoinsAndGovernance),
     };
   }
+
+  const outByChain: { [chain: string]: AggregateStatsChainBucket } = Object.fromEntries(
+    Object.entries(unsortedByChain).sort(([, a], [, b]) => b.base.onChainMcap - a.base.onChainMcap)
+  );
 
   console.log(`Generated aggregate stats in ${Date.now() - startTime}ms`);
 
@@ -811,7 +815,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
 }
 
 
-function generateList(currentData: any[]): {
+function generateList(currentData: any[], stats: AggregateStats): {
   tickers: string[];
   platforms: string[];
   chains: string[];
@@ -823,54 +827,59 @@ function generateList(currentData: any[]): {
 
   const tickerMcap: { [ticker: string]: number } = {};
   const platformMcap: { [platform: string]: number } = {};
-  const chainMcap: { [chain: string]: number } = {};
   const categoryMcap: { [category: string]: number } = {};
   const idMap: { [ticker: string]: string } = {};
 
   currentData.forEach((item: any) => {
-    // Calculate total on-chain marketcap for this asset
+    const assetType = typeof item.type === "string" ? item.type.trim() : "";
+    if (assetType.toLowerCase() === "wrapper") return;
+
     let assetMcap = 0;
-    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
-      Object.entries(item.onChainMcap).forEach(([chain, value]) => {
-        const numValue = Number(value);
-        if (!isNaN(numValue)) {
-          assetMcap += numValue;
-          // Aggregate chain on-chain marketcap
-          chainMcap[chain] = (chainMcap[chain] || 0) + numValue;
+    const mcapObj = item.onChainMcap;
+    if (mcapObj && typeof mcapObj === 'object') {
+      if (Array.isArray(mcapObj.breakdown)) {
+        for (const entry of mcapObj.breakdown) {
+          if (!Array.isArray(entry) || entry.length < 2) continue;
+          assetMcap += toFiniteNumberOrZero(entry[1]);
         }
-      });
+      } else {
+        for (const [k, v] of Object.entries(mcapObj)) {
+          if (k === "total" || k === "breakdown") continue;
+          assetMcap += toFiniteNumberOrZero(v);
+        }
+      }
     }
 
-    // Aggregate ticker mcap
     if (item.ticker) {
       tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
       idMap[item.ticker] = item.id;
     }
 
-    // Aggregate platform mcap (ONLY when asset has a valid parentPlatform; never include "Unknown")
     const parentPlatform =
       typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
     if (parentPlatform && parentPlatform !== "Unknown") {
       platformMcap[parentPlatform] = (platformMcap[parentPlatform] || 0) + assetMcap;
     }
 
-    // Aggregate category mcap
     const categories = item.category || [];
     categories.forEach((cat: string) => {
       categoryMcap[cat] = (categoryMcap[cat] || 0) + assetMcap;
     });
   });
 
-  // Sort by mcap descending and return as arrays of strings
   const sortByMcap = (obj: { [key: string]: number }): string[] =>
     Object.entries(obj)
       .sort((a, b) => b[1] - a[1])
       .map(([key]) => key);
 
+  const chainsSorted = Object.entries(stats.byChain)
+    .sort(([, a], [, b]) => b.base.onChainMcap - a.base.onChainMcap)
+    .map(([chain]) => chain);
+
   const list = {
     tickers: sortByMcap(tickerMcap),
     platforms: sortByMcap(platformMcap),
-    chains: sortByMcap(chainMcap),
+    chains: chainsSorted,
     categories: sortByMcap(categoryMcap),
     idMap,
   };
@@ -1249,7 +1258,7 @@ async function main() {
     await generateAggregatedHistoricalCharts(metadata);
 
     // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = generateList(currentData);
+    const list = generateList(currentData, stats);
     await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));

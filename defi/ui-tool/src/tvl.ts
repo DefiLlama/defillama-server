@@ -73,7 +73,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
   let { chains, skipBlockFetch, dateFrom, dateTo, parallelCount, maxRetries = 3, breakIfTvlIsZero = false, removeTokenTvl = false, removeTokenTvlSymbols = '', skipMissingChains= false } = options;
 
 
-  if (removeTokenTvl) chains = ''
+  // if (removeTokenTvl) chains = ''
 
   const debugStart = +new Date()
   let i = 0
@@ -136,7 +136,7 @@ async function fillOld(ws: any, protocol: IProtocol, options: any) {
 
 
       // build symbol mapping
-      await buildTokenSymbolMapping({ usdTvlRecords, rawRecords, symbolsToRemove, addressesToRemove })
+      await buildTokenSymbolMapping({ usdTvlRecords, rawRecords, symbolsToRemove, addressesToRemove, chains })
 
       console.log('Removing token tvl for symbols:', symbolsToRemove.join(', '), 'and addresses:', Array.from(addressesToRemove).join(', '))
 
@@ -547,8 +547,11 @@ async function buildTokenSymbolMapping(params: {
   rawRecords: Record<string, any>,
   symbolsToRemove: string[],
   addressesToRemove: Set<string>,
+  chains?: string[],
 }) {
-  const { usdTvlRecords, rawRecords, symbolsToRemove, addressesToRemove } = params
+  const { usdTvlRecords, rawRecords, symbolsToRemove, addressesToRemove, chains = [] } = params
+  const filterByChains =  chains.length > 0
+  const chainsSet = new Set(chains)
 
   const symbolsToRemoveSet: Set<string> = new Set(symbolsToRemove.map(s => s.toLowerCase()))
   const processedChainSymbols: Set<string> = new Set()
@@ -561,6 +564,7 @@ async function buildTokenSymbolMapping(params: {
     for (const key of Object.keys(usdTokenRecord)) {
       if (['tvl', 'pool2', 'staking', 'SK'].includes(key) || key.includes('-')) continue;  // we are looking for chains
       const chain = key
+      if (filterByChains && !chainsSet.has(chain)) continue;
       const chainData = usdTokenRecord[chain]
       if (!chainSymbolMapping[chain]) chainSymbolMapping[chain] = {}
 

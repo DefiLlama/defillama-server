@@ -28099,6 +28099,13 @@ const data4: Protocol[] = [
     category: "Basis Trading",
     chains: ["Ethereum"],
     module: "falcon-finance/index.js",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.falcon.finance/resources/smart-contracts", "https://data.chain.link/feeds/ethereum/mainnet/usdf-usd", "https://data.chain.link/feeds/ethereum/mainnet/susdf-usdf-exchange-rate"],
+      },
+    ],
     twitter: "falconstable",
     audit_links: ["https://docs.falcon.finance/resources/audits#smart-contract-audits"],
     stablecoins: ["falcon-usd"],

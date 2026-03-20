@@ -39,10 +39,8 @@ export default async function getTokenPrice(timestamp: number) {
       { ...write, SK: now },
     ];
   } else {
-    writes = [{ ...write, SK: now }];
+    writes = [{ ...write, SK: timestamp }];
   }
-
-  console.log(writes);
 
   return writes;
 }

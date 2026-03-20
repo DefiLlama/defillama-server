@@ -10882,6 +10882,7 @@ const data5: Protocol[] = [
       "https://reports.yaudit.dev/2025-11-Twyne-AAVE",
       "https://reports.yaudit.dev/2025-12-Twyne-AAVE-Operators",
       "https://487956288-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F3KnzajNTqFNdyZr2k3l3%2Fuploads%2F1BUrZGcTaMl5rFRH00ph%2FTwyne%20-%20Aave%20integration.pdf?alt=media&token=a370164e-8d15-4c35-8861-89838f351c67",
+      "https://twyne.gitbook.io/twyne/resources/security"
     ],
     listedAt: 1770851974,
   },

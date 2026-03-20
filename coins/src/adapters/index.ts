@@ -197,4 +197,5 @@ export default {
   humble: require("./markets/humble"),
   m0: require("./other/m0"),
   anchored: require("./rwa/anchored"),
+  avkat: require("./liquidStaking/avkat"),
 };

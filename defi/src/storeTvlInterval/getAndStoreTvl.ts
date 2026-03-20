@@ -84,7 +84,7 @@ async function getTvl(
 
       if (!isFetchFunction) {
         let tvlBalances: any
-        if (options.partialRefill && !options.chainsToRefill?.includes(storedKey)) {
+        if (options.partialRefill && !options.chainsToRefill?.includes(chain)) {
           tvlBalances = (options.cacheData as any)[storedKey]
           let preComputedTvlData = (options.cacheData as any)?.preComputedTvlData
 
@@ -115,7 +115,7 @@ async function getTvl(
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
 
 
-        if (!options.chainsToRefill?.includes(storedKey) && usdTvl_fromCache !== undefined && tokenSymbolTvl_fromCache && tokenUsdTvl_fromCache) {
+        if (!options.chainsToRefill?.includes(chain) && usdTvl_fromCache !== undefined && tokenSymbolTvl_fromCache && tokenUsdTvl_fromCache) {
           // console.log('using pre computed data for:', storedKey)
 
           usdTvls[storedKey] = usdTvl_fromCache
@@ -344,6 +344,8 @@ export async function storeTvl(
     skipChainsCheck = false,
   } = options
 
+  const dateString = new Date(unixTimestamp * 1000).toISOString().slice(0, 10)
+
   if (partialRefill && (!chainsToRefill.length || !cacheData) && !skipChainsCheck) throw new Error('Missing chain list for refill')
 
   const adapterStartTimestamp = getCurrentUnixTimestamp()
@@ -442,6 +444,8 @@ export async function storeTvl(
       mergeBalances(tvlType, storedKeys, usdTokenBalances, { replaceEmptyString: true })
       mergeBalances(tvlType, storedKeys, rawTokenBalances)
     }
+
+    hackForMorphoKatana({ protocol, usdTvls, tokensBalances, usdTokenBalances, rawTokenBalances, dateString, })
 
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
@@ -643,4 +647,66 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
       return null;
     }
   }
+}
+
+
+// morpho deployment on katana has a unique doublecount issue where vb tokens should count towards katana chain tvl but not morpho tvl as the underlying tokens are already counted towards morpho tvl
+function hackForMorphoKatana({ protocol, usdTvls, tokensBalances, usdTokenBalances, rawTokenBalances, dateString, }: { protocol: Protocol, usdTvls: any, tokensBalances: any, usdTokenBalances: any, rawTokenBalances: any, dateString: string }) {
+  if (protocol.id !== '4025') return;
+
+  let excludedUSDValue = 0
+  let excludedBorrowedUSDValue = 0
+
+  const doublecountedTokens = new Set(['0x2dca96907fde857dd3d816880a0df407eeb2d2f2', '0x203a662b0bd271a6ed5a60edfbd04bfce608fd36', '0x0913da6da4b42f538b445599b46bb4622342cf52', '0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62'].map(i => 'katana:' + i.toLowerCase()))
+  const doublecountedTokenSymbols = new Set(['vbUSDT', 'vbUSDC', 'vbWBTC', 'vbETH'].map(i => i.toLowerCase()))
+
+  // remove double counted vb token balances from global tvl
+  Object.entries(usdTokenBalances.tvl).forEach(([token, balance]: any) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete usdTokenBalances.tvl[token]
+      excludedUSDValue += balance
+    }
+  })
+  Object.entries(usdTokenBalances.borrowed).forEach(([token, balance]: any) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete usdTokenBalances.borrowed[token]
+      excludedBorrowedUSDValue += balance
+    }
+  })
+
+  Object.keys(tokensBalances.tvl).forEach((token: string) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete tokensBalances.tvl[token]
+    }
+  })
+  
+
+  Object.keys(tokensBalances.borrowed).forEach((token: string) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete tokensBalances.borrowed[token]
+    }
+  })
+  
+
+
+  Object.keys(rawTokenBalances.tvl).forEach((token: string) => {
+    if (doublecountedTokens.has(token.toLowerCase())) {
+      delete rawTokenBalances.tvl[token]
+    }
+  })
+
+  Object.keys(rawTokenBalances.borrowed).forEach((token: string) => {
+    if (doublecountedTokens.has(token.toLowerCase())) {
+      delete rawTokenBalances.borrowed[token]
+    }
+  })
+
+  usdTvls.tvl -= excludedUSDValue
+  usdTvls.borrowed -= excludedBorrowedUSDValue
+
+  if (excludedUSDValue > 0)
+    console.log('Excluded katana tvl value:', sdk.humanizeNumber(excludedUSDValue), dateString)
+
+  if (excludedBorrowedUSDValue > 0)
+    console.log('Excluded katana borrowed tvl value:', sdk.humanizeNumber(excludedBorrowedUSDValue), dateString)
 }

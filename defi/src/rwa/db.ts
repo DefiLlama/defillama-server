@@ -484,6 +484,35 @@ export async function deleteTimestampsPG(timestamp: number): Promise<void> {
     });
 }
 
+// Fetch sum of aggregate values from the latest hourly record per ID (for circuit breaker comparison)
+export async function fetchLatestAggregateTotals(): Promise<{ defiActiveTvl: number; onChainMcap: number; activeMcap: number } | null> {
+    try {
+        const result = await HOURLY_RWA_DATA.sequelize!.query(
+            `SELECT
+                SUM(aggregatedefiactivetvl) as total_defiactivetvl,
+                SUM(aggregatemcap) as total_mcap,
+                SUM(aggregatedactivemcap) as total_activemcap
+            FROM (
+                SELECT DISTINCT ON (id) aggregatedefiactivetvl, aggregatemcap, aggregatedactivemcap
+                FROM "${HOURLY_RWA_DATA.getTableName()}"
+                ORDER BY id, timestamp DESC
+            ) latest`,
+            { type: QueryTypes.SELECT }
+        ) as any[];
+
+        if (!result.length || result[0].total_mcap == null) return null;
+
+        return {
+            defiActiveTvl: Number(result[0].total_defiactivetvl) || 0,
+            onChainMcap: Number(result[0].total_mcap) || 0,
+            activeMcap: Number(result[0].total_activemcap) || 0,
+        };
+    } catch (e) {
+        console.error(`Failed to fetch latest aggregate totals: ${e}`);
+        return null;
+    }
+}
+
 // Close the database connection
 async function closeConnection(): Promise<void> {
     if (!pgConnection) return;

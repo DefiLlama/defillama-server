@@ -58,6 +58,7 @@
     "fillOld-dimensions-all": "refill_all_missing_protocols=true NODE_OPTIONS=\"--max-old-space-size=16144\"  npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
+    "store-block-explorers": "npx ts-node --logError --transpile-only src/server-scripts/storeBlockExplorers.ts",
     "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/dimensions/checkForDeadProtocols.ts",
     "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
@@ -124,6 +125,7 @@
     "pm2": "^5.3.0",
     "postgres": "^3.3.1",
     "promise.allsettled": "^1.0.5",
+    "redis": "^5.11.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
     "typeorm": "^0.3.11"

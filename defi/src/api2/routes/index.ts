@@ -20,7 +20,6 @@ import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtoc
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 import { readRouteData } from "../cache/file-cache";
 
-import { getProtocolUsersHandler } from "../../getProtocolUsers";
 import { getSwapDailyVolume } from "../../dexAggregators/db/getSwapDailyVolume";
 import { getSwapTotalVolume } from "../../dexAggregators/db/getSwapTotalVolume";
 import { getHistory } from "../../dexAggregators/db/getHistory";
@@ -134,7 +133,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   })));
 
 
-  router.get("/activeUsers", defaultFileHandler)
+  // router.get("/activeUsers", defaultFileHandler)   # migrated to dimensions
 
 
 
@@ -191,8 +190,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
 
   router.get("/news/articles", defaultFileHandler) // TODO: ensure that env vars are set
-
-  router.get("/userData/:type/:protocolId", ew(getProtocolUsers)) // TODO: ensure that env vars are set
 
   router.post("/reportError", ew(reportErrorHandler)) // TODO: ensure that env vars are set
   router.post("/reportSupport", ew(reportSupportHandler)) // TODO: ensure that env vars are set
@@ -560,6 +557,7 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
         protocolDataFull = await craftParentProtocolV2({
           parentProtocol: parentProtocol,
           skipAggregatedTvl: false,
+          restrictResponseSize: false,
           feMini: false,
         });
       } else {
@@ -589,38 +587,40 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
       responseData = [];
 
       if (dataType === 'protocol') {
-        if (route === 'chart-total' || route === 'chart-chain-breakdown') {
-          const itemByDates: Record<number, any> = {}
-          for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
-            let [chainFilter, keyFilter] = chainAndKey.split('-');
+        const itemByDates: Record<number, any> = {}
+        for (const [chainAndKey, chainData] of Object.entries(protocolDataFull.chainTvls)) {
+          let [chainFilter, keyFilter] = chainAndKey.split('-');
 
-            console.log(chainAndKey)
+          if (AllowedProtocolKeys.includes(chainFilter)) continue;
+          if (!keyFilter) keyFilter = 'tvl';
 
-            if (AllowedProtocolKeys.includes(chainFilter)) continue;
-            if (!keyFilter) keyFilter = 'tvl';
-
-            if (key === keyFilter || key === 'all') {
+          if (key === keyFilter || key === 'all') {
+            if (route === 'chart-total' || route === 'chart-chain-breakdown') {
               for (const tvlItem of Object.values((chainData as any).tvl)) {
                 if (route === 'chart-total') {
                   itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || 0;
                   itemByDates[(tvlItem as any).date] += Number((tvlItem as any).totalLiquidityUSD);
-                } else {
+                } else if (route === 'chart-chain-breakdown') {
                   itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
                   itemByDates[(tvlItem as any).date][chainFilter] = itemByDates[(tvlItem as any).date][chainFilter] || 0;
                   itemByDates[(tvlItem as any).date][chainFilter] += Number((tvlItem as any).totalLiquidityUSD);
                 }
               }
+            } else if (route === 'chart-token-breakdown') {
+              const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
+              for (const tvlItem of (chainData as any)[tokenKey]) {
+                for (const [symbol, value] of Object.entries((tvlItem as any).tokens)) {
+                  itemByDates[(tvlItem as any).date] = itemByDates[(tvlItem as any).date] || {};
+                  itemByDates[(tvlItem as any).date][symbol] = itemByDates[(tvlItem as any).date][symbol] || 0;
+                  itemByDates[(tvlItem as any).date][symbol] += Number(value);
+                }
+              }
             }
           }
+        }
 
-          for (const [date, items] of Object.entries(itemByDates)) {
-            responseData.push([Number(date), items]);
-          }
-        } else if (dataType === 'protocol' && route === 'chart-token-breakdown') {
-          const tokenKey = currency === 'usd' ? 'tokensInUsd' : 'tokens';
-          for (const item of Object.values(protocolDataFull[tokenKey])) {
-            responseData.push([Number((item as any).date), (item as any).tokens]);
-          }
+        for (const [date, items] of Object.entries(itemByDates)) {
+          responseData.push([Number(date), items]);
         }
       } else if (dataType === 'treasury') {
         const itemByDates: Record<number, any> = {}
@@ -729,13 +729,6 @@ export function getForksRoutes(route: 'overview' | 'chart-total') {
     if (!data) return errorResponse(res, 'Request data not found');
     return successResponse(res, data);
   }
-}
-
-
-async function getProtocolUsers(req: HyperExpress.Request, res: HyperExpress.Response) {
-  const { protocolId, type } = req.path_parameters
-  const data = await getProtocolUsersHandler(protocolId, type)
-  return successResponse(res, data, 60)
 }
 
 async function getSwapDailyVolumeHandler(req: HyperExpress.Request, res: HyperExpress.Response) {

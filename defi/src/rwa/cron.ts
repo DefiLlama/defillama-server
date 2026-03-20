@@ -240,9 +240,66 @@ function sumObjectValues(obj: any): number {
 
 const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl'] as const;
 
+// Maximum consecutive anomalous days to bridge (must match utils.ts MAX_SPIKE_RUN)
+const MAX_SPIKE_RUN = 5;
+
+/**
+ * Applies forward-looking spike removal to a single numeric stream within
+ * the PG-cache entries array.  Mutates entries in place.
+ *
+ * `getValue` / `setValue` abstract over whether we're operating on the
+ * aggregate level or on a specific chain's metric.
+ */
+function removePGSpikes(
+  entries: Array<{ timestamp: number; [k: string]: any }>,
+  getValue: (entry: any) => number,
+  setValue: (entry: any, v: number) => void
+) {
+  if (entries.length < 3) return;
+
+  let lastGoodIdx = 0;
+  let i = 1;
+
+  while (i < entries.length) {
+    const lastGoodVal = getValue(entries[lastGoodIdx]);
+    const currVal = getValue(entries[i]);
+
+    if (!Number.isFinite(lastGoodVal) || !Number.isFinite(currVal) || lastGoodVal < 1) {
+      lastGoodIdx = i; i++; continue;
+    }
+
+    const ratio = currVal / lastGoodVal;
+    if (ratio >= 0.1 && ratio <= 10) { lastGoodIdx = i; i++; continue; }
+
+    // Anomalous — scan ahead for next good reference
+    let nextGoodIdx = -1;
+    for (let j = i + 1; j < Math.min(i + MAX_SPIKE_RUN + 1, entries.length); j++) {
+      const jVal = getValue(entries[j]);
+      if (!Number.isFinite(jVal)) break;
+      const jRatio = jVal / lastGoodVal;
+      if (jRatio >= 0.2 && jRatio <= 5) { nextGoodIdx = j; break; }
+    }
+
+    if (nextGoodIdx === -1) { lastGoodIdx = i; i++; continue; }
+
+    // Interpolate the entire anomalous run [i, nextGoodIdx)
+    const prevTs = entries[lastGoodIdx].timestamp;
+    const nextTs = entries[nextGoodIdx].timestamp;
+    const nextVal = getValue(entries[nextGoodIdx]);
+
+    for (let k = i; k < nextGoodIdx; k++) {
+      const t = (entries[k].timestamp - prevTs) / (nextTs - prevTs);
+      setValue(entries[k], lastGoodVal + (nextVal - lastGoodVal) * t);
+    }
+
+    lastGoodIdx = nextGoodIdx;
+    i = nextGoodIdx + 1;
+  }
+}
+
 /**
  * Smooths PG cache time-series data (chain-level breakdown) by:
- *   1. Removing isolated single-day spikes/dips at both aggregate and per-chain level.
+ *   1. Removing spikes/dips (including multi-day runs) at aggregate and per-chain level.
  *   2. Filling multi-day gaps with linear interpolation.
  */
 function smoothPGCacheData(data: PGCacheData): PGCacheData {
@@ -264,38 +321,27 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
     ),
   }));
 
-  // Step 1: remove isolated spikes/dips
-  for (let i = 1; i < entries.length - 1; i++) {
-    const prev = entries[i - 1];
-    const curr = entries[i];
-    const next = entries[i + 1];
-    const t = (curr.timestamp - prev.timestamp) / (next.timestamp - prev.timestamp);
+  // Step 1: remove spikes/dips — aggregate metrics
+  for (const metric of PG_CACHE_METRICS) {
+    removePGSpikes(
+      entries,
+      (e) => e[metric],
+      (e, v) => { e[metric] = v; }
+    );
+  }
 
+  // Step 1b: remove spikes/dips — per-chain metrics
+  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+  for (const chainKey of allChainKeys) {
     for (const metric of PG_CACHE_METRICS) {
-      const prevVal = prev[metric];
-      const currVal = curr[metric];
-      const nextVal = next[metric];
-      const avg = (prevVal + nextVal) / 2;
-      if (avg < 1) continue;
-      const ratio = currVal / avg;
-      if (ratio < 0.1 || ratio > 10) {
-        curr[metric] = prevVal + (nextVal - prevVal) * t;
-      }
-    }
-
-    for (const chainKey of allChainKeys) {
-      const prevC = prev.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-      const currC = curr.chains[chainKey];
-      const nextC = next.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-      if (!currC) continue;
-      for (const metric of PG_CACHE_METRICS) {
-        const avg = (prevC[metric] + nextC[metric]) / 2;
-        if (avg < 1) continue;
-        const ratio = currC[metric] / avg;
-        if (ratio < 0.1 || ratio > 10) {
-          currC[metric] = prevC[metric] + (nextC[metric] - prevC[metric]) * t;
+      removePGSpikes(
+        entries,
+        (e) => (e.chains[chainKey] ?? zeroPGChain)[metric],
+        (e, v) => {
+          if (!e.chains[chainKey]) e.chains[chainKey] = { ...zeroPGChain };
+          e.chains[chainKey][metric] = v;
         }
-      }
+      );
     }
   }
 
@@ -315,8 +361,8 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
         const intTs = curr.timestamp + 86400 * j;
         const intChains: PGCacheRecord['chains'] = {};
         for (const chainKey of allChainKeys) {
-          const cC = curr.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
-          const nC = next.chains[chainKey] ?? { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+          const cC = curr.chains[chainKey] ?? zeroPGChain;
+          const nC = next.chains[chainKey] ?? zeroPGChain;
           intChains[chainKey] = {
             onChainMcap: cC.onChainMcap + (nC.onChainMcap - cC.onChainMcap) * f,
             activeMcap: cC.activeMcap + (nC.activeMcap - cC.activeMcap) * f,
@@ -731,7 +777,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     };
   }
 
-  const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
+  const unsortedByChain: { [chain: string]: AggregateStatsChainBucket } = {};
 
   for (const [chain, v] of Object.entries(byChain)) {
     const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
@@ -742,13 +788,17 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
       assetIssuers: Array.from(a.assetIssuers).sort(),
     });
 
-    outByChain[chain] = {
+    unsortedByChain[chain] = {
       base: toAggOut(v.base),
       stablecoinsOnly: toAggOut(v.stablecoinsOnly),
       governanceOnly: toAggOut(v.governanceOnly),
       stablecoinsAndGovernance: toAggOut(v.stablecoinsAndGovernance),
     };
   }
+
+  const outByChain: { [chain: string]: AggregateStatsChainBucket } = Object.fromEntries(
+    Object.entries(unsortedByChain).sort(([, a], [, b]) => b.base.onChainMcap - a.base.onChainMcap)
+  );
 
   console.log(`Generated aggregate stats in ${Date.now() - startTime}ms`);
 
@@ -765,7 +815,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
 }
 
 
-function generateList(currentData: any[]): {
+function generateList(currentData: any[], stats: AggregateStats): {
   tickers: string[];
   platforms: string[];
   chains: string[];
@@ -777,54 +827,59 @@ function generateList(currentData: any[]): {
 
   const tickerMcap: { [ticker: string]: number } = {};
   const platformMcap: { [platform: string]: number } = {};
-  const chainMcap: { [chain: string]: number } = {};
   const categoryMcap: { [category: string]: number } = {};
   const idMap: { [ticker: string]: string } = {};
 
   currentData.forEach((item: any) => {
-    // Calculate total on-chain marketcap for this asset
+    const assetType = typeof item.type === "string" ? item.type.trim() : "";
+    if (assetType.toLowerCase() === "wrapper") return;
+
     let assetMcap = 0;
-    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
-      Object.entries(item.onChainMcap).forEach(([chain, value]) => {
-        const numValue = Number(value);
-        if (!isNaN(numValue)) {
-          assetMcap += numValue;
-          // Aggregate chain on-chain marketcap
-          chainMcap[chain] = (chainMcap[chain] || 0) + numValue;
+    const mcapObj = item.onChainMcap;
+    if (mcapObj && typeof mcapObj === 'object') {
+      if (Array.isArray(mcapObj.breakdown)) {
+        for (const entry of mcapObj.breakdown) {
+          if (!Array.isArray(entry) || entry.length < 2) continue;
+          assetMcap += toFiniteNumberOrZero(entry[1]);
         }
-      });
+      } else {
+        for (const [k, v] of Object.entries(mcapObj)) {
+          if (k === "total" || k === "breakdown") continue;
+          assetMcap += toFiniteNumberOrZero(v);
+        }
+      }
     }
 
-    // Aggregate ticker mcap
     if (item.ticker) {
       tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
       idMap[item.ticker] = item.id;
     }
 
-    // Aggregate platform mcap (ONLY when asset has a valid parentPlatform; never include "Unknown")
     const parentPlatform =
       typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
     if (parentPlatform && parentPlatform !== "Unknown") {
       platformMcap[parentPlatform] = (platformMcap[parentPlatform] || 0) + assetMcap;
     }
 
-    // Aggregate category mcap
     const categories = item.category || [];
     categories.forEach((cat: string) => {
       categoryMcap[cat] = (categoryMcap[cat] || 0) + assetMcap;
     });
   });
 
-  // Sort by mcap descending and return as arrays of strings
   const sortByMcap = (obj: { [key: string]: number }): string[] =>
     Object.entries(obj)
       .sort((a, b) => b[1] - a[1])
       .map(([key]) => key);
 
+  const chainsSorted = Object.entries(stats.byChain)
+    .sort(([, a], [, b]) => b.base.onChainMcap - a.base.onChainMcap)
+    .map(([chain]) => chain);
+
   const list = {
     tickers: sortByMcap(tickerMcap),
     platforms: sortByMcap(platformMcap),
-    chains: sortByMcap(chainMcap),
+    chains: chainsSorted,
     categories: sortByMcap(categoryMcap),
     idMap,
   };
@@ -1203,7 +1258,7 @@ async function main() {
     await generateAggregatedHistoricalCharts(metadata);
 
     // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = generateList(currentData);
+    const list = generateList(currentData, stats);
     await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));

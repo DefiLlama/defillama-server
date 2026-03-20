@@ -349,6 +349,36 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x754704bc059f8c67012fed69bc8a327a5aafb603",
     confidence: 1
   },
+  MUBOND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/1/tokens/muBOND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`muBOND stale rate`);
+      return rate;
+    },
+    chain: "ethereum",
+    address: "0x09AD9c6DcadCc3aB0b3E107E8E7DA69c2eEa8599",
+    underlying: "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+    confidence: 1
+  },
+  aZND: {
+    rate: async ({ t }) => {
+      const res = await fetch(
+        "https://app.mudigital.net/api/chains/1/tokens/AZND",
+      ).then((r) => r.json());
+      const { rate, timestamp } = res;
+      const margin = 2 * 24 * 60 * 60;
+      if (t - timestamp > margin) throw new Error(`AZND stale rate`);
+      return rate;
+    },
+    chain: "ethereum",
+    address: "0x52c66B5E7f8Fde20843De900C5C8B4b0F23708A0",
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    confidence: 1
+  },
   stZIG: {
     rate: async () => {
       const LCD = "https://public-zigchain-lcd.numia.xyz";

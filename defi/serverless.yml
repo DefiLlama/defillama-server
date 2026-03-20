@@ -334,51 +334,51 @@ functions:
       - http:
           path: emissionsBreakdown
           method: get
-  storeActiveUsers:
-    handler: src/storeActiveUsers.default
-    timeout: 900
-    memorySize: 1000
-    events:
-      - schedule: cron(0 * * * ? *)
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-  storeActiveUsersRetrieve:
-    handler: src/storeActiveUsersRetrieve.default
-    timeout: 900
-    memorySize: 1000
-    events:
-      - schedule: cron(40 * * * ? *)
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-  protocolActiveUsers:
-    handler: src/getProtocolUsers.default
-    timeout: 90
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-    events:
-      - http:
-          path: userData/{type}/{protocolId}
-          method: get
-  totalProtocolUsers:
-    handler: src/getTotalProtocolUsersData.default
-    timeout: 90
-    environment:
-      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
-    events:
-      - http:
-          path: totalProtocolUsers
-          method: get
-  storeChainNftVolume:
-    handler: src/storeChainNftVolume.default
-    timeout: 900
-    memorySize: 1000
-    events:
-      - schedule: cron(30 * * * ? *)
-    environment:
-      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
-      FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
+  # storeActiveUsers:   # moved to dimensions
+  #   handler: src/storeActiveUsers.default
+  #   timeout: 900
+  #   memorySize: 1000
+  #   events:
+  #     - schedule: cron(0 * * * ? *)
+  #   environment:
+  #     ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  #     ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+  # storeActiveUsersRetrieve:   # moved to dimensions
+  #   handler: src/storeActiveUsersRetrieve.default
+  #   timeout: 900
+  #   memorySize: 1000
+  #   events:
+  #     - schedule: cron(40 * * * ? *)
+  #   environment:
+  #     ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  #     ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+  # protocolActiveUsers:  # moved to dimensions
+  #   handler: src/getProtocolUsers.default
+  #   timeout: 90
+  #   environment:
+  #     ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  #   events:
+  #     - http:
+  #         path: userData/{type}/{protocolId}
+  #         method: get
+  # totalProtocolUsers:  # moved to dimensions
+  #   handler: src/getTotalProtocolUsersData.default
+  #   timeout: 90
+  #   environment:
+  #     ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  #   events:
+  #     - http:
+  #         path: totalProtocolUsers
+  #         method: get
+  # storeChainNftVolume:  # moved to dimensions
+  #   handler: src/storeChainNftVolume.default
+  #   timeout: 900
+  #   memorySize: 1000
+  #   events:
+  #     - schedule: cron(30 * * * ? *)
+  #   environment:
+  #     ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+  #     FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
   newsArticles:
     handler: src/getNewsArticles.default
     timeout: 30

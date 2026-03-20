@@ -55,7 +55,7 @@ function zkSyncBlockProvider() {
   };
 }
 
-export const blockPK = (chain: string) => `block#${chain}`
+export const blockPK = (chain: string) => `block#${chain.toLowerCase()}`
 
 async function isFaultyBlock(block: any, chain: string) {
   if (block === null) return true;

@@ -29,7 +29,7 @@ const excludedAdapterTypesSet = new Set<AdapterType>(process.env.DIM_EXCLUDE_ADA
 
 const skipHourlyCache = process.env.DIM_SKIP_HOURLY_CACHE === 'true';
 
-console.log('This will run with MAX_RUNTIME:', MAX_RUNTIME / 60000, 'minutes');
+console.log('This will run with MAX_RUNTIME:', MAX_RUNTIME / 60000, 'minutes', isDryRun ? '(DRY RUN MODE - no DB writes)' : '', checkBeforeInsert ? '(will check before insert)' : '', singleAdapterTypeEnv ? `(single adapter type: ${singleAdapterTypeEnv})` : '', singleProtocolEnv ? `(single protocol: ${singleProtocolEnv})` : '', excludedAdapterTypesSet.size > 0 ? `(excluding adapter types: ${Array.from(excludedAdapterTypesSet).join(', ')})` : '', skipHourlyCache ? '(skipping hourly cache)' : '');
 
 if (excludedAdapterTypesSet.size > 0)
   console.log('Excluding adapter types:', Array.from(excludedAdapterTypesSet).join(', '))

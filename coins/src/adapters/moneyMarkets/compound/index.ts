@@ -235,6 +235,14 @@ export function segmentFinance(timestamp: number = 0) {
   );
 }
 
+export function tropykus(timestamp: number = 0) {
+  return getTokenPrices(
+    "rsk",
+    "0x962308fEf8edFaDD705384840e7701F8f39eD0c0",
+    timestamp,
+  );
+}
+
 export function compoundV3(timestamp: number = 0) {
   return v3(timestamp);
 }
@@ -262,5 +270,6 @@ export const adapters = {
   // orbitv2,
   ironBank,
   segmentFinance,
+  tropykus,
   compoundV3,
 };

@@ -8,6 +8,8 @@ import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
+import { rwaSlug } from "./rwa/utils";
+import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -264,6 +266,15 @@ const getProtocolSubSections = ({
     });
   }
 
+  if (metadata?.tokenRights) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenRights`,
+      subName: "Token Rights",
+      route: `/protocol/token-rights/${sluggifyString(protocolData.name)}`,
+    });
+  }
+
   return subSections.map((result) => ({
     ...result,
     v: tastyMetrics[result.route] ?? 0,
@@ -325,10 +336,9 @@ function buildDirectoryResults(
   tastyMetrics: Record<string, number>,
 ) {
   const otherPages = [
-  {
-    "name": "LlamaFeed",
-    "route": "https://llamafeed.io"
-  }].map(page=>({
+  {"name": "LlamaFeed","route": "https://llamafeed.io"},
+  {"name": "Etherscan","route": "https://etherscan.io/"},
+].map(page=>({
     id: `others_${normalize(page.name)}`,
     name: page.name,
     route: page.route,
@@ -433,6 +443,8 @@ async function generateSearchList() {
     chainsMetadata,
     coinsData,
     datsData,
+    rwaListData,
+    rwaTickerToNameMap
   ]: [
     {
       chains: string[];
@@ -450,19 +462,25 @@ async function generateSearchList() {
     {
       assetMetadata: Record<string, { name: string; ticker: string }>;
       institutionMetadata: Record<string, { name: string; ticker: string }>;
-    }
+    },
+    {
+      tickers: Array<string>
+      platforms: Array<string>
+      categories: Array<string>
+      chains: Array<string>
+    },
+    Record<string, string>
   ] = await Promise.all([
-    fetchJson("https://api.llama.fi/lite/protocols2"),
-    fetchJson("https://stablecoins.llama.fi/stablecoins"),
-    fetchJson("https://bridges.llama.fi/bridges"),
-    fetchJson("https://defillama.com/pages.json").catch((e) => {
-      console.log("Error fetching frontend pages", e);
-      return {};
-    }),
-    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`, {
+    cachedJSONPull("https://api.llama.fi/lite/protocols2"),
+    cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
+    cachedJSONPull("https://bridges.llama.fi/bridges"),
+    cachedJSONPull("https://defillama.com/pages.json"),
+    cachedJSONPull({
+      endpoint: `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`,
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
+      defaultResponse: [],
     })
       .then((res: Array<{ x: string; y: number }>) => {
         const final = {} as Record<string, number>;
@@ -470,17 +488,19 @@ async function generateSearchList() {
           final[xy.x] = xy.y;
         }
         return final;
-      })
-      .catch((e) => {
-        console.log("Error fetching tasty metrics", e);
-        return {};
       }),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    fetchJson("https://ask.llama.fi/coins"),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`).catch((e) => {
-      console.log("Error fetching institutions", e);
-      return {};
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
+    cachedJSONPull("https://ask.llama.fi/coins"),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/list`),
+    cachedJSONPull({ endpoint: `https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/current`, defaultResponse: [] }).then(res => {
+      const final = {} as Record<string, string>;
+      for (const rwa of res) {
+        if (final[rwa.ticker]) continue;
+        final[rwa.ticker] = rwa.assetName;
+      }
+      return final;
     }),
   ]);
   const parentTvl = {} as any;
@@ -574,6 +594,7 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
+  const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
   for (const chain of tvlData.chains) {
@@ -808,6 +829,24 @@ async function generateSearchList() {
       });
     }
 
+    if (metadata?.normalizedVolume) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_normalizedVolume`,
+        subName: "Normalized Volume",
+        route: `/normalized-volume/chain/${sluggifyString(chain)}`,
+      });
+    }
+
+    if (rwaChainsSet.has(chain)) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_rwa`,
+        subName: "RWA",
+        route: `/rwa/chain/${rwaSlug(chain)}`,
+      });
+    }
+
     subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
   }
 
@@ -953,6 +992,39 @@ async function generateSearchList() {
     });
   }
 
+  const rwaList: Array<SearchResult> = [];
+  for (const ticker of rwaListData.tickers) {
+    const name = rwaTickerToNameMap[ticker];
+    const tickerSlug = rwaSlug(ticker);
+    rwaList.push({
+      id: `rwa_asset_${normalize(tickerSlug)}`,
+      ...(name ? { name, symbol: ticker } : { name: ticker }),
+      route: `/rwa/asset/${tickerSlug}`,
+      v: tastyMetrics[`/rwa/asset/${tickerSlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const platform of rwaListData.platforms) {
+    const platformSlug = rwaSlug(platform);
+    rwaList.push({
+      id: `rwa_platform_${normalize(platformSlug)}`,
+      name: platform,
+      route: `/rwa/platform/${platformSlug}`,
+      v: tastyMetrics[`/rwa/platform/${platformSlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const category of rwaListData.categories) {
+    const categorySlug = rwaSlug(category);
+    rwaList.push({
+      id: `rwa_category_${normalize(categorySlug)}`,
+      name: category,
+      route: `/rwa/category/${categorySlug}`,
+      v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+
   const results = {
     chains: chains.sort((a, b) => b.v - a.v),
     protocols: protocols.sort((a, b) => b.v - a.v),
@@ -965,6 +1037,7 @@ async function generateSearchList() {
     cexs: cexs.sort((a, b) => b.v - a.v),
     otherPages: otherPages.sort((a, b) => b.v - a.v),
     dats: dats.sort((a, b) => b.v - a.v),
+    rwaList: rwaList.sort((a, b) => b.v - a.v),
   };
 
   return {
@@ -982,6 +1055,7 @@ async function generateSearchList() {
       .concat(subChains)
       .concat(coins)
       .concat(results.dats)
+      .concat(results.rwaList)
       .map((result: any) => ({
         ...result,
         r: result.r ?? 1,

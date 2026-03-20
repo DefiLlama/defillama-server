@@ -18476,6 +18476,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "ssv-network/index.js",
     twitter: "ssv_network",
+    treasury: "ssv-dao.js",
     dimensions: {
       fees: "ssv-network"
     }

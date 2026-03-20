@@ -14347,5 +14347,26 @@ const data5: Protocol[] = [
       dexs: "paradex-spot",
     },
   },
+  {
+    id: "7557",
+    name: "Lotto Run",
+    address: null,
+    symbol: "-",
+    url: "https://www.lotto.run/",
+    description:
+      "Decentralized on-chain lottery protocol",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/lotto-run.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Aptos"],
+    module: "dummy.js",
+    twitter: "lottorun_",
+    dimensions: {
+      dexs: "lotto-run",
+    },
+  },
 ];
 export default data5;

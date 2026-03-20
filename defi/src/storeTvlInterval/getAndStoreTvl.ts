@@ -215,7 +215,6 @@ async function getTvl(
           throw e
         }
       } else {
-        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
         continue;
       }
     }
@@ -403,8 +402,6 @@ export async function storeTvl(
         } else {
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
-        // const currentTime = getCurrentUnixTimestamp()
-        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -482,7 +479,6 @@ export async function storeTvl(
 
   } catch (e) {
     // console.error(protocol.name, e);
-    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' })
     logRunStats()
     throw e
   }
@@ -586,11 +582,9 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'store', chain: 'store' })
     return;
   }
 
-  // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { protocol: protocol.name, storedKey: 'all', chain: 'all', elapsedTime: getCurrentUnixTimestamp() - adapterStartTimestamp })
   if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }

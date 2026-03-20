@@ -101,7 +101,8 @@ async function run() {
 
         console.log(`[${tier.label}] batch ${ci + 1}/${chunks.length} (${chunk.length} handles, since: ${new Date(sinceTime * 1000).toISOString()})`)
 
-        const rawTweets = await fetchBatchTweets(chunk, sinceTime)
+        const { tweets: rawTweets, truncated } = await fetchBatchTweets(chunk, sinceTime)
+        if (truncated) console.log(`batch truncated at maxPages, will retry next run`)
 
         const tweetsByHandle = new Map<string, any[]>()
         const handleLookup = new Map<string, string>()
@@ -118,22 +119,25 @@ async function run() {
         const allTransformed: any[] = []
         for (const [handle, tweets] of tweetsByHandle) {
           tweets.sort((a: any, b: any) => new Date(b.tweet_created_at).getTime() - new Date(a.tweet_created_at).getTime())
-          const latestTweet = tweets[0]
-
           const transformed = tweets.map(t => transformTweetV2(t, handle))
           allTransformed.push(...transformed)
-
-          let userData = userMap[handle] || {}
-          userData = transformHandleV2({ handleData: userData, lastTweet: latestTweet, user: latestTweet.user })
-          userData.lastPullV2 = +new Date()
-          userData.handle = handle
-          userMap[handle] = userData
-          await updateUser(userData)
         }
 
         if (allTransformed.length) {
           await addTweets(allTransformed)
           console.log(`  stored ${allTransformed.length} tweets from ${tweetsByHandle.size} handles`)
+        }
+
+        if (!truncated) {
+          for (const [handle, tweets] of tweetsByHandle) {
+            const latestTweet = tweets[0]
+            let userData = userMap[handle] || {}
+            userData = transformHandleV2({ handleData: userData, lastTweet: latestTweet, user: latestTweet.user })
+            userData.lastPullV2 = +new Date()
+            userData.handle = handle
+            userMap[handle] = userData
+            await updateUser(userData)
+          }
         }
 
         const handlesWithTweets = new Set([...tweetsByHandle.keys()].map(h => h.toLowerCase()))

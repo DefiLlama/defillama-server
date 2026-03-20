@@ -153,7 +153,7 @@ export function buildBatchQuery(handles: string[], sinceTime: number): string {
   return `(${fromClauses}) -filter:replies since_time:${sinceTime}`
 }
 
-export async function fetchBatchTweets(handles: string[], sinceTime: number, maxPages = 15): Promise<any[]> {
+export async function fetchBatchTweets(handles: string[], sinceTime: number, maxPages = 15): Promise<{ tweets: any[], truncated: boolean }> {
   const query = buildBatchQuery(handles, sinceTime)
   const allTweets: any[] = []
   let cursor: string | undefined
@@ -168,5 +168,6 @@ export async function fetchBatchTweets(handles: string[], sinceTime: number, max
     if (!tweets.length || tweets.length < 19) cursor = undefined
     console.log(`batch page ${page}: ${tweets.length} tweets, cursor: ${cursor ? 'yes' : 'no'}`)
   } while (cursor && page < maxPages)
-  return allTweets
+  const truncated = !!(cursor && page >= maxPages)
+  return { tweets: allTweets, truncated }
 }

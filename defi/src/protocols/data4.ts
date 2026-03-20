@@ -26055,7 +26055,8 @@ const data4: Protocol[] = [
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",
     dimensions: {
-      fees: "pancakeswap-lottery"
+      fees: "pancakeswap-lottery",
+      dexs: "pancakeswap-lottery"
     }
   },
   {

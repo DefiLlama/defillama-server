@@ -300,6 +300,7 @@ async function getAllCurrentSearchResults(index: string) {
 
     if (!Array.isArray(res?.results)) {
       console.log("Unexpected response while fetching search results:", res);
+      throw new Error("Failed to fetch search results from Search API");
     }
 
     allResults.push(...res.results);
@@ -496,6 +497,7 @@ async function generateSearchList() {
     }).then((res: Array<{ x: string; y: number }>) => {
       if (!Array.isArray(res)) {
         console.log("Unexpected response while fetching tasty metrics:", res);
+        throw new Error("Failed to fetch tasty metrics from Tasty API");
         // return {};
       }
 
@@ -516,6 +518,7 @@ async function generateSearchList() {
     }).then((res) => {
       if (!Array.isArray(res)) {
         console.log("Unexpected response while fetching RWA ticker to name map:", res);
+        throw new Error("Failed to fetch RWA ticker to name map from RWA API");
       }
       const final = {} as Record<string, string>;
       for (const rwa of res) {

@@ -298,6 +298,10 @@ async function getAllCurrentSearchResults(index: string) {
       }
     );
 
+    if (!Array.isArray(res?.results)) {
+      console.log("Unexpected response while fetching search results:", res);
+    }
+
     allResults.push(...res.results);
 
     // Check if we've fetched all results
@@ -490,6 +494,11 @@ async function generateSearchList() {
       },
       defaultResponse: [],
     }).then((res: Array<{ x: string; y: number }>) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching tasty metrics:", res);
+        // return {};
+      }
+
       const final = {} as Record<string, number>;
       for (const xy of res) {
         final[xy.x] = xy.y;
@@ -505,6 +514,9 @@ async function generateSearchList() {
       endpoint: `https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/current`,
       defaultResponse: [],
     }).then((res) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching RWA ticker to name map:", res);
+      }
       const final = {} as Record<string, string>;
       for (const rwa of res) {
         if (final[rwa.ticker]) continue;

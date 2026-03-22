@@ -14150,6 +14150,7 @@ const data5: Protocol[] = [
     twitter: "kreoapp",
     dimensions: {
       fees: "kreo",
+      dexs: "kreo",
     }
   },
   {
@@ -14410,6 +14411,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#rainbow",
     dimensions: {
       fees: "rainbow-predictions",
+      dexs: "rainbow-predictions",
     },
   },
 ];

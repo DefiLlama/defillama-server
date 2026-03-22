@@ -14390,5 +14390,27 @@ const data5: Protocol[] = [
       fees: "xmarket",
     },
   },
+  {
+    id: "7559",
+    name: "Rainbow Predictions",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me/",
+    description:
+      "Rainbow Predictions is a prediction platform built by Rainbow team",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/rainbow-predictions.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-predictions",
+    },
+  },
 ];
 export default data5;

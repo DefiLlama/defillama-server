@@ -14369,5 +14369,26 @@ const data5: Protocol[] = [
       dexs: "lotto-run",
     },
   },
+  {
+    id: "7558",
+    name: "Xmarket",
+    address: null,
+    symbol: "-",
+    url: "https://xmarket.app/",
+    description:
+      "Xmarket is a prediction platform built for creators, not just traders. Built on BNB Chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/xmarket.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "Xmarketapp",
+    dimensions: {
+      fees: "xmarket",
+    },
+  },
 ];
 export default data5;

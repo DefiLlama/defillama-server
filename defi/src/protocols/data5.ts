@@ -4896,6 +4896,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#liquidlabs",
     dimensions: {
       dexs: "liquidcore",
+      fees: "liquidcore",
     },
   },
   {

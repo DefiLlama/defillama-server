@@ -173,6 +173,7 @@ async function fetchHistoricalStablecoins(
   validStablecoinIds: string[]
 ): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+  if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
 
   await runInPromisePool({
     items: validStablecoinIds,
@@ -180,7 +181,7 @@ async function fetchHistoricalStablecoins(
     processor: async (id: string) => {
       const apiData = await cachedFetch({
         key: `stablecoin-historical-${id}`,
-        endpoint: `https://stablecoins.llama.fi/stablecoin/${id}`,
+        endpoint: `https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/stablecoins/stablecoin/${id}`,
       });
       if (!apiData) return;
 

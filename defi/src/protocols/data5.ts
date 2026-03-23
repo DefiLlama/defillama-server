@@ -14415,5 +14415,28 @@ const data5: Protocol[] = [
       dexs: "rainbow-predictions",
     },
   },
+  {
+    id: "7560",
+    name: "HyperSwap Terminal",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
+    url: "https://trade.hyperswap.exchange/trade?ref=defillama",
+    description:
+      "Explore token swaps, liquidity management and easy token launches",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperswap-terminal.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperSwapX",
+    parentProtocol: "parent#hyperswap",
+    dimensions: {
+      fees: "hyperswap-terminal",
+      "derivatives": "hyperswap-terminal",
+    },
+  },
 ];
 export default data5;

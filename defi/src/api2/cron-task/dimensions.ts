@@ -19,6 +19,8 @@ import { generateDimensionsResponseFiles } from "../routes/dimensions"
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DimensionsDataRecordMap, ProtocolAdaptor, ProtocolSummary, RecordSummary, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
 
+import fs from 'fs';
+
 const blacklistedAppCategorySet = new Set([
   "Stablecoin Issuer", "MEV",
   "Liquid Staking",
@@ -67,6 +69,10 @@ async function run() {
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
+  
+  if (allCache[AdapterType.FEES].summaries) {
+    fs.writeFileSync('fees_summaries.json', JSON.stringify(allCache[AdapterType.FEES].summaries[AdaptorRecordType.dailyFees]?.categorySummary))
+  }
 
   if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     if (spikeRecords.length) {
@@ -298,6 +304,11 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)
+      
+      // we treat tags same as category and use labels (not slugs) for keys, only use slugs on storage and query
+      // ex: we use 'Dexs' when cumputing data, and use 'dexs' as storage and query on api later
+      let _pCategories = protocol.info.category ? [protocol.info.category] : [];
+      if (protocol.info.tags) _pCategories = _pCategories.concat(protocol.info.tags);
 
       // sometimes a chain is dead and we stop tracking it in the protocol, and if we dont initialize it here, it wont be included in the 'allChains' list
       addToGlobalChainList(protocol.info.chains)
@@ -423,6 +434,35 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
             chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
             if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
             chainSummary.chartBreakdown[timeS][protocolName] = value
+            
+            // add to categorySummary, only child protocols and not chains
+            if (!isParentProtocol && protocol.info.protocolType !== ProtocolType.CHAIN) {
+              for (const category of _pCategories) {
+                // initi category summary item include chainSummary breakdown
+                summary.categorySummary = summary.categorySummary || {};
+                summary.categorySummary[category] = summary.categorySummary[category] || initSummaryItem(false);
+  
+                // add to categorySummary
+                const categorySummary = summary.categorySummary[category]
+                if (!categorySummary.earliestTimestamp || timestamp < categorySummary.earliestTimestamp) categorySummary.earliestTimestamp = timestamp
+                // categorySummary total chart
+                categorySummary.chart[timeS] = (categorySummary.chart[timeS] ?? 0) + value;
+                // categorySummary protocol breakdown chart
+                categorySummary.chartBreakdown[timeS] = categorySummary.chartBreakdown[timeS] || {};
+                categorySummary.chartBreakdown[timeS][protocolName] = value;
+                
+                // add to categorySummary.chainSummary
+                summary.categorySummary[category].chainSummary = summary.categorySummary[category].chainSummary || {};
+                summary.categorySummary[category].chainSummary[chain] = summary.categorySummary[category].chainSummary[chain] || initSummaryItem(true);
+                const categoryChainSummary = summary.categorySummary[category].chainSummary[chain]
+                if (!categoryChainSummary.earliestTimestamp || timestamp < categoryChainSummary.earliestTimestamp) categoryChainSummary.earliestTimestamp = timestamp
+                // categorySummary.chainSummary total chart
+                categoryChainSummary.chart[timeS] = (categoryChainSummary.chart[timeS] ?? 0) + value;
+                // categorySummary.chainSummary breakdown by protocol chart
+                categoryChainSummary.chartBreakdown[timeS] = categoryChainSummary.chartBreakdown[timeS] || {};
+                categoryChainSummary.chartBreakdown[timeS][protocolName] = (categoryChainSummary.chartBreakdown[timeS][protocolName] ?? 0) + value;
+              }
+            }
           })
         }
       }
@@ -729,10 +769,13 @@ function initSummaryItem(isChain = false) {
     total24h: null,
     total48hto24h: null,
     chainSummary: {},
+    categorySummary: {},
     recordCount: 0,
   }
-  if (isChain)
-    delete response.chainSummary
+  if (isChain) {
+    delete response.chainSummary;
+    delete response.categorySummary;
+  }
   return response
 }
 

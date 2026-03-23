@@ -34648,6 +34648,7 @@ const data3_2: Protocol[] = [
     twitter: "stabilitydao",
     github: ["stabilitydao"],
     listedAt: 1709824120,
+    deprecated: true, // no communication from their discord
     dimensions: {
       fees: "stability"
     }

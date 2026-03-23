@@ -27928,7 +27928,8 @@ const data4: Protocol[] = [
     twitter: "symm_io",
     listedAt: 1759188001,
     dimensions: {
-      derivatives: "symmio"
+      derivatives: "symmio",
+      'open-interest': "symmio",
     }
   },
   {

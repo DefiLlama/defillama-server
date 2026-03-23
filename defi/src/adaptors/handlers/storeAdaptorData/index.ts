@@ -397,7 +397,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            // console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 

@@ -11,6 +11,7 @@ const runTypes = [
   'nft-volume', 'active-users', 'new-users',
 ]
 
+// make sure to update RUN_TYPES on index.html as well
 const adapterTypes = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options', 'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
@@ -27,6 +28,8 @@ async function genCache() {
 
   for (const adapterType of adapterTypes)
     await storeDimData(adapterType)
+
+  await storeTvlCacheUsageLogs()
 }
 
 genCache()
@@ -157,6 +160,32 @@ async function storeRunStats(statsKey) {
     fs.writeFileSync(path.join(__dirname, '.cache', `run-data-${statsKey}.json`), JSON.stringify(statsData))
   } catch (error) {
     console.error(`Error storing run stats for ${statsKey}:`, error)
+  }
+}
+
+async function storeTvlCacheUsageLogs() {
+  try {
+    const esClient = sdk.elastic.getClient()
+    const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000
+    const { hits: { hits } } = await esClient.search({
+      index: 'tvl-cache-used*',
+      size: 9999,
+      body: {
+        query: {
+          range: {
+            timestamp: {
+              gte: sixHoursAgo,
+            }
+          }
+        },
+        sort: [{ timestamp: { order: 'desc' } }],
+      }
+    })
+
+    const logs = (hits ?? []).map(h => h._source)
+    fs.writeFileSync(path.join(__dirname, '.cache', 'tvl-cache-usage.json'), JSON.stringify(logs))
+  } catch (error) {
+    console.error('Error storing TVL cache usage logs:', error)
   }
 }
 

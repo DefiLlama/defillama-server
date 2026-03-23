@@ -6594,7 +6594,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://kodiak.finance/",
     description: "Berachain's Native Liquidity Hub",
     logo: `${baseIconsUrl}/kodiak.png`,
-    gecko_id: null,
+    gecko_id: "kodiak-finance",
     cmcId: null,
     chains: [],
     twitter: "KodiakFi",

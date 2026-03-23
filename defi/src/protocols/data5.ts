@@ -4896,6 +4896,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#liquidlabs",
     dimensions: {
       dexs: "liquidcore",
+      fees: "liquidcore",
     },
   },
   {
@@ -10882,6 +10883,7 @@ const data5: Protocol[] = [
       "https://reports.yaudit.dev/2025-11-Twyne-AAVE",
       "https://reports.yaudit.dev/2025-12-Twyne-AAVE-Operators",
       "https://487956288-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F3KnzajNTqFNdyZr2k3l3%2Fuploads%2F1BUrZGcTaMl5rFRH00ph%2FTwyne%20-%20Aave%20integration.pdf?alt=media&token=a370164e-8d15-4c35-8861-89838f351c67",
+      "https://twyne.gitbook.io/twyne/resources/security"
     ],
     listedAt: 1770851974,
   },
@@ -14149,6 +14151,7 @@ const data5: Protocol[] = [
     twitter: "kreoapp",
     dimensions: {
       fees: "kreo",
+      dexs: "kreo",
     }
   },
   {
@@ -14209,9 +14212,11 @@ const data5: Protocol[] = [
     module: "rysk-premium/index.js",
     twitter: "ryskfinance",
     parentProtocol: "parent#rysk-finance",
+    /* why not to exclude: its a different contract, all assets are not tracked under v12 listing. So no double counting
     tokensExcludedFromParent: {
       Hyperliquid_L1: ["USDH", "KHYPE"],
     },
+    */
     listedAt: 1773748789
   },
   {
@@ -14343,6 +14348,71 @@ const data5: Protocol[] = [
     parentProtocol: "parent#paradex",
     dimensions: {
       dexs: "paradex-spot",
+    },
+  },
+  {
+    id: "7557",
+    name: "Lotto Run",
+    address: null,
+    symbol: "-",
+    url: "https://www.lotto.run/",
+    description:
+      "Decentralized on-chain lottery protocol",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/lotto-run.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Aptos"],
+    module: "dummy.js",
+    twitter: "lottorun_",
+    dimensions: {
+      dexs: "lotto-run",
+    },
+  },
+  {
+    id: "7558",
+    name: "Xmarket",
+    address: null,
+    symbol: "-",
+    url: "https://xmarket.app/",
+    description:
+      "Xmarket is a prediction platform built for creators, not just traders. Built on BNB Chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/xmarket.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "Xmarketapp",
+    dimensions: {
+      fees: "xmarket",
+    },
+  },
+  {
+    id: "7559",
+    name: "Rainbow Predictions",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me/",
+    description:
+      "Rainbow Predictions is a prediction platform built by Rainbow team",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/rainbow-predictions.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-predictions",
+      dexs: "rainbow-predictions",
     },
   },
 ];

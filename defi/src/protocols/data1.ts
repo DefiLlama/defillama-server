@@ -16750,8 +16750,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "lumenswap",
     listedAt: 1637392233,
     github: ["lumenswap"],
-    rugged: true,
-    deadUrl: true,
     dimensions: {
       dexs: "lumenswap"
     }

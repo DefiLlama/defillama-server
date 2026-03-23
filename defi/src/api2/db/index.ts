@@ -107,7 +107,6 @@ async function withPgRetries<T>(fn: () => Promise<T>, retries = 2, baseDelayMs =
 }
 
 let sequelize: Sequelize | null = null
-let mSequalize: Sequelize
 
 async function initializeTVLCacheDB({
   isApi2Server = false,
@@ -145,35 +144,16 @@ async function initializeTVLCacheDB({
         evict: 1000, // how often to run eviction checks
       }
 
-    const metricsDbOptions = {
-      host: ENV.metrics_host,
-      port: ENV.metrics_port,
-      username: ENV.metrics_user,
-      password: ENV.metrics_password,
-      database: ENV.metrics_db_name,
-      dialect: 'postgres',
-      logging: (msg: string) => {
-        if (msg.includes('ERROR')) { // Log only error messages
-          console.error(msg);
-        }
-      },
-    }
-
     if (ENV.isCoolifyTask) {
       if (ENV.internalHost) {
         dbOptions.host = ENV.internalHost
         delete dbOptions.port
       }
-      // metricsDbOptions.host = ENV.metrics_internalHost
-      // delete metricsDbOptions.port
     }
 
     sequelize = new Sequelize(dbOptions as any);
-    if (metricsDbOptions.host)
-      mSequalize = new Sequelize(metricsDbOptions as any);
-    initializeTables(sequelize, mSequalize)
+    initializeTables(sequelize)
     // await sequelize.sync() // needed only for table creation/update
-    // await mSequalize.sync() // needed only for table creation/update
     log('Database connection established.')
   }
 }

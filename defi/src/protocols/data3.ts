@@ -34648,6 +34648,7 @@ const data3_2: Protocol[] = [
     twitter: "stabilitydao",
     github: ["stabilitydao"],
     listedAt: 1709824120,
+    deprecated: true, // no communication from their discord
     dimensions: {
       fees: "stability"
     }
@@ -54457,16 +54458,16 @@ const data3_3: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://www.elfi.xyz/Sherlock_Elfi_Audit_Report.pdf"],
     listedAt: 1726752333,
-    warningBanners: [
-      {
-        message: "Suspected wash trading on ELFi Protocol, volumes may be inflated.",
-        level: "alert",
-        until: "2026-03-31",
-      },
-    ],
-    dimensions: {
-      derivatives: "elfi" 
-    }
+    // warningBanners: [
+    //   {
+    //     message: "Suspected wash trading on ELFi Protocol, volumes may be inflated.",
+    //     level: "alert",
+    //     until: "2026-03-31",
+    //   },
+    // ],
+    // dimensions: {
+    //   derivatives: "elfi"  //adapter returns incorrect data
+    // }
   },
   {
     id: "5161",

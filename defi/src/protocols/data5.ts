@@ -342,6 +342,7 @@ const data5: Protocol[] = [
     module: "mi4/index.js",
     twitter: "Mantle_Official",
     listedAt: 1761284792,
+    parentProtocol: "parent#securitize",
     dimensions: {
       fees: "mi4",
     },
@@ -11859,6 +11860,7 @@ const data5: Protocol[] = [
     tags: ["Onchain Equity"],
     chains: ["Arbitrum", "Algorand"],
     module: "exod/index.js",
+    parentProtocol: "parent#securitize",
     twitter: "exodus",
     listedAt: 1771610702,
   },

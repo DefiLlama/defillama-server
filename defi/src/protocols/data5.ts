@@ -14390,11 +14390,12 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Prediction Market",
     chains: ["Binance"],
-    module: "dummy.js",
+    module: "xmarket/index.js",
     twitter: "Xmarketapp",
     dimensions: {
       fees: "xmarket",
     },
+    listedAt: 1774296139
   },
   {
     id: "7559",

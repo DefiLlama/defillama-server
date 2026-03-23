@@ -14438,5 +14438,26 @@ const data5: Protocol[] = [
       "derivatives": "hyperswap-terminal",
     },
   },
+  {
+    id: "7561",
+    name: "Jupiter Limit",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
+    description: "Jupiter Limit is a feature that lets users set a target price for a token swap, where the trade is automatically executed via Jupiter’s routing engine when market conditions are met",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-limit.png`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
+    dimensions: {
+      fees: "jupiter-limit"
+    }
+  },
 ];
 export default data5;

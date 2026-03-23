@@ -13897,6 +13897,15 @@
       "decimals": 18,
       "symbol": "MON"
     },
+    "0xecAc9C5F704e954931349Da37F60E39f515c11c1": {
+      "to": "coingecko#lombard-staked-btc",
+      "decimals": 8,
+      "symbol": "LBTC"
+    },
+    "0xd18B7EC58Cdf4876f6AFebd3Ed1730e4Ce10414b": {
+      "to": "coingecko#coinbase-wrapped-btc",
+      "decimals": 8,
+      "symbol": "cbBTC"
     "0xF7Cf282eC810fDed974F99c0163E792f432892BC": {
       "to": "coingecko#midas-hyperithm-btc",
       "decimals": 18,

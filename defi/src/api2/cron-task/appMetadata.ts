@@ -17,6 +17,7 @@ import { SAFE_HARBOR_PROJECTS_CACHE_KEY } from "../constants";
 import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
 import { runWithRuntimeLogging } from "../utils";
 import { TagCatetgoryMap } from "../../protocols/tags";
+import { sendMessage } from "../../utils/discord";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -205,9 +206,13 @@ async function _storeAppMetadata() {
   ]);
 
   console.timeEnd("_storeMetadataFile fetch all data");
+  const missingChainIds: any = []
+
 
   await _storeMetadataFile();
   await storeRouteData("/_fe/static/safe-harbor-projects", safeHarborData);
+  await notifyMissingChainIds(missingChainIds);
+
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
@@ -987,8 +992,10 @@ async function _storeAppMetadata() {
     for (const _chain of Object.values(sortedChainData)) {
       const chain = _chain as any;
       chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name);
-      if (!chainNameToIdMap[chain.name])
+      if (!chainNameToIdMap[chain.name]) {
         console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`);
+        missingChainIds.push({ ...chain, slug: slug(chain.name) });
+      }
       chain.protocolCount = chainProtocolCount[chain.name] ?? 0;
     }
 
@@ -1284,3 +1291,15 @@ setTimeout(() => {
   console.log('Running for more than 5 minutes, exiting.');
   process.exit(1);
 }, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises
+
+
+async function notifyMissingChainIds(missingChainIds: any) {
+  if (missingChainIds.length && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
+    try {
+      const message = `The following chains are missing from chainNameToIdMap in appMetadata.ts:\n${missingChainIds.map((chain: any) => `- ${chain.name} (slug: ${chain.slug})`).join("\n")}`;
+      await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+    } catch (e) {
+      console.log("Error sending missing chain ids message to Discord: ", e);
+    }
+  }
+}

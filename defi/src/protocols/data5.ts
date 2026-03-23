@@ -14131,7 +14131,11 @@ const data5: Protocol[] = [
     audit_links: [
       "https://www.chainsecurity.com/security-audit/mento-core-v3",
       "https://www.chainsecurity.com/security-audit/mento-liquity-v2"
-    ]
+    ],
+    dimensions: {
+      dexs: "mento-v3",
+      fees: "mento-v3",
+    }
   },
   {
     id: "7547",
@@ -14446,7 +14450,7 @@ const data5: Protocol[] = [
     url: "https://jup.ag/?ref=f6y1ryr2snn3",
     description: "Jupiter Limit is a feature that lets users set a target price for a token swap, where the trade is automatically executed via Jupiter’s routing engine when market conditions are met",
     chain: "Solana",
-    logo: `${baseIconsUrl}/jupiter-limit.png`,
+    logo: `${baseIconsUrl}/jupiter-limit.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -14458,6 +14462,45 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "jupiter-limit"
     }
+  },
+  {
+    id: "7562",
+    name: "CallPut",
+    address: null,
+    symbol: "-",
+    url: "https://callput.app",
+    description: "Permissionless 24/7 On-Chain Options for US Stocks & Crypto",
+    chain: "Base",
+    logo: `${baseIconsUrl}/callput.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Base"],
+    module: "callput/index.js",
+    treasury: "callput.js",
+    twitter: "CallPutApp",
+    github: ["alanxxzero"],
+    listedAt: 1774291703
+  },
+  {
+    id: "7563",
+    name: "Stablecoin for Impact",
+    address: null,
+    symbol: "-",
+    url: "https://impactstake.com/",
+    description: "Stablecoin for Impact (SFI) is a decentralized philanthropic platform that turns stablecoins into active capital for social good using Aave supply yield. SFI lets you deposit stablecoins into Aave lending markets and direct a percentage of the yield to fund social or environmental projects. Your capital remains intact throughout and you can withdraw the principal at any moment. Every project reports impact data so you can see exactly where the money goes",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stablecoin-for-impact.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Charity Fundraising",
+    chains: ["Ethereum"],
+    module: "sfi/index.js",
+    twitter: "impactstake",
+    audit_links: ["https://sfi-public3.s3.eu-west-2.amazonaws.com/Audit-Report.pdf"],
+    listedAt: 1774292575
   },
 ];
 export default data5;

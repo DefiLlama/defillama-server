@@ -4,7 +4,7 @@ require("dotenv").config();
 import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
-import { getChainLabelFromKey } from '../../utils/normalizeChain';
+import { getChainKeyFromLabel, getChainLabelFromKey } from '../../utils/normalizeChain';
 import { protocolsById } from "../../protocols/data";
 import { parentProtocolsById } from "../../protocols/parentProtocols";
 import { addAggregateRecords, getDimensionsCacheV2, storeDimensionsCacheV2, storeDimensionsMetadata, transformDimensionRecord, validateAggregateRecords, } from "../utils/dimensionsUtils";
@@ -301,7 +301,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
 
       // sometimes a chain is dead and we stop tracking it in the protocol, and if we dont initialize it here, it wont be included in the 'allChains' list
       addToGlobalChainList(protocol.info.chains)
-      const protocolChainKeySet = new Set(info.chains ?? [])
+      const protocolChainKeySet = new Set((info.chains ?? []).map(getChainKeyFromLabel))
 
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name

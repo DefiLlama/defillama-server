@@ -557,6 +557,7 @@ export function getTvlProtocolRoutes(dataType: 'protocol' | 'treasury', route: '
         protocolDataFull = await craftParentProtocolV2({
           parentProtocol: parentProtocol,
           skipAggregatedTvl: false,
+          restrictResponseSize: false,
           feMini: false,
         });
       } else {

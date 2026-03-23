@@ -177,6 +177,7 @@ export default {
   fluidSmartLending: require("./markets/fluidSmartLending"),
   rhea: require("./markets/rhea"),
   bracket: require("./yield/bracket"),
+  reflectMoney: require("./yield/reflect-money"),
   goblin: require("./markets/goblin"),
   ember: require("./yield/ember"),
   suirewards: require("./markets/suirewards"),
@@ -195,4 +196,5 @@ export default {
   ledgity: require("./yield/ledgity"),
   humble: require("./markets/humble"),
   m0: require("./other/m0"),
+  anchored: require("./rwa/anchored"),
 };

@@ -1282,6 +1282,9 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "obol/index.js",
     twitter: "Obol_Collective",
+    dimensions: {
+      fees: "obol",
+    },
     listedAt: 1762287672,
   },
   {
@@ -1702,8 +1705,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
     dimensions: {
-      fees: "dipcoin-perps",
-      derivatives: "dipcoin-perps",
+      // fees: "dipcoin-perps",
+      // derivatives: "dipcoin-perps", // very high volume, low open-interest, hard to verify
     },
   },
   {
@@ -4522,7 +4525,7 @@ const data5: Protocol[] = [
     listedAt: 1764868611,
     dimensions: {
       dexs: "nado-spot",
-      fees: "nado-spot",
+      fees: "nado-spot"
     },
     parentProtocol: "parent#nado",
   },
@@ -4743,6 +4746,7 @@ const data5: Protocol[] = [
       fees: "nado-perp",
       derivatives: "nado-perp",
       "open-interest": "nado",
+      "normalized-volume": "nado"
     },
   },
   {
@@ -4892,6 +4896,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#liquidlabs",
     dimensions: {
       dexs: "liquidcore",
+      fees: "liquidcore",
     },
   },
   {
@@ -7340,6 +7345,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "standx",
       "open-interest": "standx",
+      "normalized-volume": "standx"
     },
   },
   {
@@ -9627,6 +9633,9 @@ const data5: Protocol[] = [
     module: "fira/index.js",
     audit_links: ["https://docs.fira.money/resources-and-ecosystem/contracts-and-audits"],
     twitter: "Fira_Lend",
+    dimensions: {
+      fees: "fira",
+    },
     listedAt: 1769555834
   },
   {
@@ -10874,6 +10883,7 @@ const data5: Protocol[] = [
       "https://reports.yaudit.dev/2025-11-Twyne-AAVE",
       "https://reports.yaudit.dev/2025-12-Twyne-AAVE-Operators",
       "https://487956288-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F3KnzajNTqFNdyZr2k3l3%2Fuploads%2F1BUrZGcTaMl5rFRH00ph%2FTwyne%20-%20Aave%20integration.pdf?alt=media&token=a370164e-8d15-4c35-8861-89838f351c67",
+      "https://twyne.gitbook.io/twyne/resources/security"
     ],
     listedAt: 1770851974,
   },
@@ -14054,7 +14064,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "pigeonhouse/index.js",
     twitter: "941pigeondotfun",
     dimensions: {
       fees: "pigeonhouse",
@@ -14141,6 +14151,7 @@ const data5: Protocol[] = [
     twitter: "kreoapp",
     dimensions: {
       fees: "kreo",
+      dexs: "kreo",
     }
   },
   {
@@ -14153,15 +14164,256 @@ const data5: Protocol[] = [
       "Neony Exchange Bridge to Neony Chain.",
     chain: "Neony",
     logo: `${baseIconsUrl}/neony-exchange-bridge.jpg`,
-    audits: "2",
+    audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
     chains: ["Neony"],
-    module: "dummy.js",
+    module: "neony/index.js",
     twitter: "NeonyExchange",
     parentProtocol: "parent#neony-exchange",
     listedAt: 1773676471
+  },
+  {
+    id: "7549",
+    name: "YLD",
+    address: null,
+    symbol: "-",
+    url: "https://yldfi.co/",
+    description:
+      "Deposit into ERC-4626 vaults built on Yearn V3 architecture. Auto-compounding strategies that optimize your returns",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yld.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "yld/index.js",
+    twitter: null,
+    github: ["yldfi"],
+    listedAt: 1773748605
+  },
+  {
+    id: "7550",
+    name: "Rysk Premium",
+    address: null,
+    symbol: "-",
+    url: "https://app.rysk.finance/join?code=DEFILLAMA",
+    description:
+      "Rysk Premium is institutional-grade infrastructure for volatility income. It enables capital allocators to deploy curated, custom structured products using options strategies across any asset class. ",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/rysk-premium.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Hyperliquid L1"],
+    module: "rysk-premium/index.js",
+    twitter: "ryskfinance",
+    parentProtocol: "parent#rysk-finance",
+    /* why not to exclude: its a different contract, all assets are not tracked under v12 listing. So no double counting
+    tokensExcludedFromParent: {
+      Hyperliquid_L1: ["USDH", "KHYPE"],
+    },
+    */
+    listedAt: 1773748789
+  },
+  {
+    id: "7551",
+    name: "Signals",
+    address: null,
+    symbol: "-",
+    url: "https://signals.wtf",
+    description:
+      "Signals is a range-based prediction market for Bitcoin, built on Citrea. Users predict BTC's daily closing price range using our CLMSR-based automated market maker. Every market settles on-chain, every day.",
+    chain: "Citrea",
+    logo: `${baseIconsUrl}/signals.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Citrea"],
+    module: "signals/index.js",
+    twitter: "signalswtf",
+    github: ["signals-protocol"],
+    listedAt: 1773827054
+  },
+  {
+    id: "7552",
+    name: "Orbit Finance",
+    address: null,
+    symbol: "-",
+    url: "https://orbitdex.io/en",
+    description:
+      "Perpetual futures with up to 300x leverage. Non-custodial, fully on-chain.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/orbit-finance.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["DLMM"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      fees: "orbit-finance",
+      dexs: "orbit-finance",
+    },
+    listedAt: 1773839122
+  },
+  {
+    id: "7553",
+    name: "BIM Aggregator",
+    address: null,
+    symbol: "-",
+    url: "https://exchange.bim.finance/",
+    description:
+      "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bim-aggregator.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: null,
+    parentProtocol: "parent#bim",
+    dimensions: {
+      aggregators: "bim",
+      "bridge-aggregators": "bim",
+    },
+  },
+  {
+    id: "7554",
+    name: "Deeptrade",
+    address: null,
+    symbol: "-",
+    url: "https://deeptrade.io/",
+    description:
+      "Deeptrade is a community-driven, open-source, decentralized exchange on Sui blockchain. Built on DeepBook and deployed on Walrus",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/deeptrade.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "_deeptrade",
+    github: ["DeeptradeProtocol"],
+    dimensions: {
+      dexs: "deeptrade",
+    },
+  },
+  {
+    id: "7555",
+    name: "Matcha",
+    address: null,
+    symbol: "-",
+    url: "https://matcha.xyz/matcha-auto",
+    description:
+      "Swap crypto without native tokens. Matcha handles the gas for swaps and approvals so you can focus on trading.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/matcha.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "_matchaxyz",
+    dimensions: {
+      fees: "matcha-xyz",
+    },
+  },
+  {
+    id: "7556",
+    name: "Paradex Spot",
+    address: null,
+    symbol: "-",
+    url: "https://app.paradex.trade/r/defillama",
+    description:
+      "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paradex-spot.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Order Book"],
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "paradex",
+    parentProtocol: "parent#paradex",
+    dimensions: {
+      dexs: "paradex-spot",
+    },
+  },
+  {
+    id: "7557",
+    name: "Lotto Run",
+    address: null,
+    symbol: "-",
+    url: "https://www.lotto.run/",
+    description:
+      "Decentralized on-chain lottery protocol",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/lotto-run.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Lottery",
+    chains: ["Aptos"],
+    module: "dummy.js",
+    twitter: "lottorun_",
+    dimensions: {
+      dexs: "lotto-run",
+    },
+  },
+  {
+    id: "7558",
+    name: "Xmarket",
+    address: null,
+    symbol: "-",
+    url: "https://xmarket.app/",
+    description:
+      "Xmarket is a prediction platform built for creators, not just traders. Built on BNB Chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/xmarket.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "Xmarketapp",
+    dimensions: {
+      fees: "xmarket",
+    },
+  },
+  {
+    id: "7559",
+    name: "Rainbow Predictions",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me/",
+    description:
+      "Rainbow Predictions is a prediction platform built by Rainbow team",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/rainbow-predictions.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-predictions",
+      dexs: "rainbow-predictions",
+    },
   },
 ];
 export default data5;

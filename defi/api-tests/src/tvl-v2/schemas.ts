@@ -11,9 +11,17 @@ import { z } from 'zod';
 const raiseSchema = z.object({
   date: z.union([z.string(), z.number()]).optional(),
   round: z.string().optional(),
-  amount: z.number().optional(),
+  amount: z.number().nullable().optional(),
   valuation: z.number().nullable().optional(),
   otherInvestors: z.array(z.string()).optional(),
+  name: z.string().optional(),
+  chains: z.array(z.string()).optional(),
+  sector: z.string().optional(),
+  category: z.string().optional(),
+  categoryGroup: z.string().optional(),
+  source: z.string().optional(),
+  leadInvestors: z.array(z.string()).optional(),
+  defillamaId: z.string().optional(),
 }).passthrough();
 
 export const metricsProtocolSchema = z.object({
@@ -58,6 +66,7 @@ export const metricsProtocolSchema = z.object({
 
   // Related protocols
   otherProtocols: z.array(z.string()).optional(),
+  parentProtocol: z.string().optional(),
   parentProtocolSlug: z.string().optional(),
   isParentProtocol: z.boolean().optional(),
 
@@ -68,6 +77,13 @@ export const metricsProtocolSchema = z.object({
   methodology: z.string().optional(),
   tvlCodePath: z.string().optional(),
   treasuryCodePath: z.string().optional(),
+  treasury: z.string().optional(),
+  oraclesBreakdown: z.array(z.object({
+    name: z.string(),
+    type: z.string(),
+    proof: z.array(z.any()),
+  }).passthrough()).optional(),
+  dimensions: z.record(z.string(), z.any()).optional(),
   hallmarks: z.array(z.union([
     z.tuple([z.number(), z.string()]),
     z.array(z.any()),

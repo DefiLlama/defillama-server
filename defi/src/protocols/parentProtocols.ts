@@ -6594,7 +6594,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://kodiak.finance/",
     description: "Berachain's Native Liquidity Hub",
     logo: `${baseIconsUrl}/kodiak.png`,
-    gecko_id: null,
+    gecko_id: "kodiak-finance",
     cmcId: null,
     chains: [],
     twitter: "KodiakFi",
@@ -9240,6 +9240,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MentoLabs",
     stablecoins: ["celo-dollar", "celo-euro"],
     github: ["mento-protocol"],
+  },
+  {
+    id: "parent#bim",
+    name: "BIM",
+    url: "https://exchange.bim.finance/",
+    description: "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
+    logo: `${baseIconsUrl}/bim.jpg`,
+    gecko_id: "bim-2",
+    cmcId: "24877",
+    chains: [],
+    twitter: "Bim_Exchange",
+    treasury: "bim.js",
   },
 ];
 

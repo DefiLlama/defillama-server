@@ -17,7 +17,7 @@ const apiClient = createApiClient(endpoints.TVL_V2.BASE_URL);
 const TVL_V2_ENDPOINTS = endpoints.TVL_V2;
 
 describe('TVL V2 API - Chart', () => {
-  const testProtocols = ['aave-v3'];
+  const testProtocols = ['aave-v3', 'morpho'];
   const responses: Record<string, ApiResponse<ChartArray>> = {};
 
   beforeAll(async () => {

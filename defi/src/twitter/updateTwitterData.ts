@@ -2,7 +2,7 @@ import protocols from '../protocols/data'
 import parentProtocols from '../protocols/parentProtocols'
 import { chainCoingeckoIds } from '../utils/normalizeChain'
 import { init, close, getAllUsers, updateUser, addTweets, } from './db'
-import { getAllTweets, getUserData, transformHandleV2 } from './utils'
+import { fetchBatchTweets, getUserData, transformHandleV2, transformTweetV2 } from './utils'
 import sleep from '../utils/shared/sleep'
 import { setTwitterOverviewFileV2 } from '../../dev-metrics/utils/r2'
 import axios from 'axios'
@@ -27,11 +27,26 @@ function addTwitter(i: any) {
 
 }
 
+const oneDay = 24 * 60 * 60 * 1000
+const BATCH_SIZE = 20
+const THIRTY_DAYS_S = Math.floor(30 * oneDay / 1000)
+
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const chunks: T[][] = []
+  for (let i = 0; i < arr.length; i += size)
+    chunks.push(arr.slice(i, i + size))
+  return chunks
+}
+
+function shouldSkip(userData: any, waitTime: number): boolean {
+  if (!userData?.lastPullV2) return false
+  return (+new Date() - userData.lastPullV2) < waitTime
+}
+
 async function run() {
 
   const { data: protocolData } = await axios.get('https://api.llama.fi/protocols')
   protocolData.forEach((i: any) => protocolDataMap[i.id] = i)
-
 
   addTwitter(protocols)
   addTwitter(parentProtocols)
@@ -48,66 +63,114 @@ async function run() {
   console.log('users: ', users.length)
   const userMap: any = {}
   users.forEach((i: any) => userMap[i.handle] = i)
-  let i = 0
 
-  for (const handle of twitterAccounts) {
-    i++
-    try {
-      let userData = userMap[handle]
+  const handlesUnder50k = twitterAccounts.filter(h => !handlesOver1MTvl.has(h) && !handlesOver50kTvl.has(h))
+  const tiers = [
+    { handles: [...handlesOver1MTvl], waitTime: 2 * oneDay, label: '>1M TVL' },
+    { handles: [...handlesOver50kTvl], waitTime: 4 * oneDay, label: '>50k TVL' },
+    { handles: handlesUnder50k, waitTime: 8 * oneDay, label: '<50k TVL' },
+  ]
+
+  for (const tier of tiers) {
+    const handlesToFetch = tier.handles.filter(handle => {
+      const userData = userMap[handle]
       if (userData?.errorMessage === 'Insufficient balance') {
         delete userData.errorV2
         delete userData.errorMessage
-        console.info('removing error because of insufficient balance: ', handle)
       }
-      if ((!userData || !userData.lastPullV2) && !userData?.errorV2) {
-        const preUpdate = userData
-        userData = await getUserData(handle)
-        userData.handle = handle
-        if (userData.status === 'error') {
-          userData.errorMessage = userData.message
-          userData.errorV2 = true
-          delete userData.status
-          delete userData.message
-          userMap[handle] = userData
-          await updateUser(userData)
-          console.log('error while fetching user data: ', handle, userData.errorMessage)
-          continue
+      if (userData?.errorV2) return false
+      return !shouldSkip(userData, tier.waitTime)
+    })
+
+    console.log(`\n[${tier.label}] ${handlesToFetch.length}/${tier.handles.length} handles need update`)
+    if (!handlesToFetch.length) continue
+
+    const chunks = chunkArray(handlesToFetch, BATCH_SIZE)
+
+    for (let ci = 0; ci < chunks.length; ci++) {
+      const chunk = chunks[ci]
+      try {
+        const now = Math.floor(Date.now() / 1000)
+        const defaultSince = now - THIRTY_DAYS_S
+        const sinceTime = chunk.reduce((min, handle) => {
+          const pullTime = userMap[handle]?.lastPullV2
+          if (!pullTime) return min
+          const pullSec = Math.floor(pullTime / 1000)
+          return pullSec < min ? pullSec : min
+        }, defaultSince)
+
+        console.log(`[${tier.label}] batch ${ci + 1}/${chunks.length} (${chunk.length} handles, since: ${new Date(sinceTime * 1000).toISOString()})`)
+
+        const { tweets: rawTweets, truncated } = await fetchBatchTweets(chunk, sinceTime)
+        if (truncated) console.log(`batch truncated at maxPages, will retry next run`)
+
+        const tweetsByHandle = new Map<string, any[]>()
+        const handleLookup = new Map<string, string>()
+        chunk.forEach(h => handleLookup.set(h.toLowerCase(), h))
+
+        for (const tweet of rawTweets) {
+          const screenName = tweet.user?.screen_name
+          if (!screenName) continue
+          const original = handleLookup.get(screenName.toLowerCase()) || screenName
+          if (!tweetsByHandle.has(original)) tweetsByHandle.set(original, [])
+          tweetsByHandle.get(original)!.push(tweet)
         }
-        userData = transformHandleV2({ user: userData, handleData: preUpdate })
+
+        const allTransformed: any[] = []
+        for (const [handle, tweets] of tweetsByHandle) {
+          tweets.sort((a: any, b: any) => new Date(b.tweet_created_at).getTime() - new Date(a.tweet_created_at).getTime())
+          const transformed = tweets.map(t => transformTweetV2(t, handle))
+          allTransformed.push(...transformed)
+        }
+
+        if (allTransformed.length) {
+          await addTweets(allTransformed)
+          console.log(`  stored ${allTransformed.length} tweets from ${tweetsByHandle.size} handles`)
+        }
+
+        if (!truncated) {
+          for (const [handle, tweets] of tweetsByHandle) {
+            const latestTweet = tweets[0]
+            let userData = userMap[handle] || {}
+            userData = transformHandleV2({ handleData: userData, lastTweet: latestTweet, user: latestTweet.user })
+            userData.lastPullV2 = +new Date()
+            userData.handle = handle
+            userMap[handle] = userData
+            await updateUser(userData)
+          }
+        }
+
+        const handlesWithTweets = new Set([...tweetsByHandle.keys()].map(h => h.toLowerCase()))
+        const zeroTweetHandles = chunk.filter(h => !handlesWithTweets.has(h.toLowerCase()))
+
+        for (const handle of zeroTweetHandles) {
+          try {
+            const rawUser = await getUserData(handle)
+            if (rawUser.status === 'error') {
+              const userData = { handle, errorV2: true, errorMessage: rawUser.message }
+              userMap[handle] = userData
+              await updateUser(userData)
+              console.log(`  error for ${handle}: ${rawUser.message}`)
+              continue
+            }
+            let userData = userMap[handle] || {}
+            userData = transformHandleV2({ user: rawUser, handleData: userData })
+            userData.lastPullV2 = +new Date()
+            userData.handle = handle
+            userMap[handle] = userData
+            await updateUser(userData)
+          } catch (e) {
+            console.log(`  error fetching user data for ${handle}:`, e)
+          }
+        }
+
+        if (zeroTweetHandles.length)
+          console.log(`  ${zeroTweetHandles.length} handles had no tweets, fetched user data individually`)
+
+        await sleep(200)
+      } catch (e) {
+        console.log(`[${tier.label}] error in batch ${ci + 1}:`, e)
       }
-
-      if (userData.errorV2) continue; // probably user not found, no point in contiuining
-
-      if (skipTweetPull(userData)) {
-        // console.log('skipping tweets for: ', handle)
-        continue
-      }
-      userMap[handle] = userData
-
-      console.log(i, '/', twitterAccounts.length, 'updating user: ', handle)
-      const tweets = await getAllTweets(handle, userData.lastTweet)
-      tweets.sort((a: any, b: any) => b.time - a.time)
-
-      const lastTweet = tweets[0]
-      userData = transformHandleV2({ handleData: userData, lastTweet, })
-
-      userData.lastPullV2 = +new Date()
-      userData.handle = handle
-      const missingHandle = tweets.filter((i: any) => !i.handle)
-      if (missingHandle.length) {
-        console.log('missing handle in tweets: ', handle, missingHandle)
-        throw new Error('missing handle in tweets')
-      }
-
-      await addTweets(tweets)
-      await updateUser(userData)
-
-      // avoid hitting rate limit
-      await sleep(100)
-
-    } catch (e) {
-      console.log('error while updating tweets: ', handle)
-      console.error(e)
     }
   }
 
@@ -118,26 +181,3 @@ run().catch(console.error).then(async () => {
   await close()
   process.exit(0)
 })
-
-
-function skipTweetPull(userData: any) {
-  if (!userData.lastPullV2) return false // never queried using new api
-
-  const lastPull = new Date(userData.lastPullV2)
-  const oneDay = 24 * 60 * 60 * 1000
-  const timeDiff = +new Date() - +lastPull
-  const monthAgo = +new Date(+new Date() - 30 * oneDay)
-  let waitTimeBetweenChecks = 8 * oneDay
-  if (handlesOver1MTvl.has(userData.handle)) waitTimeBetweenChecks = 2 * oneDay
-  else if (handlesOver50kTvl.has(userData.handle)) waitTimeBetweenChecks = 4 * oneDay
-
-  if (timeDiff < waitTimeBetweenChecks)
-    return true
-  return false // the below logic does not work for some reason
-
-  if (!userData?.lastTweet?.time)  // no tweets found, then we check once a month
-    return timeDiff < monthAgo
-
-  const lastTweetDate = +new Date(userData?.lastTweet?.time ?? new Date())
-  if (lastTweetDate > monthAgo) return timeDiff < monthAgo // if last tweet was more than a month ago, then we check once a month
-}

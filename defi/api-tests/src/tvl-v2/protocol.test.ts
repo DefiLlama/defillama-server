@@ -17,7 +17,7 @@ const apiClient = createApiClient(endpoints.TVL_V2.BASE_URL);
 const TVL_V2_ENDPOINTS = endpoints.TVL_V2;
 
 describe('TVL V2 API - Metrics Protocol Overview', () => {
-  const testProtocols = ['aave-v3'];
+  const testProtocols = ['aave-v3', 'morpho'];
   const responses: Record<string, ApiResponse<MetricsProtocol>> = {};
 
   beforeAll(async () => {
@@ -64,7 +64,9 @@ describe('TVL V2 API - Metrics Protocol Overview', () => {
           expectNonEmptyString(data.id);
           expectNonEmptyString(data.name);
           expect(Array.isArray(data.chains)).toBe(true);
-          expectNonEmptyArray(data.chains);
+          if (!data.isParentProtocol) {
+            expectNonEmptyArray(data.chains);
+          }
         });
 
         it('should have currentChainTvls with valid numbers', () => {

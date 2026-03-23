@@ -14345,5 +14345,26 @@ const data5: Protocol[] = [
       dexs: "paradex-spot",
     },
   },
+  {
+    id: "7557",
+    name: "Evolve",
+    address: null,
+    symbol: "-",
+    url: "https://goevolve.xyz/",
+    description: "Evolve: The First Native Yield-Bearing Stablecoin on SEI",
+    chain: "Sei",
+    logo: `https://cdn.goevolve.xyz/evolve/Logo.svg`,
+    audits: "1",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Sei"],
+    module: "goevolve/index.js",
+    twitter: "goevolvexyz",
+    audit_links: ["https://docs.goevolve.xyz/resources/audits"],
+    dimensions: {
+      fees: "goevolve"
+    }
+  },
 ];
 export default data5;

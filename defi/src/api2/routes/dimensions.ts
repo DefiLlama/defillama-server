@@ -666,7 +666,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       // sort by date
       const totalDataChartByChainResponse = formatChartData(totalDataChartByChain)
       fixChartBreakdownLastRecord(totalDataChartByChainResponse)
-      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, totalDataChartByChainResponse.sort(([a]: any, [b]: any) => a - b))
+      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, totalDataChartByChainResponse)
 
       for (let [id, protocol] of Object.entries(allProtocols) as any) {
         if (!protocol.info) {

@@ -337,7 +337,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Indexes",
+    tags: ["Tokenized Trading Strategies"],
     chains: ["Mantle"],
     module: "mi4/index.js",
     twitter: "Mantle_Official",

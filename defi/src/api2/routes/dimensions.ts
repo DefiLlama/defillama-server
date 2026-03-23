@@ -17,6 +17,24 @@ function formatChartData(data: any = {}) {
   return result.sort(([a]: any, [b]: any) => a - b);
 }
 
+// some protocols dont support pulling current day data (can only pull daily data after the day is complete instead of past 24 hours)
+// so we fix the last record to be the same as previous day if the last record is for today
+function fixChartBreakdownLastRecord(totalDataChartBreakdown: Array<any>) {
+  // nothing to fix if there are less than 2 records
+  if (!(totalDataChartBreakdown?.length > 1)) return;
+
+  const lastChartBreakdownRecord = totalDataChartBreakdown[totalDataChartBreakdown.length - 1]
+  const yesterdayChartBreakdownRecord = totalDataChartBreakdown[totalDataChartBreakdown.length - 2]
+
+  const todayBreakdown = lastChartBreakdownRecord[1]
+  const yesterdayBreakdown = yesterdayChartBreakdownRecord[1]
+
+  Object.entries(yesterdayBreakdown).forEach(([key, value]: any) => {
+    if (todayBreakdown.hasOwnProperty(key)) return;
+    todayBreakdown[key] = value // add missing key from yesterday
+  })
+}
+
 function getPercentage(a: number, b: number) {
   if (!a || !b) return undefined
   return +Number(((a - b) / b) * 100).toFixed(2)
@@ -646,7 +664,9 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
       }
 
       // sort by date
-      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, Object.entries(totalDataChartByChain).map(([date, value]) => ([+date, value])).sort(([a]: any, [b]: any) => a - b))
+      const totalDataChartByChainResponse = formatChartData(totalDataChartByChain)
+      fixChartBreakdownLastRecord(totalDataChartByChainResponse)
+      await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, totalDataChartByChainResponse.sort(([a]: any, [b]: any) => a - b))
 
       for (let [id, protocol] of Object.entries(allProtocols) as any) {
         if (!protocol.info) {

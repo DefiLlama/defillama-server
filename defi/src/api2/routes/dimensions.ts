@@ -12,7 +12,8 @@ import { errorResponse, fileResponse, successResponse, validateProRequest } from
 function formatChartData(data: any = {}) {
   const result = [];
   for (const key in data) {
-    result.push([timeSToUnix(key), data[key]]);
+    // support both key is timeS or unix timestamp
+    result.push([key.includes('-') ? timeSToUnix(key) : key, data[key]]);
   }
   return result.sort(([a]: any, [b]: any) => a - b);
 }

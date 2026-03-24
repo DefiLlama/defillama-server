@@ -13,7 +13,7 @@ function formatChartData(data: any = {}) {
   const result = [];
   for (const key in data) {
     // support key is both timeS and unix timestamp
-    result.push([key.includes('-') ? timeSToUnix(key) : Number(key), data[key]]);
+    result.push([(typeof key === 'string' && key.includes('-')) ? timeSToUnix(key) : Number(key), data[key]]);
   }
   return result.sort(([a]: any, [b]: any) => a - b);
 }
@@ -192,6 +192,8 @@ async function getCategoryData({ recordType, cacheData, category, chain }: { rec
 
   response.protocols = Object.entries(protocolSummaries).map(([_id, { summaries, info }]: any) => {
     const res: any = {}
+    const categories = getProtocolCategories(info)
+    if (!categories.includes(category)) return null
 
     let summary = summaries?.[recordType]
     if (chain) {
@@ -218,6 +220,15 @@ async function getCategoryData({ recordType, cacheData, category, chain }: { rec
   if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
 
   return response
+  
+  function getProtocolCategories(info: any): Array<string> {
+    if (!info) return [];
+    // we treat tags same as category and use labels (not slugs) for keys, only use slugs on storage and query
+    // ex: we use 'Dexs' when cumputing data, and use 'dexs' as storage and query on api later
+    let _pCategories = info.category ? [info.category] : [];
+    if (info.tags) _pCategories = _pCategories.concat(info.tags);
+    return _pCategories;
+  }
 }
 
 // some protocols dont support pulling current day data (can only pull daily data after the day is complete instead of past 24 hours)

@@ -9276,6 +9276,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ProtocolForest",
   },
+  {
+    id: "parent#virtus-protocol",
+    name: "VIRTUS Protocol",
+    url: "https://virtus-protocol.com",
+    description: "A governance-driven DEX on Base with integrated multichain swaps.",
+    logo: `${baseIconsUrl}/virtus-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VirtusCEO",
+  },
 ];
 
 export default parentProtocols;

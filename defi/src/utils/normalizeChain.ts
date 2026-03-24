@@ -5804,6 +5804,7 @@ export function transformNewChainName(chain: string) {
 // if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
 const chainLabelMap = {
   "zklink": "zkLink",
+  "aleph_zero_evm": "Aleph Zero EVM",
   "bitkub": "Bitkub",
   "lyra": "Lyra Chain",
   "fuel": "Fuel",

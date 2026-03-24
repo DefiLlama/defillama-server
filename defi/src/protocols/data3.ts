@@ -50413,6 +50413,9 @@ const data3_3: Protocol[] = [
       "https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf",
     ],
     github: ["AlphaX-Protocol"],
+    hallmarks: [
+      ['2026-02-26', 'AlphaX Officially Launched'],
+    ],
     listedAt: 1723456160,
   },
   {

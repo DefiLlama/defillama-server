@@ -5788,6 +5788,13 @@ export const chainCoingeckoIds = {
     twitter: "spaceandtime",
     url: "https://www.spaceandtime.io/",
   },
+  "Canton": {
+    geckoId: "canton-network",
+    symbol: "CC",
+    cmcId: "37263",
+    twitter: "CantonNetwork",
+    url: "https://www.canton.network/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

@@ -1052,6 +1052,7 @@ async function generateSearchList() {
     id: `equity_${normalize(equity.name)}_${normalize(equity.ticker)}`,
     name: equity.name,
     symbol: equity.ticker,
+    logo: `https://icons.llamao.fi/icons/equities/${equity.ticker}?w=48&h=48`,
     route: `/equities/${equity.ticker.toLowerCase()}`,
     v: tastyMetrics[`/equities/${equity.ticker.toLowerCase()}`] ?? 0,
     type: "Equities",

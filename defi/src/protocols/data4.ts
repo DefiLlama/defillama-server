@@ -15028,7 +15028,7 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Monad"}, { chain: "Arbitrum"}],
+        chains: [{ chain: "Monad"}, { chain: "Arbitrum"}],
       },
       {
         name: "Chaos",
@@ -15052,7 +15052,7 @@ const data4: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
-        chains: [{chain: "Katana"},{ chain: "Ethereum"}]
+        chains: [{chain: "Katana"},{ chain: "Ethereum"},{ chain: "Base"}]
       }
     ],
     module: "steakhouse/index.js",
@@ -27928,7 +27928,8 @@ const data4: Protocol[] = [
     twitter: "symm_io",
     listedAt: 1759188001,
     dimensions: {
-      derivatives: "symmio"
+      derivatives: "symmio",
+      'open-interest': "symmio",
     }
   },
   {

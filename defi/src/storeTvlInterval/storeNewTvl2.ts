@@ -156,7 +156,7 @@ export default async function (
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
       let spikeRatio = 5
-      if (currentTvl > 50e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
+      if (currentTvl > 10e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
 
 
       if (

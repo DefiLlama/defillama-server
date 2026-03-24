@@ -705,7 +705,7 @@ const configs: { [adapter: string]: Config } = {
         abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
         target: "0x24c8964338Deb5204B096039147B8e8C3AEa42Cc",
       });
-      if (rate.updatedAt < api.timestamp - 3 * 60 * 60)
+      if (rate.updatedAt < api.timestamp - 24 * 60 * 60)
         throw new Error(`MI4 stale rate`);
       return rate.answer / 1e8;
     },

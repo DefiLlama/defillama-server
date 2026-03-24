@@ -275,6 +275,7 @@ const RUN_TYPES = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options',
   'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
 const SUB_SECTIONS = [
@@ -364,6 +365,19 @@ function humanTvl(n) {
   if (abs >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
   if (abs >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
   return '$' + n.toFixed(0);
+}
+
+function fmtCacheAge(sec) {
+  if (sec == null) return '—';
+  sec = Number(sec);
+  if (isNaN(sec)) return '—';
+  if (sec < 60)      return sec + 's';
+  if (sec < 3600)    return Math.floor(sec / 60) + 'm';
+  if (sec < 86400)   return Math.floor(sec / 3600) + 'h ' + Math.floor((sec % 3600) / 60) + 'm';
+  if (sec < 2592000) { const d = Math.floor(sec / 86400); return d + 'd ' + Math.floor((sec % 86400) / 3600) + 'h'; }
+  const months = Math.floor(sec / 2592000);
+  const days = Math.floor((sec % 2592000) / 86400);
+  return months + 'mo ' + days + 'd';
 }
 
 function sluggify(name) {
@@ -806,47 +820,56 @@ async function loadTvlTab() {
           </div>
         </div>
 
-        <h3 style="margin:20px 0 8px;font-size:14px;font-weight:600">
-          Hourly Outdated Protocols
-          <span style="font-weight:400;color:var(--muted);font-size:12px;margin-left:6px">(${outdated.length})</span>
-        </h3>
+        <div id="tvl-cache-section"></div>
 
-        <div class="filter-bar" id="tvl-filters">
-          <label>Search</label>
-          <input type="text" id="tvl-filter-name" placeholder="Protocol name…" style="width:180px">
-          <label>Category</label>
-          <select id="tvl-filter-category">
-            <option value="">All</option>
-            ${categories.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('')}
-          </select>
-          <label>Min TVL</label>
-          <select id="tvl-filter-min-tvl">
-            <option value="0">Any</option>
-            <option value="1000">$1K</option>
-            <option value="10000">$10K</option>
-            <option value="100000">$100K</option>
-            <option value="1000000" selected>$1M</option>
-            <option value="10000000">$10M</option>
-            <option value="100000000">$100M</option>
-          </select>
-          <label>Min Age</label>
-          <select id="tvl-filter-min-age">
-            <option value="0" selected>Any</option>
-            <option value="3600">1 hour</option>
-            <option value="21600">6 hours</option>
-            <option value="86400">1 day</option>
-            <option value="259200">3 days</option>
-            <option value="604800">1 week</option>
-            <option value="2592000">30 days</option>
-          </select>
-        </div>
-        <div id="tvl-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
-
-        <div class="card">
-          <div id="tbl-tvl-outdated"></div>
+        <div class="card" style="margin-top:20px">
+          <button class="collapse-toggle open" id="tvl-errors-toggle">
+            <span class="collapse-arrow">▶</span>
+            Hourly Outdated Protocols
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${outdated.length})</span>
+          </button>
+          <div class="collapse-body open" id="tvl-errors-body" style="padding:0 16px 16px">
+            <div class="filter-bar" id="tvl-filters">
+              <label>Search</label>
+              <input type="text" id="tvl-filter-name" placeholder="Protocol name…" style="width:180px">
+              <label>Category</label>
+              <select id="tvl-filter-category">
+                <option value="">All</option>
+                ${categories.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('')}
+              </select>
+              <label>Min TVL</label>
+              <select id="tvl-filter-min-tvl">
+                <option value="0">Any</option>
+                <option value="1000">$1K</option>
+                <option value="10000">$10K</option>
+                <option value="100000">$100K</option>
+                <option value="1000000" selected>$1M</option>
+                <option value="10000000">$10M</option>
+                <option value="100000000">$100M</option>
+              </select>
+              <label>Min Age</label>
+              <select id="tvl-filter-min-age">
+                <option value="0" selected>Any</option>
+                <option value="3600">1 hour</option>
+                <option value="21600">6 hours</option>
+                <option value="86400">1 day</option>
+                <option value="259200">3 days</option>
+                <option value="604800">1 week</option>
+                <option value="2592000">30 days</option>
+              </select>
+            </div>
+            <div id="tvl-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+            <div id="tbl-tvl-outdated"></div>
+          </div>
         </div>
       </div>
     `;
+
+    // Wire errors collapsible toggle
+    document.getElementById('tvl-errors-toggle').addEventListener('click', () => {
+      document.getElementById('tvl-errors-toggle').classList.toggle('open');
+      document.getElementById('tvl-errors-body').classList.toggle('open');
+    });
 
     // Current filtered+indexed data — shared with the click handler
     let currentIndexed = [];
@@ -931,10 +954,123 @@ async function loadTvlTab() {
     document.getElementById('tvl-filter-min-tvl')?.addEventListener('change', renderTvlTable);
     document.getElementById('tvl-filter-min-age')?.addEventListener('change', renderTvlTable);
 
+    // ── Cache Usage Logs ──
+    loadTvlCacheUsage();
+
     tvlLoaded = true;
   } catch (err) {
     content.innerHTML = '<div class="err-state">Error loading TVL data: ' + esc(err.message) + '</div>';
     console.error(err);
+  }
+}
+
+async function loadTvlCacheUsage() {
+  try {
+    const logs = await getJson('tvl-cache-usage');
+    if (!Array.isArray(logs) || !logs.length) return;
+
+    // Flatten: one row per cached item, with parent metadata
+    const allRows = logs.flatMap(log => {
+      const meta = log.metadata ?? {};
+      const data = log.data ?? {};
+      return (data.cachedItems ?? []).map(item => ({
+        protocolName:   meta.name ?? item.protocolName ?? '',
+        protocolId:     meta.id ?? '',
+        chain:          item.storeKey ?? '',
+        chainTvl:       item.storeKeyTvl ?? 0,
+        totalTvl:       item.totalTvl ?? 0,
+        cacheAge:       item.cacheTime ? Math.floor(Date.now() / 1000) - item.cacheTime : null,
+        invalidCache:   item.invalidCacheTime > 0,
+        totalCached:    data.totalCachedItems ?? 0,
+        aggregatedTvl:  data.aggregatedTvl ?? 0,
+        timeDiff:       data.timeDiffFromNowSeconds ?? null,
+        timestamp:      log.timestamp ?? 0,
+      }));
+    });
+
+    // Retain only the latest log per protocol (by timestamp)
+    const latestByProtocol = new Map();
+    for (const row of allRows) {
+      const key = row.protocolName;
+      const existing = latestByProtocol.get(key);
+      if (!existing || row.timestamp > existing.timestamp) {
+        latestByProtocol.set(key, row);
+      }
+    }
+    const rows = [...latestByProtocol.values()];
+
+    const section = document.getElementById('tvl-cache-section');
+    if (!section) return;
+
+    section.innerHTML = `
+      <div class="card" style="margin-top:20px">
+        <button class="collapse-toggle open" id="cache-usage-toggle">
+          <span class="collapse-arrow">▶</span>
+          TVL Cache Usage
+          <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${rows.length} protocols, last 6h)</span>
+        </button>
+        <div class="collapse-body open" id="cache-usage-body" style="padding:0 16px 16px">
+          <div class="filter-bar">
+            <label>Search</label>
+            <input type="text" id="cache-filter-name" placeholder="Protocol name…" style="width:180px">
+            <label>Chain</label>
+            <input type="text" id="cache-filter-chain" placeholder="Chain…" style="width:120px">
+            <label>Min Cache Age</label>
+            <select id="cache-filter-min-age">
+              <option value="0">Any</option>
+              <option value="3600">1 hour</option>
+              <option value="21600">6 hours</option>
+              <option value="36000" selected>10 hours</option>
+              <option value="86400">1 day</option>
+              <option value="259200">3 days</option>
+              <option value="604800">1 week</option>
+              <option value="2592000">30 days</option>
+            </select>
+          </div>
+          <div id="cache-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+          <div id="tbl-tvl-cache-usage"></div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('cache-usage-toggle').addEventListener('click', () => {
+      document.getElementById('cache-usage-toggle').classList.toggle('open');
+      document.getElementById('cache-usage-body').classList.toggle('open');
+    });
+
+    function renderCacheTable() {
+      const nameFilter = (document.getElementById('cache-filter-name')?.value ?? '').toLowerCase();
+      const chainFilter = (document.getElementById('cache-filter-chain')?.value ?? '').toLowerCase();
+      const minAgeSec = Number(document.getElementById('cache-filter-min-age')?.value ?? 0);
+
+      let filtered = rows;
+      if (nameFilter) filtered = filtered.filter(r => r.protocolName.toLowerCase().includes(nameFilter));
+      if (chainFilter) filtered = filtered.filter(r => r.chain.toLowerCase().includes(chainFilter));
+      if (minAgeSec > 0) filtered = filtered.filter(r => r.cacheAge != null && r.cacheAge >= minAgeSec);
+
+      const countEl = document.getElementById('cache-filter-count');
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + rows.length + ' protocols';
+
+      renderTable('tbl-tvl-cache-usage', filtered, [
+        { key: 'protocolName', label: 'Protocol',     render: r => '<span class="bold">' + esc(r.protocolName) + '</span>', sortVal: r => r.protocolName },
+        { key: 'protocolId',   label: 'ID',           sortVal: r => Number(r.protocolId) },
+        { key: 'chain',        label: 'Chain',        render: r => '<span class="tag">' + esc(r.chain) + '</span>' },
+        { key: 'chainTvl',     label: 'Chain TVL',    render: r => humanTvl(r.chainTvl), sortVal: r => r.chainTvl },
+        { key: 'totalTvl',     label: 'Total TVL',    render: r => humanTvl(r.totalTvl), sortVal: r => r.totalTvl },
+        { key: 'cacheAge',     label: 'Cache Age',    render: r => r.cacheAge != null ? fmtCacheAge(r.cacheAge) : '—', sortVal: r => r.cacheAge },
+        { key: 'invalidCache', label: 'Invalid',      render: r => r.invalidCache ? '<span style="color:var(--red)">Yes</span>' : '<span style="color:var(--green)">No</span>', sortVal: r => r.invalidCache ? 1 : 0 },
+        { key: 'timestamp',    label: 'Logged',       render: r => r.timestamp ? relTime(new Date(r.timestamp).toISOString()) : '—', sortVal: r => r.timestamp },
+      ], 'cacheAge', -1);
+    }
+
+    renderCacheTable();
+
+    document.getElementById('cache-filter-name')?.addEventListener('input', renderCacheTable);
+    document.getElementById('cache-filter-chain')?.addEventListener('input', renderCacheTable);
+    document.getElementById('cache-filter-min-age')?.addEventListener('change', renderCacheTable);
+
+  } catch (err) {
+    console.error('Error loading TVL cache usage:', err);
   }
 }
 

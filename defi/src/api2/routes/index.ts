@@ -256,16 +256,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     const protocolData = cache.protocolSlugMap[name]
     // a shortcut to just get tvl number, can uncomment the code below to get the correct number
     if (protocolData) return successResponse(res, getLastHourlyRecord(protocolData)?.tvl, 60)
-    /*     if (protocolData) {
-          const response = await cachedCraftProtocolV2({
-            protocolData,
-            useNewChainNames: true,
-            skipAggregatedTvl: false,
-          })
-          const tvlArray = response.tvl as any[]
-          const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
-          return successResponse(res, tvl, 60);
-        } */
 
     const parentData = cache.parentProtocolSlugMap[name]
     if (parentData) {
@@ -273,14 +263,28 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
       if (childProtocols.length < 1 || childProtocols.map((p: any) => p.name).includes(parentData.name))
         return errorResponse(res, 'bad parent protocol')
 
-      const response: any = await cachedCraftParentProtocolV2({
-        parentProtocol: parentData,
-        skipAggregatedTvl: false,
-      })
-      if (response.message) return errorResponse(res, response.message)
-      const tvlArray = response.tvl as any[]
-      const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
-      return successResponse(res, tvl, 60);
+      const excludeDoubleCountInParent = childProtocols.some((p: any) => !!p.tokensExcludedFromParent)
+
+      // if there is overlap in tvl between the child protocols
+      if (excludeDoubleCountInParent) {
+        const response: any = await cachedCraftParentProtocolV2({
+          parentProtocol: parentData,
+          skipAggregatedTvl: false,
+        })
+        if (response.message) return errorResponse(res, response.message)
+        const tvlArray = response.tvl as any[]
+        const tvl = tvlArray?.[tvlArray.length - 1]?.totalLiquidityUSD
+        return successResponse(res, tvl, 60);
+
+      } else {
+
+        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + (cur?.tvl ?? 0), 0);
+        if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
+        return successResponse(res, tvl, 60);
+
+      }
+
+
     }
 
     return errorResponse(res, 'Protocol not found')

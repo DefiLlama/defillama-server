@@ -337,11 +337,12 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Indexes",
+    tags: ["Tokenized Trading Strategies"],
     chains: ["Mantle"],
     module: "mi4/index.js",
     twitter: "Mantle_Official",
     listedAt: 1761284792,
+    parentProtocol: "parent#securitize",
     dimensions: {
       fees: "mi4",
     },
@@ -4896,6 +4897,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#liquidlabs",
     dimensions: {
       dexs: "liquidcore",
+      fees: "liquidcore",
     },
   },
   {
@@ -11842,6 +11844,7 @@ const data5: Protocol[] = [
     twitter: "murphyonkeeta",
     listedAt: 1771610381,
   },
+/*
   {
     id: "7435",
     name: "Exod",
@@ -11858,9 +11861,12 @@ const data5: Protocol[] = [
     tags: ["Onchain Equity"],
     chains: ["Arbitrum", "Algorand"],
     module: "exod/index.js",
+    parentProtocol: "parent#securitize",
     twitter: "exodus",
     listedAt: 1771610702,
+    disabled: "every token issued is just held by a single address",
   },
+*/
   {
     id: "7436",
     name: "Alphix",
@@ -14130,7 +14136,11 @@ const data5: Protocol[] = [
     audit_links: [
       "https://www.chainsecurity.com/security-audit/mento-core-v3",
       "https://www.chainsecurity.com/security-audit/mento-liquity-v2"
-    ]
+    ],
+    dimensions: {
+      dexs: "mento-v3",
+      fees: "mento-v3",
+    }
   },
   {
     id: "7547",
@@ -14150,6 +14160,7 @@ const data5: Protocol[] = [
     twitter: "kreoapp",
     dimensions: {
       fees: "kreo",
+      dexs: "kreo",
     }
   },
   {
@@ -14368,6 +14379,134 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "lotto-run",
     },
+  },
+  {
+    id: "7558",
+    name: "Xmarket",
+    address: null,
+    symbol: "-",
+    url: "https://xmarket.app/",
+    description:
+      "Xmarket is a prediction platform built for creators, not just traders. Built on BNB Chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/xmarket.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "xmarket/index.js",
+    twitter: "Xmarketapp",
+    dimensions: {
+      fees: "xmarket",
+    },
+    listedAt: 1774296139
+  },
+  {
+    id: "7559",
+    name: "Rainbow Predictions",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me/",
+    description:
+      "Rainbow Predictions is a prediction platform built by Rainbow team",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/rainbow-predictions.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-predictions",
+      dexs: "rainbow-predictions",
+    },
+  },
+  {
+    id: "7560",
+    name: "HyperSwap Terminal",
+    address: "hyperliquid:0x03832767bdf9a8ef007449942125ad605acfadb8",
+    symbol: "SWAP",
+    url: "https://trade.hyperswap.exchange/trade?ref=defillama",
+    description:
+      "Explore token swaps, liquidity management and easy token launches",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperswap-terminal.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperSwapX",
+    parentProtocol: "parent#hyperswap",
+    dimensions: {
+      fees: "hyperswap-terminal",
+      "derivatives": "hyperswap-terminal",
+    },
+  },
+  {
+    id: "7561",
+    name: "Jupiter Limit",
+    address: "solana:JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    symbol: "JUP",
+    url: "https://jup.ag/?ref=f6y1ryr2snn3",
+    description: "Jupiter Limit is a feature that lets users set a target price for a token swap, where the trade is automatically executed via Jupiter’s routing engine when market conditions are met",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiter-limit.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
+    dimensions: {
+      fees: "jupiter-limit"
+    }
+  },
+  {
+    id: "7562",
+    name: "CallPut",
+    address: null,
+    symbol: "-",
+    url: "https://callput.app",
+    description: "Permissionless 24/7 On-Chain Options for US Stocks & Crypto",
+    chain: "Base",
+    logo: `${baseIconsUrl}/callput.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Base"],
+    module: "callput/index.js",
+    treasury: "callput.js",
+    twitter: "CallPutApp",
+    github: ["alanxxzero"],
+    listedAt: 1774291703
+  },
+  {
+    id: "7563",
+    name: "Stablecoin for Impact",
+    address: null,
+    symbol: "-",
+    url: "https://impactstake.com/",
+    description: "Stablecoin for Impact (SFI) is a decentralized philanthropic platform that turns stablecoins into active capital for social good using Aave supply yield. SFI lets you deposit stablecoins into Aave lending markets and direct a percentage of the yield to fund social or environmental projects. Your capital remains intact throughout and you can withdraw the principal at any moment. Every project reports impact data so you can see exactly where the money goes",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stablecoin-for-impact.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Charity Fundraising",
+    chains: ["Ethereum"],
+    module: "sfi/index.js",
+    twitter: "impactstake",
+    audit_links: ["https://sfi-public3.s3.eu-west-2.amazonaws.com/Audit-Report.pdf"],
+    listedAt: 1774292575
   },
 ];
 export default data5;

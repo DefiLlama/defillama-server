@@ -303,12 +303,10 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       if (tvlProtocolInfo?.id) protocol.info.id = tvlProtocolInfo?.id
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
-      protocol.info.chains = (info.chains ?? []).map(getChainLabelFromKey)      
+      protocol.info.chains = []
       const _pCategories = getProtocolCategories(protocol);
 
-      // sometimes a chain is dead and we stop tracking it in the protocol, and if we dont initialize it here, it wont be included in the 'allChains' list
-      addToGlobalChainList(protocol.info.chains)
-      const protocolChainKeySet = new Set((info.chains ?? []).map(getChainKeyFromLabel))
+      const protocolChainKeySet = new Set()
 
       protocol.info.defillamaId = protocol.info.defillamaId ?? info.id
       protocol.info.displayName = protocol.info.displayName ?? info.name ?? protocol.info.name
@@ -408,9 +406,8 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
           Object.entries(chains).forEach(([chain, value]: any) => {
 
 
-            // we find a chain for which we used to track data but no longer do
+            // add chain from the record to the protocol chain list if not already present
             if (!protocolChainKeySet.has(chain)) {
-              // console.log(`Found a chain ${chain} in the records of protocol ${protocolName} (${protocolId}) for adapter ${adapterType} `)
               const chainLabel = getChainLabelFromKey(chain)
               addToGlobalChainList(chainLabel)
               protocol.info.chains.push(chainLabel)

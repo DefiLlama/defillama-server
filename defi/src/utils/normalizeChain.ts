@@ -5772,6 +5772,22 @@ export const chainCoingeckoIds = {
     url: "https://tempo.xyz/",
     chainId: 4217,
   },
+  "Everclear": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "EverclearOrg",
+    url: "https://www.everclear.org/",
+    chainId: 25327,
+  },
+  "Space and Time": {
+    geckoId: "space-and-time",
+    symbol: "SXT",
+    cmcId: "36405",
+    twitter: "spaceandtime",
+    url: "https://www.spaceandtime.io/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5788,6 +5804,7 @@ export function transformNewChainName(chain: string) {
 // if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
 const chainLabelMap = {
   "zklink": "zkLink",
+  "aleph_zero_evm": "Aleph Zero EVM",
   "bitkub": "Bitkub",
   "lyra": "Lyra Chain",
   "fuel": "Fuel",
@@ -6013,6 +6030,8 @@ const chainLabelMap = {
   "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
   "qiev3": "QIE",
   "voi": "Voi Network",
+  "everclear": "Everclear",
+  "space_and_time": "Space and Time",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

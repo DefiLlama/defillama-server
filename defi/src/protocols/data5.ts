@@ -3621,7 +3621,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "ant_fun_trade",
     dimensions: {
-      fees: "antfun",
+      // fees: "antfun",  // Reports of antfun wash trading & inflating the fees - need to investigate further 
     },
   },
   {

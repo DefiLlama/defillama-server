@@ -14354,5 +14354,12 @@
       "decimals": 18,
       "symbol": "CC"
     }
+  },
+  "blockdag": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#blockdag",
+      "decimals": 18,
+      "symbol": "BDAG"
+    }
   }
 }

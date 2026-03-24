@@ -9254,6 +9254,17 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "bim.js",
     governanceID: ["snapshot:daobim.eth"],
   },
+  {
+    id: "parent#silhouette",
+    name: "Silhouette",
+    url: "https://silhouette.exchange/",
+    description: "Shielded Trading on Hyperliquid.",
+    logo: `${baseIconsUrl}/silhouette.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "silhouette_ex",
+  },
 ];
 
 export default parentProtocols;

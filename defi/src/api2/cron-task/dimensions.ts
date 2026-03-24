@@ -19,8 +19,6 @@ import { generateDimensionsResponseFiles } from "../routes/dimensions"
 import { ACCOMULATIVE_ADAPTOR_TYPE, ADAPTER_TYPES, AdaptorRecordType, DIMENSIONS_ADAPTER_CACHE, DimensionsDataRecordMap, ProtocolAdaptor, ProtocolSummary, RecordSummary, getAdapterRecordTypes, } from '../../adaptors/data/types';
 import { sendMessage } from '../../utils/discord';
 
-import fs from 'fs';
-
 const blacklistedAppCategorySet = new Set([
   "Stablecoin Issuer", "MEV",
   "Liquid Staking",
@@ -70,10 +68,6 @@ async function run() {
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
   
-  if (allCache[AdapterType.FEES].summaries) {
-    fs.writeFileSync('fees_summaries.json', JSON.stringify(allCache[AdapterType.FEES].summaries[AdaptorRecordType.dailyFees]?.categorySummary))
-  }
-
   if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     if (spikeRecords.length) {
       await sendMessage(`

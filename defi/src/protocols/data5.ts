@@ -14377,8 +14377,9 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Yield Lottery",
     chains: ["Aptos"],
-    module: "dummy.js",
+    module: "lotto-run/index.js",
     twitter: "lottorun_",
+    listedAt: 1774371087,
     dimensions: {
       dexs: "lotto-run",
     },
@@ -14591,7 +14592,7 @@ const data5: Protocol[] = [
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "silhouette_ex",
-    parentProtocol: "parent#silhouette",
+    //parentProtocol: "parent#silhouette", temporarily disabled
     listedAt: 1774370207,
     dimensions: {
       derivatives: "silhouette-naked",
@@ -14617,6 +14618,7 @@ const data5: Protocol[] = [
     twitter: "silhouette_ex",
     parentProtocol: "parent#silhouette",
     listedAt: 1774370214,
+    disabled: "adapters not yet implemented",
     dimensions: {
       derivatives: "silhouette-shielded",
       fees: "silhouette-shielded",
@@ -14642,6 +14644,27 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "nexus-trading-labs",
       fees: "nexus-trading-labs",
+    },
+  },
+  {
+    id: "7570",
+    name: "MineLoot",
+    address: "base:0x00E701Eff4f9Dc647f1510f835C5d1ee7E41D28f",
+    symbol: "LOOT",
+    url: "https://www.mineloot.app/",
+    description: "MineLoot is an on-chain strategy game on Base where users deploy ETH every minute across a 25-block grid to earn ETH and LOOT, with transparent fee flows funding buybacks, burns, and staker rewards",
+    chain: "Base",
+    logo: `${baseIconsUrl}/mineloot.jpg`,
+    audits: "0",
+    gecko_id: "mineloot",
+    cmcId: null,
+    category: "Gamified Mining",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "mineloot_",
+    listedAt: 1774371308,
+    dimensions: {
+      fees: "mineloot",
     },
   },
 ];

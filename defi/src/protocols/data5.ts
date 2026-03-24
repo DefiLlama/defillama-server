@@ -1706,8 +1706,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
     dimensions: {
-      // fees: "dipcoin-perps",
-      // derivatives: "dipcoin-perps", // very high volume, low open-interest, hard to verify
+       fees: "dipcoin-perps",
+       derivatives: "dipcoin-perps",
     },
   },
   {

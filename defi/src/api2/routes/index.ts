@@ -278,7 +278,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
       } else {
 
-        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur?.tvl, 0);
+        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + (cur?.tvl ?? 0), 0);
         if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
         return successResponse(res, tvl, 60);
 

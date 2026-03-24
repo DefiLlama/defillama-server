@@ -9275,6 +9275,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "38237",
     chains: [],
     twitter: "ProtocolForest",
+    treasury: "forest-protocol.js",
   },
   {
     id: "parent#virtus-protocol",

@@ -9252,6 +9252,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Bim_Exchange",
     treasury: "bim.js",
+    governanceID: ["snapshot:daobim.eth"],
   },
 ];
 

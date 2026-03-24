@@ -30,8 +30,14 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "berachain",
   "flow",
   "somnia",
-  "plasma", 
-  "monad"
+  "plasma",
+  "monad",
+  "provenance",
+  "stellar",
+  "flare",
+  "katana",
+  "hedera",
+  "sei"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -126,6 +132,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4548": "mezo",
   "7371": "keeta",
   //"7512": "qiev3",
+  "6938": "move",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -271,4 +278,11 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "mezo": { ticker: "MEZO", address: "" },
   "monad": { ticker: "MON", address: "coingecko:monad" },
   "keeta": { ticker: "KTA", address: "coingecko:keeta" },
+  "provenance": { ticker: "HASH", address: "coingecko:hash-2" },
+  "stellar": { ticker: "XLM", address: "coingecko:stellar" },
+  "flare": { ticker: "FLR", address: "coingecko:flare-networks" },
+  "move": { ticker: "MOVE", address: "coingecko:movement" },
+  "katana": { ticker: "KAT", address: "coingecko:katana-network-token" },
+  "hedera": { ticker: "HBAR", address: "coingecko:hedera-hashgraph" },
+  "sei": { ticker: "SEI", address: "coingecko:sei-network" },
 };

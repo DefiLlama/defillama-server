@@ -233,6 +233,27 @@ async function getProvenanceSupplies(tokens: string[], timestamp?: number): Prom
   return supplies;
 }
 
+// Soroban SAC contract ID -> classic "code-issuer" mapping
+const stellarSacToClassic: { [contractId: string]: string } = {
+  "CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75": "USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+  "CDTKPWPLOURQA2SGTKTUQOWRCBZEORB4BWBOMJ3D3ZTQQSGE5F6JBQLV": "EURC-GDHU6WRG4IEQXM5NZ4BMPKOXHW76MZM4Y2IEMFDVXBSDP6SJY4ITNPP2",
+  "CAUIKL3IYGMERDRUN6YSCLWVAKIFG5Q4YJHUKM4S4NJZQIA3BAS6OJPK": "AQUA-GBNZILSTVQZ4R7IKQDGHYGY2QXL5QOFJYQMXPKWRRM5PAV7Y4M67AQUA",
+  "CD25MNVTZDL4Y3XBCPCJXGXATV5WUHHOWMYFF4YBEGU5FCPGMYTVG5JY": "BLND-GDJEHTBE6ZHUXSWFI642DCGLUOECLHPF3KSXHPXTSTJ7E3JF6MQ5EZYY",
+  "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA": "XLM",
+};
+
+// Fetch total_supply() from a native Soroban token contract via rpc-proxy
+async function getSorobanTokenSupply(contractId: string): Promise<number | null> {
+  const res = await fetch(`${process.env.RPC_PROXY_URL}/stellar/total-supply/${contractId}`).then((r) => r.json());
+  if (typeof res === "string" || typeof res === "number") return Number(res);
+  if (res?.error) return null;
+  return null;
+}
+
+function isSorobanContractId(token: string): boolean {
+  return /^C[A-Z2-7]{55}$/.test(token) && !(token in stellarSacToClassic);
+}
+
 async function getStellarSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Stellar adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -241,11 +262,22 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
     .for(tokens)
     .process(async (token) => {
       try {
-        // Token format: "{asset_code}-{asset_issuer}" (dash-separated to avoid clashing with chain:address colon)
-        const dashIdx = token.lastIndexOf("-");
+        // Native Soroban contracts: call total_supply() via RPC
+        if (isSorobanContractId(token)) {
+          const supply = await getSorobanTokenSupply(token);
+          if (supply != null && supply > BigInt(0)) supplies[`stellar:${token}`] = Number(supply);
+          return;
+        }
+
+        // Resolve Soroban SAC contract IDs to classic "code-issuer" format
+        const classicKey = stellarSacToClassic[token] ?? token;
+        if (classicKey === "XLM") return; // native asset handled by ownTokens
+
+        // Token format: "{asset_code}-{asset_issuer}" (dash-separated)
+        const dashIdx = classicKey.lastIndexOf("-");
         if (dashIdx === -1) return;
-        const asset_code = token.substring(0, dashIdx);
-        const asset_issuer = token.substring(dashIdx + 1);
+        const asset_code = classicKey.substring(0, dashIdx);
+        const asset_issuer = classicKey.substring(dashIdx + 1);
         const res = await fetch(
           `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
         ).then((r) => r.json());

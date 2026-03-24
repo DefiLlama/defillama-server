@@ -9265,6 +9265,17 @@ const parentProtocols: IParentProtocol[] = [
   //   chains: [],
   //   twitter: "silhouette_ex",
   // },
+  {
+    id: "parent#forest-protocol",
+    name: "Forest Protocol",
+    url: "https://forest.inc/",
+    description: "Forest Protocol is a launchpad and AMM for playable tokens - tokens tied to mini-apps, games, and interactive onchain experiences. It enables creators to launch tokens with built-in liquidity and provides a shared ecosystem where each new launch can strengthen network activity and utility around $FOREST. Forest Protocol is designed to be the distribution and liquidity layer for tokenized applications.",
+    logo: `${baseIconsUrl}/forest-protocol.jpg`,
+    gecko_id: "forest-protocol",
+    cmcId: "38237",
+    chains: [],
+    twitter: "ProtocolForest",
+  },
 ];
 
 export default parentProtocols;

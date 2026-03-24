@@ -458,15 +458,14 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
   }
 }
 
-export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown' | 'chart-chain-breakdown' | 'chart-chain-total') {
+export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown' | 'chart-chain-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType, category, chainKeyFilter } = getEventParameters(req, true)
+    const { adaptorType, dataType, category } = getEventParameters(req, true)
 
     if (!category) return errorResponse(res, 'Category not supported', { statusCode: 400 })
     
     let routeFileExt = '';
     if (route === 'overview') routeFileExt = '';
-    else if (route === 'chart-chain-total') routeFileExt += 'chart-chain-breakdown';
     else routeFileExt += route;
     const routeSubPath = `${adaptorType}/${dataType}-category/${category}${routeFileExt}`;
     const routeFile = `dimensions/${routeSubPath}`; 
@@ -475,23 +474,27 @@ export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-
 
     if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
 
-    if (route === 'chart-chain-total') {
-      const chartItems: Record<string, number> = {};
-      for (const [timestamp, chains] of data) {
-        for (const [chain, value] of Object.entries(chains)) {
-          if (getChainKeyFromLabel(chain) === chainKeyFilter) {
-            chartItems[timestamp] = Number(value);
-          }
-        }
-      }
-      const responseData: Array<any> = [];
-      for (const [timestamp, value] of Object.entries(chartItems)) {
-        responseData.push([Number(timestamp), Number(value)])
-      }
-      return successResponse(res, responseData);
-    } else {
-      return successResponse(res, data);
-    }
+    return successResponse(res, data);
+  }
+}
+
+export function getDimensionCategoryChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, category, chainKeyFilter } = getEventParameters(req, true)
+
+    if (!category) return errorResponse(res, 'Category not supported', { statusCode: 400 })
+    
+    let routeFileExt = '';
+    if (route === 'overview') routeFileExt = '';
+    else routeFileExt += route;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}${routeFileExt}`;
+    const routeFile = `dimensions/${routeSubPath}`; 
+    
+    const data = await readRouteData(routeFile);
+
+    if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+
+    return successResponse(res, data);
   }
 }
 

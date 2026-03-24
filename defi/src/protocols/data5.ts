@@ -11864,6 +11864,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#securitize",
     twitter: "exodus",
     listedAt: 1771610702,
+    disabled: "every token issued is just held by a single address",
   },
 */
   {

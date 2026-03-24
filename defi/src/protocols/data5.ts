@@ -11844,6 +11844,7 @@ const data5: Protocol[] = [
     twitter: "murphyonkeeta",
     listedAt: 1771610381,
   },
+/*
   {
     id: "7435",
     name: "Exod",
@@ -11864,6 +11865,7 @@ const data5: Protocol[] = [
     twitter: "exodus",
     listedAt: 1771610702,
   },
+*/
   {
     id: "7436",
     name: "Alphix",

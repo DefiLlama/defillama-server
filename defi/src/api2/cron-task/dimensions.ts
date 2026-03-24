@@ -436,7 +436,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
                 categorySummary.chart[timeS] = (categorySummary.chart[timeS] ?? 0) + value;
                 // categorySummary protocol breakdown chart
                 categorySummary.chartBreakdown[timeS] = categorySummary.chartBreakdown[timeS] || {};
-                categorySummary.chartBreakdown[timeS][protocolName] = value;
+                categorySummary.chartBreakdown[timeS][protocolName] = (categorySummary.chartBreakdown[timeS][protocolName] ?? 0) + value;
                 
                 // add to categorySummary.chainSummary
                 summary.categorySummary[category].chainSummary = summary.categorySummary[category].chainSummary || {};

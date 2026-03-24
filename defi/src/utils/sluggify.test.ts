@@ -1,4 +1,4 @@
-import { sluggifyString } from './sluggify';
+import { sluggifyCategoryString } from './sluggify';
 
 const tests: Record<string, string> = {
   've(3,3)': 've33',
@@ -6,5 +6,5 @@ const tests: Record<string, string> = {
 };
 
 test("should get correct slug string", () => {
-  Object.keys(tests).forEach(t => expect(sluggifyString(t)).toEqual(tests[t])) 
+  Object.keys(tests).forEach(t => expect(sluggifyCategoryString(t)).toEqual(tests[t])) 
 })

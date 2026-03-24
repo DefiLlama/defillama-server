@@ -3,7 +3,7 @@ import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
 import { getChainKeyFromLabel, getChainLabelFromKey, } from "../../utils/normalizeChain";
-import { sluggifyString } from "../../utils/sluggify";
+import { sluggifyString, sluggifyCategoryString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
@@ -33,7 +33,6 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const includeLabelBreakdown = isProRoute && req.query_parameters.includeLabelBreakdown?.toLowerCase() === 'true'
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
   const rawDataType = req.query_parameters.dataType
-  const rawCategory = req.query_parameters.category
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")
@@ -41,7 +40,7 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
   
-  const category = req.path_parameters.category ? sluggifyString(req.path_parameters.category) : undefined;
+  const category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
 
   const response: {
     adaptorType: AdapterType,
@@ -722,7 +721,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
 
       if (summaries && summaries[recordType] && summaries[recordType].categorySummary) {
         for (const [category, categorySummary] of Object.entries(summaries[recordType].categorySummary)) {
-          const categorySlug = sluggifyString(category); // convert to slug Dexs -> dexs
+          const categorySlug = sluggifyCategoryString(category); // convert to slug Dexs -> dexs
           const categoryData = await getCategoryData({ recordType, cacheData, category: category });
           await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart`, categoryData.totalDataChart);
           await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart-protocol-breakdown`, categoryData.totalDataChartBreakdown);

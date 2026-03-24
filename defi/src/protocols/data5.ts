@@ -14667,5 +14667,22 @@ const data5: Protocol[] = [
       fees: "mineloot",
     },
   },
+  {
+    id: "7571",
+    name: "World Liberty Financial",
+    address: "0xda5e1988097297dcdc1f90d4dfe7909e847cbef6",
+    symbol: "WLFI",
+    url: "https://worldlibertyfinancial.com/",
+    description: "Earn through supply, borrow with your collateral, and grow by using borrowed liquidity to expand your strategy",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/world-liberty-financial.jpg`,
+    audits: "0",
+    gecko_id: "world-liberty-financial",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "worldlibertyfi",
+  },
 ];
 export default data5;

@@ -9114,5 +9114,12 @@
       "decimals": 6,
       "symbol": "USDT0"
     }
+  },
+  "omnipair": {
+    "omfgRBnxHsNJh6YeGbGAmWenNkenzsXyBXm3WDhmeta": {
+      "decimals": "6",
+      "symbol": "OMFG",
+      "to": "coingecko#omnipair"
+    }
   }
 }

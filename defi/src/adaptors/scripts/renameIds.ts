@@ -1,9 +1,9 @@
 // import { Op, col, fn } from "sequelize";
-import { init } from "../../../adaptors/db-utils/db2";
-import { Tables } from "../../db/tables";
-import { AdapterType, ProtocolType } from "../../../adaptors/data/types"
-import loadAdaptorsData from "../../../adaptors/data"
-import { ADAPTER_TYPES } from "../../../adaptors/data/types";
+import { init } from "../db-utils/db2";
+import { Tables } from "../../api2/db/tables";
+import { AdapterType, ProtocolType } from "../data/types"
+import loadAdaptorsData from "../data"
+import { ADAPTER_TYPES } from "../data/types";
 
 async function fetchChainIds() {
 

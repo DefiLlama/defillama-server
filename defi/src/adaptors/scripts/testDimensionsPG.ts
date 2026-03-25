@@ -1,8 +1,8 @@
 // import { Op, col, fn } from "sequelize";
-import { getAllDimensionsRecordsOnDate, init } from "../../../adaptors/db-utils/db2";
-import { AdapterType, } from "../../../adaptors/data/types"
-import loadAdaptorsData from "../../../adaptors/data"
-import { ADAPTER_TYPES } from "../../../adaptors/data/types";
+import { getAllDimensionsRecordsOnDate, init } from "../db-utils/db2";
+import { AdapterType, } from "../data/types"
+import loadAdaptorsData from "../data"
+import { ADAPTER_TYPES } from "../data/types";
 
 async function fetchChainIds() {
 

@@ -1,11 +1,11 @@
-import '../../utils/failOnError'
+import '../../api2/utils/failOnError'
 
 // Protocol datatype is deprecated, this script copies all the protocol records missing in dex & fees type to them
 
 import * as fs from 'fs'
 import path from 'path';
-import { getAllItemsAfter } from '../../../adaptors/db-utils/db2';
-import { AdapterType } from "../../../adaptors/data/types"
+import { getAllItemsAfter } from '../db-utils/db2';
+import { AdapterType } from "../data/types"
 
 
 function getRecordMap(allRecords: any[]) {

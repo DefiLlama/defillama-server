@@ -1,13 +1,13 @@
-import '../../utils/failOnError'
+import '../../api2/utils/failOnError'
 
 // Protocol datatype is deprecated, this script copies all the protocol records missing in dex & fees type to them
 
 import * as fs from 'fs'
 import path from 'path';
-import { init } from '../../../adaptors/db-utils/db2';
+import { init } from '../db-utils/db2';
 import * as sdk from '@defillama/sdk'
 const { sliceIntoChunks, } = sdk.util
-import { Tables } from '../../db/tables';
+import { Tables } from '../../api2/db/tables';
 
 const file = 'protocol-data-2025-05-21-1156.log'
 const filePath = path.join(__dirname, file)

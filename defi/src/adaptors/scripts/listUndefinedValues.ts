@@ -1,12 +1,12 @@
-import '../../utils/failOnError'
+import '../../api2/utils/failOnError'
 
-import loadAdaptorsData from "../../../adaptors/data"
-import { getDimensionsCacheV2, } from "../../utils/dimensionsUtils";
+import loadAdaptorsData from "../data"
+import { getDimensionsCacheV2, } from "../../api2/utils/dimensionsUtils";
 
-import { RUN_TYPE, } from "../../utils";
+import { RUN_TYPE, } from "../../api2/utils";
 import * as fs from 'fs'
 import * as path from 'path'
-import { ADAPTER_TYPES } from '../../../adaptors/data/types';
+import { ADAPTER_TYPES } from '../data/types';
 
 // const badWords = ['undefined', 'immutablex', 'chiliz', 'haqq', 'bitlayer', 'superposition', 'archway-1' ]
 const badWords = ['undefined', 'klatyn', 'bnb'].map((word) => `"${word}"`)

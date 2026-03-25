@@ -17,6 +17,7 @@ async function initES() {
 
 const missingLines = [] as string[]
 const dropLines = [] as string[]
+const checkResults: any = { missingData: [], spikes: [], drops: [] }
 
 async function run() {
   // record time taken to run
@@ -48,6 +49,19 @@ async function run() {
   console.log(missingLines.join('\n'))
   await sendMessage(missingLines.join('\n'), process.env.VOLUMES_WEBHOOK)
   await sendMessage(dropLines.join('\n'), process.env.DROPS_WEBHOOK)
+
+  // Store results to cache for dim-status dashboard
+  try {
+    checkResults.generationTime = new Date().toISOString()
+    checkResults.timeTaken = timeTaken
+    await sdk.cache.writeCache('dimCheckResults-latest', checkResults, {
+      skipCompression: true,
+      skipR2CacheWrite: false,
+    })
+    console.log('Stored check results to cache.')
+  } catch (e: any) {
+    console.error('Failed to store check results to cache:', e)
+  }
 
   await esClient?.close()
 
@@ -196,8 +210,40 @@ async function run() {
 
       // write to discord
 
-      // print missing last day data
+      // Collect results for dashboard cache
       const missingLastDayData = summaries.filter((summary: any) => summary.missingDaysSinceLastData > 0 && summary.isSignificant)
+      missingLastDayData.forEach((item: any) => {
+        checkResults.missingData.push({
+          name: item.name, id: item.defillamaId ?? item.id, module: item.module,
+          adapterType, category: item.category, average: item.average ?? 0,
+          missingDaysSinceLastData: item.missingDaysSinceLastData, missingCount: item.missingCount,
+          lastDayWithData: item.lastDayWithData,
+        })
+      })
+
+      const bigSpikesForCache = summaries.filter((s: any) => s.recordCount >= 7 && s.todayValue >= 5e5 && s.increaseAgainstAverage4 > 400)
+      bigSpikesForCache.forEach((item: any) => {
+        checkResults.spikes.push({
+          name: item.name, id: item.defillamaId ?? item.id, module: item.module,
+          adapterType, category: item.category,
+          todayValue: item.todayValue, yesterdayValue: item.yesterdayValue,
+          average2: item.average2, increaseAgainstAverage4: item.increaseAgainstAverage4,
+          recordCount: item.recordCount,
+        })
+      })
+
+      const bigDropsForCache = summaries.filter((s: any) => s.recordCount >= 7 && s.average2 >= 1e4 && s.increaseAgainstAverage4 < -65)
+      bigDropsForCache.forEach((item: any) => {
+        checkResults.drops.push({
+          name: item.name, id: item.defillamaId ?? item.id, module: item.module,
+          adapterType, category: item.category,
+          todayValue: item.todayValue, yesterdayValue: item.yesterdayValue,
+          average2: item.average2, increaseAgainstAverage4: item.increaseAgainstAverage4,
+          recordCount: item.recordCount,
+        })
+      })
+
+      // print missing last day data
       if (missingLastDayData.length) {
         const field = 'average'
         missingLastDayData.sort((a: any, b: any) => (b[field] ?? 0) - (a[field] ?? 0))

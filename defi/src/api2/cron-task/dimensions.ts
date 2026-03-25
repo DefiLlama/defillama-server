@@ -1,7 +1,7 @@
 import '../utils/failOnError';
 require("dotenv").config();
 
-import { IJSON, AdapterType, ProtocolType, } from "../../adaptors/data/types"
+import { IJSON, AdapterType, ProtocolType, PROTOCOL_SUMMARY, } from "../../adaptors/data/types"
 import loadAdaptorsData from "../../adaptors/data"
 import { getAllItemsUpdatedAfter } from "../../adaptors/db-utils/db2";
 import { getChainKeyFromLabel, getChainLabelFromKey } from '../../utils/normalizeChain';
@@ -67,7 +67,7 @@ async function run() {
 
   // generate summaries for all types
   ADAPTER_TYPES.map(generateSummaries)
-
+  
   if (NOTIFY_ON_DISCORD && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     if (spikeRecords.length) {
       await sendMessage(`
@@ -298,6 +298,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       protocol.info.slug = protocol.info.name?.toLowerCase().replace(/ /g, '-')
       protocol.info.protocolType = info.protocolType ?? ProtocolType.PROTOCOL
       protocol.info.chains = []
+      const _pCategories = getProtocolCategories(protocol);
 
       const protocolChainKeySet = new Set()
 
@@ -420,6 +421,35 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
             chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
             if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
             chainSummary.chartBreakdown[timeS][protocolName] = value
+            
+            // add to categorySummary, only child protocols and not chains
+            if (!isParentProtocol && protocol.info.protocolType !== ProtocolType.CHAIN) {
+              for (const category of _pCategories) {
+                // initi category summary item include chainSummary breakdown
+                summary.categorySummary = summary.categorySummary || {};
+                summary.categorySummary[category] = summary.categorySummary[category] || initSummaryItem(false);
+  
+                // add to categorySummary
+                const categorySummary = summary.categorySummary[category]
+                if (!categorySummary.earliestTimestamp || timestamp < categorySummary.earliestTimestamp) categorySummary.earliestTimestamp = timestamp
+                // categorySummary total chart
+                categorySummary.chart[timeS] = (categorySummary.chart[timeS] ?? 0) + value;
+                // categorySummary protocol breakdown chart
+                categorySummary.chartBreakdown[timeS] = categorySummary.chartBreakdown[timeS] || {};
+                categorySummary.chartBreakdown[timeS][protocolName] = (categorySummary.chartBreakdown[timeS][protocolName] ?? 0) + value;
+                
+                // add to categorySummary.chainSummary
+                summary.categorySummary[category].chainSummary = summary.categorySummary[category].chainSummary || {};
+                summary.categorySummary[category].chainSummary[chain] = summary.categorySummary[category].chainSummary[chain] || initSummaryItem(true);
+                const categoryChainSummary = summary.categorySummary[category].chainSummary[chain]
+                if (!categoryChainSummary.earliestTimestamp || timestamp < categoryChainSummary.earliestTimestamp) categoryChainSummary.earliestTimestamp = timestamp
+                // categorySummary.chainSummary total chart
+                categoryChainSummary.chart[timeS] = (categoryChainSummary.chart[timeS] ?? 0) + value;
+                // categorySummary.chainSummary breakdown by protocol chart
+                categoryChainSummary.chartBreakdown[timeS] = categoryChainSummary.chartBreakdown[timeS] || {};
+                categoryChainSummary.chartBreakdown[timeS][protocolName] = (categoryChainSummary.chartBreakdown[timeS][protocolName] ?? 0) + value;
+              }
+            }
           })
         }
       }
@@ -448,16 +478,17 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         if (recordType === AdaptorRecordType.dailyAppRevenue) recordLabel = AdaptorRecordType.dailyRevenue
 
         const debugParams = { protocolId, }
-        addToSummary({ record: todayRecord?.aggObject[recordLabel], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, protocolLatestRecord: protocolLatestRecord?.aggObject[recordLabel], debugParams, })
-        addToSummary({ record: yesterdayRecord?.aggObject[recordLabel], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ record: _protocolData.sevenDaysAgo?.aggObject[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ record: _protocolData.thirtyDaysAgo?.aggObject[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary, debugParams, })
+        const categoriesParam = (!isParentProtocol && protocol.info.protocolType !== ProtocolType.CHAIN) ? _pCategories : undefined
+        addToSummary({ record: todayRecord?.aggObject[recordLabel], summaryKey: 'total24h', recordType, protocolSummary, skipChainSummary, protocolLatestRecord: protocolLatestRecord?.aggObject[recordLabel], categories: categoriesParam, debugParams, })
+        addToSummary({ record: yesterdayRecord?.aggObject[recordLabel], summaryKey: 'total48hto24h', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ record: _protocolData.sevenDaysAgo?.aggObject[recordType], summaryKey: 'total7DaysAgo', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ record: _protocolData.thirtyDaysAgo?.aggObject[recordType], summaryKey: 'total30DaysAgo', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ records: _protocolData.lastWeekData, summaryKey: 'total7d', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
         // addToSummary({ records: _protocolData.lastTwoWeekData, summaryKey: 'total14d', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ records: _protocolData.lastTwoWeekToOneWeekData, summaryKey: 'total14dto7d', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary, debugParams, })
-        addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary, debugParams, })
+        addToSummary({ records: _protocolData.lastTwoWeekToOneWeekData, summaryKey: 'total14dto7d', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ records: _protocolData.last30DaysData, summaryKey: 'total30d', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ records: _protocolData.last60to30DaysData, summaryKey: 'total60dto30d', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
+        addToSummary({ records: _protocolData.lastOneYearData, summaryKey: 'total1y', recordType, protocolSummary, skipChainSummary, categories: categoriesParam, debugParams, })
 
         // add record count
         const allKeys = Object.keys(protocol.records)
@@ -609,11 +640,13 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       }
     }
 
-    function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, protocolLatestRecord, debugParams, }: { records?: any[], recordType: AdaptorRecordType, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, protocolLatestRecord?: any, debugParams?: any }) {
+    function addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, protocolSummary, skipChainSummary = false, protocolLatestRecord, categories, debugParams, }: { records?: any[], recordType: AdaptorRecordType, summaryKey: string, chainSummaryKey?: string, record?: any, protocolSummary: any, skipChainSummary?: boolean, protocolLatestRecord?: any, categories?: Array<string>, debugParams?: any }) {
       // protocolLatestRecord ?? record is a hack to show latest data as protocol's 24h data but not use that record for computing chain/global summary
       if (protocolSummary) _addToSummary({ record: protocolLatestRecord ?? record, records, recordType, summaryKey, chainSummaryKey, summary: protocolSummary, debugParams, })
       // we need to skip updating summary because underlying child data is already used to update the summary
       if (!skipChainSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, debugParams })
+      // add to category summary
+      if (categories && categories.length > 0) _addToCategorySummary({ record: protocolLatestRecord ?? record, categories, recordType, summaryKey })
     }
     function _addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, summary, debugParams }: { records?: any[], recordType: AdaptorRecordType, summaryKey: string, chainSummaryKey?: string, record?: any, summary?: any, debugParams?: any }) {
       if (!chainSummaryKey) chainSummaryKey = summaryKey
@@ -641,6 +674,30 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         })
       })
     }
+    
+    function _addToCategorySummary({ categories, record, records, recordType, summaryKey }: { categories: Array<string>, record?: any, records?: Array<any>, recordType: AdaptorRecordType, summaryKey: string }) {
+      records = records ? records : [];
+      if (record) records.push(record);
+      
+      summaries[recordType] = summaries[recordType] || initSummaryItem()
+      records.forEach(({ value, chains }: { value: number, chains: IJSON<number> }) => {
+        if (typeof value !== 'number') return;
+        
+        for (const category of categories) {
+          summaries[recordType].categorySummary = summaries[recordType].categorySummary || {}
+          summaries[recordType].categorySummary[category] = summaries[recordType].categorySummary[category] || initSummaryItem();
+          
+          const categorySummary = summaries[recordType].categorySummary[category] as any;
+          categorySummary[summaryKey] = (categorySummary[summaryKey] ?? 0) + value; // add total value to category
+          
+          Object.entries(chains).forEach(([chain, chainValue]: any) => {
+            categorySummary.chainSummary = categorySummary.chainSummary || {};
+            categorySummary.chainSummary[chain] = categorySummary.chainSummary[chain] || initSummaryItem(true);
+            categorySummary.chainSummary[chain][summaryKey] = (categorySummary.chainSummary[chain][summaryKey] ?? 0) + chainValue;
+          })
+        }
+      })
+    }
 
     function protocolSummaryAction(summary: ProtocolSummary, fn: any) {
       fn(summary)
@@ -649,6 +706,14 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       })
     }
 
+    function getProtocolCategories(protocol: any): Array<string> {
+      if (!protocol.info) return [];
+      // we treat tags same as category and use labels (not slugs) for keys, only use slugs on storage and query
+      // ex: we use 'Dexs' when cumputing data, and use 'dexs' as storage and query on api later
+      let _pCategories = protocol.info.category ? [protocol.info.category] : [];
+      if (protocol.info.tags) _pCategories = _pCategories.concat(protocol.info.tags);
+      return _pCategories;
+    }
   }
 }
 
@@ -726,10 +791,13 @@ function initSummaryItem(isChain = false) {
     total24h: null,
     total48hto24h: null,
     chainSummary: {},
+    categorySummary: {},
     recordCount: 0,
   }
-  if (isChain)
-    delete response.chainSummary
+  if (isChain) {
+    delete response.chainSummary;
+    delete response.categorySummary;
+  }
   return response
 }
 

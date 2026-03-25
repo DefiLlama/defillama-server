@@ -1,10 +1,9 @@
 
 import { AdapterType, IJSON } from "../../adaptors/data/types"
 import * as HyperExpress from "hyper-express";
-import { CATEGORIES } from "../../adaptors/data/helpers/categories";
 import { ADAPTER_TYPES, AdaptorRecordType, AdaptorRecordTypeMap, DEFAULT_CHART_BY_ADAPTOR_TYPE, DIMENSIONS_ADAPTER_CACHE, getAdapterRecordTypes, PROTOCOL_SUMMARY } from "../../adaptors/data/types";
 import { getChainKeyFromLabel, getChainLabelFromKey, } from "../../utils/normalizeChain";
-import { sluggifyString } from "../../utils/sluggify";
+import { sluggifyString, sluggifyCategoryString } from "../../utils/sluggify";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getTimeSDaysAgo, timeSToUnix, } from "../utils/time";
 import { errorResponse, fileResponse, successResponse, validateProRequest } from "./utils";
@@ -12,7 +11,8 @@ import { errorResponse, fileResponse, successResponse, validateProRequest } from
 function formatChartData(data: any = {}) {
   const result = [];
   for (const key in data) {
-    result.push([timeSToUnix(key), data[key]]);
+    // support key is both timeS and unix timestamp
+    result.push([(typeof key === 'string' && key.includes('-')) ? timeSToUnix(key) : Number(key), data[key]]);
   }
   return result.sort(([a]: any, [b]: any) => a - b);
 }
@@ -33,21 +33,20 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const includeLabelBreakdown = isProRoute && req.query_parameters.includeLabelBreakdown?.toLowerCase() === 'true'
   const excludeTotalDataChartBreakdown = req.query_parameters.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
   const rawDataType = req.query_parameters.dataType
-  const rawCategory = req.query_parameters.category
-  const category = (rawCategory === 'dexs' ? 'dexs' : rawCategory) as CATEGORIES
   const fullChart = req.query_parameters.fullChart?.toLowerCase() === 'true'
   const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
   if (!adaptorType) throw new Error("Missing parameter")
-  if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
 
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
+  
+  const category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
 
   const response: {
     adaptorType: AdapterType,
     excludeTotalDataChart: boolean,
     excludeTotalDataChartBreakdown: boolean,
-    category?: CATEGORIES,
+    category?: string,
     protocolName?: string,  // applicable only for protocol routes
     chainKeyFilter?: string,   // applicable only for summary routes
     fullChart: boolean,
@@ -94,7 +93,7 @@ async function getOverviewProcess({
 
   response.totalDataChart = formatChartData(summary.chart)
   response.totalDataChartBreakdown = formatChartData(summary.chartBreakdown)
-  fixChartLastRecord()
+  fixChartLastRecord(response)
 
   response.breakdown24h = null
   response.breakdown30d = null
@@ -150,33 +149,111 @@ async function getOverviewProcess({
   if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
 
   return response
+}
 
-  // some protocols dont support pulling current day data (can only pull daily data after the day is complete instead of past 24 hours)
-  // so we fix the last record to be the same as previous day if the last record is for today
-  function fixChartLastRecord() {
-    // nothing to fix if there are less than 2 records
-    if (!(response?.totalDataChart?.length > 1)) return;
-    if (!(response?.totalDataChartBreakdown?.length > 1)) return;
+// chain is key: ethereum, bsc
+async function getCategoryData({ recordType, cacheData, category, chain }: { recordType: AdaptorRecordType, cacheData: any, category: string, chain?: string }) {
+  const { summaries, protocolSummaries = {} } = cacheData
 
-    const lastChartRecord = response.totalDataChart[response.totalDataChart.length - 1]
-    const lastChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 1]
-    const yesterdayChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 2]
+  const chainDisplayName = chain ? getChainLabelFromKey(chain) : null
+  let summary = summaries[recordType]?.categorySummary[category]
+  if (chain) summary = summaries[recordType]?.categorySummary[category].chainSummary[chain]
+  const response: any = {}
+  if (!summary) summary = {}
 
-    // nothing to fix if the last record is not for today
-    if (lastChartRecord[0] !== unixStartOfTodayTimestamp || lastChartBreakdownRecord[0] !== unixStartOfTodayTimestamp) return;
+  response.category = category;
+  if (chain) response.chain = chainDisplayName;
+  response.totalDataChart = formatChartData(summary.chart)
+  response.totalDataChartBreakdown = formatChartData(summary.chartBreakdown)
+  fixChartLastRecord(response)
 
-    const todayBreakdown = lastChartBreakdownRecord[1]
-    const yesterdayBreakdown = yesterdayChartBreakdownRecord[1]
-    let todayTotalValue = lastChartRecord[1]
+  response.allCategories = Object.keys(summaries[recordType]?.categorySummary);
+  response.allChains = Object.keys(summaries[recordType]?.categorySummary[category].chainSummary).map(i => getChainLabelFromKey(i));
 
-    Object.entries(yesterdayBreakdown).forEach(([key, value]: any) => {
-      if (todayBreakdown.hasOwnProperty(key)) return;
-      todayBreakdown[key] = value // add missing key from yesterday
-      todayTotalValue += value
-    })
+  // These fields are for the category level data
+  const responseKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'average1y', 'monthlyAverage1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'total7DaysAgo', 'total30DaysAgo', 'totalAllTime']
 
-    lastChartRecord[1] = todayTotalValue
+  responseKeys.forEach(key => {
+    response[key] = summary[key]
+  })
+  let protocolTotalAllTimeSum = 0
+
+  response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
+  response.change_7d = getPercentage(summary.total24h, summary.total7DaysAgo)
+  response.change_1m = getPercentage(summary.total24h, summary.total30DaysAgo)
+  response.change_7dover7d = getPercentage(summary.total7d, summary.total14dto7d)
+  response.change_30dover30d = getPercentage(summary.total30d, summary.total60dto30d)
+
+  // These fields are for the protocol level data
+  const protocolInfoKeys = ['defillamaId', 'name', 'displayName', 'module', 'category', 'logo', 'chains', 'protocolType', 'methodologyURL', 'methodology', 'childProtocols', 'parentProtocol', 'slug', 'linkedProtocols', 'doublecounted', 'breakdownMethodology', 'hasLabelBreakdown',]
+  const protocolDataKeys = ['total24h', 'total48hto24h', 'total7d', 'total14dto7d', 'total60dto30d', 'total30d', 'total1y', 'totalAllTime', 'average1y', 'monthlyAverage1y', 'change_1d', 'change_7d', 'change_1m', 'change_7dover7d', 'change_30dover30d', 'breakdown24h', 'breakdown30d', 'total14dto7d', 'total7DaysAgo', 'total30DaysAgo']
+
+  response.protocols = Object.entries(protocolSummaries).map(([_id, { summaries, info }]: any) => {
+    const res: any = {}
+    const categories = getProtocolCategories(info)
+    if (!categories.includes(category)) return null
+
+    let summary = summaries?.[recordType]
+    if (chain) {
+      if (!info?.chains.includes(chainDisplayName)) return null
+      summary = summary?.chainSummary[chain]
+    }
+
+    if (summary)
+      protocolDataKeys.forEach(key => res[key] = summary[key])
+
+    // sometimes a protocol is diabled or id is changed, we should disregard these data 
+    if (!summary && !info) {
+      // console.log('no data found', _id, info)
+      return null
+    }
+
+    if (!summary?.recordCount) return null; // if there are no data points, we should filter out the protocol
+    if (summary?.totalAllTime) protocolTotalAllTimeSum += summary.totalAllTime
+
+    protocolInfoKeys.filter(key => info?.[key]).forEach(key => res[key] = info?.[key])
+    res.id = res.defillamaId ?? res.id
+    return res
+  }).filter((i: any) => i)
+  if (!response.totalAllTime) response.totalAllTime = protocolTotalAllTimeSum
+
+  return response
+  
+  function getProtocolCategories(info: any): Array<string> {
+    if (!info) return [];
+    // we treat tags same as category and use labels (not slugs) for keys, only use slugs on storage and query
+    // ex: we use 'Dexs' when cumputing data, and use 'dexs' as storage and query on api later
+    let _pCategories = info.category ? [info.category] : [];
+    if (info.tags) _pCategories = _pCategories.concat(info.tags);
+    return _pCategories;
   }
+}
+
+// some protocols dont support pulling current day data (can only pull daily data after the day is complete instead of past 24 hours)
+// so we fix the last record to be the same as previous day if the last record is for today
+function fixChartLastRecord(response: any) {
+  // nothing to fix if there are less than 2 records
+  if (!(response?.totalDataChart?.length > 1)) return;
+  if (!(response?.totalDataChartBreakdown?.length > 1)) return;
+
+  const lastChartRecord = response.totalDataChart[response.totalDataChart.length - 1]
+  const lastChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 1]
+  const yesterdayChartBreakdownRecord = response.totalDataChartBreakdown[response.totalDataChartBreakdown.length - 2]
+
+  // nothing to fix if the last record is not for today
+  if (lastChartRecord[0] !== unixStartOfTodayTimestamp || lastChartBreakdownRecord[0] !== unixStartOfTodayTimestamp) return;
+
+  const todayBreakdown = lastChartBreakdownRecord[1]
+  const yesterdayBreakdown = yesterdayChartBreakdownRecord[1]
+  let todayTotalValue = lastChartRecord[1]
+
+  Object.entries(yesterdayBreakdown).forEach(([key, value]: any) => {
+    if (todayBreakdown.hasOwnProperty(key)) return;
+    todayBreakdown[key] = value // add missing key from yesterday
+    todayTotalValue += value
+  })
+
+  lastChartRecord[1] = todayTotalValue
 }
 
 async function getProtocolDataHandler({
@@ -381,6 +458,46 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
   }
 }
 
+export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown' | 'chart-chain-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, category } = getEventParameters(req, true)
+
+    if (!category) return errorResponse(res, 'Category not supported', { statusCode: 400 })
+    
+    let routeFileExt = '';
+    if (route === 'overview') routeFileExt = '';
+    else routeFileExt += route;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}${routeFileExt}`;
+    const routeFile = `dimensions/${routeSubPath}`; 
+    
+    const data = await readRouteData(routeFile);
+
+    if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+
+    return successResponse(res, data);
+  }
+}
+
+export function getDimensionCategoryChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
+  return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
+    const { adaptorType, dataType, category, chainKeyFilter } = getEventParameters(req, true)
+
+    if (!category) return errorResponse(res, 'Category not supported', { statusCode: 400 })
+    
+    let routeFileExt = '';
+    if (route === 'overview') routeFileExt = '';
+    else routeFileExt += route;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}${routeFileExt}`;
+    const routeFile = `dimensions/${routeSubPath}`; 
+    
+    const data = await readRouteData(routeFile);
+
+    if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+
+    return successResponse(res, data);
+  }
+}
+
 export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-version-breakdown' | 'chart-label-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
     const protocolName = req.path_parameters.name?.toLowerCase()
@@ -391,9 +508,7 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
       return getProtocolFinancials(req, res)
 
     const { dataType } = getEventParameters(req, false)
-    let protocolFileExt = route === 'overview' ? '-lite' : '-all'
-
-    if (route === 'chart-label-breakdown') protocolFileExt = '-bl' // include label breakdown data
+    const protocolFileExt = route === 'overview' ? 'lite' : route;
 
     const routeSubPath = `${adaptorType}/${dataType}-protocol/${protocolSlug}${protocolFileExt}`
     const routeFile = `dimensions/${routeSubPath}`
@@ -403,52 +518,7 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
     if (!data)
       return errorResponse(res, errorMessage)
 
-    if (route === 'chart-chain-breakdown' || route === 'chart-version-breakdown') {
-      const chartData: Array<any> = [];
-
-      if (route === 'chart-chain-breakdown') {
-        // sum value from all version on every chain
-        for (const item of data.totalDataChartBreakdown) {
-          const chainItem: any = {}
-          for (const [chain, versions] of Object.entries(item[1])) {
-            chainItem[chain] = chainItem[chain] || 0
-            for (const value of Object.values(versions as any)) {
-              chainItem[chain] += value;
-            }
-          }
-          chartData.push([item[0], chainItem])
-        }
-      } else if (route === 'chart-version-breakdown') {
-        // sum value from all chain on every version
-        for (const item of data.totalDataChartBreakdown) {
-          const versionItem: any = {}
-          for (const versions of Object.values(item[1])) {
-            for (const [version, value] of Object.entries(versions as any)) {
-              versionItem[version] = versionItem[version] || 0;
-              versionItem[version] += value;
-            }
-          }
-          chartData.push([item[0], versionItem])
-        }
-      }
-
-      return successResponse(res, chartData)
-    } else if (route === 'chart-label-breakdown') {
-      if (data.hasLabelBreakdown) {
-        return successResponse(res, data.labelBreakdownChart);
-      } else {
-        return errorResponse(res, `Protocol ${protocolName} doesn't have ${dataType} breakdown labels data`);
-      }
-    } else {
-      data.totalDataChartBreakdown = undefined;
-
-      if (route === 'overview') {
-        data.totalDataChart = undefined;
-        return successResponse(res, data)
-      } else {
-        return successResponse(res, data.totalDataChart)
-      }
-    }
+    return successResponse(res, data)
   }
 }
 
@@ -584,7 +654,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
   const dimChainsAggData: any = {}
   for (const adapterType of ADAPTER_TYPES) {
     const cacheData = cache[adapterType]
-    const { protocolSummaries, parentProtocolSummaries, } = cacheData
+    const { protocolSummaries, parentProtocolSummaries, summaries } = cacheData
 
     const timeKey = `dimensions-gen-files ${adapterType}`
     console.time(timeKey)
@@ -647,6 +717,42 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
 
       // sort by date
       await storeRouteData(`dimensions/${adapterType}/${recordType}/chain-total-data-chart`, Object.entries(totalDataChartByChain).map(([date, value]) => ([+date, value])).sort(([a]: any, [b]: any) => a - b))
+      
+      //
+      // store per category data
+      //
+
+      if (summaries && summaries[recordType] && summaries[recordType].categorySummary) {
+        for (const [category, categorySummary] of Object.entries(summaries[recordType].categorySummary)) {
+          const categorySlug = sluggifyCategoryString(category); // convert to slug Dexs -> dexs
+          const categoryData = await getCategoryData({ recordType, cacheData, category: category });
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart`, categoryData.totalDataChart);
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart-protocol-breakdown`, categoryData.totalDataChartBreakdown);
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}`, { ...categoryData, totalDataChart: undefined, totalDataChartBreakdown: undefined });
+          
+          // store category data per chain
+          const chartPerChainItems: Record<string, any> = {};
+          for (const chain of Object.keys(categorySummary.chainSummary ?? {})) {
+            const chainLabel = getChainLabelFromKey(chain);
+            const categoryChainData = await getCategoryData({ recordType, cacheData, category: category, chain });
+            await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chain/${chain}-chart`, categoryChainData.totalDataChart);
+            await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chain/${chain}-chart-protocol-breakdown`, categoryChainData.totalDataChartBreakdown);
+            await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chain/${chain}`, { ...categoryChainData, totalDataChart: undefined, totalDataChartBreakdown: undefined });
+            
+            for (const [timestamp, value] of categoryChainData.totalDataChart) {
+              chartPerChainItems[timestamp] = chartPerChainItems[timestamp] || {};
+              chartPerChainItems[timestamp][chainLabel] = (chartPerChainItems[timestamp][chainLabel] ?? 0) + value;
+            }
+          }
+          
+          // store category chart breakdown per chain
+          await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart-chain-breakdown`, formatChartData(chartPerChainItems));
+        }
+      }
+
+      //
+      // store protocols data
+      //
 
       for (let [id, protocol] of Object.entries(allProtocols) as any) {
         if (!protocol.info) {
@@ -666,6 +772,9 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
           continue;
         }
 
+        // store v2 data for protocols
+        for (const fileLabel of fileLabels)
+          await storeProtocolRouteV2Data(adapterType, recordType, fileLabel, data);
 
         for (const fileLabel of fileLabels)
           await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-bl`, data)
@@ -694,4 +803,37 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
     if (Array.isArray(data.previousNames)) names.push(...data.previousNames)
     return [...new Set(names.map(sluggifyString))]
   }
+}
+
+async function storeProtocolRouteV2Data(adapterType: AdapterType, recordType: string, fileLabel: string, data: any) {
+  if (data.totalDataChartBreakdown) {
+    const chartChainBreakdown: Array<any> = []; // for chart-chain-breakdown
+    const chartVersionBreakdown: Array<any> = []; // for chart-version-breakdown
+    for (const [timestamp, itemChains] of data.totalDataChartBreakdown) {
+      if (!itemChains) continue;
+      const chainItem: any = {}
+      const versionItem: any = {}
+      for (const [chain, versions] of Object.entries(itemChains)) {
+        chainItem[chain] = chainItem[chain] || 0
+        for (const [version, value] of Object.entries(versions as any)) {
+          chainItem[chain] += value;
+          
+          versionItem[version] = versionItem[version] || 0;
+          versionItem[version] += value;
+        }
+      }
+      chartChainBreakdown.push([Number(timestamp), chainItem])
+      chartVersionBreakdown.push([Number(timestamp), versionItem])
+    }
+    await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-chart-chain-breakdown`, chartChainBreakdown);
+    await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-chart-version-breakdown`, chartVersionBreakdown);
+  }
+  
+  // for chart-label-breakdown
+  if (data.hasLabelBreakdown) {
+    await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-chart-label-breakdown`, data.labelBreakdownChart);
+  }
+  
+  // for total chart
+  await storeRouteData(`dimensions/${adapterType}/${recordType}-protocol/${fileLabel}-chart`, data.totalDataChart);
 }

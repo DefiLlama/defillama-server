@@ -14700,6 +14700,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "forest-v1/index.js",
     twitter: "ProtocolForest",
+    parentProtocol: "parent#forest-protocol",
     listedAt: 1774391177,
   },
   {
@@ -14718,6 +14719,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "forest-v2/index.js",
     twitter: "ProtocolForest",
+    parentProtocol: "parent#forest-protocol",
     listedAt: 1774391184,
   },
   {
@@ -14736,6 +14738,7 @@ const data5: Protocol[] = [
     chains: ["Base"],
     module: "virtus-protocol/index.js",
     twitter: "VirtusCEO",
+    parentProtocol: "parent#virtus-protocol",
     listedAt: 1774391771,
   },
   {
@@ -14754,6 +14757,7 @@ const data5: Protocol[] = [
     chains: ["Base"],
     module: "virtus-protocol-cl/index.js",
     twitter: "VirtusCEO",
+    parentProtocol: "parent#virtus-protocol",
     listedAt: 1774391777,
   },
 ];

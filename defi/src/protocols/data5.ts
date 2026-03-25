@@ -14786,5 +14786,67 @@ const data5: Protocol[] = [
     twitter: "bitvavocom",
     listedAt: 1774432030
   },
+  {
+    id: "7577",
+    name: "Global Balanced Liquidity Index",
+    address: null,
+    symbol: "-",
+    url: "", // avoiding using gblin.vercel.app, add url when it's deployed
+    description:
+      `GBLIN is an autonomous central bank and wealth preservation protocol on Base. It functions as a mathematically backed index, where every token is collateralized by a dynamic basket of WETH, cbBTC, and USDC. It features an algorithmic "Crash Shield" to rebalance assets during market volatility.`,
+    chain: "Base",
+    logo: `${baseIconsUrl}/global-balanced-liquidity-index.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Base"],
+    module: "gblin/index.js",
+    twitter: "GBLIN_Protocol",
+    github: ["gblinproject"],
+    listedAt: 1774461979
+  },
+  {
+    id: "7578",
+    name: "Edel",
+    address: "0xbf59dbc154421a7b37f4f2841e11f4ed2a1dee7c",
+    symbol: "EDEL",
+    url: "https://www.edel.finance/", 
+    description:
+      `Edel is the global platform for tokenized stocks. The next-generation infrastructure for tokenized securities: transparent, efficient, and built for scale.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/edel.jpg`,
+    audits: "0",
+    gecko_id: "edel",
+    cmcId: "38966",
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "edel/index.js",
+    twitter: "edeldotfinance",
+    github: ["Edel-Finance"],
+    forkedFromIds: ["1599"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://docs.edel.finance/concepts/oracles"] } ],
+    listedAt: 1774462905
+  },
+  {
+    id: "7579",
+    name: "TruVault",
+    address: null,
+    symbol: "-",
+    url: "https://app.truyields.com", 
+    description:
+      `TruVault is a yield-bearing vault on Solana that allows users to earn yield on their assets.`,
+    chain: "Solana",
+    logo: `${baseIconsUrl}/truvault.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana"],
+    module: "trufin-vaults/index.js",
+    twitter: "TruYields",
+    parentProtocol: "parent#trufin-protocol",
+    listedAt: 1774463137
+  },
 ];
 export default data5;

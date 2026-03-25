@@ -9288,6 +9288,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VirtusCEO",
   },
+  {
+    id: "parent#trends",
+    name: "Trends",
+    url: "https://trends.fun/home",
+    description: "Hunt attention. Generate money. Build communities. Create games.",
+    logo: `${baseIconsUrl}/trends.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "trendsdotfun",
+  },
 ];
 
 export default parentProtocols;

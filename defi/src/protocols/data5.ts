@@ -4397,14 +4397,14 @@ const data5: Protocol[] = [
   },
   {
     id: "7082",
-    name: "Trends fun",
+    name: "Trends Legacy",
     address: null,
     symbol: "-",
     url: "https://trends.fun/home",
     description:
       "Trends.fun brings your local trends and cultures to a global stage and allows you to trade on them",
     chain: "Solana",
-    logo: `${baseIconsUrl}/trends-fun.jpg`,
+    logo: `${baseIconsUrl}/trends-legacy.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -4412,6 +4412,7 @@ const data5: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "trendsdotfun",
+    parentProtocol: "parent#trends",
     dimensions: {
       fees: "trends",
     },
@@ -14847,6 +14848,48 @@ const data5: Protocol[] = [
     twitter: "TruYields",
     parentProtocol: "parent#trufin-protocol",
     listedAt: 1774463137
+  },
+  {
+    id: "7580",
+    name: "USE",
+    address: null,
+    symbol: "-",
+    url: "https://cruxfinance.io/use-analytics", 
+    description:
+      `USE is a 3rd generation, scalable algorithmic stablecoin based on an algorithmic central bank design. The algorithmic central bank is deployed on the Ergo blockchain.`,
+    chain: "Ergo",
+    logo: `${baseIconsUrl}/use.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Ergo"],
+    module: "use/index.js",
+    twitter: "StableUSE",
+    listedAt: 1774463553
+  },
+  {
+    id: "7581",
+    name: "Trends Curve",
+    address: null,
+    symbol: "-",
+    url: "https://trends.fun/home",
+    description:
+      "Trends.fun brings your local trends and cultures to a global stage and allows you to trade on them",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/trends-curve.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "trendsdotfun",
+    parentProtocol: "parent#trends",
+    dimensions: {
+      fees: "trends-curve",
+    },
+    listedAt: 1774463882,
   },
 ];
 export default data5;

@@ -27934,7 +27934,11 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "symmio",
       'open-interest': "symmio",
-    }
+      fees: "symmio"
+    },
+    hallmarks: [
+      ["2025-11-18", "Privex Agents Arena Launch on COTI"],
+    ],
   },
   {
     id: "6784",

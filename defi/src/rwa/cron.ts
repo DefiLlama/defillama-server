@@ -19,7 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData } from './utils';
+import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData, normalizeRwaMetadataForApiInPlace } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
@@ -1121,6 +1121,26 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       .sort((a, b) => a.timestamp - b.timestamp);
   }
 
+  // Detect slug collisions: if two raw keys produce the same slug, the second
+  // storeRouteData call silently overwrites the first, losing data. Metadata
+  // normalization should prevent this, but log a warning as a safety net.
+  function warnSlugCollisions(label: string, rawKeys: string[], toSlug: (k: string) => string) {
+    const seen: { [slug: string]: string } = {};
+    for (const raw of rawKeys) {
+      const slug = toSlug(raw);
+      if (seen[slug] && seen[slug] !== raw) {
+        console.error(`[WARN] Slug collision in ${label}: "${seen[slug]}" and "${raw}" both map to "${slug}". Data will be overwritten.`);
+      }
+      seen[slug] = raw;
+    }
+  }
+
+  const chainSlug = (k: string) => rwaSlug(getChainLabelFromKey(k));
+  warnSlugCollisions('byChain', Object.keys(byChain), chainSlug);
+  warnSlugCollisions('byCategory', Object.keys(byCategory), rwaSlug);
+  warnSlugCollisions('byPlatform', Object.keys(byPlatform), rwaSlug);
+  warnSlugCollisions('byAssetGroup', Object.keys(byAssetGroup), rwaSlug);
+
   // Store chain charts (includes "All" and individual chains)
   for (const [chain, timestampMap] of Object.entries(byChain)) {
     const chainLabel = getChainLabelFromKey(chain);
@@ -1161,7 +1181,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     });
   }
   
-  // Store chain charts - category breakdown by asset types
+  // Store category charts - category breakdown by asset types
   const rawCategoryBreakdownAndAssetTypes = toTimeseriesBreakdownChart(categoryBreakdownAndAssetTypes);
   for (const [rawKey, rawData] of Object.entries(rawCategoryBreakdownAndAssetTypes)) {
     await storeRouteData(`charts/category-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
@@ -1183,7 +1203,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     });
   }
   
-  // Store chain charts - platform breakdown by asset types
+  // Store platform charts - platform breakdown by asset types
   const rawPlatformBreakdownAndAssetTypes = toTimeseriesBreakdownChart(platformBreakdownAndAssetTypes);
   for (const [rawKey, rawData] of Object.entries(rawPlatformBreakdownAndAssetTypes)) {
     await storeRouteData(`charts/platform-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
@@ -1251,8 +1271,13 @@ async function main() {
     console.log('Initializing database connection...');
     await initPG();
 
-    // Get metadata for ID map and historical generation
+    // Get metadata for ID map and historical generation.
+    // Normalize in-place so category names, chains, etc. have consistent whitespace.
+    // Raw DB metadata can contain newlines/extra spaces (e.g. "Stablecoins\n  backed by RWAs")
+    // which would create separate aggregation keys that slugify identically, causing
+    // one set of chart data to silently overwrite the other when saved to disk.
     const metadata = await fetchMetadataPG();
+    metadata.forEach((m: any) => { if (m.data) normalizeRwaMetadataForApiInPlace(m.data); });
     console.log(`Fetched metadata for ${metadata.length} RWA assets`);
 
     // Generate current data

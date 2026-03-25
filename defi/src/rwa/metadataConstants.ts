@@ -39,6 +39,7 @@ export const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
   "issuer",
   "isin",
   "assetGroup",
+  "parentPlatform",
 ]);
 
 export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([

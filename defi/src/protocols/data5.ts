@@ -14663,7 +14663,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "mineloot/index.js",
     twitter: "mineloot_",
     listedAt: 1774371308,
     dimensions: {
@@ -14705,6 +14705,10 @@ const data5: Protocol[] = [
     twitter: "ProtocolForest",
     parentProtocol: "parent#forest-protocol",
     listedAt: 1774391177,
+    dimensions: {
+      fees: "forest-v1",
+      dexs: "forest-v1",
+    },
   },
   {
     id: "7573",

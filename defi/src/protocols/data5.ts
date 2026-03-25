@@ -5972,7 +5972,10 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "alphasec-spot",
       dexs: {
-        genuineSpikes: [["2026-03-14", "High volume in the KAIA/USDT pair"]],
+        genuineSpikes: [
+          ["2026-03-14", "High volume in the KAIA/USDT pair due to high MM activity after temporary pause due to technical glitch"],
+          ["2026-03-22", "High volume in the KAIA/USDT pair due to high MM activity after temporary pause due to technical glitch"],
+        ],
         adapter: "alphasec-spot"
       }
     },

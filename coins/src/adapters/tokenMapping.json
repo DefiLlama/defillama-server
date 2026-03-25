@@ -14354,5 +14354,12 @@
       "decimals": 18,
       "symbol": "CC"
     }
+  },
+  "edgex": {
+    "0x98d2919b9a214e6fa5384ac81e6864ba686ad74c": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
   }
 }

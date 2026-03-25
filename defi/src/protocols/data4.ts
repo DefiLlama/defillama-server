@@ -19625,10 +19625,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DAO Service Provider",
     chains: ["Ethereum", "Arbitrum", "Base", "xDai", "Polygon", "Unichain", "World Chain"],
-    module: "createDAO/index.js",
+    module: "dummy.js",
     twitter: "createdao",
     github: ["createdao"],
     listedAt: 1752077819,
+    treasury: "createDAO.js",
   },
   {
     id: "6411",

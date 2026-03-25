@@ -12858,7 +12858,7 @@ const data5: Protocol[] = [
     twitter: "PythNetwork",
     parentProtocol: "parent#pyth",
     dimensions: {
-      fees: "pyth-core",
+      fees: "pyth-network",
     },
   },
   {

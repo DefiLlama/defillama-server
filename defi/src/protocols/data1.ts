@@ -26553,6 +26553,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/api3dao/contracts/tree/main/audit-reports"],
     listedAt: 1643713220,
     github: ["api3dao"],
+    dimensions: {
+      fees: "api3",
+    },
   },
   {
     id: "1340",

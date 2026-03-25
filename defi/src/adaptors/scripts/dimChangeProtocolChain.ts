@@ -1,6 +1,11 @@
+
+
+
+// use the other script dimRenameChain.ts
+
 require("dotenv").config();
 import { Op, Sequelize } from 'sequelize';
-import { TABLES, initializeTVLCacheDB } from '../db/index'
+import { TABLES, initializeTVLCacheDB } from '../../api2/db/index'
 import * as fs from 'fs'
 import { id } from 'ethers';
 import loadAdaptorsData from '../../adaptors/data';

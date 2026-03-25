@@ -1,13 +1,13 @@
 require("dotenv").config();
 import * as readline from 'readline'
-import { TABLES, initializeTVLCacheDB } from '../db/index'
+import { TABLES, initializeTVLCacheDB } from '../../api2/db/index'
 import { ADAPTER_TYPES, AdapterType } from '../../adaptors/types'
-import { getDimensionsCacheV2 } from '../utils/dimensionsUtils'
+import { getDimensionsCacheV2 } from '../../api2/utils/dimensionsUtils'
 import { DIMENSIONS_ADAPTER_CACHE } from '../../adaptors/data/types'
 
 // ── Config ──────────────────────────────────────────────────────────────────────
-const OLD_CHAIN = process.argv[2] || 'undefined'
-const NEW_CHAIN = process.argv[3] || 'sx'
+const OLD_CHAIN = process.argv[2] || 'aleph_zero_evm'
+const NEW_CHAIN = process.argv[3] || 'aleph_zero'
 let DRY_RUN = !process.argv.includes('--live')
 DRY_RUN = false
 // ─────────────────────────────────────────────────────────────────────────────────

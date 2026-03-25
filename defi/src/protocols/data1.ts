@@ -13414,8 +13414,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Polymarket",
     address: null,
     symbol: "-",
-    url: "https://polymarket.com?via=defi-llama",
-    referralUrl: "https://polymarket.com?via=defi-llama",
+    url: "https://polymarket.com/?r=defillamareal", // replaced by the old one on the 25/03/26
+    referralUrl: "https://polymarket.com/?r=defillamareal",
     description:
       "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right.",
     chain: "Polygon",

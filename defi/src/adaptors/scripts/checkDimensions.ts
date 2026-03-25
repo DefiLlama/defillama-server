@@ -1,13 +1,13 @@
-import '../../utils/failOnError'
+import '../../api2/utils/failOnError'
 
-import { AdapterType, ProtocolType, } from "../../../adaptors/data/types"
-import loadAdaptorsData from "../../../adaptors/data"
-import { getAllItemsAfter, } from "../../../adaptors/db-utils/db2";
-import { getTimeSDaysAgo, } from "../../utils/time";
-import { roundValues, tableToString, } from "../../utils";
+import { AdapterType, ProtocolType, } from "../data/types"
+import loadAdaptorsData from "../data"
+import { getAllItemsAfter, } from "../db-utils/db2";
+import { getTimeSDaysAgo, } from "../../api2/utils/time";
+import { roundValues, tableToString, } from "../../api2/utils";
 import * as sdk from "@defillama/sdk";
-import { sendMessage } from '../../../utils/discord';
-import { ADAPTER_TYPES, DEFAULT_CHART_BY_ADAPTOR_TYPE } from '../../../adaptors/data/types';
+import { sendMessage } from '../../utils/discord';
+import { ADAPTER_TYPES, DEFAULT_CHART_BY_ADAPTOR_TYPE } from '../data/types';
 
 let esClient: any
 async function initES() {

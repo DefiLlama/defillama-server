@@ -14355,6 +14355,13 @@
       "symbol": "CC"
     }
   },
+  "blockdag": {
+    "0x0000000000000000000000000000000000000000": {
+      "to": "coingecko#blockdag",
+      "decimals": 18,
+      "symbol": "BDAG"
+    }
+  },
   "edgex": {
     "0x98d2919b9a214e6fa5384ac81e6864ba686ad74c": {
       "to": "coingecko#usd-coin",

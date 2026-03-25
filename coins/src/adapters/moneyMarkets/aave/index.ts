@@ -87,6 +87,12 @@ export function superlend(timestamp: number = 0) {
   return getTokenPrices("etlk", "0xEcbDd440C7a929d7524784Af634dF9EB0747b9e7", null, "v3", timestamp)
 }
 
+export function aaveHorizon(timestamp: number = 0) {
+  return getTokenPrices("ethereum", "", null, "v3", timestamp, {
+    lendingPool: "0xAe05Cd22df81871bc7cC2a04BeCfb516bFe332C8",
+  });
+}
+
 export const adapters = {
   aave,
   geist,
@@ -101,4 +107,5 @@ export const adapters = {
   moolaMarkets,
   aaveMantle,
   superlend,
+  aaveHorizon,
 };

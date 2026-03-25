@@ -1,6 +1,6 @@
-import { getCurrentUnixTimestamp } from "../../utils/date";
+import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
-import { initPG, fetchLatestAggregateTotals, fetchCumulativeFundingPG, fetchLatestFundingTimestampPG } from "./db";
+import { initPG, fetchLatestAggregateTotals, fetchCumulativeFundingPG, fetchLatestFundingTimestampPG, fetchRollingVolumesPG } from "./db";
 import { sendMessage } from "../../utils/discord";
 import {
   fetchPerpDexs,
@@ -104,6 +104,12 @@ export async function main(ts: number = 0): Promise<void> {
 
   if (fundingEntries.length > 0) await storeFundingHistory(fundingEntries);
 
+  // Fetch rolling 7d/30d volumes from daily history (single query for all IDs)
+  const secondsInDay = 86400;
+  const since30d = getTimestampAtStartOfDay(timestamp - 30 * secondsInDay);
+  const since7d = getTimestampAtStartOfDay(timestamp - 7 * secondsInDay);
+  const rollingVolumes = await fetchRollingVolumesPG(since30d, since7d);
+
   const finalData: { [id: string]: PerpsDataEntry } = {};
   await runInPromisePool({
     items: knownMarkets,
@@ -114,7 +120,16 @@ export async function main(ts: number = 0): Promise<void> {
 
       const cumulativeFunding = await fetchCumulativeFundingPG(marketId);
 
-      const estimatedFees = computeProtocolFees(market.volume24h, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+      const fees24h = computeProtocolFees(market.volume24h, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+
+      const rolling = rollingVolumes[marketId] || { volume7d: 0, volume30d: 0, volumeAllTime: 0 };
+      // Include today's 24h volume in the rolling windows
+      const volume7d = rolling.volume7d + market.volume24h;
+      const volume30d = rolling.volume30d + market.volume24h;
+      const volumeAllTime = rolling.volumeAllTime + market.volume24h;
+      const fees7d = computeProtocolFees(volume7d, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+      const fees30d = computeProtocolFees(volume30d, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+      const feesAllTime = computeProtocolFees(volumeAllTime, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
 
       finalData[marketId] = {
         coin: market.coin,
@@ -134,7 +149,13 @@ export async function main(ts: number = 0): Promise<void> {
           szDecimals: market.szDecimals,
           makerFeeRate: metadata.makerFeeRate,
           takerFeeRate: metadata.takerFeeRate,
-          estimatedProtocolFees24h: estimatedFees,
+          volume7d,
+          volume30d,
+          volumeAllTime,
+          estimatedProtocolFees24h: fees24h,
+          estimatedProtocolFees7d: fees7d,
+          estimatedProtocolFees30d: fees30d,
+          estimatedProtocolFeesAllTime: feesAllTime,
           referenceAsset: metadata.referenceAsset,
           referenceAssetGroup: metadata.referenceAssetGroup,
           assetClass: metadata.assetClass,

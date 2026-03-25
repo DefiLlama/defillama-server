@@ -253,6 +253,34 @@ export async function fetchLatestFundingTimestampPG(id: string): Promise<number 
     return result[0]?.max_ts ?? null;
 }
 
+// Fetch rolling volume sums for all IDs: 7d, 30d, and all-time.
+export async function fetchRollingVolumesPG(sinceTimestamp30d: number, sinceTimestamp7d: number): Promise<{
+    [id: string]: { volume7d: number; volume30d: number; volumeAllTime: number }
+}> {
+    const results = await DAILY_RWA_PERPS_DATA.sequelize!.query(
+        `SELECT id,
+                COALESCE(SUM(volume_24h), 0) as volume_all,
+                COALESCE(SUM(CASE WHEN timestamp >= :since30d THEN volume_24h ELSE 0 END), 0) as volume_30d,
+                COALESCE(SUM(CASE WHEN timestamp >= :since7d THEN volume_24h ELSE 0 END), 0) as volume_7d
+         FROM "${DAILY_RWA_PERPS_DATA.getTableName()}"
+         GROUP BY id`,
+        {
+            replacements: { since30d: sinceTimestamp30d, since7d: sinceTimestamp7d },
+            type: QueryTypes.SELECT,
+        }
+    ) as Array<{ id: string; volume_all: string; volume_30d: string; volume_7d: string }>;
+
+    const map: { [id: string]: { volume7d: number; volume30d: number; volumeAllTime: number } } = {};
+    for (const r of results) {
+        map[r.id] = {
+            volume7d: Number(r.volume_7d) || 0,
+            volume30d: Number(r.volume_30d) || 0,
+            volumeAllTime: Number(r.volume_all) || 0,
+        };
+    }
+    return map;
+}
+
 // Get historical and current data for a given id
 export async function fetchHistoricalPG(id: string): Promise<{ historical: any[], current: any }> {
     const historical = await DAILY_RWA_PERPS_DATA.findAll({

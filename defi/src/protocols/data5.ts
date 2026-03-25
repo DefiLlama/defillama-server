@@ -3697,8 +3697,8 @@ const data5: Protocol[] = [
     name: "Quantus Lend",
     address: null,
     symbol: "-",
-    url: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
-    referralUrl: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    url: "https://app.quantuslend.xyz",
+    referralUrl: "https://app.quantuslend.xyz",
     description:
       "Quantus is a decentralized lending platform built on the Monad blockchain, designed to make borrowing and lending crypto simple, fast, and cost-effective. Thanks to Monad’s high speed and low latency, transactions confirm quickly and funds move smoothly, giving users a seamless experience.",
     chain: "Monad",

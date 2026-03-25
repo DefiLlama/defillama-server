@@ -29126,7 +29126,7 @@ const data2: Protocol[] = [
     deadUrl: true,
   },
   {
-    id: "2700",
+    id: "2701",
     name: "Omnipair",
     address: "solana:omfgRBnxHsNJh6YeGbGAmWenNkenzsXyBXm3WDhmeta",
     symbol: "OMFG",
@@ -29137,7 +29137,6 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: "omnipair",
     cmcId: null,
-    category: "DEX",
     tags: ["AMM"],
     chains: ["Solana"],
     module: "dummy.js",
@@ -29146,6 +29145,6 @@ const data2: Protocol[] = [
     dimensions: {
       dexs: "omnipair",
     },
-  },
+},
 ];
 export default data2;

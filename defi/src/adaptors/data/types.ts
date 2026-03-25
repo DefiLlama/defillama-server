@@ -181,6 +181,12 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailySupplySideRevenue,
         AdaptorRecordType.dailyProtocolRevenue
     ], */
+    [AdapterType.DEXS]: [
+        AdaptorRecordType.dailyNotionalVolume,
+    ],
+    [AdapterType.DERIVATIVES]: [
+        AdaptorRecordType.dailyNotionalVolume,
+    ],
     [AdapterType.OPTIONS]: [
         AdaptorRecordType.dailyNotionalVolume,
     ],
@@ -266,6 +272,7 @@ export type DIMENSIONS_ADAPTER_CACHE = {
     parentProtocolSummaries?: IJSON<PROTOCOL_SUMMARY>, // key is parent protocol id
     summaries?: Partial<Record<AdaptorRecordType, RecordSummary>>,
     allChains?: string[]
+    allCategories?: string[]
 }
 
 export interface EmissionsAggRecord {
@@ -288,6 +295,7 @@ export type RecordSummary = {
     chartBreakdown: IJSON<IJSON<number>>
     earliestTimestamp?: number
     chainSummary?: IJSON<RecordSummary>
+    categorySummary?: IJSON<RecordSummary>
     total7d?: number | null
     total30d?: number | null
     total14dto7d?: number | null

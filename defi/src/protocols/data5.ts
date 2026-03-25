@@ -3697,8 +3697,8 @@ const data5: Protocol[] = [
     name: "Quantus Lend",
     address: null,
     symbol: "-",
-    url: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
-    referralUrl: "https://app.quantuslend.xyz/invite?address=0x798fF1e6D7AFd28c333eE6eBe03125d30ec6eF10",
+    url: "https://app.quantuslend.xyz",
+    referralUrl: "https://app.quantuslend.xyz",
     description:
       "Quantus is a decentralized lending platform built on the Monad blockchain, designed to make borrowing and lending crypto simple, fast, and cost-effective. Thanks to Monad’s high speed and low latency, transactions confirm quickly and funds move smoothly, giving users a seamless experience.",
     chain: "Monad",
@@ -5972,7 +5972,10 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "alphasec-spot",
       dexs: {
-        genuineSpikes: [["2026-03-14", "High volume in the KAIA/USDT pair"]],
+        genuineSpikes: [
+          ["2026-03-14", "High volume in the KAIA/USDT pair due to high MM activity after temporary pause due to technical glitch"],
+          ["2026-03-22", "High volume in the KAIA/USDT pair due to high MM activity after temporary pause due to technical glitch"],
+        ],
         adapter: "alphasec-spot"
       }
     },
@@ -14759,6 +14762,25 @@ const data5: Protocol[] = [
     twitter: "VirtusCEO",
     parentProtocol: "parent#virtus-protocol",
     listedAt: 1774391777,
+  },
+  {
+    id: "7576",
+    name: "Bitvavo",
+    address: null,
+    symbol: "-",
+    url: "https://bitvavo.com/en",
+    description:
+      "Largest EUR-spot exchange globally. Buy, sell, and store over 400 digital assets. Made in Amsterdam, built for Europe.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitvavo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Binance", "Arbitrum", "Base", "Optimism"],
+    module: "bitvavo/index.js",
+    twitter: "bitvavocom",
+    listedAt: 1774432030
   },
 ];
 export default data5;

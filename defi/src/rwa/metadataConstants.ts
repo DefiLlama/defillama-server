@@ -38,6 +38,7 @@ export const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
   "rwaClassification",
   "issuer",
   "isin",
+  "assetGroup",
 ]);
 
 export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([

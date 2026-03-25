@@ -537,6 +537,7 @@ type AggregateStats = {
   byCategory: { [category: string]: AggregateStatsBucketGroup };
   byChain: { [chain: string]: AggregateStatsBucketGroup };
   byPlatform: { [platform: string]: AggregateStatsBucketGroup };
+  byAssetGroup: { [assetGroup: string]: AggregateStatsBucketGroup };
 };
 
 type AggregateStatsBucketInternal = {
@@ -664,6 +665,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
   const byCategory: { [category: string]: BucketGroupInternal } = {};
   const byChain: { [chain: string]: BucketGroupInternal } = {};
   const byPlatform: { [platform: string]: BucketGroupInternal } = {};
+  const byAssetGroup: { [assetGroup: string]: BucketGroupInternal } = {};
 
   let totalOnChainMcap = 0;
   let totalActiveMcap = 0;
@@ -718,6 +720,14 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
       addToBucketGroup(byPlatform[platform], assetDelta, issuer, stablecoin, governance);
     }
 
+    // AssetGroup aggregation
+    const assetGroup =
+      typeof item.assetGroup === "string" && item.assetGroup.trim() ? item.assetGroup.trim() : null;
+    if (assetGroup) {
+      if (!byAssetGroup[assetGroup]) byAssetGroup[assetGroup] = makeBucketGroup();
+      addToBucketGroup(byAssetGroup[assetGroup], assetDelta, issuer, stablecoin, governance);
+    }
+
     // Chain aggregation (per-chain values, not asset totals)
     const chains = new Set<string>([
       ...Object.keys(onChainMcapByChain || {}),
@@ -755,6 +765,9 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
   const outByCategory: { [k: string]: AggregateStatsBucketGroup } = {};
   for (const k in byCategory) outByCategory[k] = serializeBucketGroup(byCategory[k]);
 
+  const outByAssetGroup: { [k: string]: AggregateStatsBucketGroup } = {};
+  for (const k in byAssetGroup) outByAssetGroup[k] = serializeBucketGroup(byAssetGroup[k]);
+
   const outByPlatform: { [k: string]: AggregateStatsBucketGroup } = {};
   for (const k in byPlatform) outByPlatform[k] = serializeBucketGroup(byPlatform[k]);
 
@@ -772,6 +785,7 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     byCategory: outByCategory,
     byChain: outByChain,
     byPlatform: outByPlatform,
+    byAssetGroup: outByAssetGroup,
   };
 }
 
@@ -781,6 +795,7 @@ function generateList(currentData: any[], stats: AggregateStats): {
   platforms: string[];
   chains: string[];
   categories: string[];
+  assetGroups: string[];
   idMap: { [name: string]: string };
 } {
   console.log('Generating list data...');
@@ -836,11 +851,17 @@ function generateList(currentData: any[], stats: AggregateStats): {
   for (const k in stats.byCategory) categoryPairs.push([k, stats.byCategory[k].base.onChainMcap + stats.byCategory[k].stablecoinsOnly.onChainMcap + stats.byCategory[k].governanceOnly.onChainMcap + stats.byCategory[k].stablecoinsAndGovernance.onChainMcap]);
   const categoriesSorted = categoryPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
+  // AssetGroups: sorted by all buckets combined
+  const assetGroupPairs: [string, number][] = [];
+  for (const k in stats.byAssetGroup) assetGroupPairs.push([k, stats.byAssetGroup[k].base.onChainMcap + stats.byAssetGroup[k].stablecoinsOnly.onChainMcap + stats.byAssetGroup[k].governanceOnly.onChainMcap + stats.byAssetGroup[k].stablecoinsAndGovernance.onChainMcap]);
+  const assetGroupsSorted = assetGroupPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
+
   const list = {
     tickers: tickersSorted,
     platforms: platformsSorted,
     chains: chainsSorted,
     categories: categoriesSorted,
+    assetGroups: assetGroupsSorted,
     idMap,
   };
 
@@ -876,11 +897,13 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const byChain: { [chain: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
   const byCategory: { [category: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
   const byPlatform: { [platform: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
+  const byAssetGroup: { [assetGroup: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
 
   // breakdown by asset
   const byChainTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byCategoryTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byPlatformTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
+  const byAssetGroupTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
 
   // charts breakdown
   // keys: onChainMcap, activeMcap, defiActiveTvl
@@ -892,6 +915,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const categoryBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
   // timestamp => assetType => key => platform
   const platformBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+  // timestamp => assetType => key => assetGroup
+  const assetGroupBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
 
   function ensureDataPoint(
     map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } },
@@ -967,6 +992,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
     const categories = m.data.category || [];
     const platform = m.data.parentPlatform;
+    const assetGroup = typeof m.data.assetGroup === "string" && m.data.assetGroup.trim() ? m.data.assetGroup.trim() : null;
 
     for (const [timestampStr, record] of Object.entries(pgCache)) {
       const timestamp = Number(timestampStr);
@@ -1046,10 +1072,30 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         platformItems[platform].defiActiveTvl += totalTvl;
       }
       
+      // Aggregate by assetGroup
+      const assetGroupItems: Record<string, any> = {};
+      if (assetGroup) {
+        const dp = ensureDataPoint(byAssetGroup, assetGroup, timestamp);
+        dp.onChainMcap += totalOnChainMcap;
+        dp.activeMcap += totalActiveMcap;
+        dp.defiActiveTvl += totalTvl;
+
+        const dpa = ensureBreakdownDataPoint(byAssetGroupTickerBreakdown, assetGroup, timestamp, ticker);
+        dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
+
+        assetGroupItems[assetGroup] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+        assetGroupItems[assetGroup].onChainMcap += totalOnChainMcap;
+        assetGroupItems[assetGroup].activeMcap += totalActiveMcap;
+        assetGroupItems[assetGroup].defiActiveTvl += totalTvl;
+      }
+
       // update chart breakdown
       updateBreakdownAndAssetTypes(chainBreakdownAndAssetTypes, m, timestamp, chains);
       updateBreakdownAndAssetTypes(categoryBreakdownAndAssetTypes, m, timestamp, categoryItems);
       updateBreakdownAndAssetTypes(platformBreakdownAndAssetTypes, m, timestamp, platformItems);
+      updateBreakdownAndAssetTypes(assetGroupBreakdownAndAssetTypes, m, timestamp, assetGroupItems);
     }
     processedCount++;
   }
@@ -1143,8 +1189,30 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     await storeRouteData(`charts/platform-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
   }
 
+  // Store assetGroup charts
+  for (const [ag, timestampMap] of Object.entries(byAssetGroup)) {
+    const key = rwaSlug(ag);
+    await storeRouteData(`charts/assetGroup/${key}.json`, toSortedArray(timestampMap));
+  }
+
+  // Store assetGroup charts - breakdown by tickers
+  for (const [ag, dataMap] of Object.entries(byAssetGroupTickerBreakdown)) {
+    const key = rwaSlug(ag);
+    await storeRouteData(`charts/assetGroup-ticker-breakdown/${key}.json`, {
+      onChainMcap: toSortedArrayBreakdown(dataMap.onChainMcap),
+      activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
+      defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
+    });
+  }
+
+  // Store assetGroup breakdown by asset types
+  const rawAssetGroupBreakdownAndAssetTypes = toTimeseriesBreakdownChart(assetGroupBreakdownAndAssetTypes);
+  for (const [rawKey, rawData] of Object.entries(rawAssetGroupBreakdownAndAssetTypes)) {
+    await storeRouteData(`charts/assetGroup-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
+  }
+
   console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
-  console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}`);
+  console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}, AssetGroups: ${Object.keys(byAssetGroup).length}`);
 }
 
 function toTimeseriesBreakdownChart(data: any, chainLabel?: boolean): any {

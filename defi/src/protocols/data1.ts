@@ -13414,8 +13414,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Polymarket",
     address: null,
     symbol: "-",
-    url: "https://polymarket.com?via=defi-llama",
-    referralUrl: "https://polymarket.com?via=defi-llama",
+    url: "https://polymarket.com/?r=defillamareal", // replaced by the old one on the 25/03/26
+    referralUrl: "https://polymarket.com/?r=defillamareal",
     description:
       "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right.",
     chain: "Polygon",
@@ -18686,7 +18686,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "drift-protocol-derivatives",
       derivatives: "drift-protocol-derivatives",
-      "open-interest": "drift-protocol-derivatives"
+      "open-interest": "drift-trade"
     }
   },
   {
@@ -26539,13 +26539,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "API3",
     url: "https://api3.org/",
     description:
-      "Oracles that pay you: Api3 first-party oracles deliver secure, transparent data while also turning data feed updates into a source of revenue for your dApp.",
+      "Api3 is a risk curator and first-party oracle provider. It curates OEV-enabled lending markets that recapture liquidation incentives, redirecting this revenue back to dApps and DeFi users as additional yield.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/api3.png`,
     audits: "2",
     gecko_id: "api3",
     cmcId: "7737",
-    category: "Oracle",
+    category: "Risk Curators",
     chains: ["Ethereum"],
     module: "api3/index.js",
     treasury: "api3.js",
@@ -26553,6 +26553,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/api3dao/contracts/tree/main/audit-reports"],
     listedAt: 1643713220,
     github: ["api3dao"],
+    dimensions: {
+      fees: "api3",
+    },
   },
   {
     id: "1340",

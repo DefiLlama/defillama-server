@@ -16,7 +16,7 @@ import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepre
 import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
-import { getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
+import { getDimensionCategoryChainRoutes, getDimensionCategoryRoutes, getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
 import { readRouteData } from "../cache/file-cache";
 
@@ -179,6 +179,14 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
   router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
   router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
+  
+  router.get("/v2/metrics/:type/category/:category", ew(getDimensionCategoryRoutes('overview')))
+  router.get("/v2/chart/:type/category/:category", ew(getDimensionCategoryRoutes('chart')))
+  router.get("/v2/chart/:type/category/:category/protocol-breakdown", ew(getDimensionCategoryRoutes('chart-protocol-breakdown')))
+  router.get("/v2/chart/:type/category/:category/chain-breakdown", ew(getDimensionCategoryRoutes('chart-chain-breakdown')))
+  router.get("/v2/metrics/:type/category/:category/chain/:chain", ew(getDimensionCategoryChainRoutes('overview')))
+  router.get("/v2/chart/:type/category/:category/chain/:chain", ew(getDimensionCategoryChainRoutes('chart')))
+  router.get("/v2/chart/:type/category/:category/chain/:chain/protocol-breakdown", ew(getDimensionCategoryChainRoutes('chart-protocol-breakdown')))
 
   // this includes special route financial statement
   router.get("/v2/metrics/:type/protocol/:name", ew(getDimensionProtocolRoutes('overview')))
@@ -278,7 +286,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
       } else {
 
-        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur?.tvl, 0);
+        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + (cur?.tvl ?? 0), 0);
         if (isNaN(tvl)) return errorResponse(res, 'Error fetching tvl')
         return successResponse(res, tvl, 60);
 

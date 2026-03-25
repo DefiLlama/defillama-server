@@ -50413,6 +50413,9 @@ const data3_3: Protocol[] = [
       "https://github.com/AlphaX-Protocol/AlphaX-Protocol-Contract/blob/master/Audit-Report/AlphaX%20Audit%20final.pdf",
     ],
     github: ["AlphaX-Protocol"],
+    hallmarks: [
+      ['2026-02-26', 'AlphaX Officially Launched'],
+    ],
     listedAt: 1723456160,
   },
   {
@@ -58964,13 +58967,13 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5365",
-    name: "SuiDollar",
+    name: "SuiDollar Basis",
     address: null,
     symbol: "-",
     url: "https://suidollar.io/",
     description: "SuiDollar is an innovative yield protocol built on top of existing Sui DeFi applications. Our first product, The SuiDollar USDC Vault, aims to offer an attractive dollar denominated yield by employing delta neutral hedging strategies on Sui collateral.",
     chain: "Sui",
-    logo: `${baseIconsUrl}/suidollar.jpg`,
+    logo: `${baseIconsUrl}/suidollar-basis.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -58979,6 +58982,7 @@ const data3_3: Protocol[] = [
     module: "suidollar/index.js",
     twitter: "SuiDollar",
     audit_links: ["https://movebit.xyz/reports/20241017-SuiDollar-Final-Audit-Report.pdf"],
+    deprecated: true,
     listedAt: 1731681962
   },
   {

@@ -30,6 +30,8 @@ async function genCache() {
     await storeDimData(adapterType)
 
   await storeTvlCacheUsageLogs()
+  await storeCheckData('dimDetectDrops-latest', 'detect-drops')
+  await storeCheckData('dimCheckResults-latest', 'check-results')
 }
 
 genCache()
@@ -186,6 +188,18 @@ async function storeTvlCacheUsageLogs() {
     fs.writeFileSync(path.join(__dirname, '.cache', 'tvl-cache-usage.json'), JSON.stringify(logs))
   } catch (error) {
     console.error('Error storing TVL cache usage logs:', error)
+  }
+}
+
+async function storeCheckData(cacheKey, fileKey) {
+  try {
+    const data = await sdk.cache.readCache(cacheKey, {
+      skipCompression: true,
+      readFromR2Cache: true,
+    })
+    fs.writeFileSync(path.join(__dirname, '.cache', `${fileKey}.json`), JSON.stringify(data))
+  } catch (error) {
+    console.error(`Error storing check data for ${cacheKey}:`, error)
   }
 }
 

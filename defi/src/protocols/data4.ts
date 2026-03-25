@@ -5768,6 +5768,9 @@ const data4: Protocol[] = [
     module: "coinbase-btc/index.js",
     twitter: "coinbase",
     listedAt: 1739912521,
+    dimensions: {
+      fees: "cbbtc"
+    }
   },
   {
     id: "5811",
@@ -19625,10 +19628,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DAO Service Provider",
     chains: ["Ethereum", "Arbitrum", "Base", "xDai", "Polygon", "Unichain", "World Chain"],
-    module: "createDAO/index.js",
+    module: "dummy.js",
     twitter: "createdao",
     github: ["createdao"],
     listedAt: 1752077819,
+    treasury: "createDAO.js",
   },
   {
     id: "6411",
@@ -27930,14 +27934,19 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "symmio",
       'open-interest': "symmio",
-    }
+      fees: "symmio"
+    },
+    hallmarks: [
+      ["2025-11-18", "Privex Agents Arena Launch on COTI"],
+    ],
   },
   {
     id: "6784",
     name: "Legion",
     address: null,
     symbol: "-",
-    url: "https://legion.cc/",
+    url: "https://legion.cc?homie=BNXWVHY6",
+    referralUrl: "https://legion.cc?homie=BNXWVHY6",
     description: "Legion is a merit-based crypto fundraising platform that lets projects launch token sales and allocates access to users based on on-chain reputation (Legion Scores) and compliance criteria.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/legion.jpg`,

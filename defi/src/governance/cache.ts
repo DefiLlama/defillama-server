@@ -84,3 +84,19 @@ export async function getTallyOverview() {
 export async function setTallyOverview(cache: any) {
   return setCache('overview', 'tally', cache)
 }
+
+export async function getCurve(project: string) {
+  return getCache('curve', project)
+}
+
+export async function setCurve(project: string, cache: any) {
+  return setCache('curve', project, cache)
+}
+
+export async function getCurveOverview() {
+  return getCache('overview', 'curve')
+}
+
+export async function setCurveOverview(cache: any) {
+  return setCache('overview', 'curve', cache)
+}

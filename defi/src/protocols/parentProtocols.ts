@@ -1692,7 +1692,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6538",
     chains: [],
     twitter: "CurveFinance",
-    governanceID: ["snapshot:curve.eth"],
+    governanceID: ["curve:curve"],
     treasury: "curve.js",
     github: ["curvefi"],
     warningBanners: [

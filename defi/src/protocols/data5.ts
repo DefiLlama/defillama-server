@@ -14763,5 +14763,24 @@ const data5: Protocol[] = [
     parentProtocol: "parent#virtus-protocol",
     listedAt: 1774391777,
   },
+  {
+    id: "7576",
+    name: "Bitvavo",
+    address: null,
+    symbol: "-",
+    url: "https://bitvavo.com/en",
+    description:
+      "Largest EUR-spot exchange globally. Buy, sell, and store over 400 digital assets. Made in Amsterdam, built for Europe.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitvavo.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin", "Ethereum", "Binance", "Arbitrum", "Base", "Optimism"],
+    module: "bitvavo/index.js",
+    twitter: "bitvavocom",
+    listedAt: 1774432030
+  },
 ];
 export default data5;

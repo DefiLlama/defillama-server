@@ -834,7 +834,7 @@ function generateList(currentData: any[], stats: AggregateStats): {
   for (const k in tickerMcap) tickerPairs.push([k, tickerMcap[k]]);
   const tickersSorted = tickerPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-  // Chains: sorted by base only (excludes stablecoins & governance tokens)
+  // Chains: sorted by base onChainMcap only (excludes stablecoins & governance tokens)
   const chainPairs: [string, number][] = [];
   for (const k in stats.byChain) chainPairs.push([k, stats.byChain[k].base.onChainMcap]);
   const chainsSorted = chainPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
@@ -1275,6 +1275,10 @@ async function main() {
     const stats = generateAggregateStats(currentData);
     await storeRouteData('stats.json', stats);
 
+    // Generate list immediately after stats so they stay in sync
+    const list = generateList(currentData, stats);
+    await storeRouteData('list.json', list);
+
     // Generate historical data incrementally
     const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental(metadata);
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
@@ -1284,10 +1288,6 @@ async function main() {
 
     // Generate aggregated historical charts by chain, category, platform
     await generateAggregatedHistoricalCharts(metadata);
-
-    // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = generateList(currentData, stats);
-    await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));
     console.log(`RWA Cron Job Completed in ${Date.now() - totalStartTime}ms`);

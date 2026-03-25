@@ -269,13 +269,14 @@ export function normalizeDashToNull(value: any) {
 function toStringOrNull(value: any): string | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
+  if (typeof value === "boolean") return null;
   if (typeof value === "string") {
     const s = value.trim();
     return s ? s : null;
   }
-  // Preserve existing semantics (avoid "[object Object]" as much as possible)
-  if (typeof value === "number" && !Number.isFinite(value)) return String(value);
-  return String(value);
+  if (typeof value === "number" && !Number.isFinite(value)) return null;
+  if (typeof value === "number") return String(value);
+  return null;
 }
 
 function toBooleanOrNull(value: any): boolean | null {

@@ -704,7 +704,8 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
 
     const assetDelta = { onChainMcap: assetOnChainTotal, activeMcap: assetActiveTotal, defiActiveTvl: assetDefiActiveTotal };
 
-    // Category aggregation (note: assets can have multiple categories; totals may exceed global totals)
+    // Category aggregation: assets with multiple categories have their FULL values
+    // added to each category (not split). Category totals will exceed global totals.
     const categories: string[] = Array.isArray(item.category) ? item.category : [];
     for (const cat of categories) {
       if (!cat) continue;
@@ -839,21 +840,17 @@ function generateList(currentData: any[], stats: AggregateStats): {
   for (const k in stats.byChain) chainPairs.push([k, stats.byChain[k].base.onChainMcap]);
   const chainsSorted = chainPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-  // Platforms: sorted by base + governanceOnly
-  // (includes governance tokens but excludes stablecoins)
+  // Platforms / categories / assetGroups: same as chains — base onChainMcap only
   const platformPairs: [string, number][] = [];
-  for (const k in stats.byPlatform) platformPairs.push([k, stats.byPlatform[k].base.onChainMcap + stats.byPlatform[k].governanceOnly.onChainMcap]);
+  for (const k in stats.byPlatform) platformPairs.push([k, stats.byPlatform[k].base.onChainMcap]);
   const platformsSorted = platformPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-  // Categories: sorted by base + stablecoinsOnly + governanceOnly + stablecoinsAndGovernance
-  // (includes all assets regardless of stablecoin/governance flags)
   const categoryPairs: [string, number][] = [];
-  for (const k in stats.byCategory) categoryPairs.push([k, stats.byCategory[k].base.onChainMcap + stats.byCategory[k].stablecoinsOnly.onChainMcap + stats.byCategory[k].governanceOnly.onChainMcap + stats.byCategory[k].stablecoinsAndGovernance.onChainMcap]);
+  for (const k in stats.byCategory) categoryPairs.push([k, stats.byCategory[k].base.onChainMcap]);
   const categoriesSorted = categoryPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-  // AssetGroups: sorted by all buckets combined
   const assetGroupPairs: [string, number][] = [];
-  for (const k in stats.byAssetGroup) assetGroupPairs.push([k, stats.byAssetGroup[k].base.onChainMcap + stats.byAssetGroup[k].stablecoinsOnly.onChainMcap + stats.byAssetGroup[k].governanceOnly.onChainMcap + stats.byAssetGroup[k].stablecoinsAndGovernance.onChainMcap]);
+  for (const k in stats.byAssetGroup) assetGroupPairs.push([k, stats.byAssetGroup[k].base.onChainMcap]);
   const assetGroupsSorted = assetGroupPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
   const list = {
@@ -1034,7 +1031,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       allDpa.activeMcap[timestamp][ticker] += totalActiveMcap;
       allDpa.defiActiveTvl[timestamp][ticker] += totalTvl;
 
-      // Aggregate by category
+      // Aggregate by category: full asset values are added to every category the
+      // asset belongs to (not split), so category totals will exceed global totals.
       const categoryItems: Record<string, any> = {};
       for (const cat of categories) {
         const dp = ensureDataPoint(byCategory, cat, timestamp);

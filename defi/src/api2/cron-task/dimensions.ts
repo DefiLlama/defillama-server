@@ -646,7 +646,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
       // we need to skip updating summary because underlying child data is already used to update the summary
       if (!skipChainSummary) _addToSummary({ record, records, recordType, summaryKey, chainSummaryKey, debugParams })
       // add to category summary
-      if (categories && categories.length > 0) _addToCategorySummary({ record: protocolLatestRecord ?? record, categories, recordType, summaryKey })
+      if (categories && categories.length > 0) _addToCategorySummary({ record: protocolLatestRecord ?? record, records, categories, recordType, summaryKey })
     }
     function _addToSummary({ record, records = [], recordType, summaryKey, chainSummaryKey, summary, debugParams }: { records?: any[], recordType: AdaptorRecordType, summaryKey: string, chainSummaryKey?: string, record?: any, summary?: any, debugParams?: any }) {
       if (!chainSummaryKey) chainSummaryKey = summaryKey

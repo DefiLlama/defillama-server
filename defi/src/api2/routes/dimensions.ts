@@ -652,6 +652,7 @@ function adjustMethodology(methodology: any): any {
 
 export async function generateDimensionsResponseFiles(cache: Record<AdapterType, DIMENSIONS_ADAPTER_CACHE>) {
   const dimChainsAggData: any = {}
+  const dimCategoriesAggData: any = {}
   for (const adapterType of ADAPTER_TYPES) {
     const cacheData = cache[adapterType]
     const { protocolSummaries, parentProtocolSummaries, summaries } = cacheData
@@ -730,6 +731,13 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
           await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}-chart-protocol-breakdown`, categoryData.totalDataChartBreakdown);
           await storeRouteData(`dimensions/${adapterType}/${recordType}-category/${categorySlug}`, { ...categoryData, totalDataChart: undefined, totalDataChartBreakdown: undefined });
           
+          dimCategoriesAggData[category] = dimCategoriesAggData[category] || { chains: {} };
+          dimCategoriesAggData[category][adapterType] = dimCategoriesAggData[category][adapterType] || {};
+          dimCategoriesAggData[category][adapterType][recordType] = dimCategoriesAggData[category][adapterType][recordType] || { '24h': 0, '7d': 0, '30d': 0 };
+          dimCategoriesAggData[category][adapterType][recordType]['24h'] += categoryData.total24h;
+          dimCategoriesAggData[category][adapterType][recordType]['7d'] += categoryData.total7d;
+          dimCategoriesAggData[category][adapterType][recordType]['30d'] += categoryData.total30d;
+          
           // store category data per chain
           const chartPerChainItems: Record<string, any> = {};
           for (const chain of Object.keys(categorySummary.chainSummary ?? {})) {
@@ -743,6 +751,13 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
               chartPerChainItems[timestamp] = chartPerChainItems[timestamp] || {};
               chartPerChainItems[timestamp][chainLabel] = (chartPerChainItems[timestamp][chainLabel] ?? 0) + value;
             }
+            
+            dimCategoriesAggData[category].chains[chain] = dimCategoriesAggData[category].chains[chain] || {};
+            dimCategoriesAggData[category].chains[chain][adapterType] = dimCategoriesAggData[category].chains[chain][adapterType] || {};
+            dimCategoriesAggData[category].chains[chain][adapterType][recordType] = dimCategoriesAggData[category].chains[chain][adapterType][recordType] || { '24h': 0, '7d': 0, '30d': 0 };
+            dimCategoriesAggData[category].chains[chain][adapterType][recordType]['24h'] += categoryChainData.total24h;
+            dimCategoriesAggData[category].chains[chain][adapterType][recordType]['7d'] += categoryChainData.total7d;
+            dimCategoriesAggData[category].chains[chain][adapterType][recordType]['30d'] += categoryChainData.total30d;
           }
           
           // store category chart breakdown per chain
@@ -797,6 +812,7 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
     // console.timeEnd(timeKey)
   }
   await storeRouteData(`dimensions/chain-agg-data`, dimChainsAggData)
+  await storeRouteData(`dimensions/category-agg-data`, dimCategoriesAggData)
 
   function getFileLabels(data: any) {
     const names = [data.name]

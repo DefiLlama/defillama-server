@@ -5768,6 +5768,9 @@ const data4: Protocol[] = [
     module: "coinbase-btc/index.js",
     twitter: "coinbase",
     listedAt: 1739912521,
+    dimensions: {
+      fees: "cbbtc"
+    }
   },
   {
     id: "5811",

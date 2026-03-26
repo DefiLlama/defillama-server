@@ -18686,7 +18686,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "drift-protocol-derivatives",
       derivatives: "drift-protocol-derivatives",
-      "open-interest": "drift-trade"
+      "open-interest": {
+        genuineSpikes: [["2026-03-26", "-"]],
+        adapter: "drift-trade"
+      }
     }
   },
   {

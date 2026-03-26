@@ -8767,7 +8767,7 @@ const data5: Protocol[] = [
     category: "Interface",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
-    twitter: "GTRTrade",
+    twitter: "tradeongtr",
     dimensions: {
       derivatives: "gtr-trade-perps",
       fees: "gtr-trade-perps",

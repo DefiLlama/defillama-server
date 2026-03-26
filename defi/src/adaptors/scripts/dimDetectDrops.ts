@@ -10,8 +10,8 @@ import loadAdaptorsData from "../data"
 // ── Config ──────────────────────────────────────────────────────────────────────
 const MONTHS = parseInt(process.env.DIM_DROP_MONTHS ?? process.argv[2] ?? '12', 10)
 const DROP_THRESHOLD = 0.8 // 80% drop
-const VOLUME_AVG1Y_THRESHOLD = 100_000
-const DEFAULT_AVG1Y_THRESHOLD = 3_000
+const VOLUME_AVG1Y_THRESHOLD = 10_000
+const DEFAULT_AVG1Y_THRESHOLD = 3
 const INTERNAL_API_KEY = process.env.INTERNAL_API_KEY
 const API_BASE = process.env.LLAMA_API_BASE ?? (INTERNAL_API_KEY ? `https://pro-api.llama.fi/${INTERNAL_API_KEY}/api` : 'https://api.llama.fi')
 const WEBHOOK = process.env.DIM_ERROR_CHANNEL_WEBHOOK
@@ -315,7 +315,7 @@ async function run() {
   console.log(`\nTotal: ${drops.length} protocols with sustained drops`)
 
   // Send to Discord
-  if (WEBHOOK) {
+  if (WEBHOOK && false) {
     try {
       await sendMessage(`${title}\nTotal: ${drops.length} protocols\n${separator}\n${header}\n${separator}`, WEBHOOK)
       // Send rows in chunks to avoid Discord 2000 char limit

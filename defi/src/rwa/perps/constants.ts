@@ -23,25 +23,6 @@ export const HYPERLIQUID_MAKER_FEE = 0.0002;
 export const HYPERLIQUID_TAKER_FEE = 0.0005;
 export const HYPERLIQUID_DEPLOYER_SHARE = 0.5;
 
-export const PERPS_CATEGORIES = [
-    "Political",
-    "Meme",
-    "Crypto",
-    "Commodity",
-    "Equity",
-    "FX",
-    "Index",
-    "Other",
-] as const;
-
-export const PERPS_ASSET_CLASSES = [
-    "Perpetual Future",
-    "Prediction Market",
-] as const;
-
-export const PERPS_PLATFORMS = [
-    "Hyperliquid",
-] as const;
 
 const MARKET_METADATA: { [marketId: string]: MarketMetadata } = {};
 

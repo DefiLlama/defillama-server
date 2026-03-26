@@ -6,7 +6,6 @@ const CACHE_VERSION = 'v1.0';
 
 const CACHE_DIR = process.env.RWA_PERPS_CACHE_DIR || path.join(__dirname, '.rwa-perps-cache');
 const VERSIONED_CACHE_DIR = path.join(CACHE_DIR, CACHE_VERSION);
-export const ROUTES_DATA_DIR = path.join(VERSIONED_CACHE_DIR, 'build');
 
 const pathExistsMap: { [key: string]: Promise<void> } = {};
 
@@ -74,9 +73,6 @@ async function readFileData(subPath: string, options: {
     }
 }
 
-export function getCacheDir(): string {
-    return VERSIONED_CACHE_DIR;
-}
 
 export function getCacheVersion(): string {
     return CACHE_VERSION;

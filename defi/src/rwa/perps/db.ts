@@ -282,24 +282,6 @@ export async function fetchRollingVolumesPG(sinceTimestamp30d: number, sinceTime
     return map;
 }
 
-// Get historical and current data for a given id
-export async function fetchHistoricalPG(id: string): Promise<{ historical: any[], current: any }> {
-    const historical = await DAILY_RWA_PERPS_DATA.findAll({
-        attributes: ['timestamp', 'open_interest', 'volume_24h', 'price', 'price_change_24h', 'funding_rate', 'premium', 'cumulative_funding'],
-        where: { id },
-        order: [['timestamp', 'ASC']],
-        raw: true,
-    });
-
-    const current = await HOURLY_RWA_PERPS_DATA.findOne({
-        attributes: ['timestamp', 'open_interest', 'volume_24h', 'price', 'price_change_24h', 'funding_rate', 'premium', 'cumulative_funding'],
-        where: { id },
-        order: [['timestamp', 'DESC']],
-        raw: true,
-    });
-
-    return { historical, current };
-}
 
 // Get all metadata records
 export async function fetchMetadataPG(): Promise<any[]> {
@@ -373,15 +355,6 @@ export async function fetchMaxUpdatedAtPG(): Promise<Date | null> {
     return result[0]?.max_updated_at || null;
 }
 
-// Fetch daily records for a single ID
-export async function fetchDailyRecordsForIdPG(id: string): Promise<any[]> {
-    return await DAILY_RWA_PERPS_DATA.findAll({
-        attributes: ['timestamp', 'open_interest', 'volume_24h', 'price', 'price_change_24h', 'funding_rate', 'premium', 'cumulative_funding'],
-        where: { id },
-        order: [['timestamp', 'ASC']],
-        raw: true,
-    });
-}
 
 // Fetch sum of aggregate values from the latest hourly record per ID (for circuit breaker)
 export async function fetchLatestAggregateTotals(): Promise<{ openInterest: number; volume24h: number } | null> {

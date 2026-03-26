@@ -20706,7 +20706,8 @@ const data3_1: Protocol[] = [
     module: "moneymates/index.js",
     twitter: "moneymatestech",
     listedAt: 1697516124,
-    deadUrl: true,  },
+    deadUrl: true,  
+  },
   {
     id: "3636",
     name: "Aftermath afSUI",

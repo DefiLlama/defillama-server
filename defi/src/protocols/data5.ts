@@ -10280,7 +10280,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "titanbuilderxyz",
-    hallmarks: [[1773273600, "MEV from 50M aave swap loss"]],
+    //hallmarks: [[1773273600, "MEV from 50M aave swap loss"]],
     dimensions: {
       fees: {
         genuineSpikes: [["2026-03-12", "Extremely high slippage aave tokens swap ($50M -> $36K)"]],

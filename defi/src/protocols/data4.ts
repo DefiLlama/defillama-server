@@ -14363,6 +14363,13 @@ const data4: Protocol[] = [
     module: "usdai/index.js",
     twitter: "USDai_Official",
     audit_links: ["https://docs.usd.ai/technical-overview/audits"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.usd.ai/technical-overview/technical-protocol-overview?q=chainlink"],
+      },
+    ],
     stablecoins: ["usdai"],
     listedAt: 1747659245,
     dimensions: {

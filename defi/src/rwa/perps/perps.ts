@@ -14,6 +14,7 @@ import {
   getMarketId,
   getMarketMetadata,
   hasMarketMetadata,
+  loadMarketMetadataFromAirtable,
   CIRCUIT_BREAKER_THRESHOLD,
   HYPERLIQUID_TAKER_FEE,
   HYPERLIQUID_DEPLOYER_SHARE,
@@ -25,6 +26,10 @@ import type { PerpsDataEntry } from "./historical";
 export async function main(ts: number = 0): Promise<void> {
   const timestamp = ts || getCurrentUnixTimestamp();
   console.log(`RWA Perps start ${new Date(timestamp * 1000).toISOString()}`);
+
+  const metadataCount = await loadMarketMetadataFromAirtable();
+  console.log(`RWA Perps loaded ${metadataCount} market metadata entries from Airtable`);
+
   await initPG();
 
   const venues = await fetchPerpDexs();
@@ -51,17 +56,17 @@ export async function main(ts: number = 0): Promise<void> {
   const knownMarkets: ParsedPerpsMarket[] = [];
   const missingMetadata: string[] = [];
   for (const market of allMarkets) {
-    if (hasMarketMetadata(market.coin, market.venue)) {
+    if (hasMarketMetadata(market.coin)) {
       knownMarkets.push(market);
     } else {
-      missingMetadata.push(`${market.venue}:${market.coin}`);
+      missingMetadata.push(`${market.coin}`);
     }
   }
 
   if (missingMetadata.length > 0) {
     const msg = `RWA Perps  ${
       missingMetadata.length
-    } market(s) skipped — missing spreadsheet metadata:\n${missingMetadata.join(", ")}`;
+    } market(s) skipped — missing spreadsheet metadata:\n${missingMetadata.slice(0, 11).join(", ")}`;
     console.warn(msg);
     if (process.env.RWA_WEBHOOK) {
       await sendMessage(msg, process.env.RWA_WEBHOOK, false);
@@ -84,8 +89,7 @@ export async function main(ts: number = 0): Promise<void> {
     items: knownMarkets,
     concurrency: 5,
     processor: async (market: ParsedPerpsMarket) => {
-      const marketId = getMarketId(market.coin, market.venue);
-      const coinParam = `${market.venue}:${market.coin}`;
+      const marketId = getMarketId(market.coin);
 
       const latestTs = await fetchLatestFundingTimestampPG(marketId);
       const startTime = latestTs
@@ -94,7 +98,7 @@ export async function main(ts: number = 0): Promise<void> {
       const endTime = timestamp * 1000;
       if (startTime >= endTime) return;
 
-      const history = await fetchFundingHistory(coinParam, startTime, endTime);
+      const history = await fetchFundingHistory(market.coin, startTime, endTime);
       if (history.length === 0) return;
 
       const parsed = parseFundingHistory(history, market.venue, market.openInterest);
@@ -115,8 +119,8 @@ export async function main(ts: number = 0): Promise<void> {
     items: knownMarkets,
     concurrency: 10,
     processor: async (market: ParsedPerpsMarket) => {
-      const marketId = getMarketId(market.coin, market.venue);
-      const metadata = getMarketMetadata(market.coin, market.venue)!;
+      const marketId = getMarketId(market.coin);
+      const metadata = getMarketMetadata(market.coin)!;
 
       const cumulativeFunding = await fetchCumulativeFundingPG(marketId);
 
@@ -134,7 +138,7 @@ export async function main(ts: number = 0): Promise<void> {
       finalData[marketId] = {
         coin: market.coin,
         venue: market.venue,
-        openInterest: market.openInterest,
+        openInterest: market.openInterest * market.markPx,
         volume24h: market.volume24h,
         price: market.markPx,
         priceChange24h: market.priceChange24h,
@@ -211,12 +215,12 @@ async function checkCircuitBreaker(newData: { [id: string]: PerpsDataEntry }): P
   return true;
 }
 
-main()
-  .then(() => {
-    console.log("RWA Perps done");
-    process.exit(0);
-  })
-  .catch((e) => {
-    console.error("RWA Perps error:", e);
-    process.exit(1);
-  });
+// main()
+//   .then(() => {
+//     console.log("RWA Perps done");
+//     process.exit(0);
+//   })
+//   .catch((e) => {
+//     console.error("RWA Perps error:", e);
+//     process.exit(1);
+//   }); // ts-node defi/src/rwa/perps/perps.ts

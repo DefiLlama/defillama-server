@@ -70,7 +70,7 @@ export async function fetchPerpDexs(): Promise<PerpDex[]> {
         console.error("Unexpected perpDexs response:", result);
         return [];
     }
-    return result.map((dex: any, index: number) => ({
+    return result.filter((dex: any) => dex != null).map((dex: any, index: number) => ({
         name: typeof dex === "string" ? dex : dex.name ?? String(dex),
         index,
     }));

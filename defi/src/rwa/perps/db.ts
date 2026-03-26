@@ -130,7 +130,8 @@ async function initializePerpsDB(): Promise<void> {
         pgConnection = new Sequelize(auth[0], {
             logging: false,
         });
-        initPGTables()
+        initPGTables();
+        await pgConnection.sync();
     }
 }
 

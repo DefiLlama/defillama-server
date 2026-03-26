@@ -66,7 +66,7 @@ export async function storeMetadata(res: {
 
     const inserts = Object.keys(data).reduce((acc: any[], id: string) => {
         const entry = data[id];
-        const metadata = getMarketMetadata(entry.coin, entry.venue);
+        const metadata = getMarketMetadata(entry.coin);
         if (!metadata) return acc; // skip markets without spreadsheet metadata
 
         acc.push({
@@ -98,7 +98,7 @@ export async function storeFundingHistory(entries: Array<{
 
     const inserts = entries.map((e) => ({
         timestamp: e.timestamp,
-        id: getMarketId(e.coin, e.venue),
+        id: getMarketId(e.coin),
         coin: e.coin,
         venue: e.venue,
         funding_rate: e.fundingRate,

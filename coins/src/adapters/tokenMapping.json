@@ -4865,7 +4865,7 @@
       "to": "coingecko#usd-coin"
     },
     "0x66c5bd0816fdb2d335b9e96432f182b4d8ae38c9": {
-      "decimals": "6",
+      "decimals": "18",
       "symbol": "ULTRA",
       "to": "asset#ethereum:0x50293dd8889b931eb3441d2664dce8396640b419"
     },

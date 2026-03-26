@@ -764,6 +764,13 @@ export const cexsData: Array<ICex> = [
     walletsLink: null,
     url: "https://grovex.io/en_US/",
   },
+  {
+    name: "Bitvavo",
+    slug: "bitvavo",
+    coin: null,
+    walletsLink: null,
+    url: "https://bitvavo.com/en",
+  },
 ];
 
 const cgNameListingIdMap: { [name: string]: string } = {

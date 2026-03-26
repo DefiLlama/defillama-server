@@ -193,6 +193,7 @@ async function updateRaises() {
     cache.raises = raisesObject
   } catch (e) {
     console.error('Error updating raises', e);
+    cache.raises = {}
   }
 }
 

@@ -2662,7 +2662,7 @@
       "to": "asset#ethereum:0x6cc41275ef02b4eeccc04fc4424849a96f3272aa"
     },
     "0x54f37f8c64ac1e3a451ff9762bfc8afe0edb0f0a": {
-      "decimals": "6",
+      "decimals": "0",
       "symbol": "STBX",
       "to": "asset#arbitrum:0x998a0beaf37ca4ba61b5cfac59fdee0da2211a46"
     }

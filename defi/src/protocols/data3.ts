@@ -25387,17 +25387,17 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3853",
-    name: "Chainflip",
+    name: "Chainflip AMM",
     address: "0x826180541412d574cf1336d22c0c0a287822678a",
     symbol: "FLIP",
     url: "https://chainflip.io",
     description:
       "Chainflip is a cross-chain AMM enabling native asset swaps without wrapped tokens or specialised wallets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/chainflip.png`,
+    logo: `${baseIconsUrl}/chainflip-amm.jpg`,
     audits: "2",
-    gecko_id: "chainflip",
-    cmcId: "13268",
+    gecko_id: null,
+    cmcId: null,
     tags: ["AMM"],
     chains: ["Ethereum"],
     module: "chainflip/index.js",
@@ -25408,6 +25408,7 @@ const data3_1: Protocol[] = [
       "https://github.com/chainflip-io/chainflip-backend/blob/main/audits/Chainflip_Backend_-_Zellic_Audit_Report.pdf",
     ],
     listedAt: 1701184034,
+    parentProtocol: "parent#chainflip",
     dimensions: {
       fees: "chainflip",
       dexs: "chainflip"

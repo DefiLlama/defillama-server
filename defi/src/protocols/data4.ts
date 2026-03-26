@@ -2311,6 +2311,10 @@ const data4: Protocol[] = [
     twitter: "TrebleSwap",
     forkedFromIds: ["3710"],
     listedAt: 1737647275,
+    dimensions: {
+      fees: "treble-spot",
+      dexs: "treble-spot",
+    },
   },
   {
     id: "5660",

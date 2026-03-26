@@ -9299,6 +9299,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "trendsdotfun",
   },
+  {
+    id: "parent#theoriq",
+    name: "Theoriq",
+    url: "https://theoriq.ai/",
+    description: "Theoriq operates a leveraged wstETH vault (tqETH) built on Mellow's flexible-vaults architecture.",
+    logo: `${baseIconsUrl}/theoriq.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TheoriqAI",
+  },
+  {
+    id: "parent#chainflip",
+    name: "Chainflip",
+    url: "https://chainflip.io/",
+    description: "Chainflip is a cross-chain AMM protocol that allows users to swap tokens between different blockchains.",
+    logo: `${baseIconsUrl}/chainflip.png`,
+    gecko_id: "chainflip",
+    cmcId: "13268",
+    chains: [],
+    twitter: "Chainflip",
+  },
 ];
 
 export default parentProtocols;

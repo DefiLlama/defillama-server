@@ -2632,8 +2632,15 @@ const data: Protocol[] = [
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
     oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: [] },
-      { name: "RedStone", type: "Secondary", proof: [] }
+      {  name: "RedStone",
+        type: "Primary",
+        proof: ["https://docs.enzyme.finance/user-documentation/blue-general-info/risks#oracle-risk"],
+      },
+      {
+        name: "ChainLink,
+        type: "Secondary",
+        proof: [
+          "https://docs.enzyme.finance/user-documentation/blue-general-info/risks#oracle-risk" }
     ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],

@@ -12989,7 +12989,7 @@
       "symbol": "SOLVBTC.JUP"
     },
     "0x7e9db61fa915f963e594a9f22c22653e415ff77f": {
-      "decimals": "8",
+      "decimals": "18",
       "symbol": "DSC",
       "to": "asset#polygon:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
     }
@@ -14088,7 +14088,7 @@
       "symbol": "WPLUME"
     },
     "0xc826b656c1c3c5fb2bdad90e8d794e6192b6762c": {
-      "decimals": "8",
+      "decimals": "18",
       "symbol": "DSC",
       "to": "asset#polygon:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
     },

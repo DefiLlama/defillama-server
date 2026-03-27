@@ -15114,5 +15114,30 @@ const data5: Protocol[] = [
       fees: "arbitrage-inc",
     },
   },
+  {
+    id: "7592",
+    name: "Rocket",
+    address: null,
+    symbol: "-",
+    url: "https://rocketfi.io",
+    description:
+      "The future of exchange infrastructure. Rocket is a custom L1 blockchain built for derivatives trading and designed to power all areas of finance. Unlike traditional blockchains that only reach consensus on transactions, Rocket adds a new dimension by also reaching consensus on price. Each block runs a micro auction that produces a single fair clearing price, eliminating MEV, latency arbitrage, and front-running while delivering tighter spreads and deeper liquidity. This is the architecture that exchanges always needed. Live with perpetual futures, with options coming soon.",
+    chain: "Rocket Chain",
+    logo: `${baseIconsUrl}/rocket.jpg`,
+    audits: "2",
+    audit_links: ["https://omniscia.io"],
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Rocket Chain"],
+    module: "dummy.js",
+    twitter: "RocketFndtn",
+    github: ["rocketfoundation"],
+    listedAt: 1774653530,
+    dimensions: {
+      dexs: "rocket",
+      fees: "rocket",
+    },
+  },
 ];
 export default data5;

@@ -2662,7 +2662,7 @@
       "to": "asset#ethereum:0x6cc41275ef02b4eeccc04fc4424849a96f3272aa"
     },
     "0x54f37f8c64ac1e3a451ff9762bfc8afe0edb0f0a": {
-      "decimals": "6",
+      "decimals": "0",
       "symbol": "STBX",
       "to": "asset#arbitrum:0x998a0beaf37ca4ba61b5cfac59fdee0da2211a46"
     }
@@ -4870,7 +4870,7 @@
       "to": "coingecko#usd-coin"
     },
     "0x66c5bd0816fdb2d335b9e96432f182b4d8ae38c9": {
-      "decimals": "6",
+      "decimals": "18",
       "symbol": "ULTRA",
       "to": "asset#ethereum:0x50293dd8889b931eb3441d2664dce8396640b419"
     },
@@ -12994,7 +12994,7 @@
       "symbol": "SOLVBTC.JUP"
     },
     "0x7e9db61fa915f963e594a9f22c22653e415ff77f": {
-      "decimals": "8",
+      "decimals": "18",
       "symbol": "DSC",
       "to": "asset#polygon:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
     }
@@ -14093,7 +14093,7 @@
       "symbol": "WPLUME"
     },
     "0xc826b656c1c3c5fb2bdad90e8d794e6192b6762c": {
-      "decimals": "8",
+      "decimals": "18",
       "symbol": "DSC",
       "to": "asset#polygon:0x5d4e735784293a0a8d37761ad93c13a0dd35c7e7"
     },

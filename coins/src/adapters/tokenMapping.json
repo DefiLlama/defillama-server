@@ -4035,7 +4035,7 @@
     "0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4": {
       "decimals": "6",
       "symbol": "rwaUSDi",
-      "to": "asset#ethereum:0xa39986f96b80d04e8d7aeaaf47175f47c23fd0f4"
+      "to": "coingecko#usd-coin"
     },
     "0x51B0f6AED4a421f09D28A5eDe1DCF460BCB54d30": {
       "decimals": "18",

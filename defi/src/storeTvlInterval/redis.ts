@@ -41,7 +41,7 @@ export async function getJSON(key: string, options: RedisOperationOptions): Prom
 let connectPromise: Promise<void> | null = null;
 
 async function startConnection() {
-  if (!URL) throw new Error("COMMON_TVL_REDIS_CACHE environment variable is not set");
+  //if (!URL) throw new Error("COMMON_TVL_REDIS_CACHE environment variable is not set");
   if (client.isOpen) return;
   if (!connectPromise) {
     connectPromise = client.connect().then(() => {

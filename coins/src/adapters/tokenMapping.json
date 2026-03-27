@@ -14352,6 +14352,21 @@
       "to": "coingecko#hydrated-dollar",
       "decimals": 18,
       "symbol": "HOLLAR"
+    },
+    "0x0000000000000000000000000000000100000027": {
+      "to": "coingecko#pax-gold",
+      "decimals": 18,
+      "symbol": "PAXG"
+    },
+    "0x000000000000000000000000000000010000002b": {
+      "to": "coingecko#hastra-prime",
+      "decimals": 6,
+      "symbol": "PRIME"
+    },
+    "0x00000000000000000000000000000001000f4530": {
+      "to": "coingecko#solana",
+      "decimals": 9,
+      "symbol": "SOL"
     }
   },
   "coti": {

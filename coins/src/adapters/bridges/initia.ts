@@ -22,7 +22,7 @@ const chainIdMap: { [key: string]: string } = {
   embr: "embr",
   civitia: 'civitia', 
   inertia: 'inertia', 
-  milkyway_rollup: 'moo'
+  // milkyway_rollup: 'moo'
 };
 
 const url = (chain: string, rpc: boolean) =>

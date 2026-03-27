@@ -15115,7 +15115,7 @@ const data5: Protocol[] = [
     },
   },
   {
-    id: "7592",
+    id: "7565",
     name: "Rocket",
     address: null,
     symbol: "-",
@@ -15135,7 +15135,7 @@ const data5: Protocol[] = [
     github: ["rocketfoundation"],
     listedAt: 1774653530,
     dimensions: {
-      dexs: "rocket",
+      derivatives: "rocket",
       fees: "rocket",
     },
   },

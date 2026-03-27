@@ -315,7 +315,7 @@ async function run() {
   console.log(`\nTotal: ${drops.length} protocols with sustained drops`)
 
   // Send to Discord
-  if (WEBHOOK && false) {
+  if (WEBHOOK) {
     try {
       await sendMessage(`${title}\nTotal: ${drops.length} protocols\n${separator}\n${header}\n${separator}`, WEBHOOK)
       // Send rows in chunks to avoid Discord 2000 char limit

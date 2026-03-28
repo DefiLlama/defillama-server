@@ -14552,6 +14552,7 @@ const data5: Protocol[] = [
     dimensions: {
       derivatives: "rocket",
       fees: "rocket",
+      "open-interest": "rocket-oi",
     },
   },
   {

@@ -14538,7 +14538,7 @@ const data5: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://beta.rocketfi.io/trade",
-    description: "A new high-performance blockchain for trading derivatives",
+    description: "The future of exchange infrastructure. Rocket is a custom L1 blockchain built for derivatives trading and designed to power all areas of finance. Unlike traditional blockchains that only reach consensus on transactions, Rocket adds a new dimension by also reaching consensus on price. Each block runs a micro auction that produces a single fair clearing price, eliminating MEV, latency arbitrage, and front-running while delivering tighter spreads and deeper liquidity. This is the architecture that exchanges always needed",
     chain: "Off Chain",
     logo: `${baseIconsUrl}/rocket.jpg`,
     audits: "0",

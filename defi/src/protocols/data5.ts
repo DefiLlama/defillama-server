@@ -15114,5 +15114,29 @@ const data5: Protocol[] = [
       fees: "arbitrage-inc",
     },
   },
+  {
+    id: "7592",
+    name: "Phoenix Perp",
+    address: null,
+    symbol: "-",
+    url: "https://phoenix.trade",
+    description:
+      "Phoenix Perp is a decentralized perpetual futures market on Solana that is fully on-chain, non-custodial, and crankless.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/phoenix-perp.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "PhoenixTrade",
+    listedAt: 1774726043,
+    parentProtocol: "parent#phoenix",
+    dimensions: {
+      "open-interest": "phoenix-trade-oi",
+      derivatives: "phoenix-trade",
+    }
+  },
 ];
 export default data5;

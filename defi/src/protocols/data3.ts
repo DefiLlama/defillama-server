@@ -10308,15 +10308,15 @@ const data3_0: Protocol[] = [
   {
     id: "3170",
     // previous name: "Ellipsis Labs",
-    name: "Phoenix",
+    name: "Phoenix Spot",
     address: null,
     symbol: "-",
     url: "https://phoenix.trade",
     description:
       "Phoenix is a decentralized limit order book on Solana that is fully on-chain, non-custodial, and crankless.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/phoenix.png`,
-    audits: "2",
+    logo: `${baseIconsUrl}/phoenix-spot.jpg`,
+    audits: "0",
     gecko_id: null,
     cmcId: null,
     tags: ["Order Book"],
@@ -10324,7 +10324,7 @@ const data3_0: Protocol[] = [
     module: "ellipisis-phoenix/index.js",
     twitter: "PhoenixTrade",
     listedAt: 1687942915,
-    github: ["Ellipsis-Labs"],
+    parentProtocol: "parent#phoenix",
     dimensions: {
       fees: "phoenix",
       dexs: {

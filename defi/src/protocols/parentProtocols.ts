@@ -9321,6 +9321,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Chainflip",
   },
+  {
+    id: "parent#phoenix",
+    name: "Phoenix",
+    url: "https://phoenix.trade",
+    description: "Phoenix is a decentralized limit order book on Solana that is fully on-chain, non-custodial, and crankless.",
+    logo: `${baseIconsUrl}/phoenix.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PhoenixTrade",
+    github: ["Ellipsis-Labs"],
+  },
 ];
 
 export default parentProtocols;

@@ -15110,7 +15110,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "Arbitrageincept",
     listedAt: 1774634365,
-    deadUrl: true,
+    deadUrl: false,
     dimensions: {
       fees: "arbitrage-inc",
     },

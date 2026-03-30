@@ -15139,5 +15139,29 @@ const data5: Protocol[] = [
       derivatives: "phoenix-trade",
     }
   },
+  {
+    id: "7593",
+    name: "Kyo Ag",
+    address: null,
+    symbol: "-",
+    url: "https://kyo.ag",
+    description:
+      "KYO AG is a cross-chain bridge, meta aggregator, and DEX aggregator for optimal token swaps and bridge routing across multiple networks. KyoAg's multi-chain DEX aggregator is built in Rust for speed, with mathematically optimal routing.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/kyo-ag.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hyperliquid L1", "Soneium", "Monad"],
+    module: "dummy.js",
+    twitter: "kyo_ag",
+    audit_links: ["https://docs.kyo.finance/resources/security"],
+    github: ["kyo-ag"],
+    listedAt: 1774829292,
+    dimensions: {
+      aggregators: "kyoag",
+    }
+  },
 ];
 export default data5;

@@ -16,9 +16,8 @@ import {
   hasMarketMetadata,
   loadMarketMetadataFromAirtable,
   CIRCUIT_BREAKER_THRESHOLD,
-  HYPERLIQUID_TAKER_FEE,
-  HYPERLIQUID_DEPLOYER_SHARE,
 } from "./constants";
+import { HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import { computeProtocolFees, toFiniteNumberOrZero } from "./utils";
 import { storeHistorical, storeMetadata, storeFundingHistory } from "./historical";
 import type { PerpsDataEntry } from "./historical";

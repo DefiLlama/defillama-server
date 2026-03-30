@@ -103,7 +103,7 @@ export async function storeHistoricalDataForId(id: string, data: any[]): Promise
 
 export async function readHistoricalDataForId(id: string): Promise<any[] | null> {
     const result = await readRouteData(`charts/${id}.json`, { skipErrorLog: true });
-    return result?.data || null;
+    return result || null;
 }
 
 export function mergeHistoricalData(

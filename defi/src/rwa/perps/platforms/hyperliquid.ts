@@ -1,3 +1,8 @@
+// Rates for Hyperliquid HIP-3 venues https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees
+export const HYPERLIQUID_MAKER_FEE = 0.0002;
+export const HYPERLIQUID_TAKER_FEE = 0.0005;
+export const HYPERLIQUID_DEPLOYER_SHARE = 0.5;
+
 const HYPERLIQUID_API = "https://api.hyperliquid.xyz/info";
 
 export interface HyperliquidAssetCtx {

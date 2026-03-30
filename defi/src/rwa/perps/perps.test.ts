@@ -5,11 +5,9 @@ import {
   getMarketMetadata,
   setMarketMetadata,
   hasMarketMetadata,
-  HYPERLIQUID_MAKER_FEE,
-  HYPERLIQUID_TAKER_FEE,
-  HYPERLIQUID_DEPLOYER_SHARE,
   type MarketMetadata,
 } from "./constants";
+import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import {
   parseMetaAndAssetCtxs,
   parseFundingHistory,

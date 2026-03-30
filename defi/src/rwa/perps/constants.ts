@@ -18,11 +18,7 @@ export interface MarketMetadata {
     deployerFeeShare: number;
 }
 
-// Rates for Hyperliquid HIP-3 venues https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees
-export const HYPERLIQUID_MAKER_FEE = 0.0002;
-export const HYPERLIQUID_TAKER_FEE = 0.0005;
-export const HYPERLIQUID_DEPLOYER_SHARE = 0.5;
-
+import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 
 const MARKET_METADATA: { [marketId: string]: MarketMetadata } = {};
 

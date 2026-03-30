@@ -15164,5 +15164,25 @@ const data5: Protocol[] = [
       aggregators: "kyoag",
     }
   },
+  {
+    id: "7594",
+    name: "Aave V4",
+    address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    symbol: "AAVE",
+    url: "https://aave.com",
+    description: "Earn interest, borrow assets, and build applications",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/aave-v4.png`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "aave-v4/index.js",
+    twitter: "aave",
+    audit_links: ["https://aave.com/security"],
+    listedAt: 1774886314,
+    parentProtocol: "parent#aave",
+  },
 ];
 export default data5;

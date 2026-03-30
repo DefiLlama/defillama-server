@@ -546,6 +546,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MeteoraAG",
     github: ["mercurial-finance"],
+    treasury: "meteora.js"
   },
   {
     id: "parent#folks-finance",
@@ -3825,6 +3826,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "JupiterExchange",
     github: ["jup-ag"],
+    treasury: "jupiter.js",
     stablecoins: ["jupusd"],
   },
   {

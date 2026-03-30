@@ -6088,7 +6088,7 @@ const data3_0: Protocol[] = [
     id: "2977",
     name: "Merkl",
     address: "0x31429d1856aD1377A8A0079410B297e1a9e214c2",
-    symbol: "ANGLE",
+    symbol: "-",
     url: "https://app.merkl.xyz/",
     description:
       "Merkl helps anyone incentivize concentrated liquidity positions in a more efficient way. It allows to customize how rewards are distributed to shape liquidity in specific ways.",
@@ -6100,7 +6100,7 @@ const data3_0: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Polygon", "Arbitrum", "Optimism"],
     module: "merkl/index.js",
-    twitter: "AngleProtocol",
+    twitter: "merkl_xyz",
     listedAt: 1684158061,
   },
   {

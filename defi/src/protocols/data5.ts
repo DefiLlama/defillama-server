@@ -7255,7 +7255,7 @@ const data5: Protocol[] = [
     category: "Basis Trading",
     chains: ["Solana"],
     module: "jupiter-usd/index.js",
-    audit_links: ["https://support.jup.ag/hc/en-us/articles/24444189827100-Is-JupUSD-audited"],
+    audit_links: ["https://docs.jup.ag/user-docs/earn/jupusd#security-and-transparency"],
     twitter: "JupiterExchange",
     parentProtocol: "parent#jupiter",
     stablecoins: ["jupusd"],

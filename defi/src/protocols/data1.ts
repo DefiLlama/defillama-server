@@ -13433,7 +13433,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       fees: "polymarket",
       dexs: "polymarket",
       "open-interest": "polymarket-oi"
-    }
+    },
+    hallmarks: [
+      ["2026-01-06", "Fee introduced in 15-minute crypto markets"],
+      ["2026-03-30", "Fee expanded to a wider range of markets"]
+    ]
   },
   {
     id: "712",

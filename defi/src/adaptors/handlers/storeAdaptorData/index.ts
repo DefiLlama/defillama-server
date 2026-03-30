@@ -787,5 +787,5 @@ function calculateStats(numbers: number[]) {
     median = numbers[mid];
   }
 
-  return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
+  return { sum, average, median, size: numbers.length, highest: Math.max(Math.abs(numbers[0]), numbers[numbers.length - 1]), lowest: numbers[0] };
 }

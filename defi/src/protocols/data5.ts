@@ -15170,7 +15170,7 @@ const data5: Protocol[] = [
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com",
-    description: "Earn interest, borrow assets, and build applications",
+    description: "Aave V4 is a modular lending protocol on Ethereum featuring a hub-and-spoke architecture",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/aave-v4.png`,
     audits: "2",

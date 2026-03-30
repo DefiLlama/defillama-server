@@ -4150,7 +4150,7 @@ const data5: Protocol[] = [
     category: "NFT Marketplace",
     chains: ["TON"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       fees: "fragment",
     },
@@ -4462,7 +4462,7 @@ const data5: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Arbitrum"],
     module: "linkdefi/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     github: ["AES-256-2"],
     listedAt: 1764779412,
   },
@@ -5689,7 +5689,7 @@ const data5: Protocol[] = [
     category: "Developer Tools",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
   },
   {
     id: "7143",
@@ -5746,7 +5746,7 @@ const data5: Protocol[] = [
     category: "Farm",
     chains: ["CROSS"],
     module: "cross-rewards/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1765913207,
   },
   {
@@ -6843,7 +6843,7 @@ const data5: Protocol[] = [
     chains: ["Arbitrum"],
     module: "pizza-city/index.js",
     treasury: "pizza-city.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1767121831,
     dimensions: {
       fees: "pizza-city",
@@ -8514,7 +8514,7 @@ const data5: Protocol[] = [
     category: "Interface",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       derivatives: "splashos-perps",
       fees: "splashos-perps",
@@ -9897,7 +9897,7 @@ const data5: Protocol[] = [
     category: "Options",
     chains: ["Ethereum"],
     module: "convertibles/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1769967274
   },
   {
@@ -10260,7 +10260,7 @@ const data5: Protocol[] = [
     category: "Block Builders",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       fees: "shimmerblocks",
     },
@@ -10589,7 +10589,7 @@ const data5: Protocol[] = [
     category: "DEX Aggregator",
     chains: ["Ethereum", "Arbitrum", "Optimism", "Base", "Polygon", "Binance", "Avalanche"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       aggregators: "nanoport",
     },
@@ -11494,7 +11494,7 @@ const data5: Protocol[] = [
     oraclesBreakdown: [{ name: "UMA", type: "Primary", proof: ["https://basescan.org/address/0xc079017562af749e9ED897082766f00020C20047#code"] }],
     chains: ["Arbitrum"],
     module: "predmart/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1771346967
   },
   {
@@ -12612,7 +12612,7 @@ const data5: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Hyperliquid L1"],
     module: "stashfun/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1772205509,
   },
   {
@@ -13246,7 +13246,7 @@ const data5: Protocol[] = [
     forkedFromIds: ["2197"],
     chains: ["Ethereum"],
     module: "steth-exchange/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1772732418
   },
   {
@@ -13368,7 +13368,7 @@ const data5: Protocol[] = [
     tags: ["Prop AMM"],
     chains: ["Aptos"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       dexs: "aptos-caliber-prop-amm",
     }
@@ -13724,7 +13724,7 @@ const data5: Protocol[] = [
     tags: ["AMM"],
     chains: ["Arbitrum"],
     module: "velox/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     github: ["Sigmabrogz"],
     listedAt: 1773086587,
     dimensions: {
@@ -14204,7 +14204,7 @@ const data5: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "yld/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     github: ["yldfi"],
     listedAt: 1773748605
   },
@@ -14269,7 +14269,7 @@ const data5: Protocol[] = [
     tags: ["DLMM"],
     chains: ["Solana"],
     module: "orbit-finance/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     dimensions: {
       fees: "orbit-finance",
       dexs: "orbit-finance",
@@ -14292,7 +14292,7 @@ const data5: Protocol[] = [
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "quaboreum",
+    twitter: null,
     parentProtocol: "parent#bim",
     dimensions: {
       aggregators: "bim",
@@ -14916,7 +14916,7 @@ const data5: Protocol[] = [
     category: "Yield",
     chains: ["Arbitrum"],
     module: "quell/index.js",
-    twitter: "quaboreum",
+    twitter: null,
     listedAt: 1774488749,
   },
   {

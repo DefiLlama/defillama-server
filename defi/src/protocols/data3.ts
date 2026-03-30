@@ -6093,7 +6093,7 @@ const data3_0: Protocol[] = [
     description:
       "Merkl helps anyone incentivize concentrated liquidity positions in a more efficient way. It allows to customize how rewards are distributed to shape liquidity in specific ways.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/merkl.png`,
+    logo: `${baseIconsUrl}/merkl.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

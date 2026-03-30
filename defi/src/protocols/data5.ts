@@ -12090,6 +12090,7 @@ const data5: Protocol[] = [
         type: "Primary",
         proof: ["https://docs.world.inc/venue/technical-overview#general"],
       },
+    ],
     parentProtocol: "parent#world-markets-inc",
     dimensions: {
       derivatives: "worldinc-perps",

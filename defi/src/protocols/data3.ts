@@ -47357,7 +47357,8 @@ const data3_3: Protocol[] = [
     audit_links: ["https://github.com/sherlock-audit/2024-05-napier-update", "https://github.com/napierfi/napier-v2-public/tree/main/audits"],
     listedAt: 1719925946,
     dimensions: {
-      fees: "napier"
+      fees: "napier",
+      dexs: "napier"
     }
   },
   {

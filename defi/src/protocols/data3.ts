@@ -40437,8 +40437,13 @@ const data3_2: Protocol[] = [
     github: ["Colend-Protocol"],
     listedAt: 1713962936,
     dimensions: {
-      fees: "colend-protocol"
-    }
+      fees: {
+        genuineSpikes: [
+          ["2026-03-29", "Massive liquidations due to $CORE price crash (~52%)"] //https://x.com/Coredao_Org/status/2038285155366756410
+        ],
+        adapter: "colend-protocol"
+      }
+    },
   },
   {
     id: "4519",

@@ -13058,6 +13058,11 @@
       "to": "coingecko#tether",
       "decimals": 6,
       "symbol": "USDT"
+    },
+    "0x3806640578b710d8480910bF51510bc538d2F51A": {
+      "to": "coingecko#tether",
+      "decimals": 6,
+      "symbol": "USDT"
     }
   },
   "virbicoin": {

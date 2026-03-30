@@ -10875,13 +10875,6 @@ const data5: Protocol[] = [
     chains: ["MegaETH"],
     module: "worldinc/index.js",
     twitter: "worldmarketsinc",
-    oraclesBreakdown: [
-      {
-        name: "RedStone",
-        type: "Primary",
-        proof: ["https://docs.world.inc/venue/technical-overview#general"],
-      },
-    ],
     parentProtocol: "parent#world-markets-inc",
     listedAt: 1770909499,
     dimensions: {

@@ -475,14 +475,14 @@ const data5: Protocol[] = [
   },
   {
     id: "6914",
-    name: "UltraYield by Edge",
+    name: "UltraYield Curator", //previous name UltraYield by Edge
     address: null,
     symbol: "-",
     url: "https://ultrayield.app/",
     description:
       "UltraYield, created by leading crypto hedge fund Edge Capital, offers sophisticated yield-generating vaults that make institutional-grade strategies accessible to everyone.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ultrayield-by-edge.jpg`,
+    logo: `${baseIconsUrl}/ultrayield-curator.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -498,6 +498,7 @@ const data5: Protocol[] = [
       },
     ],
     twitter: "ultrayieldapp",
+    parentProtocol: "parent#ultrayield",
     listedAt: 1761342069,
     dimensions: {
       fees: "edge-capital",

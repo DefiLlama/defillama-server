@@ -30309,6 +30309,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "ultrayield/index.js",
     twitter: "ultrayieldapp",
+    parentProtocol: "parent#ultrayield",
     listedAt: 1761083071,
   },
   {

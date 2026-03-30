@@ -9333,6 +9333,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "PhoenixTrade",
     github: ["Ellipsis-Labs"],
   },
+  {
+    id: "parent#ultrayield",
+    name: "UltraYield",
+    url: "https://ultrayield.app/",
+    description: "UltraYield, created by leading crypto hedge fund Edge Capital, offers sophisticated yield-generating vaults that make institutional-grade strategies accessible to everyone.",
+    logo: `${baseIconsUrl}/ultrayield.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ultrayieldapp",
+  },
 ];
 
 export default parentProtocols;

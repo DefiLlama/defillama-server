@@ -9346,6 +9346,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ultrayieldapp",
   },
+  {
+    id: "parent#rocket",
+    name: "Rocket",
+    url: "https://beta.rocketfi.io/",
+    description: "Rocket is a high-performance L1 blockchain purpose-built for trading derivatives. The protocol features an autonomous Liquidity Provider vault that accepts USDC collateral deposits to serve as counterparty liquidity for perpetual futures trading. This adapter queries the Rocket Chain API to sum all vault collateral and report TVL",
+    logo: `${baseIconsUrl}/rocket.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RCKTFoundation",
+  },
 ];
 
 export default parentProtocols;

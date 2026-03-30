@@ -14888,6 +14888,11 @@
       "to": "coingecko#staked-frax-usd",
       "decimals": 18,
       "symbol": "sfrxUSD"
+    },
+    "0x68943c066747690ecDAEB027fa722B090ee6F92D": {
+      "to": "coingecko#infinifi-staked-iusd",
+      "decimals": 18,
+      "symbol": "siUSD"
     }
   },
   "xrplevm": {

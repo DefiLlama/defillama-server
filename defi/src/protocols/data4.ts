@@ -15071,6 +15071,7 @@ const data4: Protocol[] = [
     ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
+    deadUrl: true, // https://x.com/SteakhouseFi/status/2038565540625543406
     listedAt: 1747736199,
     dimensions: {
       fees: "steakhouse"

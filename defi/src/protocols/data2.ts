@@ -9037,7 +9037,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Indexes",
     chains: ["Mixin"],
-    module: "bwatch/index.js",
+    module: "dummy.js", //"bwatch/index.js" => ETF price has been stale for 2 years despite market volatility, and there is no channel to contact the team
     twitter: null,
     listedAt: 1653984484,
   },

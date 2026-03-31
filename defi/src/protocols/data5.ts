@@ -15090,8 +15090,8 @@ const data5: Protocol[] = [
     twitter: "GeniusTerminal",
     listedAt: 1774634067,
     dimensions: {
-      fees: "genius-protocol",
-      dexs: "genius-protocol",
+      //fees: "genius-protocol",  //wash trading across USDC/USDT and KOGE/USDT pairs
+      //dexs: "genius-protocol",
     },
   },
   {

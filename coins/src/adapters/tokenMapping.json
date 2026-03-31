@@ -2707,6 +2707,11 @@
     }
   },
   "bsc": {
+    "0x85636BF94EA95c32e945b0db30A7CDc614F2691e": {
+      "decimals": "18",
+      "symbol": "sYUSD",
+      "to": "asset#ethereum:0xfe0ccc9942e98c963fe6b4e5194eb6e3baa4cb64"
+    },
     "0x8E9d4cEa39299323FE8eda678cAD449718556c4e": {
       "decimals": 6,
       "symbol": "syrupUSDT",
@@ -4559,6 +4564,11 @@
     }
   },
   "avax": {
+    "0x539e46827c37A3ef11c7cE521CC56B4d59E602e3": {
+      "decimals": "18",
+      "symbol": "sYUSD",
+      "to": "asset#ethereum:0xfe0ccc9942e98c963fe6b4e5194eb6e3baa4cb64"
+    },
     "0xAB4fBa02a2905a03adA8BD3d493FB289Dcf84024": {
       "decimals": "18",
       "symbol": "WAVAX",
@@ -11987,6 +11997,11 @@
     }
   },
   "hedera": {
+    "0xc48Ea88272e723366e124d9fd2607216969382Ec": {
+      "decimals": "18",
+      "symbol": "sYUSD",
+      "to": "asset#ethereum:0xfe0ccc9942e98c963fe6b4e5194eb6e3baa4cb64"
+    },
     "0x00000000000000000000000000000000001647e8": {
       "to": "coingecko#xsauce",
       "decimals": 6,
@@ -14424,6 +14439,11 @@
     }
   },
   "katana": {
+    "0xFCeF626dE4A0175ac962DD43EB0A002819FaAEFe": {
+      "decimals": "18",
+      "symbol": "sYUSD",
+      "to": "asset#ethereum:0xfe0ccc9942e98c963fe6b4e5194eb6e3baa4cb64"
+    },
     "0x7F1f4b4b29f5058fA32CC7a97141b8D7e5ABDC2d": {
       "to": "coingecko#katana-network-token",
       "decimals": 18,
@@ -15658,6 +15678,11 @@
     }
   },
   "plasma": {
+    "0xca2671Dcd031a72359f456C212F62A9bDa737cD7": {
+      "decimals": "18",
+      "symbol": "sYUSD",
+      "to": "asset#ethereum:0xfe0ccc9942e98c963fe6b4e5194eb6e3baa4cb64"
+    },
     "0x4772D2e014F9fC3a820C444e3313968e9a5C8121": {
       "decimals": "18",
       "symbol": "yUSD",

@@ -3061,7 +3061,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#aftermath-finance",
     name: "Aftermath Finance",
-    url: "https://aftermath.finance",
+    url: "https://aftermath.finance?ref=defillama",
+    referralUrl: "https://aftermath.finance?ref=defillama",
     description: "CEX on-chain. Built on Sui",
     logo: `${baseIconsUrl}/aftermath-finance.jpg`,
     gecko_id: null,

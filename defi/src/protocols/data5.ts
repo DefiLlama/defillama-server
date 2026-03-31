@@ -15093,6 +15093,7 @@ const data5: Protocol[] = [
       //fees: "genius-protocol",  //wash trading across USDC/USDT and KOGE/USDT pairs
       //dexs: "genius-protocol",
     },
+    //Fee collector: 0xf70853810B8fC6869068Dc8F7f94c439c9a2cdCa,  mainly BSC fees
     warningBanners: [
       {
         message: "Suspected wash trading by few addresses on selected pairs. Volumes and fees are inflated.",

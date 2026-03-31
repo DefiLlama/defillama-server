@@ -15347,7 +15347,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "CDP",
     chains: ["Chia"],
-    module: "circuit/index.js",
+    module: "circuitdao/index.js",
     twitter: "Circuit_DAO",
     audit_links: [
       "https://github.com/circuitdao/puzzles/blob/main/audits/Zellic-Audit-Report.pdf",

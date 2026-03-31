@@ -8355,7 +8355,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://www.dipcoin.io/vault",
     description:
-      "DipCoin Vaults are a native feature of the DipCoin Perpetual (Perp) trading system, designed to allow users to participate in professional trading strategies without manually managing positions.",
+      "Dipcoin is the next-generation decentralized exchange (DEX) built on Sui, combining the speed and simplicity of a centralized exchange (CEX) with the transparency and control of DeFi. It’s designed to make crypto trading fast, human, and confidence-driven, offering guided perpetuals, sub-second execution, and true self-custody - all in one seamless platform. Confidence in Every Trade. True self-custody. Fast, simple, and human - trade smarter, win bigger.",
     chain: "Sui",
     logo: `${baseIconsUrl}/dipcoin-vault.jpg`,
     audits: "2",

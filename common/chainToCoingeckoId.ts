@@ -264,6 +264,7 @@ export const chainToCoingeckoId = {
   'hashkey-chain': 'hsk',
   canton: 'canton-network',
   blockdag: 'blockdag',
+  proptech: 'proptech',
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

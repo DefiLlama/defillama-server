@@ -1,23 +1,31 @@
-FROM node:20-slim
+# Use an official Node.js runtime as a parent image
+FROM node:20
+# Install pnpm globally
+RUN npm install -g pnpm
+ARG CUSTOM_GIT_BRANCH_DEPLOYMENT
+ENV CUSTOM_GIT_BRANCH_DEPLOYMENT=${CUSTOM_GIT_BRANCH_DEPLOYMENT}
 
+
+# Set the working directory in the container to /app
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
+# Clone your repo
+RUN git clone https://github.com/DefiLlama/defillama-server /app/repo
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-COPY defi/package.json defi/
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Check if CUSTOM_GIT_BRANCH_DEPLOYMENT is set and checkout that branch if it exists
+RUN if [ -n "$CUSTOM_GIT_BRANCH_DEPLOYMENT" ]; then \
+  cd /app/repo && \
+  echo "Checking out branch: $CUSTOM_GIT_BRANCH_DEPLOYMENT" && \
+  git checkout $CUSTOM_GIT_BRANCH_DEPLOYMENT; \
+  fi
 
-# Copy source
-COPY . .
 
-# Build
-RUN cd defi && pnpm run init-defi || true
+# Change to the directory of your repo
+WORKDIR /app/repo/defi
 
+# Make port 5003 available to the world outside this container
 EXPOSE 5003
 
-CMD ["node", "-r", "ts-node/register", "--max-old-space-size=4096", "defi/src/rwa/perps/server.ts"]
+# bash command to keep the container running
+CMD ["bash", "-c", "bash src/rwa/perps/rwa_perps_start.sh; while true; do sleep 10000; done"]

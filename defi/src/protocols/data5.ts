@@ -5275,8 +5275,8 @@ const data5: Protocol[] = [
   {
     id: "7123",
     name: "Based Predict",
-    address: null,
-    symbol: "-",
+    address: "0x4f2b33840227ddd0e28da8d4185d6fa07adfed87",
+    symbol: "BASED",
     url: "https://app.based.one/predict",
     description: "Trade on real-world events and outcomes.",
     chain: "Polygon",

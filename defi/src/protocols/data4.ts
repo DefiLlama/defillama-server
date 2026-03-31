@@ -25337,8 +25337,8 @@ const data4: Protocol[] = [
   {
     id: "6663",
     name: "edgeX Perps",
-    address: null,
-    symbol: "-",
+    address: "0xb0076de78dc50581770bba1d211ddc0ad4f2a241",
+    symbol: "EDGE",
     url: "https://pro.edgex.exchange/referral/196451583",
     description: "A high-performance, orderbook-based perpetual DEX with native trading experience",
     chain: "Ethereum",

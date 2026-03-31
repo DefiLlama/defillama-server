@@ -49954,8 +49954,8 @@ const data3_3: Protocol[] = [
   {
     id: "4954",
     name: "edgeX Bridge",
-    address: null,
-    symbol: "-",
+    address: "0xb0076de78dc50581770bba1d211ddc0ad4f2a241",
+    symbol: "EDGE",
     url: "https://pro.edgex.exchange/referral/196451583",
     referralUrl: "https://pro.edgex.exchange/referral/196451583",
     description: "A high-performance, orderbook-based perpetual DEX with native trading experience",

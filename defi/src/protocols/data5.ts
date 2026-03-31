@@ -15274,7 +15274,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["Stableswap"],
+    tags: ["StableSwap"],
     chains: ["Binance","Ethereum"],
     module: "dummy.js",
     twitter: "LISTA_DAO",

@@ -21635,6 +21635,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "evedex",
       "open-interest": "evedex",
+      "normalized-volume": "evedex"
     }
   },
   {

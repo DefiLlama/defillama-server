@@ -15262,5 +15262,28 @@ const data5: Protocol[] = [
     parentProtocol: "parent#cozy-finance",
     listedAt: 1774912323,
   },
+  {
+    id: "7599",
+    name: "Lista DEX",
+    address: "bsc:0xFceB31A79F71AC9CBDCF853519c1b12D379EdC46",
+    symbol: "LISTA",
+    url: "https://lista.org/swap",
+    description: "Smart Swap aggregates liquidity across pools to automatically select the best route and price, minimizing slippage and fees.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/lista-dex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Stableswap"],
+    chains: ["Binance","Ethereum"],
+    module: "dummy.js",
+    twitter: "LISTA_DAO",
+    parentProtocol: "parent#lista-dao",
+    listedAt: 1774921739,
+    dimensions: {
+      fees: "lista-dex",
+      dexs: "lista-dex",
+    },
+  },
 ];
 export default data5;

@@ -15276,7 +15276,7 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["StableSwap"],
     chains: ["Binance","Ethereum"],
-    module: "dummy.js",
+    module: "lista-dex/index.js",
     twitter: "LISTA_DAO",
     parentProtocol: "parent#lista-dao",
     listedAt: 1774921739,

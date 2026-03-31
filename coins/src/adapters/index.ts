@@ -40,7 +40,7 @@ export default {
   optimBonds: require("./other/optimBonds"),
   tangleswap: require("./markets/tangleswap"),
   xexchange: require("./markets/xexchange"),
-  // cetus: require("./markets/cetus"),
+  cetus: require("./markets/cetus"),
   aftermath: require("./markets/aftermath"),
   balanced: require("./markets/balanced"),
   tinyman: require("./markets/tinyman"),

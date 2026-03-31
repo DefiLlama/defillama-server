@@ -15192,6 +15192,9 @@ const data5: Protocol[] = [
     audit_links: ["https://aave.com/security"],
     listedAt: 1774886314,
     parentProtocol: "parent#aave",
+    dimensions: {
+      fees: "aave-v4",
+    },
   },
   {
     id: "7595",
@@ -15357,6 +15360,30 @@ const data5: Protocol[] = [
     ],
     listedAt: 1774996953,
     github: ["circuitdao"],
+  },
+  {
+    id: "7603",
+    name: "Current",
+    address: null,
+    symbol: "-",
+    url: "https://www.current.finance/",
+    description: "Current is the capital efficiency layer for all future assets on Sui. One click multiply yield, isolated lending market, your capital has never worked this hard before.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/current.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sui"],
+    module: "dummy.js",
+    twitter: "CurrentSUI",
+    audit_links: ["https://current-finance.gitbook.io/current/security-and-risk/audit-reports",],
+    oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://current-finance.gitbook.io/current/","https://current-finance.gitbook.io/exposure-current/security-and-risk/audit-reports"],}],
+    listedAt: 1774999941,
+    github: ["current-finance"],
+    dimensions: {
+      fees: "current"
+    },
   },
 ];
 export default data5;

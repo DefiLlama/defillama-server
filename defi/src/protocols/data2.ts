@@ -4371,6 +4371,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1648148576,
     github: ["bcnmy"],
+    deprecated: true
   },
   {
     id: "1579",

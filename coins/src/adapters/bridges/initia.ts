@@ -23,6 +23,9 @@ const chainIdMap: { [key: string]: string } = {
   civitia: 'civitia',
   inertia: 'inertia',
   cabal: 'cabal',
+  intergaze: 'intergaze',
+  rave: 'rave',
+  strat: 'strat',
   // milkyway_rollup: 'moo'
 };
 

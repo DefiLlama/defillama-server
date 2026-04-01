@@ -18,8 +18,9 @@ import {
     fetchMaxUpdatedAtPG,
     fetchAllDailyIdsPG,
 } from './db';
-import { perpsSlug, toFiniteNumberOrZero, groupBy } from './utils';
+import { toFiniteNumberOrZero, groupBy } from './utils';
 import { main as runPipeline } from './perps';
+import { buildCategoryHistoricalCharts, buildPerpsIdMap, buildVenueHistoricalCharts } from './aggregate';
 
 interface PerpsMetadata {
     id: string;
@@ -60,15 +61,7 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
 
 async function generateIdMap(metadata: PerpsMetadata[]): Promise<void> {
     console.log('Generating ID map...');
-    const idMap: { [key: string]: string } = {};
-    metadata.forEach((m) => {
-        const coin = m.data?.coin;
-        const venue = m.data?.venue;
-        if (coin && venue) {
-            idMap[`${venue}:${coin}`] = m.id;
-            idMap[coin.toLowerCase()] = m.id;
-        }
-    });
+    const idMap = buildPerpsIdMap(metadata);
     await storeRouteData('id-map.json', idMap);
     console.log(`Generated id-map.json with ${Object.keys(idMap).length} entries`);
 }
@@ -188,34 +181,26 @@ async function generateHistoricalCharts(): Promise<void> {
     console.log(`Generated charts for ${processedCount} markets in ${Date.now() - startTime}ms`);
 }
 
-async function generateVenueCharts(currentData: any[]): Promise<void> {
-    console.log('Generating venue charts...');
+// TODO: perf — this fetches ALL daily records on every cron run (no lastSync filter).
+// Fine for now, but will need incremental sync like generateHistoricalCharts once history grows.
+async function generateAggregateHistoricalCharts(metadata: PerpsMetadata[]): Promise<void> {
+    console.log('Generating aggregate historical charts...');
 
-    const byVenue = groupBy(currentData, (m: any) => m.venue || 'unknown');
-    for (const [venue, markets] of Object.entries(byVenue)) {
-        const key = perpsSlug(venue);
-        await storeRouteData(`charts/venue/${key}.json`, markets);
-    }
-    console.log(`Generated venue charts for ${Object.keys(byVenue).length} venues`);
-}
+    const allDailyRecords = await fetchAllDailyRecordsPG();
+    const venueCharts = buildVenueHistoricalCharts(allDailyRecords, metadata);
+    const categoryCharts = buildCategoryHistoricalCharts(allDailyRecords, metadata);
 
-async function generateCategoryCharts(currentData: any[]): Promise<void> {
-    console.log('Generating category charts...');
-
-    const categoryMap: { [cat: string]: any[] } = {};
-    for (const market of currentData) {
-        const categories = Array.isArray(market.category) ? market.category : [market.category || 'Other'];
-        for (const cat of categories) {
-            if (!categoryMap[cat]) categoryMap[cat] = [];
-            categoryMap[cat].push(market);
-        }
+    for (const [venueKey, rows] of Object.entries(venueCharts)) {
+        await storeRouteData(`charts/venue/${venueKey}.json`, rows);
     }
 
-    for (const [category, markets] of Object.entries(categoryMap)) {
-        const key = perpsSlug(category);
-        await storeRouteData(`charts/category/${key}.json`, markets);
+    for (const [categoryKey, rows] of Object.entries(categoryCharts)) {
+        await storeRouteData(`charts/category/${categoryKey}.json`, rows);
     }
-    console.log(`Generated category charts for ${Object.keys(categoryMap).length} categories`);
+
+    console.log(
+        `Generated aggregate historical charts for ${Object.keys(venueCharts).length} venues and ${Object.keys(categoryCharts).length} categories`
+    );
 }
 
 // ── Main cron ────────────────────────────────────────────────────────────────
@@ -245,8 +230,7 @@ async function cron(): Promise<void> {
     await generateStats(currentData);
     await generateList(currentData);
     await generateHistoricalCharts();
-    await generateVenueCharts(currentData);
-    await generateCategoryCharts(currentData);
+    await generateAggregateHistoricalCharts(metadata);
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`[rwa-perps-cron] Complete in ${elapsed}s`);

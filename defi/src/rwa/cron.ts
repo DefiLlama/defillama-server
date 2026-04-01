@@ -807,7 +807,7 @@ function generateList(currentData: any[], stats: AggregateStats): {
 
   for (const item of currentData) {
     const assetType = typeof item.type === "string" ? item.type.trim() : "";
-    if (assetType.toLowerCase() === "wrapper") continue;
+    // if (assetType.toLowerCase() === "wrapper") continue;
 
     let assetMcap = 0;
     const mcapObj = item.onChainMcap;

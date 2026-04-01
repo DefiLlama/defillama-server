@@ -46,15 +46,17 @@ All routes are prefixed with `/{RWA_PERPS_SUBPATH}/`.
 | `GET /current` | All markets, latest snapshot |
 | `GET /list` | Coins, venues, categories |
 | `GET /stats` | Aggregate totals by venue & category |
-| `GET /id-map` | Coin/venue to ID mapping |
+| `GET /id-map` | Canonical market keys to ID mapping |
 | `GET /market/:id` | Single market by ID (`venue:coin`) |
-| `GET /coin/:coin` | All markets for a coin across venues |
+| `GET /coin/:coin` | Markets matching a canonical market key |
 | `GET /venue/:venue` | All markets on a venue |
 | `GET /category/:category` | Markets in a category |
 | `GET /chart/:id` | Historical time-series for one market |
-| `GET /chart/venue/:venue` | Aggregated venue chart |
-| `GET /chart/category/:category` | Aggregated category chart |
+| `GET /chart/venue/:venue` | Historical constituent rows for one venue |
+| `GET /chart/category/:category` | Historical constituent rows for one category |
 | `GET /funding/:id` | Funding history (supports `startTime`/`endTime` query params) |
+
+`/id-map` currently exposes lowercase canonical market keys and lowercase IDs that resolve to the stored market ID used by `/market/:id` and `/chart/:id`.
 
 ## Environment variables
 

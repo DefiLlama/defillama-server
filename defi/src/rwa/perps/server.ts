@@ -95,7 +95,7 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get ID map (coin/venue -> id mapping)
+    // Get ID map (canonical market keys -> id mapping)
     router.get(
         '/id-map',
         errorWrapper(async (_req, res) => {
@@ -125,7 +125,7 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get market by coin ticker
+    // Get markets by canonical market key (for example "xyz:META")
     router.get(
         '/coin/:coin',
         errorWrapper(async (req, res) => {
@@ -188,7 +188,7 @@ function setRoutes(router: HyperExpress.Router): void {
 
     // ── Historical charts ────────────────────────────────────────────────────
 
-    // Get historical chart data for a market by ID
+    // Get historical chart data for a single market by ID
     router.get(
         '/chart/:id',
         errorWrapper(async (req, res) => {
@@ -198,7 +198,7 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get historical chart data by venue
+    // Get historical constituent chart rows by venue
     router.get(
         '/chart/venue/:venue',
         errorWrapper(async (req, res) => {
@@ -209,7 +209,7 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get historical chart data by category
+    // Get historical constituent chart rows by category
     router.get(
         '/chart/category/:category',
         errorWrapper(async (req, res) => {

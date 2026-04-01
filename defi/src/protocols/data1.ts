@@ -1073,7 +1073,7 @@ const data: Protocol[] = [
     name: "Augur",
     address: "0x221657776846890989a759ba2973e427dff5c9bb",
     symbol: "REP",
-    url: "https://www.augur.net/",
+    url: "https://augur.net/",
     description:
       "A transparent exchange with no limit on what you can bet on, no max limits on the amount you can bet and no rollover requirements.",
     chain: "Ethereum",

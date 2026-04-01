@@ -15385,5 +15385,47 @@ const data5: Protocol[] = [
       fees: "current"
     },
   },
+  {
+    id: "7604",
+    name: "AirNFTs",
+    address: null,
+    symbol: "-",
+    url: "https://app.airnfts.com/",
+    description: "Multichain NFT marketplace that connects artists and collectors.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/airnfts.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "airnfts",
+    listedAt: 1775000457,
+    dimensions: {
+      fees: "airnft"
+    },
+  },
+  {
+    id: "7605",
+    name: "Hotstuff",
+    address: null,
+    symbol: "-",
+    url: "https://app.hotstuff.trade/",
+    description: "Hotstuff is a purpose-built DeFi Layer 1 with a mission to enable Confidential Integrated Finance.",
+    chain: "Hotstuff",
+    logo: `${baseIconsUrl}/hotstuff.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hotstuff"],
+    module: "dummy.js",
+    twitter: "tradehotstuff",
+    listedAt: 1775000619,
+    dimensions: {
+      derivatives: "hotstuff"
+    },
+  },
 ];
 export default data5;

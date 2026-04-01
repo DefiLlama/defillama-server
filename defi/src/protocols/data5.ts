@@ -15424,7 +15424,8 @@ const data5: Protocol[] = [
     twitter: "tradehotstuff",
     listedAt: 1775000619,
     dimensions: {
-      derivatives: "hotstuff"
+      derivatives: "hotstuff",
+      "open-interest": "hotstuff-oi"
     },
   },
 ];

@@ -15528,13 +15528,10 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "yieldseeker/index.js", //https://github.com/DefiLlama/DefiLlama-Adapters/commit/9ee9231e534b14ace54d82fbb3c65f516dee6a0a
     twitter: "yieldseekerxyz",
     audit_links: ["https://github.com/tokenpage/yieldseeker-contracts/tree/main/audits"],
     listedAt: 1775062029,
-    dimensions: {
-      fees: "markit",
-    },
   },
 ];
 export default data5;

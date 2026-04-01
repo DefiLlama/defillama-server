@@ -1,6 +1,11 @@
 import { toFiniteNumberOrZero, perpsSlug, computeProtocolFees, groupBy } from "./utils";
 import { fileNameNormalizer, mergeHistoricalData } from "./file-cache";
 import {
+  buildCategoryHistoricalCharts,
+  buildPerpsIdMap,
+  buildVenueHistoricalCharts,
+} from "./aggregate";
+import {
   getMarketId,
   getMarketMetadata,
   setMarketMetadata,
@@ -308,5 +313,143 @@ describe("mergeHistoricalData", () => {
     const newRec = [{ timestamp: 1 }, { timestamp: 2 }];
     const merged = mergeHistoricalData(existing, newRec);
     expect(merged.map((r) => r.timestamp)).toEqual([1, 2, 3]);
+  });
+});
+
+// ── aggregate.ts ──────────────────────────────────────────────────────────────
+
+describe("buildPerpsIdMap", () => {
+  it("preserves bare coin, id, and venue-prefixed aliases without duplicating the venue prefix", () => {
+    expect(
+      buildPerpsIdMap([
+        { id: "tsla", data: { coin: "TSLA", venue: "hyperliquid" } },
+        { id: "xyz:meta", data: { coin: "xyz:META", venue: "xyz" } },
+      ])
+    ).toEqual({
+      "tsla": "tsla",
+      "hyperliquid:tsla": "tsla",
+      "xyz:meta": "xyz:meta",
+    });
+  });
+});
+
+describe("buildVenueHistoricalCharts", () => {
+  it("builds lean historical constituent rows grouped by venue slug", () => {
+    const result = buildVenueHistoricalCharts(
+      [
+        { id: "xyz:meta", timestamp: 100, open_interest: "10", volume_24h: "3" },
+        { id: "xyz:meta", timestamp: 200, open_interest: "12", volume_24h: "4" },
+        { id: "flx:gold", timestamp: 200, open_interest: "7", volume_24h: "2" },
+      ],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            coin: "xyz:META",
+            venue: "xyz",
+            referenceAsset: "Meta",
+            assetClass: "Single stock synthetic perp",
+            category: ["RWA Perpetuals"],
+          },
+        },
+        {
+          id: "flx:gold",
+          data: {
+            coin: "flx:GOLD",
+            venue: "flx",
+            referenceAsset: "Gold",
+            assetClass: "Commodity synthetic perp",
+            category: ["Commodities"],
+          },
+        },
+      ]
+    );
+
+    expect(result).toEqual({
+      xyz: [
+        {
+          timestamp: 100,
+          id: "xyz:meta",
+          coin: "xyz:META",
+          venue: "xyz",
+          referenceAsset: "Meta",
+          assetClass: "Single stock synthetic perp",
+          category: ["RWA Perpetuals"],
+          openInterest: 10,
+          volume24h: 3,
+        },
+        {
+          timestamp: 200,
+          id: "xyz:meta",
+          coin: "xyz:META",
+          venue: "xyz",
+          referenceAsset: "Meta",
+          assetClass: "Single stock synthetic perp",
+          category: ["RWA Perpetuals"],
+          openInterest: 12,
+          volume24h: 4,
+        },
+      ],
+      flx: [
+        {
+          timestamp: 200,
+          id: "flx:gold",
+          coin: "flx:GOLD",
+          venue: "flx",
+          referenceAsset: "Gold",
+          assetClass: "Commodity synthetic perp",
+          category: ["Commodities"],
+          openInterest: 7,
+          volume24h: 2,
+        },
+      ],
+    });
+  });
+});
+
+describe("buildCategoryHistoricalCharts", () => {
+  it("duplicates rows per category and narrows each row to the requested category", () => {
+    const result = buildCategoryHistoricalCharts(
+      [{ id: "xyz:meta", timestamp: 100, open_interest: "10", volume_24h: "3" }],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            coin: "xyz:META",
+            venue: "xyz",
+            referenceAsset: "Meta",
+            assetClass: "Single stock synthetic perp",
+            category: ["RWA Perpetuals", "Equities"],
+          },
+        },
+      ]
+    );
+
+    expect(result["rwa-perpetuals"]).toEqual([
+      {
+        timestamp: 100,
+        id: "xyz:meta",
+        coin: "xyz:META",
+        venue: "xyz",
+        referenceAsset: "Meta",
+        assetClass: "Single stock synthetic perp",
+        category: ["RWA Perpetuals"],
+        openInterest: 10,
+        volume24h: 3,
+      },
+    ]);
+    expect(result["equities"]).toEqual([
+      {
+        timestamp: 100,
+        id: "xyz:meta",
+        coin: "xyz:META",
+        venue: "xyz",
+        referenceAsset: "Meta",
+        assetClass: "Single stock synthetic perp",
+        category: ["Equities"],
+        openInterest: 10,
+        volume24h: 3,
+      },
+    ]);
   });
 });

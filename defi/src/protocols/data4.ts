@@ -25288,7 +25288,10 @@ const data4: Protocol[] = [
     listedAt: 1756962147,
     dimensions: {
       fees: "w-dex",
-      dexs: "w-dex"
+      dexs: {
+        adapter: "w-dex",
+        genuineSpikes: [["2026-04-01", "High volume due to $CES crash(97%) and recovery"]],
+      }
     }
   },
   {

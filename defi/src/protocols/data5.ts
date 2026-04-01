@@ -15428,5 +15428,26 @@ const data5: Protocol[] = [
       "open-interest": "hotstuff-oi"
     },
   },
+  {
+    id: "7606",
+    name: "Arkada.gg",
+    address: null,
+    symbol: "-",
+    url: "https://app.arkada.gg/",
+    description: "Arkada: Redefining Web3 Engagement/ The Ultimate Quest to Earn Platform.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arkada.gg.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "SoFi",
+    chains: ["Arbitrum", "Soneium", "Base", "Binance", "Sonic", "Hyperliquid L1", "Plume Mainnet", "Abstract", "Somnia", "Monad", "Unichain", "Polygon", "Ethereum", "MegaETH", "Ink", "Katana"],
+    module: "dummy.js",
+    twitter: "Arkada_gg",
+    listedAt: 1775060347,
+    dimensions: {
+      fees: "arkada",
+    },
+  },
 ];
 export default data5;

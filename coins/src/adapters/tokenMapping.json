@@ -5595,6 +5595,11 @@
     }
   },
   "aptos": {
+    "0xc546cc2dd26d9e9a4516b4514288bedf1085259fcb106b84b6469337f527fb92": {
+      "decimals": "8",
+      "symbol": "PACT",
+      "to": "coingecko#pact-2"
+    },
     "0x000000000000000000000000000000000000000000000000000000000000000a": {
       "decimals": "8",
       "symbol": "APT",

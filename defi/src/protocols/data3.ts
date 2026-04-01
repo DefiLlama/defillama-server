@@ -3256,7 +3256,8 @@ const data3_0: Protocol[] = [
     name: "World Mobile Token",
     address: "cardano:asset1h7jsujzt4s8pup6nrzthr9nhajl0gmwhlzcqw7",
     symbol: "WMT",
-    url: "https://worldmobile.io/",
+    url: "https://my.worldmobile.io?affiliate=M8S7RK",
+    referralUrl: "https://my.worldmobile.io?affiliate=M8S7RK",
     description:
       "World Mobile Token (WMT) is a cryptocurrency used to power the World Mobile Network, a decentralized mobile network that provides affordable and reliable internet access to remote areas.",
     chain: "Cardano",

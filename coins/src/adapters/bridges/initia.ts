@@ -20,8 +20,9 @@ const chainIdMap: { [key: string]: string } = {
   yomi: "yominet",
   initia: "initia",
   embr: "embr",
-  civitia: 'civitia', 
-  inertia: 'inertia', 
+  civitia: 'civitia',
+  inertia: 'inertia',
+  cabal: 'cabal',
   // milkyway_rollup: 'moo'
 };
 

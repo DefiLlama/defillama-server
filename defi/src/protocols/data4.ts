@@ -4605,7 +4605,7 @@ const data4: Protocol[] = [
     symbol: "HYPE",
     url: "https://app.hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
-    description: "The order book works in essentially the same way as all centralized exchanges but is fully on-chain",
+    description: "Hyperliquid is a Layer 1 blockchain best known for perpetual futures and spot trading. The order book is fully onchain, and orders are matched in price-time priority. Every order, cancel, trade, and liquidation happens transparently.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperliquid.png`,
     audits: "0",

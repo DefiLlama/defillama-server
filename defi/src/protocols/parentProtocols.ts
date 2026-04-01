@@ -4429,7 +4429,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://app.hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
     description:
-      "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price",
+      "Hyperliquid is a Layer 1 blockchain best known for perpetual futures and spot trading. Beyond its flagship decentralized exchange (DEX), the ecosystem supports borrowing, lending, RWAs, and a full-fledged EVM.",
     logo: `${baseIconsUrl}/hyperliquid.png`,
     gecko_id: "hyperliquid",
     cmcId: "32196",

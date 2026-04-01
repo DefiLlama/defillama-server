@@ -11835,7 +11835,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "beezie_io",
     dimensions: {
-      dexs: "beezie"
+      dexs: "beezie",
+      fees: "beezie"
     }
   },
   {

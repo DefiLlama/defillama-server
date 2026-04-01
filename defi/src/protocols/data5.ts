@@ -15335,6 +15335,10 @@ const data5: Protocol[] = [
     twitter: "lunarbaseX",
     listedAt: 1774975802,
     github: ["Lunarbase-Lab"],
+    dimensions: {
+      dexs: "lunarbase",
+      fees: "lunarbase",
+    },
   },
   {
     id: "7602",

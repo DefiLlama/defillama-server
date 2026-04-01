@@ -17878,7 +17878,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://kgen.io/",
     description:
-      "KGeN is building the world's largest Verified Distribution Protocol (VeriFi), which is designed to accelerate business growth through real, verified users.",
+      "VeriFi: The Proof of Human model scaling partners with verified users.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/kgen.jpg`,
     audits: "0",

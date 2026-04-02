@@ -15759,5 +15759,26 @@ const data5: Protocol[] = [
     twitter: "capitalisnn",
     listedAt: 1775169929,
   },
+  {
+    id: "7622",
+    name: "Holoworld AI",
+    address: "bsc:0x1a5d7e4c3a7f940b240b7357a4bfed30d17f9497",
+    symbol: "HOLO",
+    url: "https://holoworld.com/",
+    description:
+      "Holoworld is the agentic app store. Create, play, and fundraise for your agentic apps and IPs today.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/holoworld-ai.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: "HoloworldAI",
+    dimensions: {
+      fees: "holoworld",
+    },
+  },
 ];
 export default data5;

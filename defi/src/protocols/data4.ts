@@ -25289,10 +25289,13 @@ const data4: Protocol[] = [
     twitter: "MetaWhaleX",
     listedAt: 1756962147,
     dimensions: {
-      fees: "w-dex",
+      fees: {
+        adapter: "w-dex",
+        genuineSpikes: [["2026-03-31", "-"]],
+      },
       dexs: {
         adapter: "w-dex",
-        genuineSpikes: [["2026-04-01", "High volume due to $CES crash(97%) and recovery"]],
+        genuineSpikes: [["2026-03-31", "High volume due to $CES crash(97%) and recovery"]],
       }
     }
   },

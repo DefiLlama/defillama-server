@@ -15740,5 +15740,24 @@ const data5: Protocol[] = [
     twitter: "tempo",
     listedAt: 1775162827,
   },
+  {
+    id: "7621",
+    name: "ZenSats",
+    address: null,
+    symbol: "-",
+    url: "https://zensats.app",
+    description:
+      "Carry trade vaults — ZenSats is an system that automates collateralized carry trades. You deposit collateral (WBTC, wstETH, or other supported assets), the vault borrows stablecoins through a loan manager, and deploys the borrowed capital into a yield strategy. You earn the spread.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zensats.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "zensats/index.js",
+    twitter: "capitalisnn",
+    listedAt: 1775169929,
+  },
 ];
 export default data5;

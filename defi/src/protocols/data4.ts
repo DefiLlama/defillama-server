@@ -28495,6 +28495,7 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum"],
     module: "sentora/index.js",
+    oraclesBreakdown: [{name: "Chainlink", type: "Primary", proof: ["https://etherscan.io/address/0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961#readContract"]}],
     twitter: "SentoraHQ",
     listedAt: 1759454399,
     dimensions: {

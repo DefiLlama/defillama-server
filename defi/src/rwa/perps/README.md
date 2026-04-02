@@ -16,7 +16,7 @@ Hyperliquid API ──> Parse & Validate ──> PostgreSQL
 
 ### Data pipeline (`cron.ts` / `perps.ts`)
 
-1. Load market metadata from Airtable (coins, categories, fees, asset class).
+1. Load market metadata from Airtable (canonical contracts, categories, fees, asset class).
 2. Fetch venue markets and funding history from Hyperliquid.
 3. Calculate derived metrics: cumulative funding, rolling volumes (7d/30d/all-time), protocol fees.
 4. Run circuit-breaker check (rejects >50% OI change).
@@ -44,19 +44,21 @@ All routes are prefixed with `/{RWA_PERPS_SUBPATH}/`.
 | Route | Description |
 |-------|-------------|
 | `GET /current` | All markets, latest snapshot |
-| `GET /list` | Coins, venues, categories |
+| `GET /list` | Contracts, venues, categories |
 | `GET /stats` | Aggregate totals by venue & category |
 | `GET /id-map` | Canonical market keys to ID mapping |
-| `GET /market/:id` | Single market by ID (`venue:coin`) |
-| `GET /coin/:coin` | Markets matching a canonical market key |
-| `GET /venue/:venue` | All markets on a venue |
-| `GET /category/:category` | Markets in a category |
+| `GET /market/:id` | Single market by ID |
+| `GET /contract/:contract` | Markets matching a canonical market key from Airtable `Canonical Market ID` |
+| `GET /venue/:venue` | All markets on a venue (returns array directly) |
+| `GET /category/:category` | Markets in a category (returns array directly) |
 | `GET /chart/:id` | Historical time-series for one market |
 | `GET /chart/venue/:venue` | Historical constituent rows for one venue |
 | `GET /chart/category/:category` | Historical constituent rows for one category |
-| `GET /funding/:id` | Funding history (supports `startTime`/`endTime` query params) |
+| `GET /funding/:id` | Funding history array (supports `startTime`/`endTime` query params) |
 
 `/id-map` currently exposes lowercase canonical market keys and lowercase IDs that resolve to the stored market ID used by `/market/:id` and `/chart/:id`.
+
+Perps Airtable metadata parsing now reuses the shared RWA normalization style for header mapping, whitespace cleanup, dash-to-null handling, and deduped string-array normalization. The perps-specific `accessModel` field still comes directly from the Airtable `Access Model` column.
 
 ## Environment variables
 

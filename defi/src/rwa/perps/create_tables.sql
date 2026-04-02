@@ -77,6 +77,7 @@ CREATE INDEX IF NOT EXISTS meta_rwa_perps_id_index ON meta_rwa_perps_data(id);
 CREATE INDEX IF NOT EXISTS meta_rwa_perps_updated_at_index ON meta_rwa_perps_data(updated_at);
 
 -- Create funding_history table (per-interval funding snapshots for accumulation)
+-- Note: `coin` is a legacy storage column name for the canonical perps contract key.
 CREATE TABLE IF NOT EXISTS rwa_perps_funding_history (
     timestamp INTEGER NOT NULL,
     id VARCHAR(255) NOT NULL,

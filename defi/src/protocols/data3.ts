@@ -33387,7 +33387,12 @@ const data3_2: Protocol[] = [
     listedAt: 1709248720,
     dimensions: {
       fees: "thruster-v3",
-      dexs: "thruster-v3"
+      dexs: {
+        adapter: "thruster-v3",
+        genuineSpikes: [
+          ["2026-04-02", "Large $WETH -> $YES and vice versa swaps by a whale"] //0x8C02E8438B6FDEA5dB47Aa5A19DA73374Cee9a91
+        ],
+      }
     }
   },
   {

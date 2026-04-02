@@ -15678,5 +15678,25 @@ const data5: Protocol[] = [
     parentProtocol: "parent#stable-swap",
     listedAt: 1775114837,
   },
+  {
+    id: "7618",
+    name: "Apyx Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://apyx.fi",
+    description: "Apyx Protocol issues apxUSD, a synthetic dollar on Ethereum, and apyUSD, an ERC-4626 savings vault for apxUSD.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/apyx-protocol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Onchain Equity"],
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "apabordeaux",
+    dimensions: {
+      fees: "apyx-protocol",
+    },
+  },
 ];
 export default data5;

@@ -15778,6 +15778,7 @@ const data5: Protocol[] = [
     twitter: "HoloworldAI",
     dimensions: {
       fees: "holoworld",
+      dexs: "holoworld",
     },
   },
 ];

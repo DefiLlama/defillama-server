@@ -58281,6 +58281,7 @@ const data3_3: Protocol[] = [
     oracles: ["Switchboard", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8978
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     parentProtocol: "parent#carrot",
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
     listedAt: 1731107322
   },
   {

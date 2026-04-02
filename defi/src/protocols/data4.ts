@@ -19834,6 +19834,7 @@ const data4: Protocol[] = [
     twitter: "DeFiCarrot",
     parentProtocol: "parent#carrot",
     listedAt: 1752343187,
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
   },
   {
     id: "6419",
@@ -24887,7 +24888,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#pancakeswap",
     dimensions: {
       fees: "pancakeswap-prediction",
-      dexs: "pancakeswap-prediction"
+      dexs: "pancakeswap-prediction",
     }
   },
   {

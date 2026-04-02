@@ -213,6 +213,24 @@ describe("loadContractMetadataFromAirtable", () => {
     await expect(loadContractMetadataFromAirtable()).resolves.toBe(0);
     expect(getContractMetadata("missing")).toBeNull();
   });
+
+  it("falls back to default fee values for blank Airtable fee cells", async () => {
+    mockGetCsvData.mockResolvedValue([
+      {
+        "Canonical Market ID": "xyz:META",
+        "Maker Fee Rate": "   ",
+        "Taker Fee Rate": "",
+        "Deployer Fee Share": "\n\t",
+      },
+    ]);
+
+    await expect(loadContractMetadataFromAirtable()).resolves.toBe(1);
+    expect(getContractMetadata("xyz:META")).toMatchObject({
+      makerFeeRate: HYPERLIQUID_MAKER_FEE,
+      takerFeeRate: HYPERLIQUID_TAKER_FEE,
+      deployerFeeShare: HYPERLIQUID_DEPLOYER_SHARE,
+    });
+  });
 });
 
 describe("normalizePerpsMetadataInPlace", () => {
@@ -589,6 +607,10 @@ describe("server route helpers", () => {
 
   it("filters markets by category", () => {
     expect(findMarketsByCategory(currentData, "Equities")).toEqual(currentData);
+  });
+
+  it("filters markets by slugged category routes", () => {
+    expect(findMarketsByCategory(currentData, "rwa-perpetuals")).toEqual([currentData[1]]);
   });
 
   it("resolves lowercase and slugged aliases through id-map entries", () => {

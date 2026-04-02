@@ -48,7 +48,7 @@ All routes are prefixed with `/{RWA_PERPS_SUBPATH}/`.
 | `GET /stats` | Aggregate totals by venue & category |
 | `GET /id-map` | Canonical market keys to ID mapping |
 | `GET /market/:id` | Single market by ID |
-| `GET /contract/:contract` | Markets matching a canonical market key from Airtable `Canonical Market ID` |
+| `GET /contract/:contract` | Markets matching a canonical market key from Airtable `Canonical Market ID` (returns array directly) |
 | `GET /venue/:venue` | All markets on a venue (returns array directly) |
 | `GET /category/:category` | Markets in a category (returns array directly) |
 | `GET /chart/:id` | Historical time-series for one market |

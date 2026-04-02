@@ -141,6 +141,7 @@ export async function loadContractMetadataFromAirtable(): Promise<number> {
         if (!trimmed) continue;
 
         const toNum = (v: any, fallback: number): number => {
+            if (typeof v === "string" && v.trim() === "") return fallback;
             const n = Number(v);
             return Number.isFinite(n) ? n : fallback;
         };

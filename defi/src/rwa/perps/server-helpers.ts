@@ -32,9 +32,9 @@ export function findMarketsByVenue(currentData: any[], venue: string): any[] {
 }
 
 export function findMarketsByCategory(currentData: any[], category: string): any[] {
-    const categoryLower = category.toLowerCase();
+    const slugCategory = perpsSlug(category);
     return currentData.filter((item: any) => {
         const categories = Array.isArray(item.category) ? item.category : [item.category || "Other"];
-        return categories.some((cat: string) => cat.toLowerCase() === categoryLower);
+        return categories.some((cat: string) => perpsSlug(cat) === slugCategory);
     });
 }

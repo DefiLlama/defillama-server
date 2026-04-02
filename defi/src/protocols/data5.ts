@@ -9796,9 +9796,10 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Physical TCG",
     chains: ["Op_Bnb"],
-    module: "dummy.js",
+    module: "chapool/index.js",
     twitter: "cv_chapool",
     github: ["chapool"],
+    listedAt: 1775112681,
     dimensions: {
       dexs: "chapool",
       fees: "chapool",

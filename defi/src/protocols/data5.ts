@@ -15366,6 +15366,7 @@ const data5: Protocol[] = [
     ],
     listedAt: 1774996953,
     github: ["circuitdao"],
+    treasury: "circuitdao.js",
   },
   {
     id: "7603",

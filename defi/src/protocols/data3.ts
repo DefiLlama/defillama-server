@@ -10329,7 +10329,10 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "phoenix",
       dexs: {
-        genuineSpikes: [["2024-08-05", "-"]],
+        genuineSpikes: [
+          ["2024-08-05", "-"],
+          ["2026-04-01", "WBTC sold by drift trade hacker"], //FMR4UZ9odhv7Z9GF4SDgUGh52Wz8jhu7Xn4RAnkZDuad
+        ],
         adapter: "phoenix"
       }
     }

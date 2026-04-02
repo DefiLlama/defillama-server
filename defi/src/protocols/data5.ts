@@ -12606,7 +12606,7 @@ const data5: Protocol[] = [
     url: "https://stash.fun",
     description: "stash.fun is a multi-asset vault protocol on HyperEVM (Hyperliquid EVM, Chain ID 999). Users deposit USDC into ERC-4626 vaults that provide diversified exposure to 40+ markets — stocks, crypto, commodities, forex, and indices — via perpetual futures traded on Hyperliquid.",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/stash.fun.jpg`,
+    logo: `${baseIconsUrl}/stash.fun.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

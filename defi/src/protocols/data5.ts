@@ -15721,5 +15721,24 @@ const data5: Protocol[] = [
       derivatives: "sushi-perps"
     }
   },
+  {
+    id: "7620",
+    name: "Tempo Stablecoin Dex",
+    address: null,
+    symbol: "-",
+    url: "https://tempo.xyz/",
+    description:
+      "Tempo Stablecoin Dex is a decentralized exchange for stablecoins on Tempo.",
+    chain: "Tempo",
+    logo: `${baseIconsUrl}/tempo-stablecoin-dex.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["StableSwap"],
+    chains: ["Tempo"],
+    module: "tempo-stable-dex/index.js",
+    twitter: "tempo",
+    listedAt: 1775162827,
+  },
 ];
 export default data5;

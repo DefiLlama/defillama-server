@@ -16748,17 +16748,5 @@
       "symbol": "OMFG",
       "to": "coingecko#omnipair"
     }
-  },
-  "cabal": {
-    "0x58918f9E58662058Cb36Cc60d7E124C90872C7C0": {
-      "to": "coingecko#agora-dollar",
-      "decimals": 18,
-      "symbol": "iUSD"
-    },
-    "0xA1Bc0977Bab93D507A89C108fa21820809e6869D": {
-      "to": "coingecko#usd-coin",
-      "decimals": 18,
-      "symbol": "USDC"
-    }
   }
 }

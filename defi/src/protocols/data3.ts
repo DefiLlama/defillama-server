@@ -10331,7 +10331,7 @@ const data3_0: Protocol[] = [
       dexs: {
         genuineSpikes: [
           ["2024-08-05", "-"],
-          ["2026-04-01", "WBTC sold by drift trade hacker"], //FMR4UZ9odhv7Z9GF4SDgUGh52Wz8jhu7Xn4RAnkZDuad
+          ["2026-04-01", "WBTC sold by drift trade exploiter"], //FMR4UZ9odhv7Z9GF4SDgUGh52Wz8jhu7Xn4RAnkZDuad
         ],
         adapter: "phoenix"
       }
@@ -30501,7 +30501,10 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#jupiter",
     listedAt: 1706560048,
     dimensions: {
-      fees: "jupiter-perpetual",
+      fees: {
+        adapter: "jupiter-perpetual",
+        genuineSpikes: [["2026-04-01", "$JLP burnt by drift trade exploiter"]], //HkGz4KmoZ7Zmk7HN6ndJ31UJ1qZ2qgwQxgVqQwovpZES
+      },
       derivatives: "jupiter-perpetual",
       //"open-interest": "jupiter-perpetual"
     }

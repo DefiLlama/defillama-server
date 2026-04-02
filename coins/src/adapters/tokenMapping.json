@@ -11386,6 +11386,46 @@
       "decimals": "5",
       "symbol": "UKTBL",
       "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
+    "CBZVSNVB55ANF24QVJL2K5QCLOAB6XITGTGXYEAF6NPTXYKEJUYQOHFC": {
+      "to": "coingecko#stellar",
+      "decimals": 7,
+      "symbol": "yXLM"
+    },
+    "CB2XMFB6BDIHFOSFB5IXHDOYV3SI3IXMNIZLPDZHC7ENDCXSBEBZAO2Y": {
+      "to": "coingecko#bitcoin",
+      "decimals": 7,
+      "symbol": "yBTC"
+    },
+    "CDOFW7HNKLUZRLFZST4EW7V3AV4JI5IHMT6BPXXSY2IEFZ4NE5TWU2P4": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "yUSDC"
+    },
+    "CDYEOOVL6WV4JRY45CXQKOBJFFAPOM5KNQCCDNM333L6RM2L4RO3LKYG": {
+      "to": "coingecko#ethereum",
+      "decimals": 7,
+      "symbol": "yETH"
+    },
+    "CAESLMGW5LYTIEJI7FJHK6SFSWRELLNVX5Q4WR4UZEALMTRWQDBKDPAG": {
+      "to": "coingecko#velo",
+      "decimals": 7,
+      "symbol": "VELO"
+    },
+    "CAO7DDJNGMOYQPRYDY5JVZ5YEK4UQBSMGLAEWRCUOTRMDSBMGWSAATDZ": {
+      "to": "coingecko#bitcoin",
+      "decimals": 7,
+      "symbol": "BTC"
+    },
+    "CBH4M45TQBLDPXOK6L7VYKMEJWFITBOL64BN3WDAIIDT4LNUTWTTOCKF": {
+      "to": "coingecko#ethereum",
+      "decimals": 7,
+      "symbol": "ETH"
+    },
+    "MOBI-GA6HCMBLTZS5VYYBCATRBRZ3BZJMAFUDKYYF6AH6MVCMGWMRDNSWJPIH": {
+      "to": "coingecko#mobius",
+      "decimals": 7,
+      "symbol": "MOBI"
     }
   },
   "shape": {
@@ -16707,6 +16747,18 @@
       "decimals": "6",
       "symbol": "OMFG",
       "to": "coingecko#omnipair"
+    }
+  },
+  "cabal": {
+    "0x58918f9E58662058Cb36Cc60d7E124C90872C7C0": {
+      "to": "coingecko#agora-dollar",
+      "decimals": 18,
+      "symbol": "iUSD"
+    },
+    "0xA1Bc0977Bab93D507A89C108fa21820809e6869D": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
     }
   }
 }

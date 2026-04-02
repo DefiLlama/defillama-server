@@ -15698,5 +15698,28 @@ const data5: Protocol[] = [
       fees: "apyx-protocol",
     },
   },
+  {
+    id: "7619",
+    name: "Sushi Perps",
+    address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+    symbol: "SUSHI",
+    url: "https://www.sushi.com/perps",
+    description:
+      "Sushi Perps is a decentralized exchange for perpetual futures.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/sushi-perps.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "SushiSwap",
+    parentProtocol: "parent#sushi",
+    dimensions: {
+      fees: "sushi-perps",
+      derivatives: "sushi-perps"
+    }
+  },
 ];
 export default data5;

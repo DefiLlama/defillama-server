@@ -9358,6 +9358,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RCKTFoundation",
   },
+  {
+    id: "parent#stable-swap",
+    name: "Stable Swap",
+    url: "https://swap.stable.xyz/",
+    description: "Decentralized exchange on Stable chain",
+    logo: `${baseIconsUrl}/stable-swap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "stable",
+  },
 ];
 
 export default parentProtocols;

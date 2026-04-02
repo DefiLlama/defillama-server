@@ -18208,7 +18208,7 @@ const data3_1: Protocol[] = [
     name: "Jumper Exchange",
     address: null,
     symbol: "-",
-    url: "https://jumper.exchange",
+    url: "https://jumper.xyz/",
     description: "Crypto's Everything Exchange",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/jumper-exchange.jpg`,

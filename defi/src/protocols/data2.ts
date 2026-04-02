@@ -27869,7 +27869,8 @@ const data2: Protocol[] = [
     name: "CoWSwap",
     address: "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
     symbol: "COW",
-    url: "https://swap.cow.fi",
+    url: "https://swap.cow.fi?ref=DEFILLAMA",
+    referralUrl: "https://swap.cow.fi?ref=DEFILLAMA",
     description:
       "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
     chain: "Ethereum",

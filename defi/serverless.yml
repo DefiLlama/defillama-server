@@ -306,34 +306,34 @@ functions:
   #    - schedule: cron(30 * * * ? *)
   #  environment:
   #    SEARCH_MASTER_KEY: ${env:SEARCH_MASTER_KEY}
-  emissions:
-    handler: src/getEmissions.default
-    timeout: 30
-    events:
-      - http:
-          path: emissions
-          method: get
-  emission:
-    handler: src/getEmissionProtocol.default
-    timeout: 30
-    events:
-      - http:
-          path: emission/{protocol}
-          method: get
-  emissionsList:
-    handler: src/getEmissionsList.default
-    timeout: 30
-    events:
-      - http:
-          path: emissionsList
-          method: get
-  emissionsBreakdown:
-    handler: src/getEmissionsBreakdown.default
-    timeout: 30
-    events:
-      - http:
-          path: emissionsBreakdown
-          method: get
+  # emissions:
+  #   handler: src/getEmissions.default
+  #   timeout: 30
+  #   events:
+  #     - http:
+  #         path: emissions
+  #         method: get
+  # emission:
+  #   handler: src/getEmissionProtocol.default
+  #   timeout: 30
+  #   events:
+  #     - http:
+  #         path: emission/{protocol}
+  #         method: get
+  # emissionsList:
+  #   handler: src/getEmissionsList.default
+  #   timeout: 30
+  #   events:
+  #     - http:
+  #         path: emissionsList
+  #         method: get
+  # emissionsBreakdown:
+  #   handler: src/getEmissionsBreakdown.default
+  #   timeout: 30
+  #   events:
+  #     - http:
+  #         path: emissionsBreakdown
+  #         method: get
   # storeActiveUsers:   # moved to dimensions
   #   handler: src/storeActiveUsers.default
   #   timeout: 900
@@ -379,55 +379,37 @@ functions:
   #   environment:
   #     ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
   #     FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
-  newsArticles:
-    handler: src/getNewsArticles.default
-    timeout: 30
-    events:
-      - http:
-          path: news/articles
-          method: get
-    environment:
-      DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
-      DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
-  chainAssets:
-    handler: src/getChainAssets.default
-    timeout: 30
-    memorySize: 1000
-    events:
-      - http:
-          path: chain-assets/chains
-          method: get
-  chainAssetsChart: 
-    handler: src/getChainAssetsChart.default
-    timeout: 30
-    memorySize: 1000
-    events:
-      - http:
-          path: chain-assets/chart/{chain}
-          method: get
-  chainAssetFlows: 
-    handler: src/getChainAssetFlows.default
-    timeout: 30
-    memorySize: 1000
-    events:
-      - http:
-          path: chain-assets/flows/{period}
-          method: get
-  chainAssetHistoricalFlows: 
-    handler: src/getChainAssetHistoricalFlows.default
-    timeout: 30
-    memorySize: 1000
-    events:
-      - http:
-          path: chain-assets/historical-flows/{chain}/{period}
-          method: get
-  # depositedContracts: 
-  #   handler: src/getDepositedContracts.default
+  # chainAssets:
+  #   handler: src/getChainAssets.default
   #   timeout: 30
   #   memorySize: 1000
   #   events:
   #     - http:
-  #         path: deposited-contracts/{addresses}/{threshold}
+  #         path: chain-assets/chains
+  #         method: get
+  # chainAssetsChart: 
+  #   handler: src/getChainAssetsChart.default
+  #   timeout: 30
+  #   memorySize: 1000
+  #   events:
+  #     - http:
+  #         path: chain-assets/chart/{chain}
+  #         method: get
+  # chainAssetFlows: 
+  #   handler: src/getChainAssetFlows.default
+  #   timeout: 30
+  #   memorySize: 1000
+  #   events:
+  #     - http:
+  #         path: chain-assets/flows/{period}
+  #         method: get
+  # chainAssetHistoricalFlows: 
+  #   handler: src/getChainAssetHistoricalFlows.default
+  #   timeout: 30
+  #   memorySize: 1000
+  #   events:
+  #     - http:
+  #         path: chain-assets/historical-flows/{chain}/{period}
   #         method: get
 
 resources:

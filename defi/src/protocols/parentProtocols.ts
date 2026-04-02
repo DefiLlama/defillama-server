@@ -9306,7 +9306,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#theoriq",
     name: "Theoriq",
     url: "https://theoriq.ai/",
-    description: "Theoriq operates a leveraged wstETH vault (tqETH) built on Mellow's flexible-vaults architecture.",
+    description: "Theoriq builds AI-curated vault products for onchain yield, starting with AlphaVault for ETH and Theoriq Gold Vault for tokenized gold yield. $THQ is the native token powering accountability across the Agentic Economy.",
     logo: `${baseIconsUrl}/theoriq.jpg`,
     gecko_id: null,
     cmcId: null,

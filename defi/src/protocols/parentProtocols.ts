@@ -5767,7 +5767,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://stakestone.io",
     description: "One-Stop Staking Protocol For Omnichain LST Liquidity.",
     logo: `${baseIconsUrl}/stakestone.jpg`,
-    gecko_id: null, // token not listed yet
+    gecko_id: "stakestone", 
     cmcId: null,
     chains: [],
     twitter: "Stake_Stone",

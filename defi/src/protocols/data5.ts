@@ -15233,6 +15233,7 @@ const data5: Protocol[] = [
     module: "rocket-vault/index.js",
     twitter: "RCKTFoundation",
     parentProtocol: "parent#rocket",
+    excludeTvlFromParent: true,
     listedAt: 1774911065,
   },
   {

@@ -40,7 +40,10 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
   
-  const category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
+  let category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
+  if (!category) {
+    category = req.query_parameters.category ? sluggifyCategoryString(req.query_parameters.category) : undefined;
+  }
 
   const response: {
     adaptorType: AdapterType,
@@ -398,10 +401,23 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   return successResponse(res, data)
 }
 
+// these adapter types require category query param when query data
+// use default category if category query param wasn't given
+const defaultCategoryAdapterTypeMap: Record<string, string> = {
+  [AdapterType.DEXS]: 'dexs',
+  [AdapterType.DERIVATIVES]: 'derivatives',
+  [AdapterType.OPTIONS]: 'options',
+}
+
 export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-protocol-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType } = getEventParameters(req, true)
+    const { adaptorType, dataType, category } = getEventParameters(req, true)
 
+    // retrun a subnet of protocol (per category) only
+    if (Object.keys(defaultCategoryAdapterTypeMap).includes(adaptorType)) {
+      return await returnSubCategoryData();
+    }
+    
     if (route === 'chart-chain-breakdown') {
       const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
       return fileResponse(routeFile, res)
@@ -426,6 +442,24 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
           return successResponse(res, data.totalDataChart)
         }
       }
+    }
+    
+    // return data in a given category
+    async function returnSubCategoryData() {
+      let filterCategory = category;
+      if (!filterCategory) filterCategory = defaultCategoryAdapterTypeMap[adaptorType];
+      
+      let routeFileExt = '';
+      if (route === 'overview') routeFileExt = '';
+      else routeFileExt += route;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}${routeFileExt}`;
+      const routeFile = `dimensions/${routeSubPath}`; 
+      
+      const data = await readRouteData(routeFile);
+  
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+  
+      return successResponse(res, data);
     }
   }
 }

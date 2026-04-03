@@ -8992,7 +8992,7 @@ const data3_0: Protocol[] = [
     category: "Restaking",
     chains: ["Ethereum"],
     module: "eigenlayer/index.js",
-    twitter: "eigenlayer",
+    twitter: "eigencloud",
     audit_links: ["https://docs.eigencloud.xyz/eigenlayer/security/audits"],
     github: ["Layr-Labs"],
     listedAt: 1686776222,

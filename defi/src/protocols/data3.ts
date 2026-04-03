@@ -48427,7 +48427,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "usual",
-        genuineSpikes: [["2025-10-10", "-"]],
+        genuineSpikes: [["2025-10-10", "-"], ["2026-04-02", "LP fees withdrawn from uniswap"]],
       }
     }
   },
@@ -52327,7 +52327,10 @@ const data3_3: Protocol[] = [
     dimensions: {
       aggregators: {
         adapter: "dodo-agg",
-        genuineSpikes: [["2026-01-25", "-"]],
+        genuineSpikes: [
+          ["2026-01-25", "-"],
+          ["2026-04-01", "$ETH bought by Drift exploiter"], //0xFcC47866Bd2BD3066696662dbd1C89c882105643
+        ],
       }
     }
   },

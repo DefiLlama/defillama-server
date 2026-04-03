@@ -44,6 +44,7 @@ type SpikeReport = {
   protocolId: string
   protocolName: string
   protocolSlug: string
+  category: string
   currentTvl: number
   event: SpikeEvent
   tokens: TokenContribution[]
@@ -286,6 +287,7 @@ export async function detectSpikesForProtocol(
   protocolId: string,
   protocolSlug: string,
   currentTvl: number,
+  category: string,
   { verbose = false, dryRun = false }: { verbose?: boolean; dryRun?: boolean } = {}
 ): Promise<SpikeReport[]> {
   const reports: SpikeReport[] = []
@@ -360,6 +362,7 @@ export async function detectSpikesForProtocol(
       protocolId,
       protocolName,
       protocolSlug,
+      category,
       currentTvl,
       event,
       tokens,
@@ -422,6 +425,7 @@ export async function runAllProtocols({ verbose = false, dryRun = false } = {}) 
         String(protocol.id),
         protocol.slug,
         protocol.tvl,
+        protocol.category || '',
         { verbose, dryRun }
       )
       totalEvents += reports.length
@@ -467,6 +471,7 @@ if (require.main === module) {
       String(protocol.id),
       protocol.slug,
       protocol.tvl,
+      protocol.category || '',
       { verbose: true, dryRun: true }
     )
 

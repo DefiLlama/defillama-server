@@ -93,7 +93,7 @@ async function runDetection(ws: any, data: any) {
           console.log(`Progress: ${i}/${targets.length}`)
         }
         const reports = await detectSpikesForProtocol(
-          p.name, String(p.id), p.slug, p.tvl,
+          p.name, String(p.id), p.slug, p.tvl, p.category || '',
           { verbose: targets.length === 1, dryRun: !writeToEs }
         )
         allReports.push(...reports)

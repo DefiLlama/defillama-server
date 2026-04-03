@@ -1842,6 +1842,15 @@ const App = () => {
         ),
       },
       {
+        title: 'Category',
+        dataIndex: 'category',
+        key: 'category',
+        width: 120,
+        sorter: (a, b) => (a.category || '').localeCompare(b.category || ''),
+        filters: [...new Set(spikesData.map(r => r.category).filter(Boolean))].sort().map(c => ({ text: c, value: c })),
+        onFilter: (value, record) => record.category === value,
+      },
+      {
         title: 'Type',
         dataIndex: ['event', 'type'],
         key: 'type',

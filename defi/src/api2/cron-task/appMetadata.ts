@@ -928,6 +928,7 @@ async function _storeAppMetadata() {
         r[k] = finalProtocols[k];
         if (protocolInfoMap[k]) {
           r[k].displayName = protocolInfoMap[k].name;
+          if (protocolInfoMap[k].gecko_id) r[k].gecko_id = protocolInfoMap[k].gecko_id;
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
 
           r[k].chains.forEach((chain: any) => {
@@ -939,6 +940,7 @@ async function _storeAppMetadata() {
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
+          if (parentProtocolsInfoMap[k].gecko_id) r[k].gecko_id = parentProtocolsInfoMap[k].gecko_id;
           const chainSet = new Set();
           parentProtocolsInfoMap[k].childProtocols?.forEach((p: any) => {
             const chains = protocolChainSetMap[p.id] ? Array.from(protocolChainSetMap[p.id]) : [];

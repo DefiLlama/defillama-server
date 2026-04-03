@@ -433,7 +433,7 @@ export async function batchWriteWithAlerts(
   try {
     const { previousItems, redirectChanges } = await readPreviousValues(items);
     const filteredItems: any[] =
-      (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price));
+      (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price) || i.redirect);
     const writeItems = [...filteredItems, ...redirectChanges]
     const ddbWriteResult = await batchWrite(writeItems, failOnError);
     await produceKafkaTopics(writeItems as any[]);

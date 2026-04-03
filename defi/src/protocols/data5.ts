@@ -15824,14 +15824,14 @@ const data5: Protocol[] = [
     description:
       "GameClub is a decentralized prediction market protocol on BSC, allowing users to trade binary outcomes on real-world events using USDT.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/turbolev.jpg`,
+    logo: `${baseIconsUrl}/gameclub.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "Prediction Market",
     chains: ["Binance"],
     module: "dummy.js",
-    twitter: null,
+    twitter: "GameClubMarket",
     dimensions: {
       fees: "gameclub",
     },

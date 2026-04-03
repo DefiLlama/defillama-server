@@ -3,11 +3,97 @@ import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
-import { currentChainLabelsList, replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
+import { chainCoingeckoIds, currentChainLabelsList, getChainDisplayName, getChainKeyFromLabel, replaceChainNamesForOraclesByChain } from "./utils/normalizeChain";
 import { extraSections } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { excludeProtocolInCharts, hiddenCategoriesFromUISet, } from "./utils/excludeProtocols";
 import protocols from "./protocols/data";
+import { readRouteData } from "./api2/cache/file-cache";
+
+export function hasDimensionsChainVisibility(chainAggData: any = {}) {
+  if (typeof chainAggData !== "object" || chainAggData === null) return false;
+
+  for (const adapterType in chainAggData) {
+    const adapterAggData = chainAggData[adapterType];
+    if (typeof adapterAggData !== "object" || adapterAggData === null) continue;
+
+    for (const recordType in adapterAggData) {
+      const recordTypeAggData = adapterAggData[recordType];
+      if (typeof recordTypeAggData !== "object" || recordTypeAggData === null) continue;
+
+      for (const _key in recordTypeAggData) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+function hasDimensionsChainAggData(dimensionsChainAggData: any = {}) {
+  if (typeof dimensionsChainAggData !== "object" || dimensionsChainAggData === null) return false;
+
+  for (const _chain in dimensionsChainAggData) {
+    return true;
+  }
+
+  return false;
+}
+
+function getVisibleChainLabel(chain: string) {
+  if (!chain) return null;
+
+  return getChainDisplayName(getChainKeyFromLabel(chain), true);
+}
+
+export function getVisibleChainLabels(
+  protocolChainTvls: { [chain: string]: number },
+  dimensionsChainAggData: any = {},
+  fallbackChainLabels: string[] = [],
+) {
+  const normalizedProtocolChainTvls = new Map<string, number>();
+  for (const chain in protocolChainTvls) {
+    const visibleChainLabel = getVisibleChainLabel(chain);
+    if (!visibleChainLabel) continue;
+
+    normalizedProtocolChainTvls.set(
+      visibleChainLabel,
+      (normalizedProtocolChainTvls.get(visibleChainLabel) ?? 0) + protocolChainTvls[chain],
+    );
+  }
+
+  const protocolBackedChainEntries = Array.from(normalizedProtocolChainTvls.entries());
+  protocolBackedChainEntries.sort((a, b) => b[1] - a[1]);
+  const protocolBackedChains: string[] = [];
+  for (const [chain] of protocolBackedChainEntries) {
+    protocolBackedChains.push(chain);
+  }
+
+  const visibleChains = new Set(protocolBackedChains);
+  const dimensionBackedChains: string[] = [];
+  for (const chainKey in dimensionsChainAggData) {
+    const chainAggData = dimensionsChainAggData[chainKey];
+    if (!hasDimensionsChainVisibility(chainAggData)) continue;
+
+    const chainLabel = getVisibleChainLabel(chainKey);
+    if (!chainLabel || chainCoingeckoIds[chainLabel] === undefined || visibleChains.has(chainLabel)) continue;
+
+    visibleChains.add(chainLabel);
+    dimensionBackedChains.push(chainLabel);
+  }
+  dimensionBackedChains.sort((a, b) => a.localeCompare(b));
+
+  const fallbackChains: string[] = [];
+  for (const chain of fallbackChainLabels) {
+    const chainLabel = getVisibleChainLabel(chain);
+    if (!chainLabel || visibleChains.has(chainLabel)) continue;
+
+    visibleChains.add(chainLabel);
+    fallbackChains.push(chainLabel);
+  }
+
+  return protocolBackedChains.concat(dimensionBackedChains, fallbackChains);
+}
 
 export async function storeGetProtocols({
   getCoinMarkets,
@@ -160,15 +246,27 @@ export async function storeGetProtocols({
   });
 
 
-  const chainsOutput = Object.entries(chains)
-    .sort((a, b) => b[1] - a[1])
-    .map((c) => c[0])
+  const dimensionsChainAggData = await readRouteData('/dimensions/chain-agg-data', {
+    skipErrorLog: true,
+  });
+  let fallbackChainLabels: string[] = [];
+  if (!hasDimensionsChainAggData(dimensionsChainAggData)) {
+    const previousProtocols2Data = await readRouteData('/lite/protocols2', {
+      skipErrorLog: true,
+    });
+    if (previousProtocols2Data?.chains) {
+      fallbackChainLabels = previousProtocols2Data.chains;
+    } else {
+      for (const chain of currentChainLabelsList) {
+        if (chainCoingeckoIds[chain]?.dimensions) {
+          fallbackChainLabels.push(chain);
+        }
+      }
+    }
+    console.warn('Missing /dimensions/chain-agg-data while computing visible chains for /lite/protocols2, falling back to cached visible chains');
+  }
 
-  // includes chains that are not linked to any protocol but are in chainCoingeckoIds
-  const addedChainsSet = new Set(chainsOutput)
-  currentChainLabelsList.forEach((chain) => {
-    if (!addedChainsSet.has(chain)) chainsOutput.push(chain)
-  })
+  const chainsOutput = getVisibleChainLabels(chains, dimensionsChainAggData ?? {}, fallbackChainLabels)
 
 
   const protocols2Data = {

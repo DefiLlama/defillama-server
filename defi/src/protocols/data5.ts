@@ -15381,7 +15381,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Sui"],
-    module: "dummy.js",
+    module: "current/index.js",
     twitter: "CurrentSUI",
     audit_links: ["https://current-finance.gitbook.io/current/security-and-risk/audit-reports",],
     oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://current-finance.gitbook.io/current/","https://current-finance.gitbook.io/exposure-current/security-and-risk/audit-reports"],}],

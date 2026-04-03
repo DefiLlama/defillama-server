@@ -21646,7 +21646,7 @@ const data3_1: Protocol[] = [
     name: "Merkle Trade",
     address: "aptos:0x5ae6789dd2fec1a9ec9cccfb3acaf12e93d432f0a3a42c92fe1a9d490b7bbc06::mkl_token::MKL",
     symbol: "MKL",
-    url: "https://merkle.trade",
+    url: "https://merkl.xyz/",
     description:
       "Merkle Trade is a Perp DEX that offers high leverage on a variety of pairs such as Crypto, Forex, and Commodity.",
     chain: "Aptos",

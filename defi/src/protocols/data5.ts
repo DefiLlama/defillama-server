@@ -15875,7 +15875,7 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "AveaiGlobal",
     dimensions: {
-      fees: "ave.ai",
+      fees: "aveai",
     },
   },
   {

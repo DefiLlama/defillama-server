@@ -1,10 +1,10 @@
 import { initPG, storeHistoricalPG, storeMetadataPG, storeFundingHistoryPG } from "./db";
-import { getMarketId, getMarketMetadata } from "./constants";
+import { getContractId, getContractMetadata } from "./constants";
 import { sendMessage } from "../../utils/discord";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
 export interface PerpsDataEntry {
-    coin: string;
+    contract: string;
     venue: string;
     openInterest: number;
     volume24h: number;
@@ -66,13 +66,13 @@ export async function storeMetadata(res: {
 
     const inserts = Object.keys(data).reduce((acc: any[], id: string) => {
         const entry = data[id];
-        const metadata = getMarketMetadata(entry.coin);
+        const metadata = getContractMetadata(entry.contract);
         if (!metadata) return acc; // skip markets without spreadsheet metadata
 
         acc.push({
             id,
             data: JSON.stringify({
-                coin: entry.coin,
+                contract: entry.contract,
                 venue: entry.venue,
                 ...metadata,
             }),
@@ -87,7 +87,7 @@ export async function storeMetadata(res: {
 // Store funding history entries
 export async function storeFundingHistory(entries: Array<{
     timestamp: number;
-    coin: string;
+    contract: string;
     venue: string;
     fundingRate: number;
     premium: number;
@@ -98,8 +98,8 @@ export async function storeFundingHistory(entries: Array<{
 
     const inserts = entries.map((e) => ({
         timestamp: e.timestamp,
-        id: getMarketId(e.coin),
-        coin: e.coin,
+        id: getContractId(e.contract),
+        coin: e.contract,
         venue: e.venue,
         funding_rate: e.fundingRate,
         premium: e.premium,

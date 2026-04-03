@@ -1,3 +1,7 @@
+jest.mock("../spreadsheet", () => ({
+  getCsvData: jest.fn(),
+}));
+
 import { toFiniteNumberOrZero, perpsSlug, computeProtocolFees, groupBy } from "./utils";
 import { fileNameNormalizer, mergeHistoricalData } from "./file-cache";
 import {
@@ -6,12 +10,18 @@ import {
   buildVenueHistoricalCharts,
 } from "./aggregate";
 import {
-  getMarketId,
-  getMarketMetadata,
-  setMarketMetadata,
-  hasMarketMetadata,
-  type MarketMetadata,
+  getContractId,
+  getContractMetadata,
+  hasContractMetadata,
+  loadContractMetadataFromAirtable,
+  normalizePerpsMetadataInPlace,
+  PERPS_ALWAYS_STRING_ARRAY_FIELDS,
+  PERPS_STRING_OR_NULL_FIELDS,
+  resetContractMetadataStore,
+  setContractMetadata,
+  type PerpsContractMetadata,
 } from "./constants";
+import { findMarketById, findMarketsByCategory, findMarketsByContract, findMarketsByVenue, resolvePerpsLookupId } from "./server-helpers";
 import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import {
   parseMetaAndAssetCtxs,
@@ -19,6 +29,7 @@ import {
   type MetaAndAssetCtxsResponse,
   type FundingHistoryEntry,
 } from "./platforms/hyperliquid";
+import { getCsvData } from "../spreadsheet";
 
 // ── utils.ts ──────────────────────────────────────────────────────────────────
 
@@ -76,9 +87,9 @@ describe("computeProtocolFees", () => {
 describe("groupBy", () => {
   it("groups items by key function", () => {
     const items = [
-      { venue: "a", coin: "BTC" },
-      { venue: "a", coin: "ETH" },
-      { venue: "b", coin: "SOL" },
+      { venue: "a", contract: "BTC" },
+      { venue: "a", contract: "ETH" },
+      { venue: "b", contract: "SOL" },
     ];
     const grouped = groupBy(items, (i) => i.venue);
     expect(Object.keys(grouped)).toEqual(["a", "b"]);
@@ -94,10 +105,10 @@ describe("groupBy", () => {
 // ── constants.ts ──────────────────────────────────────────────────────────────
 
 describe("market metadata store", () => {
-  const meta: MarketMetadata = {
+  const meta: PerpsContractMetadata = {
     referenceAsset: "Tesla",
     referenceAssetGroup: "US Equities",
-    assetClass: "Single stock synthetic perp",
+    assetClass: ["Single stock synthetic perp"],
     parentPlatform: "Hyperliquid",
     pair: "TSLA/USD",
     marginAsset: "USDC",
@@ -114,24 +125,143 @@ describe("market metadata store", () => {
     deployerFeeShare: HYPERLIQUID_DEPLOYER_SHARE,
   };
 
-  it("set/get/has round-trips", () => {
-    setMarketMetadata("TSLA", meta);
-    expect(hasMarketMetadata("TSLA")).toBe(true);
-    expect(hasMarketMetadata("tsla")).toBe(true);
-    expect(getMarketMetadata("TSLA")).toEqual(meta);
-    expect(getMarketMetadata("tsla")).toEqual(meta);
+  beforeEach(() => {
+    resetContractMetadataStore();
   });
 
-  it("returns null for unknown coin", () => {
-    expect(getMarketMetadata("DOESNOTEXIST")).toBeNull();
-    expect(hasMarketMetadata("DOESNOTEXIST")).toBe(false);
+  it("set/get/has round-trips", () => {
+    setContractMetadata("TSLA", meta);
+    expect(hasContractMetadata("TSLA")).toBe(true);
+    expect(hasContractMetadata("tsla")).toBe(true);
+    expect(getContractMetadata("TSLA")).toEqual(meta);
+    expect(getContractMetadata("tsla")).toEqual(meta);
+  });
+
+  it("returns null for unknown contract", () => {
+    expect(getContractMetadata("DOESNOTEXIST")).toBeNull();
+    expect(hasContractMetadata("DOESNOTEXIST")).toBe(false);
   });
 });
 
-describe("getMarketId", () => {
-  it("lowercases coin name", () => {
-    expect(getMarketId("TSLA")).toBe("tsla");
-    expect(getMarketId("aapl")).toBe("aapl");
+describe("getContractId", () => {
+  it("lowercases contract name", () => {
+    expect(getContractId("TSLA")).toBe("tsla");
+    expect(getContractId("aapl")).toBe("aapl");
+  });
+});
+
+describe("loadContractMetadataFromAirtable", () => {
+  const mockGetCsvData = getCsvData as jest.MockedFunction<typeof getCsvData>;
+
+  beforeEach(() => {
+    mockGetCsvData.mockReset();
+    resetContractMetadataStore();
+  });
+
+  it("normalizes Airtable rows with shared string helpers and keeps accessModel direct", async () => {
+    mockGetCsvData.mockResolvedValue([
+      {
+        "Canonical Market ID": "  xyz:META  ",
+        "Reference Asset": "  Meta\n  Platforms  ",
+        "Reference Asset Group": "  US   Equities ",
+        "Asset Class": [" Single stock synthetic perp ", "Single stock   synthetic perp"],
+        "Parent Platform": " Hyperliquid ",
+        "Pair": " META / USD ",
+        "Margin Asset": " USDC ",
+        "Settlement Asset": "USDC",
+        "Category": [" Equities ", "Equities", " RWA Perpetuals "],
+        "Issuer": "-",
+        "Website": " https://example.com \n",
+        "Oracle Provider": "  Pyth  ",
+        "Description": "  Synthetic   META contract ",
+        "Access Model": " Permissionless ",
+        "RWA Classification": " Programmable  Finance ",
+        "Maker Fee Rate": "0.001",
+        "Taker Fee Rate": "0.002",
+        "Deployer Fee Share": "0.25",
+      },
+    ]);
+
+    await expect(loadContractMetadataFromAirtable()).resolves.toBe(1);
+    expect(getContractMetadata("xyz:META")).toEqual({
+      referenceAsset: "Meta Platforms",
+      referenceAssetGroup: "US Equities",
+      assetClass: ["Single stock synthetic perp"],
+      parentPlatform: "Hyperliquid",
+      pair: "META / USD",
+      marginAsset: "USDC",
+      settlementAsset: "USDC",
+      category: ["Equities", "RWA Perpetuals"],
+      issuer: null,
+      website: ["https://example.com"],
+      oracleProvider: "Pyth",
+      description: "Synthetic META contract",
+      accessModel: "Permissionless",
+      rwaClassification: "Programmable Finance",
+      makerFeeRate: 0.001,
+      takerFeeRate: 0.002,
+      deployerFeeShare: 0.25,
+    });
+  });
+
+  it("skips rows without a canonical contract id", async () => {
+    mockGetCsvData.mockResolvedValue([
+      { "Reference Asset": "Missing contract" },
+      { "Canonical Market ID": "   " },
+    ]);
+
+    await expect(loadContractMetadataFromAirtable()).resolves.toBe(0);
+    expect(getContractMetadata("missing")).toBeNull();
+  });
+
+  it("falls back to default fee values for blank Airtable fee cells", async () => {
+    mockGetCsvData.mockResolvedValue([
+      {
+        "Canonical Market ID": "xyz:META",
+        "Maker Fee Rate": "   ",
+        "Taker Fee Rate": "",
+        "Deployer Fee Share": "\n\t",
+      },
+    ]);
+
+    await expect(loadContractMetadataFromAirtable()).resolves.toBe(1);
+    expect(getContractMetadata("xyz:META")).toMatchObject({
+      makerFeeRate: HYPERLIQUID_MAKER_FEE,
+      takerFeeRate: HYPERLIQUID_TAKER_FEE,
+      deployerFeeShare: HYPERLIQUID_DEPLOYER_SHARE,
+    });
+  });
+});
+
+describe("normalizePerpsMetadataInPlace", () => {
+  it("coerces legacy current-payload metadata into the normalized perps API shape", () => {
+    const payload: any = {
+      coin: "xyz:META",
+      assetClass: "Single stock synthetic perp",
+      category: "RWA Perpetuals",
+      website: "https://trade.xyz/",
+      referenceAssetGroup: "",
+      pair: "",
+      marginAsset: "",
+      settlementAsset: "",
+    };
+
+    expect(normalizePerpsMetadataInPlace(payload)).toEqual({
+      contract: "xyz:META",
+      assetClass: ["Single stock synthetic perp"],
+      category: ["RWA Perpetuals"],
+      website: ["https://trade.xyz/"],
+      referenceAssetGroup: null,
+      pair: null,
+      marginAsset: null,
+      settlementAsset: null,
+    });
+  });
+
+  it("exposes perps normalization field sets explicitly", () => {
+    expect(PERPS_ALWAYS_STRING_ARRAY_FIELDS).toEqual(new Set(["assetClass", "category", "website"]));
+    expect(PERPS_STRING_OR_NULL_FIELDS.has("referenceAsset")).toBe(true);
+    expect(PERPS_STRING_OR_NULL_FIELDS.has("accessModel")).toBe(true);
   });
 });
 
@@ -178,7 +308,7 @@ describe("parseMetaAndAssetCtxs", () => {
 
   it("maps fields correctly", () => {
     const [tsla] = parseMetaAndAssetCtxs(response, "TestVenue");
-    expect(tsla.coin).toBe("TSLA");
+    expect(tsla.contract).toBe("TSLA");
     expect(tsla.venue).toBe("TestVenue");
     expect(tsla.markPx).toBe(250.5);
     expect(tsla.oraclePx).toBe(250.3);
@@ -247,7 +377,7 @@ describe("parseFundingHistory", () => {
     const parsed = parseFundingHistory(entries, "TestVenue", 50000);
     expect(parsed).toHaveLength(2);
 
-    expect(parsed[0].coin).toBe("TSLA");
+    expect(parsed[0].contract).toBe("TSLA");
     expect(parsed[0].venue).toBe("TestVenue");
     expect(parsed[0].fundingRate).toBe(0.0001);
     expect(parsed[0].premium).toBe(0.00005);
@@ -319,16 +449,18 @@ describe("mergeHistoricalData", () => {
 // ── aggregate.ts ──────────────────────────────────────────────────────────────
 
 describe("buildPerpsIdMap", () => {
-  it("preserves bare coin, id, and venue-prefixed aliases without duplicating the venue prefix", () => {
+  it("preserves bare contract, id, and venue-prefixed aliases without duplicating the venue prefix", () => {
     expect(
       buildPerpsIdMap([
-        { id: "tsla", data: { coin: "TSLA", venue: "hyperliquid" } },
-        { id: "xyz:meta", data: { coin: "xyz:META", venue: "xyz" } },
+        { id: "tsla", data: { contract: "TSLA", venue: "hyperliquid" } },
+        { id: "xyz:meta", data: { contract: "xyz:META", venue: "xyz" } },
       ])
     ).toEqual({
       "tsla": "tsla",
+      "hyperliquid-tsla": "tsla",
       "hyperliquid:tsla": "tsla",
       "xyz:meta": "xyz:meta",
+      "xyz-meta": "xyz:meta",
     });
   });
 });
@@ -345,20 +477,20 @@ describe("buildVenueHistoricalCharts", () => {
         {
           id: "xyz:meta",
           data: {
-            coin: "xyz:META",
+            contract: "xyz:META",
             venue: "xyz",
             referenceAsset: "Meta",
-            assetClass: "Single stock synthetic perp",
+            assetClass: ["Single stock synthetic perp"],
             category: ["RWA Perpetuals"],
           },
         },
         {
           id: "flx:gold",
           data: {
-            coin: "flx:GOLD",
+            contract: "flx:GOLD",
             venue: "flx",
             referenceAsset: "Gold",
-            assetClass: "Commodity synthetic perp",
+            assetClass: ["Commodity synthetic perp"],
             category: ["Commodities"],
           },
         },
@@ -370,10 +502,10 @@ describe("buildVenueHistoricalCharts", () => {
         {
           timestamp: 100,
           id: "xyz:meta",
-          coin: "xyz:META",
+          contract: "xyz:META",
           venue: "xyz",
           referenceAsset: "Meta",
-          assetClass: "Single stock synthetic perp",
+          assetClass: ["Single stock synthetic perp"],
           category: ["RWA Perpetuals"],
           openInterest: 10,
           volume24h: 3,
@@ -381,10 +513,10 @@ describe("buildVenueHistoricalCharts", () => {
         {
           timestamp: 200,
           id: "xyz:meta",
-          coin: "xyz:META",
+          contract: "xyz:META",
           venue: "xyz",
           referenceAsset: "Meta",
-          assetClass: "Single stock synthetic perp",
+          assetClass: ["Single stock synthetic perp"],
           category: ["RWA Perpetuals"],
           openInterest: 12,
           volume24h: 4,
@@ -394,10 +526,10 @@ describe("buildVenueHistoricalCharts", () => {
         {
           timestamp: 200,
           id: "flx:gold",
-          coin: "flx:GOLD",
+          contract: "flx:GOLD",
           venue: "flx",
           referenceAsset: "Gold",
-          assetClass: "Commodity synthetic perp",
+          assetClass: ["Commodity synthetic perp"],
           category: ["Commodities"],
           openInterest: 7,
           volume24h: 2,
@@ -415,10 +547,10 @@ describe("buildCategoryHistoricalCharts", () => {
         {
           id: "xyz:meta",
           data: {
-            coin: "xyz:META",
+            contract: "xyz:META",
             venue: "xyz",
             referenceAsset: "Meta",
-            assetClass: "Single stock synthetic perp",
+            assetClass: ["Single stock synthetic perp"],
             category: ["RWA Perpetuals", "Equities"],
           },
         },
@@ -429,10 +561,10 @@ describe("buildCategoryHistoricalCharts", () => {
       {
         timestamp: 100,
         id: "xyz:meta",
-        coin: "xyz:META",
+        contract: "xyz:META",
         venue: "xyz",
         referenceAsset: "Meta",
-        assetClass: "Single stock synthetic perp",
+        assetClass: ["Single stock synthetic perp"],
         category: ["RWA Perpetuals"],
         openInterest: 10,
         volume24h: 3,
@@ -442,14 +574,56 @@ describe("buildCategoryHistoricalCharts", () => {
       {
         timestamp: 100,
         id: "xyz:meta",
-        coin: "xyz:META",
+        contract: "xyz:META",
         venue: "xyz",
         referenceAsset: "Meta",
-        assetClass: "Single stock synthetic perp",
+        assetClass: ["Single stock synthetic perp"],
         category: ["Equities"],
         openInterest: 10,
         volume24h: 3,
       },
     ]);
+  });
+});
+
+describe("server route helpers", () => {
+  const currentData = [
+    { id: "tsla", contract: "TSLA", venue: "Hyperliquid", category: ["Equities"] },
+    { id: "xyz:meta", contract: "xyz:META", venue: "XYZ", category: ["RWA Perpetuals", "Equities"] },
+  ];
+
+  it("finds a market by id case-insensitively", () => {
+    expect(findMarketById(currentData, "XYZ:META")).toEqual(currentData[1]);
+  });
+
+  it("finds markets by canonical contract key", () => {
+    expect(findMarketsByContract(currentData, "xyz:META")).toEqual([currentData[1]]);
+    expect(findMarketsByContract(currentData, "xyz-meta")).toEqual([currentData[1]]);
+  });
+
+  it("filters markets by venue slug", () => {
+    expect(findMarketsByVenue(currentData, "hyperliquid")).toEqual([currentData[0]]);
+  });
+
+  it("filters markets by category", () => {
+    expect(findMarketsByCategory(currentData, "Equities")).toEqual(currentData);
+  });
+
+  it("filters markets by slugged category routes", () => {
+    expect(findMarketsByCategory(currentData, "rwa-perpetuals")).toEqual([currentData[1]]);
+  });
+
+  it("resolves lowercase and slugged aliases through id-map entries", () => {
+    const idMap = {
+      "xyz:meta": "xyz:meta",
+      "xyz-meta": "xyz:meta",
+      "hyperliquid:tsla": "tsla",
+      "hyperliquid-tsla": "tsla",
+    };
+
+    expect(resolvePerpsLookupId(idMap, "xyz:META")).toBe("xyz:meta");
+    expect(resolvePerpsLookupId(idMap, "xyz-meta")).toBe("xyz:meta");
+    expect(resolvePerpsLookupId(idMap, "hyperliquid:TSLA")).toBe("tsla");
+    expect(resolvePerpsLookupId(idMap, "hyperliquid-tsla")).toBe("tsla");
   });
 });

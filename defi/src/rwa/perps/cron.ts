@@ -21,6 +21,7 @@ import {
 import { toFiniteNumberOrZero, groupBy } from './utils';
 import { main as runPipeline } from './perps';
 import { buildCategoryHistoricalCharts, buildPerpsIdMap, buildVenueHistoricalCharts } from './aggregate';
+import { normalizePerpsMetadataInPlace } from './constants';
 
 interface PerpsMetadata {
     id: string;
@@ -37,11 +38,15 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
 
     const result = currentData.map((record: any) => {
         const meta = metadataMap.get(record.id) || {};
+        const merged = {
+            ...meta,
+            ...(record.data || {}),
+        };
+        normalizePerpsMetadataInPlace(merged);
+
         return {
             id: record.id,
             timestamp: record.timestamp,
-            coin: meta.coin || record.id.split(':')[1] || record.id,
-            venue: meta.venue || record.id.split(':')[0] || 'unknown',
             openInterest: toFiniteNumberOrZero(record.open_interest),
             volume24h: toFiniteNumberOrZero(record.volume_24h),
             price: toFiniteNumberOrZero(record.price),
@@ -49,8 +54,9 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
             fundingRate: toFiniteNumberOrZero(record.funding_rate),
             premium: toFiniteNumberOrZero(record.premium),
             cumulativeFunding: toFiniteNumberOrZero(record.cumulative_funding),
-            ...meta,
-            ...(record.data || {}),
+            ...merged,
+            contract: merged.contract || record.id,
+            venue: merged.venue || record.id.split(':')[0] || 'unknown',
         };
     });
 
@@ -118,14 +124,14 @@ async function generateStats(currentData: any[]): Promise<void> {
 async function generateList(currentData: any[]): Promise<void> {
     console.log('Generating list...');
 
-    const coins = [...new Set(currentData.map((m: any) => m.coin).filter(Boolean))].sort();
+    const contracts = [...new Set(currentData.map((m: any) => m.contract).filter(Boolean))].sort();
     const venues = [...new Set(currentData.map((m: any) => m.venue).filter(Boolean))].sort();
     const categories = [...new Set(currentData.flatMap((m: any) => {
         return Array.isArray(m.category) ? m.category : [m.category || 'Other'];
     }))].sort();
 
     const list = {
-        coins,
+        contracts,
         venues,
         categories,
         total: currentData.length,

@@ -10,7 +10,7 @@ const INTERNAL_API_KEY = process.env.INTERNAL_API_KEY
 const MIN_TVL = Number(process.env.TVL_SPIKE_MIN_TVL ?? 100_000)
 const CHECK_FOR_ALL = process.env.CHECK_FOR_ALL === 'true' || false
 const MIN_CHANGE_PCT_GLOBAL = Number(process.env.TVL_SPIKE_MIN_CHANGE_PCT_GLOBAL ?? 15)
-const MIN_CHANGE_PCT_CHAIN = Number(process.env.TVL_SPIKE_MIN_CHANGE_PCT_CHAIN ?? 30)
+const MIN_CHANGE_PCT_CHAIN = Number(process.env.TVL_SPIKE_MIN_CHANGE_PCT_CHAIN ?? 40)
 const MIN_CHANGE_VALUE = Number(process.env.TVL_SPIKE_MIN_CHANGE_VALUE ?? 100_000)
 const ES_INDEX = 'tvl-spike-detector'
 const API_BASE = INTERNAL_API_KEY ? `https://pro-api.llama.fi/${INTERNAL_API_KEY}/api` : 'https://api.llama.fi'

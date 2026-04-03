@@ -15794,5 +15794,47 @@ const data5: Protocol[] = [
       dexs: "holoworld",
     },
   },
+  {
+    id: "7623",
+    name: "TurboLev",
+    address: null,
+    symbol: "-",
+    url: "",// official website not yet available
+    description:
+      "TurboLev is a decentralized exchange for perpetual futures on Sei.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/turbolev.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Sei"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      derivatives: "turbolev",
+    },
+  },
+  {
+    id: "7624",
+    name: "GameClub",
+    address: null,
+    symbol: "-",
+    url: "https://gameclub.com",
+    description:
+      "GameClub is a decentralized prediction market protocol on BSC, allowing users to trade binary outcomes on real-world events using USDT.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/turbolev.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Binance"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      fees: "gameclub",
+    },
+  },
 ];
 export default data5;

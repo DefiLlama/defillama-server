@@ -15124,6 +15124,7 @@ const data5: Protocol[] = [
     deadUrl: true,
     dimensions: {
       fees: "arbitrage-inc",
+      aggregators: "arbitrage-inc",
     },
   },
   {
@@ -15366,6 +15367,10 @@ const data5: Protocol[] = [
     ],
     listedAt: 1774996953,
     github: ["circuitdao"],
+    dimensions: {
+      fees: "circuitdao",
+      dexs: "circuitdao",
+    },
   },
   {
     id: "7603",
@@ -15657,6 +15662,10 @@ const data5: Protocol[] = [
     twitter: "stable",
     parentProtocol: "parent#stable-swap",
     listedAt: 1775114831,
+    dimensions: {
+      fees: "stableswap-xyz",
+      dexs: "stableswap-xyz",
+    },
   },
   {
     id: "7617",
@@ -15677,6 +15686,10 @@ const data5: Protocol[] = [
     twitter: "stable",
     parentProtocol: "parent#stable-swap",
     listedAt: 1775114837,
+    dimensions: {
+      fees: "stableswap-xyz-v3",
+      dexs: "stableswap-xyz-v3",
+    },
   },
   {
     id: "7618",

@@ -15378,7 +15378,6 @@ const data5: Protocol[] = [
     github: ["circuitdao"],
     dimensions: {
       fees: "circuitdao",
-      dexs: "circuitdao",
     },
   },
   {

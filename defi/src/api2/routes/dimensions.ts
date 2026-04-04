@@ -403,9 +403,11 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
 
 // these adapter types require category query param when query data
 // use default category if category query param wasn't given
-const defaultCategoryAdapterTypeMap: Record<string, string> = {
+const DefaultAdapterTypeCategoryMap: Record<string, string> = {
   [AdapterType.DEXS]: 'dexs',
   [AdapterType.DERIVATIVES]: 'derivatives',
+  [AdapterType.NORMALIZED_VOLUME]: 'derivatives',
+  [AdapterType.OPEN_INTEREST]: 'derivatives',
   [AdapterType.OPTIONS]: 'options',
 }
 
@@ -414,7 +416,7 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
     const { adaptorType, dataType, category } = getEventParameters(req, true)
 
     // retrun a subnet of protocol (per category) only
-    if (Object.keys(defaultCategoryAdapterTypeMap).includes(adaptorType)) {
+    if (Object.keys(DefaultAdapterTypeCategoryMap).includes(adaptorType)) {
       return await returnSubCategoryData();
     }
     
@@ -447,7 +449,7 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
     // return data in a given category
     async function returnSubCategoryData() {
       let filterCategory = category;
-      if (!filterCategory) filterCategory = defaultCategoryAdapterTypeMap[adaptorType];
+      if (!filterCategory) filterCategory = DefaultAdapterTypeCategoryMap[adaptorType];
       
       let routeFileExt = '';
       if (route === 'overview') routeFileExt = '';
@@ -466,8 +468,13 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
 
 export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType, chainKeyFilter } = getEventParameters(req, true)
+    const { adaptorType, dataType, chainKeyFilter, category } = getEventParameters(req, true)
 
+    // retrun a subnet of protocol (per category) only
+    if (Object.keys(DefaultAdapterTypeCategoryMap).includes(adaptorType)) {
+      return await returnSubCategoryChainData();
+    }
+    
     const isLiteStr = route === 'overview' ? '-lite' : '-all'
     const chainStr = (chainKeyFilter && chainKeyFilter !== 'all') ? `-chain/${chainKeyFilter}` : ''
     const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
@@ -488,6 +495,24 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
       } else {
         return successResponse(res, data.totalDataChart)
       }
+    }
+    
+    // return data in a given category - chain
+    async function returnSubCategoryChainData() {
+      let filterCategory = category;
+      if (!filterCategory) filterCategory = DefaultAdapterTypeCategoryMap[adaptorType];
+      
+      let routeFileExt = '';
+      if (route === 'overview') routeFileExt = '';
+      else routeFileExt += route;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-chain/${chainKeyFilter}${routeFileExt}`;
+      const routeFile = `dimensions/${routeSubPath}`;
+      
+      const data = await readRouteData(routeFile);
+  
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+  
+      return successResponse(res, data);
     }
   }
 }

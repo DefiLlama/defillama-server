@@ -6378,7 +6378,7 @@ const data4: Protocol[] = [
     //previousNames: ["HypurrFi"],
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `Collateralize borrowing positions and loop and lever up your yield`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-pooled.jpg`,
@@ -11293,7 +11293,7 @@ const data4: Protocol[] = [
     name: "HypurrFi Isolated",
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `HypurrFi's isolated lending markets`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-isolated.jpg`,
@@ -11306,7 +11306,7 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.hypurr.fi/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
+        proof: ["https://hypurrfi.com/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
       },
     ],
     module: "hypurrfi-isolated/index.js",
@@ -19834,6 +19834,7 @@ const data4: Protocol[] = [
     twitter: "DeFiCarrot",
     parentProtocol: "parent#carrot",
     listedAt: 1752343187,
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
   },
   {
     id: "6419",
@@ -24887,7 +24888,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#pancakeswap",
     dimensions: {
       fees: "pancakeswap-prediction",
-      dexs: "pancakeswap-prediction"
+      dexs: "pancakeswap-prediction",
     }
   },
   {
@@ -28494,6 +28495,7 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum"],
     module: "sentora/index.js",
+    oraclesBreakdown: [{name: "Chainlink", type: "Primary", proof: ["https://etherscan.io/address/0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961#readContract"]}],
     twitter: "SentoraHQ",
     listedAt: 1759454399,
     dimensions: {

@@ -11,10 +11,10 @@ import {
   type ParsedPerpsMarket,
 } from "./platforms/hyperliquid";
 import {
-  getMarketId,
-  getMarketMetadata,
-  hasMarketMetadata,
-  loadMarketMetadataFromAirtable,
+  getContractId,
+  getContractMetadata,
+  hasContractMetadata,
+  loadContractMetadataFromAirtable,
   CIRCUIT_BREAKER_THRESHOLD,
 } from "./constants";
 import { HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
@@ -26,7 +26,7 @@ export async function main(ts: number = 0): Promise<void> {
   const timestamp = ts || getCurrentUnixTimestamp();
   console.log(`RWA Perps start ${new Date(timestamp * 1000).toISOString()}`);
 
-  const metadataCount = await loadMarketMetadataFromAirtable();
+  const metadataCount = await loadContractMetadataFromAirtable();
   console.log(`RWA Perps loaded ${metadataCount} market metadata entries from Airtable`);
 
   await initPG();
@@ -55,10 +55,10 @@ export async function main(ts: number = 0): Promise<void> {
   const knownMarkets: ParsedPerpsMarket[] = [];
   const missingMetadata: string[] = [];
   for (const market of allMarkets) {
-    if (hasMarketMetadata(market.coin)) {
+    if (hasContractMetadata(market.contract)) {
       knownMarkets.push(market);
     } else {
-      missingMetadata.push(`${market.coin}`);
+      missingMetadata.push(`${market.contract}`);
     }
   }
 
@@ -76,7 +76,7 @@ export async function main(ts: number = 0): Promise<void> {
 
   const fundingEntries: Array<{
     timestamp: number;
-    coin: string;
+    contract: string;
     venue: string;
     fundingRate: number;
     premium: number;
@@ -88,7 +88,7 @@ export async function main(ts: number = 0): Promise<void> {
     items: knownMarkets,
     concurrency: 5,
     processor: async (market: ParsedPerpsMarket) => {
-      const marketId = getMarketId(market.coin);
+      const marketId = getContractId(market.contract);
 
       const latestTs = await fetchLatestFundingTimestampPG(marketId);
       const startTime = latestTs
@@ -97,7 +97,7 @@ export async function main(ts: number = 0): Promise<void> {
       const endTime = timestamp * 1000;
       if (startTime >= endTime) return;
 
-      const history = await fetchFundingHistory(market.coin, startTime, endTime);
+      const history = await fetchFundingHistory(market.contract, startTime, endTime);
       if (history.length === 0) return;
 
       const parsed = parseFundingHistory(history, market.venue, market.openInterest);
@@ -118,8 +118,8 @@ export async function main(ts: number = 0): Promise<void> {
     items: knownMarkets,
     concurrency: 10,
     processor: async (market: ParsedPerpsMarket) => {
-      const marketId = getMarketId(market.coin);
-      const metadata = getMarketMetadata(market.coin)!;
+      const marketId = getContractId(market.contract);
+      const metadata = getContractMetadata(market.contract)!;
 
       const cumulativeFunding = await fetchCumulativeFundingPG(marketId);
 
@@ -135,7 +135,7 @@ export async function main(ts: number = 0): Promise<void> {
       const feesAllTime = computeProtocolFees(volumeAllTime, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
 
       finalData[marketId] = {
-        coin: market.coin,
+        contract: market.contract,
         venue: market.venue,
         openInterest: market.openInterest * market.markPx,
         volume24h: market.volume24h,

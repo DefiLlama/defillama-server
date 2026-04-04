@@ -1,15 +1,14 @@
 import * as HyperExpress from 'hyper-express';
 import { readRouteData, getCacheVersion } from './file-cache';
-import { perpsSlug } from './utils';
 import { initPG, fetchFundingHistoryPG } from './db';
-
-const webserver = new HyperExpress.Server();
-const port = +(process.env.RWA_PERPS_PORT ?? 5003);
-const RWA_PERPS_SUBPATH = process.env.RWA_PERPS_SUBPATH;
-
-if (!RWA_PERPS_SUBPATH) {
-    throw new Error('Missing required environment variable: RWA_PERPS_SUBPATH');
-}
+import { perpsSlug } from './utils';
+import {
+    findMarketById,
+    findMarketsByCategory,
+    findMarketsByContract,
+    findMarketsByVenue,
+    resolvePerpsLookupId,
+} from './server-helpers';
 
 function getTimeInFutureMinutes(minutes: number): string {
     const date = new Date();
@@ -68,10 +67,9 @@ function errorWrapper(routeFn: (req: HyperExpress.Request, res: HyperExpress.Res
     };
 }
 
-function setRoutes(router: HyperExpress.Router): void {
+export function setRoutes(router: HyperExpress.Router): void {
     // ── Current data ─────────────────────────────────────────────────────────
 
-    // Get all current perps markets
     router.get(
         '/current',
         errorWrapper(async (_req, res) => {
@@ -79,7 +77,7 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get lightweight list of markets, coins, venues, categories
+    // Get lightweight list of markets, contracts, venues, categories
     router.get(
         '/list',
         errorWrapper(async (_req, res) => {
@@ -87,7 +85,6 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get aggregate stats
     router.get(
         '/stats',
         errorWrapper(async (_req, res) => {
@@ -95,7 +92,6 @@ function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get ID map (canonical market keys -> id mapping)
     router.get(
         '/id-map',
         errorWrapper(async (_req, res) => {
@@ -105,21 +101,18 @@ function setRoutes(router: HyperExpress.Router): void {
 
     // ── Single market lookup ─────────────────────────────────────────────────
 
-    // Get specific market by ID (venue:coin)
     router.get(
         '/market/:id',
         errorWrapper(async (req, res) => {
             const { id } = req.params;
             if (!id) return errorResponse(res, 'Missing id parameter', 400);
 
+            const idMap = await readRouteData('id-map.json');
             const currentData = await readRouteData('current.json');
             if (!currentData) return errorResponse(res, 'Data not found', 500);
 
-            const idParam = String(id).toLowerCase();
-            const market = currentData.find((item: any) =>
-                typeof item?.id !== 'undefined' && String(item.id).toLowerCase() === idParam
-            );
-
+            const resolvedId = resolvePerpsLookupId(idMap, id);
+            const market = findMarketById(currentData, resolvedId || id);
             if (!market) return errorResponse(res, `Market "${id}" not found`, 404);
             return successResponse(res, market, 20);
         })
@@ -127,27 +120,22 @@ function setRoutes(router: HyperExpress.Router): void {
 
     // Get markets by canonical market key (for example "xyz:META")
     router.get(
-        '/coin/:coin',
+        '/contract/:contract',
         errorWrapper(async (req, res) => {
-            const { coin } = req.params;
-            if (!coin) return errorResponse(res, 'Missing coin parameter', 400);
+            const { contract } = req.params;
+            if (!contract) return errorResponse(res, 'Missing contract parameter', 400);
 
             const currentData = await readRouteData('current.json');
             if (!currentData) return errorResponse(res, 'Data not found', 500);
 
-            const coinSlug = perpsSlug(coin);
-            const markets = currentData.filter((item: any) =>
-                typeof item?.coin !== 'undefined' && perpsSlug(item.coin) === coinSlug
-            );
-
-            if (markets.length === 0) return errorResponse(res, `Coin "${coin}" not found`, 404);
+            const markets = findMarketsByContract(currentData, contract);
+            if (markets.length === 0) return errorResponse(res, `Contract "${contract}" not found`, 404);
             return successResponse(res, markets, 20);
         })
     );
 
     // ── Filtering ────────────────────────────────────────────────────────────
 
-    // Get markets by venue
     router.get(
         '/venue/:venue',
         errorWrapper(async (req, res) => {
@@ -157,16 +145,10 @@ function setRoutes(router: HyperExpress.Router): void {
             const currentData = await readRouteData('current.json');
             if (!currentData) return errorResponse(res, 'Data not found', 500);
 
-            const venueSlug = perpsSlug(venue);
-            const filtered = currentData.filter((item: any) =>
-                perpsSlug(item.venue) === venueSlug
-            );
-
-            return successResponse(res, { data: filtered, total: filtered.length }, 20);
+            return successResponse(res, findMarketsByVenue(currentData, venue), 20);
         })
     );
 
-    // Get markets by category
     router.get(
         '/category/:category',
         errorWrapper(async (req, res) => {
@@ -176,80 +158,64 @@ function setRoutes(router: HyperExpress.Router): void {
             const currentData = await readRouteData('current.json');
             if (!currentData) return errorResponse(res, 'Data not found', 500);
 
-            const categoryLower = category.toLowerCase();
-            const filtered = currentData.filter((item: any) => {
-                const categories = Array.isArray(item.category) ? item.category : [item.category || 'Other'];
-                return categories.some((cat: string) => cat.toLowerCase() === categoryLower);
-            });
-
-            return successResponse(res, { data: filtered, total: filtered.length }, 20);
+            return successResponse(res, findMarketsByCategory(currentData, category), 20);
         })
     );
 
     // ── Historical charts ────────────────────────────────────────────────────
 
-    // Get historical chart data for a single market by ID
     router.get(
         '/chart/:id',
         errorWrapper(async (req, res) => {
             const { id } = req.params;
             if (!id) return errorResponse(res, 'Missing id parameter', 400);
-            return fileResponse(`charts/${id}.json`, res, 30);
+
+            const idMap = await readRouteData('id-map.json');
+            const resolvedId = resolvePerpsLookupId(idMap, id);
+            return fileResponse(`charts/${resolvedId || id}.json`, res, 30);
         })
     );
 
-    // Get historical constituent chart rows by venue
     router.get(
         '/chart/venue/:venue',
         errorWrapper(async (req, res) => {
             const { venue } = req.params;
             if (!venue) return errorResponse(res, 'Missing venue parameter', 400);
-            const key = perpsSlug(venue);
-            return fileResponse(`charts/venue/${key}.json`, res, 30);
+            return fileResponse(`charts/venue/${perpsSlug(venue)}.json`, res, 30);
         })
     );
 
-    // Get historical constituent chart rows by category
     router.get(
         '/chart/category/:category',
         errorWrapper(async (req, res) => {
             const { category } = req.params;
             if (!category) return errorResponse(res, 'Missing category parameter', 400);
-            const key = perpsSlug(category);
-            return fileResponse(`charts/category/${key}.json`, res, 30);
+            return fileResponse(`charts/category/${perpsSlug(category)}.json`, res, 30);
         })
     );
 
     // ── Funding history ──────────────────────────────────────────────────────
 
-    // Get funding history for a specific market
     router.get(
         '/funding/:id',
         errorWrapper(async (req, res) => {
             const { id } = req.params;
             if (!id) return errorResponse(res, 'Missing id parameter', 400);
 
+            const idMap = await readRouteData('id-map.json');
+            const resolvedId = resolvePerpsLookupId(idMap, id);
             const startTime = req.query.startTime ? Number(req.query.startTime) : undefined;
             const endTime = req.query.endTime ? Number(req.query.endTime) : undefined;
 
-            const history = await fetchFundingHistoryPG(id.toLowerCase(), startTime, endTime);
-            return successResponse(res, {
-                id,
-                data: history,
-                total: history.length,
-            }, 10);
+            const history = await fetchFundingHistoryPG((resolvedId || id).toLowerCase(), startTime, endTime);
+            return successResponse(res, history, 10);
         })
     );
 }
 
-async function main() {
-    console.log('Starting RWA Perps REST Server...');
-    console.log('Cache Version:', getCacheVersion());
+export function createPerpsServer(subpath: string): HyperExpress.Server {
+    const webserver = new HyperExpress.Server();
 
-    // Initialize DB for funding history endpoint
-    await initPG();
-
-    // CORS middleware
     webserver.use((_req, res, next) => {
         res.append('Access-Control-Allow-Origin', '*');
         res.append('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -257,50 +223,62 @@ async function main() {
         next();
     });
 
-    // Handle OPTIONS requests
     webserver.options('/*', (_req, res) => {
         res.status(200).send();
     });
 
-    // Health check
     webserver.get('/health', (_req, res) => {
         res.send('OK');
     });
 
-    // All routes under secret subpath
     const router = new HyperExpress.Router();
-    webserver.use('/' + RWA_PERPS_SUBPATH, router);
+    webserver.use('/' + subpath, router);
     setRoutes(router);
-    console.log(`Routes mounted at /${RWA_PERPS_SUBPATH}`);
 
-    // Start server
-    webserver
-        .listen(port)
-        .then(() => {
-            console.log(`RWA Perps REST Server started on port ${port}`);
-            try {
-                process.send!('ready');
-            } catch {
-                // Not running under PM2, ignore
-            }
-        })
-        .catch((e) => {
-            console.error('Failed to start server:', e.message);
-            process.exit(1);
+    return webserver;
+}
+
+export async function main() {
+    const subpath = process.env.RWA_PERPS_SUBPATH;
+    if (!subpath) {
+        throw new Error('Missing required environment variable: RWA_PERPS_SUBPATH');
+    }
+
+    const port = +(process.env.RWA_PERPS_PORT ?? 5003);
+    const webserver = createPerpsServer(subpath);
+
+    console.log('Starting RWA Perps REST Server...');
+    console.log('Cache Version:', getCacheVersion());
+
+    await initPG();
+    console.log(`Routes mounted at /${subpath}`);
+
+    try {
+        await webserver.listen(port);
+        console.log(`RWA Perps REST Server started on port ${port}`);
+        try {
+            process.send!('ready');
+        } catch {
+            // Not running under PM2, ignore
+        }
+    } catch (e: any) {
+        console.error('Failed to start server:', e.message);
+        process.exit(1);
+    }
+
+    const shutdown = () => {
+        console.log('Shutting down gracefully...');
+        setTimeout(() => process.exit(0), 5000);
+        webserver.close(() => {
+            console.log('Server shut down gracefully');
+            process.exit(0);
         });
+    };
+
+    process.on('SIGINT', shutdown);
+    process.on('SIGTERM', shutdown);
 }
 
-// Graceful shutdown
-process.on('SIGINT', shutdown);
-process.on('SIGTERM', shutdown);
-
-function shutdown() {
-    console.log('Shutting down gracefully...');
-    setTimeout(() => process.exit(0), 5000);
-    webserver.close(() => {
-        console.log('Server shut down gracefully');
-        process.exit(0);
-    });
+if (require.main === module) {
+    void main();
 }
-
-main();

@@ -31,7 +31,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "flow",
   "somnia",
   "plasma", 
-  "monad"
+  "monad", 
+  "stable"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -271,4 +272,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "mezo": { ticker: "MEZO", address: "" },
   "monad": { ticker: "MON", address: "coingecko:monad" },
   "keeta": { ticker: "KTA", address: "coingecko:keeta" },
+  "stable": { ticker: "STABLE", address: "coingecko:stable-2" },
 };

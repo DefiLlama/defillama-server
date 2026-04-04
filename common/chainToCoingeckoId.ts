@@ -265,6 +265,7 @@ export const chainToCoingeckoId = {
   canton: 'canton-network',
   blockdag: 'blockdag',
   proptech: 'proptech',
+  tempo: 'tempo'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

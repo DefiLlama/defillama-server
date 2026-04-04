@@ -5767,7 +5767,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://stakestone.io",
     description: "One-Stop Staking Protocol For Omnichain LST Liquidity.",
     logo: `${baseIconsUrl}/stakestone.jpg`,
-    gecko_id: null, // token not listed yet
+    gecko_id: "stakestone", 
     cmcId: null,
     chains: [],
     twitter: "Stake_Stone",
@@ -7084,8 +7084,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hypurfi",
     name: "HypurrFi",
-    url: "https://app.hypurr.fi/points?af=defillama",
-    referralUrl: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
+    referralUrl: "https://hypurrfi.com/points?af=defillama",
     description: "Collateralize borrowing positions and loop and lever up your yield",
     logo: `${baseIconsUrl}/hypurrfi.png`,
     gecko_id: null,

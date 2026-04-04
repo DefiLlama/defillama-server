@@ -8992,7 +8992,7 @@ const data3_0: Protocol[] = [
     category: "Restaking",
     chains: ["Ethereum"],
     module: "eigenlayer/index.js",
-    twitter: "eigenlayer",
+    twitter: "eigencloud",
     audit_links: ["https://docs.eigencloud.xyz/eigenlayer/security/audits"],
     github: ["Layr-Labs"],
     listedAt: 1686776222,
@@ -18208,7 +18208,7 @@ const data3_1: Protocol[] = [
     name: "Jumper Exchange",
     address: null,
     symbol: "-",
-    url: "https://jumper.exchange",
+    url: "https://jumper.xyz/",
     description: "Crypto's Everything Exchange",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/jumper-exchange.jpg`,
@@ -21646,7 +21646,7 @@ const data3_1: Protocol[] = [
     name: "Merkle Trade",
     address: "aptos:0x5ae6789dd2fec1a9ec9cccfb3acaf12e93d432f0a3a42c92fe1a9d490b7bbc06::mkl_token::MKL",
     symbol: "MKL",
-    url: "https://merkle.trade",
+    url: "https://merkl.xyz/",
     description:
       "Merkle Trade is a Perp DEX that offers high leverage on a variety of pairs such as Crypto, Forex, and Commodity.",
     chain: "Aptos",
@@ -30506,7 +30506,7 @@ const data3_1: Protocol[] = [
         genuineSpikes: [["2026-04-01", "$JLP burnt by drift trade exploiter"]], //HkGz4KmoZ7Zmk7HN6ndJ31UJ1qZ2qgwQxgVqQwovpZES
       },
       derivatives: "jupiter-perpetual",
-      //"open-interest": "jupiter-perpetual"
+      "open-interest": "jupiter-perpetual-oi"
     }
   },
   {
@@ -48438,7 +48438,7 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "usual",
-        genuineSpikes: [["2025-10-10", "-"]],
+        genuineSpikes: [["2025-10-10", "-"], ["2026-04-02", "LP fees withdrawn from uniswap"]],
       }
     }
   },
@@ -52338,7 +52338,10 @@ const data3_3: Protocol[] = [
     dimensions: {
       aggregators: {
         adapter: "dodo-agg",
-        genuineSpikes: [["2026-01-25", "-"]],
+        genuineSpikes: [
+          ["2026-01-25", "-"],
+          ["2026-04-01", "$ETH bought by Drift exploiter"], //0xFcC47866Bd2BD3066696662dbd1C89c882105643
+        ],
       }
     }
   },
@@ -54394,15 +54397,15 @@ const data3_3: Protocol[] = [
   {
     id: "5157",
     name: "Yellow",
-    address: "polygon:0x18e73a5333984549484348a94f4d219f4fab7b81",
-    symbol: "DUCKIES",
+    address: "0x236eb848c95b231299b4aa9f56c73d6893462720",
+    symbol: "YELLOW",
     url: "https://www.yellow.org",
     description:
       "Yellow Clearing Network is a Layer-3 P2P protocol that uses state channels to facilitate trading and settlement through smart clearing.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yellow.jpg`,
     audits: "2",
-    gecko_id: "duckies",
+    gecko_id: "yellow",
     cmcId: null,
     tags: ["AMM"],
     chains: ["Ethereum", "Linea", "Polygon"],
@@ -58281,6 +58284,7 @@ const data3_3: Protocol[] = [
     oracles: ["Switchboard", "Pyth"], // https://github.com/DefiLlama/defillama-server/pull/8978
     audit_links: ["https://deficarrot.com/assets/carrot_final_report.pdf"],
     parentProtocol: "parent#carrot",
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
     listedAt: 1731107322
   },
   {

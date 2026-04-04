@@ -42,7 +42,7 @@ export interface PerpDex {
 }
 
 export interface ParsedPerpsMarket {
-    coin: string;
+    contract: string;
     venue: string;
     openInterest: number;
     volume24h: number;
@@ -105,26 +105,26 @@ export async function fetchMetaAndAssetCtxs(venue: string): Promise<MetaAndAsset
 }
 
 export async function fetchFundingHistory(
-    coin: string,
+    contract: string,
     startTime: number,
     endTime?: number
 ): Promise<FundingHistoryEntry[]> {
     try {
         const body: any = {
             type: "fundingHistory",
-            coin,
+            coin: contract,
             startTime,
         };
         if (endTime) body.endTime = endTime;
 
         const result = await postHyperliquid(body);
         if (!Array.isArray(result)) {
-            console.error(`Unexpected fundingHistory response for ${coin}:`, result);
+            console.error(`Unexpected fundingHistory response for ${contract}:`, result);
             return [];
         }
         return result;
     } catch (e) {
-        console.error(`Failed to fetch fundingHistory for ${coin}:`, e);
+        console.error(`Failed to fetch fundingHistory for ${contract}:`, e);
         return [];
     }
 }
@@ -152,7 +152,7 @@ export function parseMetaAndAssetCtxs(
         const priceChange24h = prevDayPx > 0 ? ((markPx - prevDayPx) / prevDayPx) * 100 : 0;
 
         markets.push({
-            coin: asset.name,
+            contract: asset.name,
             venue,
             openInterest: safeParseFloat(ctx.openInterest),
             volume24h: safeParseFloat(ctx.dayNtlVlm),
@@ -177,7 +177,7 @@ export function parseFundingHistory(
     openInterest: number
 ): Array<{
     timestamp: number;
-    coin: string;
+    contract: string;
     venue: string;
     fundingRate: number;
     premium: number;
@@ -192,7 +192,7 @@ export function parseFundingHistory(
 
         return {
             timestamp: Math.floor(entry.time / 1000),
-            coin: entry.coin,
+            contract: entry.coin,
             venue,
             fundingRate,
             premium,

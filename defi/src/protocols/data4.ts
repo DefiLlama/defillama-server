@@ -9904,7 +9904,7 @@ const data4: Protocol[] = [
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
     tokensExcludedFromParent: {
-      Ethereum: ["SPDAI"],
+      Ethereum: ["SPDAI", "SPUSDT", "SPPYUSD", "SPUSDS", "SPUSDC"],
     },
     listedAt: 1743696229,
     dimensions: {
@@ -26543,6 +26543,9 @@ const data4: Protocol[] = [
     module: "spark-savings/index.js",
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
+    tokensExcludedFromParent: {
+      Ethereum: ["SPUSDT", "SPUSDC", "SPETH", "SPPYUSD"],
+    },
     listedAt: 1757630167
   },
   {

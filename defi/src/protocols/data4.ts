@@ -26544,7 +26544,7 @@ const data4: Protocol[] = [
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
     tokensExcludedFromParent: {
-      Ethereum: ["SPUSDT", "SPUSDC", "SPETH", "SPPYUSD", "SUSDC"],
+      Ethereum: ["SPUSDT", "SPUSDC", "SPETH", "SPPYUSD"],
     },
     listedAt: 1757630167
   },

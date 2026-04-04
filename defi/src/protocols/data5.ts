@@ -3747,6 +3747,13 @@ const data5: Protocol[] = [
     ],
     github: ["curvance"],
     listedAt: 1764287017,
+    warningBanners: [
+      {
+        message: "This protocol includes/provides unproductive positions that may contribute to inflated metrics. Be safe.",
+        level: "alert",
+        until: "2026-07-04",
+      }
+    ],
   },
   {
     id: "7054",

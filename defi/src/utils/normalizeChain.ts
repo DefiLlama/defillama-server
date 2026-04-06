@@ -5810,6 +5810,13 @@ export const chainCoingeckoIds = {
     twitter: "tradehotstuff",
     url: "https://www.hotstuff.trade/",
   },
+  /*"BlockDAG": { 
+    geckoId: "blockdag",
+    symbol: "BDAG",
+    cmcId: "31162",
+    twitter: "blockdagnetwork",
+    url: "https://blockdag.network/", // url flagged as malicious by phantom wallet
+  },*/
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -6055,6 +6062,7 @@ const chainLabelMap = {
   "everclear": "Everclear",
   "space_and_time": "Space and Time",
   "edgex": "edgeX L1",
+  "blockdag": "BlockDAG",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

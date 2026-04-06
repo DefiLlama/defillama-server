@@ -5810,7 +5810,17 @@ export const chainCoingeckoIds = {
     twitter: "tradehotstuff",
     url: "https://www.hotstuff.trade/",
   },
-  /*"BlockDAG": { 
+  "Igra": {
+    geckoId: "igra",
+    symbol: "IGRA",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 38833,
+    github: ["IgraLabs"],
+    twitter: "IgraNetwork",
+    url: "https://igralabs.com",
+  },
+  /*"BlockDAG": {
     geckoId: "blockdag",
     symbol: "BDAG",
     cmcId: "31162",

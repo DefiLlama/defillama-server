@@ -15842,6 +15842,8 @@ const data5: Protocol[] = [
     twitter: "GameClubMarket",
     dimensions: {
       fees: "gameclub",
+      "open-interest": "gameclub",
+      users: "gameclub",
     },
   },
   {

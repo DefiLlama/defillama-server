@@ -15863,6 +15863,10 @@ const data5: Protocol[] = [
     audit_links: ["https://hacken.io/audits/bullbit/"],
     github: ["bullbit"],
     listedAt: 1775235179,
+    dimensions: {
+      derivatives: "bullbit-perp-dex",
+      fees: "bullbit-perp-dex",
+    }
   },
   {
     id: "7626",

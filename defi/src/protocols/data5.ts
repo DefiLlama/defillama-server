@@ -14573,6 +14573,7 @@ const data5: Protocol[] = [
     category: "Lending",
     chains: ["Solana"],
     module: "omnipair/index.js",
+    treasury: "omnipair.js",
     twitter: "omnipair",
     listedAt: 1774369455,
     dimensions: {

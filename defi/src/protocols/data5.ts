@@ -16009,7 +16009,7 @@ const data5: Protocol[] = [
     listedAt: 1775494942,
   },
   /*{
-    id: "",
+    id: "7633",
     name: "999DEX",
     address: null,
     symbol: "-",
@@ -16029,5 +16029,24 @@ const data5: Protocol[] = [
     github: ["altomoney"],
     listedAt: 1775494942,
   },*/
+  {
+    id: "7634",
+    name: "LoopFi",
+    address: null,
+    symbol: "-",
+    url: "https://loopfi.site/app",
+    description:
+      "LoopFi is a non-custodial multi-chain yield protocol that deploys automated strategies across BSC, Arbitrum and Avalanche. Users deposit assets into ERC-4626 vaults and receive yield from Aave V3, Compound V3 and Benqi.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/loopfi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance","Arbitrum","Avalanche"],
+    module: "loopfi-site/index.js",
+    twitter: "loopfi_site",
+    listedAt: 1775513559,
+  },
 ];
 export default data5;

@@ -15864,7 +15864,6 @@ const data5: Protocol[] = [
     github: ["bullbit"],
     listedAt: 1775235179,
     dimensions: {
-      dexs: "bullbit-perp-dex",
       derivatives: "bullbit-perp-dex",
       fees: "bullbit-perp-dex",
     }

@@ -16048,5 +16048,26 @@ const data5: Protocol[] = [
     twitter: "loopfi_site",
     listedAt: 1775513559,
   },
+  {
+    id: "7635",
+    name: "FarmCats Market",
+    address: null,
+    symbol: "-",
+    url: "https://farmcats.app",
+    description:
+      "NFT marketplace on Tempo blockchain supporting multiple collections. 1% fee on every sale paid in pathUSD.",
+    chain: "Tempo",
+    logo: `${baseIconsUrl}/farmcats-market.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Tempo"],
+    module: "dummy.js",
+    twitter: "FarmCatsNFT",
+    dimensions: {
+      dexs: "farmcats-market",
+    },
+  },
 ];
 export default data5;

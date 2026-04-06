@@ -15967,7 +15967,7 @@ const data5: Protocol[] = [
     symbol: "SPECTRA",
     url: "https://app.spectra.finance/metavaults",
     description:
-      "Launch memecoins instantly. Each coin on mememarket is fair launch and comes with a collaborative meme collection.",
+      "Curated vaults for optimized performance and automated rollovers.",
     chain: "Base",
     logo: `${baseIconsUrl}/spectra-metavaults.jpg`,
     audits: "0",

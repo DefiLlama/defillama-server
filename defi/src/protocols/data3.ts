@@ -17480,6 +17480,7 @@ const data3_1: Protocol[] = [
     parentProtocol: "parent#wise-lending",
     listedAt: 1694020053,
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "3492",
@@ -39907,6 +39908,7 @@ const data3_2: Protocol[] = [
       fees: "wise-lending-v2"
     },
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "4495",

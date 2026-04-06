@@ -4449,6 +4449,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "WiseLending",
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "parent#Edge",

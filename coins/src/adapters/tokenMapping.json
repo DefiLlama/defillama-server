@@ -16653,7 +16653,7 @@
   },
   "tempo": {
     "0x20c0000000000000000000000000000000000000": {
-      "to": "coingecko#usd-coin",
+      "to": "coingecko#pathusd",
       "decimals": 6,
       "symbol": "pathUSD"
     },

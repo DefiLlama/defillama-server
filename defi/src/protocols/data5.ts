@@ -10,7 +10,7 @@ import type { Protocol } from "./types";
   description: string;
   chain: string;
   logo: null | string;
-  audits: null | "0" | "1" | "2" | "3";
+  audits: null | "0" | "1" | "2" | "h3";
   gecko_id: string;
   cmcId: string;
   category: string;
@@ -7982,7 +7982,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Tron"],
-    module: "dummy.js",
+    module: "dummy.js",h
     twitter: "SunX_DEX",
     audit_links: [
       "https://github.com/slowmist/Knowledge-Base/blob/master/open-report-V2/smart-contract/Sunperp%20Dex%20-%20SlowMist%20Audit%20Report.pdf"
@@ -15840,6 +15840,8 @@ const data5: Protocol[] = [
     chains: ["Binance"],
     module: "dummy.js",
     twitter: "GameClubMarket",
+    discord: "https://discord.com/invite/tRJCXMF4pJ",
+    telegram: "https://t.me/gameclubcommunity",
     dimensions: {
       fees: "gameclub",
     },

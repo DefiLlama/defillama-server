@@ -29139,14 +29139,13 @@ const data2: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Dex",
     chains: ["Solana"],
     module: "omnipair/index.js",
     treasury: "omnipair.js",
     twitter: "omnipair",
-    listedAt: 1775174400,
+    listedAt: 1775088000,
     dimensions: {
-      fees: "omnipair",
       dexs: "omnipair"
     }
   },

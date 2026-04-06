@@ -18,6 +18,7 @@ import { cachedJSONPull, readCachedRouteData } from "../utils/cachedFunctions";
 import { runWithRuntimeLogging } from "../utils";
 import { TagCatetgoryMap } from "../../protocols/tags";
 import { sendMessage } from "../../utils/discord";
+import { sluggifyCategoryString } from "../../utils/sluggify";
 const { exec } = require("child_process");
 
 const allExtraSections = [...extraSections, "doublecounted", "liquidstaking", "dcAndLsOverlap", "excludeParent"];
@@ -122,6 +123,7 @@ async function _storeAppMetadata() {
   const [
     tvlData,
     dimensionsChainAggData,
+    dimensionsCategoryAggData,
     yieldsData,
     expensesData,
     treasuryData,
@@ -164,6 +166,7 @@ async function _storeAppMetadata() {
   ] = await Promise.all([
     readCachedRouteData({ route: "/lite/protocols2" }),
     readCachedRouteData({ route: "/dimensions/chain-agg-data" }),
+    readCachedRouteData({ route: "/dimensions/category-agg-data" }),
     cachedJSONPull({ endpoint: YIELD_POOLS_API, defaultResponse: { data: [] } }).then((res) => res.data ?? []),
     cachedJSONPull({ endpoint: PROTOCOLS_EXPENSES_API, defaultResponse: [] }),
     readCachedRouteData({ route: "/treasuries", defaultResponse: [] }),
@@ -925,6 +928,7 @@ async function _storeAppMetadata() {
         r[k] = finalProtocols[k];
         if (protocolInfoMap[k]) {
           r[k].displayName = protocolInfoMap[k].name;
+          if (protocolInfoMap[k].gecko_id) r[k].gecko_id = protocolInfoMap[k].gecko_id;
           r[k].chains = protocolChainSetMap[k] ? Array.from(protocolChainSetMap[k]) : [];
 
           r[k].chains.forEach((chain: any) => {
@@ -936,6 +940,7 @@ async function _storeAppMetadata() {
         }
         if (parentProtocolsInfoMap[k]) {
           r[k].displayName = parentProtocolsInfoMap[k].name;
+          if (parentProtocolsInfoMap[k].gecko_id) r[k].gecko_id = parentProtocolsInfoMap[k].gecko_id;
           const chainSet = new Set();
           parentProtocolsInfoMap[k].childProtocols?.forEach((p: any) => {
             const chains = protocolChainSetMap[p.id] ? Array.from(protocolChainSetMap[p.id]) : [];
@@ -1243,10 +1248,33 @@ async function _storeAppMetadata() {
 
     await storeRouteData("/config/smol/appMetadata-totalTrackedByMetric.json", totalTrackedByMetric);
 
+    const configs: any = {};
+    for (const [category, _categoryAggData] of Object.entries(dimensionsCategoryAggData)) {
+      const categoryAggData = _categoryAggData as any;
+      configs[category] = configs[category] || {
+        category,
+        chains: Object.keys(categoryAggData.chains),
+        slug: sluggifyCategoryString(category),
+        dimAgg: {
+          ...categoryAggData,
+          chains: undefined,
+        }
+      };
+      if (categoryAggData.fees && categoryAggData.fees.df) configs[category].fees = true;
+      if (categoryAggData.fees && categoryAggData.fees.dr) configs[category].revenue = true;
+      if (categoryAggData.dexs && categoryAggData.dexs.dv) configs[category].dexs = true;
+      if (categoryAggData.derivatives && categoryAggData.derivatives.dv) configs[category].perps = true;
+      if (categoryAggData.aggregators && categoryAggData.aggregators.dv) configs[category].dexAggregators = true;
+      if (categoryAggData['bridge-aggregators'] && categoryAggData['bridge-aggregators'].dbv) configs[category].bridgeAggregators = true;
+      if (categoryAggData['normalized-volume'] && categoryAggData['normalized-volume'].dnvol) configs[category].normalizedVolume = true;
+      if (categoryAggData['open-interest'] && categoryAggData['open-interest'].doi) configs[category].openInterest = true;
+    }
+      
     await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
       categories: Array.from(categoriesSet),
       tags: Array.from(tagsSet),
       tagCategoryMap: TagCatetgoryMap,
+      configs,
     });
 
     console.log("finished building metadata");

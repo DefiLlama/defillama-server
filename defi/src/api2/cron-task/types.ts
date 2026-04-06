@@ -34,6 +34,7 @@ export interface IChainMetadata {
 
 export interface IProtocolMetadata {
   name: string
+	gecko_id?: string
 	tvl?: boolean
 	inflows?: boolean
 	borrowed?: boolean

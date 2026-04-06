@@ -4371,6 +4371,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1648148576,
     github: ["bcnmy"],
+    deprecated: true
   },
   {
     id: "1579",
@@ -9037,7 +9038,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Indexes",
     chains: ["Mixin"],
-    module: "bwatch/index.js",
+    module: "dummy.js", //"bwatch/index.js" => ETF price has been stale for 2 years despite market volatility, and there is no channel to contact the team
     twitter: null,
     listedAt: 1653984484,
   },
@@ -27868,7 +27869,8 @@ const data2: Protocol[] = [
     name: "CoWSwap",
     address: "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
     symbol: "COW",
-    url: "https://swap.cow.fi",
+    url: "https://swap.cow.fi?ref=DEFILLAMA",
+    referralUrl: "https://swap.cow.fi?ref=DEFILLAMA",
     description:
       "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
     chain: "Ethereum",

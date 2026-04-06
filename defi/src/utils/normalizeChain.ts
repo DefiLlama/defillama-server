@@ -2375,6 +2375,14 @@ export const chainCoingeckoIds = {
     cmcId: "18031",
     github: ["Concordium"],
   },
+  "Chia": {
+    geckoId: "chia",
+    symbol: "XCH",
+    cmcId: "9258",
+    github: ["Chia-Network"],
+    twitter: "chia_project",
+    url: "https://www.chia.net/",
+  },
   "Chihuahua": {
     geckoId: "chihuahua-token",
     symbol: "HUAHUA",
@@ -5108,7 +5116,7 @@ export const chainCoingeckoIds = {
     twitter: "tradeparadex",
     url: "https://app.paradex.trade/r/defillama",
   },
-  "edgeX": {
+  "edgeX L1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5788,6 +5796,20 @@ export const chainCoingeckoIds = {
     twitter: "spaceandtime",
     url: "https://www.spaceandtime.io/",
   },
+  "Canton": {
+    geckoId: "canton-network",
+    symbol: "CC",
+    cmcId: "37263",
+    twitter: "CantonNetwork",
+    url: "https://www.canton.network/",
+  },
+  "Hotstuff": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "tradehotstuff",
+    url: "https://www.hotstuff.trade/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -6032,6 +6054,7 @@ const chainLabelMap = {
   "voi": "Voi Network",
   "everclear": "Everclear",
   "space_and_time": "Space and Time",
+  "edgex": "edgeX L1",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

@@ -1,6 +1,6 @@
 
-import loadAdaptorsData from "../../../adaptors/data"
-import { ADAPTER_TYPES } from "../../../adaptors/data/types"
+import loadAdaptorsData from "../data"
+import { ADAPTER_TYPES } from "../data/types"
 
 async function run() {
   const table: any = []

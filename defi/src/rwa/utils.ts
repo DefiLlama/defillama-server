@@ -236,13 +236,17 @@ export const formatNumAsNumber = (value: any, maxDecimals?: number): number => {
 export function toStringArrayOrNull(value: any): string[] | null {
   if (value == null) return null;
 
+  // Collapse internal whitespace (newlines, tabs, multi-spaces) to a single space
+  // before trimming. Without this, values like "Stablecoins\n  backed by RWAs"
+  // survive as distinct keys in aggregation maps but slugify identically, causing
+  // one to silently overwrite the other when saved to disk.
   const items = (Array.isArray(value) ? value : [value])
     .flatMap((v) => {
       if (v == null) return [];
       if (typeof v === "string") return [v];
       return [String(v)];
     })
-    .map((s) => s.trim())
+    .map((s) => s.replace(/\s+/g, " ").trim())
     .filter(Boolean);
 
   if (!items.length) return null;
@@ -266,16 +270,19 @@ export function normalizeDashToNull(value: any) {
   return value;
 }
 
-function toStringOrNull(value: any): string | null {
+export function toStringOrNull(value: any): string | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
+  if (typeof value === "boolean") return null;
   if (typeof value === "string") {
-    const s = value.trim();
+    // Collapse internal whitespace (newlines, tabs, multi-spaces) to single space,
+    // matching the same normalization applied to array fields in toStringArrayOrNull.
+    const s = value.replace(/\s+/g, " ").trim();
     return s ? s : null;
   }
-  // Preserve existing semantics (avoid "[object Object]" as much as possible)
-  if (typeof value === "number" && !Number.isFinite(value)) return String(value);
-  return String(value);
+  if (typeof value === "number" && !Number.isFinite(value)) return null;
+  if (typeof value === "number") return String(value);
+  return null;
 }
 
 function toBooleanOrNull(value: any): boolean | null {
@@ -360,11 +367,15 @@ function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: st
 }
 
 function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean; governance: boolean } {
+  // Collapse whitespace so exact-match checks against RWA_STABLECOIN_CATEGORIES
+  // and RWA_GOVERNANCE_CATEGORIES Sets work even with messy Airtable input.
+  const cleanStr = (s: string) => s.replace(/\s+/g, " ").trim();
+
   const normalizeStringList = (value: any): string[] => {
     if (!Array.isArray(value)) return [];
     return value
       .filter((v) => typeof v === "string")
-      .map((v: string) => v.trim())
+      .map((v: string) => cleanStr(v))
       .filter(Boolean);
   };
 
@@ -374,7 +385,7 @@ function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean;
   const classifications = Array.isArray(target?.rwaClassification)
     ? normalizeStringList(target?.rwaClassification)
     : typeof target?.rwaClassification === "string"
-      ? [target.rwaClassification.trim()].filter(Boolean)
+      ? [cleanStr(target.rwaClassification)].filter(Boolean)
       : [];
 
   const hasAny = (arr: string[], pred: (s: string) => boolean) => arr.some(pred);
@@ -448,7 +459,8 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
     delete target.excludedWallets;
   }
 
-  // Derive category flags
+  // Derive category flags — must run AFTER normalizeStringArrayFieldsInPlace so
+  // that category/assetClass values have consistent whitespace for Set.has() checks.
   const flags = deriveStablecoinAndGovernanceFlags(target);
   target.stablecoin = flags.stablecoin;
   target.governance = flags.governance;

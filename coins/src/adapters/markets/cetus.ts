@@ -1,40 +1,108 @@
-import { Write, } from "../utils/dbInterfaces";
-import { addToDBWritesList, } from "../utils/database";
-import axios from 'axios'
+import { Write } from "../utils/dbInterfaces";
+import { getTokenAndRedirectDataMap } from "../utils/database";
+import axios from "axios";
+import getWrites from "../utils/getWrites";
 
 export function cetus(timestamp: number) {
+  const THIRY_MINUTES = 1800;
+  if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)
+    throw new Error("Can't fetch historical data");
 
-  throw new Error("Cetus is broken")
-  const THIRY_MINUTES = 1800
-  if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
-    throw new Error("Can't fetch historical data")
-
-  return Promise.all([
-    getTokenPrices(timestamp),
-  ])
+  return getTokenPrices(timestamp)
 }
-const chain = 'sui'
 
+const chain = "sui";
 
 async function getTokenPrices(timestamp: number) {
   const writes: Write[] = [];
-  const { data: { data: { list } } } = await axios.get('https://api-sui.cetus.zone/v2/sui/coins_info')
-  const { data: { data: { tokens } } } = await axios.get('https://api-sui.cetus.zone/v2/sui/swap/count/v3')
-  const coinInfos: any = {}
-  list.forEach((i: any) => coinInfos[i.coin_type] = i)
-  tokens.forEach((i: any) => {
-    if (+i.pure_tvl_in_usd < 5_000 || +i.vol_in_usd_24h < 1000) return;
-    const coinInfo = coinInfos[i.address]
-    if (!coinInfo) {
-      // console.log('Metadata not found: ', i.address)
-      return;
+  const tokens: {
+    price: number;
+    decimals: number;
+    symbol: string;
+    tvl: number;
+    underlying: string;
+    address: string;
+  }[] = [];
+
+  const limit = 100;
+  let offset = 0;
+  let total = Infinity;
+
+  while (offset < total) {
+    const {
+      data: { data },
+    } = await axios.get(`https://api-sui.cetus.zone/v2/sui/stats_pools`, {
+      params: {
+        is_vaults: false,
+        display_all_pools: true,
+        has_mining: true,
+        has_farming: true,
+        no_incentives: true,
+        order_by: "-tvl",
+        limit,
+        offset,
+      },
+    });
+    total = data.total;
+    const pools = data.lp_list ?? [];
+    if (pools.length === 0) break;
+
+    for (const pool of pools) {
+      const poolTvl = +pool.pure_tvl_in_usd || 0;
+      const poolVolume = +pool.vol_in_usd_24h || 0;
+      if (poolTvl < 10_000 || poolVolume < 1_000) continue;
+
+      const sqrtPrice = +(pool.object?.current_sqrt_price ?? 0);
+      if (sqrtPrice === 0) continue;
+      const decA = +(pool.coin_a?.decimals ?? 0);
+      const decB = +(pool.coin_b?.decimals ?? 0);
+      // price of coin_a in terms of coin_b: (sqrtPrice / 2^64)^2 * 10^(decA - decB)
+      const rawPrice = sqrtPrice / 2 ** 64;
+      const priceAinB = rawPrice * rawPrice * 10 ** (decA - decB);
+
+      for (const side of ["coin_a", "coin_b"]) {
+        const coin = pool[side];
+        const otherCoin = pool[side === "coin_a" ? "coin_b" : "coin_a"];
+        if (!coin?.address || !otherCoin?.address) continue;
+        const price = side === "coin_a" ? priceAinB : 1 / priceAinB;
+        tokens.push({
+          address: coin.address,
+          price,
+          decimals: +coin.decimals,
+          symbol: coin.symbol,
+          tvl: poolTvl,
+          underlying: otherCoin.address,
+        });
+      }
     }
 
-    if (coinInfo.coingecko_id)
-      addToDBWritesList(writes, chain, i.address, undefined, coinInfo.decimals, i.symbol, timestamp, 'cetus', 0.9, `coingecko#${
-        i.address.toLowerCase() == '0x909cba62ce96d54de25bec9502de5ca7b4f28901747bbf96b76c2e63ec5f1cba::coin::coin' ? 'usd-coin' : coinInfo.coingecko_id}`)
-    else
-      addToDBWritesList(writes, chain, i.address, i.price, coinInfo.decimals, i.symbol, timestamp, 'cetus', 0.9)
-  })
-  return writes
+    offset += limit;
+  }
+
+  const underlyingTokens = await getTokenAndRedirectDataMap(
+    [...new Set(tokens.map((i) => i.underlying))],
+    chain,
+    timestamp,
+  );
+
+  const pricesObject: any = {};
+  for (const { price, decimals, symbol, tvl, underlying, address } of tokens) {
+    if (!underlyingTokens[underlying.toLowerCase()]) continue;
+    if (pricesObject[address] && pricesObject[address].tvl > tvl) continue;
+    pricesObject[address] = {
+      price,
+      underlying,
+      decimals,
+      symbol,
+      tvl,
+    };
+  }
+
+  return getWrites({
+    chain,
+    timestamp,
+    pricesObject,
+    projectName: "cetus",
+    confidence: 0.8,
+  });
 }

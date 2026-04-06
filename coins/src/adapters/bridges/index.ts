@@ -33,6 +33,7 @@ import anvu from "./anvu";
 import monad from "./monad";
 import megaeth from "./megaeth";
 import pepu from "./pepu";
+import tempo from "./tempo";
 import * as sdk from "@defillama/sdk";
 
 export type Token =
@@ -95,6 +96,7 @@ export const bridges = [
   monad,
   megaeth,
   pepu,
+  tempo,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

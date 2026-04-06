@@ -37,7 +37,8 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "flare",
   "katana",
   "hedera",
-  "sei"
+  "sei",
+  "stable"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -285,4 +286,5 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   "katana": { ticker: "KAT", address: "coingecko:katana-network-token" },
   "hedera": { ticker: "HBAR", address: "coingecko:hedera-hashgraph" },
   "sei": { ticker: "SEI", address: "coingecko:sei-network" },
+  "stable": { ticker: "STABLE", address: "coingecko:stable-2" },
 };

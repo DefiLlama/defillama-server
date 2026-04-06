@@ -128,6 +128,38 @@ export const additional: { [chain: string]: string[] } = {
   ],
   unichain: ["0x078D782b760474a361dDA0AF3839290b0EF57AD6"],
   reya: ["0x162B78e827A8DB8173D13735C08c8D40Cb5cCdAB"],
+  provenance: [
+    "uusd.trading", // USDC
+    "uusdc.figure.se", // USDC
+    "ueur.trading", // EURC
+    "ueurc.figure.se", // EURC
+    "uylds.fcc", // YLDS
+    "nbtc.figure.se", // BTC
+    "neth.figure.se", // ETH
+    "uusdt.figure.se", // USDT
+    "nlink.figure.se", // LINK
+    "nsol.figure.se", // SOL
+    "nuni.figure.se", // UNI
+    "uxrp.figure.se", // XRP
+    "ulrwa.figure.markets", // LRWA
+    "ureit.figure.markets", // REIT
+    "FIGR_HELOC", // HELOC
+    "pm.sale.pool.3dxq3fk9llvhrqqwhodiap", // YLDS HELOCs
+    "pm.pool.asset.1y3flutqcyuf8duew1vj2g", // YLDS CBLs
+    "pm.pool.asset.3hjz8rcr3pejdc3msntlvy", // YLDS HELOC+
+  ],
+  stellar: [
+    "USDY-GAJMPX5NBOG6TQFPQGRABJEEB2YE7RFRLUKJDZAZGAD5GFX4J7TADAZ6", // USDY
+    "BENJI-GBHNGLLIE3KWGKCHIKMHJ5HVZHYIK7WTBE4QF5PLAKL4CJGSEU7HZIW5", // BENJI
+    // "VEUR-GDXLSLCOPPHTWOQXLLKSVN4VN3G67WD2ENU7UMVAROEYVJLSPSEWXIZN", // VEUR - decimals mismatch in coins API
+    // "VCHF-GDXLSLCOPPHTWOQXLLKSVN4VN3G67WD2ENU7UMVAROEYVJLSPSEWXIZN", // VCHF - decimals mismatch in coins API
+    "gBENJI-GD5J73EKK5IYL5XS3FBTHHX7CZIYRP7QXDL57XFWGC2WVYWT326OBXRP", // gBENJI
+    "sgBENJI-GAGICV3VBJSKKH5H5MQQIUTUP462YVHC23KUHZY6FJERRJFBDIVZBM5C", // sgBENJI
+    "CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75", // USDC (SAC)
+    "CDTKPWPLOURQA2SGTKTUQOWRCBZEORB4BWBOMJ3D3ZTQQSGE5F6JBQLV", // EURC (SAC)
+    "CAUIKL3IYGMERDRUN6YSCLWVAKIFG5Q4YJHUKM4S4NJZQIA3BAS6OJPK", // AQUA (SAC)
+    "CD25MNVTZDL4Y3XBCPCJXGXATV5WUHHOWMYFF4YBEGU5FCPGMYTVG5JY", // BLND (SAC)
+  ],
 };
 export const excluded: { [chain: string]: string[] } = {
   optimism: [

@@ -12410,7 +12410,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7461",
-    name: "Spectra MetaVaults",
+    name: "Spectra MetaVaults Outside V2",
     address: "base:0x64fcc3a02eeeba05ef701b7eed066c6ebd5d4e51",
     symbol: "SPECTRA",
     url: "https://app.spectra.finance/metavaults",
@@ -12426,7 +12426,6 @@ const data5: Protocol[] = [
     twitter: "spectra_finance",
     parentProtocol: "parent#spectra",
     listedAt: 1772044022,
-    excludeTvlFromParent: true,
   },
   {
     id: "7462",
@@ -15965,6 +15964,26 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "mememarket",
     },
+  },
+  {
+    id: "7631",
+    name: "Spectra MetaVaults",
+    address: "base:0x64fcc3a02eeeba05ef701b7eed066c6ebd5d4e51",
+    symbol: "SPECTRA",
+    url: "https://app.spectra.finance/metavaults",
+    description:
+      "Curated vaults for optimized performance and automated rollovers.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/spectra-metavaults.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Base"],
+    module: "spectra-metavaults-total/index.js",
+    twitter: "spectra_finance",
+    parentProtocol: "parent#spectra",
+    excludeTvlFromParent: true,
   },
 ];
 export default data5;

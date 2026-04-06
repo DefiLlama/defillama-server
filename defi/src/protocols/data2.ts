@@ -29127,5 +29127,28 @@ const data2: Protocol[] = [
     rugged: true,
     deadUrl: true,
   },
+  {
+    id: "2701",
+    name: "Omnipair",
+    address: null,
+    symbol: "OMFG",
+    url: "https://www.omnipair.fi",
+    description: "Permissionless, oracle-less spot and margin trading protocol on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/omnipair.png`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    module: "omnipair/index.js",
+    treasury: "omnipair.js",
+    twitter: "omnipair",
+    listedAt: 1775174400,
+    dimensions: {
+      fees: "omnipair",
+      dexs: "omnipair"
+    }
+  },
 ];
 export default data2;

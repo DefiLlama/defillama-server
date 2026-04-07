@@ -5811,7 +5811,7 @@ export const chainCoingeckoIds = {
     url: "https://www.hotstuff.trade/",
   },
   "Igra": {
-    geckoId: "igra",
+    geckoId: null,
     symbol: "IGRA",
     cmcId: null,
     categories: ["EVM"],

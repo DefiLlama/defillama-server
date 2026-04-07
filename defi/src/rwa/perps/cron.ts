@@ -39,8 +39,8 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
     const result = currentData.map((record: any) => {
         const meta = metadataMap.get(record.id) || {};
         const merged = {
-            ...meta,
             ...(record.data || {}),
+            ...meta,
         };
         normalizePerpsMetadataInPlace(merged);
 

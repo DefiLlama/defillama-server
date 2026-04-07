@@ -50,7 +50,7 @@ const CONTRACT_METADATA: { [contractId: string]: PerpsContractMetadata } = {};
 const PERPS_METADATA_KEY_MAP = {
     contract: "Canonical Market ID",
     referenceAsset: "Reference Asset",
-    referenceAssetGroup: "Reference Asset Group",
+    referenceAssetGroup: "Asset Group",
     assetClass: "Asset Class",
     parentPlatform: "Parent Platform",
     pair: "Pair",

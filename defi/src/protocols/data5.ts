@@ -13856,6 +13856,11 @@ const data5: Protocol[] = [
     module: "perpl/index.js",
     twitter: "perpltrade",
     listedAt: 1773154239,
+    dimensions: {
+      derivatives: "perpl",
+      fees: "perpl",
+      "open-interest": "perpl",
+    }
   },
   {
     id: "7533",

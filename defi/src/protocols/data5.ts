@@ -16107,7 +16107,7 @@ const data5: Protocol[] = [
     listedAt: 1775517338,
   },
   /*{
-    id: "7638",
+    id: "7638", // change id once good
     name: "DMD Protocol",
     address: null,
     symbol: "-",
@@ -16124,7 +16124,24 @@ const data5: Protocol[] = [
     module: "dmdprotocol/index.js",
     twitter: "dmdprotocol",
     listedAt: 1775517338,
-    disabled: "X handle suspended, enable once fixed"
+    disabled: "X handle suspended, enable once fixed"  // make sure to change id number
   },*/
+  {
+    id: "7638",
+    name: "Redbelly Network",
+    address: null,
+    symbol: "RBNT",
+    url: "https://redbelly.network/",
+    description: "Enabling asset issuers to tokenise and trade compliant onchain structured products",
+    chain: "Redbelly",
+    logo: `${baseIconsUrl}/redbelly-network.jpg`,
+    audits: "0",
+    gecko_id: "redbelly-network-token",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Redbelly"],
+    module: "dummy.js",
+    twitter: "RedbellyNetwork",
+  },
 ];
 export default data5;

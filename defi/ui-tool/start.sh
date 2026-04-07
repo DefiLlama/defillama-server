@@ -51,6 +51,6 @@ do
   time pre_init_server
   export NODE_ENV=production
   export REACT_APP_WSS_PORT=5001
-  pnpm run start-server
+  npm run start-server
   echo "Server stopped. Restarting now..."
 done

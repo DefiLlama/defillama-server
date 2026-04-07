@@ -11,17 +11,15 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "5.0.1",
-    "ws": "^8.18.1",
-    "ts-node": "^10.8.0",
-    "typescript": "^5.0.0"
+    "ws": "^8.18.1"
   },
   "scripts": {
     "start-react": "react-scripts start",
     "start-dev-server": "UI_TOOL_FORCE_DEV_MODE=true npm run start-server",
-    "start-server": "pnpm exec ts-node --transpile-only --logError src/server.ts",
+    "start-server": "npx ts-node --transpile-only --logError src/server.ts",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false TSC_COMPILE_ON_ERROR=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
-    "cached_build": "pnpm exec ts-node --transpile-only --logError buildScript.ts",
+    "cached_build": "npx ts-node --transpile-only --logError buildScript.ts",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

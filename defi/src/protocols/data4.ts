@@ -8759,8 +8759,8 @@ const data4: Protocol[] = [
   {
     id: "5940",
     name: "HyperLend Pooled",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
@@ -19291,8 +19291,8 @@ const data4: Protocol[] = [
   {
     id: "6395",
     name: "HyperLend Isolated",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",

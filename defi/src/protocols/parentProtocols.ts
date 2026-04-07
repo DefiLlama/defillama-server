@@ -9381,6 +9381,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "0xtristero",
   },
+  {
+    id: "parent#kaspacom",
+    name: "KaspaCom",
+    url: "https://kaspa.com/",
+    description: "The Leading Kaspa DeFi Platform — DEX, Launchpad, and NFTs",
+    logo: `${baseIconsUrl}/kaspacom.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KaspaCom",
+    github: ["KASPACOM"],
+  },
 ];
 
 export default parentProtocols;

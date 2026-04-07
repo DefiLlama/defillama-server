@@ -9370,6 +9370,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "stable",
   },
+  {
+    id: "parent#tristero",
+    name: "Tristero",
+    url: "https://www.tristero.com/",
+    description: "The DEX with no compromises. Encrypted Execution. Best Pricing. 25+ Chains",
+    logo: `${baseIconsUrl}/tristero.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xtristero",
+  },
 ];
 
 export default parentProtocols;

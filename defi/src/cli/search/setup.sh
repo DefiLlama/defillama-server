@@ -39,11 +39,11 @@ curl \
   --data-binary '[
     "words",
     "typo",
-    "exactness",
     "proximity",
     "attribute",
     "v:desc",
     "sort",
+    "exactness",
     "r:desc"
   ]'
 
@@ -94,11 +94,11 @@ curl \
   --data-binary '[
     "words",
     "typo",
-    "exactness",
     "proximity",
     "attribute",
     "v:desc",
     "sort",
+    "exactness",
     "r:desc"
   ]'
 

@@ -179,6 +179,9 @@ export function curve10(timestamp: number = 0) {
     getTokenPrices2("bsc", defaultRegistries, timestamp),
     getTokenPrices2("bsc", [], timestamp, "eth-custom", [
       "0xa5e0e46462970c9ee8c2ecadcde254c483748ec4",
+      "0xB84637aB9Be835580821A67823f414FFd0bbf625",
+      "0xE6e2905F54BAF7625F4943B74c50338362741Cd4",
+      "0xed55ff3fcb43249838a04a9707ff2c4b825507ff",
     ]),
   ]);
 }

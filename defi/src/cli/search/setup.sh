@@ -38,12 +38,12 @@ curl \
   -H 'Content-Type: application/json' \
   --data-binary '[
     "words",
-    "v:desc",
     "typo",
+    "exactness",
     "proximity",
     "attribute",
+    "v:desc",
     "sort",
-    "exactness",
     "r:desc"
   ]'
 
@@ -93,12 +93,12 @@ curl \
   -H 'Content-Type: application/json' \
   --data-binary '[
     "words",
-    "v:desc",
     "typo",
+    "exactness",
     "proximity",
     "attribute",
+    "v:desc",
     "sort",
-    "exactness",
     "r:desc"
   ]'
 

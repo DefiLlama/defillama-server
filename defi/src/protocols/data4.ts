@@ -21344,8 +21344,8 @@ const data4: Protocol[] = [
     category: "Governance Incentives",
     chains: ["Initia"],
     module: "cabal/index.js",
-    twitter: "CabalVIP",
-    github: ["Cabal-VIP"],
+    twitter: "CabalFDN",
+    github: ["0xCabal"],
     listedAt: 1753650153,
   },
   /* {  // duplicate of glyph v4

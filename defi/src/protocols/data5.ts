@@ -16008,7 +16008,7 @@ const data5: Protocol[] = [
     stablecoins: ["alto-dusd"],
     listedAt: 1775494942,
   },
-  /*{
+  /*{ 
     id: "7633",
     name: "999DEX",
     address: null,
@@ -16021,13 +16021,12 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    tags: ["AMM"],
     chains: ["BlockDAG"],
     module: "nineninedex/index.js",
-    twitter: "alto_money",
-    audit_links: ["https://github.com/altomoney/security-review-engagements"],
-    github: ["altomoney"],
+    twitter: "999dex_BlockDAG",
     listedAt: 1775494942,
+    disabled: "X handle suspended and BlockDAG website flagged by phantom enable once fixed"
   },*/
   {
     id: "7634",
@@ -16107,5 +16106,25 @@ const data5: Protocol[] = [
     twitter: "goevolvexyz",
     listedAt: 1775517338,
   },
+  /*{
+    id: "7638",
+    name: "DMD Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://dmdprotocol.org/",
+    description:
+      "DMD Protocol is a Bitcoin-backed, immutable emission protocol on Base using the EDAD (Extreme Deflationary Digital Asset) mechanism.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/dmd-protocol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Gamified Mining",
+    chains: ["Base"],
+    module: "dmdprotocol/index.js",
+    twitter: "dmdprotocol",
+    listedAt: 1775517338,
+    disabled: "X handle suspended, enable once fixed"
+  },*/
 ];
 export default data5;

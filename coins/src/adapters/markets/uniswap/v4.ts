@@ -5,6 +5,7 @@ import { log } from "@defillama/sdk";
 
 const projectName = "uniV4";
 const NATIVE = "0x0000000000000000000000000000000000000000";
+
 const stateViewAbis = {
   getSlot0:
     "function getSlot0(bytes32 poolId) view returns (uint160 sqrtPriceX96, int24 tick, uint24 protocolFee, uint24 lpFee)",
@@ -27,7 +28,7 @@ interface PoolEntry {
 const config: Record<string, PoolEntry[]> = {
   base: [
     {
-      poolId: "0xd7e5522c9cc3682c960afada6adde0f8116580f2ad2cef08c197faf625e53842",
+      poolId: "0xd7e5522c9cc3682c960afada6adde0f8116580f2ad2cef08c197faf625e53842", // ETH/BEAN
       token: "0x5c72992b83E74c4D5200A8E8920fB946214a5A5D",
       paired: NATIVE,
     },
@@ -57,14 +58,12 @@ async function getTokenPrices(chain: string, timestamp: number) {
   const stateView = stateViews[chain];
   const pricesObject: any = {};
 
-  // Fetch slot0 for all pools
+  // Fetch slot0 and liquidity for all pools
   const slot0s = await api.multiCall({
     abi: stateViewAbis.getSlot0,
     target: stateView,
     calls: entries.map((e) => ({ params: [e.poolId] })),
   });
-
-  // Fetch per-pool liquidity (used for impact check on standard pools, 0 for hook pools)
   const liquidities = await api.multiCall({
     abi: stateViewAbis.getLiquidity,
     target: stateView,

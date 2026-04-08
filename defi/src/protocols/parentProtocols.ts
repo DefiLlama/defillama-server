@@ -203,13 +203,13 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#spiritswap",
     name: "SpiritSwap",
-    url: "https://app.spiritswap.finance/#/",
+    url: "https://www.spiritswap.finance/chain/ftm/swap",
     description: "AMM and Lending protocol on Fantom",
     logo: `${baseIconsUrl}/spiritswap.jpg`,
     gecko_id: "spiritswap",
     cmcId: "1359",
     chains: [],
-    twitter: "Spirit_Swap",
+    twitter: "SilverSwapDex",
     governanceID: ["snapshot:spiritswap.eth"],
     github: ["Spirit-DAO"],
   },
@@ -2555,6 +2555,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24254",
     chains: [],
     twitter: "velocorexyz",
+    deadUrl: true,
   },
   {
     id: "parent#chronos",
@@ -3075,7 +3076,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hope-money",
     name: "HOPE Money",
-    url: "https://hope.money",
+    url: "https://hope.money/",//deadUrl 1016 error
     description:
       "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     logo: `${baseIconsUrl}/hope-money.jpg`,
@@ -3084,6 +3085,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Hope_money_",
     github: ["Light-Ecosystem"],
+    deadUrl: true,
   },
   {
     id: "parent#nostra",
@@ -5260,14 +5262,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bmx",
     name: "BMX",
-    url: "https://bmx.morphex.trade",
+    url: "https://www.bmx.trade/",
     description:
       "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",
     logo: `${baseIconsUrl}/bmx.jpg`,
     gecko_id: "bmx",
     cmcId: null,
     chains: [],
-    twitter: "MorphexFTM",
+    twitter: "useboardwalk",
   },
   {
     id: "parent#unidex",
@@ -6479,6 +6481,7 @@ const parentProtocols: IParentProtocol[] = [
         message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }],
+    deadUrl: true,
   },
   {
     id: "parent#filament",

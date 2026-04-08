@@ -2122,7 +2122,9 @@ const data: Protocol[] = [
     dimensions: {
       fees: "saddle-finance",
       dexs: "saddle-finance"
-    }
+    },
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "203",
@@ -4470,7 +4472,7 @@ const data: Protocol[] = [
     name: "SpiritSwap AMM",
     address: "fantom:0x5cc61a78f164885776aa610fb0fe1257df78e59b",
     symbol: "SPIRIT",
-    url: "https://app.spiritswap.finance/#/",
+    url: "https://www.spiritswap.finance/chain/ftm/swap",
     description: "AMM",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spiritswap.jpg`,
@@ -4480,7 +4482,7 @@ const data: Protocol[] = [
     tags: ["AMM"],
     chains: ["Fantom"],
     module: "spiritswap/index.js",
-    twitter: "Spirit_Swap",
+    twitter: "SilverSwapDex",
     audit_links: [
       "https://github.com/Layer3Org/spiritswap-core/blob/main/SpiritSwap-Core%20Security%20Audit%20Report.pdf",
     ],
@@ -4489,7 +4491,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "spiritswap",
       dexs: "spiritswap"
-    }
+    },
   },
   {
     id: "312",
@@ -19990,6 +19992,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://app.topshelf.finance/PeckShield-Audit-Report-Topshelf-v1.0.pdf"],
     listedAt: 1639732995,
     forkedFromIds: ["270"],
+    deadUrl: true,
   },
   {
     id: "1031",
@@ -20010,6 +20013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BaoCommunity",
     parentProtocol: "parent#bao-finance",
     listedAt: 1639773745,
+    deadUrl: true,
   },
   {
     id: "1032",
@@ -24594,6 +24598,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1642021085,
     github: ["Proxy-Protocol"],
+    deadUrl: true,
   },
   {
     id: "1246",

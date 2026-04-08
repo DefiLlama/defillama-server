@@ -1503,6 +1503,7 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
     listedAt: 1736851567,
+    deadUrl: true,
   },
   {
     id: "5624",
@@ -2016,6 +2017,7 @@ const data4: Protocol[] = [
       }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
+    deadUrl: true,
   },
   {
     id: "5647",
@@ -12990,7 +12992,7 @@ const data4: Protocol[] = [
     name: "xAssets",
     address: null,
     symbol: "-",
-    url: "https://xassets.ms/mint",
+    url: "https://xassets.ms/mint", //deadUrl 503 error
     description:
       "xAssets is an RWA protocol on CrossFi that tokenizes real-world assets and securities, giving users exposure via its USD-pegged stablecoin, XUSD",
     chain: "CrossFi",
@@ -13003,6 +13005,7 @@ const data4: Protocol[] = [
     module: "xAssets/index.js",
     twitter: null,
     listedAt: 1746126133,
+    deadUrl: true,
   },
   {
     id: "6128",
@@ -13929,6 +13932,7 @@ const data4: Protocol[] = [
     module: "GainzSwap/index.js",
     twitter: "GainzSwap",
     listedAt: 1747233946,
+    deadUrl: true,
   },
   {
     id: "6173",
@@ -23247,7 +23251,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "earnium",
       dexs: "earnium"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6569",

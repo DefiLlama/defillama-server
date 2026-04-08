@@ -16742,6 +16742,18 @@
       "to": "coingecko#proptech"
     }
   },
+  "bcypher": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "VTCN",
+      "to": "coingecko#versatize-coin"
+    },
+    "0x1150fd1335b0a53347f8bfb763729a99fbeab2ef": {
+      "decimals": "18",
+      "symbol": "WVTCN",
+      "to": "coingecko#versatize-coin"
+    }
+  },
   "omnipair": {
     "omfgRBnxHsNJh6YeGbGAmWenNkenzsXyBXm3WDhmeta": {
       "decimals": "6",

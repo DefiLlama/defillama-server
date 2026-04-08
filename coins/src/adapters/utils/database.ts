@@ -562,7 +562,7 @@ async function readPreviousValues(
   const results = await batchGet(queries);
   const now = getCurrentUnixTimestamp();
   const recentTime = now - latencyHours * 60 * 60;
-  const veryStaleTime = now - 2 * latencyHours * 60 * 60;
+  const veryStaleTime = now - 4 * latencyHours * 60 * 60;
   const previousItems = results.filter(
     (r: any) => r.timestamp > recentTime || r.confidence > 1,
   );

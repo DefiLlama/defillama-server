@@ -6091,7 +6091,7 @@ const chainLabelMap = {
   "space_and_time": "Space and Time",
   "edgex": "edgeX L1",
   "blockdag": "BlockDAG",
-  "bchyper": "BCHyper",
+  "bcypher": "BCHyper",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

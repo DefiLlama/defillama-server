@@ -5829,6 +5829,13 @@ export const chainCoingeckoIds = {
     twitter: "blockdagnetwork",
     url: "https://blockdag.network/", // url flagged as malicious by phantom wallet
   },*/
+  "Cabal": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "CabalFDN",
+    url: "https://thecabal.xyz/",
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

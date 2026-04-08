@@ -1,7 +1,7 @@
 import * as HyperExpress from "hyper-express";
 import * as path from "path";
 import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCategoryChartByChainData";
-import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
+// import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 import { pgGetInflows } from "../db/inflows";
 import { getSimpleChainDatasetInternal } from "./getSimpleChainDataset";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
@@ -100,9 +100,11 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/chainAssets", r2Wrapper({ endpoint: 'chainAssets' }));
   router.get("/chain-assets/chains", r2Wrapper({ endpoint: 'chainAssets' }));
   router.get("/chain-assets/raw", r2Wrapper({ endpoint: 'chainAssetsRaw' }));
-  router.get("/chain-assets/chart/:chain", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: false, isHistorical: true })));
-  router.get("/chain-assets/flows/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: false })));
-  router.get("/chain-assets/historical-flows/:chain/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: true })));
+  // not used anywhere atm, need to pre-compute it if start using it
+  // router.get("/chain-assets/chart/:chain", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: false, isHistorical: true })));
+  router.get("/chain-assets/flows/24h", defaultFileHandler);  // pre-computed now
+  // not used anywhere atm, need to pre-compute it if start using it
+  // router.get("/chain-assets/historical-flows/:chain/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: true })));
 
   router.get("/twitter/overview", ew(getTwitterOverview))
   router.get("/twitter/user/:handle", ew(getTwitterData))
@@ -179,7 +181,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/metrics/:type/chain/:chain", ew(getDimensionChainRoutes('overview')))
   router.get("/v2/chart/:type/chain/:chain", ew(getDimensionChainRoutes('chart')))
   router.get("/v2/chart/:type/chain/:chain/protocol-breakdown", ew(getDimensionChainRoutes('chart-protocol-breakdown')))
-  
+
   router.get("/v2/metrics/:type/category/:category", ew(getDimensionCategoryRoutes('overview')))
   router.get("/v2/chart/:type/category/:category", ew(getDimensionCategoryRoutes('chart')))
   router.get("/v2/chart/:type/category/:category/protocol-breakdown", ew(getDimensionCategoryRoutes('chart-protocol-breakdown')))
@@ -499,20 +501,20 @@ async function emissionProtocolHandler(req: HyperExpress.Request, res: HyperExpr
   return returnR2Data({ endpoint: `emissions/${name}`, errorMessage: `protocol '${name}' has no chart to fetch`, res, parseJson: false })
 }
 
-async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.Response, params?: { isFlows: boolean, isHistorical: boolean }) {
-  let data;
-  try {
-    if (params?.isFlows) {
-      data = params?.isHistorical ? await chainAssetHistoricalFlows(req.path_parameters) : await chainAssetFlows();
-    } else {
-      data = await chainAssetChart(req.path_parameters);
-    }
-  } catch (e: any) {
-    return errorResponse(res, e.message)
-  }
+// async function chainAssetsHandler(req: HyperExpress.Request, res: HyperExpress.Response, params?: { isFlows: boolean, isHistorical: boolean }) {
+//   let data;
+//   try {
+//     if (params?.isFlows) {
+//       data = params?.isHistorical ? await chainAssetHistoricalFlows(req.path_parameters) : await chainAssetFlows();
+//     } else {
+//       data = await chainAssetChart(req.path_parameters);
+//     }
+//   } catch (e: any) {
+//     return errorResponse(res, e.message)
+//   }
 
-  return successResponse(res, data, 60);
-}
+//   return successResponse(res, data, 60);
+// }
 
 async function getDimensionsMetadataRoute(_req: HyperExpress.Request, res: HyperExpress.Response) {
   return successResponse(res, await getDimensionsMetadata(), 60);

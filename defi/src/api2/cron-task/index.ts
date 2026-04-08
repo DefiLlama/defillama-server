@@ -51,6 +51,7 @@ async function run() {
   await writeOracles()
   await writeForks()
   await writeCategories()
+  await writeChainAssetsCache()
 
   console.time('write /langs')
   await storeLangs(processProtocolsOptions)
@@ -406,6 +407,19 @@ async function run() {
       const Bucket = "tvl-adapter-cache"
       const data = await await sdk.cache.readCache(`${Bucket}/bitcoin-addresses.json`)
       await storeRouteData('/config/smol/bitcoin-addresses.json', data)
+      console.timeEnd(debugString)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function writeChainAssetsCache() {
+    try {
+
+      const debugString = 'write /chain-assets/flows/24h'
+      console.time(debugString)
+      const data = await await sdk.cache.readCache(`chain-assets/flows/24h`)
+      await storeRouteData('/chain-assets/flows/24h', data)
       console.timeEnd(debugString)
     } catch (e) {
       console.error(e)

@@ -16760,5 +16760,12 @@
       "symbol": "OMFG",
       "to": "coingecko#omnipair"
     }
+  },
+  "igra": {
+    "0x17Ec7E1768c813E2a3a9b0f94A35605CA520C242": {
+      "to": "coingecko#kaspa",
+      "decimals": 18,
+      "symbol": "WiKAS"
+    }
   }
 }

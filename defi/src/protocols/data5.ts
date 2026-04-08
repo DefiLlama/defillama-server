@@ -16233,5 +16233,29 @@ const data5: Protocol[] = [
     parentProtocol: "parent#capybara-exchange",
     listedAt: 1775668624,
   },
+  {
+    id: "7643",
+    name: "BCSwap",
+    address: null,
+    symbol: "-",
+    url: "https://bcswap.org/",
+    description:
+      "BCSwap is a decentralized exchange (DEX) on BC Hyper Chain, featuring automated market making (AMM) with low fees and fast transactions.",
+    chain: "BCHyper",
+    logo: `${baseIconsUrl}/bcswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["BCHyper"],
+    module: "bcswap/index.js",
+    forkedFromIds: ["2197"],
+    twitter: "versatizecoin",
+    listedAt: 1775669925,
+    dimensions: {
+      fees: "bcswap",
+      dexs: "bcswap"
+    }
+  },
 ];
 export default data5;

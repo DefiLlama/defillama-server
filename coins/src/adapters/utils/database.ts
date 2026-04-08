@@ -365,7 +365,7 @@ export async function filterWritesWithLowConfidence(
         return;
       if (
         "confidence" in allWritesOfThisKind[0] &&
-        (allWritesOfThisKind[0].confidence > confidenceThreshold || isStale)
+        allWritesOfThisKind[0].confidence > confidenceThreshold
       ) {
         filteredWrites.push(allWritesOfThisKind[0]);
         return;
@@ -381,7 +381,7 @@ export async function filterWritesWithLowConfidence(
         allWritesOfThisKind.filter(
           (x: Write) =>
             x.confidence == maxConfidence &&
-            (x.confidence > confidenceThreshold || isStale),
+            x.confidence > confidenceThreshold,
         )[0],
       );
     }

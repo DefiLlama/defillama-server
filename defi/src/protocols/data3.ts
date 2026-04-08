@@ -972,6 +972,8 @@ const data3_0: Protocol[] = [
     audit_links: ["https://docs.yama.finance/assets/files/hacken-audit-f36080037d41631b9e887abb36035a2f.pdf"],
     twitter: "YamaFinance",
     listedAt: 1680130246,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "2744",
@@ -4251,6 +4253,7 @@ const data3_0: Protocol[] = [
     twitter: "SnarkLaunch",
     audit_links: ["https://skynet.certik.com/projects/snark-launch"],
     listedAt: 1682451487,
+    deadUrl: true,
   },
   {
     id: "2894",
@@ -4806,6 +4809,7 @@ const data3_0: Protocol[] = [
     module: "slsd/index.js",
     twitter: "SLSDFinance",
     listedAt: 1682951211,
+    deadUrl: true,
   },
   {
     id: "2918",
@@ -8098,6 +8102,7 @@ const data3_0: Protocol[] = [
       "https://github.com/EquitoBridge/equito-evm-contracts-v1/blob/main/audit/REP-final-20221216T155626Z.pdf",
     ],
     listedAt: 1685989324,
+    deadUrl: true,
   },
   {
     id: "3068",
@@ -12292,6 +12297,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#echodex",
     listedAt: 1689797381,
+    deadUrl: true,
     dimensions: {
       fees: "echodex",
       dexs: "echodex"
@@ -14414,6 +14420,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports//EchoDEX"],
     parentProtocol: "parent#echodex",
     listedAt: 1691405999,
+    deadUrl: true,
     dimensions: {
       fees: "echodex-v3",
       dexs: "echodex-v3"
@@ -21874,6 +21881,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://www.cyberscope.io/audits/hydt"],
     stablecoins: ["hydt"],
     listedAt: 1698157836,
+    deadUrl: true
   },
   {
     id: "3689",
@@ -29665,6 +29673,7 @@ const data3_1: Protocol[] = [
     twitter: "jiblendxyz",
     github: ["jiblend"],
     listedAt: 1705614623,
+    deadUrl: true,
   },
   {
     id: "4045",
@@ -30955,6 +30964,7 @@ const data3_1: Protocol[] = [
     module: "zedaswap/index.js",
     twitter: "ZedaSwap",
     listedAt: 1706885879,
+    deadUrl: true,
   },
   {
     id: "4098",
@@ -38104,6 +38114,7 @@ const data3_2: Protocol[] = [
     module: "heroblaze/index.js",
     twitter: "HeroBlaze3kd",
     listedAt: 1711912383,
+    deadUrl: true,
   },
   {
     id: "4413",
@@ -41746,6 +41757,7 @@ const data3_2: Protocol[] = [
     module: "tesseractworld/index.js",
     twitter: "tesseractworld",
     listedAt: 1715268202,
+    deadUrl: true,
   },
   {
     id: "4578",
@@ -43495,6 +43507,7 @@ const data3_2: Protocol[] = [
     twitter: "lendOSorg",
     github: ["lendos-labs"],
     listedAt: 1716396261,
+    deadUrl: true,
   },
   {
     id: "4659",
@@ -44265,6 +44278,7 @@ const data3_2: Protocol[] = [
     module: "bluelotusdao/index.js",
     twitter: "BlueLotusGSYS",
     listedAt: 1717003489,
+    deadUrl: true,
   },
   {
     id: "4695",
@@ -60918,7 +60932,7 @@ const data3_3: Protocol[] = [
     name: "Nexus BTC",
     address: null,
     symbol: "-",
-    url: "https://www.matrixport.com/nexusbtc",
+    url: "https://www.bit.com/",
     description: "NexusBTC is a wrapped Bitcoin token designed to facilitate cross-chain transactions within the decentralized finance (DeFi) ecosystem.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/nexus-btc.jpg`,

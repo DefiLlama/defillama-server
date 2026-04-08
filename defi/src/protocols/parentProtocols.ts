@@ -2581,6 +2581,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "27690",
     chains: [],
     twitter: "Echo_DEX",
+    deadUrl: true,
   },
   {
     id: "parent#gmx",

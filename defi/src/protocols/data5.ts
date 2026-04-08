@@ -4077,6 +4077,7 @@ const data5: Protocol[] = [
     chains: ["Monad"],
     module: "dummy.js",
     twitter: "monbridgedex",
+    deadUrl: true,
     dimensions: {
       aggregators: "monbridgedex",
       fees: "monbridgedex",
@@ -6268,6 +6269,7 @@ const data5: Protocol[] = [
     module: "tydeshift/index.js",
     twitter: "TydeShift",
     listedAt: 1766174397,
+    deadUrl: true,
   },
   {
     id: "7171",
@@ -6592,6 +6594,7 @@ const data5: Protocol[] = [
     twitter: "0xedium",
     github: ["oxedium-protocol"],
     listedAt: 1766539231,
+    deadUrl: true,
   },
   {
     id: "7187",

@@ -16549,6 +16549,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SkeletonFinance",
     audit_links: ["https://skeleton.finance/static/files/SmartContract_Audit_Solidproof_Skeleton.pdf"],
     listedAt: 1637375100,
+    deadUrl: true,
   },
   {
     id: "873",
@@ -20940,6 +20941,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     listedAt: 1640115841,
     github: ["autoshark-finance"],
+    deadUrl: true,
     dimensions: {
       fees: "autoshark",
       dexs: "autoshark"
@@ -24757,6 +24759,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HakuSwap",
     audit_links: ["https://hakuswap.com/audit.pdf"],
     listedAt: 1642109094,
+    deadUrl: true,
     forkedFromIds: ["2197"],
     dimensions: {
       dexs: "hakuswap"

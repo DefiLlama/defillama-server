@@ -2982,6 +2982,7 @@ const data2: Protocol[] = [
     listedAt: 1646515940,
     governanceID: ["snapshot:granaryfinance.eth"],
     github: ["The-Granary"],
+    deadUrl: true,
   },
   {
     id: "1515",
@@ -6299,6 +6300,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
     listedAt: 1650437930,
     github: ["nordfinance"],
+    deadUrl: true,
   },
   {
     id: "1667",
@@ -6572,6 +6574,7 @@ const data2: Protocol[] = [
     twitter: "DotDotDotFi",
     listedAt: 1650804679,
     github: ["dotdot-ellipsis"],
+    deadUrl: true,
   },
   {
     id: "1680",
@@ -8202,6 +8205,7 @@ const data2: Protocol[] = [
     treasury: "spartacus.js",
     twitter: "Spartacus_Fi",
     listedAt: 1652209030,
+    deadUrl: true,
     dimensions: {
       dexs: "spartacus-exchange"
     }
@@ -24936,6 +24940,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1675781737,
     stablecoins: ["deuterium"],
+    deadUrl: true,
   },
   {
     id: "2511",

@@ -185,6 +185,7 @@ export const chainCoingeckoIds = {
     github: ["polynetwork"],
     twitter: "PolyNetwork2",
     url: "https://www.poly.network/#/",
+    deadUrl: true,
   },
   "Conflux": {
     geckoId: "conflux-token",
@@ -2872,6 +2873,7 @@ export const chainCoingeckoIds = {
     twitter: "ZKFCommunity",
     url: "https://zkfair.io/",
     chainId: 42766,
+    deadUrl: true,
   },
   "CMP": {
     geckoId: "caduceus",

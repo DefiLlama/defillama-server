@@ -2624,6 +2624,7 @@ const data4: Protocol[] = [
     module: "coin8-cex/index.js",
     twitter: "Coin8_Exchange",
     listedAt: 1737981973,
+    deadUrl: true
   },
   {
     id: "5674",
@@ -3263,6 +3264,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "zkfair/index.js",
     twitter: "ZKFCommunity",
+    deadUrl: true
   },
   {
     id: "5704",
@@ -3671,7 +3673,7 @@ const data4: Protocol[] = [
     name: "Exponent",
     address: null,
     symbol: "-",
-    url: "https://www.exponent.finance/income",
+    url: "https://www.exponent.finance/",
     description: "Exponent is a yield exchange protocol on Solana for fixed-rate and leveraged yield farming",
     chain: "Solana",
     logo: `${baseIconsUrl}/exponent.png`,
@@ -8755,6 +8757,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "BaseFinanceLabs",
     listedAt: 1742570641,
+    deadUrl: true,
   },
   {
     id: "5940",
@@ -9580,6 +9583,7 @@ const data4: Protocol[] = [
     module: "alfafrens/index.js",
     twitter: "alfafrens_",
     listedAt: 1743442075,
+    deadUrl: true,
   },
   {
     id: "5975",
@@ -20534,6 +20538,7 @@ const data4: Protocol[] = [
     twitter: "TopCutFinance",
     audit_links: ["https://github.com/PossumLabsCrypto/TopCut/tree/main/AUDIT%20REPORTS"],
     listedAt: 1752775161,
+    deadUrl: true,
     dimensions: {
       fees: "topcut"
     }

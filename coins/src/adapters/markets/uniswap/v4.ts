@@ -5,37 +5,41 @@ import { log } from "@defillama/sdk";
 
 const projectName = "uniV4";
 const NATIVE = "0x0000000000000000000000000000000000000000";
-
 const stateViewAbis = {
   getSlot0:
     "function getSlot0(bytes32 poolId) view returns (uint160 sqrtPriceX96, int24 tick, uint24 protocolFee, uint24 lpFee)",
+  getLiquidity:
+    "function getLiquidity(bytes32 poolId) view returns (uint128)",
 };
 
 const stateViews: Record<string, string> = {
   base: "0xa3c0c9b65bad0b08107aa264b0f3db444b867a71",
-  tempo: "0x21b954fba3f5ddebe77ef2d47a3100c066908b2a"
+  tempo: "0x21b954fba3f5ddebe77ef2d47a3100c066908b2a",
 };
 
-const poolManagers: Record<string, string> = {
-  base: "0x498581ff718922c3f8e6a244956af099b2652b2b",
-  tempo: "0x33620f62c5b9b2086dd6b62f4a297a9f30347029",
-};
+interface PoolEntry {
+  poolId: string;
+  token: string;
+  paired: string;
+  hasHooks?: boolean;
+}
 
-const config: Record<string, Array<{ poolId: string; token: string; paired: string }>> = {
+const config: Record<string, PoolEntry[]> = {
   base: [
     {
-      poolId: "0xd7e5522c9cc3682c960afada6adde0f8116580f2ad2cef08c197faf625e53842", // ETH/BEAN
-      token: "0x5c72992b83E74c4D5200A8E8920fB946214a5A5D", // BEAN
+      poolId: "0xd7e5522c9cc3682c960afada6adde0f8116580f2ad2cef08c197faf625e53842",
+      token: "0x5c72992b83E74c4D5200A8E8920fB946214a5A5D",
       paired: NATIVE,
     },
   ],
   tempo: [
     {
       poolId: "0x00cdb9b18686cc49430bd3ea24a241633baf4af84029a014f2be22ec5e295588", // pathUSD/USDC.e
-      token: "0x20c0000000000000000000000000000000000000", 
-      paired: "0x20C000000000000000000000b9537d11c60E8b50"
-    }
-  ]
+      token: "0x20c0000000000000000000000000000000000000",
+      paired: "0x20C000000000000000000000b9537d11c60E8b50",
+      hasHooks: true,
+    },
+  ],
 };
 
 const MAX_PRICE_IMPACT = 0.02; // 2%
@@ -53,8 +57,6 @@ async function getTokenPrices(chain: string, timestamp: number) {
   const stateView = stateViews[chain];
   const pricesObject: any = {};
 
-  const poolManager = poolManagers[chain];
-
   // Fetch slot0 for all pools
   const slot0s = await api.multiCall({
     abi: stateViewAbis.getSlot0,
@@ -62,13 +64,11 @@ async function getTokenPrices(chain: string, timestamp: number) {
     calls: entries.map((e) => ({ params: [e.poolId] })),
   });
 
-  // Fetch actual paired token balances held by the PoolManager
-  const pairedBalances = await api.multiCall({
-    abi: "erc20:balanceOf",
-    calls: entries.map((e) => ({
-      target: e.paired === NATIVE ? undefined : e.paired,
-      params: [poolManager],
-    })),
+  // Fetch per-pool liquidity (used for impact check on standard pools, 0 for hook pools)
+  const liquidities = await api.multiCall({
+    abi: stateViewAbis.getLiquidity,
+    target: stateView,
+    calls: entries.map((e) => ({ params: [e.poolId] })),
   });
 
   const allTokens = entries.flatMap((e) => [e.token, e.paired]);
@@ -85,8 +85,9 @@ async function getTokenPrices(chain: string, timestamp: number) {
   const pairedPrices = await getTokenAndRedirectDataMap(pairedTokens, chain, timestamp);
 
   entries.forEach((entry, i) => {
-    const { token, paired } = entry;
-    const { tick } = slot0s[i];
+    const { token, paired, hasHooks } = entry;
+    const { sqrtPriceX96, tick } = slot0s[i];
+    const liquidity = Number(liquidities[i]);
     const tokenLower = token.toLowerCase();
     const pairedLower = paired.toLowerCase();
 
@@ -99,16 +100,19 @@ async function getTokenPrices(chain: string, timestamp: number) {
     let price = Math.pow(1.0001, tick) * 10 ** (dec0 - dec1);
     if (!tokenIsCurrency0) price = 1 / price;
 
-    // skip if $1K sell moves price > 2% (using actual PoolManager token balances)
+    // Impact check using virtual reserves from liquidity + sqrtPrice
+    // Skip for hook pools (hooks != zero) since liquidity is managed by the hook, not standard v4 accounting
     const pairedData = pairedPrices[pairedLower];
-    if (pairedData?.price) {
+    if (pairedData?.price && !hasHooks && liquidity > 0) {
+      const sqrtP = Number(sqrtPriceX96) / 2 ** 96;
+      const pairedIsCurrency1 = tokenIsCurrency0;
+      const pairedReserveRaw = pairedIsCurrency1 ? liquidity * sqrtP : liquidity / sqrtP;
       const pairedDec = decimalsMap[pairedLower] ?? 18;
-      const pairedReserveHuman = Number(pairedBalances[i]) / 10 ** pairedDec;
-      const pairedReserveUsd = pairedReserveHuman * pairedData.price;
+      const pairedReserveUsd = (pairedReserveRaw / 10 ** pairedDec) * pairedData.price;
       const impact = SELL_AMOUNT_USD / pairedReserveUsd;
       if (impact > MAX_PRICE_IMPACT) {
         log(
-          `uniV4: skipping ${token} on ${chain} - est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired reserve $${pairedReserveUsd.toFixed(0)})`,
+          `uniV4: skipping ${token} on ${chain} - est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired virtual reserve $${pairedReserveUsd.toFixed(0)})`,
         );
         return;
       }

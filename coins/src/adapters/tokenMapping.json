@@ -4381,6 +4381,11 @@
     }
   },
   "optimism": {
+    "0xa88594d404727625a9437c3f886c7643872296ae": {
+      "decimals": "18",
+      "symbol": "WELL",
+      "to": "coingecko#moonwell-artemis"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",

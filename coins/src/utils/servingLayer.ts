@@ -68,28 +68,29 @@ function getChConfig(): ChConfig | null {
   return chConfig;
 }
 
-function chQuery(config: ChConfig, query: string): Promise<string> {
-  return new Promise(async (resolve, reject) => {
-    for (const host of config.hosts) {
-      try {
-        const result = await new Promise<string>((res, rej) => {
-          const url = `/?user=${config.user}&password=${encodeURIComponent(config.password)}&query=${encodeURIComponent(query)}`;
-          const req = http.request({ hostname: host.host, port: host.port, path: url, method: "GET", timeout: 10000 }, (resp) => {
-            let data = "";
-            resp.on("data", (c) => (data += c));
-            resp.on("end", () => (resp.statusCode && resp.statusCode >= 400 ? rej(new Error(data.slice(0, 200))) : res(data)));
-          });
-          req.on("error", rej);
-          req.on("timeout", () => { req.destroy(); rej(new Error("CH timeout")); });
-          req.end();
-        });
-        resolve(result);
-        return;
-      } catch (e) {
-        if (host === config.hosts[config.hosts.length - 1]) reject(e);
-      }
-    }
+function chHttpRequest(host: { host: string; port: number }, config: ChConfig, query: string): Promise<string> {
+  return new Promise((res, rej) => {
+    const url = `/?user=${config.user}&password=${encodeURIComponent(config.password)}&query=${encodeURIComponent(query)}`;
+    const req = http.request({ hostname: host.host, port: host.port, path: url, method: "GET", timeout: 10000 }, (resp) => {
+      let data = "";
+      resp.on("data", (c) => (data += c));
+      resp.on("end", () => (resp.statusCode && resp.statusCode >= 400 ? rej(new Error(data.slice(0, 200))) : res(data)));
+    });
+    req.on("error", rej);
+    req.on("timeout", () => { req.destroy(); rej(new Error("CH timeout")); });
+    req.end();
   });
+}
+
+async function chQuery(config: ChConfig, query: string): Promise<string> {
+  for (let i = 0; i < config.hosts.length; i++) {
+    try {
+      return await chHttpRequest(config.hosts[i], config, query);
+    } catch (e) {
+      if (i === config.hosts.length - 1) throw e;
+    }
+  }
+  throw new Error("No CH hosts available");
 }
 
 function normalizeInput(coin: string): string {

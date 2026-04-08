@@ -5836,6 +5836,15 @@ export const chainCoingeckoIds = {
     twitter: "CabalFDN",
     url: "https://thecabal.xyz/",
   },
+  "BCHyper": {
+    geckoId: "versatize-coin",
+    symbol: "VTCN",
+    cmcId: "23619",
+    categories: ["EVM"],
+    twitter: "versatizecoin",
+    url: "https://versatizecoin.com/",
+    chainId: 3030,
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -6082,6 +6091,7 @@ const chainLabelMap = {
   "space_and_time": "Space and Time",
   "edgex": "edgeX L1",
   "blockdag": "BlockDAG",
+  "bchyper": "BCHyper",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

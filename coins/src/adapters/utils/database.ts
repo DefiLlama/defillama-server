@@ -21,6 +21,7 @@ import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { dualWriteToChRedis } from "./chRedisWrite";
 
 function normalizedPKFor(pk: string): string {
   if (pk.startsWith("coingecko#")) return pk.toLowerCase();
@@ -451,6 +452,9 @@ export async function batchWriteWithAlerts(
     if (normalizedItems.length > 0) {
       await batchWrite(normalizedItems, false);
     }
+
+    // Dual-write: ClickHouse + Redis (independent — Redis writes even if CH fails)
+    await dualWriteToChRedis(writeItems);
 
     return ddbWriteResult;
   } catch (e) {

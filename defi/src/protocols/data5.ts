@@ -8584,10 +8584,11 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["CLMM"],
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "stabble-clmm/index.js",
     twitter: "stabbleorg",
     audit_links: ["https://github.com/stabbleorg/audit-reports"],
     parentProtocol: "parent#stabble",
+    listedAt: 1775669247,
     dimensions: {
       dexs: "stabble-clmm",
       fees: "stabble-clmm",

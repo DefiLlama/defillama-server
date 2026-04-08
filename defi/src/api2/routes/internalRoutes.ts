@@ -23,8 +23,7 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
 
   async function debugHandler(req: any, res: any) {
     const fullPath = req.path;
-    const routerPath = fullPath.replace(routerBasePath + '/debug-pg', '');
-    sdk.log('debug-pg', routerPath)
+    const routerPath = fullPath.split('debug-pg')[1];
     try {
 
       if (process.env.API2_SKIP_SUBPATH === 'true')

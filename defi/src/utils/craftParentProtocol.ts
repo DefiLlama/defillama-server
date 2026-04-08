@@ -43,6 +43,7 @@ export async function craftParentProtocolInternal({
   fetchMcap,
   parentRaises,
   feMini = false,
+  restrictResponseSize = true,
 }: {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
@@ -50,6 +51,7 @@ export async function craftParentProtocolInternal({
   childProtocolsTvls: Array<IProtocolResponse>;
   parentRaises: IRaise[];
   feMini?: boolean;
+  restrictResponseSize?: boolean;
 }) {
 
   // debug to find bad data
@@ -157,7 +159,7 @@ export async function craftParentProtocolInternal({
       response.tvl = transformedTvl;
     }
 
-  } else {
+  } else if (restrictResponseSize) {
     // Filter overall tokens, tokens in usd by date if data is more than 6MB
     let keyCount = getObjectKeyCount(response);
     if (keyCount >= 1.5e5) { // there are more than 150k keys

@@ -77,6 +77,22 @@ export function moolaMarkets(timestamp: number = 0) {
   })
 }
 
+export function aaveMantle(timestamp: number = 0) {
+  return getTokenPrices("mantle", "", null, "v3", timestamp, {
+    lendingPool: "0x458F293454fE0d67EC0655f3672301301DD51422"
+  })
+}
+
+export function superlend(timestamp: number = 0) {
+  return getTokenPrices("etlk", "0xEcbDd440C7a929d7524784Af634dF9EB0747b9e7", null, "v3", timestamp)
+}
+
+export function aaveHorizon(timestamp: number = 0) {
+  return getTokenPrices("ethereum", "", null, "v3", timestamp, {
+    lendingPool: "0xAe05Cd22df81871bc7cC2a04BeCfb516bFe332C8",
+  });
+}
+
 export const adapters = {
   aave,
   geist,
@@ -88,5 +104,8 @@ export const adapters = {
   hyperlend, 
   hypurrfi, 
   sparkLend, 
-  moolaMarkets
+  moolaMarkets,
+  aaveMantle,
+  superlend,
+  aaveHorizon,
 };

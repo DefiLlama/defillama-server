@@ -1,6 +1,7 @@
 import { getBitcoinReservesAdapter } from '../utils/bitcoin';
 
-const protocolId = 'core-bitcoin-bridge';
+// const protocolId = 'core-bitcoin-bridge';
+const protocolId = 'lombard-btc.b';
 
 const mintedTokens = [
   {

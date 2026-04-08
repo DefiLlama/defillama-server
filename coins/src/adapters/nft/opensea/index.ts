@@ -10,6 +10,9 @@ const collections: { [chain: string]: { [collection: string]: string } } = {
   arbitrum: {
     "aethir-checker-license": "0xc227e25544edd261a9066932c71a25f4504972f1",
   },
+  hyperliquid: {
+    "hypurr-hyperevm": "0x9125e2d6827a00b0f8330d6ef7bef07730bac685"
+  }
 };
 
 async function getCollectionPrice(

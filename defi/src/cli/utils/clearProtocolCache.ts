@@ -27,7 +27,8 @@ export async function clearProtocolCacheById(protocolId: string) {
 
 
   for (const url of API2_SERVER_URL) {
-    let endpoint = path.join(url, '_internal/debug-pg/', pgCaceId)
+    // let endpoint = path.join(url, '_internal/debug-pg/', pgCaceId)
+    let endpoint = path.join(url, 'debug-pg/', pgCaceId)
     await axios.delete(endpoint, {
       headers: {
         'x-internal-secret': process.env.LLAMA_INTERNAL_ROUTE_KEY ?? process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH

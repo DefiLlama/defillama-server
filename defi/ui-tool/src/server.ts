@@ -9,6 +9,7 @@ const { spawn, } = require('child_process');
 
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
+import { runSpikesCommand } from './spikes';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
 import { setConfig } from './utils/config';
@@ -232,6 +233,10 @@ async function start() {
 
         case 'misc-runCommand':
           runMiscCommand(ws, data.data);
+          break;
+
+        case 'spikes-runCommand':
+          runSpikesCommand(ws, data.data);
           break;
 
         default: console.error('Unknown message type:', data.type); break;

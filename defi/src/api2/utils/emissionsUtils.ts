@@ -68,7 +68,7 @@ export async function storeEmissionsCache(): Promise<{error: string | null}> {
     for (const section of Object.values(sections)) {
       for (const component of Object.values((section as any).components)) {
         const compomentItem = component as any;
-        if (compomentItem.name && compomentItem.unlockUsdChart) {
+        if (compomentItem.name && compomentItem.unlockUsdChart && compomentItem.isIncentive) {
           const label = compomentItem.name;
           const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
           if (item) {

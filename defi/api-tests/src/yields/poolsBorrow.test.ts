@@ -107,7 +107,7 @@ describe('Yields Pro API - Pools Borrow', () => {
       if (poolsWithLtv.length > 0) {
         poolsWithLtv.forEach((pool) => {
           expectValidNumber(pool.ltv!);
-          expect(pool.ltv!).toBeGreaterThan(0);
+          expect(pool.ltv!).toBeGreaterThanOrEqual(0); // some pools can not be collaterals
           expect(pool.ltv!).toBeLessThanOrEqual(1);
         });
       }

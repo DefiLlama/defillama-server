@@ -52,6 +52,7 @@ type OutdatedData = {
   tvl?: number,
   refillable: boolean,
   runIndex: number, // not used anywhere
+  category?: string,
 }
 
 export async function getOutdated(maxDrift: number, getLatestTvl: any, options: { categories?: string[] } = {}) {
@@ -84,7 +85,7 @@ export async function getOutdated(maxDrift: number, getLatestTvl: any, options: 
     }
 
 
-    const ignoredSet = new Set(['Synthetix', 'Defi Saver']);
+    const ignoredSet = new Set(['Synthetix', 'Defi Saver', 'Liqi']);
     if (ignoredSet.has(protocol.name))
       return;
 
@@ -93,6 +94,7 @@ export async function getOutdated(maxDrift: number, getLatestTvl: any, options: 
     const refillable = !(module.fetch || module.timetravel === false)
     outdated.push({
       protocolName: protocol.name,
+      category: protocol.category,
       lastUpdate: text?.time,
       tvl: text?.tvl,
       refillable,

@@ -33,6 +33,10 @@ type ValidationOptions = {
   skipDefaultSpikeCheck?: boolean,
 }
 
+const AdapterTypesWithoutChainLevelData = new Set<AdapterType>([
+  AdapterType.NEW_USERS
+])
+
 export class AdapterRecord2 {
   data: DataJSON
   timeS: string
@@ -110,37 +114,34 @@ export class AdapterRecord2 {
 
 
     function validateRecord(record: any) {
-      const printRecordInfo = () => console.info('invalid chainDataKey', JSON.stringify(record), protocol.id2, protocol.name, protocolType, adapterType)
+      const printRecordInfo = (message: string) => {
+        console.log('invalid chainDataKey: ', message, JSON.stringify(record), protocol.id2, protocol.name, protocolType, adapterType)
+        throw new Error(`Invalid record: ${message}`)
+      }
       if (!record) {
-        printRecordInfo()
-        throw new Error('Invalid record');
+        printRecordInfo('Record is null or undefined')
       }
 
       const { value, chains } = record;
 
       if (typeof value !== 'number' || isNaN(value)) {
-        printRecordInfo()
-        throw new Error('Invalid value in record');
+        printRecordInfo('Invalid value in record')
       }
 
       if (typeof chains !== 'object' || chains === null) {
-        printRecordInfo()
-        throw new Error('Invalid chains in record');
+        printRecordInfo('Invalid chains in record')
       }
 
-      if (Object.keys(chains).length === 0) {
-        printRecordInfo()
-        throw new Error('Chains object is empty');
+      if (Object.keys(chains).length === 0 && !AdapterTypesWithoutChainLevelData.has(adapterType)) {
+        printRecordInfo('Chains object is empty')
       }
 
       for (const [chain, chainValue] of Object.entries(chains)) {
         if (typeof chain !== 'string' || chain.trim() === '') {
-          printRecordInfo()
-          throw new Error('Invalid chain name in chains');
+          printRecordInfo('Invalid chain name in chains')
         }
         if (typeof chainValue !== 'number' || isNaN(chainValue)) {
-          printRecordInfo()
-          throw new Error(`Invalid value for chain ${chain} in chains`);
+          printRecordInfo(`Invalid value for chain ${chain} in chains`)
         }
       }
     }

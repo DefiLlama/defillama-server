@@ -7,11 +7,15 @@ const runTypes = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options',
   // 'rest',
   'open-interest',
+  'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
+// make sure to update RUN_TYPES on index.html as well
 const adapterTypes = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options', 'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
 async function genCache() {
@@ -19,8 +23,15 @@ async function genCache() {
 
   for (const runType of runTypes)
     await storeRunStats(runType)
+
+  await storeRunStats('globalRunStats')  // tvl run data
+
   for (const adapterType of adapterTypes)
     await storeDimData(adapterType)
+
+  await storeTvlCacheUsageLogs()
+  await storeCheckData('dimDetectDrops-latest', 'detect-drops')
+  await storeCheckData('dimCheckResults-latest', 'check-results')
 }
 
 genCache()
@@ -111,14 +122,84 @@ process.on('SIGTERM', () => {
 });
 
 async function storeRunStats(statsKey) {
+  let cacheFileKey = `dimensionRunStats-latest-${statsKey}`
   try {
-    const statsData = await sdk.cache.readCache(`dimensionRunStats-latest-${statsKey}`, {
+    if (statsKey === 'globalRunStats') cacheFileKey = statsKey
+
+    let statsData = await sdk.cache.readCache(cacheFileKey, {
       skipCompression: true,
       readFromR2Cache: true,
     })
+
+    if (statsKey === 'globalRunStats') {
+      const protocols = await sdk.cache.cachedFetch({ key: 'protocols-data', endpoint: 'https://api.llama.fi/protocols' })
+      const currentProtocolsMap = {}
+      statsData.hourlyOutdatedProtocols.forEach(p => currentProtocolsMap[p.protocolName] = p)
+      protocols.forEach(protocol => {
+        const pMetadata = currentProtocolsMap[protocol.name]
+        if (!pMetadata) return;
+
+        pMetadata.slug = protocol.slug
+        pMetadata.module = protocol.tvlCodePath
+
+
+        const chainTvl = {}
+        if (protocol.chainTvls) {
+          Object.entries(protocol.chainTvls).forEach(([chain, tvl]) => {
+            if (!chainTvl[chain]) chainTvl[chain] = 0
+            chainTvl[chain] += tvl
+          })
+        }
+        const topThreeChains = Object.entries(chainTvl)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([chain]) => chain)
+        pMetadata.chains = topThreeChains
+
+      })
+    }
+
     fs.writeFileSync(path.join(__dirname, '.cache', `run-data-${statsKey}.json`), JSON.stringify(statsData))
   } catch (error) {
     console.error(`Error storing run stats for ${statsKey}:`, error)
+  }
+}
+
+async function storeTvlCacheUsageLogs() {
+  try {
+    const esClient = sdk.elastic.getClient()
+    const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000
+    const { hits: { hits } } = await esClient.search({
+      index: 'tvl-cache-used*',
+      size: 9999,
+      body: {
+        query: {
+          range: {
+            timestamp: {
+              gte: sixHoursAgo,
+            }
+          }
+        },
+        sort: [{ timestamp: { order: 'desc' } }],
+      }
+    })
+
+    const logs = (hits ?? []).map(h => h._source)
+    fs.writeFileSync(path.join(__dirname, '.cache', 'tvl-cache-usage.json'), JSON.stringify(logs))
+  } catch (error) {
+    console.error('Error storing TVL cache usage logs:', error)
+  }
+}
+
+async function storeCheckData(cacheKey, fileKey) {
+  try {
+    const data = await sdk.cache.readCache(cacheKey, {
+      skipCompression: true,
+      readFromR2Cache: true,
+    })
+    fs.writeFileSync(path.join(__dirname, '.cache', `${fileKey}.json`), JSON.stringify(data))
+  } catch (error) {
+    console.error(`Error storing check data for ${cacheKey}:`, error)
   }
 }
 

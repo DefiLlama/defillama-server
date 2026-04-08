@@ -135,11 +135,12 @@ export default async function getTokenPrices(
     const i = tokenInfo.decimals
       .map((d: Result) => d.input.target)
       .indexOf(p.address);
+    const cTokenDecimals = Number(tokenInfo.decimals[i].output);
     addToDBWritesList(
       writes,
       chain,
       cTokens[i].address,
-      p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
+      p.price / 10 ** (18 - cTokenDecimals + Number(underlyingDecimals[i].output)),
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
       timestamp,

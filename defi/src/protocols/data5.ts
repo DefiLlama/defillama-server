@@ -17599,19 +17599,19 @@ const data5: Protocol[] = [
     name: "Yield AI",
     address: null,
     symbol: "-",
-    url: " ", // pending to add url https://yieldai.app/
+    url: "https://yieldai.app/",
     description:
-      "Yield AI is a DeFi dashboard for Aptos that integrates 10+ protocols and an AI Agent in one interface. Track balances and positions, compare APRs, and deposit, withdraw, swap, and claim rewards gaslessly to maximize yield",
+      "Yield AI is a DeFi dashboard for Aptos that integrates 10+ protocols and an AI Agent in one interface. Track balances and positions, compare APRs, and deposit, withdraw, swap, and claim rewards gaslessly — all to maximize your yield.",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/yield-ai.jpg`,
+    logo: `${baseIconsUrl}/yield-ai.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "AI Agents",
     chains: ["Aptos"],
     module: "yield-ai/index.js",
     twitter: "yieldai_app",
-    listedAt: 1776367461
+    listedAt: 1776370734,
   },
 ];
 export default data5;

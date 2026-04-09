@@ -1,39 +1,57 @@
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import atvl from '../atvl';
-import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/date";
-import { fetchTimestampsPG, initPG } from "../db";
+import { getTimestampAtStartOfDay } from "../../utils/date";
+import { initPG } from "../db";
 
-const start = 1735690215; // 1 Jan 2025
-const end = getCurrentUnixTimestamp()
+async function main(
+    startDate: string,
+    endDate: string,
+    ids: string[],
+    inclusive: boolean = true,
+) {
+    if (!startDate || !endDate || ids.length === 0) {
+        console.error('Missing required arguments');
+        process.exit(1);
+    }
+    const start = Math.floor(new Date(startDate).getTime() / 1000);
+    const end = Math.floor(new Date(endDate).getTime() / 1000);
 
-async function main() {
+    if (!start || !end) {
+        console.error('Invalid date range');
+        process.exit(1);
+    }
+
+    if (inclusive) process.env.RWA_REFILL_INCLUSIVE = 'true';
+
     await initPG();
-    const done = await fetchTimestampsPG();
     const timestamps: number[] = []
     let workingNumber = end;
-    let finished = 0;
     while (workingNumber > start) {
         const cleanTimestamp = getTimestampAtStartOfDay(workingNumber);
-        if (done.includes(cleanTimestamp)) finished ++
-        if (!done.includes(cleanTimestamp)) timestamps.push(cleanTimestamp);
+        timestamps.push(cleanTimestamp);
         workingNumber -= 86400;
     }
 
+    const errors: number[] = [];
     await runInPromisePool({
         items: timestamps,
-        concurrency: 5,
+        concurrency: 2,
         processor: async (timestamp: number) => {
-            await atvl(timestamp).catch((e) => {
+            await atvl(timestamp, ids)
+            .then(() => console.log(`Backfilled at timestamp ${timestamp}`))
+            .catch((e) => {
                 console.error(`Error backfilling at timestamp ${timestamp}: ${e}`);
-            });
-            console.log(`Backfilled at timestamp ${timestamp}`);
+                errors.push(timestamp);
+            })
         }
     }).catch((e) => {
         console.error(`Error backfilling: ${e}`);
         process.exit();
     })
 
+    console.log(`Error Count: ${errors.length} / ${timestamps.length}`);
+    console.log(`Errors: ${errors.toString()}`);
     process.exit();
 }
 
-main() // ts-node defi/src/rwa/refill.ts
+// main('2025-01-01', '2026-03-17', ids) // ts-node defi/src/rwa/cli/refill.ts

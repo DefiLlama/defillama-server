@@ -65,7 +65,7 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
           totalSupplies[token] = res[token];
         });
       } catch (e) {
-        console.error(`Failed to fetch supplies for ${chain}: ${e}`);
+        if (process.env.DEBUG_ENABLED) console.error(`Failed to fetch supplies for ${chain}: ${e}`);
       }
     },
   });
@@ -125,7 +125,7 @@ async function fetchHolderBalances(
         else if (unsupportedChains.includes(chain)) return;
         else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, amounts);
       } catch (e) {
-        console.error(`Failed to fetch balances for ${chain}`)
+        if (process.env.DEBUG_ENABLED) console.error(`Failed to fetch balances for ${chain}`)
       }
     },
   });
@@ -203,7 +203,7 @@ async function getExcludedBalances(
   return { excludedAmounts, mcapExcludedAmounts };
 }
 // use stablecoin API to fetch mcaps for stablecoins
-async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
+async function fetchStablecoins(timestamp: number, relevantGeckoIds?: Set<string>): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
   const validStablecoinIds: string[] = [];
   const { peggedAssets } = await cachedFetch({
     key: "stablecoin-symbols",
@@ -211,21 +211,34 @@ async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]
   });
 
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+  const seenStablecoinIds = new Set<string>();
+  const idToGeckoId: { [id: string]: string } = {};
   peggedAssets.forEach((coin: any) => {
     const { id, chainCirculating, gecko_id, pegType } = coin;
     if (!chainCirculating || !gecko_id || !pegType) return;
+    idToGeckoId[id] = gecko_id;
     data[gecko_id] = {};
+    let hasData = false;
     Object.keys(chainCirculating).forEach((chain: string) => {
       const circulating = chainCirculating[chain].current;
       if (!circulating) return;
       const mcap = circulating[pegType];
       if (!mcap) return;
-      validStablecoinIds.push(id);
+      hasData = true;
       data[gecko_id][chain] = toFixedNumber(mcap, 0);
     });
+    if (hasData && !seenStablecoinIds.has(id)) {
+      validStablecoinIds.push(id);
+      seenStablecoinIds.add(id);
+    }
   });
 
-  if (timestamp != 0) return await fetchHistoricalStablecoins(timestamp, validStablecoinIds);
+  if (timestamp != 0) {
+    const idsToFetch = relevantGeckoIds
+      ? validStablecoinIds.filter((id) => relevantGeckoIds.has(idToGeckoId[id]))
+      : validStablecoinIds;
+    return await fetchHistoricalStablecoins(timestamp, idsToFetch);
+  }
 
   return data;
 }
@@ -235,6 +248,7 @@ async function fetchHistoricalStablecoins(
   validStablecoinIds: string[]
 ): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
   const data: { [gecko_id: string]: { [chain: string]: number } } = {};
+  if (!process.env.INTERNAL_API_KEY) throw new Error("INTERNAL_API_KEY is not set");
 
   await runInPromisePool({
     items: validStablecoinIds,
@@ -242,7 +256,7 @@ async function fetchHistoricalStablecoins(
     processor: async (id: string) => {
       const apiData = await cachedFetch({
         key: `stablecoin-historical-${id}`,
-        endpoint: `https://stablecoins.llama.fi/stablecoin/${id}`,
+        endpoint: `https://pro-api.llama.fi/${process.env.INTERNAL_API_KEY}/stablecoins/stablecoin/${id}`,
       });
       if (!apiData) return;
 
@@ -275,7 +289,7 @@ function getActiveTvls(
 ) {
   Object.keys(aggregateRawTvls).forEach((pk: string) => {
     if (!assetPrices[pk]) {
-      console.error(`No price for ${pk}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No price for ${pk}`);
       return;
     }
 
@@ -305,7 +319,7 @@ function getActiveTvls(
           finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName] = {};
         finalData[rwaId][RWA_KEY_MAP.defiActive][chainDisplayName][projectName] = toFixedNumber(aum, 0);
       } catch (e) {
-        console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
+        if (process.env.DEBUG_ENABLED) console.error(`Malformed ${RWA_KEY_MAP.defiActive} for ${rwaId}: ${e}`);
       }
     });
   });
@@ -340,7 +354,7 @@ function getOnChainTvlAndActiveMcaps(
   excludedAmounts: any,
   mcapExcludedAmounts: any,
 ) {
-  Object.keys(stablecoinsData).forEach((cgId: string) => {
+   Object.keys(stablecoinsData).forEach((cgId: string) => {
     const rwaId = coingeckoIdToRwaId[cgId];
     if (!finalData[rwaId]) return;
     finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
@@ -367,7 +381,7 @@ function getOnChainTvlAndActiveMcaps(
     const { price, decimals } = assetPrices[pk];
     const supply = totalSupplies[pk];
     if (!supply || !price) {
-      console.error(`No supply or price for ${pk}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No supply or price for ${pk}`);
       return;
     }
 
@@ -391,7 +405,7 @@ function getOnChainTvlAndActiveMcaps(
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
-      console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
+      if (process.env.DEBUG_ENABLED) console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
   });
 }
@@ -475,7 +489,7 @@ async function checkCircuitBreakers(
 }
 
 // main entry
-export default async function main(ts: number = 0) {
+export default async function main(ts: number = 0, ids: string[] = []) {
   const timestamp = ts != 0 ? getTimestampAtStartOfDay(ts) : 0;
 
   // read CSV data and parse it
@@ -498,6 +512,7 @@ export default async function main(ts: number = 0) {
 
     const id = mapped.id;
     if (!id) return;
+    if (ids.length > 0 && !ids.includes(id)) return;
     if (!mapped.ticker) return;
 
     // Keep raw token identifiers for TVL pipeline BEFORE parsing contracts into {chainLabel: addresses}
@@ -524,7 +539,7 @@ export default async function main(ts: number = 0) {
     coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
     getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
-    fetchStablecoins(timestamp),
+    fetchStablecoins(timestamp, ids.length > 0 ? new Set(Object.keys(coingeckoIdToRwaId)) : undefined),
     getExcludedBalances(ts, finalData, tokenToProjectMap),
   ]);
   const { excludedAmounts, mcapExcludedAmounts } = excludedBalancesResult;
@@ -532,7 +547,7 @@ export default async function main(ts: number = 0) {
   // log missed assets
   Object.keys(tokenToProjectMap).forEach((address: string) => {
     if (!assetPrices[address]) {
-      console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
+      if (process.env.DEBUG_ENABLED) console.error(`No price for ${tokenToProjectMap[address]} at ${address}`);
       return;
     }
   });
@@ -570,9 +585,9 @@ export default async function main(ts: number = 0) {
 
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
 
-  // Circuit breaker: check for big jumps before saving
-  const circuitBreaker = await checkCircuitBreakers(filteredFinalData);
-  if (circuitBreaker.triggered) {
+  // Circuit breaker: skip when ids are filtered (partial data makes aggregate comparison meaningless)
+  const circuitBreaker = ids.length === 0 ? await checkCircuitBreakers(filteredFinalData) : { triggered: false, details: [] };
+  if (process.env.DEBUG_ENABLED && circuitBreaker.triggered) {
     const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
     console.error(message);
     await sendMessage(message, process.env.RWA_WEBHOOK!, false);
@@ -584,13 +599,13 @@ export default async function main(ts: number = 0) {
     storeHistorical(res),
   ]);
 
-  console.log(`Exitting atvl.ts`)
+  if (process.env.DEBUG_ENABLED) console.log(`Exitting atvl.ts`)
 
   return finalData;
 }
 
 main().catch(async (error) => {
   console.error('Error running the script: ', error);
-  await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
-  process.exit(1);
-}).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts
+    await sendMessage(`Error running the script: ${error}`, process.env.RWA_WEBHOOK!, false);
+    process.exit(1);
+  }).then(() => process.exit(0)); // ts-node defi/src/rwa/atvl.ts

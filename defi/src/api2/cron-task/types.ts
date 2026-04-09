@@ -3,6 +3,11 @@ export interface IChainMetadata {
 	dexs?: boolean
 	name: string
 	activeUsers?: boolean
+	newUsers?: boolean
+	chainActiveUsers?: boolean
+	chainNewUsers?: boolean
+	gasUsed?: boolean
+	txCount?: boolean
 	fees?: boolean
 	chainFees?: boolean
 	revenue?: boolean
@@ -29,6 +34,7 @@ export interface IChainMetadata {
 
 export interface IProtocolMetadata {
   name: string
+	gecko_id?: string
 	tvl?: boolean
 	inflows?: boolean
 	borrowed?: boolean
@@ -65,4 +71,7 @@ export interface IProtocolMetadata {
 	incentives?: boolean
 	safeHarbor?: boolean
 	tokenRights?: boolean
+	newUsers?: boolean
+	gasUsed?: boolean
+	txCount?: boolean
 }

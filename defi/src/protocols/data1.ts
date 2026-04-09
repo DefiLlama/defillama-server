@@ -119,7 +119,10 @@ const data: Protocol[] = [
     parentProtocol: "parent#aave",
     wrongLiquidity: true,
     dimensions: {
-      fees: "aave-v2"
+      fees: {
+        genuineSpikes: [["2026-03-16", "High borrow APY (1000%+) and 63 days of accumulated interest for the AMPL token"]],
+        adapter: "aave-v2"
+      }
     }
   },
   {
@@ -1070,7 +1073,7 @@ const data: Protocol[] = [
     name: "Augur",
     address: "0x221657776846890989a759ba2973e427dff5c9bb",
     symbol: "REP",
-    url: "https://www.augur.net/",
+    url: "https://augur.net/",
     description:
       "A transparent exchange with no limit on what you can bet on, no max limits on the amount you can bet and no rollover requirements.",
     chain: "Ethereum",
@@ -2629,8 +2632,8 @@ const data: Protocol[] = [
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
     oraclesBreakdown: [
-      { name: "Chainlink", type: "Primary", proof: [] },
-      { name: "RedStone", type: "Secondary", proof: [] }
+      { name: "Chainlink", type: "Primary", proof: ["https://docs.enzyme.finance/user-documentation/blue-general-info/risks#oracle-risk"] },
+      { name: "RedStone", type: "Secondary", proof: ["https://docs.enzyme.finance/user-documentation/blue-general-info/risks#oracle-risk"] }
     ],
     governanceID: ["snapshot:enzymefinance.eth"],
     github: ["enzymefinance"],
@@ -8795,24 +8798,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "504",
-    name: "Mento",
+    name: "Mento V2",
     address: "celo:0x7ff62f59e3e89ea34163ea1458eebcc81177cfb6",
     symbol: "MENTO",
-    url: "https://www.mento.org/",
+    url: "https://app.mento.org",
     description:
       "Mento, an open source and permissionless protocol live on the Celo network. It facilitates the launch of stablecoins such as cUSD, cEUR, and cREAL",
     chain: "Celo",
-    logo: `${baseIconsUrl}/mento.png`,
+    logo: `${baseIconsUrl}/mento-v2.jpg`,
     audits: "2",
-    gecko_id: "mento",
+    gecko_id: null,
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Celo"],
     module: "mento/index.js",
     twitter: "MentoLabs",
     audit_links: ["https://celo.org/audits"],
-    stablecoins: ["celo-dollar", "celo-euro"],
-    github: ["mento-protocol"],
+    parentProtocol: "parent#mento",
     oraclesBreakdown: [
       {
         name: "cLabs",
@@ -13412,8 +13414,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Polymarket",
     address: null,
     symbol: "-",
-    url: "https://polymarket.com?via=defi-llama",
-    referralUrl: "https://polymarket.com?via=defi-llama",
+    url: "https://polymarket.com/?r=defillamareal", // replaced by the old one on the 25/03/26
+    referralUrl: "https://polymarket.com/?r=defillamareal",
     description:
       "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right.",
     chain: "Polygon",
@@ -13431,7 +13433,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       fees: "polymarket",
       dexs: "polymarket",
       "open-interest": "polymarket-oi"
-    }
+    },
+    hallmarks: [
+      ["2026-01-06", "Fee introduced in 15-minute crypto markets"],
+      ["2026-03-30", "Fee expanded to a wider range of markets"]
+    ]
   },
   {
     id: "712",
@@ -16543,6 +16549,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SkeletonFinance",
     audit_links: ["https://skeleton.finance/static/files/SmartContract_Audit_Solidproof_Skeleton.pdf"],
     listedAt: 1637375100,
+    deadUrl: true,
   },
   {
     id: "873",
@@ -16748,8 +16755,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "lumenswap",
     listedAt: 1637392233,
     github: ["lumenswap"],
-    rugged: true,
-    deadUrl: true,
     dimensions: {
       dexs: "lumenswap"
     }
@@ -16998,16 +17003,16 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     id: "894",
     name: "Velora",
     previousNames: ["Paraswap"],
-    address: "0xcAfE001067cDEF266AfB7Eb5A286dCFD277f3dE5",
-    symbol: "PSP",
+    address: "0x4e107a0000db66f0e9fd2039288bf811dd1f9c74",
+    symbol: "VLR",
     url: "https://www.velora.xyz",
     description:
       "Velora is the most comprehensive and flexible trading protocol for Decentralized Finance (DeFi). We use decentralized intents to provide advanced features such as limit orders, super hooks, and chain-abstracted swaps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/velora.jpg`,
     audits: "2",
-    gecko_id: "paraswap",
-    cmcId: "14534",
+    gecko_id: "velora",
+    cmcId: "36629",
     category: "DEX Aggregator",
     chains: ["Ethereum"],
     module: "paraswap.js",
@@ -18686,7 +18691,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     dimensions: {
       fees: "drift-protocol-derivatives",
       derivatives: "drift-protocol-derivatives",
-      "open-interest": "drift-protocol-derivatives"
+      "open-interest": {
+        genuineSpikes: [["2026-03-26", "-"]],
+        adapter: "drift-trade"
+      }
     }
   },
   {
@@ -20933,6 +20941,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["2197"],
     listedAt: 1640115841,
     github: ["autoshark-finance"],
+    deadUrl: true,
     dimensions: {
       fees: "autoshark",
       dexs: "autoshark"
@@ -24750,6 +24759,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HakuSwap",
     audit_links: ["https://hakuswap.com/audit.pdf"],
     listedAt: 1642109094,
+    deadUrl: true,
     forkedFromIds: ["2197"],
     dimensions: {
       dexs: "hakuswap"
@@ -26539,13 +26549,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "API3",
     url: "https://api3.org/",
     description:
-      "Oracles that pay you: Api3 first-party oracles deliver secure, transparent data while also turning data feed updates into a source of revenue for your dApp.",
+      "Api3 is a risk curator and first-party oracle provider. It curates OEV-enabled lending markets that recapture liquidation incentives, redirecting this revenue back to dApps and DeFi users as additional yield.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/api3.png`,
     audits: "2",
     gecko_id: "api3",
     cmcId: "7737",
-    category: "Oracle",
+    category: "Risk Curators",
     chains: ["Ethereum"],
     module: "api3/index.js",
     treasury: "api3.js",
@@ -26553,6 +26563,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/api3dao/contracts/tree/main/audit-reports"],
     listedAt: 1643713220,
     github: ["api3dao"],
+    dimensions: {
+      fees: "api3",
+    },
   },
   {
     id: "1340",

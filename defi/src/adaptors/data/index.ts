@@ -2,6 +2,7 @@ import { ADAPTER_TYPES, AdapterType, AdaptorData, AdaptorRecordType, AdaptorReco
 import dimensions_imports from "../../utils/imports/dimensions_adapters.json"
 import { generateProtocolAdaptorsList2 } from "./helpers/generateProtocolAdaptorsList"
 import protocols from "../../protocols/data";
+import parentProtocols from "../../protocols/parentProtocols";
 import { chainCoingeckoIds, getChainDisplayName } from "../../utils/normalizeChain";
 import { baseIconsUrl } from "../../constants";
 
@@ -37,6 +38,12 @@ const ADAPTER_TYPES_WITH_CONFIG_ID_AS_KEY = [
   AdapterType.NEW_USERS
 ]
 
+// some metrics have a direct parent protocol data
+const ADAPTER_TYPES_LINKED_TO_PARENT_PROTOCOLS = [
+  AdapterType.ACTIVE_USERS,
+  AdapterType.NEW_USERS
+]
+
 const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
 
   // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
@@ -46,8 +53,12 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
   const config: any = {}
   const configMetadataMap: any = {}
   const canDeriveDimensionsConfigFromKey = ADAPTER_TYPES_WITH_CONFIG_ID_AS_KEY.includes(adapterType)
+  const isLinkedToParentProtocols = ADAPTER_TYPES_LINKED_TO_PARENT_PROTOCOLS.includes(adapterType)
+  let items = [...protocols]
 
-  protocols.forEach((p) => {
+  if (isLinkedToParentProtocols) items = items.concat(parentProtocols as any) // we need to concat parent protocols for these adapter types because some of their metrics are linked to parent protocol data, but we need to make sure to not mutate the original parent protocol objects in case they are used elsewhere without the dimensions field, so we clone them here by doing items = [...protocols, ...parentProtocols]
+
+  items.forEach((p) => {
 
     if (!p.dimensions?.[adapterType]) {
       if (!canDeriveDimensionsConfigFromKey) return;
@@ -57,6 +68,7 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
       if (!idConfigData) return;
       if (!p.dimensions) p.dimensions = {}
       p.dimensions[adapterType] = p.id
+      // console.log(`Auto-linking ${adapterType} adapter for protocol ${p.name} using id ${p.id}`)
     }
 
     let { adapterKey, dimConfig } = getDimensionsConfigAndKey(p.dimensions[adapterType])
@@ -67,11 +79,12 @@ const _getAdapterData = (adapterType: AdapterType): AdaptorData => {
     configMetadataMap[adapterKey] = p
   })
 
+
   Object.entries(chainCoingeckoIds).forEach(([chainName, obj]) => {
 
 
     if (!obj.dimensions?.[adapterType]) {
-      let id = `chain#${chainName.toLowerCase()}`
+      let id = chainName.toLowerCase()
       const idConfigData = (dimensions_imports as any)[adapterType]?.[id]
       if (!canDeriveDimensionsConfigFromKey || !idConfigData) return;
       // console.log(`Auto-linking ${adapterType} adapter for chain ${chainName} using id ${id}`)
@@ -179,7 +192,8 @@ function getDimensionsConfig() {
     [AdapterType.DEXS]: {
       KEYS_TO_STORE: {
         [AdaptorRecordType.dailyVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyVolume],
-        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume]
+        [AdaptorRecordType.totalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalVolume],
+        [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyNotionalVolume],
       },
     },
     [AdapterType.DERIVATIVES]: {
@@ -281,35 +295,37 @@ function getLogoKey(key: string) {
   else return key.toLowerCase()
 }
 
-/* 
+async function printAdapterStats() {
 
-const statsTable: any = {}
-const loadPromises = ADAPTER_TYPES.map(async (adapterType) => {
-  const importer = importModule(adapterType)
-  const { protocolAdaptors } = loadAdaptorsData(adapterType)
-  const totalCount = protocolAdaptors.length
-  const deadCount = protocolAdaptors.filter(p => p.isDead).length
-  const liveCount = totalCount - deadCount
-  const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
-  let modules = [] as any[]
-  for (let i = 0; i < protocolAdaptors.length; i++) {
-    const mod = protocolAdaptors[i].module
-    try {
-      const importedModule = await importer(mod)
-      modules.push(importedModule)
-    } catch (e) {
-      console.log(`Error importing module ${mod} for protocol ${protocolAdaptors[i].name}:`, e)
+  const statsTable: any = {}
+  const loadPromises = ADAPTER_TYPES.map(async (adapterType) => {
+    const importer = importModule(adapterType)
+    const { protocolAdaptors } = loadAdaptorsData(adapterType)
+    const totalCount = protocolAdaptors.length
+    const deadCount = protocolAdaptors.filter(p => p.isDead).length
+    const liveCount = totalCount - deadCount
+    const currTime = protocolAdaptors.filter((p: any) => p._stat_runAtCurrTime && !p.isDead).length
+    let modules = [] as any[]
+    for (let i = 0; i < protocolAdaptors.length; i++) {
+      const mod = protocolAdaptors[i].module
+      try {
+        const importedModule = await importer(mod)
+        modules.push(importedModule)
+      } catch (e) {
+        console.log(`Error importing module ${mod} for protocol ${protocolAdaptors[i].name}:`, e)
+      }
     }
-  }
-  const v1 = modules.filter((p: any) => p.version !== 2).length
-  const v2 = modules.filter((p: any) => p.version === 2).length
-  const hourly = modules.filter((p: any) => p.version === 2 && p.pullHourly).length
-  // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
-  statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime, v1, v2, hourly, }
-})
+    const v1 = modules.filter((p: any) => p.version !== 2).length
+    const v2 = modules.filter((p: any) => p.version === 2).length
+    const hourly = modules.filter((p: any) => p.version === 2 && p.pullHourly).length
+    // console.log(`${adapterType}: total: ${totalCount}, live: ${liveCount}, dead: ${deadCount}, runAtCurrentTime: ${runAtCurrentTimeCount}`)
+    statsTable[adapterType] = { total: totalCount, live: liveCount, dead: deadCount, currTime, canRefill: liveCount - currTime, v1, v2, hourly, }
+  })
 
-Promise.all(loadPromises).then(() => {
-  console.table(statsTable)
-})
+  Promise.all(loadPromises).then(() => {
+    console.table(statsTable)
+  })
 
- */
+}
+
+// printAdapterStats()

@@ -39,4 +39,7 @@ const reservesTokens = [
   },
 ]
 
-export default getBitcoinBridgeLockAndMintAdapter(protocolId, mintedTokens, reservesTokens);
+export default {
+  whitelisted: true, // removed tokens price, no need to check
+  ...getBitcoinBridgeLockAndMintAdapter(protocolId, mintedTokens, reservesTokens)
+};

@@ -6,6 +6,7 @@ const config: { [chain: string]: string[] } = {
     "DBIT": "0x972966bcc17f7d818de4f27dc146ef539c231bdf",
     "DETH": "0x871ab8e36cae9af35c6a3488b049965233deb7ed",
     "DUSD": "0x1e33e98af620f1d563fcd3cfd3c75ace841204ef",
+    "usdSHFmk": '0xac499adf00a54044b988a59b19016655c3494b06',
   }),
 }
 

@@ -262,6 +262,10 @@ export const chainToCoingeckoId = {
   'bittensor-evm': 'bittensor_evm',
   katana: 'katana',
   'hashkey-chain': 'hsk',
+  canton: 'canton-network',
+  blockdag: 'blockdag',
+  proptech: 'proptech',
+  tempo: 'tempo'
 };
 
 export const cgPlatformtoChainId: { [key: string]: string } = Object.entries(chainToCoingeckoId).reduce(

@@ -266,7 +266,7 @@ export function getUniV2Adapter({
     let { pairs, token0s, token1s, symbols } = res;
     if (!pairs?.length)
       throw new Error("No pairs found, is there TVL adapter for this already?");
-    if (pairs.length > 20 * 1000)
+    if (pairs.length > 20 * 1000 && project != "aerodrome")
       throw new Error("Too many pairs found, try using the graph?");
 
     pairs = pairs.map((i: any) => i.toLowerCase());

@@ -118,56 +118,6 @@ export async function storeDatasetR2(
   return await R2.send(command);
 }
 
-export async function storeLiqsR2(
-  filename: string,
-  body: string | Readable,
-  contentType = "application/json",
-  cache?: number
-) {
-  const command = new PutObjectCommand({
-    Bucket: datasetBucket,
-    Key: `liqs/${filename}`,
-    Body: body,
-    ContentType: contentType,
-    ...(!!cache
-      ? {
-          CacheControl: `max-age=${cache}`,
-        }
-      : {}),
-  });
-  console.log("Storing liqs", `liqs/${filename}`);
-  return await R2.send(command);
-}
-
-export async function getCachedLiqsR2(protocol: string, chain: string) {
-  const command = new GetObjectCommand({
-    Bucket: datasetBucket,
-    Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
-  });
-  const data = await R2.send(command);
-  return data.Body?.transformToString();
-}
-
-export async function getExternalLiqsR2(protocol: string, chain: string) {
-  const data = (await axios.get("https://liquidations.llama.fi/" + protocol + "/" + chain)).data;
-  return data;
-}
-
-export async function storeCachedLiqsR2(protocol: string, chain: string, body: string | Readable, cache?: number) {
-  const command = new PutObjectCommand({
-    Bucket: datasetBucket,
-    Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
-    Body: body,
-    ContentType: "application/json",
-    ...(!!cache
-      ? {
-          CacheControl: `max-age=${cache}`,
-        }
-      : {}),
-  });
-  return await R2.send(command);
-}
-
 export function buildRedirectR2(filename: string, cache?: number) {
   return {
     statusCode: 307,
@@ -182,8 +132,6 @@ export function buildRedirectR2(filename: string, cache?: number) {
     },
   };
 }
-
-export const liquidationsFilename = `liquidations.json`;
 
 // these cache file doesnt exist/not used anywhere?
 export async function deleteProtocolCache(protocolId: string) {

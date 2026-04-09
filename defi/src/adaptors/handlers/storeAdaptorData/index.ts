@@ -397,7 +397,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            // console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 
@@ -787,5 +787,5 @@ function calculateStats(numbers: number[]) {
     median = numbers[mid];
   }
 
-  return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
+  return { sum, average, median, size: numbers.length, highest: Math.max(Math.abs(numbers[0]), numbers[numbers.length - 1]), lowest: numbers[0] };
 }

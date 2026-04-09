@@ -320,7 +320,6 @@ export const cexsData: Array<ICex> = [
     slug: "coin8",
     coin: null,
     walletsLink: null,
-    url: "https://www.coin8.co",
   },
   {
     name: "Exmo",
@@ -728,7 +727,8 @@ export const cexsData: Array<ICex> = [
     name: "WEEX",
     cgId: "weex",
     slug: "weex",
-    coin: "weex-token",
+    coin: "WXT",
+    coinSymbol: "WXT",
     walletsLink: null,
     cgDeriv: "weex-futures",
     url: "https://www.weex.com/",
@@ -762,6 +762,13 @@ export const cexsData: Array<ICex> = [
     coin: null,
     walletsLink: null,
     url: "https://grovex.io/en_US/",
+  },
+  {
+    name: "Bitvavo",
+    slug: "bitvavo",
+    coin: null,
+    walletsLink: null,
+    url: "https://bitvavo.com/en",
   },
 ];
 

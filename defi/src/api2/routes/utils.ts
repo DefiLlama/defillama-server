@@ -46,6 +46,10 @@ export async function fileResponse(filePath: string, res: HyperExpress.Response)
   try {
     res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
     const ab = await readRouteData(filePath, { readAsArrayBuffer: true })
+    if (!ab) {
+      res.status(404)
+      return res.send('Data not found', true)
+    }
     res.set('Content-Type', 'application/json')
     res.send(ab)
   } catch (e) {

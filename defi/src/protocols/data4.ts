@@ -2311,6 +2311,10 @@ const data4: Protocol[] = [
     twitter: "TrebleSwap",
     forkedFromIds: ["3710"],
     listedAt: 1737647275,
+    dimensions: {
+      fees: "treble-spot",
+      dexs: "treble-spot",
+    },
   },
   {
     id: "5660",
@@ -2620,6 +2624,7 @@ const data4: Protocol[] = [
     module: "coin8-cex/index.js",
     twitter: "Coin8_Exchange",
     listedAt: 1737981973,
+    deadUrl: true
   },
   {
     id: "5674",
@@ -3259,6 +3264,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "zkfair/index.js",
     twitter: "ZKFCommunity",
+    deadUrl: true
   },
   {
     id: "5704",
@@ -3266,7 +3272,7 @@ const data4: Protocol[] = [
     address: null,
     // none (pre-tge)
     symbol: "-",
-    url: "https://www.rooster-protocol.xyz/",
+    url: "https://www.rooster.trade/",
     description:
       "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume (Deprecated)",
@@ -3667,7 +3673,7 @@ const data4: Protocol[] = [
     name: "Exponent",
     address: null,
     symbol: "-",
-    url: "https://www.exponent.finance/income",
+    url: "https://www.exponent.finance/",
     description: "Exponent is a yield exchange protocol on Solana for fixed-rate and leveraged yield farming",
     chain: "Solana",
     logo: `${baseIconsUrl}/exponent.png`,
@@ -3787,6 +3793,9 @@ const data4: Protocol[] = [
     module: "factorial/index.js",
     twitter: "AffluentOrg",
     oraclesBreakdown: [{ name: "RedStone", type: "Primary", proof: [] }], // https://docs.factorial.finance/oracle
+    dimensions: {
+      fees: "affluent",
+    },
     listedAt: 1738669030,
   },
   {
@@ -4598,7 +4607,7 @@ const data4: Protocol[] = [
     symbol: "HYPE",
     url: "https://app.hyperliquid.xyz",
     referralUrl: "https://app.hyperliquid.xyz/join/DEFILLAMAO",
-    description: "The order book works in essentially the same way as all centralized exchanges but is fully on-chain",
+    description: "Hyperliquid is a Layer 1 blockchain best known for perpetual futures and spot trading. The order book is fully onchain, and orders are matched in price-time priority. Every order, cancel, trade, and liquidation happens transparently.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hyperliquid.png`,
     audits: "0",
@@ -4899,8 +4908,8 @@ const data4: Protocol[] = [
   {
     id: "5775",
     name: "Infrared Finance",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xace9de5af92eb82a97a5973b00eff85024bdcb39",
+    symbol: "IR",
     assetToken: "iBERA",
     url: "https://infrared.finance",
     description:
@@ -4908,8 +4917,8 @@ const data4: Protocol[] = [
     chain: "Berachain",
     logo: `${baseIconsUrl}/infrared-finance.jpg`,
     audits: "0",
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "infrared-finance",
+    cmcId: "39113",
     category: "Liquid Staking",
     chains: ["Berachain"],
     module: "infrared-finance/index.js",
@@ -5765,6 +5774,9 @@ const data4: Protocol[] = [
     module: "coinbase-btc/index.js",
     twitter: "coinbase",
     listedAt: 1739912521,
+    dimensions: {
+      fees: "cbbtc"
+    }
   },
   {
     id: "5811",
@@ -6368,7 +6380,7 @@ const data4: Protocol[] = [
     //previousNames: ["HypurrFi"],
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `Collateralize borrowing positions and loop and lever up your yield`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-pooled.jpg`,
@@ -8745,12 +8757,13 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "BaseFinanceLabs",
     listedAt: 1742570641,
+    deadUrl: true,
   },
   {
     id: "5940",
     name: "HyperLend Pooled",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
@@ -9570,6 +9583,7 @@ const data4: Protocol[] = [
     module: "alfafrens/index.js",
     twitter: "alfafrens_",
     listedAt: 1743442075,
+    deadUrl: true,
   },
   {
     id: "5975",
@@ -9894,7 +9908,7 @@ const data4: Protocol[] = [
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
     tokensExcludedFromParent: {
-      Ethereum: ["SPDAI"],
+      Ethereum: ["SPDAI", "SPUSDT", "SPPYUSD", "SPUSDS", "SPUSDC"],
     },
     listedAt: 1743696229,
     dimensions: {
@@ -11283,7 +11297,7 @@ const data4: Protocol[] = [
     name: "HypurrFi Isolated",
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `HypurrFi's isolated lending markets`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-isolated.jpg`,
@@ -11296,7 +11310,7 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.hypurr.fi/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
+        proof: ["https://hypurrfi.com/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
       },
     ],
     module: "hypurrfi-isolated/index.js",
@@ -11812,7 +11826,8 @@ const data4: Protocol[] = [
     name: "Beezie",
     address: null,
     symbol: "-",
-    url: "https://beezie.com/",
+    url: "https://beezie.com/r/XRYLRM4L",
+    referralUrl: "https://beezie.com/r/XRYLRM4L",
     description: `Platform for collectors and resellers. Vault, Buy & Sell graded Pokemon, One Piece, Sports cards, Video Games & more`,
     chain: "Flow",
     logo: `${baseIconsUrl}/beezie.jpg`,
@@ -11824,7 +11839,8 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "beezie_io",
     dimensions: {
-      dexs: "beezie"
+      dexs: "beezie",
+      fees: "beezie"
     }
   },
   {
@@ -14353,6 +14369,13 @@ const data4: Protocol[] = [
     module: "usdai/index.js",
     twitter: "USDai_Official",
     audit_links: ["https://docs.usd.ai/technical-overview/audits"],
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.usd.ai/technical-overview/technical-protocol-overview?q=chainlink"],
+      },
+    ],
     stablecoins: ["usdai"],
     listedAt: 1747659245,
     dimensions: {
@@ -15025,7 +15048,7 @@ const data4: Protocol[] = [
         name: "Chronicle",
         type: "Primary",
         proof: ["https://github.com/DefiLlama/defillama-server/pull/10124"],
-        chains: [{ chain: "Base" }, { chain: "Monad"}, { chain: "Arbitrum"}],
+        chains: [{ chain: "Monad"}, { chain: "Arbitrum"}],
       },
       {
         name: "Chaos",
@@ -15049,11 +15072,12 @@ const data4: Protocol[] = [
         name: "Chainlink",
         type: "Primary",
         proof: ["https://app.morpho.org/ethereum/curator/steakhouse-financial"],
-        chains: [{chain: "Katana"},{ chain: "Ethereum"}]
+        chains: [{chain: "Katana"},{ chain: "Ethereum"},{ chain: "Base"}]
       }
     ],
     module: "steakhouse/index.js",
     twitter: "SteakhouseFi",
+    deadUrl: true, // https://x.com/SteakhouseFi/status/2038565540625543406
     listedAt: 1747736199,
     dimensions: {
       fees: "steakhouse"
@@ -17858,7 +17882,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://kgen.io/",
     description:
-      "KGeN is building the world's largest Verified Distribution Protocol (VeriFi), which is designed to accelerate business growth through real, verified users.",
+      "VeriFi: The Proof of Human model scaling partners with verified users.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/kgen.jpg`,
     audits: "0",
@@ -18473,6 +18497,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "ssv-network/index.js",
     twitter: "ssv_network",
+    treasury: "ssv-dao.js",
     dimensions: {
       fees: "ssv-network"
     }
@@ -18874,7 +18899,8 @@ const data4: Protocol[] = [
     name: "xStocks",
     address: null,
     symbol: "-",
-    url: "https://xstocks.fi/",
+    url: "https://defi.xstocks.fi/points?ref=8QG15V04",
+    referralUrl: "https://defi.xstocks.fi/points?ref=8QG15V04",
     description:
       "All xStocks are freely transferable tokens. They can be used in lending protocols, on DEXs, or any DeFi app. Hold them in your own wallet, or buy on one venue and sell on another. xStocks are built to be usable.",
     chain: "Solana",
@@ -19269,8 +19295,8 @@ const data4: Protocol[] = [
   {
     id: "6395",
     name: "HyperLend Isolated",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
@@ -19423,22 +19449,22 @@ const data4: Protocol[] = [
   },
   {
     id: "6402",
-    name: "BIM",
+    name: "BIM Yield",
     address: "base:0x555FFF48549C1A25a723Bd8e7eD10870D82E8379",
     symbol: "BIM",
     url: "https://exchange.bim.finance/",
     description:
       "BIM is a permissionless DeFi platform that helps users earn yield, move assets, and interact seamlessly across multiple blockchains.",
     chain: "Base",
-    logo: `${baseIconsUrl}/bim.jpg`,
+    logo: `${baseIconsUrl}/bim-yield.jpg`,
     audits: "2",
-    gecko_id: "bim-2",
-    cmcId: "24877",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Base"],
     module: "bim/index.js",
     twitter: "Bim_Exchange",
-    treasury: "bim.js",
+    parentProtocol: "parent#bim",
     audit_links: ["https://docs.bim.finance/whitepaper/technical-reference/audit"],
     listedAt: 1751920749,
     dimensions: {
@@ -19620,10 +19646,11 @@ const data4: Protocol[] = [
     cmcId: null,
     category: "DAO Service Provider",
     chains: ["Ethereum", "Arbitrum", "Base", "xDai", "Polygon", "Unichain", "World Chain"],
-    module: "createDAO/index.js",
+    module: "dummy.js",
     twitter: "createdao",
     github: ["createdao"],
     listedAt: 1752077819,
+    treasury: "createDAO.js",
   },
   {
     id: "6411",
@@ -19811,6 +19838,7 @@ const data4: Protocol[] = [
     twitter: "DeFiCarrot",
     parentProtocol: "parent#carrot",
     listedAt: 1752343187,
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
   },
   {
     id: "6419",
@@ -20510,6 +20538,7 @@ const data4: Protocol[] = [
     twitter: "TopCutFinance",
     audit_links: ["https://github.com/PossumLabsCrypto/TopCut/tree/main/AUDIT%20REPORTS"],
     listedAt: 1752775161,
+    deadUrl: true,
     dimensions: {
       fees: "topcut"
     }
@@ -21320,8 +21349,8 @@ const data4: Protocol[] = [
     category: "Governance Incentives",
     chains: ["Initia"],
     module: "cabal/index.js",
-    twitter: "CabalVIP",
-    github: ["Cabal-VIP"],
+    twitter: "CabalFDN",
+    github: ["0xCabal"],
     listedAt: 1753650153,
   },
   /* {  // duplicate of glyph v4
@@ -21614,6 +21643,7 @@ const data4: Protocol[] = [
     dimensions: {
       derivatives: "evedex",
       "open-interest": "evedex",
+      "normalized-volume": "evedex"
     }
   },
   {
@@ -22158,8 +22188,8 @@ const data4: Protocol[] = [
   {
     id: "6521",
     name: "BasedApp",
-    address: null,
-    symbol: "-",
+    address: "0x4f2b33840227ddd0e28da8d4185d6fa07adfed87",
+    symbol: "BASED",
     url: "https://app.based.one/r/DEFILLAMA",
     referralUrl: "https://app.based.one/r/DEFILLAMA",
     description: "Buy, Sell and Spend Crypto. Powered by Hyperliquid",
@@ -24863,7 +24893,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#pancakeswap",
     dimensions: {
       fees: "pancakeswap-prediction",
-      dexs: "pancakeswap-prediction"
+      dexs: "pancakeswap-prediction",
     }
   },
   {
@@ -25265,8 +25295,14 @@ const data4: Protocol[] = [
     twitter: "MetaWhaleX",
     listedAt: 1756962147,
     dimensions: {
-      fees: "w-dex",
-      dexs: "w-dex"
+      fees: {
+        adapter: "w-dex",
+        genuineSpikes: [["2026-03-31", "-"]],
+      },
+      dexs: {
+        adapter: "w-dex",
+        genuineSpikes: [["2026-03-31", "High volume due to $CES crash(97%) and recovery"]],
+      }
     }
   },
   {
@@ -25315,8 +25351,8 @@ const data4: Protocol[] = [
   {
     id: "6663",
     name: "edgeX Perps",
-    address: null,
-    symbol: "-",
+    address: "0xb0076de78dc50581770bba1d211ddc0ad4f2a241",
+    symbol: "EDGE",
     url: "https://pro.edgex.exchange/referral/196451583",
     description: "A high-performance, orderbook-based perpetual DEX with native trading experience",
     chain: "Ethereum",
@@ -25613,7 +25649,8 @@ const data4: Protocol[] = [
     name: "Collector Crypt",
     address: null,
     symbol: "-",
-    url: "https://collectorcrypt.com/",
+    url: "https://gacha.collectorcrypt.com/referral/5NCuqpCi7YvED6NTTTkS43WzMEBE2RwivhoVLhkjWvRY",
+    referralUrl: "https://gacha.collectorcrypt.com/referral/5NCuqpCi7YvED6NTTTkS43WzMEBE2RwivhoVLhkjWvRY",
     description: "A protocol to sell RWA Pokemon cards on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/collector-crypt.jpg`,
@@ -25816,7 +25853,8 @@ const data4: Protocol[] = [
     name: "Phygitals",
     address: null,
     symbol: "-",
-    url: "https://phygitals.com/",
+    url: "https://phygitals.com/invite/f4015b",
+    referralUrl: "https://phygitals.com/invite/f4015b",
     description:
       "Phygitals is a Solana marketplace for trading digitized versions of vaulted collectible cards, with built-in royalties and portfolio tracking.",
     chain: "Solana",
@@ -26051,7 +26089,8 @@ const data4: Protocol[] = [
     twitter: "PancakeSwap",
     parentProtocol: "parent#pancakeswap",
     dimensions: {
-      fees: "pancakeswap-lottery"
+      fees: "pancakeswap-lottery",
+      dexs: "pancakeswap-lottery"
     }
   },
   {
@@ -26509,6 +26548,9 @@ const data4: Protocol[] = [
     module: "spark-savings/index.js",
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
+    tokensExcludedFromParent: {
+      Ethereum: ["SPUSDT", "SPUSDC", "SPETH", "SPPYUSD"],
+    },
     listedAt: 1757630167
   },
   {
@@ -27323,7 +27365,7 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://vishwanetwork.xyz/",
     description:
-      "Vishwa is the trust layer for agentic AI transactions. Vishwa introduces a new primitive for agent economies using zero-knowledge proofs: a cryptographic Letter of Credit enforced before execution. Every agent transaction must be proven authorized, solvent, and intention-consistent before funds move—not audited after the damage is done. All executions are supported by 1:1 hard-pegged proofs of assets generated through zk proofs. No proof, no execution.",
+      "Vishwa is the verification layer for autonomous capital. As financial execution becomes agent-driven, capital must prove solvency, authorization, and policy compliance before transactions occur. Vishwa uses zero-knowledge proofs to enforce these constraints before execution — agents must cryptographically prove they are authorized and solvent before funds move. This allows institutions to deploy capital programmatically across execution venues while maintaining enforceable constraints. No proof, no execution.",
     chain: "Bitcoin",
     logo: `${baseIconsUrl}/vishwa.jpg`,
     audits: "2",
@@ -27558,7 +27600,9 @@ const data4: Protocol[] = [
     module: "surf-liquid/index.js",
     twitter: "Surf_Liquid",
     listedAt: 1758736221,
-    deprecated: true
+    dimensions: {
+      fees: "surf-liquid"
+    },
   },
   {
     id: "6766",
@@ -27920,15 +27964,21 @@ const data4: Protocol[] = [
     twitter: "symm_io",
     listedAt: 1759188001,
     dimensions: {
-      derivatives: "symmio"
-    }
+      derivatives: "symmio",
+      'open-interest': "symmio",
+      fees: "symmio"
+    },
+    hallmarks: [
+      ["2025-11-18", "Privex Agents Arena Launch on COTI"],
+    ],
   },
   {
     id: "6784",
     name: "Legion",
     address: null,
     symbol: "-",
-    url: "https://legion.cc/",
+    url: "https://legion.cc?homie=BNXWVHY6",
+    referralUrl: "https://legion.cc?homie=BNXWVHY6",
     description: "Legion is a merit-based crypto fundraising platform that lets projects launch token sales and allocates access to users based on on-chain reputation (Legion Scores) and compliance criteria.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/legion.jpg`,
@@ -28453,6 +28503,7 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum"],
     module: "sentora/index.js",
+    oraclesBreakdown: [{name: "Chainlink", type: "Primary", proof: ["https://etherscan.io/address/0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961#readContract"]}],
     twitter: "SentoraHQ",
     listedAt: 1759454399,
     dimensions: {
@@ -28678,7 +28729,7 @@ const data4: Protocol[] = [
     address: null,
     // none (pre-tge)
     symbol: "-",
-    url: "https://www.rooster-protocol.xyz/",
+    url: "https://www.rooster.trade/",
     description:
       "Rooster Protocol is the liquidity hub for real-world assets on Plume Network. Built with the innovative Dynamic Distribution AMM by Maverick Protocol and a ve(3,3) Flywheel, Rooster enables efficient liquidity with built-in on-chain rewards",
     chain: "Plume Mainnet",
@@ -30280,6 +30331,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "ultrayield/index.js",
     twitter: "ultrayieldapp",
+    parentProtocol: "parent#ultrayield",
     listedAt: 1761083071,
   },
   {

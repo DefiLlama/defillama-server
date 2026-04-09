@@ -2982,6 +2982,7 @@ const data2: Protocol[] = [
     listedAt: 1646515940,
     governanceID: ["snapshot:granaryfinance.eth"],
     github: ["The-Granary"],
+    deadUrl: true,
   },
   {
     id: "1515",
@@ -4371,6 +4372,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1648148576,
     github: ["bcnmy"],
+    deprecated: true
   },
   {
     id: "1579",
@@ -6298,6 +6300,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
     listedAt: 1650437930,
     github: ["nordfinance"],
+    deadUrl: true,
   },
   {
     id: "1667",
@@ -6571,6 +6574,7 @@ const data2: Protocol[] = [
     twitter: "DotDotDotFi",
     listedAt: 1650804679,
     github: ["dotdot-ellipsis"],
+    deadUrl: true,
   },
   {
     id: "1680",
@@ -7815,7 +7819,7 @@ const data2: Protocol[] = [
     symbol: "BNC",
     url: "https://app.bifrost.io/?channelId=17",
     description:
-      "Bifrost is a staking yield layer that establishes a standardized multi-chain liquid staking rewards infrastructure, delivering composable crypto-native yields for stablecoins, RWAs, and DeFi across various blockchains. Its modular design allows developers to tap into multi-chain staking rewards with one integration, greatly lowering development costs and enhancing user simplicity.",
+      "Bifrost is a staking yield layer that establishes a standardized multi-chain liquid staking rewards infrastructure, delivering composable crypto-native yields and unified liquidity for stablecoins, RWAs, and DeFi across various blockchains. Its modular design allows developers to tap into multi-chain staking rewards with one integration, greatly lowering development costs and enhancing user simplicity.",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-liquid-staking.png`,
     audits: "2",
@@ -7826,10 +7830,18 @@ const data2: Protocol[] = [
     module: "bifrost-staking/index.js",
     twitter: "Bifrost",
     audit_links: [
-      "https://github.com/bifrost-finance/bifrost-wiki/tree/master",
-      "https://tokeninsight.com/en/research/reports/ti-rating-report-bifrost",
+      "https://github.com/bifrost-io/bifrost-wiki/blob/master/slowmist-rep-bifrost-2022-02.pdf",
+      "https://github.com/bifrost-io/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01.pdf",
+      "https://github.com/bifrost-io/bifrost-vETH-2.0/blob/main/audit/SlowMist%20Audit%20Report%20-%20Bifrost%20vETH%202.0.pdf",
+      "https://github.com/bifrost-io/bifrost-wiki/blob/master/slowmist-rep-bifrost-slp-2022-08.pdf",
+      "https://beosin.com/audits/Bifrost_vtoken-voting_202310121750.pdf",
+      "https://beosin.com/audits/Bifrost(vtoken-minting&&slp-v2)_202509251121.pdf",
+      "https://beosin.com/audits/Bifrost(veth-3.0&&slpx-v2)_202509251035.pdf",
+      "https://github.com/oak-security/audit-reports/blob/main/Bifrost/2024-03-11%20Audit%20Report%20-%20Bifrost%20Finance%20Leveraged%20Staking%20v1.0.pdf",
+      "https://docs.bifrost.io/resources/audit-report#common-prefix-audit-report-slpx"
     ],
     listedAt: 1651793295,
+    github: ["bifrost-io"],
     dimensions: {
       fees: "bifrost-liquid-staking"
     }
@@ -8193,6 +8205,7 @@ const data2: Protocol[] = [
     treasury: "spartacus.js",
     twitter: "Spartacus_Fi",
     listedAt: 1652209030,
+    deadUrl: true,
     dimensions: {
       dexs: "spartacus-exchange"
     }
@@ -9029,7 +9042,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Indexes",
     chains: ["Mixin"],
-    module: "bwatch/index.js",
+    module: "dummy.js", //"bwatch/index.js" => ETF price has been stale for 2 years despite market volatility, and there is no channel to contact the team
     twitter: null,
     listedAt: 1653984484,
   },
@@ -14161,12 +14174,12 @@ const data2: Protocol[] = [
   },
   {
     id: "2028",
-    name: "Bifrost Dex",
+    name: "Bifrost DEX",
     address: null,
     symbol: "BNC",
-    url: "https://bifrost.finance",
+    url: "https://app.bifrost.io/swap",
     description:
-      "BIfrost ((https://bifrost.finance) is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+      "BIfrost DEX is a decentralized exchange built into Bifrost Parachain serving as the unified exchange layer for all Bifrost issued Liquid Staking assets serving multiple blockchain ecosystems",
     chain: "Bifrost",
     logo: `${baseIconsUrl}/bifrost-dex.jpg`,
     audits: "2",
@@ -14181,6 +14194,7 @@ const data2: Protocol[] = [
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
       "https://tokeninsight.com/zh/report/2558",
+      "https://beosin.com/audits/Stable-swap_202309291700.pdf"
     ],
     listedAt: 1661595828,
     dimensions: {
@@ -22954,7 +22968,10 @@ const data2: Protocol[] = [
     listedAt: 1673037671,
     dimensions: {
       fees: "thena-v1",
-      dexs: "thena"
+      dexs: {
+        genuineSpikes: [["2026-03-15", "Trading surged due to venus exploit incident on THE market"]],
+        adapter: "thena"
+      }
     }
   },
   {
@@ -24923,6 +24940,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1675781737,
     stablecoins: ["deuterium"],
+    deadUrl: true,
   },
   {
     id: "2511",
@@ -27856,7 +27874,8 @@ const data2: Protocol[] = [
     name: "CoWSwap",
     address: "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
     symbol: "COW",
-    url: "https://swap.cow.fi",
+    url: "https://swap.cow.fi?ref=DEFILLAMA",
+    referralUrl: "https://swap.cow.fi?ref=DEFILLAMA",
     description:
       "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
     chain: "Ethereum",

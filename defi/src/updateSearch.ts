@@ -19,7 +19,7 @@ const splitCamelCase = (str: string) =>
 
 // Build search name variants (no-spaces + camelCase-split) for a list of names, excluding duplicates and the original names
 function buildNameVariants(names: string[]): string[] {
-  const originals = new Set(names.map(n => n.toLowerCase()));
+  const originals = new Set(names.map((n) => n.toLowerCase()));
   const variants = new Set<string>();
   for (const name of names) {
     const noSpaces = name.replace(/\s+/g, "");
@@ -298,6 +298,11 @@ async function getAllCurrentSearchResults(index: string) {
       }
     );
 
+    if (!Array.isArray(res?.results)) {
+      console.log("Unexpected response while fetching search results:", res);
+      throw new Error("Failed to fetch search results from Search API");
+    }
+
     allResults.push(...res.results);
 
     // Check if we've fetched all results
@@ -333,12 +338,12 @@ for (const p of parentProtocolsList) {
 function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
-  tastyMetrics: Record<string, number>,
+  tastyMetrics: Record<string, number>
 ) {
   const otherPages = [
-  {"name": "LlamaFeed","route": "https://llamafeed.io"},
-  {"name": "Etherscan","route": "https://etherscan.io/"},
-].map(page=>({
+    { name: "LlamaFeed", route: "https://llamafeed.io" },
+    { name: "Etherscan", route: "https://etherscan.io/" },
+  ].map((page) => ({
     id: `others_${normalize(page.name)}`,
     name: page.name,
     route: page.route,
@@ -355,7 +360,8 @@ function buildDirectoryResults(
   for (const parent of tvlData.parentProtocols) {
     const route = `/protocol/${sluggifyString(parent.name)}`;
     const prevNames = previousNamesMap.get(parent.name);
-    if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
+    if (parent.referralUrl || parent.url)
+      urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
     const allNames = [parent.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
     if (parent.deadUrl) deadUrlsBlacklist.add(parent.url);
@@ -369,15 +375,16 @@ function buildDirectoryResults(
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
-      v: tastyMetrics[route] ?? 0
+      v: tastyMetrics[route] ?? 0,
     });
   }
 
   for (const protocol of tvlData.protocols) {
     const prevNames = previousNamesMap.get(protocol.name) ?? [];
-    const protocolUrl = protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
+    const protocolUrl =
+      protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
     if (protocolUrl && urlToIndex.has(protocolUrl)) {
-      if(prevNames.length > 0){
+      if (prevNames.length > 0) {
         // Child shares URL with an existing entry — merge its previousNames into the parent
         const parentIdx = urlToIndex.get(protocolUrl)!;
         const parentEntry = directoryResults[parentIdx];
@@ -414,18 +421,22 @@ function buildDirectoryResults(
   }
 
   const cexs: Array<SearchResult> = cexsData
-  .filter((c) => c.slug && c.url).map(cex=>({
-    id: `cex_${normalize(cex.name)}`,
-    name: cex.name,
-    ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
-    route: cex.url!,
-    logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
-    v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
-  }));
+    .filter((c) => c.slug && c.url)
+    .map((cex) => ({
+      id: `cex_${normalize(cex.name)}`,
+      name: cex.name,
+      ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
+      route: cex.url!,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+      v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
+    }));
 
-  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
-  const maxV = Math.max(...allResults.map(r => r.v));
-  const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
+  const allResults = directoryResults
+    .concat(otherPages)
+    .concat(cexs)
+    .filter((r) => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
+  const maxV = Math.max(...allResults.map((r) => r.v));
+  const swapEntry = allResults.find((r) => r.route === "https://swap.defillama.com");
   if (swapEntry) swapEntry.v = maxV;
   return allResults;
 }
@@ -444,7 +455,8 @@ async function generateSearchList() {
     coinsData,
     datsData,
     rwaListData,
-    rwaTickerToNameMap
+    rwaTickerToNameMap,
+    equitiesData,
   ]: [
     {
       chains: string[];
@@ -464,12 +476,13 @@ async function generateSearchList() {
       institutionMetadata: Record<string, { name: string; ticker: string }>;
     },
     {
-      tickers: Array<string>
-      platforms: Array<string>
-      categories: Array<string>
-      chains: Array<string>
+      tickers: Array<string>;
+      platforms: Array<string>;
+      categories: Array<string>;
+      chains: Array<string>;
     },
-    Record<string, string>
+    Record<string, string>,
+    Array<{ name: string; ticker: string }>
   ] = await Promise.all([
     cachedJSONPull("https://api.llama.fi/lite/protocols2"),
     cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
@@ -481,20 +494,32 @@ async function generateSearchList() {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
       defaultResponse: [],
-    })
-      .then((res: Array<{ x: string; y: number }>) => {
-        const final = {} as Record<string, number>;
-        for (const xy of res) {
-          final[xy.x] = xy.y;
-        }
-        return final;
-      }),
+    }).then((res: Array<{ x: string; y: number }>) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching tasty metrics:", res);
+        throw new Error("Failed to fetch tasty metrics from Tasty API");
+        // return {};
+      }
+
+      const final = {} as Record<string, number>;
+      for (const xy of res) {
+        final[xy.x] = xy.y;
+      }
+      return final;
+    }),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
     cachedJSONPull("https://ask.llama.fi/coins"),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/list`),
-    cachedJSONPull({ endpoint: `https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/rwa/current`, defaultResponse: [] }).then(res => {
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/dat/institutions`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/list`),
+    cachedJSONPull({
+      endpoint: `https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/current`,
+      defaultResponse: [],
+    }).then((res) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching RWA ticker to name map:", res);
+        throw new Error("Failed to fetch RWA ticker to name map from RWA API");
+      }
       const final = {} as Record<string, string>;
       for (const rwa of res) {
         if (final[rwa.ticker]) continue;
@@ -502,6 +527,7 @@ async function generateSearchList() {
       }
       return final;
     }),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
   ]);
   const parentTvl = {} as any;
   const chainTvl = {} as any;
@@ -932,7 +958,6 @@ async function generateSearchList() {
       });
     }
   }
-
   const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
     .map((c) => ({
@@ -969,7 +994,7 @@ async function generateSearchList() {
   }
 
   const dats: Array<SearchResult> = [];
-  for (const asset in (datsData.assetMetadata ?? {})) {
+  for (const asset in datsData.assetMetadata ?? {}) {
     dats.push({
       id: `dat_asset_${normalize(datsData.assetMetadata[asset].name)}`,
       name: datsData.assetMetadata[asset].name,
@@ -979,7 +1004,7 @@ async function generateSearchList() {
       type: "DAT",
     });
   }
-  for (const institution in (datsData.institutionMetadata ?? {})) {
+  for (const institution in datsData.institutionMetadata ?? {}) {
     dats.push({
       id: `dat_institution_${normalize(datsData.institutionMetadata[institution].ticker)}`,
       name: datsData.institutionMetadata[institution].name,
@@ -991,7 +1016,6 @@ async function generateSearchList() {
       type: "DAT",
     });
   }
-
   const rwaList: Array<SearchResult> = [];
   for (const ticker of rwaListData.tickers) {
     const name = rwaTickerToNameMap[ticker];
@@ -1024,55 +1048,46 @@ async function generateSearchList() {
       type: "RWA",
     });
   }
+  const equities: Array<SearchResult> = equitiesData.map((equity) => ({
+    id: `equity_${normalize(equity.name)}_${normalize(equity.ticker)}`,
+    name: equity.name,
+    symbol: equity.ticker,
+    logo: `https://icons.llamao.fi/icons/equities/${equity.ticker}?w=48&h=48`,
+    route: `/equities/${equity.ticker.toLowerCase()}`,
+    v: tastyMetrics[`/equities/${equity.ticker.toLowerCase()}`] ?? 0,
+    type: "Equities",
+  }));
 
-  const results = {
-    chains: chains.sort((a, b) => b.v - a.v),
-    protocols: protocols.sort((a, b) => b.v - a.v),
-    stablecoins: stablecoins.sort((a, b) => b.v - a.v),
-    bridges: bridges.sort((a, b) => b.v - a.v),
-    metrics: metrics.sort((a, b) => b.v - a.v),
-    tools: tools.sort((a, b) => b.v - a.v),
-    categories: categories.sort((a, b) => b.v - a.v),
-    tags: tags.sort((a, b) => b.v - a.v),
-    cexs: cexs.sort((a, b) => b.v - a.v),
-    otherPages: otherPages.sort((a, b) => b.v - a.v),
-    dats: dats.sort((a, b) => b.v - a.v),
-    rwaList: rwaList.sort((a, b) => b.v - a.v),
-  };
+  const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
+  const sortedGroups = [chains, protocols, stablecoins, bridges, metrics, tools, categories, tags, cexs, otherPages, dats, rwaList, equities] as const;
+  for (const group of sortedGroups) group.sort(sortDesc);
 
   return {
-    results: results.chains
-      .concat(results.protocols)
-      .concat(results.stablecoins)
-      .concat(results.bridges)
-      .concat(results.metrics)
-      .concat(results.tools)
-      .concat(results.categories)
-      .concat(results.tags)
-      .concat(results.cexs)
-      .concat(results.otherPages)
-      .concat(subProtocols)
-      .concat(subChains)
-      .concat(coins)
-      .concat(results.dats)
-      .concat(results.rwaList)
-      .map((result: any) => ({
-        ...result,
-        r: result.r ?? 1,
-      })),
+    results: [
+      ...chains,
+      ...protocols,
+      ...stablecoins,
+      ...bridges,
+      ...metrics,
+      ...tools,
+      ...categories,
+      ...tags,
+      ...cexs,
+      ...otherPages,
+      ...subProtocols,
+      ...subChains,
+      ...coins,
+      ...dats,
+      ...rwaList,
+      ...equities,
+    ].map((result: any) => ({
+      ...result,
+      r: result.r ?? 1,
+    })),
     directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
-    topResults: results.chains
-      .slice(0, 3)
-      .concat(results.protocols.slice(0, 3))
-      .concat(results.stablecoins.slice(0, 3))
-      .concat(results.metrics.slice(0, 3))
-      .concat(results.categories.slice(0, 3))
-      .concat(results.tools.slice(0, 3))
-      .concat(results.tags.slice(0, 3))
-      .map((r) => ({
-        ...r,
-        v: 0,
-      }))
+    topResults: [chains, protocols, stablecoins, metrics, categories, tools, tags]
+      .flatMap((g) => g.slice(0, 3))
+      .map((r) => ({ ...r, v: 0 })),
   };
 }
 

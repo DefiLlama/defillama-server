@@ -19,7 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
-import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData } from './utils';
+import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData, normalizeRwaMetadataForApiInPlace } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
@@ -513,7 +513,7 @@ type AggregateStatsBucketWithIssuers = Omit<AggregateStatsBucket, "assetIssuers"
 };
 
 /**
- * Chain buckets are DISJOINT so the UI can sum without double-counting.
+ * Disjoint buckets so the UI can sum without double-counting.
  *
  * Frontend toggle computation:
  * - both off: base
@@ -521,11 +521,11 @@ type AggregateStatsBucketWithIssuers = Omit<AggregateStatsBucket, "assetIssuers"
  * - gov on only: base + governanceOnly + stablecoinsAndGovernance
  * - both on: base + stablecoinsOnly + governanceOnly + stablecoinsAndGovernance
  */
-type AggregateStatsChainBucket = {
+type AggregateStatsBucketGroup = {
   base: AggregateStatsBucketWithIssuers;
   stablecoinsOnly: AggregateStatsBucketWithIssuers;
   governanceOnly: AggregateStatsBucketWithIssuers;
-  stablecoinsAndGovernance: AggregateStatsBucketWithIssuers; // intersection (stablecoin && governance)
+  stablecoinsAndGovernance: AggregateStatsBucketWithIssuers;
 };
 
 type AggregateStats = {
@@ -534,9 +534,10 @@ type AggregateStats = {
   totalDefiActiveTvl: number;
   assetCount: number;
   assetIssuers: number;
-  byCategory: { [category: string]: AggregateStatsBucket };
-  byChain: { [chain: string]: AggregateStatsChainBucket };
-  byPlatform: { [platform: string]: AggregateStatsBucket };
+  byCategory: { [category: string]: AggregateStatsBucketGroup };
+  byChain: { [chain: string]: AggregateStatsBucketGroup };
+  byPlatform: { [platform: string]: AggregateStatsBucketGroup };
+  byAssetGroup: { [assetGroup: string]: AggregateStatsBucketGroup };
 };
 
 type AggregateStatsBucketInternal = {
@@ -634,17 +635,37 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     return total;
   };
 
-  const byCategory: { [category: string]: AggregateStatsBucketInternal } = {};
-  const byChain: {
-    [chain: string]: {
-      base: AggregateStatsBucketInternal;
-      stablecoinsOnly: AggregateStatsBucketInternal;
-      governanceOnly: AggregateStatsBucketInternal;
-      stablecoinsAndGovernance: AggregateStatsBucketInternal;
-    };
-  } = {};
+  type BucketGroupInternal = {
+    base: AggregateStatsBucketInternal;
+    stablecoinsOnly: AggregateStatsBucketInternal;
+    governanceOnly: AggregateStatsBucketInternal;
+    stablecoinsAndGovernance: AggregateStatsBucketInternal;
+  };
 
-  const byPlatform: { [platform: string]: AggregateStatsBucketInternal } = {};
+  const makeBucketGroup = (): BucketGroupInternal => ({
+    base: makeAgg(),
+    stablecoinsOnly: makeAgg(),
+    governanceOnly: makeAgg(),
+    stablecoinsAndGovernance: makeAgg(),
+  });
+
+  const addToBucketGroup = (
+    group: BucketGroupInternal,
+    delta: { onChainMcap: any; activeMcap: any; defiActiveTvl: any },
+    issuer: string | null | undefined,
+    stablecoin: boolean,
+    governance: boolean,
+  ) => {
+    if (stablecoin && governance) addToAgg(group.stablecoinsAndGovernance, delta, issuer);
+    else if (stablecoin) addToAgg(group.stablecoinsOnly, delta, issuer);
+    else if (governance) addToAgg(group.governanceOnly, delta, issuer);
+    else addToAgg(group.base, delta, issuer);
+  };
+
+  const byCategory: { [category: string]: BucketGroupInternal } = {};
+  const byChain: { [chain: string]: BucketGroupInternal } = {};
+  const byPlatform: { [platform: string]: BucketGroupInternal } = {};
+  const byAssetGroup: { [assetGroup: string]: BucketGroupInternal } = {};
 
   let totalOnChainMcap = 0;
   let totalActiveMcap = 0;
@@ -681,39 +702,34 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     totalActiveMcap += assetActiveTotal;
     totalDefiActiveTvl += assetDefiActiveTotal;
 
-    // Category aggregation (note: assets can have multiple categories; totals may exceed global totals)
+    const assetDelta = { onChainMcap: assetOnChainTotal, activeMcap: assetActiveTotal, defiActiveTvl: assetDefiActiveTotal };
+
+    // Category aggregation: assets with multiple categories have their FULL values
+    // added to each category (not split). Category totals will exceed global totals.
     const categories: string[] = Array.isArray(item.category) ? item.category : [];
     for (const cat of categories) {
       if (!cat) continue;
-      if (!byCategory[cat]) byCategory[cat] = makeAgg();
-      addToAgg(
-        byCategory[cat],
-        {
-          onChainMcap: assetOnChainTotal,
-          activeMcap: assetActiveTotal,
-          defiActiveTvl: assetDefiActiveTotal,
-        },
-        issuer
-      );
+      if (!byCategory[cat]) byCategory[cat] = makeBucketGroup();
+      addToBucketGroup(byCategory[cat], assetDelta, issuer, stablecoin, governance);
     }
 
     // Platform aggregation (ONLY when asset has a valid parentPlatform; never synthesize "Unknown")
     const platform =
       typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
     if (platform && platform !== "Unknown") {
-      if (!byPlatform[platform]) byPlatform[platform] = makeAgg();
-      addToAgg(
-        byPlatform[platform],
-        {
-          onChainMcap: assetOnChainTotal,
-          activeMcap: assetActiveTotal,
-          defiActiveTvl: assetDefiActiveTotal,
-        },
-        issuer
-      );
+      if (!byPlatform[platform]) byPlatform[platform] = makeBucketGroup();
+      addToBucketGroup(byPlatform[platform], assetDelta, issuer, stablecoin, governance);
     }
 
-    // Chain aggregation + stablecoin/governance subgroups
+    // AssetGroup aggregation
+    const assetGroup =
+      typeof item.assetGroup === "string" && item.assetGroup.trim() ? item.assetGroup.trim() : null;
+    if (assetGroup) {
+      if (!byAssetGroup[assetGroup]) byAssetGroup[assetGroup] = makeBucketGroup();
+      addToBucketGroup(byAssetGroup[assetGroup], assetDelta, issuer, stablecoin, governance);
+    }
+
+    // Chain aggregation (per-chain values, not asset totals)
     const chains = new Set<string>([
       ...Object.keys(onChainMcapByChain || {}),
       ...Object.keys(activeMcapByChain || {}),
@@ -722,79 +738,42 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
 
     for (const chain of chains) {
       if (!chain) continue;
-      const onChain = toFiniteNumberOrZero(onChainMcapByChain?.[chain]);
-      const active = toFiniteNumberOrZero(activeMcapByChain?.[chain]);
-      const tvl = sumProtocolMap(defiActiveTvlByChain?.[chain]);
-
-      if (!byChain[chain]) {
-        byChain[chain] = {
-          base: makeAgg(),
-          stablecoinsOnly: makeAgg(),
-          governanceOnly: makeAgg(),
-          stablecoinsAndGovernance: makeAgg(),
-        };
-      }
-
-      const chainAgg = byChain[chain];
-
-      // Disjoint buckets for UI toggles without double-counting:
-      // - base excludes stablecoins & governance by default
-      if (stablecoin && governance) {
-        addToAgg(
-          chainAgg.stablecoinsAndGovernance,
-          { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl },
-          issuer
-        );
-      } else if (stablecoin) {
-        addToAgg(chainAgg.stablecoinsOnly, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
-      } else if (governance) {
-        addToAgg(chainAgg.governanceOnly, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
-      } else {
-        addToAgg(chainAgg.base, { onChainMcap: onChain, activeMcap: active, defiActiveTvl: tvl }, issuer);
-      }
+      if (!byChain[chain]) byChain[chain] = makeBucketGroup();
+      const chainDelta = {
+        onChainMcap: toFiniteNumberOrZero(onChainMcapByChain?.[chain]),
+        activeMcap: toFiniteNumberOrZero(activeMcapByChain?.[chain]),
+        defiActiveTvl: sumProtocolMap(defiActiveTvlByChain?.[chain]),
+      };
+      addToBucketGroup(byChain[chain], chainDelta, issuer, stablecoin, governance);
     }
   }
 
-  const outByCategory: { [category: string]: AggregateStatsBucket } = {};
-  for (const [k, v] of Object.entries(byCategory)) {
-    outByCategory[k] = {
-      onChainMcap: v.onChainMcap,
-      activeMcap: v.activeMcap,
-      defiActiveTvl: v.defiActiveTvl,
-      assetCount: v.assetCount,
-      assetIssuers: v.assetIssuers.size,
-    };
-  }
+  const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
+    onChainMcap: a.onChainMcap,
+    activeMcap: a.activeMcap,
+    defiActiveTvl: a.defiActiveTvl,
+    assetCount: a.assetCount,
+    assetIssuers: Array.from(a.assetIssuers).sort(),
+  });
 
-  const outByPlatform: { [platform: string]: AggregateStatsBucket } = {};
-  for (const [k, v] of Object.entries(byPlatform)) {
-    outByPlatform[k] = {
-      onChainMcap: v.onChainMcap,
-      activeMcap: v.activeMcap,
-      defiActiveTvl: v.defiActiveTvl,
-      assetCount: v.assetCount,
-      assetIssuers: v.assetIssuers.size,
-    };
-  }
+  const serializeBucketGroup = (g: BucketGroupInternal): AggregateStatsBucketGroup => ({
+    base: toAggOut(g.base),
+    stablecoinsOnly: toAggOut(g.stablecoinsOnly),
+    governanceOnly: toAggOut(g.governanceOnly),
+    stablecoinsAndGovernance: toAggOut(g.stablecoinsAndGovernance),
+  });
 
-  const outByChain: { [chain: string]: AggregateStatsChainBucket } = {};
+  const outByCategory: { [k: string]: AggregateStatsBucketGroup } = {};
+  for (const k in byCategory) outByCategory[k] = serializeBucketGroup(byCategory[k]);
 
-  for (const [chain, v] of Object.entries(byChain)) {
-    const toAggOut = (a: AggregateStatsBucketInternal): AggregateStatsBucketWithIssuers => ({
-      onChainMcap: a.onChainMcap,
-      activeMcap: a.activeMcap,
-      defiActiveTvl: a.defiActiveTvl,
-      assetCount: a.assetCount,
-      assetIssuers: Array.from(a.assetIssuers).sort(),
-    });
+  const outByAssetGroup: { [k: string]: AggregateStatsBucketGroup } = {};
+  for (const k in byAssetGroup) outByAssetGroup[k] = serializeBucketGroup(byAssetGroup[k]);
 
-    outByChain[chain] = {
-      base: toAggOut(v.base),
-      stablecoinsOnly: toAggOut(v.stablecoinsOnly),
-      governanceOnly: toAggOut(v.governanceOnly),
-      stablecoinsAndGovernance: toAggOut(v.stablecoinsAndGovernance),
-    };
-  }
+  const outByPlatform: { [k: string]: AggregateStatsBucketGroup } = {};
+  for (const k in byPlatform) outByPlatform[k] = serializeBucketGroup(byPlatform[k]);
+
+  const outByChain: { [k: string]: AggregateStatsBucketGroup } = {};
+  for (const k in byChain) outByChain[k] = serializeBucketGroup(byChain[k]);
 
   console.log(`Generated aggregate stats in ${Date.now() - startTime}ms`);
 
@@ -807,71 +786,79 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     byCategory: outByCategory,
     byChain: outByChain,
     byPlatform: outByPlatform,
+    byAssetGroup: outByAssetGroup,
   };
 }
 
 
-function generateList(currentData: any[]): {
+function generateList(currentData: any[], stats: AggregateStats): {
   tickers: string[];
   platforms: string[];
   chains: string[];
   categories: string[];
+  assetGroups: string[];
   idMap: { [name: string]: string };
 } {
   console.log('Generating list data...');
   const startTime = Date.now();
 
   const tickerMcap: { [ticker: string]: number } = {};
-  const platformMcap: { [platform: string]: number } = {};
-  const chainMcap: { [chain: string]: number } = {};
-  const categoryMcap: { [category: string]: number } = {};
   const idMap: { [ticker: string]: string } = {};
 
-  currentData.forEach((item: any) => {
-    // Calculate total on-chain marketcap for this asset
+  for (const item of currentData) {
+    const assetType = typeof item.type === "string" ? item.type.trim() : "";
+    // if (assetType.toLowerCase() === "wrapper") continue;
+
     let assetMcap = 0;
-    if (item.onChainMcap && typeof item.onChainMcap === 'object') {
-      Object.entries(item.onChainMcap).forEach(([chain, value]) => {
-        const numValue = Number(value);
-        if (!isNaN(numValue)) {
-          assetMcap += numValue;
-          // Aggregate chain on-chain marketcap
-          chainMcap[chain] = (chainMcap[chain] || 0) + numValue;
+    const mcapObj = item.onChainMcap;
+    if (mcapObj && typeof mcapObj === 'object') {
+      if (Array.isArray(mcapObj.breakdown)) {
+        for (const entry of mcapObj.breakdown) {
+          if (!Array.isArray(entry) || entry.length < 2) continue;
+          assetMcap += toFiniteNumberOrZero(entry[1]);
         }
-      });
+      } else {
+        for (const k in mcapObj) {
+          if (k === "total" || k === "breakdown") continue;
+          assetMcap += toFiniteNumberOrZero(mcapObj[k]);
+        }
+      }
     }
 
-    // Aggregate ticker mcap
     if (item.ticker) {
       tickerMcap[item.ticker] = (tickerMcap[item.ticker] || 0) + assetMcap;
       idMap[item.ticker] = item.id;
     }
+  }
 
-    // Aggregate platform mcap (ONLY when asset has a valid parentPlatform; never include "Unknown")
-    const parentPlatform =
-      typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
-    if (parentPlatform && parentPlatform !== "Unknown") {
-      platformMcap[parentPlatform] = (platformMcap[parentPlatform] || 0) + assetMcap;
-    }
+  const tickerPairs: [string, number][] = [];
+  for (const k in tickerMcap) tickerPairs.push([k, tickerMcap[k]]);
+  const tickersSorted = tickerPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-    // Aggregate category mcap
-    const categories = item.category || [];
-    categories.forEach((cat: string) => {
-      categoryMcap[cat] = (categoryMcap[cat] || 0) + assetMcap;
-    });
-  });
+  // Chains: sorted by base onChainMcap only (excludes stablecoins & governance tokens)
+  const chainPairs: [string, number][] = [];
+  for (const k in stats.byChain) chainPairs.push([k, stats.byChain[k].base.onChainMcap]);
+  const chainsSorted = chainPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
-  // Sort by mcap descending and return as arrays of strings
-  const sortByMcap = (obj: { [key: string]: number }): string[] =>
-    Object.entries(obj)
-      .sort((a, b) => b[1] - a[1])
-      .map(([key]) => key);
+  // Platforms / categories / assetGroups: same as chains — base onChainMcap only
+  const platformPairs: [string, number][] = [];
+  for (const k in stats.byPlatform) platformPairs.push([k, stats.byPlatform[k].base.onChainMcap]);
+  const platformsSorted = platformPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
+
+  const categoryPairs: [string, number][] = [];
+  for (const k in stats.byCategory) categoryPairs.push([k, stats.byCategory[k].base.onChainMcap]);
+  const categoriesSorted = categoryPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
+
+  const assetGroupPairs: [string, number][] = [];
+  for (const k in stats.byAssetGroup) assetGroupPairs.push([k, stats.byAssetGroup[k].base.onChainMcap]);
+  const assetGroupsSorted = assetGroupPairs.sort((a, b) => b[1] - a[1]).map(([k]) => k);
 
   const list = {
-    tickers: sortByMcap(tickerMcap),
-    platforms: sortByMcap(platformMcap),
-    chains: sortByMcap(chainMcap),
-    categories: sortByMcap(categoryMcap),
+    tickers: tickersSorted,
+    platforms: platformsSorted,
+    chains: chainsSorted,
+    categories: categoriesSorted,
+    assetGroups: assetGroupsSorted,
     idMap,
   };
 
@@ -907,11 +894,13 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const byChain: { [chain: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
   const byCategory: { [category: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
   const byPlatform: { [platform: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
+  const byAssetGroup: { [assetGroup: string]: { [timestamp: number]: HistoricalDataPoint } } = {};
 
   // breakdown by asset
   const byChainTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byCategoryTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
   const byPlatformTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
+  const byAssetGroupTickerBreakdown: { [category: string]: HistoricalBreakdownDataPoint } = {};
 
   // charts breakdown
   // keys: onChainMcap, activeMcap, defiActiveTvl
@@ -923,6 +912,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const categoryBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
   // timestamp => assetType => key => platform
   const platformBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+  // timestamp => assetType => key => assetGroup
+  const assetGroupBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
 
   function ensureDataPoint(
     map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } },
@@ -998,6 +989,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
 
     const categories = m.data.category || [];
     const platform = m.data.parentPlatform;
+    const assetGroup = typeof m.data.assetGroup === "string" && m.data.assetGroup.trim() ? m.data.assetGroup.trim() : null;
 
     for (const [timestampStr, record] of Object.entries(pgCache)) {
       const timestamp = Number(timestampStr);
@@ -1039,7 +1031,8 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       allDpa.activeMcap[timestamp][ticker] += totalActiveMcap;
       allDpa.defiActiveTvl[timestamp][ticker] += totalTvl;
 
-      // Aggregate by category
+      // Aggregate by category: full asset values are added to every category the
+      // asset belongs to (not split), so category totals will exceed global totals.
       const categoryItems: Record<string, any> = {};
       for (const cat of categories) {
         const dp = ensureDataPoint(byCategory, cat, timestamp);
@@ -1077,10 +1070,30 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
         platformItems[platform].defiActiveTvl += totalTvl;
       }
       
+      // Aggregate by assetGroup
+      const assetGroupItems: Record<string, any> = {};
+      if (assetGroup) {
+        const dp = ensureDataPoint(byAssetGroup, assetGroup, timestamp);
+        dp.onChainMcap += totalOnChainMcap;
+        dp.activeMcap += totalActiveMcap;
+        dp.defiActiveTvl += totalTvl;
+
+        const dpa = ensureBreakdownDataPoint(byAssetGroupTickerBreakdown, assetGroup, timestamp, ticker);
+        dpa.onChainMcap[timestamp][ticker] += totalOnChainMcap;
+        dpa.activeMcap[timestamp][ticker] += totalActiveMcap;
+        dpa.defiActiveTvl[timestamp][ticker] += totalTvl;
+
+        assetGroupItems[assetGroup] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+        assetGroupItems[assetGroup].onChainMcap += totalOnChainMcap;
+        assetGroupItems[assetGroup].activeMcap += totalActiveMcap;
+        assetGroupItems[assetGroup].defiActiveTvl += totalTvl;
+      }
+
       // update chart breakdown
       updateBreakdownAndAssetTypes(chainBreakdownAndAssetTypes, m, timestamp, chains);
       updateBreakdownAndAssetTypes(categoryBreakdownAndAssetTypes, m, timestamp, categoryItems);
       updateBreakdownAndAssetTypes(platformBreakdownAndAssetTypes, m, timestamp, platformItems);
+      updateBreakdownAndAssetTypes(assetGroupBreakdownAndAssetTypes, m, timestamp, assetGroupItems);
     }
     processedCount++;
   }
@@ -1105,6 +1118,26 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       }))
       .sort((a, b) => a.timestamp - b.timestamp);
   }
+
+  // Detect slug collisions: if two raw keys produce the same slug, the second
+  // storeRouteData call silently overwrites the first, losing data. Metadata
+  // normalization should prevent this, but log a warning as a safety net.
+  function warnSlugCollisions(label: string, rawKeys: string[], toSlug: (k: string) => string) {
+    const seen: { [slug: string]: string } = {};
+    for (const raw of rawKeys) {
+      const slug = toSlug(raw);
+      if (seen[slug] && seen[slug] !== raw) {
+        console.error(`[WARN] Slug collision in ${label}: "${seen[slug]}" and "${raw}" both map to "${slug}". Data will be overwritten.`);
+      }
+      seen[slug] = raw;
+    }
+  }
+
+  const chainSlug = (k: string) => rwaSlug(getChainLabelFromKey(k));
+  warnSlugCollisions('byChain', Object.keys(byChain), chainSlug);
+  warnSlugCollisions('byCategory', Object.keys(byCategory), rwaSlug);
+  warnSlugCollisions('byPlatform', Object.keys(byPlatform), rwaSlug);
+  warnSlugCollisions('byAssetGroup', Object.keys(byAssetGroup), rwaSlug);
 
   // Store chain charts (includes "All" and individual chains)
   for (const [chain, timestampMap] of Object.entries(byChain)) {
@@ -1146,7 +1179,7 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     });
   }
   
-  // Store chain charts - category breakdown by asset types
+  // Store category charts - category breakdown by asset types
   const rawCategoryBreakdownAndAssetTypes = toTimeseriesBreakdownChart(categoryBreakdownAndAssetTypes);
   for (const [rawKey, rawData] of Object.entries(rawCategoryBreakdownAndAssetTypes)) {
     await storeRouteData(`charts/category-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
@@ -1168,14 +1201,36 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     });
   }
   
-  // Store chain charts - platform breakdown by asset types
+  // Store platform charts - platform breakdown by asset types
   const rawPlatformBreakdownAndAssetTypes = toTimeseriesBreakdownChart(platformBreakdownAndAssetTypes);
   for (const [rawKey, rawData] of Object.entries(rawPlatformBreakdownAndAssetTypes)) {
     await storeRouteData(`charts/platform-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
   }
 
+  // Store assetGroup charts
+  for (const [ag, timestampMap] of Object.entries(byAssetGroup)) {
+    const key = rwaSlug(ag);
+    await storeRouteData(`charts/assetGroup/${key}.json`, toSortedArray(timestampMap));
+  }
+
+  // Store assetGroup charts - breakdown by tickers
+  for (const [ag, dataMap] of Object.entries(byAssetGroupTickerBreakdown)) {
+    const key = rwaSlug(ag);
+    await storeRouteData(`charts/assetGroup-ticker-breakdown/${key}.json`, {
+      onChainMcap: toSortedArrayBreakdown(dataMap.onChainMcap),
+      activeMcap: toSortedArrayBreakdown(dataMap.activeMcap),
+      defiActiveTvl: toSortedArrayBreakdown(dataMap.defiActiveTvl),
+    });
+  }
+
+  // Store assetGroup breakdown by asset types
+  const rawAssetGroupBreakdownAndAssetTypes = toTimeseriesBreakdownChart(assetGroupBreakdownAndAssetTypes);
+  for (const [rawKey, rawData] of Object.entries(rawAssetGroupBreakdownAndAssetTypes)) {
+    await storeRouteData(`charts/assetGroup-breakdown/${rawKey}.json`, (rawData as Array<any>).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1));
+  }
+
   console.log(`Generated aggregated historical charts in ${Date.now() - startTime}ms`);
-  console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}`);
+  console.log(`  Processed ${processedCount} assets. Chains: ${Object.keys(byChain).length}, Categories: ${Object.keys(byCategory).length}, Platforms: ${Object.keys(byPlatform).length}, AssetGroups: ${Object.keys(byAssetGroup).length}`);
 }
 
 function toTimeseriesBreakdownChart(data: any, chainLabel?: boolean): any {
@@ -1214,8 +1269,13 @@ async function main() {
     console.log('Initializing database connection...');
     await initPG();
 
-    // Get metadata for ID map and historical generation
+    // Get metadata for ID map and historical generation.
+    // Normalize in-place so category names, chains, etc. have consistent whitespace.
+    // Raw DB metadata can contain newlines/extra spaces (e.g. "Stablecoins\n  backed by RWAs")
+    // which would create separate aggregation keys that slugify identically, causing
+    // one set of chart data to silently overwrite the other when saved to disk.
     const metadata = await fetchMetadataPG();
+    metadata.forEach((m: any) => { if (m.data) normalizeRwaMetadataForApiInPlace(m.data); });
     console.log(`Fetched metadata for ${metadata.length} RWA assets`);
 
     // Generate current data
@@ -1238,6 +1298,10 @@ async function main() {
     const stats = generateAggregateStats(currentData);
     await storeRouteData('stats.json', stats);
 
+    // Generate list immediately after stats so they stay in sync
+    const list = generateList(currentData, stats);
+    await storeRouteData('list.json', list);
+
     // Generate historical data incrementally
     const { updatedIds, totalRecords } = await generateAllHistoricalDataIncremental(metadata);
     console.log(`Historical data: updated ${updatedIds} IDs with ${totalRecords} records`);
@@ -1247,10 +1311,6 @@ async function main() {
 
     // Generate aggregated historical charts by chain, category, platform
     await generateAggregatedHistoricalCharts(metadata);
-
-    // Generate lists of tickers, platforms, chains, categories sorted by mcap
-    const list = generateList(currentData);
-    await storeRouteData('list.json', list);
 
     console.log('='.repeat(60));
     console.log(`RWA Cron Job Completed in ${Date.now() - totalStartTime}ms`);

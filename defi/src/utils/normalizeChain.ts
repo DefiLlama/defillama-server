@@ -185,6 +185,7 @@ export const chainCoingeckoIds = {
     github: ["polynetwork"],
     twitter: "PolyNetwork2",
     url: "https://www.poly.network/#/",
+    deadUrl: true,
   },
   "Conflux": {
     geckoId: "conflux-token",
@@ -1506,7 +1507,7 @@ export const chainCoingeckoIds = {
     cmcId: "1831",
     url: "https://bch.info/en/",
     dimensions: {
-      'active-users': 'chain#bch' 
+      'active-users': 'bch' 
     }
   },
   "Litecoin": {
@@ -2229,8 +2230,8 @@ export const chainCoingeckoIds = {
     url: "https://polygon.technology/",
     dimensions: {
       fees: "polygon-zkevm",
-      'active-users': 'chain#polygon_zkevm',
-      'new-users': 'chain#polygon_zkevm',
+      'active-users': 'polygon_zkevm',
+      'new-users': 'polygon_zkevm',
     },
   },
   "Meta": {
@@ -2374,6 +2375,14 @@ export const chainCoingeckoIds = {
     symbol: "CCD",
     cmcId: "18031",
     github: ["Concordium"],
+  },
+  "Chia": {
+    geckoId: "chia",
+    symbol: "XCH",
+    cmcId: "9258",
+    github: ["Chia-Network"],
+    twitter: "chia_project",
+    url: "https://www.chia.net/",
   },
   "Chihuahua": {
     geckoId: "chihuahua-token",
@@ -2864,6 +2873,7 @@ export const chainCoingeckoIds = {
     twitter: "ZKFCommunity",
     url: "https://zkfair.io/",
     chainId: 42766,
+    deadUrl: true,
   },
   "CMP": {
     geckoId: "caduceus",
@@ -3145,7 +3155,7 @@ export const chainCoingeckoIds = {
     chainId: 13371,
     dimensions: {
       fees: "imx",
-      'nft-volume': 'chain#immutablex',
+      'nft-volume': 'immutablex',
     },
   },
   "Zora": {
@@ -5108,7 +5118,7 @@ export const chainCoingeckoIds = {
     twitter: "tradeparadex",
     url: "https://app.paradex.trade/r/defillama",
   },
-  "edgeX": {
+  "edgeX L1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5763,6 +5773,62 @@ export const chainCoingeckoIds = {
     twitter: "NeonyExchange",
     url: "https://www.neony.exchange/",
   },
+  "Tempo": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "tempo",
+    url: "https://tempo.xyz/",
+    chainId: 4217,
+  },
+  "Everclear": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "EverclearOrg",
+    url: "https://www.everclear.org/",
+    chainId: 25327,
+  },
+  "Space and Time": {
+    geckoId: "space-and-time",
+    symbol: "SXT",
+    cmcId: "36405",
+    twitter: "spaceandtime",
+    url: "https://www.spaceandtime.io/",
+  },
+  "Canton": {
+    geckoId: "canton-network",
+    symbol: "CC",
+    cmcId: "37263",
+    twitter: "CantonNetwork",
+    url: "https://www.canton.network/",
+  },
+  "Hotstuff": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "tradehotstuff",
+    url: "https://www.hotstuff.trade/",
+  },
+  "Igra": {
+    geckoId: null,
+    symbol: "IGRA",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 38833,
+    github: ["IgraLabs"],
+    twitter: "IgraNetwork",
+    url: "https://igralabs.com",
+  },
+  /*"BlockDAG": {
+    geckoId: "blockdag",
+    symbol: "BDAG",
+    cmcId: "31162",
+    twitter: "blockdagnetwork",
+    url: "https://blockdag.network/", // url flagged as malicious by phantom wallet
+  },*/
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5779,6 +5845,7 @@ export function transformNewChainName(chain: string) {
 // if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
 const chainLabelMap = {
   "zklink": "zkLink",
+  "aleph_zero_evm": "Aleph Zero EVM",
   "bitkub": "Bitkub",
   "lyra": "Lyra Chain",
   "fuel": "Fuel",
@@ -6004,6 +6071,10 @@ const chainLabelMap = {
   "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
   "qiev3": "QIE",
   "voi": "Voi Network",
+  "everclear": "Everclear",
+  "space_and_time": "Space and Time",
+  "edgex": "edgeX L1",
+  "blockdag": "BlockDAG",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

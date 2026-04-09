@@ -594,6 +594,8 @@ const configs: { [adapter: string]: Config } = {
         target: "0x8a78e6b7E15C4Ae3aeAeE3bf0DE4F2de4078c1cD",
         params: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       });
+      if (rate.isSuspicious || rate.timestamp < api.timestamp - 3 * 60 * 60)
+        throw new Error(`strETH stale rate`);
       return 1e18 / rate.priceD18;
     },
     chain: "ethereum",
@@ -677,6 +679,8 @@ const configs: { [adapter: string]: Config } = {
         abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
         target: "0xEdC6287D3D41b322AF600317628D7E226DD3add4",
       });
+      if (rate.updatedAt < api.timestamp - 3 * 60 * 60)
+        throw new Error(`STAC stale rate`);
       return rate.answer / 1e8;
     },
     chain: "ethereum",
@@ -701,6 +705,8 @@ const configs: { [adapter: string]: Config } = {
         abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
         target: "0x24c8964338Deb5204B096039147B8e8C3AEa42Cc",
       });
+      if (rate.updatedAt < api.timestamp - 24 * 60 * 60)
+        throw new Error(`MI4 stale rate`);
       return rate.answer / 1e8;
     },
     chain: "mantle",
@@ -762,6 +768,8 @@ const configs: { [adapter: string]: Config } = {
         abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
         target: "0xB90DA3ff54C3ED09115abf6FbA0Ff4645586af2c",
       });
+      if (rate.updatedAt < api.timestamp - 3 * 60 * 60)
+        throw new Error(`efixDI stale rate`);
       return rate.answer / 1e8;
     },
     chain: "polygon",
@@ -774,12 +782,28 @@ const configs: { [adapter: string]: Config } = {
         abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
         target: "0xad316aA927c0970C2e8f0B903211D0bd19A10702",
       });
+      if (rate.updatedAt < api.timestamp - 3 * 60 * 60)
+        throw new Error(`mM1-USD stale rate`);
       return rate.answer / 1e8;
     },
     chain: "ethereum",
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0xCc5C22C7A6BCC25e66726AeF011dDE74289ED203",
   },
+  OALS2T: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function shareValue() view returns (uint256 value, uint256 timestamp)",
+        target: "0x04E5a6f7eE9977D38f57945c31B72178c9Cf1c06",
+      });
+      if (rate.timestamp < api.timestamp - 3 * 60 * 60)
+        throw new Error(`OALS2T stale rate`);
+      return rate.value / 1e18;
+    },
+    chain: "plume_mainnet",
+    underlying: "0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd",
+    address: "0x04E5a6f7eE9977D38f57945c31B72178c9Cf1c06",
+  }
 };
 
 export async function derivs(timestamp: number) {

@@ -64,6 +64,8 @@ async function getTvl(
   let chainDashPromise
   let chain
   const symbolToAddresses = options.symbolToAddresses ?? {}
+  const skipMissingChains = options.skipMissingChains ?? false
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       chain = storedKey.split('-')[0]
@@ -72,16 +74,33 @@ async function getTvl(
       const api: any = new sdk.ChainApi(params)
       api.api = api
       api.storedKey = storedKey
+      let usdTvl_fromCache: number | undefined = undefined
+      let tokenSymbolTvl_fromCache: { [address: string]: string } | undefined = undefined
+      let tokenUsdTvl_fromCache: { [address: string]: number } | undefined = undefined
+
 
       if (options.runStats)
         options.runStats[storedKey] = api
 
       if (!isFetchFunction) {
         let tvlBalances: any
-        if (options.partialRefill && !options.chainsToRefill?.includes(storedKey)) {
+        if (options.partialRefill && !options.chainsToRefill?.includes(chain)) {
           tvlBalances = (options.cacheData as any)[storedKey]
-          if (!tvlBalances)
+          let preComputedTvlData = (options.cacheData as any)?.preComputedTvlData
+
+          if (preComputedTvlData) {
+            usdTvl_fromCache = preComputedTvlData.tvlData?.[storedKey]
+            tokenSymbolTvl_fromCache = preComputedTvlData.tokenSymbolData?.[storedKey]
+            tokenUsdTvl_fromCache = preComputedTvlData.tokenUsdData?.[storedKey]
+          }
+
+          if (!tvlBalances) {
+            if (skipMissingChains) {
+              console.info(`Cache data missing for ${storedKey}, but skipMissingChains is true, skipping...`)
+              return;
+            }
             throw new Error('Cache data missing for ' + storedKey)
+          }
         } else {
           tvlBalances = await tvlFunction(api, ethBlock, chainBlocks, api);
           if (tvlBalances === undefined) tvlBalances = api.getBalances()
@@ -94,41 +113,54 @@ async function getTvl(
         const isStandard = Object.entries(tvlBalances).every(
           (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
-        let tvlPromise: ReturnType<any>;
-        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
-        const tvlResults = await tvlPromise;
-        usdTvls[storedKey] = tvlResults.usdTvl;
-        tokensBalances[storedKey] = tvlResults.tokenBalances;
-        usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
-        if (tvlResults.symbolToAddresses) {
-          for (const [sym, addrs] of Object.entries(tvlResults.symbolToAddresses)) {
-            if (!symbolToAddresses[sym]) symbolToAddresses[sym] = [];
-            for (const addr of addrs as string[]) {
-              if (!symbolToAddresses[sym].includes(addr)) symbolToAddresses[sym].push(addr);
+
+
+        if (!options.chainsToRefill?.includes(chain) && usdTvl_fromCache !== undefined && tokenSymbolTvl_fromCache && tokenUsdTvl_fromCache) {
+          // console.log('using pre computed data for:', storedKey)
+
+          usdTvls[storedKey] = usdTvl_fromCache
+          tokensBalances[storedKey] = tokenSymbolTvl_fromCache as any
+          usdTokenBalances[storedKey] = tokenUsdTvl_fromCache
+        } else {
+
+          let tvlPromise: ReturnType<any>;
+          tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, protocol.name, staleCoins);
+          const tvlResults = await tvlPromise;
+          usdTvls[storedKey] = tvlResults.usdTvl;
+          tokensBalances[storedKey] = tvlResults.tokenBalances;
+          usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
+          if (tvlResults.symbolToAddresses) {
+            for (const [sym, addrs] of Object.entries(tvlResults.symbolToAddresses)) {
+              if (!symbolToAddresses[sym]) symbolToAddresses[sym] = [];
+              for (const addr of addrs as string[]) {
+                if (!symbolToAddresses[sym].includes(addr)) symbolToAddresses[sym].push(addr);
+              }
             }
           }
+
+          const rawTokenCount = Object.keys(tvlBalances).length
+          const computedTokenCount = Object.keys(tvlResults.usdTokenBalances).length
+          const pricelessTokenRatio = (1 - (computedTokenCount / rawTokenCount)) * 100
+          if (rawTokenCount > 42) {
+            elastic.writeLog('tvl-token-price-stats', {
+              metadata: {
+                application: 'tvl',
+                type: 'token-price-stats',
+                name: protocol.name,
+                id: protocol.id,
+                chain,
+                storedKey,
+              },
+              data: {
+                rawTokenCount,
+                computedTokenCount,
+                pricelessTokenRatio,
+              }
+            })
+          }
+
         }
 
-        const rawTokenCount = Object.keys(tvlBalances).length
-        const computedTokenCount = Object.keys(tvlResults.usdTokenBalances).length
-        const pricelessTokenRatio = (1 - (computedTokenCount / rawTokenCount)) * 100
-        if (rawTokenCount > 42) {
-          elastic.writeLog('tvl-token-price-stats', {
-            metadata: {
-              application: 'tvl',
-              type: 'token-price-stats',
-              name: protocol.name,
-              id: protocol.id,
-              chain,
-              storedKey,
-            },
-            data: {
-              rawTokenCount,
-              computedTokenCount,
-              pricelessTokenRatio,
-            }
-          })
-        }
 
         if (isStandard) {
           rawTokenBalances[storedKey] = tvlBalances;
@@ -183,7 +215,6 @@ async function getTvl(
           throw e
         }
       } else {
-        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, chain: storedKey.split('-')[0], storedKey })
         continue;
       }
     }
@@ -236,6 +267,7 @@ type StoreTvlOptions = {
   tempCacheInfo?: Array<StoreTvlTempCacheInfo>,
   symbolToAddresses: { [symbol: string]: string[] },
   tvlErrorsObject?: tvlsObject<Error>,
+  skipMissingChains?: boolean,  // sometimes while refilling a protocol with multiple chains, we might be refilling at a point where the protocol was not yet deployed in some of its chains, which would cause the tvlFunction to throw an error for those chains
 }
 
 export type storeTvl2Options = StoreTvlOptions & {
@@ -312,6 +344,8 @@ export async function storeTvl(
     skipChainsCheck = false,
   } = options
 
+  const dateString = new Date(unixTimestamp * 1000).toISOString().slice(0, 10)
+
   if (partialRefill && (!chainsToRefill.length || !cacheData) && !skipChainsCheck) throw new Error('Missing chain list for refill')
 
   const adapterStartTimestamp = getCurrentUnixTimestamp()
@@ -350,7 +384,7 @@ export async function storeTvl(
           tvlFunctionIsFetch = true
           throw new Error("tvlType 'fetch' is deprecated. Please use 'tvl' instead.")
         }
-        const startTimestamp = getCurrentUnixTimestamp()
+        // const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins,
           { ...options, partialRefill, chainsToRefill, cacheData, runStats, symbolToAddresses, tvlErrorsObject, })
@@ -358,13 +392,18 @@ export async function storeTvl(
         if (tvlType === "tvl" || tvlType === "fetch") {
           keyToAddChainBalances = "tvl"
         }
+
+        if (options.skipMissingChains && usdTvls[storedKey] === undefined) {
+          // console.info(`TVL data missing for ${storedKey}, but skipMissingChains is true, skipping...`)
+          return;
+        }
+
+
         if (chainTvlsToAdd[keyToAddChainBalances] === undefined) {
           chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
         } else {
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
-        const currentTime = getCurrentUnixTimestamp()
-        // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { elapsedTime: currentTime - startTimestamp, storedKey, chain: storedKey.split('-')[0], protocol: protocol.name }, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -386,7 +425,7 @@ export async function storeTvl(
           rawTokenBalances[key] = tempStoreKeyCache.rawTokenBalances;
 
           // if all the data is present, store temp cache for key to use in future if needed
-        } else if (usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
+        } else if (runType === 'cron-task' && usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
           const tempStoreKeyResultCaheKey = getCachedTvlDataKey(protocol, key)
 
           // store temp result cache for key
@@ -406,6 +445,8 @@ export async function storeTvl(
       mergeBalances(tvlType, storedKeys, rawTokenBalances)
     }
 
+    hackForMorphoKatana({ protocol, usdTvls, tokensBalances, usdTokenBalances, rawTokenBalances, dateString, })
+
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
     }
@@ -418,7 +459,7 @@ export async function storeTvl(
         const now = getCurrentUnixTimestamp();
         const earliestCacheTime = Math.min(...protocolTempCacheInfo.map(item => item.cacheTime));
         const timeDiffFromNow = now - earliestCacheTime;
-  
+
         const cacheUsageLog = {
           metadata: {
             application: 'tvl',
@@ -442,7 +483,6 @@ export async function storeTvl(
 
   } catch (e) {
     // console.error(protocol.name, e);
-    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'aggregate', chain: 'aggregate' })
     logRunStats()
     throw e
   }
@@ -546,11 +586,9 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    // insertOnDb(useCurrentPrices, TABLES.TvlMetricsErrors2, { error: String(e), protocol: protocol.name, storedKey: 'store', chain: 'store' })
     return;
   }
 
-  // insertOnDb(useCurrentPrices, TABLES.TvlMetricsCompleted, { protocol: protocol.name, storedKey: 'all', chain: 'all', elapsedTime: getCurrentUnixTimestamp() - adapterStartTimestamp })
   if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }
@@ -609,4 +647,66 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
       return null;
     }
   }
+}
+
+
+// morpho deployment on katana has a unique doublecount issue where vb tokens should count towards katana chain tvl but not morpho tvl as the underlying tokens are already counted towards morpho tvl
+function hackForMorphoKatana({ protocol, usdTvls, tokensBalances, usdTokenBalances, rawTokenBalances, dateString, }: { protocol: Protocol, usdTvls: any, tokensBalances: any, usdTokenBalances: any, rawTokenBalances: any, dateString: string }) {
+  if (protocol.id !== '4025') return;
+
+  let excludedUSDValue = 0
+  let excludedBorrowedUSDValue = 0
+
+  const doublecountedTokens = new Set(['0x2dca96907fde857dd3d816880a0df407eeb2d2f2', '0x203a662b0bd271a6ed5a60edfbd04bfce608fd36', '0x0913da6da4b42f538b445599b46bb4622342cf52', '0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62'].map(i => 'katana:' + i.toLowerCase()))
+  const doublecountedTokenSymbols = new Set(['vbUSDT', 'vbUSDC', 'vbWBTC', 'vbETH'].map(i => i.toLowerCase()))
+
+  // remove double counted vb token balances from global tvl
+  Object.entries(usdTokenBalances.tvl).forEach(([token, balance]: any) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete usdTokenBalances.tvl[token]
+      excludedUSDValue += balance
+    }
+  })
+  Object.entries(usdTokenBalances.borrowed).forEach(([token, balance]: any) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete usdTokenBalances.borrowed[token]
+      excludedBorrowedUSDValue += balance
+    }
+  })
+
+  Object.keys(tokensBalances.tvl).forEach((token: string) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete tokensBalances.tvl[token]
+    }
+  })
+  
+
+  Object.keys(tokensBalances.borrowed).forEach((token: string) => {
+    if (doublecountedTokenSymbols.has(token.toLowerCase())) {
+      delete tokensBalances.borrowed[token]
+    }
+  })
+  
+
+
+  Object.keys(rawTokenBalances.tvl).forEach((token: string) => {
+    if (doublecountedTokens.has(token.toLowerCase())) {
+      delete rawTokenBalances.tvl[token]
+    }
+  })
+
+  Object.keys(rawTokenBalances.borrowed).forEach((token: string) => {
+    if (doublecountedTokens.has(token.toLowerCase())) {
+      delete rawTokenBalances.borrowed[token]
+    }
+  })
+
+  usdTvls.tvl -= excludedUSDValue
+  usdTvls.borrowed -= excludedBorrowedUSDValue
+
+  if (excludedUSDValue > 0)
+    console.log('Excluded katana tvl value:', sdk.humanizeNumber(excludedUSDValue), dateString)
+
+  if (excludedBorrowedUSDValue > 0)
+    console.log('Excluded katana borrowed tvl value:', sdk.humanizeNumber(excludedBorrowedUSDValue), dateString)
 }

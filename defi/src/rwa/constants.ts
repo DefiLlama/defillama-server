@@ -13,3 +13,24 @@ export const categoryMap: { [category: string]: string } = {};
   protocolIdMap[protocol.id] = protocol.name;
   categoryMap[protocol.id] = protocol.category;
 });
+
+export const MCAP_EXCLUDED_HOLDERS_BY_PROJECT: {
+  [projectId: string]: { [chainSlug: string]: string[] };
+} = {
+  // BackedFi (protocol 3467) — working capital + treasury/cold wallet
+  '3467': {
+    ethereum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    polygon: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    xdai: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    bsc: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    avax: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    fantom: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    base: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+    arbitrum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x43624c744A4AF40754ab19b00b6f681Ca56F1E5b'],
+  },
+  // xStocks (protocol 6378) — pre-minted token balances
+  '6378': {
+    arbitrum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
+    solana: ['S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS'],
+  },
+};

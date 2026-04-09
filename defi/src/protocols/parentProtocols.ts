@@ -7376,6 +7376,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "superseedfi",
+    deadUrl: true
   },
   {
     id: "parent#saros",
@@ -8702,6 +8703,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "LotusDex",
+    deadUrl: true
   },
   {
     id: "parent#hypertrade",

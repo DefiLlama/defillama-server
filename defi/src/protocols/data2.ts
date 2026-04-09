@@ -20994,7 +20994,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "kperp-exchange",
       derivatives: "kperp-exchange"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2327",
@@ -23131,6 +23132,7 @@ const data2: Protocol[] = [
     audit_links: ["https://hacken.io/audits/#lunafi"],
     listedAt: 1673451772,
     github: ["Luna-Fi"],
+    deadUrl: true,
   },
   {
     id: "2425",
@@ -26475,6 +26477,7 @@ const data2: Protocol[] = [
     module: "pocm-staking/index.js",
     twitter: "Nuls",
     listedAt: 1677236770,
+    deadUrl: true,
   },
   {
     id: "2581",

@@ -6006,6 +6006,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     audit_links: ["https://docs.steadefi.com/security/audits"],
     listedAt: 1683891208,
+    deadUrl: true
   },
   {
     id: "2973",
@@ -7900,6 +7901,7 @@ const data3_0: Protocol[] = [
     oraclesBreakdown: [ { name: "Api3", type: "Primary", proof: [] } ], // https://medium.com/api3/tropykus-to-launch-on-polygon-zkevm-using-api3s-data-feeds-710fdc29b1c8
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448,
+    deadUrl: true
   },
   {
     id: "3059",
@@ -16019,6 +16021,7 @@ const data3_0: Protocol[] = [
     audit_links: ["https://orange-finance.gitbook.io/orange-finance/risk-and-security/audit"],
     github: ["orange-finance"],
     listedAt: 1692625599,
+    deadUrl: true
   },
   {
     id: "3423",
@@ -16253,6 +16256,7 @@ const data3_0: Protocol[] = [
     twitter: "GamesCroissant",
     forkedFromIds: ["2198"],
     listedAt: 1692725616,
+    deadUrl: true
   },
   {
     id: "3434",
@@ -16755,6 +16759,7 @@ const data3_1: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "SHIBExchange",
     listedAt: 1693327729,
+    deadUrl: true
   },
   {
     id: "3458",
@@ -30030,6 +30035,7 @@ const data3_1: Protocol[] = [
     module: "aptoslaunch/index.js",
     twitter: "AptoslaunchIO",
     listedAt: 1706108865,
+    deadUrl: true
   },
   {
     id: "4060",
@@ -43997,6 +44003,7 @@ const data3_2: Protocol[] = [
     twitter: "iSwapweb3",
     github: ["iSwap-dex"],
     listedAt: 1716803957,
+    deadUrl: true
   },
   {
     id: "4681",
@@ -50629,6 +50636,7 @@ const data3_3: Protocol[] = [
     module: "crackandstack/index.js",
     twitter: "crackandstack",
     listedAt: 1723572317,
+    deadUrl: true,
   },
   {
     id: "4983",
@@ -51579,7 +51587,8 @@ const data3_3: Protocol[] = [
     twitter: "memecastdotai",
     dimensions: {
       fees: "4cast"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5028",
@@ -51857,7 +51866,8 @@ const data3_3: Protocol[] = [
     dimensions: {
       fees: "xtrade",
       dexs: "xtrade"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5041",
@@ -58641,7 +58651,8 @@ const data3_3: Protocol[] = [
     chains: ["Manta"],
     module: "memeta/index.js",
     twitter: "Memeta_fun",
-    listedAt: 1731494962
+    listedAt: 1731494962,
+    deadUrl: true
   },
   {
     id: "5349",
@@ -59451,7 +59462,8 @@ const data3_3: Protocol[] = [
     module: "ruscet/index.js",
     twitter: "ruscetfi",
     audit_links: ["https://docs.ruscet.xyz/security/audits"],
-    listedAt: 1732038069
+    listedAt: 1732038069,
+    deadUrl: true
   },
   {
     id: "5385",
@@ -60091,7 +60103,8 @@ const data3_3: Protocol[] = [
     listedAt: 1732533473,
     dimensions: {
       dexs: "catalist-dex"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5413",
@@ -62897,7 +62910,8 @@ const data3_3: Protocol[] = [
     module: "lander/index.js",
     twitter: "landerfinance",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Lander/Lander.pdf"],
-    listedAt: 1734973452
+    listedAt: 1734973452,
+    deadUrl: true
   },
   {
     id: "5550",

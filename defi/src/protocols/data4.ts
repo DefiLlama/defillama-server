@@ -1015,6 +1015,7 @@ const data4: Protocol[] = [
     twitter: "Official_NODO",
     github: ["NODO-xyz"],
     listedAt: 1736335147,
+    deadUrl: true,
   },
   {
     id: "5603",
@@ -1717,6 +1718,7 @@ const data4: Protocol[] = [
     module: "momodrome/index.js",
     twitter: "momodrome_io",
     listedAt: 1737059541,
+    deadUrl: true
   },
   {
     id: "5634",
@@ -3580,7 +3582,8 @@ const data4: Protocol[] = [
     listedAt: 1738582017,
     dimensions: {
       fees: "vinufinance"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5718",
@@ -6753,6 +6756,7 @@ const data4: Protocol[] = [
     module: "pholend/index.js",
     twitter: "pholend_",
     listedAt: 1740675989,
+    deadUrl: true
   },
   {
     id: "5853",
@@ -12131,7 +12135,7 @@ const data4: Protocol[] = [
     previousNames: ["Haven1 Swap"],
     address: null,
     symbol: "-",
-    url: "https://swap.haven1.org/",
+    url: "https://swap.haven1.org/", //deadUrl 1016 error
     description: `Uniswap V3 fork on Haven1 chain`,
     chain: "Haven1",
     logo: `${baseIconsUrl}/haven1-hswap.jpg`,
@@ -12147,7 +12151,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "haven1-hswap",
       dexs: "haven1-hswap"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "6090",
@@ -13716,6 +13721,7 @@ const data4: Protocol[] = [
     twitter: "0xBerancia",
     audit_links: ["https://barencias-organization.gitbook.io/berancia"],
     listedAt: 1747046911,
+    deadUrl: true
   },
   // { Commented because funds sent to EOA
   //   id: "6163",
@@ -15734,6 +15740,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362,
+    deadUrl: true
   },
   {
     id: "6242",
@@ -15760,6 +15767,7 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362,
+    deadUrl: true
   },
   {
     id: "6243",
@@ -19097,7 +19105,8 @@ const data4: Protocol[] = [
     twitter: "unicornxdex",
     dimensions: {
       fees: "unicornx"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6386",
@@ -19117,6 +19126,7 @@ const data4: Protocol[] = [
     module: "p2pflip/index.js",
     twitter: null,
     listedAt: 1751490093,
+    deadUrl: true
   },
   {
     id: "6387",
@@ -27060,7 +27070,8 @@ const data4: Protocol[] = [
     module: "haven1-hlend/index.js",
     forkedFromIds: ["1599"],
     twitter: "haven1official",
-    listedAt: 1758142355
+    listedAt: 1758142355,
+    deadUrl: true
   },
   {
     id: "6741",
@@ -28343,7 +28354,8 @@ const data4: Protocol[] = [
     listedAt: 1759340419,
     dimensions: {
       fees: "LeadFi-leadBTC"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6800",
@@ -30095,7 +30107,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "coinhain",
       dexs: "coinhain"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "6879",

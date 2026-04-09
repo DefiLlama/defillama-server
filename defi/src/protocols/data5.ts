@@ -524,6 +524,7 @@ const data5: Protocol[] = [
     audit_links: ["https://spywolf.co/audits/Pumpbase_0x19798E390E69a36814B25BbBC7e75530E8a0A101.pdf"],
     github: ["PumpBase-Launchpad"],
     listedAt: 1761581949,
+    deadUrl: true,
   },
   {
     id: "6916",
@@ -3081,7 +3082,7 @@ const data5: Protocol[] = [
     name: "Upscale",
     address: null,
     symbol: "-",
-    url: "https://upscale.trade/",
+    url: "https://app.upscale.trade/sign-in",
     description:
       "Upscale is a Web3 prop trading platform offering 2-phase, 1-phase, and instant funding accounts with no KYC. It supports crypto and forex trading, on-chain payments, and referral rewards. Available on both Web App and Telegram.",
     chain: "Binance",
@@ -3539,6 +3540,7 @@ const data5: Protocol[] = [
       dexs: "aethonswap",
       fees: "aethonswap",
     },
+    deadUrl: true
   },
   {
     id: "7045",
@@ -6367,6 +6369,7 @@ const data5: Protocol[] = [
     twitter: "LotusDex",
     listedAt: 1766423171,
     parentProtocol: "parent#lotusdex",
+    deadUrl: true,
   },
   {
     id: "7176",
@@ -6386,6 +6389,7 @@ const data5: Protocol[] = [
     twitter: "LotusDex",
     listedAt: 1766423181,
     parentProtocol: "parent#lotusdex",
+    deadUrl: true,
   },
   {
     id: "7177",
@@ -10606,7 +10610,7 @@ const data5: Protocol[] = [
     name: "Solayer Card",
     address: "solana:LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
     symbol: "LAYER",
-    url: "https://solayer.org/product/card",
+    url: "https://app.solayer.org/card",
     description: "The Solayer Emerald Card is a Visa-based crypto debit card integrated with the Solayer ecosystem that lets users spend on-chain assets anywhere Visa is accepted",
     chain: "Solana",
     logo: `${baseIconsUrl}/solayer-card.jpg`,
@@ -13819,6 +13823,7 @@ const data5: Protocol[] = [
     twitter: "mementodotmoney",
     github: ["MementoMoney"],
     listedAt: 1773153611,
+    deadUrl: true
   },
   {
     id: "7531",

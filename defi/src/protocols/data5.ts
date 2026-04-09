@@ -3755,6 +3755,9 @@ const data5: Protocol[] = [
     ],
     github: ["curvance"],
     listedAt: 1764287017,
+    dimensions: {
+      fees: "curvance",
+    },
   },
   {
     id: "7054",
@@ -16173,10 +16176,11 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum", "Base", "Ethereum"],
-    module: "dummy.js",
+    module: "tristero/index.js",
     twitter: "0xtristero",
     audit_links: ["https://github.com/Zellic/publications/blob/master/Tristero%20-%20Zellic%20Audit%20Report.pdf"],
     parentProtocol: "parent#tristero",
+    listedAt: 1775760973,
     dimensions: {
       fees: "tristero-margin",
       "open-interest": "tristero-margin",

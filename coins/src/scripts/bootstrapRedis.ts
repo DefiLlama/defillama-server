@@ -34,7 +34,7 @@ async function main() {
   }
   if (DRY_RUN || !redis) { console.log("DRY_RUN — no writes."); return; }
 
-  console.log("Flushing Redis before bootstrap...");
+  console.log("Flushing Redis before bootstrap (manual script only, not called during serving)...");
   await redis.flushdb();
 
   let totalOps = 0;

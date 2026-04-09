@@ -40,9 +40,10 @@ function getServingRedis(): Redis | null {
       const [host, port, pw] = config!.split("---");
       servingRedis = new Redis({ host, port: Number(port), password: pw, connectTimeout: 2000, commandTimeout: 2000, maxRetriesPerRequest: 1, lazyConnect: true });
     }
-    servingRedis.on("error", () => {});
+    servingRedis.on("error", (e) => console.error("[Serving] Redis error:", e.message));
     return servingRedis;
-  } catch {
+  } catch (e) {
+    console.error("[Serving] Redis init failed:", (e as Error).message);
     return null;
   }
 }
@@ -60,16 +61,20 @@ function normalizeInput(coin: string): string {
   return coin.slice(0, i).toLowerCase() + ":" + coin.slice(i + 1).toLowerCase();
 }
 
+function sanitize(s: string): string {
+  return s.replace(/[\\';]/g, "");
+}
+
 export async function redisCurrentPrices(requestedCoins: string[]): Promise<CoinsResponse | null> {
   const redis = getServingRedis();
   if (!redis) return null;
 
   try {
-    await redis.connect().catch(() => {});
+    if (redis.status === "wait") await redis.connect();
     const [dbsize, bootstrapOk] = await Promise.all([redis.dbsize(), redis.get("_bootstrap:ok")]);
     if (dbsize < REDIS_MIN_DBSIZE || !bootstrapOk) {
       console.warn(`[Serving] Redis needs rebuild (${dbsize} keys, bootstrap:${bootstrapOk ? "ok" : "missing"})`);
-      triggerRedisRebuild().catch(() => {});
+      triggerRedisRebuild().catch(e => console.error("[Serving] Redis rebuild trigger failed:", (e as Error).message));
       return null;
     }
 
@@ -102,7 +107,7 @@ export async function redisCurrentPrices(requestedCoins: string[]): Promise<Coin
       hits++;
     });
 
-    if (hits < requestedCoins.length * 0.5) return null;
+    if (hits < requestedCoins.length * 0.5) { console.warn(`[Serving] Redis hit rate too low: ${hits}/${requestedCoins.length}`); return null; }
     return response;
   } catch (e) {
     disableRedisTemporarily((e as Error).message);
@@ -119,14 +124,14 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
 
     const addrCoins = normalized.filter(c => !c.startsWith("coingecko:"));
     if (addrCoins.length > 0) {
-      const conditions = addrCoins.map(c => { const i = c.indexOf(":"); return `(chain = '${c.slice(0, i).replace(/'/g, "''")}' AND address = '${c.slice(i + 1).replace(/'/g, "''")}')`;});
+      const conditions = addrCoins.map(c => { const i = c.indexOf(":"); return `(chain = '${sanitize(c.slice(0, i))}' AND address = '${sanitize(c.slice(i + 1))}')`;});
       const result = await chQueryJSON(`SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE ${conditions.join(" OR ")}`);
       for (const row of result.data) resolvedMap.set(`${row[0]}:${row[1]}`, { canonical_id: row[2], symbol: row[3], decimals: parseInt(row[4]) });
     }
 
     const cgCoins = normalized.filter(c => c.startsWith("coingecko:"));
     if (cgCoins.length > 0) {
-      const inList = cgCoins.map(c => `'${c.replace(/'/g, "''")}'`).join(",");
+      const inList = cgCoins.map(c => `'${sanitize(c)}'`).join(",");
       const result = await chQueryJSON(`SELECT canonical_id, symbol, decimals FROM tokens WHERE canonical_id IN (${inList})`);
       for (const row of result.data) resolvedMap.set(row[0], { canonical_id: row[0], symbol: row[1], decimals: parseInt(row[2]) });
     }
@@ -135,7 +140,7 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
     const uniqueCids = [...new Set(allMappings.filter(Boolean).map(m => m!.canonical_id))];
     if (uniqueCids.length === 0) return null;
 
-    const inList = uniqueCids.map(c => `'${c.replace(/'/g, "''")}'`).join(",");
+    const inList = uniqueCids.map(c => `'${sanitize(c)}'`).join(",");
     const priceResult = await chQueryJSON(`SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS ts FROM coins_prices WHERE canonical_id IN (${inList}) GROUP BY canonical_id`);
     const priceMap = new Map<string, any>();
     for (const row of priceResult.data) priceMap.set(row[0], { price: parseFloat(row[1]), confidence: parseFloat(row[2]), source: row[3], timestamp: row[4] });
@@ -157,7 +162,7 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
       hits++;
     });
 
-    if (hits < requestedCoins.length * 0.3) return null;
+    if (hits < requestedCoins.length * 0.3) { console.warn(`[Serving] CH hit rate too low: ${hits}/${requestedCoins.length}`); return null; }
     return response;
   } catch (e) {
     console.error(`[Serving] CH fallback error: ${(e as Error).message}`);
@@ -181,8 +186,7 @@ async function triggerRedisRebuild(): Promise<void> {
     if (!redis) return;
 
     console.log("[Serving] Starting Redis auto-rebuild from CH...");
-    await redis.connect().catch(() => {});
-    await redis.flushdb();
+    if (redis.status === "wait") await redis.connect();
 
     const tokensRaw = await chQuery("SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1");
     const tokens = tokensRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, symbol, decimals, cgId] = line.split("\t"); return { cid, symbol, decimals, cgId }; });
@@ -232,11 +236,11 @@ function startHealthCheck() {
     const redis = getServingRedis();
     if (!redis) return;
     try {
-      await redis.connect().catch(() => {});
+      if (redis.status === "wait") await redis.connect();
       const [dbsize, bootstrapOk] = await Promise.all([redis.dbsize(), redis.get("_bootstrap:ok")]);
       if (dbsize < REDIS_MIN_DBSIZE || !bootstrapOk) {
         console.warn(`[Serving] Health check: rebuild needed (${dbsize} keys, bootstrap:${bootstrapOk ? "ok" : "missing"})`);
-        triggerRedisRebuild().catch(() => {});
+        triggerRedisRebuild().catch(e => console.error("[Serving] Redis rebuild trigger failed:", (e as Error).message));
       }
     } catch {}
   }, 5 * 60 * 1000);

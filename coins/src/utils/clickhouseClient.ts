@@ -29,7 +29,8 @@ export async function chQuery(query: string, format: "TabSeparated" | "JSONCompa
       const result = await cls[i].query({ query, format });
       return await result.text();
     } catch (e) {
-      if (i === cls.length - 1) throw e;
+      if (i < cls.length - 1) console.error(`[CH] query replica ${i} failed, trying next: ${(e as Error).message}`);
+      else throw e;
     }
   }
   throw new Error("No CH clients available");
@@ -43,7 +44,8 @@ export async function chQueryJSON(query: string): Promise<any> {
       const result = await cls[i].query({ query, format: "JSONCompact" });
       return await result.json();
     } catch (e) {
-      if (i === cls.length - 1) throw e;
+      if (i < cls.length - 1) console.error(`[CH] query replica ${i} failed, trying next: ${(e as Error).message}`);
+      else throw e;
     }
   }
   throw new Error("No CH clients available");

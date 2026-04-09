@@ -19,16 +19,16 @@ function ensureInit() {
     try {
       const sentinels = sentinelConfig.split(",").map(s => { const [host, port] = s.trim().split(":"); return { host, port: parseInt(port) }; });
       redisClient = new Redis({ sentinels, name: "coinsmaster", password: redisPassword, sentinelPassword: undefined, connectTimeout: 3000, commandTimeout: 3000, maxRetriesPerRequest: 1, lazyConnect: true });
-      redisClient.on("error", () => {});
+      redisClient.on("error", (e) => console.error("[CH/Redis dual-write] Redis error:", e.message));
       redisEnabled = true;
-    } catch {}
+    } catch (e) { console.error("[CH/Redis dual-write] Redis init failed:", (e as Error).message); }
   } else if (redisConfig) {
     const [host, port, password] = redisConfig.split("---");
     try {
       redisClient = new Redis({ host, port: Number(port), password, connectTimeout: 3000, commandTimeout: 3000, maxRetriesPerRequest: 1, lazyConnect: true });
-      redisClient.on("error", () => {});
+      redisClient.on("error", (e) => console.error("[CH/Redis dual-write] Redis error:", e.message));
       redisEnabled = true;
-    } catch {}
+    } catch (e) { console.error("[CH/Redis dual-write] Redis init failed:", (e as Error).message); }
   }
 }
 
@@ -121,7 +121,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
   // Redis writes first (non-fatal — DDB already has the data)
   if (redisEnabled && redisClient && redisOps.length > 0) {
     try {
-      await redisClient.connect().catch(() => {});
+      if (redisClient.status === "wait") await redisClient.connect();
       const pipeline = redisClient.pipeline();
       for (const op of redisOps) op.ttl ? pipeline.set(op.key, op.value, "EX", op.ttl) : pipeline.set(op.key, op.value);
       const results = await pipeline.exec();

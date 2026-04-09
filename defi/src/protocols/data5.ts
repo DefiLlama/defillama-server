@@ -1963,9 +1963,15 @@ const data5: Protocol[] = [
     listedAt: 1762584873,
     parentProtocol: "parent#navi-protocol",
     dimensions: {
-      "derivatives": "astro-perp",
+      "derivatives": {
+        adapter: "astro-perp",
+        disableFromResponse: true,  // hard to verify onchain
+      },
       "open-interest": "astro-perp-oi",
-      "fees": "astro-perp",
+      "fees": {
+        adapter: "astro-perp",
+        disableFromResponse: true, // hard to verify onchain
+      },
     },
   },
   {

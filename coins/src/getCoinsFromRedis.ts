@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import { redisCurrentPrices, chCurrentPrices, CoinsResponse } from "./utils/servingLayer";
 
 const isFresh = (timestamp: number, searchWidth: number) => {
-  if (!timestamp) return true;
+  if (!timestamp || timestamp <= 0) return false;
   return (Date.now() / 1e3) - timestamp < searchWidth;
 };
 
@@ -29,21 +29,29 @@ function filterFresh(result: CoinsResponse, searchWidth: number): CoinsResponse 
  */
 const handler = async (event: any): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
-  const searchWidth = 12 * 3600; // 12h default
+  const rawWidth = event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h";
+  const hours = parseInt(rawWidth) || 12;
+  const searchWidth = hours * 3600;
 
   // Layer 1: Redis
   const redisResult = await redisCurrentPrices(requestedCoins);
   if (redisResult) {
-    return successResponse({ coins: filterFresh(redisResult, searchWidth) }, undefined, { Expires: makeExpiry() });
+    const fresh = filterFresh(redisResult, searchWidth);
+    if (Object.keys(fresh).length > 0) {
+      return successResponse({ coins: fresh }, undefined, { Expires: makeExpiry() });
+    }
   }
 
-  // Layer 2: ClickHouse
+  // Layer 2: ClickHouse (fallback if Redis miss or all stale)
   const chResult = await chCurrentPrices(requestedCoins);
   if (chResult) {
-    return successResponse({ coins: filterFresh(chResult, searchWidth) }, undefined, { Expires: makeExpiry() });
+    const fresh = filterFresh(chResult, searchWidth);
+    if (Object.keys(fresh).length > 0) {
+      return successResponse({ coins: fresh }, undefined, { Expires: makeExpiry() });
+    }
   }
 
-  // No data from Redis or CH
+  // No fresh data from Redis or CH
   return successResponse({ coins: {} }, undefined, { Expires: makeExpiry() });
 };
 

@@ -77,8 +77,9 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
   for (const item of writeItems) {
     if (!item?.PK) continue;
     const pk = item.PK as string;
-    const sk = item.SK as number;
+    const sk = Number(item.SK ?? -1);
     const cid = pkToCanonicalId(pk);
+    if (sk < 0) continue;
 
     if (sk === 0) {
       // Metadata write (SK=0): update tokens, token_addresses, and Redis mappings
@@ -123,7 +124,9 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
       await redisClient.connect().catch(() => {});
       const pipeline = redisClient.pipeline();
       for (const op of redisOps) op.ttl ? pipeline.set(op.key, op.value, "EX", op.ttl) : pipeline.set(op.key, op.value);
-      await pipeline.exec();
+      const results = await pipeline.exec();
+      const errors = results?.filter(([err]) => err) || [];
+      if (errors.length > 0) console.error(`[Redis dual-write] ${errors.length} command errors in pipeline`);
     } catch (e) {
       console.error(`[Redis dual-write] error (non-fatal): ${(e as Error).message}`);
     }

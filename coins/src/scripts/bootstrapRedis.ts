@@ -8,6 +8,12 @@ const REDIS_PORT = parseInt(process.env.REDIS_PORT || "6380", 10);
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD || "";
 const PRICE_TTL = 86400;
 
+async function execPipeline(pipeline: ReturnType<Redis["pipeline"]>): Promise<void> {
+  const results = await pipeline.exec();
+  const errors = results?.filter(([err]) => err) || [];
+  if (errors.length > 0) throw new Error(`${errors.length} Redis pipeline command errors`);
+}
+
 function parseTSV(data: string, columns: string[]): Record<string, string>[] {
   return data.trim().split("\n").filter(Boolean).map(line => {
     const fields = line.split("\t");
@@ -39,10 +45,10 @@ async function main() {
 
     const pipeline = redis.pipeline();
     for (const t of page) {
-      if (t.coingecko_id) pipeline.set(`mapping:coingecko:${t.coingecko_id}`, JSON.stringify({ canonical_id: t.canonical_id, symbol: t.symbol || null, decimals: parseInt(t.decimals) || null }));
-      pipeline.set(`meta:${t.canonical_id}`, JSON.stringify({ canonicalId: t.canonical_id, symbol: t.symbol || null, decimals: parseInt(t.decimals) || null, coingeckoId: t.coingecko_id || null, blacklisted: false, blacklistedFrom: null }));
+      if (t.coingecko_id) pipeline.set(`mapping:coingecko:${t.coingecko_id}`, JSON.stringify({ canonical_id: t.canonical_id, symbol: t.symbol || null, decimals: parseInt(t.decimals) || 0 }));
+      pipeline.set(`meta:${t.canonical_id}`, JSON.stringify({ canonicalId: t.canonical_id, symbol: t.symbol || null, decimals: parseInt(t.decimals) || 0, coingeckoId: t.coingecko_id || null, blacklisted: false, blacklistedFrom: null }));
     }
-    await pipeline.exec();
+    await execPipeline(pipeline);
     totalOps += page.length * 2;
     offset += PAGE_SIZE;
     process.stdout.write(`\r  Tokens: ${offset} processed, ${totalOps} Redis ops`);
@@ -59,9 +65,9 @@ async function main() {
 
     const pipeline = redis.pipeline();
     for (const a of page) {
-      pipeline.set(`mapping:${a.chain}:${a.address}`, JSON.stringify({ canonical_id: a.canonical_id, symbol: a.symbol || null, decimals: parseInt(a.decimals) || null }));
+      pipeline.set(`mapping:${a.chain}:${a.address}`, JSON.stringify({ canonical_id: a.canonical_id, symbol: a.symbol || null, decimals: parseInt(a.decimals) || 0 }));
     }
-    await pipeline.exec();
+    await execPipeline(pipeline);
     totalOps += page.length;
     offset += PAGE_SIZE;
     process.stdout.write(`\r  Addresses: ${offset} processed, ${totalOps} Redis ops`);
@@ -82,7 +88,7 @@ async function main() {
         pipeline.set(`price:${p.canonical_id}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) || null, source: p.adapter || null, timestamp: p.latest_ts || null }), "EX", PRICE_TTL);
       }
     }
-    await pipeline.exec();
+    await execPipeline(pipeline);
     totalOps += page.length;
     offset += PAGE_SIZE;
     process.stdout.write(`\r  Prices: ${offset} processed, ${totalOps} Redis ops`);

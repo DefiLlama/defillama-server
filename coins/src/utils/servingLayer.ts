@@ -148,11 +148,11 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
       const price = priceMap.get(mapping.canonical_id);
       if (!price) return;
       response[coin] = {
-        decimals: mapping.decimals || undefined,
-        symbol: mapping.symbol || "",
+        decimals: mapping.decimals ?? undefined,
+        symbol: mapping.symbol ?? "",
         price: price.price,
         timestamp: typeof price.timestamp === "string" ? Math.floor(new Date(price.timestamp).getTime() / 1000) : price.timestamp,
-        confidence: price.confidence || undefined,
+        confidence: price.confidence ?? undefined,
       };
       hits++;
     });
@@ -163,6 +163,12 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
     console.error(`[Serving] CH fallback error: ${(e as Error).message}`);
     return null;
   }
+}
+
+async function execPipeline(pipeline: ReturnType<Redis["pipeline"]>): Promise<void> {
+  const results = await pipeline.exec();
+  const errors = results?.filter(([err]) => err) || [];
+  if (errors.length > 0) throw new Error(`${errors.length} Redis pipeline command errors`);
 }
 
 let rebuildInProgress = false;
@@ -183,31 +189,29 @@ async function triggerRedisRebuild(): Promise<void> {
 
     const pricesRaw = await chQuery("SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id");
     const prices = pricesRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, price, confidence, adapter, ts] = line.split("\t"); return { cid, price, confidence, adapter, ts }; });
-    const priceMap = new Map(prices.map(p => [p.cid, p]));
 
     await redis.connect().catch(() => {});
     const BATCH = 5000;
 
     for (let i = 0; i < addrs.length; i += BATCH) {
       const pipeline = redis.pipeline();
-      for (const a of addrs.slice(i, i + BATCH)) pipeline.set(`mapping:${a.chain}:${a.address}`, JSON.stringify({ canonical_id: a.cid, symbol: a.symbol || null, decimals: parseInt(a.decimals) || null }));
-      await pipeline.exec();
+      for (const a of addrs.slice(i, i + BATCH)) pipeline.set(`mapping:${a.chain}:${a.address}`, JSON.stringify({ canonical_id: a.cid, symbol: a.symbol || null, decimals: parseInt(a.decimals) || 0 }));
+      await execPipeline(pipeline);
     }
     for (let i = 0; i < tokens.length; i += BATCH) {
       const pipeline = redis.pipeline();
       for (const t of tokens.slice(i, i + BATCH)) {
-        if (t.cgId) pipeline.set(`mapping:coingecko:${t.cgId}`, JSON.stringify({ canonical_id: t.cid, symbol: t.symbol || null, decimals: parseInt(t.decimals) || null }));
-        pipeline.set(`meta:${t.cid}`, JSON.stringify({ canonicalId: t.cid, symbol: t.symbol || null, decimals: parseInt(t.decimals) || null, coingeckoId: t.cgId || null, blacklisted: false, blacklistedFrom: null }));
+        if (t.cgId) pipeline.set(`mapping:coingecko:${t.cgId}`, JSON.stringify({ canonical_id: t.cid, symbol: t.symbol || null, decimals: parseInt(t.decimals) || 0 }));
+        pipeline.set(`meta:${t.cid}`, JSON.stringify({ canonicalId: t.cid, symbol: t.symbol || null, decimals: parseInt(t.decimals) || 0, coingeckoId: t.cgId || null, blacklisted: false, blacklistedFrom: null }));
       }
-      await pipeline.exec();
+      await execPipeline(pipeline);
     }
-    for (let i = 0; i < tokens.length; i += BATCH) {
+    for (let i = 0; i < prices.length; i += BATCH) {
       const pipeline = redis.pipeline();
-      for (const t of tokens.slice(i, i + BATCH)) {
-        const p = priceMap.get(t.cid);
-        if (p?.price && p.price !== "0") pipeline.set(`price:${t.cid}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) || null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
+      for (const p of prices.slice(i, i + BATCH)) {
+        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) || null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
       }
-      await pipeline.exec();
+      await execPipeline(pipeline);
     }
 
     await redis.set("_bootstrap:ok", Date.now().toString());

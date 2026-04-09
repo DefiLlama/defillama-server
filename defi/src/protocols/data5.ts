@@ -2952,14 +2952,14 @@ const data5: Protocol[] = [
   },
   {
     id: "7019",
-    name: "Spaace",
+    name: "Spaace NFT Marketplace",
     address: null,
     symbol: "SPAACE",
     url: "https://spaace.io/",
     description:
       "Spaace is a gamified NFT marketplace focused on NFT trading, daily rewards, and a gamified Battle Pass that turns activity into XP, progression, and value.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spaace.jpg`,
+    logo: `${baseIconsUrl}/spaace-nft-marketplace.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -2967,6 +2967,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "spaace_io",
+    parentProtocol: "parent#spaace",
     dimensions: {
       fees: "spaace",
     },
@@ -16271,6 +16272,70 @@ const data5: Protocol[] = [
       fees: "bcswap",
       dexs: "bcswap"
     }
+  },
+  {
+    id: "7644",
+    name: "Wasabi Prop AMM",
+    address: null,
+    symbol: "-",
+    url: "https://app.wasabi.xyz/p/LKHR9",
+    referralUrl: "https://app.wasabi.xyz/p/LKHR9",
+    description:
+      "Wasabi Prop AMM",
+    chain: "Base",
+    logo: `${baseIconsUrl}/wasabi-prop-amm.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Prop AMM"],
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "wasabi_protocol",
+    parentProtocol: "parent#wasabi",
+    dimensions: {
+      dexs: "wasabi-prop-amm"
+    }
+  },
+  {
+    id: "7645",
+    name: "flip by Spaace",
+    address: null,
+    symbol: "-",
+    url: "https://flip.spaace.io/",
+    description:
+      "AI-powered NFT launchpad and trading platform where users create and trade NFT collections with dynamic bonding-curve pricing and collection liquidity pools",
+    chain: "Base",
+    logo: `${baseIconsUrl}/flip-by-spaace.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "spaace_io",
+    parentProtocol: "parent#spaace",
+    dimensions: {
+      fees: "flip"
+    }
+  },
+  {
+    id: "7646",
+    name: "Saturn",
+    address: null,
+    symbol: "-",
+    url: "https://app.saturn.credit/",
+    description:
+      "Saturn is a dual-token Bitcoin-backed credit protocol where USDat is a stablecoin backed by tokenized treasuries and sUSDat is a yield-bearing version backed by digital credit exposure.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/saturn.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Stablecoin Wrapper",
+    chains: ["Ethereum"],
+    module: "saturn-protocol/index.js",
+    twitter: "saturn_credit",
+    listedAt: 1775766807,
   },
 ];
 export default data5;

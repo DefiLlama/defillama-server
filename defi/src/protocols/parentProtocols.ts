@@ -9399,6 +9399,29 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KaspaCom",
     github: ["KASPACOM"],
   },
+  {
+    id: "parent#wasabi",
+    name: "Wasabi",
+    url: "https://app.wasabi.xyz/p/LKHR9",
+    referralUrl: "https://app.wasabi.xyz/p/LKHR9",
+    description: "Wasabi is a leverage trading protocol: Long, short, and earn on your favorite long tail assets such as memecoins and NFTs. Wasabi’s asset-backed perps keep the position value closely pegged to the underlying asset, reflecting the true price action on your PnL. It also generates additional downstream effects such as moving the spot price with leverage, listing pairs as soon as they launch, and generating low-risk yield opportunities through single sided staking",
+    logo: `${baseIconsUrl}/wasabi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "wasabi_protocol",
+  },
+  {
+    id: "parent#spaace",
+    name: "Spaace",
+    url: "https://spaace.io/",
+    description: "Spaace is a gamified NFT marketplace focused on NFT trading, daily rewards, and a gamified Battle Pass that turns activity into XP, progression, and value.",
+    logo: `${baseIconsUrl}/spaace.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spaace_io",
+  },
 ];
 
 export default parentProtocols;

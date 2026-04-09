@@ -114,21 +114,57 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
+  const rpc = process.env.APTOS_RPC;
 
   await PromisePool.withConcurrency(1)
     .for(tokens)
     .process(async (token) => {
       try {
-        const res = await fetch(
-          `${process.env.APTOS_RPC}/v1/accounts/${token.substring(
-            0,
-            token.indexOf("::")
-          )}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+        const isCoinType = token.includes("::");
+        if (isCoinType) {
+          // Legacy Coin standard: fetch CoinInfo resource
+          const accountAddr = token.substring(0, token.indexOf("::"));
+          const res = await fetch(
+            `${rpc}/v1/accounts/${accountAddr}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+          ).then((r) => r.json());
+          if (res?.data?.supply?.vec?.[0]?.integer?.vec?.[0]?.value != null) {
+            supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+            return;
+          }
+          if (res?.data?.supply?.vec?.[0]?.aggregator?.vec?.[0]?.handle) {
+            // Aggregator-based supply (e.g. native APT) — resolve via table item
+            const { handle, key } = res.data.supply.vec[0].aggregator.vec[0];
+            const aggRes = await fetch(`${rpc}/v1/tables/${handle}/item`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ key_type: "address", value_type: "u128", key }),
+            }).then((r) => r.json());
+            if (typeof aggRes === "string" || typeof aggRes === "number") {
+              supplies[`aptos:${token}`] = Number(aggRes);
+              return;
+            }
+          }
+        }
+
+        // Fungible Asset standard: token is an object address (no "::")
+        const objectAddr = isCoinType ? token.substring(0, token.indexOf("::")) : token;
+        // Try ConcurrentSupply first (newer)
+        const concurrentRes = await fetch(
+          `${rpc}/v1/accounts/${objectAddr}/resource/0x1::fungible_asset::ConcurrentSupply`
         ).then((r) => r.json());
-        if (res && res.data && res.data.supply)
-          supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+        if (concurrentRes?.data?.current?.value != null) {
+          supplies[`aptos:${token}`] = Number(concurrentRes.data.current.value);
+          return;
+        }
+        // Fall back to Supply resource
+        const supplyRes = await fetch(
+          `${rpc}/v1/accounts/${objectAddr}/resource/0x1::fungible_asset::Supply`
+        ).then((r) => r.json());
+        if (supplyRes?.data?.current != null) {
+          supplies[`aptos:${token}`] = Number(supplyRes.data.current);
+        }
       } catch (e) {
-        // console.log(token);
+        // silent — supply will be missing and logged upstream
       }
     });
 

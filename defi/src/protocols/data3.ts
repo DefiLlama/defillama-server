@@ -13800,7 +13800,9 @@ const data3_0: Protocol[] = [
       Sui: ["VSUI"],
     },
     dimensions: {
-      fees: "navi"
+      fees: {
+		adapter: "navi",
+		disableFromResponse: true, // currently investigating a mismatch between the borrowing interest fees from their api and dune
     }
   },
   {

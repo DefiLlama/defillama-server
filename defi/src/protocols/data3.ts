@@ -16684,7 +16684,7 @@ const data3_1: Protocol[] = [
     name: "Danogo",
     address: null,
     symbol: "-",
-    url: "https://danogo.io",
+    url: "https://dano.finance/",
     description:
       "Danogo is a decentralized CARDANO exchange for listing and trading Bond Token issued by Optim without central intermediaries.",
     chain: "Cardano",
@@ -16695,8 +16695,8 @@ const data3_1: Protocol[] = [
     tags: ["AMM"],
     chains: ["Cardano"],
     module: "danogo/index.js",
-    twitter: "danogo_2023",
-    audit_links: ["https://github.com/Danogo2023/resources/tree/main/audits"],
+    twitter: "DanoFinance",
+    audit_links: ["https://docs.danogo.io/introduction/audit-report"],
     listedAt: 1693321887,
     dimensions: {
       fees: "danogo",

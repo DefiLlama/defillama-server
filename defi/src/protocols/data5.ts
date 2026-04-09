@@ -16337,5 +16337,28 @@ const data5: Protocol[] = [
     twitter: "saturn_credit",
     listedAt: 1775766807,
   },
+  {
+    id: "7647",
+    name: "Saphyre RFQ",
+    address: "sei:0x0a526e425809aEA71eb279d24ae22Dee6C92A4Fe",
+    symbol: "DRG",
+    url: "https://saphyre.xyz/",
+    description: "Request-for-quote DEX on Sei enabling direct maker-taker swaps with on-chain settlement.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/saphyre-rfq.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["RFQ"],
+    chains: ["Sei"],
+    module: "dummy.js",
+    twitter: "Saphyre_xyz",
+    audit_links: ["https://github.com/Zellic/publications/blob/master/RFQ%20Protocol%20-%20Zellic%20Audit%20Report.pdf"],
+    parentProtocol: "parent#dragon-swap",
+    dimensions: {
+      fees: "saphyre-rfq",
+      dexs: "saphyre-rfq"
+    }
+  },
 ];
 export default data5;

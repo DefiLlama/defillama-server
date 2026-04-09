@@ -5502,7 +5502,7 @@ const parentProtocols: IParentProtocol[] = [
       "Execution Infrastructure for On-Chain Trading.",
     logo: `${baseIconsUrl}/saphyre.jpg`,
     gecko_id: "dragonswap",
-    cmcId: null,
+    cmcId: "38979",
     chains: [],
     twitter: "Saphyre_xyz",
     github: ["dragonswap-app"],

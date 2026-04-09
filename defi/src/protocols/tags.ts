@@ -28,7 +28,8 @@ export const CategoryTagMap = {
     "Prop AMM",
     "Order Book",
     "DLMM",
-    "DLL"
+    "DLL",
+    "RFQ"
   ],
 }
 

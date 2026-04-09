@@ -25,6 +25,25 @@ function getPercentage(a: number, b: number) {
 const validMetricTypesSet = new Set(Object.values(AdapterType)) as Set<string>
 const validRecordTypesSet = new Set(Object.values(AdaptorRecordType)) as Set<string>
 const unixStartOfTodayTimestamp = timeSToUnix(getTimeSDaysAgo(0))
+const protocolChainBreakdownKeys = [
+  'total24h',
+  'total48hto24h',
+  'total7d',
+  'total14dto7d',
+  'total30d',
+  'total60dto30d',
+  'total1y',
+  'total7DaysAgo',
+  'total30DaysAgo',
+  'totalAllTime',
+  'average1y',
+  'monthlyAverage1y',
+  'change_1d',
+  'change_7d',
+  'change_1m',
+  'change_7dover7d',
+  'change_30dover30d',
+] as const
 
 function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   const isProRoute = !!(req as any).isProRoute as boolean
@@ -325,6 +344,8 @@ async function getProtocolDataHandler({
   }
   response.change_1d = getPercentage(summary.total24h, summary.total48hto24h)
 
+  response.chainBreakdown = formatProtocolChainBreakdown(summary.chainSummary)
+
   return response
 
 
@@ -339,6 +360,24 @@ async function getProtocolDataHandler({
       })
     })
     if (!Object.keys(res).length) return null
+    return res
+  }
+
+  function formatProtocolChainBreakdown(chainSummary: any = {}) {
+    const res: IJSON<IJSON<number | null>> = {}
+
+    Object.entries(chainSummary ?? {}).forEach(([chainKey, chainData]: any) => {
+      const chainLabel = getChainLabelFromKey(chainKey)
+      const formattedChainData: IJSON<number | null> = {}
+
+      protocolChainBreakdownKeys.forEach((key) => {
+        if (chainData?.[key] !== undefined) formattedChainData[key] = chainData[key]
+      })
+
+      if (Object.keys(formattedChainData).length) res[chainLabel] = formattedChainData
+    })
+
+    if (!Object.keys(res).length) return undefined
     return res
   }
 }
@@ -778,6 +817,8 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
         if (!protocol.dataTypes?.has(recordType)) continue; // skip if the protocol does not have data for this record type
 
         const data = await getProtocolDataHandler({ recordType, protocolData: protocol })
+
+        if (![AdapterType.DEXS, AdapterType.DERIVATIVES, AdapterType.FEES].includes(adapterType)) delete data.chainBreakdown
 
         if (!data.totalDataChart?.length) continue; // skip if there is no data
 

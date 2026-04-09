@@ -8616,7 +8616,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#monday-trade",
     name: "Monday Trade",
     url: "https://app.monday.trade/",
-    description: "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+    description: "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad's low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     logo: `${baseIconsUrl}/monday-trade.jpg`,
     gecko_id: null,
     cmcId: null,

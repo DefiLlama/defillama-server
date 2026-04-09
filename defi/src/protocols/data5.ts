@@ -3921,7 +3921,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://app.monday.trade/",
     description:
-      "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+      "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",
     logo: `${baseIconsUrl}/monday-trade-perps.jpg`,
     audits: "2",
@@ -4267,7 +4267,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://app.monday.trade/",
     description:
-      "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+      "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",
     logo: `${baseIconsUrl}/monday-trade-spot.jpg`,
     audits: "2",

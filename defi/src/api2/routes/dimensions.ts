@@ -816,12 +816,9 @@ export async function generateDimensionsResponseFiles(cache: Record<AdapterType,
 
         if (!protocol.dataTypes?.has(recordType)) continue; // skip if the protocol does not have data for this record type
 
-        const data = await getProtocolDataHandler({
-          recordType,
-          protocolData: protocol,
-        })
+        const data = await getProtocolDataHandler({ recordType, protocolData: protocol })
 
-        if (adapterType !== AdapterType.DERIVATIVES) delete data.chainBreakdown
+        if (![AdapterType.DEXS, AdapterType.DERIVATIVES, AdapterType.FEES].includes(adapterType)) delete data.chainBreakdown
 
         if (!data.totalDataChart?.length) continue; // skip if there is no data
 

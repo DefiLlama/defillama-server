@@ -181,6 +181,9 @@ async function triggerRedisRebuild(): Promise<void> {
     if (!redis) return;
 
     console.log("[Serving] Starting Redis auto-rebuild from CH...");
+    await redis.connect().catch(() => {});
+    await redis.flushdb();
+
     const tokensRaw = await chQuery("SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1");
     const tokens = tokensRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, symbol, decimals, cgId] = line.split("\t"); return { cid, symbol, decimals, cgId }; });
 
@@ -190,7 +193,6 @@ async function triggerRedisRebuild(): Promise<void> {
     const pricesRaw = await chQuery("SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id");
     const prices = pricesRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, price, confidence, adapter, ts] = line.split("\t"); return { cid, price, confidence, adapter, ts }; });
 
-    await redis.connect().catch(() => {});
     const BATCH = 5000;
 
     for (let i = 0; i < addrs.length; i += BATCH) {
@@ -209,7 +211,7 @@ async function triggerRedisRebuild(): Promise<void> {
     for (let i = 0; i < prices.length; i += BATCH) {
       const pipeline = redis.pipeline();
       for (const p of prices.slice(i, i + BATCH)) {
-        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) || null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
+        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) ?? null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
       }
       await execPipeline(pipeline);
     }
@@ -239,4 +241,4 @@ function startHealthCheck() {
     } catch {}
   }, 5 * 60 * 1000);
 }
-startHealthCheck();
+if (process.env.NODE_ENV !== "test") startHealthCheck();

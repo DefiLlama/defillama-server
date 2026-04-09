@@ -28,7 +28,8 @@ function filterFresh(result: CoinsResponse, searchWidth: number): CoinsResponse 
  * Meant to be routed separately from the existing DDB-based getCurrentCoins handler.
  */
 const handler = async (event: any): Promise<IResponse> => {
-  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  const requestedCoins = (event.pathParameters?.coins ?? "").split(",").filter(Boolean);
+  if (requestedCoins.length === 0) return successResponse({ coins: {} });
   const rawWidth = event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h";
   const hours = parseInt(rawWidth) || 12;
   const searchWidth = hours * 3600;

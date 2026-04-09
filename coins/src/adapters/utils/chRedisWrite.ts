@@ -93,27 +93,27 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
         const addrCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
         const redirectTo = item.redirect ? pkToCanonicalId(item.redirect) : "";
         addressRows.push([esc(parsed.chain), esc(parsed.address), esc(addrCid), esc(item.symbol || ""), item.decimals || 0, esc(redirectTo), 1, tsDT(now)].join("\t"));
-        if (redisEnabled) redisOps.push({ key: `mapping:${parsed.chain}:${parsed.address}`, value: JSON.stringify({ canonical_id: addrCid, symbol: item.symbol || null, decimals: item.decimals || null }) });
+        if (redisEnabled) redisOps.push({ key: `mapping:${parsed.chain}:${parsed.address}`, value: JSON.stringify({ canonical_id: addrCid, symbol: item.symbol || null, decimals: item.decimals ?? null }) });
       }
 
       if (pk.startsWith("coingecko#") && redisEnabled) {
         const cgId = pk.slice(10);
-        redisOps.push({ key: `mapping:coingecko:${cgId}`, value: JSON.stringify({ canonical_id: cid, symbol: item.symbol || null, decimals: item.decimals || null }) });
-        redisOps.push({ key: `meta:${cid}`, value: JSON.stringify({ canonicalId: cid, symbol: item.symbol || null, decimals: item.decimals || null, coingeckoId: cgId, blacklisted: false, blacklistedFrom: null }) });
+        redisOps.push({ key: `mapping:coingecko:${cgId}`, value: JSON.stringify({ canonical_id: cid, symbol: item.symbol || null, decimals: item.decimals ?? null }) });
+        redisOps.push({ key: `meta:${cid}`, value: JSON.stringify({ canonicalId: cid, symbol: item.symbol || null, decimals: item.decimals ?? null, coingeckoId: cgId, blacklisted: false, blacklistedFrom: null }) });
       }
 
       if (item.price && item.price > 0 && redisEnabled) {
         const pCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
-        redisOps.push({ key: `price:${pCid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence || null, source: item.adapter || null, timestamp: tsDT(item.timestamp || now) }), ttl: PRICE_TTL });
+        redisOps.push({ key: `price:${pCid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence ?? null, source: item.adapter || null, timestamp: tsDT(item.timestamp || now) }), ttl: PRICE_TTL });
       }
     } else {
-      // Price write (SK>0): insert into coins_prices, update Redis current price if recent
+      // Price write (SK>0): insert into coins_prices and update Redis current price if recent
       if (item.price && isFinite(item.price)) {
         const chain = pk.startsWith("coingecko#") || pk.startsWith("asset#coingecko#") ? "coingecko" : (pkToChainAddress(pk)?.chain || "unknown");
-        priceRows.push([esc(cid), esc(chain), tsDT(sk), tsDT(now), item.price, item.confidence || 0, esc(item.adapter || "")].join("\t"));
+        priceRows.push([esc(cid), esc(chain), tsDT(sk), tsDT(now), item.price, item.confidence ?? 0, esc(item.adapter || "")].join("\t"));
       }
       if (item.price && item.price > 0 && redisEnabled && (now - sk) < 600) {
-        redisOps.push({ key: `price:${cid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence || null, source: item.adapter || null, timestamp: tsDT(sk) }), ttl: PRICE_TTL });
+        redisOps.push({ key: `price:${cid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence ?? null, source: item.adapter || null, timestamp: tsDT(sk) }), ttl: PRICE_TTL });
       }
     }
   }

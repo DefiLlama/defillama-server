@@ -34,6 +34,9 @@ async function main() {
   }
   if (DRY_RUN || !redis) { console.log("DRY_RUN — no writes."); return; }
 
+  console.log("Flushing Redis before bootstrap...");
+  await redis.flushdb();
+
   let totalOps = 0;
 
   console.log("Loading tokens...");
@@ -85,7 +88,7 @@ async function main() {
     const pipeline = redis.pipeline();
     for (const p of page) {
       if (p.price && p.price !== "0") {
-        pipeline.set(`price:${p.canonical_id}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) || null, source: p.adapter || null, timestamp: p.latest_ts || null }), "EX", PRICE_TTL);
+        pipeline.set(`price:${p.canonical_id}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) ?? null, source: p.adapter || null, timestamp: p.latest_ts || null }), "EX", PRICE_TTL);
       }
     }
     await execPipeline(pipeline);

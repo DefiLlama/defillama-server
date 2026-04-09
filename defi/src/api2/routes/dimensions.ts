@@ -454,7 +454,7 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
       let routeFileExt = '';
       if (route === 'overview') routeFileExt = '';
       else routeFileExt += route;
-      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}${routeFileExt}`;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-${routeFileExt}`;
       const routeFile = `dimensions/${routeSubPath}`; 
       
       const data = await readRouteData(routeFile);
@@ -505,7 +505,7 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
       let routeFileExt = '';
       if (route === 'overview') routeFileExt = '';
       else routeFileExt += route;
-      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-chain/${chainKeyFilter}${routeFileExt}`;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-chain/${chainKeyFilter}-${routeFileExt}`;
       const routeFile = `dimensions/${routeSubPath}`;
       
       const data = await readRouteData(routeFile);
@@ -526,7 +526,7 @@ export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-
     let routeFileExt = '';
     if (route === 'overview') routeFileExt = '';
     else routeFileExt += route;
-    const routeSubPath = `${adaptorType}/${dataType}-category/${category}${routeFileExt}`;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-${routeFileExt}`;
     const routeFile = `dimensions/${routeSubPath}`; 
     
     const data = await readRouteData(routeFile);
@@ -546,7 +546,7 @@ export function getDimensionCategoryChainRoutes(route: 'overview' | 'chart' | 'c
     let routeFileExt = '';
     if (route === 'overview') routeFileExt = '';
     else routeFileExt += route;
-    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}${routeFileExt}`;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}-${routeFileExt}`;
     const routeFile = `dimensions/${routeSubPath}`; 
     
     const data = await readRouteData(routeFile);

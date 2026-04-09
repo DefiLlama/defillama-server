@@ -27745,7 +27745,10 @@ const data4: Protocol[] = [
     // excludeTvlFromParent: true, // tokens are deposited into curve pools
     dimensions: {
       fees: "yield-basis",
-      dexs: "yield-basis"
+      dexs: {
+        adapter: "yield-basis",
+        genuineSpikes: [["2026-04-07", "ETH and BTC prices spike"]],
+      }
     }
   },
   {

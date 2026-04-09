@@ -136,7 +136,7 @@ export async function main(ts: number = 0): Promise<void> {
 
       finalData[marketId] = {
         contract: market.contract,
-        venue: market.venue,
+        venue: metadata.parentPlatform ?? market.venue,
         openInterest: market.openInterest * market.markPx,
         volume24h: market.volume24h,
         price: market.markPx,

@@ -2450,6 +2450,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     treasury: "dexfinance.js",
     twitter: "DexFinance",
+    github: ["dexfi-com"],
   },
   {
     id: "parent#trufin-protocol",

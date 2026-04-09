@@ -13142,7 +13142,10 @@ const data5: Protocol[] = [
     module: "venus-fluid/index.js",
     twitter: "VenusProtocol",
     parentProtocol: "parent#venus-finance",
-    listedAt: 1772661088
+    listedAt: 1772661088,
+    dimensions: {
+      fees: "venus-flux"
+    }
   },
   {
     id: "7497",
@@ -16359,6 +16362,45 @@ const data5: Protocol[] = [
       fees: "saphyre-rfq",
       dexs: "saphyre-rfq"
     }
+  },
+  {
+    id: "7648",
+    name: "Metric",
+    address: null,
+    symbol: "-",
+    url: " ", // website not ready
+    description: "DEX",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metric.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Polygon", "Avalanche"],
+    module: "dummy.js",
+    twitter: "Metricxyz",
+    dimensions: {
+      dexs: "metric"
+    }
+  },
+  {
+    id: "7649",
+    name: "DexFi",
+    address: null,
+    symbol: "-",
+    url: "https://dexfi.com/",
+    description: "DexFi offers an ecosystem of financial products designed to empower users and simplify the DeFi experience. DexFi’s AiLM (Automated Intelligent Liquidity Manager), powers DeFi’s most sophisticated yield aggregator to actively manage v3/v4 liquidity positions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dexfi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Sonic", "Avalanche"],
+    module: "dummy.js",
+    twitter: "DexFinance",
+    parentProtocol: "parent#dexfinance",
+    listedAt: 1775776709
   },
 ];
 export default data5;

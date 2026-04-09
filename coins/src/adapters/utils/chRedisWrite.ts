@@ -1,31 +1,18 @@
-import * as http from "http";
 import Redis from "ioredis";
+import { chInsert, isChEnabled } from "../../utils/clickhouseClient";
 
-interface ChHost { host: string; port: number; }
-
-let chHosts: ChHost[] = [];
-let chUser = "default";
-let chPassword = "";
-let chEnabled = false;
 let redisClient: Redis | null = null;
 let redisEnabled = false;
+let initialized = false;
 
 const PRICE_TTL = 86400;
 
-function init() {
-  const hostsConfig = process.env.CH_WRITE_HOSTS;
-  if (hostsConfig) {
-    chHosts = hostsConfig.split(",").map(h => {
-      const [host, port] = h.trim().split(":");
-      return { host, port: parseInt(port) };
-    });
-    chUser = process.env.CH_WRITE_USER || "default";
-    chPassword = process.env.CH_WRITE_PASSWORD || "";
-    chEnabled = chHosts.length > 0;
-  }
+function ensureInit() {
+  if (initialized) return;
+  initialized = true;
 
-  const sentinelConfig = process.env.REDIS_SENTINEL_CONFIG; // host1:port1,host2:port2,host3:port3
-  const redisConfig = process.env.REDIS_SERVING_CONFIG;     // host---port---password (direct, fallback)
+  const sentinelConfig = process.env.REDIS_SENTINEL_CONFIG;
+  const redisConfig = process.env.REDIS_SERVING_CONFIG;
   const redisPassword = redisConfig?.split("---")[2] || "";
 
   if (sentinelConfig) {
@@ -44,8 +31,6 @@ function init() {
     } catch {}
   }
 }
-
-init();
 
 function pkToCanonicalId(pk: string): string {
   if (pk.startsWith("coingecko#")) return `coingecko:${pk.slice(10)}`;
@@ -70,34 +55,17 @@ function tsDT(ts: number): string {
   return new Date(ts * 1000).toISOString().replace("T", " ").slice(0, 19);
 }
 
-const chAgent = new http.Agent({ keepAlive: true, maxSockets: 4 });
-
-function chInsertOn(h: ChHost, table: string, body: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const url = `/?user=${chUser}&password=${encodeURIComponent(chPassword)}&query=${encodeURIComponent(`INSERT INTO ${table} FORMAT TabSeparated`)}`;
-    const req = http.request({ hostname: h.host, port: h.port, path: url, method: "POST", agent: chAgent, timeout: 10000 }, (res) => {
-      let d = ""; res.on("data", c => d += c);
-      res.on("end", () => res.statusCode && res.statusCode >= 400 ? reject(new Error(`CH ${res.statusCode}: ${d.slice(0, 200)}`)) : resolve());
-    });
-    req.on("error", reject);
-    req.on("timeout", () => { req.destroy(); reject(new Error("CH timeout")); });
-    req.write(body);
-    req.end();
-  });
-}
-
-async function chInsert(table: string, body: string): Promise<void> {
-  for (let i = 0; i < chHosts.length; i++) {
-    try { await chInsertOn(chHosts[i], table, body); return; }
-    catch (e) {
-      if (i === chHosts.length - 1) throw e;
-      console.error(`[CH dual-write] ${chHosts[i].host}:${chHosts[i].port} failed, trying next: ${(e as Error).message}`);
-    }
-  }
-}
-
+/**
+ * Dual-write to ClickHouse + Redis after DDB write succeeds.
+ * Redis writes are non-fatal (logged on error). CH tries each replica in order.
+ * Prices are stored under the original PK canonical form (no redirect resolution)
+ * to prevent price pollution from different adapters.
+ * Redis receives mappings (address→canonical_id), metadata, and current prices (TTL 24h).
+ */
 export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
-  if (!chEnabled && !redisEnabled) return;
+  ensureInit();
+  const chOn = isChEnabled();
+  if (!chOn && !redisEnabled) return;
   if (!writeItems || writeItems.length === 0) return;
 
   const now = Math.floor(Date.now() / 1000);
@@ -113,6 +81,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
     const cid = pkToCanonicalId(pk);
 
     if (sk === 0) {
+      // Metadata write (SK=0): update tokens, token_addresses, and Redis mappings
       if (item.symbol) {
         const cgId = pk.startsWith("coingecko#") ? pk.slice(10) : "";
         tokenRows.push([esc(cid), esc(item.symbol || ""), item.decimals || 0, esc(cgId), 1, tsDT(item.timestamp || now), tsDT(now)].join("\t"));
@@ -127,7 +96,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
       }
 
       if (pk.startsWith("coingecko#") && redisEnabled) {
-        const cgId = pk.slice(10); // raw coingecko id without namespace
+        const cgId = pk.slice(10);
         redisOps.push({ key: `mapping:coingecko:${cgId}`, value: JSON.stringify({ canonical_id: cid, symbol: item.symbol || null, decimals: item.decimals || null }) });
         redisOps.push({ key: `meta:${cid}`, value: JSON.stringify({ canonicalId: cid, symbol: item.symbol || null, decimals: item.decimals || null, coingeckoId: cgId, blacklisted: false, blacklistedFrom: null }) });
       }
@@ -137,6 +106,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
         redisOps.push({ key: `price:${pCid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence || null, source: item.adapter || null, timestamp: tsDT(item.timestamp || now) }), ttl: PRICE_TTL });
       }
     } else {
+      // Price write (SK>0): insert into coins_prices, update Redis current price if recent
       if (item.price && isFinite(item.price)) {
         const chain = pk.startsWith("coingecko#") || pk.startsWith("asset#coingecko#") ? "coingecko" : (pkToChainAddress(pk)?.chain || "unknown");
         priceRows.push([esc(cid), esc(chain), tsDT(sk), tsDT(now), item.price, item.confidence || 0, esc(item.adapter || "")].join("\t"));
@@ -147,6 +117,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
     }
   }
 
+  // Redis writes first (non-fatal — DDB already has the data)
   if (redisEnabled && redisClient && redisOps.length > 0) {
     try {
       await redisClient.connect().catch(() => {});
@@ -158,7 +129,8 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
     }
   }
 
-  if (chEnabled) {
+  // CH writes (throws if all replicas fail)
+  if (chOn) {
     const promises: Promise<void>[] = [];
     if (priceRows.length > 0) promises.push(chInsert("coins_prices", priceRows.join("\n") + "\n"));
     if (tokenRows.length > 0) promises.push(chInsert("tokens", tokenRows.join("\n") + "\n"));

@@ -1,5 +1,5 @@
 import Redis from "ioredis";
-import * as http from "http";
+import { chQuery, chQueryJSON, isChEnabled } from "./clickhouseClient";
 
 export type CoinsResponse = {
   [coin: string]: {
@@ -51,46 +51,6 @@ function disableRedisTemporarily(reason: string) {
   redisDisabled = true;
   redisDisabledUntil = Date.now() + REDIS_DISABLE_DURATION;
   console.error(`[Serving] Redis disabled for ${REDIS_DISABLE_DURATION / 1000}s: ${reason}`);
-}
-
-interface ChConfig { hosts: { host: string; port: number }[]; user: string; password: string; }
-let chConfig: ChConfig | null = null;
-
-function getChConfig(): ChConfig | null {
-  if (FORCE_DDB || SKIP_CH) return null;
-  if (chConfig) return chConfig;
-  const hostsStr = process.env.CH_WRITE_HOSTS || process.env.CH_HOST;
-  if (!hostsStr) return null;
-  const hosts = hostsStr.includes(",")
-    ? hostsStr.split(",").map(h => { const [host, port] = h.trim().split(":"); return { host, port: parseInt(port) }; })
-    : [{ host: hostsStr, port: parseInt(process.env.CH_PORT || process.env.CH_WRITE_PORT || "8124") }];
-  chConfig = { hosts, user: process.env.CH_WRITE_USER || process.env.CH_USER || "default", password: process.env.CH_WRITE_PASSWORD || process.env.CH_PASSWORD || "" };
-  return chConfig;
-}
-
-function chHttpRequest(host: { host: string; port: number }, config: ChConfig, query: string): Promise<string> {
-  return new Promise((res, rej) => {
-    const url = `/?user=${config.user}&password=${encodeURIComponent(config.password)}&query=${encodeURIComponent(query)}`;
-    const req = http.request({ hostname: host.host, port: host.port, path: url, method: "GET", timeout: 10000 }, (resp) => {
-      let data = "";
-      resp.on("data", (c) => (data += c));
-      resp.on("end", () => (resp.statusCode && resp.statusCode >= 400 ? rej(new Error(data.slice(0, 200))) : res(data)));
-    });
-    req.on("error", rej);
-    req.on("timeout", () => { req.destroy(); rej(new Error("CH timeout")); });
-    req.end();
-  });
-}
-
-async function chQuery(config: ChConfig, query: string): Promise<string> {
-  for (let i = 0; i < config.hosts.length; i++) {
-    try {
-      return await chHttpRequest(config.hosts[i], config, query);
-    } catch (e) {
-      if (i === config.hosts.length - 1) throw e;
-    }
-  }
-  throw new Error("No CH hosts available");
 }
 
 function normalizeInput(coin: string): string {
@@ -151,8 +111,7 @@ export async function redisCurrentPrices(requestedCoins: string[]): Promise<Coin
 }
 
 export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsResponse | null> {
-  const config = getChConfig();
-  if (!config) return null;
+  if (FORCE_DDB || SKIP_CH || !isChEnabled()) return null;
 
   try {
     const normalized = requestedCoins.map(normalizeInput);
@@ -161,15 +120,15 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
     const addrCoins = normalized.filter(c => !c.startsWith("coingecko:"));
     if (addrCoins.length > 0) {
       const conditions = addrCoins.map(c => { const i = c.indexOf(":"); return `(chain = '${c.slice(0, i).replace(/'/g, "''")}' AND address = '${c.slice(i + 1).replace(/'/g, "''")}')`;});
-      const raw = await chQuery(config, `SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE ${conditions.join(" OR ")} FORMAT JSONCompact`);
-      for (const row of JSON.parse(raw).data) resolvedMap.set(`${row[0]}:${row[1]}`, { canonical_id: row[2], symbol: row[3], decimals: parseInt(row[4]) });
+      const result = await chQueryJSON(`SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE ${conditions.join(" OR ")}`);
+      for (const row of result.data) resolvedMap.set(`${row[0]}:${row[1]}`, { canonical_id: row[2], symbol: row[3], decimals: parseInt(row[4]) });
     }
 
     const cgCoins = normalized.filter(c => c.startsWith("coingecko:"));
     if (cgCoins.length > 0) {
       const inList = cgCoins.map(c => `'${c.replace(/'/g, "''")}'`).join(",");
-      const raw = await chQuery(config, `SELECT canonical_id, symbol, decimals FROM tokens WHERE canonical_id IN (${inList}) FORMAT JSONCompact`);
-      for (const row of JSON.parse(raw).data) resolvedMap.set(row[0], { canonical_id: row[0], symbol: row[1], decimals: parseInt(row[2]) });
+      const result = await chQueryJSON(`SELECT canonical_id, symbol, decimals FROM tokens WHERE canonical_id IN (${inList})`);
+      for (const row of result.data) resolvedMap.set(row[0], { canonical_id: row[0], symbol: row[1], decimals: parseInt(row[2]) });
     }
 
     const allMappings = normalized.map(c => resolvedMap.get(c) || null);
@@ -177,9 +136,9 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
     if (uniqueCids.length === 0) return null;
 
     const inList = uniqueCids.map(c => `'${c.replace(/'/g, "''")}'`).join(",");
-    const priceRaw = await chQuery(config, `SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS ts FROM coins_prices WHERE canonical_id IN (${inList}) GROUP BY canonical_id FORMAT JSONCompact`);
+    const priceResult = await chQueryJSON(`SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS ts FROM coins_prices WHERE canonical_id IN (${inList}) GROUP BY canonical_id`);
     const priceMap = new Map<string, any>();
-    for (const row of JSON.parse(priceRaw).data) priceMap.set(row[0], { price: parseFloat(row[1]), confidence: parseFloat(row[2]), source: row[3], timestamp: row[4] });
+    for (const row of priceResult.data) priceMap.set(row[0], { price: parseFloat(row[1]), confidence: parseFloat(row[2]), source: row[3], timestamp: row[4] });
 
     const response: CoinsResponse = {};
     let hits = 0;
@@ -209,21 +168,20 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
 let rebuildInProgress = false;
 
 async function triggerRedisRebuild(): Promise<void> {
-  if (rebuildInProgress) return;
+  if (rebuildInProgress || !isChEnabled()) return;
   rebuildInProgress = true;
   try {
     const redis = getServingRedis();
-    const config = getChConfig();
-    if (!redis || !config) return;
+    if (!redis) return;
 
     console.log("[Serving] Starting Redis auto-rebuild from CH...");
-    const tokensRaw = await chQuery(config, "SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1 FORMAT TabSeparated");
+    const tokensRaw = await chQuery("SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1");
     const tokens = tokensRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, symbol, decimals, cgId] = line.split("\t"); return { cid, symbol, decimals, cgId }; });
 
-    const addrsRaw = await chQuery(config, "SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE is_active = 1 FORMAT TabSeparated");
+    const addrsRaw = await chQuery("SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE is_active = 1");
     const addrs = addrsRaw.trim().split("\n").filter(Boolean).map(line => { const [chain, address, cid, symbol, decimals] = line.split("\t"); return { chain, address, cid, symbol, decimals }; });
 
-    const pricesRaw = await chQuery(config, "SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id FORMAT TabSeparated");
+    const pricesRaw = await chQuery("SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id");
     const prices = pricesRaw.trim().split("\n").filter(Boolean).map(line => { const [cid, price, confidence, adapter, ts] = line.split("\t"); return { cid, price, confidence, adapter, ts }; });
     const priceMap = new Map(prices.map(p => [p.cid, p]));
 

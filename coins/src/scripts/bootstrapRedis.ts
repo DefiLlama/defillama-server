@@ -1,38 +1,12 @@
-import * as http from "http";
+import { chQuery } from "../utils/clickhouseClient";
 import Redis from "ioredis";
 
 const DRY_RUN = process.env.DRY_RUN !== "false";
-const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || "5000", 10);
 const PAGE_SIZE = parseInt(process.env.PAGE_SIZE || "50000", 10);
-const CH_HOST = process.env.CH_HOST || "localhost";
-const CH_PORT = parseInt(process.env.CH_PORT || "8124", 10);
-const CH_USER = process.env.CH_USER || "default";
-const CH_PASSWORD = process.env.CH_PASSWORD || "";
 const REDIS_HOST = process.env.REDIS_HOST || "localhost";
 const REDIS_PORT = parseInt(process.env.REDIS_PORT || "6380", 10);
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD || "";
 const PRICE_TTL = 86400;
-
-function chQuery(query: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const url = `/?user=${CH_USER}&password=${encodeURIComponent(CH_PASSWORD)}&query=${encodeURIComponent(query)}&enable_http_compression=1`;
-    const req = http.request({ hostname: CH_HOST, port: CH_PORT, path: url, method: "GET", timeout: 300000, headers: { "Accept-Encoding": "gzip" } }, (res) => {
-      const chunks: Buffer[] = [];
-      res.on("data", (c: Buffer) => chunks.push(c));
-      res.on("end", () => {
-        let body = Buffer.concat(chunks);
-        if (res.headers["content-encoding"] === "gzip") {
-          body = require("zlib").gunzipSync(body);
-        }
-        const data = body.toString();
-        res.statusCode && res.statusCode >= 400 ? reject(new Error(data.slice(0, 500))) : resolve(data);
-      });
-    });
-    req.on("error", reject);
-    req.on("timeout", () => { req.destroy(); reject(new Error("CH timeout")); });
-    req.end();
-  });
-}
 
 function parseTSV(data: string, columns: string[]): Record<string, string>[] {
   return data.trim().split("\n").filter(Boolean).map(line => {
@@ -44,9 +18,9 @@ function parseTSV(data: string, columns: string[]): Record<string, string>[] {
 }
 
 async function main() {
-  console.log(`Bootstrap Redis from CH (${CH_HOST}:${CH_PORT}) → Redis (${REDIS_HOST}:${REDIS_PORT})`);
+  console.log(`Bootstrap Redis → Redis (${REDIS_HOST}:${REDIS_PORT})`);
 
-  await chQuery("SELECT 1 FORMAT TabSeparated");
+  await chQuery("SELECT 1");
   let redis: Redis | null = null;
   if (!DRY_RUN) {
     redis = new Redis({ host: REDIS_HOST, port: REDIS_PORT, password: REDIS_PASSWORD || undefined });
@@ -56,11 +30,10 @@ async function main() {
 
   let totalOps = 0;
 
-  // ── Tokens: load all, push mappings + meta ──
   console.log("Loading tokens...");
   let offset = 0;
   while (true) {
-    const raw = await chQuery(`SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1 ORDER BY canonical_id LIMIT ${PAGE_SIZE} OFFSET ${offset} FORMAT TabSeparated`);
+    const raw = await chQuery(`SELECT canonical_id, symbol, decimals, coingecko_id FROM tokens WHERE is_active = 1 ORDER BY canonical_id LIMIT ${PAGE_SIZE} OFFSET ${offset}`);
     const page = parseTSV(raw, ["canonical_id", "symbol", "decimals", "coingecko_id"]);
     if (page.length === 0) break;
 
@@ -77,11 +50,10 @@ async function main() {
   }
   console.log();
 
-  // ── Addresses: paginated, push mappings ──
   console.log("Loading addresses...");
   offset = 0;
   while (true) {
-    const raw = await chQuery(`SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE is_active = 1 ORDER BY chain, address LIMIT ${PAGE_SIZE} OFFSET ${offset} FORMAT TabSeparated`);
+    const raw = await chQuery(`SELECT chain, address, canonical_id, symbol, decimals FROM token_addresses WHERE is_active = 1 ORDER BY chain, address LIMIT ${PAGE_SIZE} OFFSET ${offset}`);
     const page = parseTSV(raw, ["chain", "address", "canonical_id", "symbol", "decimals"]);
     if (page.length === 0) break;
 
@@ -100,7 +72,7 @@ async function main() {
   console.log("Loading latest prices...");
   offset = 0;
   while (true) {
-    const raw = await chQuery(`SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id ORDER BY canonical_id LIMIT ${PAGE_SIZE} OFFSET ${offset} FORMAT TabSeparated`);
+    const raw = await chQuery(`SELECT canonical_id, argMax(price, timestamp) AS price, argMax(confidence, timestamp) AS confidence, argMax(adapter, timestamp) AS adapter, max(timestamp) AS latest_ts FROM coins_prices GROUP BY canonical_id ORDER BY canonical_id LIMIT ${PAGE_SIZE} OFFSET ${offset}`);
     const page = parseTSV(raw, ["canonical_id", "price", "confidence", "adapter", "latest_ts"]);
     if (page.length === 0) break;
 

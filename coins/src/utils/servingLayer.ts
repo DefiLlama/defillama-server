@@ -211,7 +211,7 @@ async function triggerRedisRebuild(): Promise<void> {
     for (let i = 0; i < prices.length; i += BATCH) {
       const pipeline = redis.pipeline();
       for (const p of prices.slice(i, i + BATCH)) {
-        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: parseFloat(p.confidence) ?? null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
+        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: p.confidence ? parseFloat(p.confidence) : null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
       }
       await execPipeline(pipeline);
     }

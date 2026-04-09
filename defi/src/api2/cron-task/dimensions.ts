@@ -219,6 +219,11 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
     adapterData.parentProtocolSummaries = parentProtocolSummaries
 
     for (const [_dimensionProtocolId, dimensionProtocolInfo] of Object.entries(dimensionProtocolMap) as any) {
+      if (dimensionProtocolInfo.disableFromResponse) {
+        // console.log('Skipping protocol in response due to disableFromResponse flag', dimensionProtocolInfo.name, dimensionProtocolInfo.id, adapterType)
+        continue;
+      }
+
       const hasAppMetrics = adapterType === AdapterType.FEES && getProtocolAppMetricsFlag(dimensionProtocolInfo)
       addProtocolData({ protocolId: dimensionProtocolInfo.id2, dimensionProtocolInfo, isParentProtocol: false, adapterType, skipChainSummary: false, hasAppMetrics, })
     }
@@ -231,7 +236,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
         continue;
       }
       const parentProtocol: any = { info, }
-      const childDimensionsInfo = childProtocols.map((child: any) => dimensionProtocolMap[child.info.id2] ?? dimensionProtocolMap[child.info.id]).map((i: any) => i)
+      const childDimensionsInfo = childProtocols.map((child: any) => dimensionProtocolMap[child.info.id2] ?? dimensionProtocolMap[child.info.id]).map((i: any) => i).filter((i: any) => !i.disableFromResponse) 
 
       mergeChildRecords(parentProtocol, childProtocols)
       addProtocolData({
@@ -259,6 +264,7 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
     }
 
     function addProtocolData({ protocolId, dimensionProtocolInfo = ({} as any), isParentProtocol = false, adapterType, skipChainSummary = false, records, hasAppMetrics = false, }: { isParentProtocol: boolean, adapterType: AdapterType, skipChainSummary: boolean, records?: any, protocolId: string, dimensionProtocolInfo?: ProtocolAdaptor, hasAppMetrics?: boolean }) {
+      
 
       if (isParentProtocol) skipChainSummary = true
       if (dimensionProtocolInfo.doublecounted) skipChainSummary = true

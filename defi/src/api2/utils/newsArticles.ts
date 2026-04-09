@@ -1,8 +1,5 @@
 
-
 import fetch from 'node-fetch'
-import { successResponse, wrap } from './utils/shared'
-
 interface ICredit {
 	by: string
 }
@@ -92,9 +89,3 @@ export const fetchArticles = async () => {
     
 	return articlesRes
 }
-
-const _fetchArticles = async () => {
-	return successResponse(await fetchArticles(), 5*3600)
-}
-
-export default wrap(_fetchArticles);

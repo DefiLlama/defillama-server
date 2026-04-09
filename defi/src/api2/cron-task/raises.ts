@@ -2,7 +2,8 @@ import { storeRouteData, } from "../cache/file-cache";
 import { getRaisesInternal } from "../routes/getRaises";
 import { getHacksInternal } from "../routes/getHacks";
 import { getTokenRightsInternal } from "../routes/getTokenRights";
-import { fetchArticles } from "../../getNewsArticles";
+import { fetchArticles } from "../utils/newsArticles";
+
 import * as sdk from '@defillama/sdk'
 import { runWithRuntimeLogging } from "../utils";
 

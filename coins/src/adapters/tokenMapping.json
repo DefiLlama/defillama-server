@@ -4381,6 +4381,11 @@
     }
   },
   "optimism": {
+    "0xa88594d404727625a9437c3f886c7643872296ae": {
+      "decimals": "18",
+      "symbol": "WELL",
+      "to": "coingecko#moonwell-artemis"
+    },
     "0x0000206329b97DB379d5E1Bf586BbDB969C63274": {
       "decimals": "18",
       "symbol": "USDA",
@@ -11386,6 +11391,46 @@
       "decimals": "5",
       "symbol": "UKTBL",
       "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
+    "CBZVSNVB55ANF24QVJL2K5QCLOAB6XITGTGXYEAF6NPTXYKEJUYQOHFC": {
+      "to": "coingecko#stellar",
+      "decimals": 7,
+      "symbol": "yXLM"
+    },
+    "CB2XMFB6BDIHFOSFB5IXHDOYV3SI3IXMNIZLPDZHC7ENDCXSBEBZAO2Y": {
+      "to": "coingecko#bitcoin",
+      "decimals": 7,
+      "symbol": "yBTC"
+    },
+    "CDOFW7HNKLUZRLFZST4EW7V3AV4JI5IHMT6BPXXSY2IEFZ4NE5TWU2P4": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "yUSDC"
+    },
+    "CDYEOOVL6WV4JRY45CXQKOBJFFAPOM5KNQCCDNM333L6RM2L4RO3LKYG": {
+      "to": "coingecko#ethereum",
+      "decimals": 7,
+      "symbol": "yETH"
+    },
+    "CAESLMGW5LYTIEJI7FJHK6SFSWRELLNVX5Q4WR4UZEALMTRWQDBKDPAG": {
+      "to": "coingecko#velo",
+      "decimals": 7,
+      "symbol": "VELO"
+    },
+    "CAO7DDJNGMOYQPRYDY5JVZ5YEK4UQBSMGLAEWRCUOTRMDSBMGWSAATDZ": {
+      "to": "coingecko#bitcoin",
+      "decimals": 7,
+      "symbol": "BTC"
+    },
+    "CBH4M45TQBLDPXOK6L7VYKMEJWFITBOL64BN3WDAIIDT4LNUTWTTOCKF": {
+      "to": "coingecko#ethereum",
+      "decimals": 7,
+      "symbol": "ETH"
+    },
+    "MOBI-GA6HCMBLTZS5VYYBCATRBRZ3BZJMAFUDKYYF6AH6MVCMGWMRDNSWJPIH": {
+      "to": "coingecko#mobius",
+      "decimals": 7,
+      "symbol": "MOBI"
     }
   },
   "shape": {
@@ -16702,11 +16747,30 @@
       "to": "coingecko#proptech"
     }
   },
+  "bcypher": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "VTCN",
+      "to": "coingecko#versatize-coin"
+    },
+    "0x1150fd1335b0a53347f8bfb763729a99fbeab2ef": {
+      "decimals": "18",
+      "symbol": "WVTCN",
+      "to": "coingecko#versatize-coin"
+    }
+  },
   "omnipair": {
     "omfgRBnxHsNJh6YeGbGAmWenNkenzsXyBXm3WDhmeta": {
       "decimals": "6",
       "symbol": "OMFG",
       "to": "coingecko#omnipair"
+    }
+  },
+  "igra": {
+    "0x17Ec7E1768c813E2a3a9b0f94A35605CA520C242": {
+      "to": "coingecko#kaspa",
+      "decimals": 18,
+      "symbol": "WiKAS"
     }
   }
 }

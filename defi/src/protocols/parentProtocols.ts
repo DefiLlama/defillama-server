@@ -203,13 +203,13 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#spiritswap",
     name: "SpiritSwap",
-    url: "https://app.spiritswap.finance/#/",
+    url: "https://www.spiritswap.finance/chain/ftm/swap",
     description: "AMM and Lending protocol on Fantom",
     logo: `${baseIconsUrl}/spiritswap.jpg`,
     gecko_id: "spiritswap",
     cmcId: "1359",
     chains: [],
-    twitter: "Spirit_Swap",
+    twitter: "SilverSwapDex",
     governanceID: ["snapshot:spiritswap.eth"],
     github: ["Spirit-DAO"],
   },
@@ -2450,6 +2450,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     treasury: "dexfinance.js",
     twitter: "DexFinance",
+    github: ["dexfi-com"],
   },
   {
     id: "parent#trufin-protocol",
@@ -2555,6 +2556,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "24254",
     chains: [],
     twitter: "velocorexyz",
+    deadUrl: true,
   },
   {
     id: "parent#chronos",
@@ -2581,6 +2583,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "27690",
     chains: [],
     twitter: "Echo_DEX",
+    deadUrl: true,
   },
   {
     id: "parent#gmx",
@@ -3074,7 +3077,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hope-money",
     name: "HOPE Money",
-    url: "https://hope.money",
+    url: "https://hope.money/",//deadUrl 1016 error
     description:
       "All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.",
     logo: `${baseIconsUrl}/hope-money.jpg`,
@@ -3083,6 +3086,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Hope_money_",
     github: ["Light-Ecosystem"],
+    deadUrl: true,
   },
   {
     id: "parent#nostra",
@@ -4449,6 +4453,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "WiseLending",
     deadUrl: true,
+    deprecated: true,
   },
   {
     id: "parent#Edge",
@@ -5258,14 +5263,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#bmx",
     name: "BMX",
-    url: "https://bmx.morphex.trade",
+    url: "https://www.bmx.trade/",
     description:
       "BMX by Morphex is a decentralized perpetual exchange focused on bringing the highest capital efficiency to liquidity providers.",
     logo: `${baseIconsUrl}/bmx.jpg`,
     gecko_id: "bmx",
     cmcId: null,
     chains: [],
-    twitter: "MorphexFTM",
+    twitter: "useboardwalk",
   },
   {
     id: "parent#unidex",
@@ -5498,7 +5503,7 @@ const parentProtocols: IParentProtocol[] = [
       "Execution Infrastructure for On-Chain Trading.",
     logo: `${baseIconsUrl}/saphyre.jpg`,
     gecko_id: "dragonswap",
-    cmcId: null,
+    cmcId: "38979",
     chains: [],
     twitter: "Saphyre_xyz",
     github: ["dragonswap-app"],
@@ -5767,7 +5772,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://stakestone.io",
     description: "One-Stop Staking Protocol For Omnichain LST Liquidity.",
     logo: `${baseIconsUrl}/stakestone.jpg`,
-    gecko_id: null, // token not listed yet
+    gecko_id: "stakestone", 
     cmcId: null,
     chains: [],
     twitter: "Stake_Stone",
@@ -6477,6 +6482,7 @@ const parentProtocols: IParentProtocol[] = [
         message: "SoneFi has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }],
+    deadUrl: true,
   },
   {
     id: "parent#filament",
@@ -7084,8 +7090,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#hypurfi",
     name: "HypurrFi",
-    url: "https://app.hypurr.fi/points?af=defillama",
-    referralUrl: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
+    referralUrl: "https://hypurrfi.com/points?af=defillama",
     description: "Collateralize borrowing positions and loop and lever up your yield",
     logo: `${baseIconsUrl}/hypurrfi.png`,
     gecko_id: null,
@@ -7371,6 +7377,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "superseedfi",
+    deadUrl: true
   },
   {
     id: "parent#saros",
@@ -7565,7 +7572,7 @@ const parentProtocols: IParentProtocol[] = [
     referralUrl: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description: "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
     logo: `${baseIconsUrl}/hyperlend.jpg`,
-    gecko_id: null,
+    gecko_id: "hyperlend",
     cmcId: null,
     chains: [],
     twitter: "hyperlendx",
@@ -8034,7 +8041,7 @@ const parentProtocols: IParentProtocol[] = [
     referralUrl: "https://app.paradex.trade/r/defillama",
     description: "Trade perpetuals on a high-performance DEX with deep liquidity, capital efficiency and low fees",
     logo: `${baseIconsUrl}/paradex.jpg`,
-    gecko_id: null,
+    gecko_id: "paradex",
     cmcId: null,
     chains: [],
     twitter: "paradex",
@@ -8045,7 +8052,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://securitize.io/",
     description: "Securitize is making real-world assets available to institutions and investors through tokenization, a process that registers ownership rights on the blockchain",
     logo: `${baseIconsUrl}/securitize.jpg`,
-    gecko_id: "paradex",
+    gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "Securitize",
@@ -8610,7 +8617,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#monday-trade",
     name: "Monday Trade",
     url: "https://app.monday.trade/",
-    description: "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+    description: "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad's low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     logo: `${baseIconsUrl}/monday-trade.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -8697,6 +8704,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "LotusDex",
+    deadUrl: true
   },
   {
     id: "parent#hypertrade",
@@ -9368,6 +9376,52 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "stable",
+  },
+  {
+    id: "parent#tristero",
+    name: "Tristero",
+    url: "https://www.tristero.com/",
+    description: "The DEX with no compromises. Encrypted Execution. Best Pricing. 25+ Chains",
+    logo: `${baseIconsUrl}/tristero.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "0xtristero",
+  },
+  {
+    id: "parent#kaspacom",
+    name: "KaspaCom",
+    url: "https://kaspa.com/",
+    description: "The Leading Kaspa DeFi Platform — DEX, Launchpad, and NFTs",
+    logo: `${baseIconsUrl}/kaspacom.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "KaspaCom",
+    github: ["KASPACOM"],
+  },
+  {
+    id: "parent#wasabi",
+    name: "Wasabi",
+    url: "https://app.wasabi.xyz/p/LKHR9",
+    referralUrl: "https://app.wasabi.xyz/p/LKHR9",
+    description: "Wasabi is a leverage trading protocol: Long, short, and earn on your favorite long tail assets such as memecoins and NFTs. Wasabi’s asset-backed perps keep the position value closely pegged to the underlying asset, reflecting the true price action on your PnL. It also generates additional downstream effects such as moving the spot price with leverage, listing pairs as soon as they launch, and generating low-risk yield opportunities through single sided staking",
+    logo: `${baseIconsUrl}/wasabi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "wasabi_protocol",
+  },
+  {
+    id: "parent#spaace",
+    name: "Spaace",
+    url: "https://spaace.io/",
+    description: "Spaace is a gamified NFT marketplace focused on NFT trading, daily rewards, and a gamified Battle Pass that turns activity into XP, progression, and value.",
+    logo: `${baseIconsUrl}/spaace.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spaace_io",
   },
 ];
 

@@ -1,5 +1,6 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
+import { normalizePerpsMetadataInPlace } from "./constants";
 
 class META_RWA_PERPS_DATA extends Model { }
 export class DAILY_RWA_PERPS_DATA extends Model { }
@@ -232,7 +233,7 @@ export async function storeFundingHistoryPG(inserts: any[]): Promise<void> {
     });
 }
 
-// Get cumulative funding for a coin from funding_history
+// Get cumulative funding for a contract from funding_history
 export async function fetchCumulativeFundingPG(id: string): Promise<number> {
     const result = await FUNDING_HISTORY.sequelize!.query(
         `SELECT COALESCE(SUM(funding_payment), 0) as total
@@ -243,7 +244,7 @@ export async function fetchCumulativeFundingPG(id: string): Promise<number> {
     return Number(result[0]?.total) || 0;
 }
 
-// Get the latest funding history timestamp for a coin
+// Get the latest funding history timestamp for a contract
 export async function fetchLatestFundingTimestampPG(id: string): Promise<number | null> {
     const result = await FUNDING_HISTORY.sequelize!.query(
         `SELECT MAX(timestamp) as max_ts
@@ -294,6 +295,7 @@ export async function fetchMetadataPG(): Promise<any[]> {
     data.forEach((d: any) => {
         try {
             d.data = JSON.parse(d.data)
+            normalizePerpsMetadataInPlace(d.data)
         } catch (e) {
             console.error(`Error parsing metadata for id ${d.id}:`, (e as any)?.message);
             delete d.data;
@@ -383,16 +385,24 @@ export async function fetchLatestAggregateTotals(): Promise<{ openInterest: numb
     }
 }
 
-// Fetch funding history for a specific coin within a time range
+// Fetch funding history for a specific contract within a time range
 export async function fetchFundingHistoryPG(id: string, startTime?: number, endTime?: number): Promise<any[]> {
     const where: any = { id };
     if (startTime) where.timestamp = { ...(where.timestamp || {}), [Op.gte]: startTime };
     if (endTime) where.timestamp = { ...(where.timestamp || {}), [Op.lte]: endTime };
 
-    return await FUNDING_HISTORY.findAll({
+    const rows = await FUNDING_HISTORY.findAll({
         where,
         order: [['timestamp', 'ASC']],
         raw: true,
+    });
+
+    return rows.map((row: any) => {
+        const { coin, ...rest } = row;
+        return {
+            ...rest,
+            contract: coin,
+        };
     });
 }
 

@@ -116,13 +116,11 @@ export async function notifyStaleCoins() {
       return; // ignore 100B+ coins
     }
     let readableTvl: string = humanizeNumber(d.usd_amount);
-    message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
-      d.percentage
-    }%) because ${d.key} (${d.symbol}) is ${d.latency}h stale`;
-    if (d.usd_amount > 1e8 && timeout - d.latency < 13) {
-      teamMessage += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${
-        d.percentage
+    message += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${d.percentage
       }%) because ${d.key} (${d.symbol}) is ${d.latency}h stale`;
+    if (d.usd_amount > 1e8 && timeout - d.latency < 13) {
+      teamMessage += `\nIn ${timeout - d.latency}h a ${d.protocol} TVL chart will lose ${readableTvl}$ (${d.percentage
+        }%) because ${d.key} (${d.symbol}) is ${d.latency}h stale`;
     }
   });
 
@@ -152,3 +150,15 @@ export async function notifyChangedAdapter() {
   if (message.length) promises.push(sendMessage(message, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true));
   await Promise.all(promises);
 }
+
+
+async function run() {
+  await notifyStaleCoins();
+  await notifyChangedAdapter();
+}
+
+if (process.env.RUN_SCRIPT_MODE)
+  run().catch(console.error).then(() => {
+    console.log("Done");
+    process.exit(0);
+  });

@@ -270,7 +270,7 @@ export function normalizeDashToNull(value: any) {
   return value;
 }
 
-function toStringOrNull(value: any): string | null {
+export function toStringOrNull(value: any): string | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
   if (typeof value === "boolean") return null;

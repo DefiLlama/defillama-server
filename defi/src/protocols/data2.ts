@@ -2982,6 +2982,7 @@ const data2: Protocol[] = [
     listedAt: 1646515940,
     governanceID: ["snapshot:granaryfinance.eth"],
     github: ["The-Granary"],
+    deadUrl: true,
   },
   {
     id: "1515",
@@ -5646,6 +5647,7 @@ const data2: Protocol[] = [
     listedAt: 1649674184,
     governanceID: ["snapshot:blid.eth"],
     github: ["bolide-fi"],
+    deadUrl: true,
   },
   {
     id: "1637",
@@ -6299,6 +6301,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
     listedAt: 1650437930,
     github: ["nordfinance"],
+    deadUrl: true,
   },
   {
     id: "1667",
@@ -6572,6 +6575,7 @@ const data2: Protocol[] = [
     twitter: "DotDotDotFi",
     listedAt: 1650804679,
     github: ["dotdot-ellipsis"],
+    deadUrl: true,
   },
   {
     id: "1680",
@@ -8202,6 +8206,7 @@ const data2: Protocol[] = [
     treasury: "spartacus.js",
     twitter: "Spartacus_Fi",
     listedAt: 1652209030,
+    deadUrl: true,
     dimensions: {
       dexs: "spartacus-exchange"
     }
@@ -10327,6 +10332,7 @@ const data2: Protocol[] = [
     audit_links: ["https://drive.google.com/file/d/1RTwAYuPBmQCVrmor-iZ9dFAGlCkdMtdR/view?usp=sharing"],
     listedAt: 1655973909,
     github: ["InsureDAO"],
+    deadUrl: true,
   },
   {
     id: "1852",
@@ -12782,6 +12788,7 @@ const data2: Protocol[] = [
     twitter: "unboundfinance",
     listedAt: 1660121047,
     github: ["unbound-finance"],
+    deadUrl: true,
   },
   {
     id: "1965",
@@ -13215,7 +13222,7 @@ const data2: Protocol[] = [
     name: "Canto Dex",
     address: null,
     symbol: "-",
-    url: "https://slingshot.app/",
+    url: "https://canto.io//",
     description: "Dex on canto blockchain",
     chain: "Canto",
     logo: `${baseIconsUrl}/canto-dex.jpg`,
@@ -13685,6 +13692,7 @@ const data2: Protocol[] = [
     module: "exinpool/index.js",
     twitter: null,
     listedAt: 1661153137,
+    deadUrl: true,
   },
   {
     id: "2006",
@@ -14382,11 +14390,13 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Fantom"],
     module: "spiritswap-lending/index.js",
-    twitter: "Spirit_Swap",
+    twitter: "SilverSwapDex",
     oracles: ["Internal"],
     forkedFromIds: ["114"],
     parentProtocol: "parent#spiritswap",
     listedAt: 1661881491,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "2038",
@@ -17295,6 +17305,7 @@ const data2: Protocol[] = [
       "https://kudelskisecurity.com/wp-content/uploads/AlgoRai-Secure-Code-Review-Report-Public-Release.pdf",
     ],
     listedAt: 1665074987,
+    deadUrl: true,
   },
   {
     id: "2165",
@@ -18253,7 +18264,7 @@ const data2: Protocol[] = [
     name: "Tetu Swap",
     address: "polygon:0x255707b70bf90aa112006e1b07b9aea6de021424",
     symbol: "TETU",
-    url: "https://swap.tetu.io/#/swap",
+    url: "https://swap.tetu.io/#/swap", //deadUrl 1016 error
     description:
       "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
     chain: "Polygon",
@@ -18271,7 +18282,8 @@ const data2: Protocol[] = [
     parentProtocol: "parent#tetu",
     dimensions: {
       dexs: "tetu"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2204",
@@ -20982,7 +20994,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "kperp-exchange",
       derivatives: "kperp-exchange"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2327",
@@ -22769,7 +22782,7 @@ const data2: Protocol[] = [
     name: "BAO Swap",
     address: null,
     symbol: "-",
-    url: "https://www.baoswap.xyz/#/swap",
+    url: "https://www.baoswap.xyz/#/swap", //deadUrl 1016 error
     description: "AMM on xDai network",
     chain: "xDai",
     logo: `${baseIconsUrl}/bao-swap.jpg`,
@@ -22783,6 +22796,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#bao-finance",
     listedAt: 1672925683,
+    deadUrl: true,
   },
   {
     id: "2409",
@@ -22802,6 +22816,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     parentProtocol: "parent#bao-finance",
     listedAt: 1672925686,
+    deadUrl: true,
   },
   {
     id: "2410",
@@ -23117,6 +23132,7 @@ const data2: Protocol[] = [
     audit_links: ["https://hacken.io/audits/#lunafi"],
     listedAt: 1673451772,
     github: ["Luna-Fi"],
+    deadUrl: true,
   },
   {
     id: "2425",
@@ -23558,6 +23574,7 @@ const data2: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-GumBallV2-v1.0.pdf",
     ],
     listedAt: 1673950175,
+    deadUrl: true,
   },
   {
     id: "2446",
@@ -24936,6 +24953,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1675781737,
     stablecoins: ["deuterium"],
+    deadUrl: true,
   },
   {
     id: "2511",
@@ -26459,6 +26477,7 @@ const data2: Protocol[] = [
     module: "pocm-staking/index.js",
     twitter: "Nuls",
     listedAt: 1677236770,
+    deadUrl: true,
   },
   {
     id: "2581",

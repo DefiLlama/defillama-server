@@ -1015,6 +1015,7 @@ const data4: Protocol[] = [
     twitter: "Official_NODO",
     github: ["NODO-xyz"],
     listedAt: 1736335147,
+    deadUrl: true,
   },
   {
     id: "5603",
@@ -1503,6 +1504,7 @@ const data4: Protocol[] = [
     audit_links: ["https://github.com/SoneFixyz/Contracts"],
     parentProtocol: "parent#sonefi",
     listedAt: 1736851567,
+    deadUrl: true,
   },
   {
     id: "5624",
@@ -1716,6 +1718,7 @@ const data4: Protocol[] = [
     module: "momodrome/index.js",
     twitter: "momodrome_io",
     listedAt: 1737059541,
+    deadUrl: true
   },
   {
     id: "5634",
@@ -2016,6 +2019,7 @@ const data4: Protocol[] = [
       }],
     parentProtocol: "parent#sonefi",
     listedAt: 1737379697,
+    deadUrl: true,
   },
   {
     id: "5647",
@@ -2624,6 +2628,7 @@ const data4: Protocol[] = [
     module: "coin8-cex/index.js",
     twitter: "Coin8_Exchange",
     listedAt: 1737981973,
+    deadUrl: true
   },
   {
     id: "5674",
@@ -3263,6 +3268,7 @@ const data4: Protocol[] = [
     chains: ["Ethereum"],
     module: "zkfair/index.js",
     twitter: "ZKFCommunity",
+    deadUrl: true
   },
   {
     id: "5704",
@@ -3576,7 +3582,8 @@ const data4: Protocol[] = [
     listedAt: 1738582017,
     dimensions: {
       fees: "vinufinance"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5718",
@@ -3671,7 +3678,7 @@ const data4: Protocol[] = [
     name: "Exponent",
     address: null,
     symbol: "-",
-    url: "https://www.exponent.finance/income",
+    url: "https://www.exponent.finance/",
     description: "Exponent is a yield exchange protocol on Solana for fixed-rate and leveraged yield farming",
     chain: "Solana",
     logo: `${baseIconsUrl}/exponent.png`,
@@ -6378,7 +6385,7 @@ const data4: Protocol[] = [
     //previousNames: ["HypurrFi"],
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `Collateralize borrowing positions and loop and lever up your yield`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-pooled.jpg`,
@@ -6749,6 +6756,7 @@ const data4: Protocol[] = [
     module: "pholend/index.js",
     twitter: "pholend_",
     listedAt: 1740675989,
+    deadUrl: true
   },
   {
     id: "5853",
@@ -8755,12 +8763,13 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "BaseFinanceLabs",
     listedAt: 1742570641,
+    deadUrl: true,
   },
   {
     id: "5940",
     name: "HyperLend Pooled",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
@@ -9580,6 +9589,7 @@ const data4: Protocol[] = [
     module: "alfafrens/index.js",
     twitter: "alfafrens_",
     listedAt: 1743442075,
+    deadUrl: true,
   },
   {
     id: "5975",
@@ -9904,7 +9914,7 @@ const data4: Protocol[] = [
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
     tokensExcludedFromParent: {
-      Ethereum: ["SPDAI"],
+      Ethereum: ["SPDAI", "SPUSDT", "SPPYUSD", "SPUSDS", "SPUSDC"],
     },
     listedAt: 1743696229,
     dimensions: {
@@ -11293,7 +11303,7 @@ const data4: Protocol[] = [
     name: "HypurrFi Isolated",
     address: null,
     symbol: "-",
-    url: "https://app.hypurr.fi/points?af=defillama",
+    url: "https://hypurrfi.com/points?af=defillama",
     description: `HypurrFi's isolated lending markets`,
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/hypurrfi-isolated.jpg`,
@@ -11306,7 +11316,7 @@ const data4: Protocol[] = [
       {
         name: "Pyth",
         type: "Primary",
-        proof: ["https://app.hypurr.fi/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
+        proof: ["https://hypurrfi.com/markets/isolated/999/0xAeedD5B6d42e0F077ccF3E7A78ff70b8cB217329"],
       },
     ],
     module: "hypurrfi-isolated/index.js",
@@ -12125,7 +12135,7 @@ const data4: Protocol[] = [
     previousNames: ["Haven1 Swap"],
     address: null,
     symbol: "-",
-    url: "https://swap.haven1.org/",
+    url: "https://swap.haven1.org/", //deadUrl 1016 error
     description: `Uniswap V3 fork on Haven1 chain`,
     chain: "Haven1",
     logo: `${baseIconsUrl}/haven1-hswap.jpg`,
@@ -12141,7 +12151,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "haven1-hswap",
       dexs: "haven1-hswap"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "6090",
@@ -12986,7 +12997,7 @@ const data4: Protocol[] = [
     name: "xAssets",
     address: null,
     symbol: "-",
-    url: "https://xassets.ms/mint",
+    url: "https://xassets.ms/mint", //deadUrl 503 error
     description:
       "xAssets is an RWA protocol on CrossFi that tokenizes real-world assets and securities, giving users exposure via its USD-pegged stablecoin, XUSD",
     chain: "CrossFi",
@@ -12999,6 +13010,7 @@ const data4: Protocol[] = [
     module: "xAssets/index.js",
     twitter: null,
     listedAt: 1746126133,
+    deadUrl: true,
   },
   {
     id: "6128",
@@ -13709,6 +13721,7 @@ const data4: Protocol[] = [
     twitter: "0xBerancia",
     audit_links: ["https://barencias-organization.gitbook.io/berancia"],
     listedAt: 1747046911,
+    deadUrl: true
   },
   // { Commented because funds sent to EOA
   //   id: "6163",
@@ -13925,6 +13938,7 @@ const data4: Protocol[] = [
     module: "GainzSwap/index.js",
     twitter: "GainzSwap",
     listedAt: 1747233946,
+    deadUrl: true,
   },
   {
     id: "6173",
@@ -15726,6 +15740,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362,
+    deadUrl: true
   },
   {
     id: "6242",
@@ -15752,6 +15767,7 @@ const data4: Protocol[] = [
     ],
     parentProtocol: "parent#seedfi",
     listedAt: 1748423362,
+    deadUrl: true
   },
   {
     id: "6243",
@@ -19089,7 +19105,8 @@ const data4: Protocol[] = [
     twitter: "unicornxdex",
     dimensions: {
       fees: "unicornx"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6386",
@@ -19109,6 +19126,7 @@ const data4: Protocol[] = [
     module: "p2pflip/index.js",
     twitter: null,
     listedAt: 1751490093,
+    deadUrl: true
   },
   {
     id: "6387",
@@ -19291,8 +19309,8 @@ const data4: Protocol[] = [
   {
     id: "6395",
     name: "HyperLend Isolated",
-    address: null,
-    symbol: "-",
+    address: "hyperliquid:0x5e887f0c6c3deec190c36186bf23369f",
+    symbol: "HLP",
     url: "https://app.hyperlend.finance/?ref=DEFILLAMA",
     description:
       "HyperLend is a high-performance lending protocol on Hyperliquid EVM, built for capital efficiency. It offers real-time leverage, dynamic rates, and deep liquidity",
@@ -19834,6 +19852,7 @@ const data4: Protocol[] = [
     twitter: "DeFiCarrot",
     parentProtocol: "parent#carrot",
     listedAt: 1752343187,
+    hallmarks: [['2026-04-01', "Drift Protocol Exploit"]],
   },
   {
     id: "6419",
@@ -20533,6 +20552,7 @@ const data4: Protocol[] = [
     twitter: "TopCutFinance",
     audit_links: ["https://github.com/PossumLabsCrypto/TopCut/tree/main/AUDIT%20REPORTS"],
     listedAt: 1752775161,
+    deadUrl: true,
     dimensions: {
       fees: "topcut"
     }
@@ -21343,8 +21363,8 @@ const data4: Protocol[] = [
     category: "Governance Incentives",
     chains: ["Initia"],
     module: "cabal/index.js",
-    twitter: "CabalVIP",
-    github: ["Cabal-VIP"],
+    twitter: "CabalFDN",
+    github: ["0xCabal"],
     listedAt: 1753650153,
   },
   /* {  // duplicate of glyph v4
@@ -23241,7 +23261,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "earnium",
       dexs: "earnium"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6569",
@@ -24887,7 +24908,7 @@ const data4: Protocol[] = [
     parentProtocol: "parent#pancakeswap",
     dimensions: {
       fees: "pancakeswap-prediction",
-      dexs: "pancakeswap-prediction"
+      dexs: "pancakeswap-prediction",
     }
   },
   {
@@ -26542,6 +26563,9 @@ const data4: Protocol[] = [
     module: "spark-savings/index.js",
     twitter: "sparkdotfi",
     parentProtocol: "parent#spark",
+    tokensExcludedFromParent: {
+      Ethereum: ["SPUSDT", "SPUSDC", "SPETH", "SPPYUSD"],
+    },
     listedAt: 1757630167
   },
   {
@@ -27046,7 +27070,8 @@ const data4: Protocol[] = [
     module: "haven1-hlend/index.js",
     forkedFromIds: ["1599"],
     twitter: "haven1official",
-    listedAt: 1758142355
+    listedAt: 1758142355,
+    deadUrl: true
   },
   {
     id: "6741",
@@ -27720,7 +27745,10 @@ const data4: Protocol[] = [
     // excludeTvlFromParent: true, // tokens are deposited into curve pools
     dimensions: {
       fees: "yield-basis",
-      dexs: "yield-basis"
+      dexs: {
+        adapter: "yield-basis",
+        genuineSpikes: [["2026-04-07", "ETH and BTC prices spike"]],
+      }
     }
   },
   {
@@ -28329,7 +28357,8 @@ const data4: Protocol[] = [
     listedAt: 1759340419,
     dimensions: {
       fees: "LeadFi-leadBTC"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6800",
@@ -28494,6 +28523,7 @@ const data4: Protocol[] = [
     category: "Risk Curators",
     chains: ["Ethereum"],
     module: "sentora/index.js",
+    oraclesBreakdown: [{name: "Chainlink", type: "Primary", proof: ["https://etherscan.io/address/0xa569d910839Ae8865Da8F8e70FfFb0cBA869F961#readContract"]}],
     twitter: "SentoraHQ",
     listedAt: 1759454399,
     dimensions: {
@@ -30080,7 +30110,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "coinhain",
       dexs: "coinhain"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "6879",

@@ -1,11 +1,12 @@
 import { perpsSlug, toFiniteNumberOrZero } from "./utils";
+import { toStringArrayOrNull, toStringOrNull } from "../utils";
 
 type MetadataPayload = {
-  coin?: string;
-  venue?: string;
-  referenceAsset?: string;
-  assetClass?: string;
-  category?: string[];
+  contract?: unknown;
+  venue?: unknown;
+  referenceAsset?: unknown;
+  assetClass?: unknown;
+  category?: unknown;
 };
 
 type MetadataRecord = {
@@ -23,10 +24,10 @@ type DailyRecord = {
 export type AggregateHistoricalRow = {
   timestamp: number;
   id: string;
-  coin: string;
+  contract: string;
   venue: string;
-  referenceAsset: string;
-  assetClass: string;
+  referenceAsset: string | null;
+  assetClass: string[] | null;
   category: string[];
   openInterest: number;
   volume24h: number;
@@ -43,8 +44,7 @@ function getMetadataMap(metadata: MetadataRecord[]) {
 }
 
 function normalizeCategoryList(value: unknown): string[] {
-  if (!Array.isArray(value)) return [];
-  return value.map((item) => String(item).trim()).filter(Boolean);
+  return toStringArrayOrNull(value) ?? [];
 }
 
 function buildBaseHistoricalRow(record: DailyRecord, metadataMap: Map<string, MetadataPayload>): AggregateHistoricalRow {
@@ -52,10 +52,10 @@ function buildBaseHistoricalRow(record: DailyRecord, metadataMap: Map<string, Me
   return {
     timestamp: record.timestamp,
     id: record.id,
-    coin: metadata.coin || record.id,
-    venue: metadata.venue || record.id.split(":")[0] || "unknown",
-    referenceAsset: metadata.referenceAsset || "",
-    assetClass: metadata.assetClass || "",
+    contract: toStringOrNull(metadata.contract) || record.id,
+    venue: toStringOrNull(metadata.venue) || record.id.split(":")[0] || "unknown",
+    referenceAsset: toStringOrNull(metadata.referenceAsset),
+    assetClass: toStringArrayOrNull(metadata.assetClass),
     category: normalizeCategoryList(metadata.category),
     openInterest: toFiniteNumberOrZero(record.open_interest),
     volume24h: toFiniteNumberOrZero(record.volume_24h),
@@ -72,20 +72,30 @@ export function buildPerpsIdMap(metadata: MetadataRecord[]): Record<string, stri
 
   for (const entry of metadata) {
     const id = entry?.id ? String(entry.id).toLowerCase() : "";
-    const coin = entry?.data?.coin ? String(entry.data.coin).toLowerCase() : "";
+    const contract = entry?.data?.contract ? String(entry.data.contract).toLowerCase() : "";
     const venue = entry?.data?.venue ? String(entry.data.venue).toLowerCase() : "";
+    const sluggedId = id ? perpsSlug(id) : "";
+    const sluggedContract = contract ? perpsSlug(contract) : "";
 
     if (id) {
       idMap[id] = id;
     }
-
-    if (coin) {
-      idMap[coin] = id || coin;
+    if (sluggedId) {
+      idMap[sluggedId] = id || sluggedId;
     }
 
-    if (coin && venue) {
-      const venuePrefixedCoin = coin.startsWith(`${venue}:`) ? coin : `${venue}:${coin}`;
-      idMap[venuePrefixedCoin] = id || coin;
+    if (contract) {
+      idMap[contract] = id || contract;
+    }
+    if (sluggedContract) {
+      idMap[sluggedContract] = id || contract;
+    }
+
+    if (contract && venue) {
+      const venuePrefixedContract = contract.startsWith(`${venue}:`) ? contract : `${venue}:${contract}`;
+      const sluggedVenuePrefixedContract = perpsSlug(venuePrefixedContract);
+      idMap[venuePrefixedContract] = id || contract;
+      idMap[sluggedVenuePrefixedContract] = id || contract;
     }
   }
 

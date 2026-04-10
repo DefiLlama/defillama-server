@@ -16469,5 +16469,23 @@ const data5: Protocol[] = [
       options: "paradex",
     },
   },
+  {
+    id: "7652",
+    name: "Canton",
+    address: null,
+    symbol: "CC",
+    url: "https://www.canton.network/",
+    description:
+      "Canton Network is a public privacy-enabled layer-1 blockchain for regulated financial markets that lets applications interoperate while preserving sub-transaction privacy and participant-level control",
+    chain: "Canton",
+    logo: `${baseIconsUrl}/canton.jpg`,
+    audits: "0",
+    gecko_id: "canton-network",
+    cmcId: "37263",
+    category: "Chain",
+    chains: ["Canton"],
+    module: "dummy.js",
+    twitter: "CantonNetwork",
+  },
 ];
 export default data5;

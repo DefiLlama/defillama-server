@@ -16470,7 +16470,7 @@ const data5: Protocol[] = [
     },
   },
   {
-    id: "7652",
+    id: "7653",
     name: "Canton",
     address: null,
     symbol: "CC",

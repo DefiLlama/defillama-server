@@ -49082,7 +49082,7 @@ const data3_3: Protocol[] = [
 	  oraclesBreakdown: [
       {
         name: "RedStone",
-        type: "Primary",
+        type: "Secondary",
         proof: ["https://docs.kinetic.market/oracles-and-pricing"],
       },
     github: ["kinetic-market"],

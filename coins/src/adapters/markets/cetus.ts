@@ -190,5 +190,3 @@ async function getTokenPrices(timestamp: number) {
     confidence: 0.8,
   });
 }
-
-getTokenPrices(0) // ts-node coins/src/adapters/markets/cetus.ts

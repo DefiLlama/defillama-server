@@ -153,5 +153,3 @@ export async function navTokens(timestamp: number = 0): Promise<Write[]> {
   }
   return writes;
 }
-
-// navTokens(0).then((w) => console.log(JSON.stringify(w, null, 2))); // ts-node coins/src/adapters/rwa/navTokens.ts

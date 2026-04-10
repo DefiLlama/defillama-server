@@ -173,6 +173,12 @@ export const PERPS = {
   SUMMARY_DERIVATIVES: (protocol: string) => `/api/summary/derivatives/${protocol}`,
 } as const;
 
+export const PERPS_V2 = {
+  BASE_URL: BASE_URLS.TVL,
+  SUMMARY_DERIVATIVES: (protocol: string) => `/v2/metrics/derivatives/protocol/${protocol}`,
+  CHART_CHAIN_BREAKDOWN_DERIVATIVES: (protocol: string) => `/v2/chart/derivatives/protocol/${protocol}/chain-breakdown`,
+} as const;
+
 export const ETFS = {
   BASE_URL: getProApiBaseUrl(),
   SNAPSHOT: '/etfs/snapshot',
@@ -243,6 +249,7 @@ export const endpoints = {
   UNLOCKS,
   YIELDS_PRO,
   PERPS,
+  PERPS_V2,
   ETFS,
   NARRATIVES,
   TOKEN_LIQUIDITY,

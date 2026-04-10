@@ -664,6 +664,7 @@ const data: Protocol[] = [
     twitter: "HBTC_official",
     audit_links: ["https://www.htokens.finance/static/pdf/audit-report-en.pdf"],
     deadFrom: "2025-03-31",
+    deadUrl: true,
   },
   {
     id: "133",
@@ -1408,6 +1409,7 @@ const data: Protocol[] = [
     twitter: "poweredbyClubs",
     audit_links: ["https://github.com/dev-protocol/protocol/blob/main/docs/audit-report__quantstamp--sept-15-2020.pdf"],
     github: ["dev-protocol"],
+    deadUrl: true,
   },
   {
     id: "169",
@@ -2122,7 +2124,9 @@ const data: Protocol[] = [
     dimensions: {
       fees: "saddle-finance",
       dexs: "saddle-finance"
-    }
+    },
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "203",
@@ -4470,7 +4474,7 @@ const data: Protocol[] = [
     name: "SpiritSwap AMM",
     address: "fantom:0x5cc61a78f164885776aa610fb0fe1257df78e59b",
     symbol: "SPIRIT",
-    url: "https://app.spiritswap.finance/#/",
+    url: "https://www.spiritswap.finance/chain/ftm/swap",
     description: "AMM",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spiritswap.jpg`,
@@ -4480,7 +4484,7 @@ const data: Protocol[] = [
     tags: ["AMM"],
     chains: ["Fantom"],
     module: "spiritswap/index.js",
-    twitter: "Spirit_Swap",
+    twitter: "SilverSwapDex",
     audit_links: [
       "https://github.com/Layer3Org/spiritswap-core/blob/main/SpiritSwap-Core%20Security%20Audit%20Report.pdf",
     ],
@@ -4489,7 +4493,7 @@ const data: Protocol[] = [
     dimensions: {
       fees: "spiritswap",
       dexs: "spiritswap"
-    }
+    },
   },
   {
     id: "312",
@@ -9873,6 +9877,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "seascapenetwork",
     forkedFromIds: ["2197"],
     github: ["seascapenetwork"],
+    deadUrl: true
   },
   {
     id: "553",
@@ -11820,6 +11825,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://kingdefi.io/assets/files/AuditFarms.pdf",
     ],
     github: ["KingDeFi-Solidity"],
+    deadUrl: true
   },
   {
     id: "641",
@@ -17627,6 +17633,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637977412,
     parentProtocol: "parent#dao-maker",
+    deadUrl: true,
   },
   {
     id: "922",
@@ -19641,6 +19648,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "RevenantGamefi",
     forkedFromIds: ["340"],
     listedAt: 1639332627,
+    deadUrl: true,
   },
   {
     id: "1015",
@@ -19990,6 +19998,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://app.topshelf.finance/PeckShield-Audit-Report-Topshelf-v1.0.pdf"],
     listedAt: 1639732995,
     forkedFromIds: ["270"],
+    deadUrl: true,
   },
   {
     id: "1031",
@@ -20010,6 +20019,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BaoCommunity",
     parentProtocol: "parent#bao-finance",
     listedAt: 1639773745,
+    deadUrl: true,
   },
   {
     id: "1032",
@@ -20393,6 +20403,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://dexapi.globiance.com/assets/GlobianceDEXAudit.pdf"],
     forkedFromIds: ["2197"],
     listedAt: 1639872890,
+    deadUrl: true
   },
   {
     id: "1050",
@@ -23450,6 +23461,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "obswap/index.js",
     twitter: "defiob",
     listedAt: 1641399104,
+    deadUrl: true,
   },
   {
     id: "1194",
@@ -24594,6 +24606,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1642021085,
     github: ["Proxy-Protocol"],
+    deadUrl: true,
   },
   {
     id: "1246",

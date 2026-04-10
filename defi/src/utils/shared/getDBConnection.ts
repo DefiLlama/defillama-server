@@ -1,6 +1,6 @@
 import postgres from "postgres";
 
-let accountsDBConnection: ReturnType<typeof postgres>;
+// let accountsDBConnection: ReturnType<typeof postgres>;
 let errorReportsConnection: ReturnType<typeof postgres>;
 let pgConnection: Promise<ReturnType<typeof postgres>>;
 
@@ -39,11 +39,11 @@ export async function getPgConnection() {
 }
 
 export async function closeConnection() {
-  if (accountsDBConnection) {
-    console.log("Closing Accounts DB connection");
-    await accountsDBConnection.end({ timeout: 2 });
-    console.log("Accounts DB connection closed");
-  }
+  // if (accountsDBConnection) {
+  //   console.log("Closing Accounts DB connection");
+  //   await accountsDBConnection.end({ timeout: 2 });
+  //   console.log("Accounts DB connection closed");
+  // }
 
   if (errorReportsConnection) {
     console.log("Closing Error Reports DB connection");

@@ -6,7 +6,6 @@ import {
   canonicalBridgeIds,
   chainsWithoutCanonicalBridges,
   excludedTvlId,
-  fetchNotifsSent,
   geckoSymbols,
   protocolBridgeIds,
   zero,
@@ -56,10 +55,11 @@ export default async function fetchBridgeUsdTokenTvls(
 
   tokenBalances[tokenBalances.length - 1] = await getExcludedTvl(timestamp);
 
-  let errorString = `canonical bridge issue around:`;
+  const failedBridges: string[] = [];
   filteredIds.map((id: string, i: number) => {
     if (tokenBalances[i].SK == null) {
       const chain = canonicalBridgeIds[id] ?? protocolBridgeIds[id];
+      failedBridges.push(`${chain}(${id})`);
 
       if (chain in deps) failedDeps.push(...deps[chain]);
       Object.keys(inverseDeps).map((dep: string) => {
@@ -70,13 +70,12 @@ export default async function fetchBridgeUsdTokenTvls(
     } else allProtocolsTemp[id] = tokenBalances[i];
   });
 
-  const notifs = fetchNotifsSent();
-
-  [...new Set(failedDeps)].map((dep: string) => (errorString = `${errorString} ${dep},`));
-
-  process.env.CHAIN_ASSET_WEBHOOK && errorString.length > 30 && notifs > 1
-    ? await sendMessage(errorString, process.env.CHAIN_ASSET_WEBHOOK!)
-    : console.log(errorString);
+  if (failedBridges.length) {
+    const errorString = `canonical bridge data missing for: ${failedBridges.join(", ")} | affected deps: ${[...new Set(failedDeps)].join(", ")}`;
+    process.env.CHAIN_ASSET_WEBHOOK
+      ? await sendMessage(errorString, process.env.CHAIN_ASSET_WEBHOOK!)
+      : console.log(errorString);
+  }
 
   if (persist) allProtocols = allProtocolsTemp;
   return allProtocolsTemp;
@@ -95,7 +94,7 @@ export async function fetchTvls(
   } = {}
 ): Promise<{ data: TokenTvlData; native?: TokenTvlData }> {
   const timestamp: number = params.timestamp ?? getCurrentUnixTimestamp();
-  const searchWidth: number = params.searchWidth ?? 43200; // (params.timestamp ? 43200 : 10800); // 12,3hr either side
+  const searchWidth: number = params.searchWidth ?? 86400; // 24hr either side
   const isCanonical: boolean = params.isCanonical ?? false;
   const isProtocol: boolean = params.isProtocol ?? false;
   await fetchBridgeUsdTokenTvls(timestamp, searchWidth);

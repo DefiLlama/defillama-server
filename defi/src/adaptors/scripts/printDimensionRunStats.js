@@ -1,7 +1,7 @@
 const fs = require('fs');
 const sdk = require('@defillama/sdk')
-const allLogs = fs.readFileSync(__dirname + '/../../../../dimensionsRun.log', 'utf8').split('\n')
-const outputFile = __dirname + '/../../../../dimensionsRunStats.log'
+const allLogs = fs.readFileSync(__dirname + '/../../../dimensionsRun.log', 'utf8').split('\n')
+const outputFile = __dirname + '/../../../dimensionsRunStats.log'
 fs.writeFileSync(outputFile, '') // reset file before appending to it
 
 const finalStatsData = {
@@ -22,7 +22,7 @@ function clone(obj) {
 }
 
 async function saveStats() {
-  fs.writeFileSync(__dirname + '/../../../../dimensionsRunStats.json.log', JSON.stringify(finalStatsData), 'utf8');
+  fs.writeFileSync(__dirname + '/../../../dimensionsRunStats.json.log', JSON.stringify(finalStatsData), 'utf8');
   let cacheKey = `dimensionRunStats-latest-all`
   if (process.env.DIM_ADAPTER_TYPE)
     cacheKey = `dimensionRunStats-latest-${process.env.DIM_ADAPTER_TYPE}`

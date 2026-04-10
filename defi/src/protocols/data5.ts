@@ -524,6 +524,7 @@ const data5: Protocol[] = [
     audit_links: ["https://spywolf.co/audits/Pumpbase_0x19798E390E69a36814B25BbBC7e75530E8a0A101.pdf"],
     github: ["PumpBase-Launchpad"],
     listedAt: 1761581949,
+    deadUrl: true,
   },
   {
     id: "6916",
@@ -1707,8 +1708,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#dipcoin",
     listedAt: 1762461479,
     dimensions: {
-      // fees: "dipcoin-perps",
-      // derivatives: "dipcoin-perps", // very high volume, low open-interest, hard to verify
+       fees: "dipcoin-perps",
+       derivatives: "dipcoin-perps",
     },
   },
   {
@@ -1962,9 +1963,15 @@ const data5: Protocol[] = [
     listedAt: 1762584873,
     parentProtocol: "parent#navi-protocol",
     dimensions: {
-      "derivatives": "astro-perp",
+      "derivatives": {
+        adapter: "astro-perp",
+        disableFromResponse: true,  // hard to verify onchain
+      },
       "open-interest": "astro-perp-oi",
-      "fees": "astro-perp",
+      "fees": {
+        adapter: "astro-perp",
+        disableFromResponse: true, // hard to verify onchain
+      },
     },
   },
   {
@@ -2945,14 +2952,14 @@ const data5: Protocol[] = [
   },
   {
     id: "7019",
-    name: "Spaace",
+    name: "Spaace NFT Marketplace",
     address: null,
     symbol: "SPAACE",
     url: "https://spaace.io/",
     description:
       "Spaace is a gamified NFT marketplace focused on NFT trading, daily rewards, and a gamified Battle Pass that turns activity into XP, progression, and value.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spaace.jpg`,
+    logo: `${baseIconsUrl}/spaace-nft-marketplace.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -2960,6 +2967,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "spaace_io",
+    parentProtocol: "parent#spaace",
     dimensions: {
       fees: "spaace",
     },
@@ -3081,7 +3089,7 @@ const data5: Protocol[] = [
     name: "Upscale",
     address: null,
     symbol: "-",
-    url: "https://upscale.trade/",
+    url: "https://app.upscale.trade/sign-in",
     description:
       "Upscale is a Web3 prop trading platform offering 2-phase, 1-phase, and instant funding accounts with no KYC. It supports crypto and forex trading, on-chain payments, and referral rewards. Available on both Web App and Telegram.",
     chain: "Binance",
@@ -3539,6 +3547,7 @@ const data5: Protocol[] = [
       dexs: "aethonswap",
       fees: "aethonswap",
     },
+    deadUrl: true
   },
   {
     id: "7045",
@@ -3747,6 +3756,9 @@ const data5: Protocol[] = [
     ],
     github: ["curvance"],
     listedAt: 1764287017,
+    dimensions: {
+      fees: "curvance",
+    },
   },
   {
     id: "7054",
@@ -3913,7 +3925,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://app.monday.trade/",
     description:
-      "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+      "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",
     logo: `${baseIconsUrl}/monday-trade-perps.jpg`,
     audits: "2",
@@ -4259,7 +4271,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://app.monday.trade/",
     description:
-      "Trade before your coffee hits. Monday Trade brings spot and perps at Monad speed, with millisecond execution, deep liquidity, and fully onchain ownership.",
+      "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",
     logo: `${baseIconsUrl}/monday-trade-spot.jpg`,
     audits: "2",
@@ -6367,6 +6379,7 @@ const data5: Protocol[] = [
     twitter: "LotusDex",
     listedAt: 1766423171,
     parentProtocol: "parent#lotusdex",
+    deadUrl: true,
   },
   {
     id: "7176",
@@ -6386,6 +6399,7 @@ const data5: Protocol[] = [
     twitter: "LotusDex",
     listedAt: 1766423181,
     parentProtocol: "parent#lotusdex",
+    deadUrl: true,
   },
   {
     id: "7177",
@@ -8584,10 +8598,11 @@ const data5: Protocol[] = [
     cmcId: null,
     tags: ["CLMM"],
     chains: ["Solana"],
-    module: "dummy.js",
+    module: "stabble-clmm/index.js",
     twitter: "stabbleorg",
     audit_links: ["https://github.com/stabbleorg/audit-reports"],
     parentProtocol: "parent#stabble",
+    listedAt: 1775669247,
     dimensions: {
       dexs: "stabble-clmm",
       fees: "stabble-clmm",
@@ -10605,7 +10620,7 @@ const data5: Protocol[] = [
     name: "Solayer Card",
     address: "solana:LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
     symbol: "LAYER",
-    url: "https://solayer.org/product/card",
+    url: "https://app.solayer.org/card",
     description: "The Solayer Emerald Card is a Visa-based crypto debit card integrated with the Solayer ecosystem that lets users spend on-chain assets anywhere Visa is accepted",
     chain: "Solana",
     logo: `${baseIconsUrl}/solayer-card.jpg`,
@@ -10953,7 +10968,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["Treasury Bills"],
+    category: "Farm",
     chains: ["Ethereum", "Base"],
     module: "afiprotocol/index.js",
     twitter: "afiprotocol_xyz",
@@ -13127,7 +13142,10 @@ const data5: Protocol[] = [
     module: "venus-fluid/index.js",
     twitter: "VenusProtocol",
     parentProtocol: "parent#venus-finance",
-    listedAt: 1772661088
+    listedAt: 1772661088,
+    dimensions: {
+      fees: "venus-flux"
+    }
   },
   {
     id: "7497",
@@ -13818,6 +13836,7 @@ const data5: Protocol[] = [
     twitter: "mementodotmoney",
     github: ["MementoMoney"],
     listedAt: 1773153611,
+    deadUrl: true
   },
   {
     id: "7531",
@@ -15379,6 +15398,7 @@ const data5: Protocol[] = [
     ],
     listedAt: 1774996953,
     github: ["circuitdao"],
+    treasury: "circuitdao.js",
     dimensions: {
       fees: "circuitdao",
     },
@@ -16161,10 +16181,11 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum", "Base", "Ethereum"],
-    module: "dummy.js",
+    module: "tristero/index.js",
     twitter: "0xtristero",
     audit_links: ["https://github.com/Zellic/publications/blob/master/Tristero%20-%20Zellic%20Audit%20Report.pdf"],
     parentProtocol: "parent#tristero",
+    listedAt: 1775760973,
     dimensions: {
       fees: "tristero-margin",
       "open-interest": "tristero-margin",
@@ -16189,6 +16210,198 @@ const data5: Protocol[] = [
     twitter: "KaspaCom",
     parentProtocol: "parent#kaspacom",
     listedAt: 1775588637,
+  },
+  {
+    id: "7641",
+    name: "Capybara AMM",
+    address: null,
+    symbol: "-",
+    url: "https://www.capybara.exchange",
+    description:
+      "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/capybara-amm.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Klaytn"],
+    module: "capybara-v2/index.js",
+    forkedFromIds: ["2197"],
+    twitter: "CapybaraDEX",
+    parentProtocol: "parent#capybara-exchange",
+    listedAt: 1775668582,
+  },
+  {
+    id: "7642",
+    name: "Capybara CLMM",
+    address: null,
+    symbol: "-",
+    url: "https://www.capybara.exchange",
+    description:
+      "The 1st Launchpad & Decentralized Exchange on kaia chain. Hyper-capital-efficient, transparent, & community-first.",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/capybara-clmm.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Klaytn"],
+    module: "capybara-v3/index.js",
+    forkedFromIds: ["2198"],
+    twitter: "CapybaraDEX",
+    parentProtocol: "parent#capybara-exchange",
+    listedAt: 1775668624,
+  },
+  {
+    id: "7643",
+    name: "BCSwap",
+    address: null,
+    symbol: "-",
+    url: "https://bcswap.org/",
+    description:
+      "BCSwap is a decentralized exchange (DEX) on BC Hyper Chain, featuring automated market making (AMM) with low fees and fast transactions.",
+    chain: "BCHyper",
+    logo: `${baseIconsUrl}/bcswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["BCHyper"],
+    module: "bcswap/index.js",
+    forkedFromIds: ["2197"],
+    twitter: "versatizecoin",
+    listedAt: 1775669925,
+    dimensions: {
+      fees: "bcswap",
+      dexs: "bcswap"
+    }
+  },
+  {
+    id: "7644",
+    name: "Wasabi Prop AMM",
+    address: null,
+    symbol: "-",
+    url: "https://app.wasabi.xyz/p/LKHR9",
+    referralUrl: "https://app.wasabi.xyz/p/LKHR9",
+    description:
+      "Wasabi Prop AMM",
+    chain: "Base",
+    logo: `${baseIconsUrl}/wasabi-prop-amm.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Prop AMM"],
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "wasabi_protocol",
+    parentProtocol: "parent#wasabi",
+    dimensions: {
+      dexs: "wasabi-prop-amm"
+    }
+  },
+  {
+    id: "7645",
+    name: "flip by Spaace",
+    address: null,
+    symbol: "-",
+    url: "https://flip.spaace.io/",
+    description:
+      "AI-powered NFT launchpad and trading platform where users create and trade NFT collections with dynamic bonding-curve pricing and collection liquidity pools",
+    chain: "Base",
+    logo: `${baseIconsUrl}/flip-by-spaace.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "spaace_io",
+    parentProtocol: "parent#spaace",
+    dimensions: {
+      fees: "flip"
+    }
+  },
+  {
+    id: "7646",
+    name: "Saturn",
+    address: null,
+    symbol: "-",
+    url: "https://app.saturn.credit/",
+    description:
+      "Saturn is a dual-token Bitcoin-backed credit protocol where USDat is a stablecoin backed by tokenized treasuries and sUSDat is a yield-bearing version backed by digital credit exposure.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/saturn.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Stablecoin Wrapper",
+    chains: ["Ethereum"],
+    module: "saturn-protocol/index.js",
+    twitter: "saturn_credit",
+    listedAt: 1775766807,
+  },
+  {
+    id: "7647",
+    name: "Saphyre RFQ",
+    address: "sei:0x0a526e425809aEA71eb279d24ae22Dee6C92A4Fe",
+    symbol: "DRG",
+    url: "https://saphyre.xyz/",
+    description: "Request-for-quote DEX on Sei enabling direct maker-taker swaps with on-chain settlement.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/saphyre-rfq.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["RFQ"],
+    chains: ["Sei"],
+    module: "dummy.js",
+    twitter: "Saphyre_xyz",
+    audit_links: ["https://github.com/Zellic/publications/blob/master/RFQ%20Protocol%20-%20Zellic%20Audit%20Report.pdf"],
+    parentProtocol: "parent#dragon-swap",
+    dimensions: {
+      fees: "saphyre-rfq",
+      dexs: "saphyre-rfq"
+    }
+  },
+  {
+    id: "7648",
+    name: "Metric",
+    address: null,
+    symbol: "-",
+    url: " ", // website not ready
+    description: "DEX",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metric.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Polygon", "Avalanche"],
+    module: "dummy.js",
+    twitter: "Metricxyz",
+    dimensions: {
+      dexs: "metric"
+    }
+  },
+  {
+    id: "7649",
+    name: "DexFi",
+    address: null,
+    symbol: "-",
+    url: "https://dexfi.com/",
+    description: "DexFi offers an ecosystem of financial products designed to empower users and simplify the DeFi experience. DexFi’s AiLM (Automated Intelligent Liquidity Manager), powers DeFi’s most sophisticated yield aggregator to actively manage v3/v4 liquidity positions",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dexfi.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Sonic", "Avalanche"],
+    module: "dummy.js",
+    twitter: "DexFinance",
+    parentProtocol: "parent#dexfinance",
+    listedAt: 1775776709
   },
 ];
 export default data5;

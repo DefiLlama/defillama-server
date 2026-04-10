@@ -16404,7 +16404,7 @@ const data5: Protocol[] = [
     listedAt: 1775776709
   },
   {
-    id: 7650,
+    id: "7650",
     name: "Mycelia Signal",
     address: null,
     symbol: "-",
@@ -16413,8 +16413,12 @@ const data5: Protocol[] = [
     chain: "Multi-Chain",
     logo: "https://myceliasignal.com/logo.png",
     audits: "0",
+    gecko_id: null,
+    cmcId: null,
     category: "Oracle",
+    chains: ["Multi-Chain"],
     twitter: "myceliasignal",
+    module: "dummy.js",
     openSource: true,
     github: ["jonathanbulkeley"],
     oracles: [],

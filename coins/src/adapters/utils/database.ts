@@ -418,7 +418,12 @@ export async function filterWritesWithLowConfidence(
       }
       for (const entry of cgEntries) {
         if (!entry) continue;
-        if ((now - (entry.timestamp ?? 0)) >= staleMargin) {
+        // Allow override when: CG feed is stale, OR a secondary source already took over
+        const isCgAdapter = entry.adapter === "coingecko";
+        const isStale = (now - (entry.timestamp ?? 0)) >= staleMargin;
+        if (isCgAdapter && isStale) {
+          staleCgEntries[entry.PK] = entry;
+        } else if (!isCgAdapter) {
           staleCgEntries[entry.PK] = entry;
         }
       }

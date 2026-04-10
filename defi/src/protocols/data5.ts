@@ -10968,7 +10968,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["Treasury Bills"],
+    category: "Farm",
     chains: ["Ethereum", "Base"],
     module: "afiprotocol/index.js",
     twitter: "afiprotocol_xyz",

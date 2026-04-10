@@ -8616,8 +8616,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#monday-trade",
     name: "Monday Trade",
-    url: "https://universalx.app?inviteCode=8UGAHO",
-    referralUrl: "https://universalx.app?inviteCode=8UGAHO",
+    url: "https://app.monday.trade/",
     description: "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad's low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     logo: `${baseIconsUrl}/monday-trade.jpg`,
     gecko_id: null,

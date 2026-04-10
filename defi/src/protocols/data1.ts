@@ -2934,7 +2934,7 @@ const data: Protocol[] = [
   },
   {
     id: "240",
-    name: "Polygon Bridge & Staking",
+    name: "Polygon Bridge",
     address: "0x455e53cbb86018ac2b8092fdcd39d8444affc3f6",
     symbol: "POL",
     url: "https://polygon.technology/",

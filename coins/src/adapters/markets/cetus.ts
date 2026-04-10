@@ -138,7 +138,7 @@ async function getTokenPrices(timestamp: number) {
 
     const exceptions = ['enzoBTC']
 
-    if (poolTvl < 10_000 || vol24h < 1_000 || (!exceptions.includes(coinA.symbol) && !exceptions.includes(coinB.symbol))) continue;
+    if (poolTvl < 10_000 || vol24h < 1_000 && (!exceptions.includes(coinA.symbol) && !exceptions.includes(coinB.symbol))) continue;
 
     const sqrtPrice = sqrtPriceMap[pool.pool];
     if (!sqrtPrice) continue;

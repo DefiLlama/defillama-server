@@ -555,7 +555,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
       "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     logo: `${baseIconsUrl}/folks-finance.jpg`,
-    gecko_id: null, // xalgo preview only
+    gecko_id: "folks", // their gov token https://www.coingecko.com/en/coins/folks
     cmcId: null,
     chains: [],
     twitter: "FolksFinance",

@@ -16487,5 +16487,47 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "CantonNetwork",
   },
+  {
+    id: "7654",
+    name: "Toros Options",
+    address: null,
+    symbol: "-",
+    url: "https://toros.finance",
+    description: "Options trading on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/toros-options.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "torosfinance",
+    parentProtocol: "parent#dhedge",
+    dimensions: {
+      options: "toros"
+    }
+  },
+  {
+    id: "7655",
+    name: "THORWallet",
+    address: "base:0xe62bfbe57763ec24c0f130426f34dbce11fc5b06",
+    symbol: "TITN",
+    url: "https://www.thorwallet.org/cards",
+    description: "All-in-one mobile DeFi wallet app. Swap BTC, ETH, SOL & more easily. Secure multi-chain multisig & spend anywhere with your crypto card.",
+    chain: "Thorchain",
+    logo: `${baseIconsUrl}/thorwallet.jpg`,
+    audits: "2",
+    gecko_id: "thor-wallet",
+    cmcId: "36271",
+    category: "Crypto Card Issuer",
+    chains: ["Thorchain"],
+    module: "dummy.js",
+    twitter: "thorwallet",
+    audit_links: ["https://code4rena.com/reports/2025-02-thorwallet"],
+    dimensions: {
+      fees: "thorwallet"
+    }
+  },
 ];
 export default data5;

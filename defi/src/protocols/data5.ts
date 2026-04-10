@@ -16410,7 +16410,8 @@ const data5: Protocol[] = [
     name: "UniversalX",
     address: null,
     symbol: "-",
-    url: "https://universalx.app/",
+    url: "https://universalx.app/?inviteCode=8UGAHO",
+    referralUrl: "https://universalx.app/?inviteCode=8UGAHO",
     description: "UniversalX is a chain-agnostic trading platform built by Particle Network that allows users to trade any token on any supported chain, without bridging assets",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/universalx.jpg`,
@@ -16445,6 +16446,28 @@ const data5: Protocol[] = [
       aggregators: "monorail",
       fees: "monorail",
     }
+  },
+  {
+    id: "7652",
+    name: "Paradex Options",
+    address: null,
+    symbol: "-",
+    url: "https://app.paradex.trade/r/defillama",
+    description:
+      "Paradex is a decentralized exchange (DEX) built as a Starknet appchain, combining the performance of centralized exchanges with the security and transparency of blockchain technology",
+    chain: "Paradex",
+    logo: `${baseIconsUrl}/paradex-options.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Paradex"],
+    module: "dummy.js",
+    twitter: "paradex",
+    parentProtocol: "parent#paradex",
+    dimensions: {
+      options: "paradex",
+    },
   },
 ];
 export default data5;

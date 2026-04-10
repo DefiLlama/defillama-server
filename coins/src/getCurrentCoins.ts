@@ -3,8 +3,6 @@ import {
   CoinsResponse,
   batchGetLatest,
   getBasicCoins,
-  redisCurrentPrices,
-  chCurrentPrices,
 } from "./utils/getCoinsUtils";
 import { quantisePeriod } from "./utils/timestampUtils";
 
@@ -14,43 +12,11 @@ const isFresh = (timestamp: number, searchWidth: number) => {
   return now - timestamp < searchWidth;
 };
 
-function buildFreshResponse(result: CoinsResponse, searchWidth: number): CoinsResponse {
-  const filtered: CoinsResponse = {};
-  for (const [coin, data] of Object.entries(result)) {
-    if (isFresh(data.timestamp, searchWidth)) {
-      filtered[coin] = data;
-    }
-  }
-  return filtered;
-}
-
 const handler = async (event: any): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
   const searchWidth: number = quantisePeriod(
     event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h",
   );
-
-  const makeExpiry = () => {
-    const date = new Date();
-    const minutes = date.getMinutes();
-    date.setMinutes(minutes + 5 - (minutes % 5));
-    date.setSeconds(20);
-    return date.toUTCString();
-  };
-
-  // Layer 1: Try Redis
-  const redisResult = await redisCurrentPrices(requestedCoins);
-  if (redisResult) {
-    return successResponse({ coins: buildFreshResponse(redisResult, searchWidth) }, undefined, { Expires: makeExpiry() });
-  }
-
-  // Layer 2: Try ClickHouse (fallback when Redis is down)
-  const chResult = await chCurrentPrices(requestedCoins);
-  if (chResult) {
-    return successResponse({ coins: buildFreshResponse(chResult, searchWidth) }, undefined, { Expires: makeExpiry() });
-  }
-
-  // Layer 3: Fallback to DDB (existing code)
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
   const response = {} as CoinsResponse;
   const coinsWithRedirect = {} as { [redirect: string]: any[] };
@@ -101,15 +67,27 @@ const handler = async (event: any): Promise<IResponse> => {
     });
   }
 
+  // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
+  const date = new Date();
+  const minutes = date.getMinutes();
+  date.setMinutes(minutes + 5 - (minutes % 5));
+  date.setSeconds(20);
   return successResponse(
     {
       coins: response,
     },
     undefined,
     {
-      Expires: makeExpiry(),
+      Expires: date.toUTCString(),
     },
   );
 };
 
 export default wrap(handler);
+
+// handler({
+//   pathParameters: {
+//     coins:
+//       "sei:0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1,sei:0x3894085Ef7Ff0f0aeDf52E2A2704928d1Ec074F1",
+//   },
+// }); // ts-node coins/src/getCurrentCoins.ts

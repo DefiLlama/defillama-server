@@ -5,7 +5,15 @@ import sleep from "../utils/shared/sleep";
 import fetch from "node-fetch";
 console.log("imports done");
 
-export { redisCurrentPrices, chCurrentPrices, CoinsResponse } from "./servingLayer";
+export type CoinsResponse = {
+  [coin: string]: {
+    decimals?: number;
+    price: number;
+    timestamp: number;
+    symbol: string;
+    confidence?: number;
+  };
+};
 
 interface CoingeckoResponse {
   [cgId: string]: {
@@ -56,7 +64,7 @@ export async function retryCoingeckoRequest(
     } catch (e) {
       if (log) console.log(e);
       if ((i + 1) % 3 === 0 && retries > 3) {
-        await sleep(10e3);
+        await sleep(10e3); // 10s
       }
       continue;
     }

@@ -92,36 +92,36 @@ async function getTokenPrices(timestamp: number) {
 
   // --- Process v2 pools ---
   const seenPools = new Set<string>();
-  // for (const pool of v2Pools) {
-  //   const poolTvl = +pool.pure_tvl_in_usd || 0;
-  //   const poolVolume = +pool.vol_in_usd_24h || 0;
-  //   if (poolTvl < 10_000 || poolVolume < 1_000) continue;
+  for (const pool of v2Pools) {
+    const poolTvl = +pool.pure_tvl_in_usd || 0;
+    const poolVolume = +pool.vol_in_usd_24h || 0;
+    if (poolTvl < 10_000 || poolVolume < 1_000) continue;
 
-  //   const sqrtPrice = +(pool.object?.current_sqrt_price ?? 0);
-  //   if (sqrtPrice === 0) continue;
-  //   const decA = +(pool.coin_a?.decimals ?? 0);
-  //   const decB = +(pool.coin_b?.decimals ?? 0);
-  //   // price of coin_a in terms of coin_b: (sqrtPrice / 2^64)^2 * 10^(decA - decB)
-  //   const rawPrice = sqrtPrice / 2 ** 64;
-  //   const priceAinB = rawPrice * rawPrice * 10 ** (decA - decB);
+    const sqrtPrice = +(pool.object?.current_sqrt_price ?? 0);
+    if (sqrtPrice === 0) continue;
+    const decA = +(pool.coin_a?.decimals ?? 0);
+    const decB = +(pool.coin_b?.decimals ?? 0);
+    // price of coin_a in terms of coin_b: (sqrtPrice / 2^64)^2 * 10^(decA - decB)
+    const rawPrice = sqrtPrice / 2 ** 64;
+    const priceAinB = rawPrice * rawPrice * 10 ** (decA - decB);
 
-  //   for (const side of ["coin_a", "coin_b"]) {
-  //     const coin = pool[side];
-  //     const otherCoin = pool[side === "coin_a" ? "coin_b" : "coin_a"];
-  //     if (!coin?.address || !otherCoin?.address) continue;
-  //     const price = side === "coin_a" ? priceAinB : 1 / priceAinB;
-  //     tokens.push({
-  //       address: coin.address,
-  //       price,
-  //       decimals: +coin.decimals,
-  //       symbol: coin.symbol,
-  //       tvl: poolTvl,
-  //       underlying: otherCoin.address,
-  //     });
-  //   }
+    for (const side of ["coin_a", "coin_b"]) {
+      const coin = pool[side];
+      const otherCoin = pool[side === "coin_a" ? "coin_b" : "coin_a"];
+      if (!coin?.address || !otherCoin?.address) continue;
+      const price = side === "coin_a" ? priceAinB : 1 / priceAinB;
+      tokens.push({
+        address: coin.address,
+        price,
+        decimals: +coin.decimals,
+        symbol: coin.symbol,
+        tvl: poolTvl,
+        underlying: otherCoin.address,
+      });
+    }
 
-  //   if (pool.address) seenPools.add(pool.address);
-  // }
+    if (pool.address) seenPools.add(pool.address);
+  }
 
   // --- Process v3 CLMM pools not already covered by v2 ---
   for (const pool of v3Pools) {

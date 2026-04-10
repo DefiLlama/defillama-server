@@ -13853,7 +13853,7 @@ const data5: Protocol[] = [
     category: "Lending",
     chains: ["Algorand","Voi Network"],
     module: "dorkfi/index.js",
-    twitter: "Dork_NFTs",
+    twitter: "dork_fi",
     listedAt: 1773153849,
   },
   {

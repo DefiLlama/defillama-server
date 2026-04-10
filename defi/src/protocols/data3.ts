@@ -49179,6 +49179,12 @@ const data3_3: Protocol[] = [
     module: "kinetic/index.js",
     twitter: "Kinetic_Markets",
     audit_links: ["https://kinetic.market/assets/Kinetic-audit-reports.pdf"],
+	  oraclesBreakdown: [
+      {
+        name: "RedStone",
+        type: "Secondary",
+        proof: ["https://docs.kinetic.market/oracles-and-pricing"],
+      },
     github: ["kinetic-market"],
     listedAt: 1721723353,
     dimensions: {

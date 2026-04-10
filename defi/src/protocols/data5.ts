@@ -16401,7 +16401,29 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "DexFinance",
     parentProtocol: "parent#dexfinance",
-    listedAt: 1775776709
+    dimensions: {
+      fees: "dexfi"
+    }
+  },
+  {
+    id: "7650",
+    name: "UniversalX",
+    address: null,
+    symbol: "-",
+    url: "https://universalx.app/",
+    description: "UniversalX is a chain-agnostic trading platform built by Particle Network that allows users to trade any token on any supported chain, without bridging assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/universalx.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Trading App",
+    chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Polygon", "Avalanche", "Optimism", "Monad"],
+    module: "dummy.js",
+    twitter: "UseUniversalX",
+    dimensions: {
+      fees: "universalx"
+    }
   },
 ];
 export default data5;

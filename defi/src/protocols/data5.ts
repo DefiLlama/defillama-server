@@ -3923,7 +3923,7 @@ const data5: Protocol[] = [
     name: "Monday Trade Perps",
     address: null,
     symbol: "-",
-    url: "https://app.monday.trade/",
+    url: "https://universalx.app?inviteCode=8UGAHO",
     description:
       "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",
@@ -4269,7 +4269,7 @@ const data5: Protocol[] = [
     name: "Monday Trade Spot",
     address: null,
     symbol: "-",
-    url: "https://app.monday.trade/",
+    url: "https://universalx.app?inviteCode=8UGAHO",
     description:
       "Monday Trade is an all-in-one DEX for onchain trading on Monad that offers the best of CEX and DEX trading experiences. Monad’s low latency enables Monday Trade to execute trades within milliseconds without giving up their asset ownership to centralized exchanges.",
     chain: "Monad",

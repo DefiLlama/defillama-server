@@ -16403,5 +16403,23 @@ const data5: Protocol[] = [
     parentProtocol: "parent#dexfinance",
     listedAt: 1775776709
   },
+  {
+    id: 7650,
+    name: "Mycelia Signal",
+    address: null,
+    symbol: "-",
+    url: "https://myceliasignal.com",
+    description: "Sovereign HTTP oracle serving cryptographically signed price data, economic indicators, and the MSVI volatility index. 63 endpoints. Pay-per-query via Lightning (L402) or USDC on Base (x402). No API keys. Ed25519 signed attestations independently verifiable against published public keys.",
+    chain: "Multi-Chain",
+    logo: "https://myceliasignal.com/logo.png",
+    audits: "0",
+    category: "Oracle",
+    twitter: "myceliasignal",
+    openSource: true,
+    github: ["jonathanbulkeley"],
+    oracles: [],
+    listedAt: 1744200000,
+    methodology: "Each oracle response contains a canonical string signed with Ed25519. Signatures independently verifiable against published public key. Price feeds use median aggregation across 3-9 exchanges. MSVI is a 5-component weighted volatility index (Parkinson RV 30%, Deribit IV 25%, term structure 15%, funding rate 20%, put/call ratio 10%).",
+  },
 ];
 export default data5;

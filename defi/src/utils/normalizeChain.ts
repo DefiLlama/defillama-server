@@ -5804,6 +5804,9 @@ export const chainCoingeckoIds = {
     cmcId: "37263",
     twitter: "CantonNetwork",
     url: "https://www.canton.network/",
+    dimensions: {
+      fees: "canton",
+    },
   },
   "Hotstuff": {
     geckoId: null,

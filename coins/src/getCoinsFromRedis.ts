@@ -1,5 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { redisCurrentPrices, chCurrentPrices, CoinsResponse } from "./utils/servingLayer";
+import { quantisePeriod } from "./utils/timestampUtils";
 
 const isFresh = (timestamp: number, searchWidth: number) => {
   if (!timestamp || timestamp <= 0) return false;
@@ -24,36 +25,30 @@ function filterFresh(result: CoinsResponse, searchWidth: number): CoinsResponse 
 
 /**
  * Independent serving handler for current coin prices.
- * Reads from Redis → ClickHouse fallback. Does not touch DDB.
+ * Reads fresh prices from Redis first, then fills missing coins from ClickHouse.
+ * Does not touch DDB.
  * Meant to be routed separately from the existing DDB-based getCurrentCoins handler.
  */
 const handler = async (event: any): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",").filter(Boolean);
   if (requestedCoins.length === 0) return successResponse({ coins: {} });
   const rawWidth = event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h";
-  const hours = parseInt(rawWidth) || 12;
-  const searchWidth = hours * 3600;
+  const searchWidth = quantisePeriod(rawWidth);
 
   // Layer 1: Redis
   const redisResult = await redisCurrentPrices(requestedCoins);
-  if (redisResult) {
-    const fresh = filterFresh(redisResult, searchWidth);
-    if (Object.keys(fresh).length > 0) {
-      return successResponse({ coins: fresh }, undefined, { Expires: makeExpiry() });
-    }
+  const redisFresh = redisResult ? filterFresh(redisResult, searchWidth) : {};
+
+  // Layer 2: ClickHouse for any coins Redis didn't cover
+  const missingCoins = requestedCoins.filter((c: string) => !redisFresh[c]);
+  let chFresh: CoinsResponse = {};
+  if (missingCoins.length > 0) {
+    const chResult = await chCurrentPrices(missingCoins);
+    if (chResult) chFresh = filterFresh(chResult, searchWidth);
   }
 
-  // Layer 2: ClickHouse (fallback if Redis miss or all stale)
-  const chResult = await chCurrentPrices(requestedCoins);
-  if (chResult) {
-    const fresh = filterFresh(chResult, searchWidth);
-    if (Object.keys(fresh).length > 0) {
-      return successResponse({ coins: fresh }, undefined, { Expires: makeExpiry() });
-    }
-  }
-
-  // No fresh data from Redis or CH
-  return successResponse({ coins: {} }, undefined, { Expires: makeExpiry() });
+  const merged = { ...redisFresh, ...chFresh };
+  return successResponse({ coins: merged }, undefined, { Expires: makeExpiry() });
 };
 
 export default wrap(handler);

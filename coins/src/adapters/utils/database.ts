@@ -456,6 +456,8 @@ export async function batchWriteWithAlerts(
     // Dual-write: ClickHouse + Redis (independent — Redis writes even if CH fails)
     await dualWriteToChRedis(writeItems).catch(e => {
       console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
+      if (process.env.URGENT_COINS_WEBHOOK)
+        sendMessage(`[CH/Redis dual-write] ${(e as Error).message}`, process.env.URGENT_COINS_WEBHOOK!, false).catch(() => {});
     });
 
     return ddbWriteResult;

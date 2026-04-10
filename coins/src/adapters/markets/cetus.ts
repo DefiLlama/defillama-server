@@ -131,7 +131,14 @@ async function getTokenPrices(timestamp: number) {
     const vol24h = +(
       pool.stats?.find((s: any) => s.dateType === "24H")?.vol ?? 0
     );
-    if (poolTvl < 10_000 || vol24h < 1_000) continue;
+
+    const coinA = pool.coinA;
+    const coinB = pool.coinB;
+    if (!coinA?.coinType || !coinB?.coinType) continue;
+
+    const exceptions = ['enzoBTC']
+
+    if (poolTvl < 10_000 || vol24h < 1_000 || (!exceptions.includes(coinA.symbol) && !exceptions.includes(coinB.symbol))) continue;
 
     const sqrtPrice = sqrtPriceMap[pool.pool];
     if (!sqrtPrice) continue;
@@ -140,10 +147,6 @@ async function getTokenPrices(timestamp: number) {
     const decB = +(pool.coinB?.decimals ?? 0);
     const rawPrice = sqrtPrice / 2 ** 64;
     const priceAinB = rawPrice * rawPrice * 10 ** (decA - decB);
-
-    const coinA = pool.coinA;
-    const coinB = pool.coinB;
-    if (!coinA?.coinType || !coinB?.coinType) continue;
 
     tokens.push({
       address: coinA.coinType,

@@ -11431,6 +11431,151 @@
       "to": "coingecko#mobius",
       "decimals": 7,
       "symbol": "MOBI"
+    },
+    "CATHRLMZW3JUIYSXYE4YAI3SBBBQGXYAP674RINGUBQLNFTCZHMI5XZJ": {
+      "to": "coingecko#mobius",
+      "decimals": 7,
+      "symbol": "MOBI"
+    },
+    "CB3YA656OYIHU57657I5KGSBRHE5I3OZU4VFC22PYAOANFZHEWNYGAGP": {
+      "to": "asset#ethereum:0x96f6ef951840721adbf46ac996b59e0235cb985c",
+      "decimals": 7,
+      "symbol": "USDY"
+    },
+    "CAL6ER2TI6CTRAY6BFXWNWA7WTYXUXTQCHUBCIBU5O6KM3HJFG6Z6VXV": {
+      "to": "coingecko#cetes",
+      "decimals": 7,
+      "symbol": "CETES"
+    },
+    "CBHIQPUXLFLC5O44ZJVUTCL5LMZFLVGU5DEIGSYKBSAPFMOGTKOQEPFM": {
+      "to": "coingecko#bitcoin",
+      "decimals": 15,
+      "symbol": "BTCLN"
+    },
+    "CCG27OZ5AV4WUXS6XTECWAXEY5UOMEFI2CWFA3LHZGBTLYZWTJF3MJYQ": {
+      "to": "coingecko#afreum",
+      "decimals": 7,
+      "symbol": "AFR"
+    },
+    "CCRPYMVKZLWGZHEDZ23FOE22E3T3HOCNP5Y2EFZFVRUVIXU5NJ7UNGV2": {
+      "to": "coingecko#argentine-peso",
+      "decimals": 7,
+      "symbol": "ARST"
+    },
+    "CBHBD77PWZ3AXPQVYVDBHDKEMVNOR26UZUZHWCB6QC7J5SETQPRUQAS4": {
+      "to": "coingecko#starslax",
+      "decimals": 7,
+      "symbol": "SSLX"
+    },
+    "CD6M4R2322BYCY2LNWM74PEBQAQ63SA3DUJLI3L4225U4ZVCLMSCBCIS": {
+      "to": "coingecko#etherfuse-tesouro",
+      "decimals": 7,
+      "symbol": "TESOURO"
+    },
+    "CBXE6V454EUYWVQCI4TCSOG4CSNPQ2BLYOTKAKXYFHO3KNVX4CXYCY2T": {
+      "to": "coingecko#lumenswap",
+      "decimals": 7,
+      "symbol": "LSP"
+    },
+    "CCXY3CNHSU2DPUOZFKNNH67IVRMBRCATX4SABDSLBY5LAJI66LRLHTJQ": {
+      "to": "coingecko#threefold-token",
+      "decimals": 7,
+      "symbol": "TFT"
+    },
+    "CDYBK2X5ZEQ7ZNDN7IPWWMOQ6SWEJW4A4UE2PNDFDVCYNAXB64O4FNXX": {
+      "to": "coingecko#rupiah-token",
+      "decimals": 7,
+      "symbol": "IDRT"
+    },
+    "CACXKRVCW7I6CWX6RS6ANFDKVCOUI2PB6LTDUROL3J3FMJCRZ4ZLQRF6": {
+      "to": "coingecko#novatti-australian-digital-dollar",
+      "decimals": 7,
+      "symbol": "AUDD"
+    },
+    "CB2XLDU74PIXO5DENULX53IIC3DMKGN2UM5IBGMSSI634IAQJ7O3Z3UQ": {
+      "to": "coingecko#realio-network",
+      "decimals": 7,
+      "symbol": "RIO"
+    },
+    "CCCRWH6Q3FNP3I2I57BDLM5AFAT7O6OF6GKQOC6SSJNDAVRZ57SPHGU2": {
+      "to": "coingecko#paypal-usd",
+      "decimals": 7,
+      "symbol": "PYUSD"
+    },
+    "CB226ZOEYXTBPD3QEGABTJYSKZVBP2PASEISLG3SBMTN5CE4QZUVZ3CE": {
+      "to": "coingecko#glo-dollar",
+      "decimals": 7,
+      "symbol": "USDGLO"
+    },
+    "CCD6H4LBTHAPY3NGEE6TLLRUSPJGX4K5XI2J6E4MUNDB5TNXEKC23H5B": {
+      "to": "coingecko#argentine-peso",
+      "decimals": 7,
+      "symbol": "ARS"
+    },
+    "CBI5PFS3NQ6ZBXFO622DU5BNCPO2J7GW4XYN27DSA4YRTPJU63AQPDC7": {
+      "to": "coingecko#bilira",
+      "decimals": 7,
+      "symbol": "TRYB"
+    },
+    "CA67EQNWGPGXHVT6E4HQ65WEV54KFDB6HJDHVCJM33VKZ7XKR5MN3KPJ": {
+      "to": "coingecko#gyen",
+      "decimals": 7,
+      "symbol": "GYEN"
+    },
+    "CBBEPK2EKUTFPHU3T5MYEOME25P2RTIRSNPR6VSOMU3SZ3HXIMORBNZU": {
+      "to": "coingecko#xsgd",
+      "decimals": 7,
+      "symbol": "XSGD"
+    },
+    "CDOYXOTUFLLST7JDECAMP64XSSOSVTHD4E6D7CHCKIO23VSVY5ECQNPA": {
+      "to": "coingecko#solana",
+      "decimals": 7,
+      "symbol": "asSOL"
+    },
+    "CD2XQB4EVZGM4UTT52PM4335S5BU43DCN2GJESJ5A6OOCWC23D5MD3C5": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "asUSDC"
+    },
+    "CAAP5SVCSZBUC4VWR2FQTROXEIC3PGLAXCNFFGA22BJRNNK7AR5RUN3K": {
+      "to": "coingecko#ethereum",
+      "decimals": 7,
+      "symbol": "aeETH"
+    },
+    "CC6EBYOGHV6Y4DRTQC43K5JXVVF5GFJT5X763LTXHCSZKBDYQ2CTU4RL": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "aeUSDC"
+    },
+    "CB7VCORLWN5N4ZUTKSK7OQN6JC5ENKBK6NSKUZDEEPFMJGMH3U6AAIK4": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "apUSDC"
+    },
+    "CBNJ54GNIRXBRB2P7PVKI7LVUBVR4ATTK6QDPZZKHM47VAP3CSJ7VYNB": {
+      "to": "coingecko#usd-coin",
+      "decimals": 7,
+      "symbol": "abUSDC"
+    },
+    "CDRRBUXO43BOQLUVZCRWUVEDIW56WC243RKYVKDCYZ6B5MQOR6N5TLTJ": {
+      "to": "coingecko#polygon-ecosystem-token",
+      "decimals": 7,
+      "symbol": "apMATIC"
+    },
+    "CCZW2OHF4X5G5HWGWXU7LHT5QXIYYMNCZG74YYCLO3DXDTIWF45RJ543": {
+      "to": "coingecko#celo",
+      "decimals": 7,
+      "symbol": "acCELO"
+    },
+    "CDV5AXARL6BNJKOT5TF7QRY6VC6NPKC7ORALAEFQ6HZZSF6X3VL5FSAA": {
+      "to": "coingecko#tether",
+      "decimals": 7,
+      "symbol": "apUSDT"
+    },
+    "CCJVS6IVXAAXWCMFVK6QLWHZHR4RTVRSEZRQ53GOAEDN3VY2BLPVY72J": {
+      "to": "coingecko#scopuly-token",
+      "decimals": 7,
+      "symbol": "SCOP"
     }
   },
   "shape": {

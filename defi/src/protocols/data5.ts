@@ -16425,5 +16425,26 @@ const data5: Protocol[] = [
       fees: "universalx"
     }
   },
+  {
+    id: "7651",
+    name: "Monorail",
+    address: null,
+    symbol: "-",
+    url: "https://monorail.xyz/",
+    description: "Onchain Trading & Aggregation Terminal on Monad",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/monorail.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Monad"],
+    module: "dummy.js",
+    twitter: "monorail_xyz",
+    dimensions: {
+      aggregators: "monorail",
+      fees: "monorail",
+    }
+  },
 ];
 export default data5;

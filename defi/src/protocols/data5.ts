@@ -16422,7 +16422,7 @@ const data5: Protocol[] = [
     openSource: true,
     github: ["jonathanbulkeley"],
     oracles: [],
-    listedAt: 1744200000,
+    listedAt: 1775795858, // 2026-04-10T04:37:38Z (PR created time)
     methodology: "Each oracle response contains a canonical string signed with Ed25519. Signatures independently verifiable against published public key. Price feeds use median aggregation across 3-9 exchanges. MSVI is a 5-component weighted volatility index (Parkinson RV 30%, Deribit IV 25%, term structure 15%, funding rate 20%, put/call ratio 10%).",
   },
 ];

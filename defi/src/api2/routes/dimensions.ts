@@ -59,7 +59,10 @@ function getEventParameters(req: HyperExpress.Request, isSummary = true) {
   if (!validMetricTypesSet.has(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
   if (!validRecordTypesSet.has(dataType)) throw new Error("Data type not suported")
   
-  const category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
+  let category = req.path_parameters.category ? sluggifyCategoryString(req.path_parameters.category) : undefined;
+  if (!category) {
+    category = req.query_parameters.category ? sluggifyCategoryString(req.query_parameters.category) : undefined;
+  }
 
   const response: {
     adaptorType: AdapterType,
@@ -437,10 +440,25 @@ export async function getDimensionProtocolFileRoute(req: HyperExpress.Request, r
   return successResponse(res, data)
 }
 
+// these adapter types require category query param when query data
+// use default category if category query param wasn't given
+const DefaultAdapterTypeCategoryMap: Record<string, string> = {
+  [AdapterType.DEXS]: 'dexs',
+  [AdapterType.DERIVATIVES]: 'derivatives',
+  [AdapterType.NORMALIZED_VOLUME]: 'derivatives',
+  [AdapterType.OPEN_INTEREST]: 'derivatives',
+  [AdapterType.OPTIONS]: 'options',
+}
+
 export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-chain-breakdown' | 'chart-protocol-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType } = getEventParameters(req, true)
+    const { adaptorType, dataType, category } = getEventParameters(req, true)
 
+    // retrun a subnet of protocol (per category) only
+    if (Object.keys(DefaultAdapterTypeCategoryMap).includes(adaptorType)) {
+      return await returnSubCategoryData();
+    }
+    
     if (route === 'chart-chain-breakdown') {
       const routeFile = `dimensions/${adaptorType}/${dataType}/chain-total-data-chart`
       return fileResponse(routeFile, res)
@@ -466,13 +484,36 @@ export function getDimensionOverviewRoutes(route: 'overview' | 'chart' | 'chart-
         }
       }
     }
+    
+    // return data in a given category
+    async function returnSubCategoryData() {
+      let filterCategory = category;
+      if (!filterCategory) filterCategory = DefaultAdapterTypeCategoryMap[adaptorType];
+      
+      let routeFileExt = '';
+      if (route === 'overview') routeFileExt = '';
+      else routeFileExt += route;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-${routeFileExt}`;
+      const routeFile = `dimensions/${routeSubPath}`; 
+      
+      const data = await readRouteData(routeFile);
+  
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+  
+      return successResponse(res, data);
+    }
   }
 }
 
 export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-protocol-breakdown') {
   return async function (req: HyperExpress.Request, res: HyperExpress.Response) {
-    const { adaptorType, dataType, chainKeyFilter } = getEventParameters(req, true)
+    const { adaptorType, dataType, chainKeyFilter, category } = getEventParameters(req, true)
 
+    // retrun a subnet of protocol (per category) only
+    if (Object.keys(DefaultAdapterTypeCategoryMap).includes(adaptorType)) {
+      return await returnSubCategoryChainData();
+    }
+    
     const isLiteStr = route === 'overview' ? '-lite' : '-all'
     const chainStr = (chainKeyFilter && chainKeyFilter !== 'all') ? `-chain/${chainKeyFilter}` : ''
     const routeSubPath = `${adaptorType}/${dataType}${chainStr}${isLiteStr}`
@@ -494,6 +535,24 @@ export function getDimensionChainRoutes(route: 'overview' | 'chart' | 'chart-pro
         return successResponse(res, data.totalDataChart)
       }
     }
+    
+    // return data in a given category - chain
+    async function returnSubCategoryChainData() {
+      let filterCategory = category;
+      if (!filterCategory) filterCategory = DefaultAdapterTypeCategoryMap[adaptorType];
+      
+      let routeFileExt = '';
+      if (route === 'overview') routeFileExt = '';
+      else routeFileExt += route;
+      const routeSubPath = `${adaptorType}/${dataType}-category/${filterCategory}-chain/${chainKeyFilter}-${routeFileExt}`;
+      const routeFile = `dimensions/${routeSubPath}`;
+      
+      const data = await readRouteData(routeFile);
+  
+      if (!data) return errorResponse(res, 'Internal server error', { statusCode: 500 });
+  
+      return successResponse(res, data);
+    }
   }
 }
 
@@ -506,7 +565,7 @@ export function getDimensionCategoryRoutes(route: 'overview' | 'chart' | 'chart-
     let routeFileExt = '';
     if (route === 'overview') routeFileExt = '';
     else routeFileExt += route;
-    const routeSubPath = `${adaptorType}/${dataType}-category/${category}${routeFileExt}`;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-${routeFileExt}`;
     const routeFile = `dimensions/${routeSubPath}`; 
     
     const data = await readRouteData(routeFile);
@@ -526,7 +585,7 @@ export function getDimensionCategoryChainRoutes(route: 'overview' | 'chart' | 'c
     let routeFileExt = '';
     if (route === 'overview') routeFileExt = '';
     else routeFileExt += route;
-    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}${routeFileExt}`;
+    const routeSubPath = `${adaptorType}/${dataType}-category/${category}-chain/${chainKeyFilter}-${routeFileExt}`;
     const routeFile = `dimensions/${routeSubPath}`; 
     
     const data = await readRouteData(routeFile);

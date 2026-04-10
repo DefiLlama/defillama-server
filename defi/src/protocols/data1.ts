@@ -2940,7 +2940,7 @@ const data: Protocol[] = [
     url: "https://polygon.technology/",
     description: "Ethereum sidechain",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/polygon.jpg`,
+    logo: `${baseIconsUrl}/polygon-bridge.jpg`,
     audits: "0",
     gecko_id: "polygon-ecosystem-token",
     cmcId: "28321",

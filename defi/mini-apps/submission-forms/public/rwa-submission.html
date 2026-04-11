@@ -387,27 +387,132 @@
 
                     <div class="form-group">
                         <label>Category <span class="required">*</span>
-                            <span class="hint">Type of real-world asset being tokenized</span>
+                            <span class="hint">Primary classification bucket for the RWA token</span>
                         </label>
                         <select name="category" required>
                             <option value="">Select a category...</option>
-                            <option value="US Treasuries">US Treasuries</option>
+                            <option value="Bond & MMF Funds">Bond & MMF Funds</option>
+                            <option value="Carbon & Environment">Carbon & Environment</option>
+                            <option value="Crypto Funds">Crypto Funds</option>
+                            <option value="ETFs">ETFs</option>
+                            <option value="Fiat Stablecoins">Fiat Stablecoins</option>
+                            <option value="Gold & Commodities">Gold & Commodities</option>
+                            <option value="Governance Tokens">Governance Tokens</option>
+                            <option value="Non-RWA Stablecoins">Non-RWA Stablecoins</option>
+                            <option value="Other RWAs">Other RWAs</option>
                             <option value="Private Credit">Private Credit</option>
-                            <option value="Corporate Bonds">Corporate Bonds</option>
                             <option value="Real Estate">Real Estate</option>
-                            <option value="Commodities">Commodities</option>
-                            <option value="Carbon Credits & Environmental Assets">Carbon Credits & Environmental Assets</option>
-                            <option value="Equities">Equities</option>
-                            <option value="Stablecoins (Fiat-backed)">Stablecoins (Fiat-backed)</option>
-                            <option value="Structured Products">Structured Products</option>
-                            <option value="Funds / ETFs">Funds / ETFs</option>
-                            <option value="Other">Other</option>
+                            <option value="RWA Perps">RWA Perps</option>
+                            <option value="RWA Stablecoins">RWA Stablecoins</option>
+                            <option value="RWA Wrappers">RWA Wrappers</option>
+                            <option value="Stocks & Equities">Stocks & Equities</option>
                         </select>
                     </div>
 
-                    <div class="form-group" id="categoryOtherGroup" style="display:none;">
-                        <label>Specify Category</label>
-                        <input type="text" name="categoryOther" placeholder="Describe your asset category">
+                    <div class="form-group">
+                        <label>Asset Class <span class="required">*</span>
+                            <span class="hint">Specific asset type within the category</span>
+                        </label>
+                        <select name="assetClass" required>
+                            <option value="">Select an asset class...</option>
+                            <option value="USD Stable">USD Stable</option>
+                            <option value="EUR Stable">EUR Stable</option>
+                            <option value="Other Fiat Stable">Other Fiat Stable</option>
+                            <option value="Bank Deposit Token">Bank Deposit Token</option>
+                            <option value="Yield Fiat Stable">Yield Fiat Stable</option>
+                            <option value="RWA Fiat Stable">RWA Fiat Stable</option>
+                            <option value="Yield RWA Stable">Yield RWA Stable</option>
+                            <option value="Multi-Asset RWA Stable">Multi-Asset RWA Stable</option>
+                            <option value="Crypto Stable">Crypto Stable</option>
+                            <option value="Algo Stable">Algo Stable</option>
+                            <option value="T-Bills">T-Bills</option>
+                            <option value="Sovereign Bond Fund">Sovereign Bond Fund</option>
+                            <option value="Corp Bond Fund">Corp Bond Fund</option>
+                            <option value="MMF">MMF</option>
+                            <option value="Mixed RWA Fund">Mixed RWA Fund</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Platinum">Platinum</option>
+                            <option value="Palladium">Palladium</option>
+                            <option value="Uranium">Uranium</option>
+                            <option value="Other Commodity">Other Commodity</option>
+                            <option value="Commodity Basket">Commodity Basket</option>
+                            <option value="Single Property">Single Property</option>
+                            <option value="REIT">REIT</option>
+                            <option value="RE Revenue Share">RE Revenue Share</option>
+                            <option value="RE Credit">RE Credit</option>
+                            <option value="Stock Synthetic">Stock Synthetic</option>
+                            <option value="Stock Backed">Stock Backed</option>
+                            <option value="Equity Basket">Equity Basket</option>
+                            <option value="PE / Venture">PE / Venture</option>
+                            <option value="Collectibles">Collectibles</option>
+                            <option value="IP / Royalty">IP / Royalty</option>
+                            <option value="Other Exotic">Other Exotic</option>
+                            <option value="Domain Venue">Domain Venue</option>
+                            <option value="Collectibles Venue">Collectibles Venue</option>
+                            <option value="Credit Pool">Credit Pool</option>
+                            <option value="Trade Finance">Trade Finance</option>
+                            <option value="Structured Credit">Structured Credit</option>
+                            <option value="Other Credit">Other Credit</option>
+                            <option value="Reinsurance Pool">Reinsurance Pool</option>
+                            <option value="Lending Venue">Lending Venue</option>
+                            <option value="Stable Yield Wrapper">Stable Yield Wrapper</option>
+                            <option value="Single Asset Wrapper">Single Asset Wrapper</option>
+                            <option value="RWA Basket Vault">RWA Basket Vault</option>
+                            <option value="RWA LP Wrapper">RWA LP Wrapper</option>
+                            <option value="Leveraged RWA Vault">Leveraged RWA Vault</option>
+                            <option value="Structured Note">Structured Note</option>
+                            <option value="Yield Pool">Yield Pool</option>
+                            <option value="Active Vault">Active Vault</option>
+                            <option value="Carbon Credit">Carbon Credit</option>
+                            <option value="Other Environmental">Other Environmental</option>
+                            <option value="Governance Token">Governance Token</option>
+                            <option value="Revenue Share">Revenue Share</option>
+                            <option value="Carbon Reserve">Carbon Reserve</option>
+                            <option value="Synthetic Stable">Synthetic Stable</option>
+                            <option value="Crypto Index Fund">Crypto Index Fund</option>
+                            <option value="Crypto Hedge Fund">Crypto Hedge Fund</option>
+                            <option value="ETF Backed">ETF Backed</option>
+                            <option value="Stock Perp">Stock Perp</option>
+                            <option value="ETF Perp">ETF Perp</option>
+                            <option value="Equity Perp">Equity Perp</option>
+                            <option value="Commodity Perp">Commodity Perp</option>
+                            <option value="Bond Perp">Bond Perp</option>
+                            <option value="Perp Venue">Perp Venue</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Asset Group <span class="required">*</span>
+                            <span class="hint">Broader grouping for cross-category aggregation</span>
+                        </label>
+                        <select name="assetGroup" required>
+                            <option value="">Select an asset group...</option>
+                            <option value="Agricultural Commodities">Agricultural Commodities</option>
+                            <option value="AI & Compute Infrastructure">AI & Compute Infrastructure</option>
+                            <option value="Bonds">Bonds</option>
+                            <option value="Carbon Credits">Carbon Credits</option>
+                            <option value="Collectibles & Luxury Goods">Collectibles & Luxury Goods</option>
+                            <option value="Commodity Baskets">Commodity Baskets</option>
+                            <option value="Digital Assets">Digital Assets</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Equity ETFs">Equity ETFs</option>
+                            <option value="Equity Indices">Equity Indices</option>
+                            <option value="Fiat Currencies">Fiat Currencies</option>
+                            <option value="Industrial Metals">Industrial Metals</option>
+                            <option value="Intellectual Property & Royalties">Intellectual Property & Royalties</option>
+                            <option value="Mixed Public Markets">Mixed Public Markets</option>
+                            <option value="Multi-Asset RWAs">Multi-Asset RWAs</option>
+                            <option value="Natural Gas">Natural Gas</option>
+                            <option value="Oil">Oil</option>
+                            <option value="Precious Metals">Precious Metals</option>
+                            <option value="Private Credit">Private Credit</option>
+                            <option value="Private Equity & Venture">Private Equity & Venture</option>
+                            <option value="Public Equities">Public Equities</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Reinsurance">Reinsurance</option>
+                            <option value="RWA Infrastructure">RWA Infrastructure</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -559,16 +664,28 @@
                 </div>
             </div>
 
-            <!-- Section 10: Redemption Process -->
+            <!-- Section 10: Redemption -->
             <div class="form-card">
                 <div class="form-section">
-                    <h2 class="section-title"><span class="icon">💱</span> 10. Redemption Process</h2>
+                    <h2 class="section-title"><span class="icon">💱</span> 10. Redemption</h2>
 
                     <div class="form-group">
-                        <label>Redemption Details
-                            <span class="hint">Platform/URL for redemption, minimum amounts, settlement timeline, and any requirements (KYC, whitelisting, etc.). Write "N/A" if not redeemable.</span>
+                        <label>Redemption <span class="required">*</span>
+                            <span class="hint">How token holders can redeem</span>
                         </label>
-                        <textarea name="redemption" placeholder="e.g., Holders redeem via app.ondo.finance with a $5,000 minimum. Settlement takes T+1 to a linked bank account. KYC required."></textarea>
+                        <select name="redemption" required>
+                            <option value="">Select redemption type...</option>
+                            <option value="Redeemable for the underlying asset">Redeemable for the underlying asset</option>
+                            <option value="Redeemable for equivalent value (cash/stablecoin)">Redeemable for equivalent value (cash/stablecoin)</option>
+                            <option value="Not redeemable">Not redeemable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Redemption Process
+                            <span class="hint">Brief description of how redemption works (platform/URL, minimum amounts, settlement timeline, requirements)</span>
+                        </label>
+                        <textarea name="redemptionProcess" placeholder="e.g., Holders redeem via app.ondo.finance with a $5,000 minimum. Settlement takes T+1 to a linked bank account. KYC required."></textarea>
                     </div>
                 </div>
             </div>
@@ -667,18 +784,7 @@
             }
         });
 
-        // ── Category "Other" toggle (delegated) ──────────────────────────────
-        document.addEventListener('change', (e) => {
-            if (e.target.matches('select[name="category"]')) {
-                document.getElementById('categoryOtherGroup').style.display =
-                    e.target.value === 'Other' ? 'block' : 'none';
-            }
-            if (e.target.matches('select[name^="t"][name$="_category"]')) {
-                const idx = e.target.name.match(/t(\d+)_category/)[1];
-                const otherGroup = document.getElementById(`t${idx}_categoryOtherGroup`);
-                if (otherGroup) otherGroup.style.display = e.target.value === 'Other' ? 'block' : 'none';
-            }
-        });
+        // ── (Category "Other" toggle removed — no longer needed with new taxonomy) ──
 
         // ── View mode switching ───────────────────────────────────────────────
         function setViewMode(mode) {
@@ -719,7 +825,8 @@
                 primaryChain: val('primaryChain'),
                 allChains: val('allChains'),
                 category: val('category'),
-                categoryOther: val('categoryOther'),
+                assetClass: val('assetClass'),
+                assetGroup: val('assetGroup'),
                 attestation: val('attestation'),
                 cexListed: val('cexListed'),
                 cexDetails: val('cexDetails'),
@@ -729,6 +836,7 @@
                 selfCustody: val('selfCustody'),
                 documentationLink: val('documentationLink'),
                 redemption: val('redemption'),
+                redemptionProcess: val('redemptionProcess'),
             };
 
             return vals;
@@ -741,17 +849,11 @@
             const p = `t${idx}_`;
 
             // Set text/url/select inputs
-            const textFields = ['primaryChain', 'allChains', 'category', 'categoryOther',
-                'attestation', 'cexDetails', 'documentationLink', 'redemption'];
+            const textFields = ['primaryChain', 'allChains', 'category', 'assetClass', 'assetGroup',
+                'attestation', 'cexDetails', 'documentationLink', 'redemption', 'redemptionProcess'];
             for (const f of textFields) {
                 const el = entry.querySelector(`[name="${p}${f}"]`);
                 if (el && vals[f]) el.value = vals[f];
-            }
-
-            // Show category "Other" if copied
-            if (vals.category === 'Other') {
-                const otherGroup = document.getElementById(`${p}categoryOtherGroup`);
-                if (otherGroup) otherGroup.style.display = 'block';
             }
 
             // Set toggle buttons (hidden inputs + active class)
@@ -784,17 +886,121 @@
 
             const categoryOptions = `
                 <option value="">Select a category...</option>
-                <option value="US Treasuries">US Treasuries</option>
+                <option value="Bond & MMF Funds">Bond &amp; MMF Funds</option>
+                <option value="Carbon & Environment">Carbon &amp; Environment</option>
+                <option value="Crypto Funds">Crypto Funds</option>
+                <option value="ETFs">ETFs</option>
+                <option value="Fiat Stablecoins">Fiat Stablecoins</option>
+                <option value="Gold & Commodities">Gold &amp; Commodities</option>
+                <option value="Governance Tokens">Governance Tokens</option>
+                <option value="Non-RWA Stablecoins">Non-RWA Stablecoins</option>
+                <option value="Other RWAs">Other RWAs</option>
                 <option value="Private Credit">Private Credit</option>
-                <option value="Corporate Bonds">Corporate Bonds</option>
                 <option value="Real Estate">Real Estate</option>
-                <option value="Commodities">Commodities</option>
-                <option value="Carbon Credits & Environmental Assets">Carbon Credits &amp; Environmental Assets</option>
-                <option value="Equities">Equities</option>
-                <option value="Stablecoins (Fiat-backed)">Stablecoins (Fiat-backed)</option>
-                <option value="Structured Products">Structured Products</option>
-                <option value="Funds / ETFs">Funds / ETFs</option>
-                <option value="Other">Other</option>`;
+                <option value="RWA Perps">RWA Perps</option>
+                <option value="RWA Stablecoins">RWA Stablecoins</option>
+                <option value="RWA Wrappers">RWA Wrappers</option>
+                <option value="Stocks & Equities">Stocks &amp; Equities</option>`;
+
+            const assetClassOptions = `
+                <option value="">Select an asset class...</option>
+                <option value="USD Stable">USD Stable</option>
+                <option value="EUR Stable">EUR Stable</option>
+                <option value="Other Fiat Stable">Other Fiat Stable</option>
+                <option value="Bank Deposit Token">Bank Deposit Token</option>
+                <option value="Yield Fiat Stable">Yield Fiat Stable</option>
+                <option value="RWA Fiat Stable">RWA Fiat Stable</option>
+                <option value="Yield RWA Stable">Yield RWA Stable</option>
+                <option value="Multi-Asset RWA Stable">Multi-Asset RWA Stable</option>
+                <option value="Crypto Stable">Crypto Stable</option>
+                <option value="Algo Stable">Algo Stable</option>
+                <option value="T-Bills">T-Bills</option>
+                <option value="Sovereign Bond Fund">Sovereign Bond Fund</option>
+                <option value="Corp Bond Fund">Corp Bond Fund</option>
+                <option value="MMF">MMF</option>
+                <option value="Mixed RWA Fund">Mixed RWA Fund</option>
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Platinum">Platinum</option>
+                <option value="Palladium">Palladium</option>
+                <option value="Uranium">Uranium</option>
+                <option value="Other Commodity">Other Commodity</option>
+                <option value="Commodity Basket">Commodity Basket</option>
+                <option value="Single Property">Single Property</option>
+                <option value="REIT">REIT</option>
+                <option value="RE Revenue Share">RE Revenue Share</option>
+                <option value="RE Credit">RE Credit</option>
+                <option value="Stock Synthetic">Stock Synthetic</option>
+                <option value="Stock Backed">Stock Backed</option>
+                <option value="Equity Basket">Equity Basket</option>
+                <option value="PE / Venture">PE / Venture</option>
+                <option value="Collectibles">Collectibles</option>
+                <option value="IP / Royalty">IP / Royalty</option>
+                <option value="Other Exotic">Other Exotic</option>
+                <option value="Domain Venue">Domain Venue</option>
+                <option value="Collectibles Venue">Collectibles Venue</option>
+                <option value="Credit Pool">Credit Pool</option>
+                <option value="Trade Finance">Trade Finance</option>
+                <option value="Structured Credit">Structured Credit</option>
+                <option value="Other Credit">Other Credit</option>
+                <option value="Reinsurance Pool">Reinsurance Pool</option>
+                <option value="Lending Venue">Lending Venue</option>
+                <option value="Stable Yield Wrapper">Stable Yield Wrapper</option>
+                <option value="Single Asset Wrapper">Single Asset Wrapper</option>
+                <option value="RWA Basket Vault">RWA Basket Vault</option>
+                <option value="RWA LP Wrapper">RWA LP Wrapper</option>
+                <option value="Leveraged RWA Vault">Leveraged RWA Vault</option>
+                <option value="Structured Note">Structured Note</option>
+                <option value="Yield Pool">Yield Pool</option>
+                <option value="Active Vault">Active Vault</option>
+                <option value="Carbon Credit">Carbon Credit</option>
+                <option value="Other Environmental">Other Environmental</option>
+                <option value="Governance Token">Governance Token</option>
+                <option value="Revenue Share">Revenue Share</option>
+                <option value="Carbon Reserve">Carbon Reserve</option>
+                <option value="Synthetic Stable">Synthetic Stable</option>
+                <option value="Crypto Index Fund">Crypto Index Fund</option>
+                <option value="Crypto Hedge Fund">Crypto Hedge Fund</option>
+                <option value="ETF Backed">ETF Backed</option>
+                <option value="Stock Perp">Stock Perp</option>
+                <option value="ETF Perp">ETF Perp</option>
+                <option value="Equity Perp">Equity Perp</option>
+                <option value="Commodity Perp">Commodity Perp</option>
+                <option value="Bond Perp">Bond Perp</option>
+                <option value="Perp Venue">Perp Venue</option>`;
+
+            const assetGroupOptions = `
+                <option value="">Select an asset group...</option>
+                <option value="Agricultural Commodities">Agricultural Commodities</option>
+                <option value="AI & Compute Infrastructure">AI &amp; Compute Infrastructure</option>
+                <option value="Bonds">Bonds</option>
+                <option value="Carbon Credits">Carbon Credits</option>
+                <option value="Collectibles & Luxury Goods">Collectibles &amp; Luxury Goods</option>
+                <option value="Commodity Baskets">Commodity Baskets</option>
+                <option value="Digital Assets">Digital Assets</option>
+                <option value="Energy">Energy</option>
+                <option value="Equity ETFs">Equity ETFs</option>
+                <option value="Equity Indices">Equity Indices</option>
+                <option value="Fiat Currencies">Fiat Currencies</option>
+                <option value="Industrial Metals">Industrial Metals</option>
+                <option value="Intellectual Property & Royalties">Intellectual Property &amp; Royalties</option>
+                <option value="Mixed Public Markets">Mixed Public Markets</option>
+                <option value="Multi-Asset RWAs">Multi-Asset RWAs</option>
+                <option value="Natural Gas">Natural Gas</option>
+                <option value="Oil">Oil</option>
+                <option value="Precious Metals">Precious Metals</option>
+                <option value="Private Credit">Private Credit</option>
+                <option value="Private Equity & Venture">Private Equity &amp; Venture</option>
+                <option value="Public Equities">Public Equities</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Reinsurance">Reinsurance</option>
+                <option value="RWA Infrastructure">RWA Infrastructure</option>`;
+
+            const redemptionOptions = `
+                <option value="">Select redemption type...</option>
+                <option value="Redeemable for the underlying asset">Redeemable for the underlying asset</option>
+                <option value="Redeemable for equivalent value (cash/stablecoin)">Redeemable for equivalent value (cash/stablecoin)</option>
+                <option value="Not redeemable">Not redeemable</option>`;
 
             const html = `
             <div class="token-entry" id="tokenEntry_${idx}">
@@ -887,17 +1093,27 @@
                     </div>
                 </div>
 
-                <!-- Category -->
+                <!-- Asset Classification -->
                 <div class="form-card">
                     <div class="form-section">
                         <h2 class="section-title"><span class="icon">📂</span> Asset Classification</h2>
                         <div class="form-group">
-                            <label>Category <span class="required">*</span></label>
+                            <label>Category <span class="required">*</span>
+                                <span class="hint">Primary classification bucket for the RWA token</span>
+                            </label>
                             <select name="t${idx}_category" data-req required>${categoryOptions}</select>
                         </div>
-                        <div class="form-group" id="t${idx}_categoryOtherGroup" style="display:none;">
-                            <label>Specify Category</label>
-                            <input type="text" name="t${idx}_categoryOther" placeholder="Describe your asset category">
+                        <div class="form-group">
+                            <label>Asset Class <span class="required">*</span>
+                                <span class="hint">Specific asset type within the category</span>
+                            </label>
+                            <select name="t${idx}_assetClass" data-req required>${assetClassOptions}</select>
+                        </div>
+                        <div class="form-group">
+                            <label>Asset Group <span class="required">*</span>
+                                <span class="hint">Broader grouping for cross-category aggregation</span>
+                            </label>
+                            <select name="t${idx}_assetGroup" data-req required>${assetGroupOptions}</select>
                         </div>
                     </div>
                 </div>
@@ -1004,10 +1220,18 @@
                 <!-- Redemption -->
                 <div class="form-card">
                     <div class="form-section">
-                        <h2 class="section-title"><span class="icon">💱</span> Redemption Process</h2>
+                        <h2 class="section-title"><span class="icon">💱</span> Redemption</h2>
                         <div class="form-group">
-                            <label>Redemption Details</label>
-                            <textarea name="t${idx}_redemption" placeholder="Platform for redemption, minimum amounts, settlement timeline..."></textarea>
+                            <label>Redemption <span class="required">*</span>
+                                <span class="hint">How token holders can redeem</span>
+                            </label>
+                            <select name="t${idx}_redemption" data-req required>${redemptionOptions}</select>
+                        </div>
+                        <div class="form-group">
+                            <label>Redemption Process
+                                <span class="hint">Brief description of how redemption works</span>
+                            </label>
+                            <textarea name="t${idx}_redemptionProcess" placeholder="Platform for redemption, minimum amounts, settlement timeline..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -1171,10 +1395,8 @@
             }
 
             data.category = fd.get('category');
-            if (data.category === 'Other') {
-                const other = fd.get('categoryOther');
-                if (other) data.category = `Other: ${other}`;
-            }
+            data.assetClass = fd.get('assetClass');
+            data.assetGroup = fd.get('assetGroup');
 
             data.coingeckoId = fd.get('coingeckoId');
             data.issuer = fd.get('issuer');
@@ -1196,6 +1418,7 @@
             data.documentationLink = fd.get('documentationLink');
             data.contactEmail = fd.get('contactEmail');
             data.redemption = fd.get('redemption');
+            data.redemptionProcess = fd.get('redemptionProcess');
 
             return data;
         }
@@ -1241,10 +1464,8 @@
             }
 
             data.category = fd.get(p + 'category');
-            if (data.category === 'Other') {
-                const other = fd.get(p + 'categoryOther');
-                if (other) data.category = `Other: ${other}`;
-            }
+            data.assetClass = fd.get(p + 'assetClass');
+            data.assetGroup = fd.get(p + 'assetGroup');
 
             data.coingeckoId = fd.get(p + 'coingeckoId');
             data.issuer = sharedIssuer.issuer;
@@ -1266,6 +1487,7 @@
             data.documentationLink = fd.get(p + 'documentationLink');
             data.contactEmail = sharedIssuer.contactEmail;
             data.redemption = fd.get(p + 'redemption');
+            data.redemptionProcess = fd.get(p + 'redemptionProcess');
 
             return data;
         }

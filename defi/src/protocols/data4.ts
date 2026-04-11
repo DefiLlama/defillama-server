@@ -18084,7 +18084,7 @@ const data4: Protocol[] = [
   {
     id: "6340",
     name: "Unitas",
-    address: "bsc:0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+    address: "solana:7Zhxshgt7Ft6pHFYMrHE1epWdWre7sJ1Af1GhEUnitas",
     symbol: "UP",
     url: "https://app.unitas.so/points?ref=llama",
     referralUrl: "https://app.unitas.so/points?ref=llama",

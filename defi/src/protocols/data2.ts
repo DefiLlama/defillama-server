@@ -5758,8 +5758,8 @@ const data2: Protocol[] = [
   {
     id: "1642",
     name: "Folks Finance Lending",
-    address: null,
-    symbol: "-",
+    address: "avax:0xff7f8f301f7a706e3cfd3d2275f5dc0b9ee8009b",
+    symbol: "FOLKS",
     url: "https://folks.finance/",
     description: "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     chain: "Algorand",
@@ -18980,8 +18980,8 @@ const data2: Protocol[] = [
   {
     id: "2235",
     name: "gALGO Liquid Governance",
-    address: null,
-    symbol: "-",
+    address: "avax:0xff7f8f301f7a706e3cfd3d2275f5dc0b9ee8009b",
+    symbol: "FOLKS",
     url: "https://folks.finance/",
     description: "Liquid Staking protocol built on Algorand Blockchain.",
     chain: "Algorand",

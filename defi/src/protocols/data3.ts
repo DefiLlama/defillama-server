@@ -20862,8 +20862,8 @@ const data3_1: Protocol[] = [
   {
     id: "3642",
     name: "Ultraswap",
-    address: null,
-    symbol: "-",
+    address: "avax:0xff7f8f301f7a706e3cfd3d2275f5dc0b9ee8009b",
+    symbol: "FOLKS",
     url: "https://app.folks.finance/ultraswap",
     description: "Loop your loans through up and down positions.",
     chain: "Algorand",

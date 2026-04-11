@@ -556,7 +556,7 @@ const parentProtocols: IParentProtocol[] = [
       "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     logo: `${baseIconsUrl}/folks-finance.jpg`,
     gecko_id: "folks", // their gov token https://www.coingecko.com/en/coins/folks
-    cmcId: null,
+    cmcId: "38864",
     chains: [],
     twitter: "FolksFinance",
     github: ["Folks-Finance"],

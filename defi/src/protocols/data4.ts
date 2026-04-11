@@ -18084,8 +18084,8 @@ const data4: Protocol[] = [
   {
     id: "6340",
     name: "Unitas",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+    symbol: "UP",
     url: "https://app.unitas.so/points?ref=llama",
     referralUrl: "https://app.unitas.so/points?ref=llama",
     description:
@@ -18093,7 +18093,7 @@ const data4: Protocol[] = [
     chain: "Solana",
     logo: `${baseIconsUrl}/unitas.jpg`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "unitas",
     cmcId: null,
     category: "Basis Trading",
     chains: ["Solana"],
@@ -28828,15 +28828,15 @@ const data4: Protocol[] = [
   {
     id: "6821",
     name: "Giza",
-    address: null,
-    symbol: "-",
+    address: "base:0x590830dfdf9a3f68afcdde2694773debdf267774",
+    symbol: "GIZA",
     url: "https://www.gizatech.xyz/",
     description:
       "Giza is the infrastructure powering autonomous financial markets by enabling non-custodial algorithmic agents that execute sophisticated DeFi strategies around the clock",
     chain: "Base",
     logo: `${baseIconsUrl}/giza.jpg`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "giza",
     cmcId: null,
     category: "AI Agents",
     chains: ["Base", "Arbitrum", "Plasma"],

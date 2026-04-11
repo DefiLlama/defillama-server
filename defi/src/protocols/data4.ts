@@ -8683,8 +8683,8 @@ const data4: Protocol[] = [
   {
     id: "5936",
     name: "PumpSwap",
-    address: null,
-    symbol: "-",
+    address: "solana:pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+    symbol: "PUMP",
     url: "https://swap.pump.fun",
     description: "The native dex for pump.fun",
     chain: "Solana",
@@ -17785,8 +17785,8 @@ const data4: Protocol[] = [
   {
     id: "6328",
     name: "Padre",
-    address: null,
-    symbol: "-",
+    address: "solana:pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+    symbol: "PUMP",
     url: "https://trade.padre.gg/rk/defillama",
     referralUrl: "https://trade.padre.gg/rk/defillama",
     description: "Memecoin trading terminal built for traders",

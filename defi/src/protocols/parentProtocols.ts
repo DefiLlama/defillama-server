@@ -6846,7 +6846,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.pump.fun/",
     description: "Launch a coin that is instantly tradeable in one click for free",
     logo: `${baseIconsUrl}/pump.png`,
-    gecko_id: null,
+    gecko_id: "pump-fun",
     cmcId: null,
     chains: [],
     twitter: "Pumpfun",

@@ -16529,5 +16529,28 @@ const data5: Protocol[] = [
       fees: "thorwallet"
     }
   },
+  {
+    id: "7656",
+    name: "Polymarket US",
+    address: null,
+    symbol: "-",
+    url: "https://polymarketexchange.com/",
+    description: "Polymarket US is a CFTC-regulated Designated Contract Market (DCM) providing transparent, regulated access to event-based derivative instruments.",
+    chain: "Off Chain",
+    logo: `${baseIconsUrl}/polymarket-us.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Off Chain"],
+    module: "dummy.js",
+    twitter: "Polymarket",
+    parentProtocol: "parent#polymarket",
+    dimensions: {
+      fees: "polymarket-us",
+      "open-interest": "polymarket-us",
+      dexs: "polymarket-us",
+    }
+  },
 ];
 export default data5;

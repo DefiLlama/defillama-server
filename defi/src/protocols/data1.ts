@@ -13417,7 +13417,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "711",
-    name: "Polymarket",
+    name: "Polymarket International",
     address: null,
     symbol: "-",
     url: "https://polymarket.com/?r=defillamareal", // replaced by the old one on the 25/03/26
@@ -13425,7 +13425,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Polymarket is an information markets platform that lets you trade on the world’s most highly-debated topics (e.g. coronavirus, politics, current events, etc). On Polymarket, you build a portfolio based on your forecasts and earn a return if you are right.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/polymarket.jpg`,
+    logo: `${baseIconsUrl}/polymarket-international.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -13433,8 +13433,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     oracles: ["UMA"],
     module: "polymarket.js",
-    twitter: "PolymarketHQ",
+    twitter: "Polymarket",
     listedAt: 1635250158,
+    parentProtocol: "parent#polymarket",
     dimensions: {
       fees: "polymarket",
       dexs: "polymarket",

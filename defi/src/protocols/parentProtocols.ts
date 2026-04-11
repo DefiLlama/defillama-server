@@ -9423,6 +9423,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "spaace_io",
   },
+  {
+    id: "parent#polymarket",
+    name: "Polymarket",
+    url: "https://polymarket.com/?r=defillamareal", 
+    referralUrl: "https://polymarket.com/?r=defillamareal",
+    description: "Polymarket is a Prediction Market that lets users trade politics, news, crypto, culture, sports, tech, & more.",
+    logo: `${baseIconsUrl}/polymarket.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Polymarket",
+  },
 ];
 
 export default parentProtocols;

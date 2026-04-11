@@ -2965,7 +2965,7 @@ const data2: Protocol[] = [
     name: "Granary Finance",
     address: "0xf88baf18fab7e330fa0c4f83949e23f52fececce",
     symbol: "GRAIN",
-    url: "https://granary.finance/",
+    url: "https://granary.finance/",//deadUrl
     description:
       "Granary Finance is a decentralized, user-driven borrowing and lending liquidity market inspired by AAVE.",
     chain: "Fantom",
@@ -3958,7 +3958,8 @@ const data2: Protocol[] = [
     module: "kdlaunch/index.js",
     twitter: "KdLaunch",
     listedAt: 1647474666,
-    deprecated: true
+    deprecated: true,
+    deadUrl: true,
   },
   {
     id: "1560",
@@ -8948,6 +8949,7 @@ const data2: Protocol[] = [
     twitter: "GaleNetwork",
     audit_links: ["https://github.com/solidproof/projects/blob/main/Gale/SmartContract_Audit_Solidproof_GaleToken.pdf"],
     listedAt: 1653656978,
+    deadUrl: true,
   },
   {
     id: "1790",
@@ -9884,6 +9886,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1655545050,
     github: ["ZeroSwapLabs"],
+    deadUrl: true,
   },
   {
     id: "1831",
@@ -10873,6 +10876,7 @@ const data2: Protocol[] = [
       "https://github.com/VeRocket/uni-v2/blob/53a2856fa58ea2021edab9a7b968a7626a28f41a/PeckShield-Audit-Report-VeRocket-v1.0.pdf",
     ],
     listedAt: 1656882929,
+    deadUrl: true,
   },
   {
     id: "1877",
@@ -15962,7 +15966,7 @@ const data2: Protocol[] = [
     name: "DefiCurrent",
     address: null,
     symbol: "-",
-    url: "https://deficurrent.com/",
+    url: "https://deficurrent.com/",//deadUrl
     description:
       "DefiCurrent aims to offer diversified barebones yield optimization to crypto native investors through pooled investment vehicles that distribute the cost of operating yield generation strategies (rebalancing, compounding, swapping, etc.) between the participants, resulting in higher yields and less management than an individual investment",
     chain: "Ethereum",
@@ -15978,6 +15982,7 @@ const data2: Protocol[] = [
     twitter: "deficurrent",
     audit_links: ["https://www.certik.com/projects/lakefront-finance"],
     listedAt: 1663708941,
+    deadUrl: true,
   },
   {
     id: "2106",
@@ -16123,6 +16128,7 @@ const data2: Protocol[] = [
     twitter: "stake_ly",
     audit_links: ["https://github.com/stakely-protocol/audit/blob/main/report.pdf"],
     listedAt: 1663855846,
+    deadUrl: true,
   },
   {
     id: "2113",
@@ -25690,6 +25696,7 @@ const data2: Protocol[] = [
     module: "rubydex/index.js",
     twitter: "Ruby_Dex",
     listedAt: 1676630023,
+    deadUrl: true,
   },
   {
     id: "2544",
@@ -25933,7 +25940,7 @@ const data2: Protocol[] = [
     name: "Subzero+",
     address: "avax:0xA0105D7fc6190598523f568001A71164341b0A22",
     symbol: "SUB",
-    url: "https://subzero.plus",
+    url: "https://subzero.plus",//deadUrl
     description:
       "Subzero is a decentralized venture capital investment protocol on the Avalanche network. The protocol focuses on sustainable mechanisms to encourage long-term staking and providing liquidity.",
     chain: "Avalanche",
@@ -25948,6 +25955,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["376"],
     parentProtocol: "parent#subzero",
     listedAt: 1676903060,
+    deadUrl: true,
   },
   {
     id: "2556",
@@ -25971,7 +25979,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "subzero-zswap",
       dexs: "subzero-zswap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2557",
@@ -27126,7 +27135,7 @@ const data2: Protocol[] = [
     name: "Hord",
     address: "0x43a96962254855f16b925556f9e97be436a43448",
     symbol: "HORD",
-    url: "https://app.hord.fi",
+    url: "https://app.hord.fi",//deadUrl
     description:
       "Hord offers a safe and easy way for users to stake their ETH by taking care of the validators and the technical operation. All you have to do is deposit any amount of ETH, and you’ll receive a receipt token called hETH which can be later redeemed for the ETH you initially staked plus your portion of the rewards earned.",
     chain: "Ethereum",
@@ -27140,6 +27149,8 @@ const data2: Protocol[] = [
     twitter: "HordApp",
     listedAt: 1677586298,
     github: ["hord"],
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "2610",
@@ -28532,7 +28543,7 @@ const data2: Protocol[] = [
     name: "Alyx finance",
     address: "bsc:0x2701C7cBf3220FFF6e6CEaabbCD9B932Eb11E3Ff",
     symbol: "ALYX",
-    url: "https://alyx.finance/",
+    url: "https://alyx.finance/",//deadUrl
     description:
       "A DAO defi that marries real-yields with AI NFT art, and a liquidity protocol. Alyx is first and foremost a DAO that operates the $ALYX currency to grow a treasury that correspondingly backs $ALYX token as a reserve currency",
     chain: "Binance",
@@ -28547,6 +28558,7 @@ const data2: Protocol[] = [
     forkedFromIds: ["340"],
     treasury: "alyx.js",
     listedAt: 1678821724,
+    deadUrl: true,
   },
   {
     id: "2673",
@@ -28768,7 +28780,7 @@ const data2: Protocol[] = [
     name: "Davos Protocol",
     address: null,
     symbol: "-",
-    url: "https://davos.xyz/",
+    url: "https://davos.xyz/",//deadUrl
     description:
       "Davos Protocol is a pioneering DeFi platform that revolutionizes the use of collateral in the cryptocurrency space. It uniquely integrates Liquid Staking Tokens (LSTs) and Liquid ReStaking Tokens (LRTs) as collateral for its Collateralized Debt Positions (CDPs), enabling users to borrow its versatile omnichain stablecoin, DUSD. By aligning Loan-to-Value (LTV) ratios with the risk profile of each collateral type, Davos offers a balanced and secure borrowing experience. Users can capitalize on their staked assets, maintain rewards, and explore compounded yield opportunities across various DeFi activities. Emphasizing user-centric governance and innovation, Davos Protocol is at the forefront of advancing DeFi composability and sustainable yield generation",
     chain: "Polygon",
@@ -28785,6 +28797,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/davos-money/new-davos-smart-contracts/tree/main/audits"],
     listedAt: 1679050000,
     stablecoins: ["davos-protocol"],
+    deadUrl: true,
   },
   {
     id: "2684",

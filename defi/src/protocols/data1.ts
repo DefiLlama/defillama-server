@@ -1305,6 +1305,7 @@ const data: Protocol[] = [
     twitter: "ForTubeFi",
     audit_links: ["https://for.tube/security"],
     github: ["thefortube"],
+    deadUrl: true,
   },
   {
     id: "164",
@@ -2388,6 +2389,7 @@ const data: Protocol[] = [
     github: ["onx-finance"],
     audit_links: ["https://onx-finance.gitbook.io/docs/audits-and-contracts"],
     governanceID: ["snapshot:onx-finance.eth"],
+    deadUrl: true,
   },
   {
     id: "214",
@@ -4161,6 +4163,7 @@ const data: Protocol[] = [
     twitter: "ZooEcosystem",
     audit_links: ["https://github.com/ZooFarming/Audit"],
     github: ["ZooFarming"],
+    deadUrl: true,
   },
   /*
   {
@@ -4979,6 +4982,7 @@ const data: Protocol[] = [
     twitter: "O3_Labs",
     audit_links: ["https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf"],
     github: ["O3Labs"],
+    deadUrl: true,
   },
   {
     id: "334",
@@ -5631,7 +5635,7 @@ const data: Protocol[] = [
     name: "Perpetual Protocol",
     address: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
     symbol: "PERP",
-    url: "https://app.perp.com",
+    url: "https://app.perp.com",//deadUrl
     referralUrl: "https://app.perp.com?code=defillama",
     description: "Decentralized Perpetual Contracts for Every Asset.",
     chain: "xDai",
@@ -5651,7 +5655,8 @@ const data: Protocol[] = [
     github: ["perpetual-protocol"],
     dimensions: {
       fees: "perpetual-protocol"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "363",
@@ -10690,6 +10695,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "parrotegg/index.js",
     twitter: "Parrotdefi1",
     forkedFromIds: ["205"],
+    deadUrl: true,
   },
   {
     id: "591",
@@ -11570,6 +11576,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://code423n4.com/reports/2021-08-floatcapital"],
     oracles: ["Chainlink", "RedStone"],
     github: ["Float-Capital"],
+    deadUrl: true,
   },
   {
     id: "629",
@@ -12230,6 +12237,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "only1.js",
     twitter: "Try_Wink",
     openSource: false,
+    deadUrl: true,
   },
   {
     id: "659",
@@ -18652,7 +18660,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "DeHive",
     address: "0x62dc4817588d53a056cbbd18231d91ffccd34b2a",
     symbol: "DHV",
-    url: "https://dehive.finance",
+    url: "https://dehive.finance",//deadUrl
     description:
       "DeHive is a multi-chain asset management protocol that provides smart asset management of tokenized portfolios.",
     chain: "Ethereum",
@@ -18670,6 +18678,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1638565180,
     github: ["DeHive-finance"],
+    deadUrl: true,
   },
   {
     id: "970",
@@ -21744,7 +21753,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Asgard Dao",
     address: "bsc:0xa5593837af2b99021fe657c80d70d2365F5CfD38",
     symbol: "ASGARD",
-    url: "https://asgarddao.live/",
+    url: "https://asgarddao.live/",//deadUrl
     description: "Asgard is a decentralized reserve currency built on Binance smart chain",
     chain: "Binance",
     logo: `${baseIconsUrl}/asgard-dao.jpg`,
@@ -21757,6 +21766,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Asgarddao_",
     forkedFromIds: ["340"],
     listedAt: 1640640695,
+    deadUrl: true,
   },
   {
     id: "1113",
@@ -24978,7 +24988,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "SmartPad",
     address: "0x5067006F830224960Fb419D7f25a3a53e9919BB0",
     symbol: "PAD",
-    url: "https://smartpad.network/",
+    url: "https://smartpad.network/",//deadUrl
     description:
       "SmartPad is the first launchpad platform of its kind. Our vision is to create a multi-cross-chain launchpad, enabling participation in the IDOs occurring on one blockchain while using the assets from another chain.",
     chain: "Ethereum",
@@ -24991,6 +25001,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "smartpad/index.js",
     twitter: "SmartPad_launch",
     listedAt: 1642193328,
+    deadUrl: true,
   },
   {
     id: "1264",

@@ -1016,7 +1016,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#subzero",
     name: "Subzero",
-    url: "https://subzero.plus",
+    url: "https://subzero.plus",//deadUrl
     description:
       "Subzero is a decentralized venture capital investment protocol on the Avalanche network. The protocol focuses on sustainable mechanisms to encourage long-term staking and providing liquidity.",
     logo: `${baseIconsUrl}/subzero.jpg`,
@@ -1024,6 +1024,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "subzeroplus",
+    deadUrl: true,
   },
   {
     id: "parent#diamond",
@@ -2688,7 +2689,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#baseswap",
     name: "BaseSwap",
-    url: "https://baseswap.fi/",
+    url: "https://baseswap.fi/",//deadUrl
     description: "Native DEX on Base chain",
     logo: `${baseIconsUrl}/baseswap.png`,
     gecko_id: "baseswap",
@@ -2696,6 +2697,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BaseSwapDex",
     treasury: "baseswap.js",
+    deadUrl: true,
   },
   {
     id: "parent#scallop",
@@ -5661,7 +5663,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#ktx.finance",
     name: "KTX.Finance",
-    url: "https://www.ktx.finance",
+    url: "https://www.ktx.finance",//deadUrl
     description:
       "Trade and earn cryptocurrencies with lowest fees, depthless liquidity, and up to 50x leverage. Generate yield in a bull, bear, or sideways market.",
     logo: `${baseIconsUrl}/ktx.finance.jpg`,
@@ -5669,6 +5671,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "26493",
     chains: [],
     twitter: "KTX_finance",
+    deadUrl: true,
   },
   {
     id: "parent#logx",
@@ -6635,7 +6638,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#beralis",
     name: "Beralis Dex",
-    url: "https://www.beralis.xyz",
+    url: "https://www.beralis.xyz",//deadUrl
     description: "Beralis Dex on Berachain",
     logo: `${baseIconsUrl}/beralis-dex.png`,
     gecko_id: null,
@@ -6647,7 +6650,8 @@ const parentProtocols: IParentProtocol[] = [
         message: "Beralis has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true,
   },
   {
     id: "parent#sosovalue",

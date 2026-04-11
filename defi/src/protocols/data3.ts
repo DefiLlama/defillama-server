@@ -1598,7 +1598,7 @@ const data3_0: Protocol[] = [
     name: "Auragi Finance",
     address: "arbitrum:0xff191514a9baba76bfd19e3943a4d37e8ec9a111",
     symbol: "AGI",
-    url: "https://auragi.finance",
+    url: "https://auragi.finance",//deadUrl
     description:
       "Auragi Finance is an automatic market maker with ve(3,3) mechanics. We offer our users minimal slippage, low swapping fees and deep liquidity. And, our swapping fees are 0.01% for stable and 0.05% for volatile pairs.",
     chain: "Arbitrum",
@@ -1616,7 +1616,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "auragi",
       dexs: "auragi"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2774",
@@ -3820,6 +3821,7 @@ const data3_0: Protocol[] = [
     twitter: "Neutroswap",
     audit_links: ["https://github.com/solidproof/projects/tree/main/NeutroSwap"],
     listedAt: 1682200819,
+    deadUrl: true
   },
   {
     id: "2874",
@@ -6383,6 +6385,7 @@ const data3_0: Protocol[] = [
     module: "mversex/index.js",
     twitter: "multiversec2c",
     listedAt: 1684323315,
+    deadUrl: true
   },
   {
     id: "2990",
@@ -7194,7 +7197,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "ktx",
       derivatives: "ktx-derivatives"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3026",
@@ -14018,7 +14022,7 @@ const data3_0: Protocol[] = [
     name: "BaseSwap V2",
     address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
     symbol: "BSWAP",
-    url: "https://baseswap.fi/swap",
+    url: "https://baseswap.fi/swap",//deadUrl
     description:
       "The Native leading DEX on Base Chain. By Based team, for Based People. From simplistic to advanced BaseSwap has it all",
     chain: "Base",
@@ -14036,7 +14040,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "baseswap-v2",
       dexs: "baseswap-v2"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3334",
@@ -14251,7 +14256,7 @@ const data3_0: Protocol[] = [
     name: "zkEra Finance",
     address: "era:0x7b3e1236c39ddD2e61cF6Da6ac6D11193238ccB0",
     symbol: "ZKE",
-    url: "https://zkera.fi",
+    url: "https://zkera.fi",//deadUrl
     description: "Trade USDC, ETH and other top cryptocurrencies with up to 50x leverage directly from your wallet.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/zkera-finance.jpg`,
@@ -14286,7 +14291,8 @@ const data3_0: Protocol[] = [
     listedAt: 1691144368,
     dimensions: {
       derivatives: "zkera-finance"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3344",
@@ -14905,6 +14911,7 @@ const data3_0: Protocol[] = [
     twitter: "SweepnFlip",
     audit_links: ["https://sweep-n-flip.gitbook.io/documentation/sweep-n-flip-or-amm/audit"],
     listedAt: 1691702535,
+    deadUrl: true
   },
   {
     id: "3371",
@@ -17856,7 +17863,7 @@ const data3_1: Protocol[] = [
     name: "BaseX",
     address: "base:0x78a087d713Be963Bf307b18F2Ff8122EF9A63ae9",
     symbol: "BSWAP",
-    url: "https://baseswap.fi",
+    url: "https://baseswap.fi",//deadUrl
     description: "Uniswap V3 fork on Base Chain.",
     chain: "Base",
     logo: `${baseIconsUrl}/basex.jpg`,
@@ -17873,7 +17880,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "baseswap-v3",
       dexs: "baseswap-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3508",
@@ -23385,7 +23393,8 @@ const data3_1: Protocol[] = [
     listedAt: 1699530655,
     dimensions: {
       fees: "goku-money"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3759",
@@ -23987,6 +23996,7 @@ const data3_1: Protocol[] = [
     chains: ["Ethereum"],
     module: "txBridge/index.js",
     twitter: "txSync_io",
+    deadUrl: true,
   },
   {
     id: "3789",
@@ -27156,6 +27166,7 @@ const data3_1: Protocol[] = [
     ],
     github: ["symmetrytrade"],
     listedAt: 1702912934,
+    deadUrl: true,
   },
   {
     id: "3932",
@@ -27649,7 +27660,7 @@ const data3_1: Protocol[] = [
     address: "osmosis:ibc/9D8D4CAE9D8F15B69E93969304AF3878D14BDED39FEAF0060566D6AC22288779",
     symbol: "MILK",
     assetToken: "umilkTIA",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
     description: "MilkyWay offers a liquid staking solution for Celestia's TIA",
     chain: "Osmosis",
     logo: `${baseIconsUrl}/milkyway-liquid-staking.jpg`,
@@ -27668,7 +27679,8 @@ const data3_1: Protocol[] = [
     listedAt: 1703359758,
     dimensions: {
       fees: "milkyway"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3954",
@@ -33825,7 +33837,7 @@ const data3_2: Protocol[] = [
     name: "SwapBlast",
     address: "blast:0xd07379a755A8f11B57610154861D694b2A0f615a",
     symbol: "SBF",
-    url: "https://swapblast.finance/#/swap",
+    url: "https://swapblast.finance/#/swap",//deadUrl
     description:
       "SwapBlast is an automated liquidity protocol implemented in a system of non-upgradeable smart contracts on the Blast blockchain",
     chain: "Blast",
@@ -33840,6 +33852,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#swapbased",
     listedAt: 1709336512,
+    deadUrl: true,
   },
   {
     id: "4217",
@@ -35900,7 +35913,7 @@ const data3_2: Protocol[] = [
     name: "Molend",
     address: null,
     symbol: "-",
-    url: "https://molend.org",
+    url: "https://molend.org",//deadUrl
     description: `Molend is a decentralized, non-custodial liquidity market protocol deployed on Mode Network, where users can participate as depositors or borrowers. The protocol allows depositors to provide liquidity to the market and earn passive income, while borrowers can borrow in an over-collateralized and perpetual manner.`,
     chain: "Mode",
     logo: `${baseIconsUrl}/molend.jpg`,
@@ -35915,6 +35928,7 @@ const data3_2: Protocol[] = [
     twitter: "MolendProtocol",
     github: ["molend-labs"],
     listedAt: 1710772242,
+    deadUrl: true,
   },
   {
     id: "4312",
@@ -36799,6 +36813,7 @@ const data3_2: Protocol[] = [
     audit_links: ["https://github.com/Satoshi-Finance/security"],
     github: ["Satoshi-Finance"],
     listedAt: 1711213467,
+    deadUrl: true,
   },
   {
     id: "4353",
@@ -37302,6 +37317,7 @@ const data3_2: Protocol[] = [
     module: "openswap/index.js",
     twitter: "Openswap_",
     listedAt: 1711409045,
+    deadUrl: true,
   },
   {
     id: "4375",
@@ -40013,7 +40029,7 @@ const data3_2: Protocol[] = [
     name: "SwapBlast V3",
     address: "blast:0xd07379a755A8f11B57610154861D694b2A0f615a",
     symbol: "SBF",
-    url: "https://swapblast.finance/#/swap",
+    url: "https://swapblast.finance/#/swap",//deadUrl
     description: "CLMM on Blast",
     chain: "Blast",
     logo: `${baseIconsUrl}/swapblast.png`,
@@ -40027,6 +40043,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2198"],
     parentProtocol: "parent#swapbased",
     listedAt: 1713640781,
+    deadUrl: true,
   },
   {
     id: "4499",
@@ -42132,7 +42149,7 @@ const data3_2: Protocol[] = [
     name: "COREx Network",
     address: null,
     symbol: "-",
-    url: "https://corex.network/",
+    url: "https://corex.network/",//deadUrl
     description:
       "COREx, built on the CoreDao Ecosystem, is distinguished by its user-friendly design requiring minimal learning curve, robust community features, along with advanced transaction monitoring and the convenience of one-click smart money copy-trading.",
     chain: "CORE",
@@ -42146,6 +42163,7 @@ const data3_2: Protocol[] = [
     module: "corexswap/index.js",
     twitter: "COREx_Official",
     listedAt: 1715625938,
+    deadUrl: true,
   },
   {
     id: "4595",
@@ -43923,6 +43941,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["1599"],
     audit_links: ["https://conclave.gitbook.io/glyph/resources/audits"],
     listedAt: 1716652465,
+    deadUrl: true,
   },
   {
     id: "4677",
@@ -53655,7 +53674,7 @@ const data3_3: Protocol[] = [
     name: "KTX spot",
     address: "bsc:0x545356d4d69d8cD1213Ee7e339867574738751CA",
     symbol: "KTC",
-    url: "https://www.ktx.finance",
+    url: "https://www.ktx.finance",//deadUrl
     description: "Trade and earn cryptocurrencies with lowest fees, depthless liquidity, and up to 50x leverage. Generate yield in a bull, bear, or sideways market.",
     chain: "Mantle",
     logo: `${baseIconsUrl}/ktx-amm.jpg`,
@@ -53669,7 +53688,8 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#ktx.finance",
     dimensions: {
       dexs: "ktx-swap"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5122",
@@ -53903,7 +53923,8 @@ const data3_3: Protocol[] = [
     module: "pumpxy/index.js",
     twitter: "PumpXy",
     github: ["Pumpxy"],
-    listedAt: 1726044458
+    listedAt: 1726044458,
+    deadUrl: true,
   },
   {
     id: "5133",
@@ -58897,7 +58918,8 @@ const data3_3: Protocol[] = [
     twitter: "GoldenGoose_app",
     github: ["GooseFarmLabs"],
     audit_links: ["https://www.goose.farm/CERTIK_Golden_Goose_Report.pdf"],
-    listedAt: 1731610472
+    listedAt: 1731610472,
+    deadUrl: true,
   },
   {
     id: "5359",
@@ -60519,7 +60541,7 @@ const data3_3: Protocol[] = [
     name: "Compx CDP",
     address: null,
     symbol: "-",
-    url: "https://app.compx.io/cdp/vaults",
+    url: "https://compx.io/",
     description: "CDP protocol on Algorand.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/compx.jpg`,

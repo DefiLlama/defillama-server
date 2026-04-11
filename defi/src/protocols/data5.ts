@@ -728,7 +728,7 @@ const data5: Protocol[] = [
     name: "Milkyway Restaking",
     address: null,
     symbol: "-",
-    url: "https://app.milkyway.zone/restake",
+    url: "https://app.milkyway.zone/restake",//deadUrl
     description: "Milkyway Restaking is a protocol that allows users to restake their assest.",
     chain: "Milkyway",
     logo: `${baseIconsUrl}/milkyway-restaking.jpg`,
@@ -744,6 +744,7 @@ const data5: Protocol[] = [
       milkyway: ["milkTIA"],
     },
     listedAt: 1761692463,
+    deadUrl: true,
   },
   {
     id: "6926",
@@ -5244,6 +5245,7 @@ const data5: Protocol[] = [
       fees: "macaron-bid",
     },
     listedAt: 1768492247,
+    deadUrl: true,
   },
   {
     id: "7121",
@@ -13970,7 +13972,7 @@ const data5: Protocol[] = [
     name: "HyperSafe",
     address: null,
     symbol: "-",
-    url: "https://hypersafe.tech",
+    url: "https://hypersafe.tech",//deadUrl
     description:
       "Fair Token Launchpad on Base.",
     chain: "Base",
@@ -13983,6 +13985,7 @@ const data5: Protocol[] = [
     module: "hypersafe/index.js",
     twitter: "hypershares",
     listedAt: 1773255414,
+    deadUrl: true,
   },
   {
     id: "7538",

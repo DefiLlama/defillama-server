@@ -4824,14 +4824,16 @@ export const chainCoingeckoIds = {
     cmcId: "20874",
     categories: ["Cosmos"],
     twitter: "milky_way_zone",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
+    deadUrl: true,
   },
   "MilkyWay Rollup": {
     geckoId: null,
     symbol: "MILK",
     cmcId: null,
     twitter: "milky_way_zone",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
+    deadUrl: true,
   },
   "Namada": {
     geckoId: "namada",

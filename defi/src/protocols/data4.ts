@@ -570,6 +570,7 @@ const data4: Protocol[] = [
     twitter: "AstrolFinance",
     audit_links: ["https://doc.astrol.io/astrolend/security"],
     listedAt: 1736175355,
+    deadUrl: true,
   },
   {
     id: "5585",
@@ -4524,7 +4525,7 @@ const data4: Protocol[] = [
     name: "Beralis V2",
     address: "berachain:0x9F5C945D2230Ba0b767C051e3dab4A926F4f4Ae0",
     symbol: "BLIS",
-    url: "https://www.beralis.xyz",
+    url: "https://www.beralis.xyz",//deadUrl
     description: "Uniswap V2 fork on Berachain",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beralis-v2.png`,
@@ -4544,13 +4545,14 @@ const data4: Protocol[] = [
         level: "alert",
       },
     ],
+    deadUrl: true,
   },
   {
     id: "5759",
     name: "Beralis V3",
     address: "berachain:0x9F5C945D2230Ba0b767C051e3dab4A926F4f4Ae0",
     symbol: "BLIS",
-    url: "https://www.beralis.xyz",
+    url: "https://www.beralis.xyz",//deadUrl
     description: "Uniswap V3 fork on Berachain",
     chain: "Berachain",
     logo: `${baseIconsUrl}/beralis-v3.png`,
@@ -4573,7 +4575,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "beralis-v3",
       dexs: "beralis-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5760",
@@ -7695,7 +7698,7 @@ const data4: Protocol[] = [
     name: "WDJC",
     address: null,
     symbol: "-",
-    url: "https://waxdeer.com",
+    url: "https://waxdeer.com",//deadUrl
     description: "Embark on a legendary journey. Collect, explore, and shape the destiny of the Deer Chronicles.",
     chain: "Wax",
     logo: `${baseIconsUrl}/wdjc.jpg`,
@@ -7707,6 +7710,7 @@ const data4: Protocol[] = [
     module: "wdjc/index.js",
     twitter: "WAXDEER",
     listedAt: 1741790267,
+    deadUrl: true,
   },
   {
     id: "5895",
@@ -8273,7 +8277,7 @@ const data4: Protocol[] = [
     name: "Golden Finance",
     address: null,
     symbol: "-",
-    url: "https://goldenfinance.xyz/",
+    url: "https://goldenfinance.xyz/",//deadUrl
     description:
       "Native PerpDex & Social Trading Platform on ZetaChain. Trade with 100x leverage and earn sustainable real yield",
     chain: "ZetaChain",
@@ -8287,6 +8291,7 @@ const data4: Protocol[] = [
     module: "golden-finance/index.js",
     twitter: "0xGoldenFinance",
     listedAt: 1742386544,
+    deadUrl: true,
   },
   {
     id: "5919",
@@ -17913,7 +17918,7 @@ const data4: Protocol[] = [
     name: "GlueX",
     address: null,
     symbol: "-",
-    url: "https://gluex.xyz/",
+    url: "https://gluex.xyz/",//deadUrl
     description:
       "GlueX is the semantic and execution layer for DeFi, offering APIs for spot routing, lending, LPing and more — all powered by a network of optimizers and abstracted across 17+ blockchains..",
     chain: "Ethereum",
@@ -17946,7 +17951,8 @@ const data4: Protocol[] = [
     dimensions: {
       fees: "gluex-protocol",
       aggregators: "gluex-protocol"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6335",
@@ -20363,7 +20369,7 @@ const data4: Protocol[] = [
     name: "Milkyway Rollup Bridge",
     address: null,
     symbol: "-",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
     description:
       "The MilkyWay Rollup is the off-chain execution layer of the MilkyWay protocol—powered by Rollkit and supported by validators/operators—where users bridge tokens (like INIT), mint liquid staking assets (milkINIT, milkTIA), and enable restaking",
     chain: "MilkyWay Rollup",
@@ -20375,6 +20381,7 @@ const data4: Protocol[] = [
     chains: ["MilkyWay Rollup"],
     module: "milkyway_rollup_bridge/index.js",
     twitter: "milky_way_zone",
+    deadUrl: true,
   },
   {
     id: "6441",
@@ -25711,7 +25718,7 @@ const data4: Protocol[] = [
     name: "Zapzy",
     address: null,
     symbol: "-",
-    url: "https://zapzy.io/",
+    url: "https://zapzy.io/",//deadUrl
     description: "Zapzy is an all-in-one platform on Solana for creating, trading, and earning with memecoins",
     chain: "Solana",
     logo: `${baseIconsUrl}/zapzy.jpg`,
@@ -25724,7 +25731,8 @@ const data4: Protocol[] = [
     twitter: "zapzyio",
     dimensions: {
       fees: "zapzy"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6678",
@@ -28770,7 +28778,7 @@ const data4: Protocol[] = [
     name: "Quanto",
     address: null,
     symbol: "-",
-    url: "https://quanto.trade/",
+    url: "https://quanto.trade/",//deadUrl
     description:
       "Quanto is a derivatives exchange for memecoin futures and perpetuals, allowing up to 100x leverage and denominate/settle trades entirely using its native token QTO",
     chain: "Solana",
@@ -28784,7 +28792,8 @@ const data4: Protocol[] = [
     twitter: "quanto",
     dimensions: {
       fees: "quanto"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6820",

@@ -22261,6 +22261,7 @@ const data3_1: Protocol[] = [
     twitter: "AptinLabs",
     audit_links: ["https://github.com/AptinLabs/audit-report/blob/main/aptin_audit_report.pdf"],
     parentProtocol: "parent#aptin-finance",
+    rugged: true,
     listedAt: 1698397365,
   },
   {

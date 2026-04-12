@@ -3239,6 +3239,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "AptinLabs",
+    rugged: true,
   },
   {
     id: "parent#algebra",

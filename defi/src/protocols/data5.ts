@@ -16551,7 +16551,7 @@ const data5: Protocol[] = [
     parentProtocol: "parent#polymarket",
     dimensions: {
       fees: "polymarket-us",
-      "open-interest": "polymarket-us",
+      "open-interest": "polymarket-us-oi",
       dexs: "polymarket-us",
     }
   },

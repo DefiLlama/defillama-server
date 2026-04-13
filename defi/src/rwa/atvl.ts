@@ -12,7 +12,7 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date
 import { storeHistorical, storeMetadata } from "./historical";
 import { initPG, fetchLatestAggregateTotals } from "./db";
 import { fetchEvm, fetchSolana, fetchProvenance, fetchStellar, type WalletEntry } from './balances';
-import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains, MCAP_EXCLUDED_HOLDERS_BY_PROJECT } from "./constants";
+import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains, ONCHAIN_MCAP_EQUALS_ACTIVE_PLATFORMS } from "./constants";
 import { RWA_KEY_MAP } from "./metadataConstants";
 import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
 import { sendMessage } from "../utils/discord";
@@ -133,74 +133,17 @@ async function fetchHolderBalances(
   return amounts;
 }
 
-// Inject holdersExcludedFromMcap into finalData by matching projectId
-// against hardcoded adapter-excluded holders from constants.ts
-function injectMcapExcludedHolders(finalData: { [protocol: string]: { [key: string]: any } }) {
-  Object.keys(finalData).forEach((id) => {
-    const projectId = finalData[id]?.projectId;
-    if (!projectId) return;
-
-    const projectIds = Array.isArray(projectId) ? projectId : [projectId];
-    const contracts = finalData[id]?.contracts;
-    if (!contracts) return;
-
-    const exclusions: { [chainLabel: string]: string[] } = {};
-    for (const pid of projectIds) {
-      const holdersByChain = MCAP_EXCLUDED_HOLDERS_BY_PROJECT[pid];
-      if (!holdersByChain) continue;
-
-      Object.keys(contracts).forEach((chainLabel: string) => {
-        // Match chain labels to chain slugs in the constant
-        const chainSlug = getChainIdFromDisplayName(chainLabel);
-        const holders = holdersByChain[chainSlug];
-        if (!holders) return;
-        if (!exclusions[chainLabel]) exclusions[chainLabel] = [];
-        holders.forEach(h => {
-          if (!exclusions[chainLabel].includes(h)) exclusions[chainLabel].push(h);
-        });
-      });
-    }
-
-    if (Object.keys(exclusions).length > 0) {
-      finalData[id].holdersExcludedFromMcap = exclusions;
-    }
-  });
-}
-
-// Build a lookup of holdersExcludedFromMcap addresses per rwaId per chain (for dedup)
-function buildMcapExcludedAddressSet(finalData: { [protocol: string]: { [key: string]: any } }) {
-  const result: { [id: string]: { [chainLabel: string]: Set<string> } } = {};
-  Object.keys(finalData).forEach((id) => {
-    const chains = finalData[id]?.holdersExcludedFromMcap;
-    if (!chains) return;
-    result[id] = {};
-    Object.keys(chains).forEach((chain) => {
-      result[id][chain] = new Set(chains[chain]);
-    });
-  });
-  return result;
-}
-
-// fetch balances of wallets to be excluded from mcap and active mcap
+// fetch balances of wallets to be excluded from active mcap
 async function getExcludedBalances(
   timestamp: number,
   finalData: { [protocol: string]: { [key: string]: any } },
   tokenToProjectMap: { [token: string]: string }
 ) {
-  // Fetch mcap-excluded balances (affects both onchainMcap and activeMcap)
-  const mcapExcludedAmounts = await fetchHolderBalances(
-    timestamp, finalData, tokenToProjectMap, 'holdersExcludedFromMcap'
-  );
-
-  // Build address set for dedup: skip holdersExcludedFromMcap addresses when fetching holdersToRemove
-  const mcapExcludedAddresses = buildMcapExcludedAddressSet(finalData);
-
-  // Fetch activeMcap-only excluded balances (holdersToRemove minus already-excluded-from-mcap addresses)
   const excludedAmounts = await fetchHolderBalances(
-    timestamp, finalData, tokenToProjectMap, 'holdersToRemove', true, mcapExcludedAddresses
+    timestamp, finalData, tokenToProjectMap, 'holdersToRemove', true
   );
 
-  return { excludedAmounts, mcapExcludedAmounts };
+  return excludedAmounts;
 }
 // use stablecoin API to fetch mcaps for stablecoins
 async function fetchStablecoins(timestamp: number): Promise<{ [gecko_id: string]: { [chain: string]: number } }> {
@@ -310,25 +253,6 @@ function getActiveTvls(
     });
   });
 }
-// deduct mcap-excluded amounts from a chain value
-function deductMcapExclusions(
-  finalData: any,
-  rwaId: string,
-  mcapExcludedAmounts: { [id: string]: { [chainSlug: string]: BigNumber } },
-  assetPrices: { price: number; decimals: number },
-  chain: string,
-  key: string,
-) {
-  if (!(rwaId in mcapExcludedAmounts)) return;
-  const thisChainExcluded = mcapExcludedAmounts[rwaId][chain];
-  if (!thisChainExcluded) return;
-  const excludedUsdValue = thisChainExcluded.div(BigNumber(10).pow(assetPrices.decimals)).times(assetPrices.price);
-  finalData[rwaId][key][chain] = toFixedNumber(
-    finalData[rwaId][key][chain] - excludedUsdValue.toNumber(),
-    0
-  );
-}
-
 // calculate on chain tvls mcaps
 function getOnChainTvlAndActiveMcaps(
   assetPrices: any,
@@ -338,7 +262,6 @@ function getOnChainTvlAndActiveMcaps(
   stablecoinsData: any,
   totalSupplies: any,
   excludedAmounts: any,
-  mcapExcludedAmounts: any,
 ) {
   Object.keys(stablecoinsData).forEach((cgId: string) => {
     const rwaId = coingeckoIdToRwaId[cgId];
@@ -356,7 +279,6 @@ function getOnChainTvlAndActiveMcaps(
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
-      deductMcapExclusions(finalData, rwaId, mcapExcludedAmounts, assetPrices[pk], chainDisplayName, RWA_KEY_MAP.onChain);
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
         if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...finalData[rwaId][RWA_KEY_MAP.onChain] };
         findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
@@ -382,17 +304,24 @@ function getOnChainTvlAndActiveMcaps(
 
       const aum = (price * supply) / 10 ** decimals;
       finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(aum, 0);
-      deductMcapExclusions(finalData, rwaId, mcapExcludedAmounts, assetPrices[pk], chainDisplayName, RWA_KEY_MAP.onChain);
 
       if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
 
-      // activeMcap starts from onchainMcap (which already has mcap exclusions applied)
       finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName];
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
       console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
+  });
+
+  // For xStock/Backed Finance: set onChainMcap = activeMcap
+  Object.keys(finalData).forEach((rwaId) => {
+    const platform = finalData[rwaId]?.parentPlatform;
+    if (!platform || !ONCHAIN_MCAP_EQUALS_ACTIVE_PLATFORMS.has(platform)) return;
+    const activeMcap = finalData[rwaId][RWA_KEY_MAP.activeMcap];
+    if (!activeMcap) return;
+    finalData[rwaId][RWA_KEY_MAP.onChain] = { ...activeMcap };
   });
 }
 // deduct excluded amounts for active mcaps
@@ -519,15 +448,13 @@ export default async function main(ts: number = 0) {
   });
 
   const { tokensSortedByChain, tokenToProjectMap } = sortTokensByChain(rwaTokens);
-  injectMcapExcludedHolders(finalData);
-  const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData, excludedBalancesResult] = await Promise.all([
+  const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData, excludedAmounts] = await Promise.all([
     coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
     getAggregateRawTvls(tokensSortedByChain, timestamp),
     getTotalSupplies(tokensSortedByChain, timestamp),
     fetchStablecoins(timestamp),
     getExcludedBalances(ts, finalData, tokenToProjectMap),
   ]);
-  const { excludedAmounts, mcapExcludedAmounts } = excludedBalancesResult;
 
   // log missed assets
   Object.keys(tokenToProjectMap).forEach((address: string) => {
@@ -547,7 +474,6 @@ export default async function main(ts: number = 0) {
     stablecoinsData,
     totalSupplies,
     excludedAmounts,
-    mcapExcludedAmounts,
   );
 
   // for read API usage

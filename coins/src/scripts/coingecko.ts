@@ -72,7 +72,7 @@ async function storeCoinData(coinData: Write[]) {
     batchWrite(items, false),
   ]);
 
-  await dualWriteToChRedis(items).catch(e => {
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
   });
 
@@ -99,7 +99,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     batchWrite(items, false),
   ]);
 
-  await dualWriteToChRedis(items).catch(e => {
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
   });
 
@@ -370,7 +370,7 @@ async function getAndStoreHourly(
     batchWrite(items, false),
   ]);
 
-  await dualWriteToChRedis(items).catch(e => {
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
   });
 

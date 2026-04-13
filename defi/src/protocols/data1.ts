@@ -19681,6 +19681,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFromIds: ["340"],
     listedAt: 1639349755,
     github: ["AtlasUSV"],
+    deadUrl: true
   },
   {
     id: "1016",

@@ -5187,7 +5187,7 @@ const data2: Protocol[] = [
     name: "RadioShack",
     address: "0x7a5d3A9Dcd33cb8D527f7b5F96EB4Fef43d55636",
     symbol: "RADIO",
-    url: "https://www.radioshack.com/",
+    url: "https://www.radioshack.org/",
     description: "Uniswap fork",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/radioshack.png`,
@@ -5205,7 +5205,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "radioshack",
       dexs: "radioshack"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1617",

@@ -1,3 +1,7 @@
+import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
+import { safeFloat } from "./types";
+export type { ParsedPerpsMarket } from "./types";
+
 // Rates for Hyperliquid HIP-3 venues https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees
 export const HYPERLIQUID_MAKER_FEE = 0.0002;
 export const HYPERLIQUID_TAKER_FEE = 0.0005;
@@ -41,21 +45,6 @@ export interface PerpDex {
     index: number;
 }
 
-export interface ParsedPerpsMarket {
-    contract: string;
-    venue: string;
-    openInterest: number;
-    volume24h: number;
-    markPx: number;
-    oraclePx: number;
-    midPx: number;
-    prevDayPx: number;
-    priceChange24h: number;
-    fundingRate: number;
-    premium: number;
-    maxLeverage: number;
-    szDecimals: number;
-}
 
 async function postHyperliquid(body: object): Promise<any> {
     const response = await fetch(HYPERLIQUID_API, {
@@ -129,11 +118,7 @@ export async function fetchFundingHistory(
     }
 }
 
-function safeParseFloat(val: string | number | undefined): number {
-    if (val === undefined || val === null || val === "") return 0;
-    const num = typeof val === "number" ? val : parseFloat(String(val));
-    return Number.isFinite(num) ? num : 0;
-}
+const safeParseFloat = safeFloat;
 
 export function parseMetaAndAssetCtxs(
     response: MetaAndAssetCtxsResponse,
@@ -154,6 +139,7 @@ export function parseMetaAndAssetCtxs(
         markets.push({
             contract: asset.name,
             venue,
+            platform: "hyperliquid",
             openInterest: safeParseFloat(ctx.openInterest),
             volume24h: safeParseFloat(ctx.dayNtlVlm),
             markPx,
@@ -201,3 +187,34 @@ export function parseFundingHistory(
         };
     });
 }
+
+// ---------------------------------------------------------------------------
+// PlatformAdapter wrapper
+// ---------------------------------------------------------------------------
+
+export const hyperliquidAdapter: PlatformAdapter = {
+    name: "hyperliquid",
+    oiIsNotional: false, // OI is in base-asset units; pipeline multiplies by markPx
+    async fetchMarkets(): Promise<ParsedPerpsMarket[]> {
+        const venues = await fetchPerpDexs();
+        if (venues.length === 0) return [];
+
+        const results = await Promise.all(
+            venues.map((v) => fetchMetaAndAssetCtxs(v.name)),
+        );
+
+        const allMarkets: ParsedPerpsMarket[] = [];
+        for (let i = 0; i < venues.length; i++) {
+            const response = results[i];
+            if (!response) continue;
+            const markets = parseMetaAndAssetCtxs(response, venues[i].name);
+            allMarkets.push(...markets);
+        }
+        return allMarkets;
+    },
+    async fetchFundingHistory(market, startTime, endTime): Promise<FundingEntry[]> {
+        const entries = await fetchFundingHistory(market.contract, startTime, endTime);
+        if (entries.length === 0) return [];
+        return parseFundingHistory(entries, market.venue, market.openInterest);
+    },
+};

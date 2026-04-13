@@ -2,14 +2,8 @@ import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../../utils/d
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 import { initPG, fetchLatestAggregateTotals, fetchCumulativeFundingPG, fetchLatestFundingTimestampPG, fetchRollingVolumesPG } from "./db";
 import { sendMessage } from "../../utils/discord";
-import {
-  fetchPerpDexs,
-  fetchMetaAndAssetCtxs,
-  fetchFundingHistory,
-  parseMetaAndAssetCtxs,
-  parseFundingHistory,
-  type ParsedPerpsMarket,
-} from "./platforms/hyperliquid";
+import { getAllAdapters, getAdapter } from "./platforms";
+import type { ParsedPerpsMarket, FundingEntry } from "./platforms";
 import {
   getContractId,
   getContractMetadata,
@@ -17,7 +11,6 @@ import {
   loadContractMetadataFromAirtable,
   CIRCUIT_BREAKER_THRESHOLD,
 } from "./constants";
-import { HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import { computeProtocolFees, toFiniteNumberOrZero } from "./utils";
 import { storeHistorical, storeMetadata, storeFundingHistory } from "./historical";
 import type { PerpsDataEntry } from "./historical";
@@ -31,21 +24,21 @@ export async function main(ts: number = 0): Promise<void> {
 
   await initPG();
 
-  const venues = await fetchPerpDexs();
-  console.log(`RWA Perps found ${venues.length} venues: ${venues.map((v) => v.name).join(", ")}`);
-  if (venues.length === 0) return;
+  const adapters = getAllAdapters();
+  console.log(`RWA Perps running ${adapters.length} platform adapters: ${adapters.map((a) => a.name).join(", ")}`);
 
   const allMarkets: ParsedPerpsMarket[] = [];
   await runInPromisePool({
-    items: venues,
+    items: adapters,
     concurrency: 3,
-    processor: async (venue: { name: string; index: number }) => {
-      const response = await fetchMetaAndAssetCtxs(venue.name);
-      if (!response) return;
-
-      const markets = parseMetaAndAssetCtxs(response, venue.name);
-      console.log(`RWA Perps venue ${venue.name}: ${markets.length} markets`);
-      allMarkets.push(...markets);
+    processor: async (adapter: { name: string; fetchMarkets: () => Promise<ParsedPerpsMarket[]> }) => {
+      try {
+        const markets = await adapter.fetchMarkets();
+        console.log(`RWA Perps ${adapter.name}: ${markets.length} markets`);
+        allMarkets.push(...markets);
+      } catch (e) {
+        console.error(`RWA Perps ${adapter.name} failed:`, e);
+      }
     },
   });
 
@@ -74,34 +67,29 @@ export async function main(ts: number = 0): Promise<void> {
 
   if (knownMarkets.length === 0) return;
 
-  const fundingEntries: Array<{
-    timestamp: number;
-    contract: string;
-    venue: string;
-    fundingRate: number;
-    premium: number;
-    openInterest: number;
-    fundingPayment: number;
-  }> = [];
+  const fundingEntries: FundingEntry[] = [];
 
   await runInPromisePool({
     items: knownMarkets,
     concurrency: 5,
     processor: async (market: ParsedPerpsMarket) => {
-      const marketId = getContractId(market.contract);
+      const adapter = getAdapter(market.platform);
+      if (!adapter) return;
 
+      const marketId = getContractId(market.contract);
       const latestTs = await fetchLatestFundingTimestampPG(marketId);
       const startTime = latestTs
-        ? (latestTs + 1) * 1000 
+        ? (latestTs + 1) * 1000
         : (timestamp - 86400) * 1000;
       const endTime = timestamp * 1000;
       if (startTime >= endTime) return;
 
-      const history = await fetchFundingHistory(market.contract, startTime, endTime);
-      if (history.length === 0) return;
-
-      const parsed = parseFundingHistory(history, market.venue, market.openInterest);
-      fundingEntries.push(...parsed);
+      try {
+        const entries = await adapter.fetchFundingHistory(market, startTime, endTime);
+        if (entries.length > 0) fundingEntries.push(...entries);
+      } catch (e) {
+        console.error(`RWA Perps funding history error for ${market.contract}:`, e);
+      }
     },
   });
 
@@ -123,21 +111,30 @@ export async function main(ts: number = 0): Promise<void> {
 
       const cumulativeFunding = await fetchCumulativeFundingPG(marketId);
 
-      const fees24h = computeProtocolFees(market.volume24h, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+      // Use per-market fee rates from Airtable metadata
+      const takerFee = metadata.takerFeeRate;
+      const deployerShare = metadata.deployerFeeShare;
+      const fees24h = computeProtocolFees(market.volume24h, takerFee, deployerShare);
 
       const rolling = rollingVolumes[marketId] || { volume7d: 0, volume30d: 0, volumeAllTime: 0 };
       // Include today's 24h volume in the rolling windows
       const volume7d = rolling.volume7d + market.volume24h;
       const volume30d = rolling.volume30d + market.volume24h;
       const volumeAllTime = rolling.volumeAllTime + market.volume24h;
-      const fees7d = computeProtocolFees(volume7d, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
-      const fees30d = computeProtocolFees(volume30d, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
-      const feesAllTime = computeProtocolFees(volumeAllTime, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE);
+      const fees7d = computeProtocolFees(volume7d, takerFee, deployerShare);
+      const fees30d = computeProtocolFees(volume30d, takerFee, deployerShare);
+      const feesAllTime = computeProtocolFees(volumeAllTime, takerFee, deployerShare);
+
+      // OI normalization: Hyperliquid reports OI in base units, others in USD notional
+      const adapter = getAdapter(market.platform);
+      const openInterest = adapter && adapter.oiIsNotional
+        ? market.openInterest
+        : market.openInterest * market.markPx;
 
       finalData[marketId] = {
         contract: market.contract,
         venue: market.venue,
-        openInterest: market.openInterest * market.markPx,
+        openInterest,
         volume24h: market.volume24h,
         price: market.markPx,
         priceChange24h: market.priceChange24h,

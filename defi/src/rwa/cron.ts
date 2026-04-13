@@ -677,12 +677,9 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
     if (!item || typeof item !== "object") continue;
 
     const assetType = typeof item.type === "string" ? item.type.trim() : "";
-    if (assetType.toLowerCase() === "wrapper") continue;
-
-    assetCount += 1;
+    const isWrapper = assetType.toLowerCase() === "wrapper";
 
     const issuer: string | null = typeof item.issuer === "string" && item.issuer.trim() ? item.issuer.trim() : null;
-    if (issuer) allIssuers.add(issuer);
 
     const stablecoin = item.stablecoin === true;
     const governance = item.governance === true;
@@ -698,53 +695,60 @@ function generateAggregateStats(currentData: any[]): AggregateStats {
       0
     );
 
-    totalOnChainMcap += assetOnChainTotal;
-    totalActiveMcap += assetActiveTotal;
-    totalDefiActiveTvl += assetDefiActiveTotal;
-
     const assetDelta = { onChainMcap: assetOnChainTotal, activeMcap: assetActiveTotal, defiActiveTvl: assetDefiActiveTotal };
 
-    // Category aggregation: assets with multiple categories have their FULL values
-    // added to each category (not split). Category totals will exceed global totals.
-    const categories: string[] = Array.isArray(item.category) ? item.category : [];
-    for (const cat of categories) {
-      if (!cat) continue;
-      if (!byCategory[cat]) byCategory[cat] = makeBucketGroup();
-      addToBucketGroup(byCategory[cat], assetDelta, issuer, stablecoin, governance);
+    // Wrappers are excluded from global totals and non-platform aggregations to avoid double-counting,
+    // but included in platform aggregation so platforms show their full value including wrappers.
+    if (!isWrapper) {
+      assetCount += 1;
+      if (issuer) allIssuers.add(issuer);
+
+      totalOnChainMcap += assetOnChainTotal;
+      totalActiveMcap += assetActiveTotal;
+      totalDefiActiveTvl += assetDefiActiveTotal;
+
+      // Category aggregation: assets with multiple categories have their FULL values
+      // added to each category (not split). Category totals will exceed global totals.
+      const categories: string[] = Array.isArray(item.category) ? item.category : [];
+      for (const cat of categories) {
+        if (!cat) continue;
+        if (!byCategory[cat]) byCategory[cat] = makeBucketGroup();
+        addToBucketGroup(byCategory[cat], assetDelta, issuer, stablecoin, governance);
+      }
+
+      // AssetGroup aggregation
+      const assetGroup =
+        typeof item.assetGroup === "string" && item.assetGroup.trim() ? item.assetGroup.trim() : null;
+      if (assetGroup) {
+        if (!byAssetGroup[assetGroup]) byAssetGroup[assetGroup] = makeBucketGroup();
+        addToBucketGroup(byAssetGroup[assetGroup], assetDelta, issuer, stablecoin, governance);
+      }
+
+      // Chain aggregation (per-chain values, not asset totals)
+      const chains = new Set<string>([
+        ...Object.keys(onChainMcapByChain || {}),
+        ...Object.keys(activeMcapByChain || {}),
+        ...Object.keys(defiActiveTvlByChain || {}),
+      ]);
+
+      for (const chain of chains) {
+        if (!chain) continue;
+        if (!byChain[chain]) byChain[chain] = makeBucketGroup();
+        const chainDelta = {
+          onChainMcap: toFiniteNumberOrZero(onChainMcapByChain?.[chain]),
+          activeMcap: toFiniteNumberOrZero(activeMcapByChain?.[chain]),
+          defiActiveTvl: sumProtocolMap(defiActiveTvlByChain?.[chain]),
+        };
+        addToBucketGroup(byChain[chain], chainDelta, issuer, stablecoin, governance);
+      }
     }
 
-    // Platform aggregation (ONLY when asset has a valid parentPlatform; never synthesize "Unknown")
+    // Platform aggregation includes wrappers (ONLY when asset has a valid parentPlatform; never synthesize "Unknown")
     const platform =
       typeof item.parentPlatform === "string" && item.parentPlatform.trim() ? item.parentPlatform.trim() : null;
     if (platform && platform !== "Unknown") {
       if (!byPlatform[platform]) byPlatform[platform] = makeBucketGroup();
       addToBucketGroup(byPlatform[platform], assetDelta, issuer, stablecoin, governance);
-    }
-
-    // AssetGroup aggregation
-    const assetGroup =
-      typeof item.assetGroup === "string" && item.assetGroup.trim() ? item.assetGroup.trim() : null;
-    if (assetGroup) {
-      if (!byAssetGroup[assetGroup]) byAssetGroup[assetGroup] = makeBucketGroup();
-      addToBucketGroup(byAssetGroup[assetGroup], assetDelta, issuer, stablecoin, governance);
-    }
-
-    // Chain aggregation (per-chain values, not asset totals)
-    const chains = new Set<string>([
-      ...Object.keys(onChainMcapByChain || {}),
-      ...Object.keys(activeMcapByChain || {}),
-      ...Object.keys(defiActiveTvlByChain || {}),
-    ]);
-
-    for (const chain of chains) {
-      if (!chain) continue;
-      if (!byChain[chain]) byChain[chain] = makeBucketGroup();
-      const chainDelta = {
-        onChainMcap: toFiniteNumberOrZero(onChainMcapByChain?.[chain]),
-        activeMcap: toFiniteNumberOrZero(activeMcapByChain?.[chain]),
-        defiActiveTvl: sumProtocolMap(defiActiveTvlByChain?.[chain]),
-      };
-      addToBucketGroup(byChain[chain], chainDelta, issuer, stablecoin, governance);
     }
   }
 

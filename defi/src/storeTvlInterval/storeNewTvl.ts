@@ -86,7 +86,13 @@ export default async function (
           }
       })
 
-      if (currentTvl < 2e12) // less than 2 trillion
+
+      let tvlToCompareAgainst = await lastWeeklyTVLRecord;
+      let lastWeekTvlValue = 0
+      if (tvlToCompareAgainst.SK !== undefined) 
+        lastWeekTvlValue = calculateTVLWithAllExtraSections(tvlToCompareAgainst)
+
+      if (currentTvl < 2e12 && lastWeekTvlValue < 2e7) // less than 2 trillion and last week less than 20 million
         await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }

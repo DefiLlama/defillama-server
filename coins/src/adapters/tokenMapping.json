@@ -379,7 +379,7 @@
     "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
       "decimals": "8",
@@ -1234,7 +1234,7 @@
     "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#lorenzo-stbtc"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0x6b6b870c7f449266a9f40f94eca5a6ff9b0857e4": {
       "decimals": "18",
@@ -2906,7 +2906,7 @@
     "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#lorenzo-stbtc"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0xaf53d56ff99f1322515e54fdde93ff8b3b7dafd5": {
       "to": "coingecko#prometeus",
@@ -4505,7 +4505,7 @@
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0xd93cC64F0A64044790268C1117BdC7A26A872d2c": {
       "decimals": "18",
@@ -4924,7 +4924,7 @@
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0x8c93a6752Bfe29FDA26EbA8df4390c642e6A7f90": {
       "decimals": "18",
@@ -9596,7 +9596,7 @@
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0x9bfa177621119e64cecbeabe184ab9993e2ef727": {
       "decimals": "18",
@@ -12167,7 +12167,7 @@
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to":"asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0x5300000000000000000000000000000000000011": {
       "to": "coingecko#ethereum",
@@ -13707,7 +13707,7 @@
     "0x6a9a65b84843f5fd4ac9a0471c4fc11afffbce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#lorenzo-stbtc"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0x9BFA177621119e64CecbEabE184ab9993E2ef727": {
       "decimals": "18",
@@ -14045,7 +14045,7 @@
     "0x6A9A65B84843F5fD4aC9a0471C4fc11AFfFBce4a": {
       "decimals": "8",
       "symbol": "enzoBTC",
-      "to": "coingecko#bitcoin"
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
     },
     "0xCCA84731C19EB911C985E9d1892E0935C104Abce": {
       "decimals": "18",

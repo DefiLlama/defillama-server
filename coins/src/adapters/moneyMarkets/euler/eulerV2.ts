@@ -151,7 +151,7 @@ function formWrites(
     if (coinData == null || rate == null || !m.currentAmount) return;
 
     const tvl = (m.currentAmount * coinData.price) / 10 ** coinData.decimals;
-    if (tvl < 1e5) return; // filtering out small markets
+    if (tvl < 1e4) return; // filtering out small markets
 
     const eTokenPrice: number = coinData.price * rate;
 

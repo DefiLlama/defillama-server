@@ -342,6 +342,12 @@ function getAccessModel(asset: {
 }
 
 function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {
+  // Already in parsed { chainLabel: string[] } form (e.g. re-normalization of DB data) — return as-is
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    const keys = Object.keys(value);
+    if (keys.length && keys.every((k) => Array.isArray(value[k]))) return value;
+  }
+
   const items = toStringArrayOrNull(value);
   if (!items || !items.length) return null;
 

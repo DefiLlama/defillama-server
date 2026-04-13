@@ -11237,6 +11237,31 @@
     }
   },
   "stellar": {
+    "CDT3KU6TQZNOHKNOHNAFFDQZDURVC3MSTL4ML7TUTZGNOPBZCLABP4FR": {
+      "decimals": 7,
+      "symbol": "UKTBL",
+      "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
+    },
+    "CBGV2QFQBBGEQRUKUMCPO3SZOHDDYO6SCP5CH6TW7EALKVHCXTMWDDOF": {
+      "to": "coingecko#eutbl",
+      "decimals": 7,
+      "symbol": "EUTBL"
+    },
+    "CDWOB6T7SVSMMQN5V3P2OPTBAXOP7DAZHGVW3PYTZIKHVFKN6TBSXR6A": {
+      "to": "coingecko#spiko-digital-assets-cash-carry-fund-euro-share-class",
+      "decimals": 7,
+      "symbol": "EURSPKCC"
+    },
+    "CARUUX2FZNPH6DGJOEUFSIUQWYHNL5AVDV7PMVSHWL7OBYIBFC76F4TO": {
+      "to": "coingecko#spiko-us-t-bills-money-market-fund",
+      "decimals": 7,
+      "symbol": "USTBL"
+    },
+    "CDS2GCAQTNQINSCJUJIVBJXILKBWP5PU7LOBGHMP3X47QCQBFKPMTCNT": {
+      "to": "coingecko#spiko-digital-assets-cash-carry-fund",
+      "decimals": 7,
+      "symbol": "SPKCC"
+    },
     "EURS-GC5FGCDEOGOGSNWCCNKS3OMEVDHTE3Q5A5FEQWQKV3AXA7N6KDQ2CUZJ": {
       "to": "coingecko#stasis-eurs",
       "decimals": 7,

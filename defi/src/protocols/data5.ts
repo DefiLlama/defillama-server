@@ -14597,7 +14597,7 @@ const data5: Protocol[] = [
     description: "Permissionless spot and margin trading protocol on Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/omnipair.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: "omnipair",
     cmcId: null,
     tags: ["AMM", "Lending"],
@@ -14606,6 +14606,10 @@ const data5: Protocol[] = [
     treasury: "omnipair.js",
     twitter: "omnipair",
     listedAt: 1774369455,
+    audit_links: [
+      "https://github.com/omnipair/omnipair-rs/tree/main/audits/offsidelabs",
+      "https://github.com/omnipair/omnipair-rs/tree/main/audits/ackee"
+    ],
     dimensions: {
       dexs: "omnipair",
       fees: "omnipair",

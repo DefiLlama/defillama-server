@@ -5,6 +5,7 @@ type MetadataPayload = {
   contract?: unknown;
   venue?: unknown;
   referenceAsset?: unknown;
+  referenceAssetGroup?: unknown;
   assetClass?: unknown;
   category?: unknown;
 };
@@ -27,6 +28,7 @@ export type AggregateHistoricalRow = {
   contract: string;
   venue: string;
   referenceAsset: string | null;
+  referenceAssetGroup: string | null;
   assetClass: string[] | null;
   category: string[];
   openInterest: number;
@@ -55,6 +57,7 @@ function buildBaseHistoricalRow(record: DailyRecord, metadataMap: Map<string, Me
     contract: toStringOrNull(metadata.contract) || record.id,
     venue: toStringOrNull(metadata.venue) || record.id.split(":")[0] || "unknown",
     referenceAsset: toStringOrNull(metadata.referenceAsset),
+    referenceAssetGroup: toStringOrNull(metadata.referenceAssetGroup),
     assetClass: toStringArrayOrNull(metadata.assetClass),
     category: normalizeCategoryList(metadata.category),
     openInterest: toFiniteNumberOrZero(record.open_interest),

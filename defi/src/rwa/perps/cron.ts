@@ -18,7 +18,7 @@ import {
     fetchMaxUpdatedAtPG,
     fetchAllDailyIdsPG,
 } from './db';
-import { toFiniteNumberOrZero, groupBy } from './utils';
+import { toFiniteNumberOrZero, groupBy, perpsSlug } from './utils';
 import { main as runPipeline } from './perps';
 import { buildCategoryHistoricalCharts, buildPerpsIdMap, buildVenueHistoricalCharts } from './aggregate';
 import { normalizePerpsMetadataInPlace } from './constants';
@@ -78,7 +78,7 @@ async function generateStats(currentData: any[]): Promise<void> {
     let totalOpenInterest = 0;
     let totalVolume24h = 0;
     let totalCumulativeFunding = 0;
-    const venueStats: { [venue: string]: { openInterest: number; volume24h: number; markets: number } } = {};
+    const venueStats: { [venue: string]: { displayName: string; openInterest: number; volume24h: number; markets: number } } = {};
     const categoryStats: { [cat: string]: { openInterest: number; volume24h: number; markets: number } } = {};
 
     for (const market of currentData) {
@@ -92,7 +92,7 @@ async function generateStats(currentData: any[]): Promise<void> {
 
         // Venue stats
         const venue = market.venue || 'unknown';
-        if (!venueStats[venue]) venueStats[venue] = { openInterest: 0, volume24h: 0, markets: 0 };
+        if (!venueStats[venue]) venueStats[venue] = { displayName: market.parentPlatform || venue, openInterest: 0, volume24h: 0, markets: 0 };
         venueStats[venue].openInterest += oi;
         venueStats[venue].volume24h += vol;
         venueStats[venue].markets++;
@@ -139,6 +139,25 @@ async function generateList(currentData: any[]): Promise<void> {
 
     await storeRouteData('list.json', list);
     console.log(`Generated list.json`);
+}
+
+async function generateVenueSlugMap(currentData: any[]): Promise<void> {
+    const map: Record<string, string> = {};
+    for (const market of currentData) {
+        const venue = market.venue;
+        if (!venue) continue;
+        const venueSlug = perpsSlug(venue);
+        map[venueSlug] = venueSlug;
+        const displayName = market.parentPlatform;
+        if (displayName) {
+            const displaySlug = perpsSlug(displayName);
+            if (displaySlug && displaySlug !== venueSlug) {
+                map[displaySlug] = venueSlug;
+            }
+        }
+    }
+    await storeRouteData('venue-slug-map.json', map);
+    console.log(`Generated venue-slug-map.json with ${Object.keys(map).length} entries`);
 }
 
 async function generateHistoricalCharts(): Promise<void> {
@@ -235,6 +254,7 @@ async function cron(): Promise<void> {
     await generateIdMap(metadata);
     await generateStats(currentData);
     await generateList(currentData);
+    await generateVenueSlugMap(currentData);
     await generateHistoricalCharts();
     await generateAggregateHistoricalCharts(metadata);
 

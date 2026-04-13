@@ -181,7 +181,10 @@ export function setRoutes(router: HyperExpress.Router): void {
         errorWrapper(async (req, res) => {
             const { venue } = req.params;
             if (!venue) return errorResponse(res, 'Missing venue parameter', 400);
-            return fileResponse(`charts/venue/${perpsSlug(venue)}.json`, res, 30);
+            const slugMap = await readRouteData('venue-slug-map.json');
+            const inputSlug = perpsSlug(venue);
+            const resolvedSlug = slugMap?.[inputSlug] || inputSlug;
+            return fileResponse(`charts/venue/${resolvedSlug}.json`, res, 30);
         })
     );
 

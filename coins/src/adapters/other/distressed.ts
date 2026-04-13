@@ -6,6 +6,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     TRU: "0xf65b5c5104c4fafd4b709d9d60a185eae063276c", // got hack on 09-01-2026
     MAGA: "0xda2e903b0b67f30bf26bd3464f9ee1a383bbbe5f",
     pETH: "0x836a808d4828586a69364065a1e064609f5078c7",
+    DOT: "0x8d010bf9C26881788b4e6bf5Fd1bdC358c8F90b8", // hyperbridge was hacked
     hBTC: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     PSY_SCAM: "0xe5a2363904d91c6a311a378537b29c7c6d4f230d",
@@ -125,6 +126,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     FEG: "0xacfc95585d80ab62f67a14c566c1b7a49fe91167",
     MFI: "0xeb5bb9d14d27f75c787cf7475e7ed00d21dc7279",
     BLT: "0x449aed32c1685dbeca28d1ae45462b6156a6096d",
+    PORT3: "0xb4357054c3da8d46ed642383f03139ac7f090343",
     multiBTC: "0xd9907fcda91ac644f70477b8fc1607ad15b2d7a8",
     DERC: "0x373e768f79c820aa441540d254dca6d045c6d25b",
     LMT: "0x9617857e191354dbea0b714d78bc59e57c411087",
@@ -337,6 +339,8 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   base: {
     WILDx: "0xbCDa0bD6Cd83558DFb0EeC9153eD9C9cfa87782E",
+    DOT: "0x8d010bf9c26881788b4e6bf5fd1bdc358c8f90b8", // Hyperbridge was hacked
+    vDOT: "0xbc33b4d48f76d17a1800afcb730e8a6aaada7fe5", // Hyperbridge was hacked
     WANDER: "0xef0fd52e65ddcdc201e2055a94d2abff6ff10a7a",
     AETX: "0xfe0c0b15798b8c9107cd4aa556a87eb031263e8b",
     SFUND: "0x633e254585ade6e9d40d2a4b8cc2f3769b94cb48",

@@ -56,7 +56,10 @@ export async function chInsert(table: string, tsvBody: string): Promise<void> {
   if (cls.length === 0) throw new Error("No CH clients configured");
   for (let i = 0; i < cls.length; i++) {
     try {
-      await cls[i].insert({ table, values: Readable.from(tsvBody), format: "TabSeparated" });
+      const stream = new Readable({ objectMode: false });
+      stream.push(tsvBody);
+      stream.push(null);
+      await cls[i].insert({ table, values: stream, format: "TabSeparated" });
       return;
     } catch (e) {
       if (i === cls.length - 1) throw e;

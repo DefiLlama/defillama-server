@@ -30093,6 +30093,10 @@ const data4: Protocol[] = [
     twitter: "zealousswap",
     audit_links: ["https://github.com/zealousswap/audits"],
     listedAt: 1760656085,
+    dimensions: {
+      dexs: "zealousswap",
+      fees: "zealousswap"
+    }
   },
   {
     id: "6878",

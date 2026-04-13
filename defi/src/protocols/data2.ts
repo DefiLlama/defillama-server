@@ -2478,6 +2478,7 @@ const data2: Protocol[] = [
     audit_links: ["https://consensys.net/diligence/audits/private/adash47d-chainbridge/"],
     listedAt: 1646164456,
     github: ["RelayChain"],
+    deadUrl: true,
   },
   {
     id: "1492",

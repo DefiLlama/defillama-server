@@ -16573,5 +16573,27 @@ const data5: Protocol[] = [
     twitter: "kizzymobile",
     listedAt: 1776064241,
   },
+  {
+    id: "7658",
+    name: "LilSwap",
+    address: null,
+    symbol: "-",
+    url: "",
+    description: "Non-custodial swap automation for Aave-related position management and token swaps.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lilswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Ethereum", "Binance", "Polygon", "Base", "Arbitrum", "Avalanche", "Optimism", "xDai", "Sonic"],
+    module: "dummy.js",
+    twitter: "LilSwap_",
+    github: ["InkCrypto"],
+    dimensions: {
+      fees: "lilswap",
+      aggregators: "lilswap",
+    }
+  },
 ];
 export default data5;

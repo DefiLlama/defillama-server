@@ -803,6 +803,18 @@ const configs: { [adapter: string]: Config } = {
     chain: "plume_mainnet",
     underlying: "0xda6087E69C51E7D31b6DBAD276a3c44703DFdCAd",
     address: "0x04E5a6f7eE9977D38f57945c31B72178c9Cf1c06",
+  },
+  "v-wmtUSDC": {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "uint256:scaleFactor",
+        target: "0xC9499006a149C553d18171747ED19Aa7C6Dd19E2",
+      });
+      return rate / 1e27;
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xF65460B84c13eeb911303336Ab0f9D63CC79839f",
   }
 };
 

@@ -45,6 +45,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@clickhouse/client": "^1.8.1",
     "@aws-sdk/client-cloudfront": "^3.918.0",
     "@aws-sdk/client-dynamodb": "^3.918.0",
     "@aws-sdk/client-lambda": "^3.918.0",

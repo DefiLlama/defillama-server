@@ -46,6 +46,9 @@ export const PERPS_STRING_OR_NULL_FIELDS = new Set<string>([
 ]);
 
 const CONTRACT_METADATA: { [contractId: string]: PerpsContractMetadata } = {};
+// Alias map: base contract name (without margin-asset suffix) → full canonical key
+// e.g. "cash:hood" → "cash:hood-usdt"
+const CONTRACT_ALIAS: { [base: string]: string } = {};
 
 const PERPS_METADATA_KEY_MAP = {
     contract: "Canonical Market ID",
@@ -93,8 +96,15 @@ export function normalizePerpsMetadataInPlace(target: any): any {
     return target;
 }
 
+function resolveContractKey(contract: string): string | undefined {
+    const key = contract.toLowerCase();
+    if (key in CONTRACT_METADATA) return key;
+    return CONTRACT_ALIAS[key];
+}
+
 export function getContractMetadata(contract: string): PerpsContractMetadata | null {
-    return CONTRACT_METADATA[contract.toLowerCase()] ?? null;
+    const key = resolveContractKey(contract);
+    return key ? CONTRACT_METADATA[key] : null;
 }
 
 export function setContractMetadata(contract: string, metadata: PerpsContractMetadata): void {
@@ -102,13 +112,12 @@ export function setContractMetadata(contract: string, metadata: PerpsContractMet
 }
 
 export function hasContractMetadata(contract: string): boolean {
-    return contract.toLowerCase() in CONTRACT_METADATA;
+    return resolveContractKey(contract) !== undefined;
 }
 
 export function resetContractMetadataStore(): void {
-    for (const key of Object.keys(CONTRACT_METADATA)) {
-        delete CONTRACT_METADATA[key];
-    }
+    for (const key of Object.keys(CONTRACT_METADATA)) delete CONTRACT_METADATA[key];
+    for (const key of Object.keys(CONTRACT_ALIAS)) delete CONTRACT_ALIAS[key];
 }
 
 export function getContractId(contract: string): string {
@@ -168,6 +177,19 @@ export async function loadContractMetadataFromAirtable(): Promise<number> {
 
         normalizePerpsMetadataInPlace(metadata);
         setContractMetadata(trimmed, metadata);
+
+        // Register suffix-stripped alias so Hyperliquid names like "cash:HOOD"
+        // match Airtable entries like "cash:HOOD-USDT" or "flx:OIL-USDH"
+        const colonIdx = trimmed.indexOf(":");
+        const afterColon = colonIdx >= 0 ? colonIdx + 1 : 0;
+        const hyphenIdx = trimmed.indexOf("-", afterColon);
+        if (hyphenIdx > afterColon) {
+            const base = trimmed.substring(0, hyphenIdx).toLowerCase();
+            if (!(base in CONTRACT_METADATA) && !(base in CONTRACT_ALIAS)) {
+                CONTRACT_ALIAS[base] = trimmed.toLowerCase();
+            }
+        }
+
         count++;
     }
 

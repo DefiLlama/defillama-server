@@ -32,7 +32,7 @@ export const MCAP_EXCLUDED_HOLDERS_BY_PROJECT: {
   },
   // xStocks (protocol 6378) — pre-minted token balances
   '6378': {
-    ethereum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
+    ethereum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD', '0x8BA52fB2512356867c17dA318517669490eC03CB'],
     polygon: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
     xdai: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
     bsc: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
@@ -40,8 +40,9 @@ export const MCAP_EXCLUDED_HOLDERS_BY_PROJECT: {
     fantom: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
     base: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
     arbitrum: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
-    solana: ['S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS'],
+    solana: ['S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS', 'HmMxmEjTbpGqgDsCCmgNfQKCbeH6QcGe1xKn9UXqXFqk'],
     mantle: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
     ink: ['0x5F7A4c11bde4f218f0025Ef444c369d838ffa2aD'],
+    ton: ['UQCVLU9-UVFfm9Sct863y50nsF03Jr6uBn1tJm4n9g8QLbnS'],
   },
 };

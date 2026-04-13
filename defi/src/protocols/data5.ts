@@ -16555,5 +16555,23 @@ const data5: Protocol[] = [
       dexs: "polymarket-us",
     }
   },
+  {
+    id: "7657",
+    name: "Kizzy",
+    address: null,
+    symbol: "-",
+    url: "https://www.kizzy.io/",
+    description: "Kizzy is a social media betting app where you can bet on the popularity of influencers and their content.",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/kizzy.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Monad"],
+    module: "kizzy/index.js",
+    twitter: "kizzymobile",
+    listedAt: 1776064241,
+  },
 ];
 export default data5;

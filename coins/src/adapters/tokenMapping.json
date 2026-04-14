@@ -4589,6 +4589,11 @@
       "symbol": "bUSDC",
       "to": "coingecko#usd-coin"
     },
+    "0x3fea1cb36d2c5523c062d0e060eac253608b4daf": {
+      "to": "asset#ethereum:0x3fea1cb36d2c5523c062d0e060eac253608b4daf",
+      "decimals": 18,
+      "symbol": "FUSDLP"
+    },
     "0xd211b17Dfe8288D4Fb0dd8EEFF07A6C48fC679D5": {
       "decimals": "6",
       "symbol": "bAUSD",
@@ -12525,6 +12530,11 @@
       "decimals": 18,
       "symbol": "anS"
     },
+    "0x3fea1cb36d2c5523c062d0e060eac253608b4daf": {
+      "to": "asset#ethereum:0x3fea1cb36d2c5523c062d0e060eac253608b4daf",
+      "decimals": 18,
+      "symbol": "FUSDLP"
+    },
     "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE": {
       "to": "coingecko#usd-coin",
       "decimals": 6,
@@ -16201,6 +16211,11 @@
       "to": "coingecko#wrapped-steth",
       "decimals": 18,
       "symbol": "wstETH"
+    },
+    "0x3fea1cb36d2c5523c062d0e060eac253608b4daf": {
+      "to": "asset#ethereum:0x3fea1cb36d2c5523c062d0e060eac253608b4daf",
+      "decimals": 18,
+      "symbol": "FUSDLP"
     },
     "0xea17E5a9efEBf1477dB45082d67010E2245217f1": {
       "to": "coingecko#solana",

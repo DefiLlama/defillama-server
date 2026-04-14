@@ -16616,5 +16616,25 @@ const data5: Protocol[] = [
       fees: "auki",
     }
   },
+  // {
+  //   id: "7660",
+  //   name: "dexVAULTS V2",
+  //   address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
+  //   symbol: "GDEX",
+  //   url: "https://dexfi.com/",
+  //   description:
+  //     "dexVAULTS is the modern way to manage yield farm investments. It empowers investors by incorporating advanced trading strategies employed by experienced investors",
+  //   chain: "Arbitrum",
+  //   logo: `${baseIconsUrl}/dexvaults-v2.jpg`,
+  //   audits: "0",
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   category: "Yield",
+  //   chains: ["Binance", "Sonic", "Base", "Ethereum", "Arbitrum", "Avalanche"],
+  //   module: "dexfinance-vault-v2/index.js",
+  //   twitter: "DexFinance",
+  //   parentProtocol: "parent#dexfinance",
+  //   listedAt: 1776104927,
+  // },
 ];
 export default data5;

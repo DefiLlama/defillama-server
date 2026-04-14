@@ -16734,5 +16734,66 @@ const data5: Protocol[] = [
       dexs: "pixiechess",
     }
   },
+  {
+    id: "7666",
+    name: "Scorch",
+    address: null,
+    symbol: "-",
+    url: " ", // no website
+    description: "Scorch is a Prop AMM on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/scorch.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Prop AMM"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "", // prop amm no twitter
+    dimensions: {
+      dexs: "scorch",
+    }
+  },
+  {
+    id: "7667",
+    name: "Whalestreet",
+    address: null,
+    symbol: "-",
+    url: " ", // no website
+    description: "Whalestreet is a Prop AMM on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/whalestreet.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Prop AMM"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "", // prop amm no twitter
+    dimensions: {
+      dexs: "whalestreet",
+    }
+  },
+  {
+    id: "7668",
+    name: "Jupiterz",
+    address: null,
+    symbol: "-",
+    url: "https://jupiterz.jup.ag/",
+    description: "Jupiterz is a RFQ on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jupiterz.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["RFQ"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "JupiterExchange",
+    parentProtocol: "parent#jupiter",
+    dimensions: {
+      dexs: "jupiterz",
+    }
+  },
 ];
 export default data5;

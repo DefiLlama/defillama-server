@@ -35,7 +35,8 @@ export const CategoryTagMap = {
     "Hyperliquid HIP3 Deployer",
     "Hyperliquid Builder",
     "Orderly Builder",
-    "SYMMIO Builder"
+    "SYMMIO Builder",
+    "Extended Builder"
   ],
 }
 

@@ -31,6 +31,10 @@ export const CategoryTagMap = {
     "DLL",
     "RFQ"
   ],
+  Interface: [
+    "Hyperliquid HIP3 Deployer",
+    "Hyperliquid Builder",
+  ],
 }
 
 export const TagCatetgoryMap: Record<string, string> = {}

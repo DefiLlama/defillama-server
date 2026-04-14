@@ -1077,8 +1077,8 @@ async function generateSearchList() {
     rwaPerpsList.push({
       id: `rwa_perps_contract_${normalize(contract)}`,
       name: name,
-      route: `/rwa/perps/contract/${contract}`,
-      v: tastyMetrics[`/rwa/perps/contract/${contract}`] ?? 0,
+      route: `/rwa/perps/contract/${encodeURIComponent(contract)}`,
+      v: tastyMetrics[`/rwa/perps/contract/${encodeURIComponent(contract)}`] ?? 0,
       type: "RWA Perps",
     });
   }

@@ -37095,7 +37095,7 @@ const data3_2: Protocol[] = [
     listedAt: 1711394968,
     dimensions: {
       fees: "javsphere",
-      dexs: "javsphere"
+      derivatives: "javsphere"
     }
   },
   {
@@ -54356,7 +54356,6 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#pear-protocol",
     dimensions: {
       fees: "pear-protocol",
-      dexs: "pear-protocol",
       derivatives: "pear-protocol"
     }
   },

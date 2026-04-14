@@ -1,95 +1,69 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
 import { safeFloat } from "./types";
+import { fetchPythPricesByFeedId } from "./pyth";
 
 // Avantis — Base
 // Docs: https://sdk.avantisfi.com/introduction.html
-// API: https://api.avantisfi.com/v1
-// RWA assets: 14 (8 equities, 2 indices, 2 precious metals, 2 oil)
+// Socket API: https://socket-api-pub.avantisfi.com/socket-api/v1/data
+// RWA assets: 14+ (equities, commodities)
 // Margin: USDC | Oracle: Pyth
 
 export const AVANTIS_MAKER_FEE = 0.0006;
 export const AVANTIS_TAKER_FEE = 0.0008;
 
-const AVANTIS_API = "https://api.avantisfi.com/v1";
+const AVANTIS_SOCKET_API = "https://socket-api-pub.avantisfi.com/socket-api/v1/data";
 
 // ---------------------------------------------------------------------------
-// Raw API types
+// Raw API types (from socket-api /data endpoint)
 // ---------------------------------------------------------------------------
-
-interface AvantisOISnapshot {
-  date: string;
-  openInterest: number;
-  pairIndex?: number;
-  pair?: string;
-  from?: string;
-  to?: string;
-}
-
-interface AvantisDailyVolume {
-  date: string;
-  volume: number;
-  pairIndex?: number;
-  pair?: string;
-  from?: string;
-  to?: string;
-}
 
 interface AvantisPairInfo {
-  pairIndex: number;
   from: string;
   to: string;
+  index: number;
   groupIndex: number;
-  maxLeverage?: number;
-  spreadP?: string;
-  price?: string | number;
-  openInterest?: string | number;
-  openInterestLong?: string | number;
-  openInterestShort?: string | number;
-  volume24h?: string | number;
-  fundingRate?: string | number;
-  priceChange24h?: string | number;
+  openInterest: { long: number; short: number };
+  pairOI: number;
+  pairMaxOI: number;
+  leverages: { minLeverage: number; maxLeverage: number };
+  openFeeP: number;
+  closeFeeP: number;
+  spreadP: number;
+  isPairListed: boolean;
+  feed?: {
+    feedId?: string;
+    attributes?: { symbol?: string; isOpen?: boolean };
+  };
 }
 
-// RWA group indices in Avantis: 2 = stocks, 3 = indices, 4 = commodities
-const RWA_GROUP_INDICES = new Set([2, 3, 4]);
+interface AvantisSocketResponse {
+  data: {
+    pairCount: number;
+    totalOi: number;
+    groupInfo: { [idx: string]: { name: string; groupMaxOI: number; groupOI: number } };
+    pairInfos: { [idx: string]: AvantisPairInfo };
+  };
+}
+
+// RWA groups: 3 = COMMODITIES, 6 = EQUITIES
+const RWA_GROUP_INDICES = new Set([3, 6]);
 
 // ---------------------------------------------------------------------------
 // Fetchers
 // ---------------------------------------------------------------------------
 
-async function fetchJson(url: string): Promise<any | null> {
+async function fetchAvantisData(): Promise<AvantisSocketResponse | null> {
   try {
-    const res = await fetch(url);
+    const res = await fetch(AVANTIS_SOCKET_API);
     if (!res.ok) {
-      console.error(`Avantis API ${res.status} for ${url}`);
+      console.error(`Avantis socket API ${res.status}: ${res.statusText}`);
       return null;
     }
     return await res.json();
   } catch (e) {
-    console.error(`Avantis fetch error (${url}):`, e);
+    console.error("Avantis fetchData error:", e);
     return null;
   }
-}
-
-async function fetchAvantisPairs(): Promise<AvantisPairInfo[] | null> {
-  const data = await fetchJson(`${AVANTIS_API}/pairs`);
-  if (!data) return null;
-  const arr = data?.success !== false ? (data?.data ?? data?.pairs ?? data) : null;
-  return Array.isArray(arr) ? arr : null;
-}
-
-async function fetchAvantisOISnapshots(): Promise<AvantisOISnapshot[] | null> {
-  const data = await fetchJson(`${AVANTIS_API}/cached/history/analytics/open-interest-snapshot/1`);
-  if (!data) return null;
-  const history = data?.data ?? data?.history ?? data;
-  return Array.isArray(history) ? history : null;
-}
-
-async function fetchAvantisDailyVolumes(): Promise<AvantisDailyVolume[] | null> {
-  const data = await fetchJson(`${AVANTIS_API}/history/analytics/daily-volumes/1`);
-  if (!data) return null;
-  const history = data?.data ?? data?.history ?? data;
-  return Array.isArray(history) ? history : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -97,56 +71,41 @@ async function fetchAvantisDailyVolumes(): Promise<AvantisDailyVolume[] | null> 
 // ---------------------------------------------------------------------------
 
 function parseAvantisMarkets(
-  pairs: AvantisPairInfo[],
-  oiSnapshots: AvantisOISnapshot[] | null,
-  dailyVolumes: AvantisDailyVolume[] | null,
+  resp: AvantisSocketResponse,
+  pythPrices: Map<string, number>,
 ): ParsedPerpsMarket[] {
-  // Build lookup maps by pairIndex or pair name
-  const oiByPair = new Map<number, number>();
-  if (oiSnapshots) {
-    for (const snap of oiSnapshots) {
-      if (snap.pairIndex != null) {
-        oiByPair.set(snap.pairIndex, (oiByPair.get(snap.pairIndex) ?? 0) + safeFloat(snap.openInterest));
-      }
-    }
-  }
-
-  const volByPair = new Map<number, number>();
-  if (dailyVolumes) {
-    for (const vol of dailyVolumes) {
-      if (vol.pairIndex != null) {
-        volByPair.set(vol.pairIndex, (volByPair.get(vol.pairIndex) ?? 0) + safeFloat(vol.volume));
-      }
-    }
-  }
-
   const markets: ParsedPerpsMarket[] = [];
+  const pairInfos = resp.data?.pairInfos;
+  if (!pairInfos) return markets;
 
-  for (const pair of pairs) {
+  for (const [, pair] of Object.entries(pairInfos)) {
     if (!RWA_GROUP_INDICES.has(pair.groupIndex)) continue;
+    if (!pair.isPairListed) continue;
 
     const contract = `avantis:${pair.from}-${pair.to}`;
-    const price = safeFloat(pair.price);
 
-    const oiFromPair = safeFloat(pair.openInterestLong) + safeFloat(pair.openInterestShort);
-    const openInterest = oiFromPair > 0 ? oiFromPair : safeFloat(pair.openInterest) || (oiByPair.get(pair.pairIndex) ?? 0);
+    const oiLong = safeFloat(pair.openInterest?.long);
+    const oiShort = safeFloat(pair.openInterest?.short);
+    const openInterest = oiLong + oiShort;
 
-    const volume24h = safeFloat(pair.volume24h) || (volByPair.get(pair.pairIndex) ?? 0);
+    // Price from Pyth Hermes via the pair's feed ID
+    const feedId = pair.feed?.feedId ?? "";
+    const price = pythPrices.get(feedId) ?? 0;
 
     markets.push({
       contract,
       venue: "avantis",
       platform: "avantis",
       openInterest,
-      volume24h,
+      volume24h: 0, // Not available from socket API; requires Dune/on-chain data
       markPx: price,
       oraclePx: price,
       midPx: price,
       prevDayPx: 0,
-      priceChange24h: safeFloat(pair.priceChange24h),
-      fundingRate: safeFloat(pair.fundingRate),
+      priceChange24h: 0,
+      fundingRate: 0,
       premium: 0,
-      maxLeverage: pair.maxLeverage ?? 0,
+      maxLeverage: pair.leverages?.maxLeverage ?? 0,
       szDecimals: 0,
     });
   }
@@ -160,18 +119,22 @@ function parseAvantisMarkets(
 
 export const avantisAdapter: PlatformAdapter = {
   name: "avantis",
-  oiIsNotional: true,
+  oiIsNotional: true, // OI is USD notional
   async fetchMarkets(): Promise<ParsedPerpsMarket[]> {
-    const [pairs, oiSnapshots, dailyVolumes] = await Promise.all([
-      fetchAvantisPairs(),
-      fetchAvantisOISnapshots(),
-      fetchAvantisDailyVolumes(),
-    ]);
-    if (!pairs || pairs.length === 0) return [];
-    return parseAvantisMarkets(pairs, oiSnapshots, dailyVolumes);
+    const data = await fetchAvantisData();
+    if (!data?.data?.pairInfos) return [];
+
+    // Collect Pyth feed IDs from RWA pairs
+    const feedIds: string[] = [];
+    for (const pair of Object.values(data.data.pairInfos)) {
+      if (!RWA_GROUP_INDICES.has(pair.groupIndex) || !pair.isPairListed) continue;
+      if (pair.feed?.feedId) feedIds.push(pair.feed.feedId);
+    }
+
+    const pythPrices = await fetchPythPricesByFeedId(feedIds);
+    return parseAvantisMarkets(data, pythPrices);
   },
   async fetchFundingHistory(): Promise<FundingEntry[]> {
-    // Avantis uses a dynamic spread model; no traditional funding rate history API.
     return [];
   },
 };

@@ -16390,18 +16390,18 @@ const data5: Protocol[] = [
   {
     id: "7649",
     name: "DexFi",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
+    symbol: "GDEX",
     url: "https://dexfi.com/",
     description: "DexFi offers an ecosystem of financial products designed to empower users and simplify the DeFi experience. DexFi’s AiLM (Automated Intelligent Liquidity Manager), powers DeFi’s most sophisticated yield aggregator to actively manage v3/v4 liquidity positions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dexfi.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: 'dexfi-governance',
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Sonic", "Avalanche"],
-    module: "dummy.js",
+    module: "dexfinance-vault-v2/index.js",
     twitter: "DexFinance",
     parentProtocol: "parent#dexfinance",
     dimensions: {
@@ -16615,26 +16615,6 @@ const data5: Protocol[] = [
     dimensions: {
       fees: "auki",
     }
-  },
-  {
-    id: "7660",
-    name: "dexVAULTS V2",
-    address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
-    symbol: "GDEX",
-    url: "https://dexfi.com/",
-    description:
-      "dexVAULTS is the modern way to manage yield farm investments. It empowers investors by incorporating advanced trading strategies employed by experienced investors",
-    chain: "Arbitrum",
-    logo: `${baseIconsUrl}/dexvaults-v2.jpg`,
-    audits: "0",
-    gecko_id: null,
-    cmcId: null,
-    category: "Yield",
-    chains: ["Binance", "Sonic", "Base", "Ethereum", "Arbitrum", "Avalanche"],
-    module: "dexfinance-vault-v2/index.js",
-    twitter: "DexFinance",
-    parentProtocol: "parent#dexfinance",
-    listedAt: 1776104927,
   },
 ];
 export default data5;

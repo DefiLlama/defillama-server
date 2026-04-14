@@ -456,6 +456,8 @@ async function generateSearchList() {
     datsData,
     rwaListData,
     rwaTickerToNameMap,
+    rwaPerpsListData,
+    rwaPerpContractToNameMap,
     equitiesData,
   ]: [
     {
@@ -481,6 +483,8 @@ async function generateSearchList() {
       categories: Array<string>;
       chains: Array<string>;
     },
+    Record<string, string>,
+    { contracts: string[]; venues: string[]; assetGroups: string[] },
     Record<string, string>,
     Array<{ name: string; ticker: string }>
   ] = await Promise.all([
@@ -522,8 +526,24 @@ async function generateSearchList() {
       }
       const final = {} as Record<string, string>;
       for (const rwa of res) {
+        if (rwa.category?.includes("RWA Perps")) continue;
         if (final[rwa.ticker]) continue;
         final[rwa.ticker] = rwa.assetName;
+      }
+      return final;
+    }),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa-perps/list`),
+    cachedJSONPull({
+      endpoint: `https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa-perps/current`,
+      defaultResponse: [],
+    }).then((res) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching RWA perps contract to name map:", res);
+        throw new Error("Failed to fetch RWA perps contract to name map from RWA API");
+      }
+      const final = {} as Record<string, string>;
+      for (const rwa of res) {
+        final[rwa.contract] = `${rwa.referenceAsset} - ${rwa.parentPlatform}`;
       }
       return final;
     }),
@@ -1019,6 +1039,7 @@ async function generateSearchList() {
   const rwaList: Array<SearchResult> = [];
   for (const ticker of rwaListData.tickers) {
     const name = rwaTickerToNameMap[ticker];
+    if (!name) continue;
     const tickerSlug = rwaSlug(ticker);
     rwaList.push({
       id: `rwa_asset_${normalize(tickerSlug)}`,
@@ -1040,12 +1061,43 @@ async function generateSearchList() {
   }
   for (const category of rwaListData.categories) {
     const categorySlug = rwaSlug(category);
+    if (categorySlug === "rwa-perps") continue;
     rwaList.push({
       id: `rwa_category_${normalize(categorySlug)}`,
       name: category,
       route: `/rwa/category/${categorySlug}`,
       v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
       type: "RWA",
+    });
+  }
+  const rwaPerpsList: Array<SearchResult> = [];
+  for (const contract of rwaPerpsListData.contracts) {
+    const name = rwaPerpContractToNameMap[contract];
+    if (!name) continue;
+    rwaPerpsList.push({
+      id: `rwa_perps_contract_${normalize(contract)}`,
+      name: name,
+      route: `/rwa/perps/contract/${contract}`,
+      v: tastyMetrics[`/rwa/perps/contract/${contract}`] ?? 0,
+      type: "RWA Perps",
+    });
+  }
+  for (const venue of rwaPerpsListData.venues) {
+    rwaPerpsList.push({
+      id: `rwa_perps_venue_${normalize(venue)}`,
+      name: venue,
+      route: `/rwa/perps/venue/${rwaSlug(venue)}`,
+      v: tastyMetrics[`/rwa/perps/venue/${rwaSlug(venue)}`] ?? 0,
+      type: "RWA Perps",
+    });
+  }
+  for (const assetGroup of rwaPerpsListData.assetGroups) {
+    rwaPerpsList.push({
+      id: `rwa_perps_asset_group_${normalize(assetGroup)}`,
+      name: assetGroup,
+      route: `/rwa/perps/asset-group/${rwaSlug(assetGroup)}`,
+      v: tastyMetrics[`/rwa/perps/asset-group/${rwaSlug(assetGroup)}`] ?? 0,
+      type: "RWA Perps",
     });
   }
   const equities: Array<SearchResult> = equitiesData.map((equity) => ({
@@ -1059,7 +1111,22 @@ async function generateSearchList() {
   }));
 
   const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
-  const sortedGroups = [chains, protocols, stablecoins, bridges, metrics, tools, categories, tags, cexs, otherPages, dats, rwaList, equities] as const;
+  const sortedGroups = [
+    chains,
+    protocols,
+    stablecoins,
+    bridges,
+    metrics,
+    tools,
+    categories,
+    tags,
+    cexs,
+    otherPages,
+    dats,
+    rwaList,
+    rwaPerpsList,
+    equities,
+  ] as const;
   for (const group of sortedGroups) group.sort(sortDesc);
 
   return {
@@ -1079,6 +1146,7 @@ async function generateSearchList() {
       ...coins,
       ...dats,
       ...rwaList,
+      ...rwaPerpsList,
       ...equities,
     ].map((result: any) => ({
       ...result,

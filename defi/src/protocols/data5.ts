@@ -16389,7 +16389,7 @@ const data5: Protocol[] = [
   },
   {
     id: "7649",
-    name: "DexFi",
+    name: "DexFi Aggregator",
     address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
     symbol: "GDEX",
     url: "https://dexfi.com/",

@@ -9630,7 +9630,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["Hyperliquid Builder"],
+    category: 'Interface',
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "T0nyCrypt0",
@@ -10840,7 +10840,7 @@ const data5: Protocol[] = [
     twitter: "dexlytrade",
     github: ["dexlytrade"],
     dimensions: {
-      dexs: "dexly-trade",
+      derivatives: "dexly-trade",
       fees: "dexly-trade",
     },
   },

@@ -34000,7 +34000,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    category: "Bridge",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",

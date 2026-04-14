@@ -4,9 +4,13 @@ import { initPG, fetchFundingHistoryPG } from './db';
 import { perpsSlug } from './utils';
 import {
     findMarketById,
+    findMarketsByAssetGroup,
     findMarketsByCategory,
     findMarketsByContract,
     findMarketsByVenue,
+    getPerpsContractBreakdownFilePath,
+    getPerpsOverviewBreakdownFilePath,
+    parsePerpsChartTarget,
     resolvePerpsLookupId,
 } from './server-helpers';
 
@@ -162,17 +166,57 @@ export function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
+    router.get(
+        '/assetGroup/:assetGroup',
+        errorWrapper(async (req, res) => {
+            const { assetGroup } = req.params;
+            if (!assetGroup) return errorResponse(res, 'Missing assetGroup parameter', 400);
+
+            const currentData = await readRouteData('current.json');
+            if (!currentData) return errorResponse(res, 'Data not found', 500);
+
+            return successResponse(res, findMarketsByAssetGroup(currentData, assetGroup), 20);
+        })
+    );
+
     // ── Historical charts ────────────────────────────────────────────────────
 
     router.get(
-        '/chart/:id',
+        '/chart/overview-breakdown',
         errorWrapper(async (req, res) => {
-            const { id } = req.params;
-            if (!id) return errorResponse(res, 'Missing id parameter', 400);
+            const target = parsePerpsChartTarget({
+                venue: req.query.venue,
+                assetGroup: req.query.assetGroup,
+            });
+            if (!target) return errorResponse(res, 'Invalid target query parameters', 400);
 
-            const idMap = await readRouteData('id-map.json');
-            const resolvedId = resolvePerpsLookupId(idMap, id);
-            return fileResponse(`charts/${resolvedId || id}.json`, res, 30);
+            const filePath = getPerpsOverviewBreakdownFilePath({
+                target,
+                key: req.query.key,
+                breakdown: req.query.breakdown,
+            });
+            if (!filePath) return errorResponse(res, 'Invalid query parameters', 400);
+
+            return fileResponse(filePath, res, 30);
+        })
+    );
+
+    router.get(
+        '/chart/contract-breakdown',
+        errorWrapper(async (req, res) => {
+            const target = parsePerpsChartTarget({
+                venue: req.query.venue,
+                assetGroup: req.query.assetGroup,
+            });
+            if (!target) return errorResponse(res, 'Invalid target query parameters', 400);
+
+            const filePath = getPerpsContractBreakdownFilePath({
+                target,
+                key: req.query.key,
+            });
+            if (!filePath) return errorResponse(res, 'Invalid query parameters', 400);
+
+            return fileResponse(filePath, res, 30);
         })
     );
 
@@ -191,6 +235,18 @@ export function setRoutes(router: HyperExpress.Router): void {
             const { category } = req.params;
             if (!category) return errorResponse(res, 'Missing category parameter', 400);
             return fileResponse(`charts/category/${perpsSlug(category)}.json`, res, 30);
+        })
+    );
+
+    router.get(
+        '/chart/:id',
+        errorWrapper(async (req, res) => {
+            const { id } = req.params;
+            if (!id) return errorResponse(res, 'Missing id parameter', 400);
+
+            const idMap = await readRouteData('id-map.json');
+            const resolvedId = resolvePerpsLookupId(idMap, id);
+            return fileResponse(`charts/${resolvedId || id}.json`, res, 30);
         })
     );
 

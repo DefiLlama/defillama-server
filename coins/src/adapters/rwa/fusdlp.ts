@@ -2,9 +2,8 @@ import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
 
-// FUSD and FUSDLP share the same addresses on every supported chain
-// (CREATE2 deterministic deployment).
-const FUSD = "0x9f6714C302ffe3c3bAFaf2Ccb44201fF64f6371C";
+// FUSDLP is a yield-bearing LP token backed by reserve assets.
+// Same address on every supported chain (CREATE2 deterministic deployment).
 const FUSDLP = "0x3fea1cb36D2C5523c062d0E060EAC253608b4DAf";
 
 // Ethereum is the canonical chain for FUSDLP pricing. Reserves and the
@@ -13,7 +12,7 @@ const FUSDLP = "0x3fea1cb36D2C5523c062d0E060EAC253608b4DAf";
 const CANONICAL_CHAIN = "ethereum";
 const MIRROR_CHAINS: string[] = ["avax", "sonic", "monad"];
 
-export async function fusd(timestamp: number = 0) {
+export async function fusdlp(timestamp: number = 0) {
   const writes: Write[] = [];
 
   const api = await getApi(CANONICAL_CHAIN, timestamp);
@@ -27,12 +26,6 @@ export async function fusd(timestamp: number = 0) {
   }
 
   const buildPricesObject = () => ({
-    [FUSD]: {
-      price: 1,
-      symbol: "FUSD",
-      decimals: 18,
-      confidence: 0.99,
-    },
     [FUSDLP]: {
       price: fusdlpPrice,
       symbol: "FUSDLP",
@@ -46,7 +39,7 @@ export async function fusd(timestamp: number = 0) {
     timestamp,
     writes,
     pricesObject: buildPricesObject(),
-    projectName: "fusd",
+    projectName: "fusdlp",
   });
 
   await Promise.all(
@@ -57,10 +50,10 @@ export async function fusd(timestamp: number = 0) {
           timestamp,
           writes,
           pricesObject: buildPricesObject(),
-          projectName: "fusd",
+          projectName: "fusdlp",
         });
       } catch (e) {
-        console.error(`fusd adapter: failed to write on ${chain}:`, e);
+        console.error(`fusdlp adapter: failed to write on ${chain}:`, e);
       }
     })
   );

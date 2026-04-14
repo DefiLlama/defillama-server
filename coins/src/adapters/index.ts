@@ -199,5 +199,5 @@ export default {
   m0: require("./other/m0"),
   anchored: require("./rwa/anchored"),
   redstone: require("./oracles/redstone"),
-  fusd: require("./rwa/fusd"),
+  fusdlp: require("./rwa/fusdlp"),
 };

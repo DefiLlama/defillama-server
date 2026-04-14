@@ -50,7 +50,7 @@ async function fetchMorphoVaultAddresses(chainId: string) {
 
     const res = await request("https://api.morpho.org/graphql", query, {
       cache: true,
-      cacheKey: `morpho-vaults-${skip}`,
+      cacheKey: `morpho-vaults-${chainId}-${skip}`,    
     });
     res.vaults.items.forEach((item: any) => {
       assets[item.address.toLowerCase()] = item.asset.address.toLowerCase();

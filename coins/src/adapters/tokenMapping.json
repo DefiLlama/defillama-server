@@ -376,11 +376,6 @@
     }
   },
   "sui": {
-    "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": {
-      "decimals": "8",
-      "symbol": "enzoBTC",
-      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
-    },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
       "decimals": "8",
       "symbol": "BNB",

@@ -168,7 +168,7 @@ async function cabal(timestamp: number = 0) {
   });
 }
 
- async function fusdlp(timestamp: number = 0) {
+async function fusdlp(timestamp: number = 0) {
   // FUSDLP is a yield-bearing LP token backed by reserve assets.
   // Same address on every supported chain (CREATE2 deterministic deployment).
   const FUSDLP = "0x3fea1cb36D2C5523c062d0E060EAC253608b4DAf";
@@ -182,14 +182,28 @@ async function cabal(timestamp: number = 0) {
   const rawExchangeRate = await api.call({ target: FUSDLP, abi: "uint256:getExchangeRateWithAdjustment", });
   const fusdlpPrice = Number(rawExchangeRate) / 1e18;
 
-  return getWrites({ chain, timestamp, pricesObject: { [FUSDLP]: { price: fusdlpPrice, }, }, projectName: "fusdlp", });
+  return getWrites({ chain, timestamp, pricesObject: { [FUSDLP]: { price: fusdlpPrice, }, }, projectName: "other2", });
 }
 
+async function wJAAA(timestamp: number = 0) {
+  const chain = "ethereum";
+
+  const api = await getApi(chain, timestamp);
+  const token = "0x86b495e4cb00ab18ad94bfd7920479cc79e8ebfe";
+  const underlying = "0x5a0F93D040De44e78F251b03c43be9CF317Dcf64";
+  const balance = await api.call({ abi: 'erc20:balanceOf', target: underlying, params: token })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: token })
+  const price = balance / supply
+  const pricesObject: any = {
+    [token]: { price, underlying }
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+};
 
 export const adapters = {
   solanaAVS,
   wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
-  fusdlp,
+  fusdlp, wJAAA,
 
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {

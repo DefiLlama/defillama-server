@@ -6,6 +6,7 @@ import { addToDBWritesList } from "../utils/database";
 import { getTokenInfoMap } from "../utils/erc20";
 import { request } from "@defillama/sdk/build/util/graph";
 import { getConfig } from "../../utils/cache";
+import getWrites from "../utils/getWrites";
 
 type VaultDatas = {
   [vault: string]: {
@@ -47,7 +48,10 @@ async function fetchMorphoVaultAddresses(chainId: string) {
                 }
             }}`;
 
-    const res = await request("https://api.morpho.org/graphql", query, { cache: true, cacheKey: `morpho-vaults-${skip}` });
+    const res = await request("https://api.morpho.org/graphql", query, {
+      cache: true,
+      cacheKey: `morpho-vaults-${skip}`,
+    });
     res.vaults.items.forEach((item: any) => {
       assets[item.address.toLowerCase()] = item.asset.address.toLowerCase();
     });
@@ -62,7 +66,7 @@ async function morpho(
   timestamp: number = 0,
   vaultAssets: { [vault: string]: string } = {},
   api: any,
-  target: string
+  target: string,
 ) {
   const threeDaysAgo =
     (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 3 * 24 * 60 * 60;
@@ -82,10 +86,15 @@ async function morpho(
   await runInPromisePool({
     items: Object.keys(vaultAssets),
     concurrency: 5,
-    processor: (vault: string) => fetchVaultPositions(vault, threeDaysAgoApi, false),
+    processor: (vault: string) =>
+      fetchVaultPositions(vault, threeDaysAgoApi, false),
   });
 
-  async function fetchVaultPositions(vault: string, api: any, isCurrent: boolean) {
+  async function fetchVaultPositions(
+    vault: string,
+    api: any,
+    isCurrent: boolean,
+  ) {
     const totalAssets = await api.call({
       target: vault,
       abi: "uint256:totalAssets",
@@ -152,11 +161,11 @@ async function morpho(
 
   const currentTotalWithdrawables = aggregateWithdrawable(
     currentVaultDatas,
-    currentMarketData
+    currentMarketData,
   );
   const previousTotalWithdrawables = aggregateWithdrawable(
     previousVaultDatas,
-    previousMarketData
+    previousMarketData,
   );
 
   function aggregateWithdrawable(vaultDatas: VaultDatas, marketData: any) {
@@ -166,6 +175,7 @@ async function morpho(
       const { positions, markets } = vaultDatas[vault];
 
       markets.map((market: string, i: number) => {
+        if (!marketData[market]) return;
         const { totalSupplyAssets, totalSupplyShares, totalBorrowAssets } =
           marketData[market];
         if (positions[i].supplyShares == 0) return;
@@ -174,7 +184,7 @@ async function morpho(
 
         const availableLiquidity = Math.max(
           totalSupplyAssets - totalBorrowAssets,
-          0
+          0,
         );
 
         const withdrawable = Math.min(supplyAssets, availableLiquidity);
@@ -198,7 +208,10 @@ async function morpho(
     if (!previousVaultDatas[vault]) {
       if (currentWithdrawable / totalAssets < 0.01)
         console.log(
-          `Bad debt in vault ${vault} on ${api.chain}: ${((currentWithdrawable / totalAssets) * 100).toFixed(2)}% liquidity`
+          `Bad debt in vault ${vault} on ${api.chain}: ${(
+            (currentWithdrawable / totalAssets) *
+            100
+          ).toFixed(2)}% liquidity`,
         );
 
       problemVaultList.push(vault);
@@ -214,7 +227,10 @@ async function morpho(
 
     problemVaultList.push(vault);
     console.log(
-      `Bad debt in vault ${vault} on ${api.chain}: ${((currentWithdrawable / totalAssets) * 100).toFixed(2)}% liquidity`
+      `Bad debt in vault ${vault} on ${api.chain}: ${(
+        (currentWithdrawable / totalAssets) *
+        100
+      ).toFixed(2)}% liquidity`,
     );
   });
 
@@ -233,7 +249,7 @@ async function morpho(
       symbol,
       timestamp,
       "morpho",
-      1.01
+      1.01,
     );
   });
 
@@ -243,11 +259,11 @@ async function morpho(
 async function getListaVaults(chain: string) {
   const {
     data: { list: vaults },
-  } = await getConfig('lista-lend-vaults', listaConfig[chain].vaultInfo)
+  } = await getConfig("lista-lend-vaults", listaConfig[chain].vaultInfo);
   const listaVaults: { [vault: string]: string } = {};
   vaults.map(
     (vault: any) =>
-      (listaVaults[vault.address.toLowerCase()] = vault.asset.toLowerCase())
+      (listaVaults[vault.address.toLowerCase()] = vault.asset.toLowerCase()),
   );
   return listaVaults;
 }
@@ -258,28 +274,101 @@ async function lista(timestamp: number = 0) {
       const api = await getApi(chain, timestamp);
       const vaults = await getListaVaults(chain);
       return await morpho(timestamp, vaults, api, listaConfig[chain].vault);
-    })
+    }),
   );
 }
 
 export async function morphoBlue(timestamp: number = 0) {
-  const chains = ["ethereum", "base", "hyperliquid", "katana", "arbitrum", "wc", "unichain", "polygon", "optimism", "plume_mainnet", "sei", "lisk", "etlk"];
-  return await Promise.all(
+  const chains = [
+    "ethereum",
+    "base",
+    "hyperliquid",
+    "katana",
+    "wc",
+    "unichain",
+    "polygon",
+    "optimism",
+  ];
+  const writes: Write[] = [];
+  const morphoBlueTarget = "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb";
+
+  await Promise.all(
     chains.map(async (chain) => {
       const api = await getApi(chain, timestamp);
       if (!api.chainId) return;
-      const vaults = await fetchMorphoVaultAddresses(api.chainId.toString());
-      return await morpho(
-        timestamp,
-        vaults,
-        api,
-        "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"
+      const vaultAssets = await fetchMorphoVaultAddresses(
+        api.chainId.toString(),
       );
-    })
+      const vaults = Object.keys(vaultAssets);
+      if (vaults.length === 0) return;
+
+      // Price all vault tokens via ERC4626 exchange rate
+      const underlyings = vaults.map((v) => vaultAssets[v]);
+      const [totalAssets, totalSupply, vaultDecimals, underlyingDecimals] =
+        await Promise.all([
+          api.multiCall({
+            abi: "uint256:totalAssets",
+            calls: vaults,
+            permitFailure: true,
+          }),
+          api.multiCall({
+            abi: "uint256:totalSupply",
+            calls: vaults,
+            permitFailure: true,
+          }),
+          api.multiCall({
+            abi: "uint8:decimals",
+            calls: vaults,
+            permitFailure: true,
+          }),
+          api.multiCall({
+            abi: "uint8:decimals",
+            calls: underlyings,
+            permitFailure: true,
+          }),
+        ]);
+
+      const pricesObject: {
+        [vault: string]: { underlying: string; price: number };
+      } = {};
+      vaults.forEach((vault, i) => {
+        if (!totalAssets[i] || !totalSupply[i]) return;
+        if (vaultDecimals[i] == null || underlyingDecimals[i] == null) return;
+        const supply = Number(totalSupply[i]);
+        if (supply === 0) return;
+        const decimalAdjustment = 10 ** (vaultDecimals[i] - underlyingDecimals[i]);
+        const price = (Number(totalAssets[i]) / supply) * decimalAdjustment;
+        if (price < 0.5 || price > 100) return;
+        pricesObject[vault] = {
+          underlying: vaultAssets[vault],
+          price,
+        };
+      });
+
+      const chainWrites = await getWrites({
+        chain,
+        timestamp,
+        pricesObject,
+        projectName: "morpho",
+        confidence: 0.85
+      });
+      writes.push(...chainWrites);
+
+      // Override bad debt vaults with price=0 (confidence 1.01 beats normal writes)
+      const badDebtWrites = await morpho(
+        timestamp,
+        vaultAssets,
+        api,
+        morphoBlueTarget,
+      );
+      writes.push(...badDebtWrites);
+    }),
   );
+
+  return writes;
 }
 
 export const adapters = {
-  // morphoBlue,
+  morphoBlue,
   lista,
 } as any;

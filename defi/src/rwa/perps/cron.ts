@@ -28,7 +28,8 @@ import {
     buildVenueHistoricalCharts
 } from './aggregate';
 import { normalizePerpsMetadataInPlace } from './constants';
-import { normalizePerpsAssetGroup } from './server-helpers';
+import { buildPerpsList } from './list';
+import { normalizePerpsAssetGroup, sortPerpsMarketsByOpenInterest } from './server-helpers';
 
 interface PerpsMetadata {
     id: string;
@@ -43,7 +44,7 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
     const metadataMap = new Map<string, any>();
     metadata.forEach((m) => metadataMap.set(m.id, m.data));
 
-    const result = currentData.map((record: any) => {
+    const result = sortPerpsMarketsByOpenInterest(currentData.map((record: any) => {
         const meta = metadataMap.get(record.id) || {};
         const merged = {
             ...(record.data || {}),
@@ -65,7 +66,7 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
             contract: merged.contract || record.id,
             venue: merged.venue || record.id.split(':')[0] || 'unknown',
         };
-    });
+    }));
 
     await storeRouteData('current.json', result);
     console.log(`Generated current.json with ${result.length} markets in ${Date.now() - startTime}ms`);
@@ -143,21 +144,7 @@ async function generateStats(currentData: any[]): Promise<void> {
 
 async function generateList(currentData: any[]): Promise<void> {
     console.log('Generating list...');
-
-    const contracts = [...new Set(currentData.map((m: any) => m.contract).filter(Boolean))].sort();
-    const venues = [...new Set(currentData.map((m: any) => m.venue).filter(Boolean))].sort();
-    const categories = [...new Set(currentData.flatMap((m: any) => {
-        return Array.isArray(m.category) ? m.category : [m.category || 'Other'];
-    }))].sort();
-    const assetGroups = [...new Set(currentData.map((m: any) => normalizePerpsAssetGroup(m.referenceAssetGroup)).filter(Boolean))].sort();
-
-    const list = {
-        contracts,
-        venues,
-        categories,
-        assetGroups,
-        total: currentData.length,
-    };
+    const list = buildPerpsList(currentData);
 
     await storeRouteData('list.json', list);
     console.log(`Generated list.json`);

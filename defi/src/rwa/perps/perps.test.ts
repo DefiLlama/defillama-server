@@ -4,6 +4,7 @@ jest.mock("../spreadsheet", () => ({
 
 import { toFiniteNumberOrZero, perpsSlug, computeProtocolFees, groupBy } from "./utils";
 import { fileNameNormalizer, mergeHistoricalData } from "./file-cache";
+import { buildPerpsList } from "./list";
 import {
   buildContractBreakdownCharts,
   buildCategoryHistoricalCharts,
@@ -34,6 +35,7 @@ import {
   normalizePerpsAssetGroup,
   parsePerpsChartTarget,
   resolvePerpsLookupId,
+  sortPerpsMarketsByOpenInterest,
 } from "./server-helpers";
 import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import {
@@ -793,5 +795,91 @@ describe("server route helpers", () => {
         key: "activeMcap",
       })
     ).toBeNull();
+  });
+
+  it("sorts market arrays by descending open interest with deterministic tie-breakers", () => {
+    expect(
+      sortPerpsMarketsByOpenInterest([
+        { id: "beta:meta", contract: "META", venue: "Beta", openInterest: 8 },
+        { id: "alpha:tsla", contract: "TSLA", venue: "Alpha", openInterest: 12 },
+        { id: "alpha:meta", contract: "META", venue: "Alpha", openInterest: 8 },
+        { id: "gamma:aapl", contract: "AAPL", venue: "Gamma", openInterest: 8 },
+      ])
+    ).toEqual([
+      { id: "alpha:tsla", contract: "TSLA", venue: "Alpha", openInterest: 12 },
+      { id: "gamma:aapl", contract: "AAPL", venue: "Gamma", openInterest: 8 },
+      { id: "alpha:meta", contract: "META", venue: "Alpha", openInterest: 8 },
+      { id: "beta:meta", contract: "META", venue: "Beta", openInterest: 8 },
+    ]);
+  });
+});
+
+describe("buildPerpsList", () => {
+  it("sorts all list facets by descending open interest with alphabetical tie-breakers", () => {
+    expect(
+      buildPerpsList([
+        {
+          contract: "xyz:META",
+          venue: "Beta",
+          category: ["Equities", "RWA Perpetuals"],
+          referenceAssetGroup: "US Equities",
+          openInterest: 20,
+        },
+        {
+          contract: "TSLA",
+          venue: "Alpha",
+          category: ["Equities"],
+          referenceAssetGroup: "US Equities",
+          openInterest: 15,
+        },
+        {
+          contract: "GOLD",
+          venue: "Alpha",
+          category: ["Commodities"],
+          referenceAssetGroup: "Commodities",
+          openInterest: 15,
+        },
+        {
+          contract: "xyz:META",
+          venue: "Alpha",
+          category: null,
+          referenceAssetGroup: " ",
+          openInterest: 10,
+        },
+        {
+          contract: "AAPL",
+          venue: "",
+          category: ["Equities"],
+          referenceAssetGroup: null,
+          openInterest: 5,
+        },
+      ])
+    ).toEqual({
+      contracts: ["xyz:META", "GOLD", "TSLA", "AAPL"],
+      venues: ["Alpha", "Beta", "unknown"],
+      categories: ["Equities", "RWA Perpetuals", "Commodities", "Other"],
+      assetGroups: ["US Equities", "Commodities", "Unknown"],
+      total: 5,
+    });
+  });
+
+  it("skips empty contracts but still counts the row toward fallback group totals", () => {
+    expect(
+      buildPerpsList([
+        {
+          contract: "",
+          venue: undefined,
+          category: undefined,
+          referenceAssetGroup: undefined,
+          openInterest: 7,
+        },
+      ])
+    ).toEqual({
+      contracts: [],
+      venues: ["unknown"],
+      categories: ["Other"],
+      assetGroups: ["Unknown"],
+      total: 1,
+    });
   });
 });

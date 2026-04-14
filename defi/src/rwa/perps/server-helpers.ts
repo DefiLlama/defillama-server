@@ -39,6 +39,21 @@ export function findMarketById(currentData: any[], id: string) {
   );
 }
 
+export function sortPerpsMarketsByOpenInterest(currentData: any[]): any[] {
+  return [...currentData].sort((a: any, b: any) => {
+    const openInterestDiff = Number(b?.openInterest || 0) - Number(a?.openInterest || 0);
+    if (openInterestDiff !== 0) return openInterestDiff;
+
+    const contractDiff = String(a?.contract || "").localeCompare(String(b?.contract || ""));
+    if (contractDiff !== 0) return contractDiff;
+
+    const venueDiff = String(a?.venue || "").localeCompare(String(b?.venue || ""));
+    if (venueDiff !== 0) return venueDiff;
+
+    return String(a?.id || "").localeCompare(String(b?.id || ""));
+  });
+}
+
 export function findMarketsByContract(currentData: any[], contract: string): any[] {
   const contractSlug = perpsSlug(contract);
   return currentData.filter((item: any) =>

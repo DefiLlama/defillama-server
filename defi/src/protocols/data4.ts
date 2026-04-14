@@ -6476,7 +6476,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "DCA Tools",
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "JupiterExchange",

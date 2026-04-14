@@ -17575,7 +17575,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1665568360,
     dimensions: {
-      derivatives: "goosefx"
+      dexs: "goosefx"
     },
     deadUrl: true,
   },

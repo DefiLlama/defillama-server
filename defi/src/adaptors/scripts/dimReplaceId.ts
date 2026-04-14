@@ -6,8 +6,10 @@ import { TABLES, initializeTVLCacheDB } from '../../api2/db/index'
 import { ADAPTER_TYPES } from '../data/types'
 
 // ── Config ──────────────────────────────────────────────────────────────────────
-const OLD_ID = process.argv[2] ?? '7122'
-const NEW_ID = process.argv[3] ?? '7584'
+const OLD_ID = process.argv[2] ?? '2175'
+const NEW_ID = process.argv[3] ?? '2175'
+const OLD_TYPE = 'derivatives'
+const NEW_TYPE = 'dexs'
 // ─────────────────────────────────────────────────────────────────────────────────
 
 if (!OLD_ID || !NEW_ID) {
@@ -27,7 +29,7 @@ async function run() {
 
   // Pull all records for the old ID
   const records = await TABLES.DIMENSIONS_DATA.findAll({
-    where: { id: OLD_ID },
+    where: { id: OLD_ID, type: OLD_TYPE },
     order: [['timeS', 'ASC']],
   }) as any[]
 
@@ -68,7 +70,7 @@ async function run() {
 
   // Check if target ID already has records
   const existingNewRecords = await TABLES.DIMENSIONS_DATA.findAll({
-    where: { id: NEW_ID },
+    where: { id: NEW_ID, type: NEW_TYPE },
   }) as any[]
 
   if (existingNewRecords.length) {
@@ -117,6 +119,7 @@ async function run() {
       await TABLES.DIMENSIONS_DATA.create({
         ...record.dataValues,
         id: NEW_ID,
+        type: NEW_TYPE,
         data: record.dataValues.data,
         bl: record.dataValues.bl,
         blc: record.dataValues.blc,

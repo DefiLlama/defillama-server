@@ -168,9 +168,28 @@ async function cabal(timestamp: number = 0) {
   });
 }
 
+ async function fusdlp(timestamp: number = 0) {
+  // FUSDLP is a yield-bearing LP token backed by reserve assets.
+  // Same address on every supported chain (CREATE2 deterministic deployment).
+  const FUSDLP = "0x3fea1cb36D2C5523c062d0E060EAC253608b4DAf";
+
+  // Ethereum is the canonical chain for FUSDLP pricing. Reserves and the
+  // adjustmentFactor are kept in sync across chains by protocol governance,
+  // so we read the exchange rate once on Ethereum and mirror it everywhere.
+  const chain = "ethereum";
+
+  const api = await getApi(chain, timestamp);
+  const rawExchangeRate = await api.call({ target: FUSDLP, abi: "uint256:getExchangeRateWithAdjustment", });
+  const fusdlpPrice = Number(rawExchangeRate) / 1e18;
+
+  return getWrites({ chain, timestamp, pricesObject: { [FUSDLP]: { price: fusdlpPrice, }, }, projectName: "fusdlp", });
+}
+
+
 export const adapters = {
   solanaAVS,
   wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
+  fusdlp,
 
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {

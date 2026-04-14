@@ -17543,6 +17543,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
+    deprecated: true,
     chains: ["Binance"],
     module: "dexfinance/index.js",
     twitter: "DexFinance",

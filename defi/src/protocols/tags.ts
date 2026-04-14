@@ -34,6 +34,7 @@ export const CategoryTagMap = {
   Interface: [
     "Hyperliquid HIP3 Deployer",
     "Hyperliquid Builder",
+    "Ordely Builder"
   ],
 }
 

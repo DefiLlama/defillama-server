@@ -131,15 +131,16 @@ function parseOstiumMarkets(
 
     const contract = `ostium:${pair.from}-${pair.to}`;
 
-    // OI from subgraph is in 1e18 precision (USDC-denominated with 18 decimal scaling)
-    const longOI = safeFloat(pair.longOI) / 1e18;
-    const shortOI = safeFloat(pair.shortOI) / 1e18;
-    const openInterest = longOI + shortOI;
-
-    // Price: prefer live price feed, fall back to subgraph lastTradePrice
+    // Price: prefer live price feed, fall back to subgraph lastTradePrice (1e18 precision)
     const priceKey = `${pair.from}${pair.to}`;
     const livePrice = prices.get(priceKey);
-    const price = livePrice?.mid ?? safeFloat(pair.lastTradePrice);
+    const price = livePrice?.mid ?? safeFloat(pair.lastTradePrice) / 1e18;
+
+    // OI from subgraph is in BASE ASSET UNITS with 1e18 precision (not USDC).
+    // e.g., XAU longOI = 3.5e21 means 3,517 oz of gold. Multiply by price for USD.
+    const longOI = safeFloat(pair.longOI) / 1e18;
+    const shortOI = safeFloat(pair.shortOI) / 1e18;
+    const openInterest = (longOI + shortOI) * price;
 
     // Volume: pair.id from subgraph is the pair index
     const volume24h = volumes.get(pair.id) ?? 0;

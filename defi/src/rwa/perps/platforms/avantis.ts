@@ -1,6 +1,7 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat } from "./types";
-import { fetchPythPricesByFeedId, fetchOstiumFallbackPrices } from "./pyth";
+import { safeFloat, safeFetch } from "./types";
+import { fetchPythPricesByFeedId } from "./pyth";
+import { applyOstiumFallbackPrices } from "./pyth";
 
 // Avantis — Base
 // Docs: https://sdk.avantisfi.com/introduction.html
@@ -53,17 +54,7 @@ const RWA_GROUP_INDICES = new Set([3, 6]);
 // ---------------------------------------------------------------------------
 
 async function fetchAvantisData(): Promise<AvantisSocketResponse | null> {
-  try {
-    const res = await fetch(AVANTIS_SOCKET_API);
-    if (!res.ok) {
-      console.error(`Avantis socket API ${res.status}: ${res.statusText}`);
-      return null;
-    }
-    return await res.json();
-  } catch (e) {
-    console.error("Avantis fetchData error:", e);
-    return null;
-  }
+  return safeFetch<AvantisSocketResponse>(AVANTIS_SOCKET_API, "Avantis fetchData");
 }
 
 // ---------------------------------------------------------------------------
@@ -135,19 +126,7 @@ export const avantisAdapter: PlatformAdapter = {
     const markets = parseAvantisMarkets(data, pythPrices);
 
     // Fallback: for markets still missing prices, try Ostium's live price feed
-    const missing = markets.filter((m) => m.markPx === 0);
-    if (missing.length > 0) {
-      const ostiumPrices = await fetchOstiumFallbackPrices();
-      for (const m of missing) {
-        const sym = m.contract.split(":")[1]?.split("-")[0] ?? "";
-        const price = ostiumPrices.get(`${sym}USD`) ?? 0;
-        if (price > 0) {
-          m.markPx = price;
-          m.oraclePx = price;
-          m.midPx = price;
-        }
-      }
-    }
+    await applyOstiumFallbackPrices(markets);
 
     return markets;
   },

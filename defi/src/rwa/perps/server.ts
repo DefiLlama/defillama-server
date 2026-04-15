@@ -122,49 +122,28 @@ export function setRoutes(router: HyperExpress.Router): void {
         })
     );
 
-    // Get markets by canonical market key (for example "xyz:META")
-    router.get(
-        '/contract/:contract',
-        errorWrapper(async (req, res) => {
-            const { contract } = req.params;
-            if (!contract) return errorResponse(res, 'Missing contract parameter', 400);
+    // ── Filtering by contract / venue / category ──────────────────────────
+
+    function filterRoute(
+        paramName: string,
+        filterFn: (data: any[], value: string) => any[],
+    ) {
+        return errorWrapper(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
+            const value = req.params[paramName];
+            if (!value) return errorResponse(res, `Missing ${paramName} parameter`, 400);
 
             const currentData = await readRouteData('current.json');
             if (!currentData) return errorResponse(res, 'Data not found', 500);
 
-            const markets = findMarketsByContract(currentData, contract);
-            if (markets.length === 0) return errorResponse(res, `Contract "${contract}" not found`, 404);
-            return successResponse(res, markets, 20);
-        })
-    );
+            const results = filterFn(currentData, value);
+            if (results.length === 0) return errorResponse(res, `${paramName} "${value}" not found`, 404);
+            return successResponse(res, results, 20);
+        });
+    }
 
-    // ── Filtering ────────────────────────────────────────────────────────────
-
-    router.get(
-        '/venue/:venue',
-        errorWrapper(async (req, res) => {
-            const { venue } = req.params;
-            if (!venue) return errorResponse(res, 'Missing venue parameter', 400);
-
-            const currentData = await readRouteData('current.json');
-            if (!currentData) return errorResponse(res, 'Data not found', 500);
-
-            return successResponse(res, findMarketsByVenue(currentData, venue), 20);
-        })
-    );
-
-    router.get(
-        '/category/:category',
-        errorWrapper(async (req, res) => {
-            const { category } = req.params;
-            if (!category) return errorResponse(res, 'Missing category parameter', 400);
-
-            const currentData = await readRouteData('current.json');
-            if (!currentData) return errorResponse(res, 'Data not found', 500);
-
-            return successResponse(res, findMarketsByCategory(currentData, category), 20);
-        })
-    );
+    router.get('/contract/:contract', filterRoute('contract', findMarketsByContract));
+    router.get('/venue/:venue', filterRoute('venue', findMarketsByVenue));
+    router.get('/category/:category', filterRoute('category', findMarketsByCategory));
 
     router.get(
         '/assetGroup/:assetGroup',

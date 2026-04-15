@@ -185,3 +185,31 @@ export async function fetchOstiumFallbackPrices(): Promise<Map<string, number>> 
     return new Map();
   }
 }
+
+/**
+ * For markets still missing prices (markPx === 0), try Ostium's live feed as a fallback.
+ * Mutates markets in place. `resolveKey` extracts the Ostium map key from a market;
+ * defaults to extracting the base symbol from "venue:SYM-QUOTE" and appending "USD".
+ */
+export async function applyOstiumFallbackPrices(
+  markets: import("./types").ParsedPerpsMarket[],
+  resolveKey?: (market: import("./types").ParsedPerpsMarket, ostiumPrices: Map<string, number>) => number,
+): Promise<void> {
+  const missing = markets.filter((m) => m.markPx === 0);
+  if (missing.length === 0) return;
+
+  const ostiumPrices = await fetchOstiumFallbackPrices();
+  const defaultResolve = (m: import("./types").ParsedPerpsMarket) => {
+    const sym = m.contract.split(":")[1]?.split("-")[0] ?? "";
+    return ostiumPrices.get(`${sym}USD`) ?? 0;
+  };
+
+  for (const m of missing) {
+    const price = resolveKey ? resolveKey(m, ostiumPrices) : defaultResolve(m);
+    if (price > 0) {
+      m.markPx = price;
+      m.oraclePx = price;
+      m.midPx = price;
+    }
+  }
+}

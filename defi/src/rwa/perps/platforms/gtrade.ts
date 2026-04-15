@@ -1,6 +1,7 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat } from "./types";
-import { fetchPythPricesBySymbol, fetchOstiumFallbackPrices } from "./pyth";
+import { safeFloat, safeFetch } from "./types";
+import { fetchPythPricesBySymbol } from "./pyth";
+import { applyOstiumFallbackPrices } from "./pyth";
 
 // gTrade (Gains Network) — Arbitrum (primary), Base, Polygon
 // Docs: https://docs.gains.trade/developer/integrators/backend
@@ -115,24 +116,16 @@ interface GtradeVolumeResponse {
  * Returns a Map: "FROM/TO" (e.g., "SPY/USD") → volume in USD.
  */
 async function fetchGtradeVolumes(): Promise<Map<string, number>> {
-  try {
-    const res = await fetch(GTRADE_STATS_URL, {
-      headers: { Accept: "application/json" },
-    });
-    if (!res.ok) {
-      console.error(`gTrade stats ${res.status}: ${res.statusText}`);
-      return new Map();
-    }
-    const data: GtradeVolumeResponse = await res.json();
-    const map = new Map<string, number>();
-    for (const [pair, vol] of Object.entries(data.volumeBreakdown ?? {})) {
-      if (vol > 0) map.set(pair, vol);
-    }
-    return map;
-  } catch (e) {
-    console.error("gTrade fetchVolumes error:", e);
-    return new Map();
+  const data = await safeFetch<GtradeVolumeResponse>(
+    GTRADE_STATS_URL, "gTrade fetchVolumes",
+    { headers: { Accept: "application/json" } },
+  );
+  if (!data) return new Map();
+  const map = new Map<string, number>();
+  for (const [pair, vol] of Object.entries(data.volumeBreakdown ?? {})) {
+    if (vol > 0) map.set(pair, vol);
   }
+  return map;
 }
 
 // ---------------------------------------------------------------------------
@@ -140,17 +133,7 @@ async function fetchGtradeVolumes(): Promise<Map<string, number>> {
 // ---------------------------------------------------------------------------
 
 async function fetchGtradeTradingVars(): Promise<GtradeTradingVars | null> {
-  try {
-    const res = await fetch(`${GTRADE_ARBITRUM_API}/trading-variables`);
-    if (!res.ok) {
-      console.error(`gTrade API ${res.status}: ${res.statusText}`);
-      return null;
-    }
-    return await res.json();
-  } catch (e) {
-    console.error("gTrade fetchTradingVars error:", e);
-    return null;
-  }
+  return safeFetch<GtradeTradingVars>(`${GTRADE_ARBITRUM_API}/trading-variables`, "gTrade fetchTradingVars");
 }
 
 // ---------------------------------------------------------------------------
@@ -240,19 +223,10 @@ export const gtradeAdapter: PlatformAdapter = {
     }
 
     // Fallback: for markets still missing prices, try Ostium's live price feed
-    const missingPrices = markets.filter((m) => m.markPx === 0);
-    if (missingPrices.length > 0) {
-      const ostiumPrices = await fetchOstiumFallbackPrices();
-      for (const m of missingPrices) {
-        const rawSym = m.contract.split(":")[1]?.split("-")[0] ?? "";
-        const price = getOstiumPrice(rawSym, ostiumPrices);
-        if (price > 0) {
-          m.markPx = price;
-          m.oraclePx = price;
-          m.midPx = price;
-        }
-      }
-    }
+    await applyOstiumFallbackPrices(markets, (m, ostiumPrices) => {
+      const rawSym = m.contract.split(":")[1]?.split("-")[0] ?? "";
+      return getOstiumPrice(rawSym, ostiumPrices);
+    });
 
     return markets;
   },

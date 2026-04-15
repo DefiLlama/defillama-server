@@ -1,5 +1,5 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat } from "./types";
+import { safeFloat, safeFetch } from "./types";
 
 // Ostium — Arbitrum
 // Docs: https://ostium-labs.gitbook.io/ostium-docs/developer/api-and-sdk
@@ -57,19 +57,13 @@ const CRYPTO_GROUPS = /crypto/i;
 // ---------------------------------------------------------------------------
 
 async function fetchOstiumPrices(): Promise<Map<string, OstiumPrice>> {
-  try {
-    const res = await fetch(`${OSTIUM_API}/PricePublish/latest-prices`);
-    if (!res.ok) return new Map();
-    const data: OstiumPrice[] = await res.json();
-    const map = new Map<string, OstiumPrice>();
-    for (const p of data) {
-      map.set(`${p.from}${p.to}`, p);
-    }
-    return map;
-  } catch (e) {
-    console.error("Ostium fetchPrices error:", e);
-    return new Map();
+  const data = await safeFetch<OstiumPrice[]>(`${OSTIUM_API}/PricePublish/latest-prices`, "Ostium fetchPrices");
+  if (!data) return new Map();
+  const map = new Map<string, OstiumPrice>();
+  for (const p of data) {
+    map.set(`${p.from}${p.to}`, p);
   }
+  return map;
 }
 
 async function fetchOstiumPairs(): Promise<OstiumSubgraphPair[]> {
@@ -79,39 +73,21 @@ async function fetchOstiumPairs(): Promise<OstiumSubgraphPair[]> {
       group { name maxLeverage }
     }
   }`;
-  try {
-    const res = await fetch(OSTIUM_GRAPH, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
-    if (!res.ok) {
-      console.error(`Ostium subgraph ${res.status}: ${res.statusText}`);
-      return [];
-    }
-    const json = await res.json();
-    return json?.data?.pairs ?? [];
-  } catch (e) {
-    console.error("Ostium fetchPairs error:", e);
-    return [];
-  }
+  const json = await safeFetch<{ data?: { pairs?: OstiumSubgraphPair[] } }>(
+    OSTIUM_GRAPH, "Ostium subgraph",
+    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query }) },
+  );
+  return json?.data?.pairs ?? [];
 }
 
 async function fetchOstiumVolumes(): Promise<Map<string, number>> {
-  try {
-    const res = await fetch(`${OSTIUM_API}/volume/all`);
-    if (!res.ok) return new Map();
-    const json = await res.json();
-    const entries: OstiumVolumeEntry[] = json?.data ?? [];
-    const map = new Map<string, number>();
-    for (const e of entries) {
-      map.set(e.pair_id, e.last_24h_volume);
-    }
-    return map;
-  } catch (e) {
-    console.error("Ostium fetchVolumes error:", e);
-    return new Map();
+  const json = await safeFetch<{ data?: OstiumVolumeEntry[] }>(`${OSTIUM_API}/volume/all`, "Ostium fetchVolumes");
+  if (!json) return new Map();
+  const map = new Map<string, number>();
+  for (const e of json.data ?? []) {
+    map.set(e.pair_id, e.last_24h_volume);
   }
+  return map;
 }
 
 // ---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat } from "./types";
+import { safeFloat, safeFetch } from "./types";
 
 // Helix — Injective chain
 // LCD: https://sentry.lcd.injective.network
@@ -79,52 +79,36 @@ function isRwaTicker(ticker: string): boolean {
 // ---------------------------------------------------------------------------
 
 async function fetchLcdMarkets(): Promise<InjectiveMarketWrapper[]> {
-  try {
-    const res = await fetch(`${INJECTIVE_LCD}/injective/exchange/v2/derivative/markets?status=Active`);
-    if (!res.ok) {
-      console.error(`Injective LCD ${res.status}: ${res.statusText}`);
-      return [];
-    }
-    const data = await res.json();
-    return data?.markets ?? [];
-  } catch (e) {
-    console.error("Helix fetchLcdMarkets error:", e);
-    return [];
-  }
+  const data = await safeFetch<{ markets?: InjectiveMarketWrapper[] }>(
+    `${INJECTIVE_LCD}/injective/exchange/v2/derivative/markets?status=Active`, "Helix fetchLcdMarkets",
+  );
+  return data?.markets ?? [];
 }
 
 async function fetchChronosSummaries(): Promise<Map<string, ChronosSummary>> {
-  try {
-    const res = await fetch(`${INJECTIVE_INDEXER}/api/chronos/v1/derivative/market_summary_all`);
-    if (!res.ok) return new Map();
-    const data: ChronosSummary[] = await res.json();
-    const map = new Map<string, ChronosSummary>();
-    for (const s of data) {
-      if (s.marketId) map.set(s.marketId, s);
-    }
-    return map;
-  } catch (e) {
-    console.error("Helix fetchChronosSummaries error:", e);
-    return new Map();
+  const data = await safeFetch<ChronosSummary[]>(
+    `${INJECTIVE_INDEXER}/api/chronos/v1/derivative/market_summary_all`, "Helix fetchChronosSummaries",
+  );
+  if (!data) return new Map();
+  const map = new Map<string, ChronosSummary>();
+  for (const s of data) {
+    if (s.marketId) map.set(s.marketId, s);
   }
+  return map;
 }
 
 async function fetchOpenInterest(marketIds: string[]): Promise<Map<string, number>> {
   if (marketIds.length === 0) return new Map();
-  try {
-    const params = marketIds.map((id) => `marketIDs=${id}`).join("&");
-    const res = await fetch(`${INJECTIVE_INDEXER}/api/exchange/derivative/v1/openInterest?${params}`);
-    if (!res.ok) return new Map();
-    const data: OIResponse = await res.json();
-    const map = new Map<string, number>();
-    for (const entry of data?.openInterests ?? []) {
-      map.set(entry.marketId, safeFloat(entry.openInterest));
-    }
-    return map;
-  } catch (e) {
-    console.error("Helix fetchOpenInterest error:", e);
-    return new Map();
+  const params = marketIds.map((id) => `marketIDs=${id}`).join("&");
+  const data = await safeFetch<OIResponse>(
+    `${INJECTIVE_INDEXER}/api/exchange/derivative/v1/openInterest?${params}`, "Helix fetchOpenInterest",
+  );
+  if (!data) return new Map();
+  const map = new Map<string, number>();
+  for (const entry of data.openInterests ?? []) {
+    map.set(entry.marketId, safeFloat(entry.openInterest));
   }
+  return map;
 }
 
 // ---------------------------------------------------------------------------

@@ -73,6 +73,28 @@ export function safeFloat(val: string | number | undefined | null): number {
   return Number.isFinite(num) ? num : 0;
 }
 
+/**
+ * Fetch JSON from a URL with standardized error handling.
+ * Returns `null` on any failure (network error, non-2xx status).
+ */
+export async function safeFetch<T>(
+  url: string,
+  label: string,
+  init?: RequestInit,
+): Promise<T | null> {
+  try {
+    const res = await fetch(url, init);
+    if (!res.ok) {
+      console.error(`${label} ${res.status}: ${res.statusText}`);
+      return null;
+    }
+    return await res.json();
+  } catch (e) {
+    console.error(`${label} error:`, e);
+    return null;
+  }
+}
+
 export function pctChange(current: number, previous: number): number {
   if (previous <= 0) return 0;
   return ((current - previous) / previous) * 100;

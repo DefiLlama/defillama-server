@@ -16795,5 +16795,65 @@ const data5: Protocol[] = [
       dexs: "jupiterz",
     }
   },
+  {
+    id: "7669",
+    name: "Bounce.Tech",
+    address: null,
+    symbol: "-",
+    url: "https://bounce.tech/",
+    description: "Bounce.Tech is a non-custodial leveraged token protocol on Hyperliquid that lets users mint and redeem ERC-20 tokens representing rebalanced perpetual futures exposure to underlying assets.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/bounce.tech.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "BounceTech",
+    dimensions: {
+      fees: "bounce-tech",
+    }
+  },
+  {
+    id: "7670",
+    name: "OpenEden PRISM",
+    address: "0x06Bb4ab600b7D22eB2c312f9bAbC22Be6a619046",
+    symbol: "PRISM",
+    url: "https://openeden.com/prism",
+    description:
+      "PRISM (OpenEden Multi Strategy Yield Token) is a synthetic, multi-strategy yield token",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/openeden-prism.jpg`,
+    audits: "2",
+    gecko_id: "portfolio-of-risk-adjusted-investment-strategy-mix",
+    cmcId: null,
+    category: "Onchain Capital Allocator",
+    chains: ["Ethereum"],
+    module: "openeden-prism/index.js",
+    twitter: "OpenEden_X",
+    audit_links: ["https://docs.openeden.com/prism/security-and-audit-reports"],
+    parentProtocol: "parent#openeden",
+    listedAt: 1776223742
+  },
+  {
+    id: "7671",
+    name: "Dango Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://dango.exchange/",
+    description:
+      "Dango Bridge is the deposit interface that lets users move assets into the Dango ecosystem",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/dango-bridge.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum"],
+    module: "dango-bridge/index.js",
+    twitter: "dango",
+    listedAt: 1776224283
+  },
 ];
 export default data5;

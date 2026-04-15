@@ -29369,7 +29369,7 @@ const data4: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["Orderly Builder"],
+    tags: ["SYMMIO Builder"],
     chains: ["Berachain"],
     module: "dummy.js",
     twitter: "LodeTrade",

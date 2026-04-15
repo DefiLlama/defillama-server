@@ -577,6 +577,11 @@
       "symbol": "TRON",
       "to": "coingecko#tron"
     },
+    "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb": {
+      "decimals": "6",
+      "symbol": "TRON",
+      "to": "coingecko#tron"
+    },
     "TUPM7K8REVzD2UdV4R5fe5M8XbnR2DdoJ6": {
       "decimals": "18",
       "symbol": "HTX",

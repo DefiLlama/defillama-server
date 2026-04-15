@@ -14600,7 +14600,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: "omnipair",
     cmcId: null,
-    tags: ["AMM", "Lending"],
+    category: "Lending",
     chains: ["Solana"],
     module: "omnipair/index.js",
     treasury: "omnipair.js",

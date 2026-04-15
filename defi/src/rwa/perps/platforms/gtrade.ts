@@ -99,6 +99,43 @@ function getOstiumPrice(gtradeSymbol: string, ostiumPrices: Map<string, number>)
 }
 
 // ---------------------------------------------------------------------------
+// Volume — stats.gains.trade exposes per-pair 24h volume as JSON
+// ---------------------------------------------------------------------------
+
+const GTRADE_STATS_URL = "https://stats.gains.trade/volume";
+
+interface GtradeVolumeResponse {
+  totalVolume: number;
+  volumeBreakdown: Record<string, number>; // "SPY/USD" → 46991.61
+  lastRefreshed: string;
+}
+
+/**
+ * Fetch per-pair 24h volume from the gTrade stats API.
+ * Returns a Map: "FROM/TO" (e.g., "SPY/USD") → volume in USD.
+ */
+async function fetchGtradeVolumes(): Promise<Map<string, number>> {
+  try {
+    const res = await fetch(GTRADE_STATS_URL, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      console.error(`gTrade stats ${res.status}: ${res.statusText}`);
+      return new Map();
+    }
+    const data: GtradeVolumeResponse = await res.json();
+    const map = new Map<string, number>();
+    for (const [pair, vol] of Object.entries(data.volumeBreakdown ?? {})) {
+      if (vol > 0) map.set(pair, vol);
+    }
+    return map;
+  } catch (e) {
+    console.error("gTrade fetchVolumes error:", e);
+    return new Map();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Fetchers
 // ---------------------------------------------------------------------------
 
@@ -152,7 +189,7 @@ function parseGtradeMarkets(data: GtradeTradingVars): ParsedPerpsMarket[] {
       venue: "gtrade",
       platform: "gtrade",
       openInterest: oiUsd,
-      volume24h: 0, // gTrade doesn't expose 24h volume via REST
+      volume24h: 0, // filled below from stats.gains.trade
       markPx: 0,    // Prices come from Chainlink DON, not in trading-variables
       oraclePx: 0,
       midPx: 0,
@@ -181,11 +218,13 @@ export const gtradeAdapter: PlatformAdapter = {
     const markets = parseGtradeMarkets(data);
     if (markets.length === 0) return markets;
 
-    // Fetch prices from Pyth Hermes for all RWA base symbols
-    // Use toPythSymbol to normalize gTrade symbols → Pyth symbols
+    // Fetch prices and volumes in parallel
     const rawSymbols = markets.map((m) => m.contract.split(":")[1]?.split("-")[0]).filter(Boolean);
     const pythSymbols = [...new Set(rawSymbols.map(toPythSymbol))];
-    const pythPrices = await fetchPythPricesBySymbol(pythSymbols);
+    const [pythPrices, volumes] = await Promise.all([
+      fetchPythPricesBySymbol(pythSymbols),
+      fetchGtradeVolumes(),
+    ]);
 
     for (const m of markets) {
       const rawSym = m.contract.split(":")[1]?.split("-")[0] ?? "";
@@ -194,6 +233,10 @@ export const gtradeAdapter: PlatformAdapter = {
       m.markPx = price;
       m.oraclePx = price;
       m.midPx = price;
+
+      // Volume: stats API uses "FROM/TO" format (e.g., "SPY/USD")
+      const pair = m.contract.split(":")[1]?.replace("-", "/") ?? "";
+      m.volume24h = volumes.get(pair) ?? 0;
     }
 
     // Fallback: for markets still missing prices, try Ostium's live price feed

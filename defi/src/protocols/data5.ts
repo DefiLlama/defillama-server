@@ -16855,5 +16855,48 @@ const data5: Protocol[] = [
     twitter: "dango",
     listedAt: 1776224283
   },
+  {
+    id: "7672",
+    name: "Priority",
+    address: null,
+    symbol: "-",
+    url: "https://t.me/prioritytradebot",
+    description:
+      "Telegram trading bot designed for MegaETH",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/priority.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "PriorityTrade_",
+    dimensions: {
+      dexs: "priority-trade",
+      fees: "priority-trade"
+    }
+  },
+  {
+    id: "7673",
+    name: "rheon",
+    address: null,
+    symbol: "-",
+    url: " ",
+    description:
+      "Rheon routes swaps across 15+ Avalanche DEX protocols",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/rheon.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Avalanche"],
+    module: "dummy.js",
+    twitter: "rheonxyz",
+    dimensions: {
+      aggregators: "rheon"
+    }
+  },
 ];
 export default data5;

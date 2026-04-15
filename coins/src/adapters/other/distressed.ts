@@ -354,6 +354,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   sonic: {
     wstkscUSD: "0x896f4D49916aC5cfC36d7a260a7039ba4Ea317b6",
+    ghUSDC: "0xf6bc16b79c469b94cdd25f3e2334dd4fee47a581"
   },
   berachain: {
     "pumpBTC.bera": "0x1fCca65fb6Ae3b2758b9b2B394CB227eAE404e1E",

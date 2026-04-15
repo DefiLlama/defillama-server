@@ -376,11 +376,6 @@
     }
   },
   "sui": {
-    "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": {
-      "decimals": "8",
-      "symbol": "enzoBTC",
-      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin"
-    },
     "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN": {
       "decimals": "8",
       "symbol": "BNB",
@@ -11243,23 +11238,23 @@
   },
   "stellar": {
     "CDT3KU6TQZNOHKNOHNAFFDQZDURVC3MSTL4ML7TUTZGNOPBZCLABP4FR": {
-      "decimals": 7,
+      "decimals": 5,
       "symbol": "UKTBL",
       "to": "asset#polygon:0x970e2adc2fdf53aea6b5fa73ca6dc30eafedfe3d"
     },
     "CBGV2QFQBBGEQRUKUMCPO3SZOHDDYO6SCP5CH6TW7EALKVHCXTMWDDOF": {
       "to": "coingecko#eutbl",
-      "decimals": 7,
+      "decimals": 5,
       "symbol": "EUTBL"
     },
     "CDWOB6T7SVSMMQN5V3P2OPTBAXOP7DAZHGVW3PYTZIKHVFKN6TBSXR6A": {
       "to": "coingecko#spiko-digital-assets-cash-carry-fund-euro-share-class",
-      "decimals": 7,
+      "decimals": 5,
       "symbol": "EURSPKCC"
     },
     "CARUUX2FZNPH6DGJOEUFSIUQWYHNL5AVDV7PMVSHWL7OBYIBFC76F4TO": {
       "to": "coingecko#spiko-us-t-bills-money-market-fund",
-      "decimals": 7,
+      "decimals": 5,
       "symbol": "USTBL"
     },
     "CDS2GCAQTNQINSCJUJIVBJXILKBWP5PU7LOBGHMP3X47QCQBFKPMTCNT": {

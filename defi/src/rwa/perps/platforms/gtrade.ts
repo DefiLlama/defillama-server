@@ -1,6 +1,6 @@
 import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
 import { safeFloat } from "./types";
-import { fetchPythPricesBySymbol } from "./pyth";
+import { fetchPythPricesBySymbol, fetchOstiumFallbackPrices } from "./pyth";
 
 // gTrade (Gains Network) — Arbitrum (primary), Base, Polygon
 // Docs: https://docs.gains.trade/developer/integrators/backend
@@ -53,6 +53,50 @@ interface GtradeTradingVars {
 
 // RWA group names on gTrade
 const RWA_GROUP_NAMES = /stock|indic|commod/i;
+
+// gTrade symbol → Pyth symbol aliases for known mismatches
+const PYTH_SYMBOL_ALIASES: Record<string, string> = {
+  FB: "META",       // Facebook rebranded to Meta
+  WTI: "XTI",       // WTI crude oil → Pyth uses XTI (Metal.XTI/USD)
+  HG: "XCU",        // Copper (COMEX symbol HG) → Pyth uses XCU (Metal.XCU/USD)
+};
+
+/**
+ * Normalize a gTrade symbol for Pyth lookup:
+ * 1. Strip `_N` numeric suffixes (e.g., GOOGL_1 → GOOGL, TSLA_1 → TSLA)
+ * 2. Apply known aliases (e.g., FB → META, WTI → XTI)
+ */
+function toPythSymbol(gtradeSymbol: string): string {
+  const stripped = gtradeSymbol.replace(/_\d+$/, "");
+  return PYTH_SYMBOL_ALIASES[stripped] ?? stripped;
+}
+
+// gTrade symbol → Ostium symbol aliases for fallback pricing
+// Used when Pyth has no price (off-hours, inactive feeds, missing symbols)
+const OSTIUM_SYMBOL_ALIASES: Record<string, string> = {
+  WTI: "CLUSD",       // CL is Ostium's crude oil symbol
+  HG: "HGUSD",        // Ostium uses HG for copper too
+  SPX500: "SPXUSD",   // Ostium index symbol
+  NAS100: "NDXUSD",   // Ostium index symbol
+  USA30: "DJIUSD",    // Ostium index symbol
+  BRENT: "BRENTUSD",  // Ostium commodity symbol
+};
+
+/**
+ * Look up a gTrade symbol in the Ostium price map.
+ * Tries the direct symbol+USD first, then known aliases.
+ */
+function getOstiumPrice(gtradeSymbol: string, ostiumPrices: Map<string, number>): number {
+  const stripped = gtradeSymbol.replace(/_\d+$/, "");
+  // Try known alias first
+  const aliasKey = OSTIUM_SYMBOL_ALIASES[stripped];
+  if (aliasKey) {
+    const price = ostiumPrices.get(aliasKey);
+    if (price) return price;
+  }
+  // Try direct: SYMBOL + USD
+  return ostiumPrices.get(`${stripped}USD`) ?? 0;
+}
 
 // ---------------------------------------------------------------------------
 // Fetchers
@@ -138,15 +182,33 @@ export const gtradeAdapter: PlatformAdapter = {
     if (markets.length === 0) return markets;
 
     // Fetch prices from Pyth Hermes for all RWA base symbols
-    const symbols = [...new Set(markets.map((m) => m.contract.split(":")[1]?.split("-")[0]).filter(Boolean))];
-    const pythPrices = await fetchPythPricesBySymbol(symbols);
+    // Use toPythSymbol to normalize gTrade symbols → Pyth symbols
+    const rawSymbols = markets.map((m) => m.contract.split(":")[1]?.split("-")[0]).filter(Boolean);
+    const pythSymbols = [...new Set(rawSymbols.map(toPythSymbol))];
+    const pythPrices = await fetchPythPricesBySymbol(pythSymbols);
 
     for (const m of markets) {
-      const sym = m.contract.split(":")[1]?.split("-")[0]?.toUpperCase();
-      const price = pythPrices.get(sym ?? "") ?? 0;
+      const rawSym = m.contract.split(":")[1]?.split("-")[0] ?? "";
+      const pythSym = toPythSymbol(rawSym).toUpperCase();
+      const price = pythPrices.get(pythSym) ?? 0;
       m.markPx = price;
       m.oraclePx = price;
       m.midPx = price;
+    }
+
+    // Fallback: for markets still missing prices, try Ostium's live price feed
+    const missingPrices = markets.filter((m) => m.markPx === 0);
+    if (missingPrices.length > 0) {
+      const ostiumPrices = await fetchOstiumFallbackPrices();
+      for (const m of missingPrices) {
+        const rawSym = m.contract.split(":")[1]?.split("-")[0] ?? "";
+        const price = getOstiumPrice(rawSym, ostiumPrices);
+        if (price > 0) {
+          m.markPx = price;
+          m.oraclePx = price;
+          m.midPx = price;
+        }
+      }
     }
 
     return markets;

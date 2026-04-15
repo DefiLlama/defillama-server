@@ -1,9 +1,12 @@
 /**
- * Shared Pyth Hermes price fetcher for RWA perps adapters.
+ * Shared price fetchers for RWA perps adapters.
  *
- * Two entry points:
+ * Primary: Pyth Hermes
  *   fetchPythPricesByFeedId(ids)   — when the caller already has Pyth feed IDs (Avantis)
  *   fetchPythPricesBySymbol(syms)  — maps base symbols ("AAPL") → feed IDs via benchmarks API (gTrade)
+ *
+ * Fallback: Ostium live price feed
+ *   fetchOstiumFallbackPrices()    — fetches all available prices from Ostium
  */
 
 const PYTH_HERMES = "https://hermes.pyth.network/v2/updates/price/latest";
@@ -23,13 +26,14 @@ interface PythBenchmarkFeed {
   };
 }
 
-let feedMapCache: Map<string, string> | null = null;
+let feedMapCache: Map<string, string[]> | null = null;
 
 /**
  * Build a lowercase base symbol → feed ID mapping from the Pyth benchmarks API.
- * Only includes regular USD feeds (excludes .ON/.POST/.PRE overnight/extended variants).
+ * Stores multiple feed IDs per symbol: regular-hours first, then .ON (overnight) as fallback.
+ * This ensures equity symbols return prices even when US markets are closed.
  */
-async function getFeedMap(): Promise<Map<string, string>> {
+async function getFeedMap(): Promise<Map<string, string[]>> {
   if (feedMapCache) return feedMapCache;
 
   try {
@@ -37,16 +41,45 @@ async function getFeedMap(): Promise<Map<string, string>> {
     if (!res.ok) throw new Error(`Pyth benchmarks ${res.status}`);
     const feeds: PythBenchmarkFeed[] = await res.json();
 
-    const map = new Map<string, string>();
+    // Collect feeds by session type: regular, overnight (.ON), pre-market (.PRE), post-market (.POST)
+    // Priority: regular > ON > PRE > POST (try each in order until a non-zero price is found)
+    const buckets: Record<string, Map<string, string>> = {
+      regular: new Map(),
+      on: new Map(),
+      pre: new Map(),
+      post: new Map(),
+    };
+
     for (const f of feeds) {
       const { base, quote_currency, symbol } = f.attributes;
       if (quote_currency !== "USD") continue;
-      // Skip overnight/pre/post-market variants
-      if (/\.(ON|POST|PRE)$/.test(symbol)) continue;
       const key = base?.toLowerCase();
-      if (key && !map.has(key)) {
-        map.set(key, "0x" + f.id);
+      if (!key) continue;
+      const feedId = "0x" + f.id;
+
+      let bucket: string;
+      if (/\.ON$/.test(symbol)) bucket = "on";
+      else if (/\.PRE$/.test(symbol)) bucket = "pre";
+      else if (/\.POST$/.test(symbol)) bucket = "post";
+      else bucket = "regular";
+
+      const bmap = buckets[bucket];
+      if (!bmap.has(key)) bmap.set(key, feedId);
+    }
+
+    // Build combined map: regular first, then fallbacks in priority order
+    const map = new Map<string, string[]>();
+    const allKeys = new Set([
+      ...buckets.regular.keys(), ...buckets.on.keys(),
+      ...buckets.pre.keys(), ...buckets.post.keys(),
+    ]);
+    for (const key of allKeys) {
+      const ids: string[] = [];
+      for (const b of ["regular", "on", "pre", "post"]) {
+        const feedId = buckets[b].get(key);
+        if (feedId) ids.push(feedId);
       }
+      map.set(key, ids);
     }
 
     feedMapCache = map;
@@ -95,6 +128,7 @@ export async function fetchPythPricesByFeedId(
 /**
  * Fetch latest prices for a list of base symbols (e.g., "AAPL", "XAU", "TSLA").
  * Resolves symbols → Pyth feed IDs via the benchmarks API, then fetches from Hermes.
+ * For equity symbols, falls back to overnight feed if regular-hours feed returns no price.
  * Returns a Map: uppercase symbol → USD price.
  */
 export async function fetchPythPricesBySymbol(
@@ -102,21 +136,52 @@ export async function fetchPythPricesBySymbol(
 ): Promise<Map<string, number>> {
   const feedMap = await getFeedMap();
 
-  const symbolToFeedId: Array<{ symbol: string; feedId: string }> = [];
+  const symbolToFeedIds: Array<{ symbol: string; feedIds: string[] }> = [];
   for (const sym of symbols) {
-    const feedId = feedMap.get(sym.toLowerCase());
-    if (feedId) symbolToFeedId.push({ symbol: sym.toUpperCase(), feedId });
+    const feedIds = feedMap.get(sym.toLowerCase());
+    if (feedIds && feedIds.length > 0) symbolToFeedIds.push({ symbol: sym.toUpperCase(), feedIds });
   }
 
-  if (symbolToFeedId.length === 0) return new Map();
+  if (symbolToFeedIds.length === 0) return new Map();
 
-  const feedIds = symbolToFeedId.map((s) => s.feedId);
-  const pricesByFeedId = await fetchPythPricesByFeedId(feedIds);
+  // Fetch prices for all feed IDs (regular + overnight fallbacks)
+  const allFeedIds = symbolToFeedIds.flatMap((s) => s.feedIds);
+  const pricesByFeedId = await fetchPythPricesByFeedId([...new Set(allFeedIds)]);
 
   const result = new Map<string, number>();
-  for (const { symbol, feedId } of symbolToFeedId) {
-    const price = pricesByFeedId.get(feedId);
-    if (price !== undefined) result.set(symbol, price);
+  for (const { symbol, feedIds } of symbolToFeedIds) {
+    // Try feeds in order: regular first, then overnight fallback
+    for (const feedId of feedIds) {
+      const price = pricesByFeedId.get(feedId);
+      if (price !== undefined) {
+        result.set(symbol, price);
+        break;
+      }
+    }
   }
   return result;
+}
+
+// ---------------------------------------------------------------------------
+// Fallback: Ostium live price feed
+// ---------------------------------------------------------------------------
+
+/**
+ * Fetch all latest prices from Ostium's live price API.
+ * Returns a Map keyed by "from+to" (e.g., "AAPLUSD", "XAUUSD", "SPXUSD").
+ * Used as a fallback when Pyth doesn't have a price for a symbol.
+ */
+export async function fetchOstiumFallbackPrices(): Promise<Map<string, number>> {
+  try {
+    const res = await fetch("https://metadata-backend.ostium.io/PricePublish/latest-prices");
+    if (!res.ok) return new Map();
+    const data: Array<{ from: string; to: string; mid: number }> = await res.json();
+    const map = new Map<string, number>();
+    for (const p of data) {
+      if (p.mid > 0) map.set(`${p.from}${p.to}`, p.mid);
+    }
+    return map;
+  } catch {
+    return new Map();
+  }
 }

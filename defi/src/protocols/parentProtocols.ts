@@ -8524,15 +8524,16 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#ramses-exchange-hl",
-    name: "Ramses Exchange HL",
-    url: "https://ramses.xyz",
+    name: "RamsesX",
+    url: "https://www.ramses.xyz/",
     description:
-      "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
-    logo: `${baseIconsUrl}/ramses-exchange-hl.jpg`,
-    gecko_id: null,
-    cmcId: null,
+      "RamsesX is a ve(3,3) liquidity layer and exchange with legacy and concentrated liquidity deployments across Arbitrum and HyperEVM.",
+    logo: `${baseIconsUrl}/ramsesx.png`,
+    gecko_id: "ramses-exchange",
+    cmcId: "23858",
     chains: [],
     twitter: "RamsesExchange",
+    github: ["RamsesExchange"],
   },
   {
     id: "parent#fufuture",

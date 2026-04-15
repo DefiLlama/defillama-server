@@ -478,7 +478,7 @@ async function generateSearchList() {
       institutionMetadata: Record<string, { name: string; ticker: string }>;
     },
     {
-      tickers: Array<string>;
+      canonicalMarketIds: Array<string>;
       platforms: Array<string>;
       categories: Array<string>;
       chains: Array<string>;
@@ -521,14 +521,15 @@ async function generateSearchList() {
       defaultResponse: [],
     }).then((res) => {
       if (!Array.isArray(res)) {
-        console.log("Unexpected response while fetching RWA ticker to name map:", res);
-        throw new Error("Failed to fetch RWA ticker to name map from RWA API");
+        console.log("Unexpected response while fetching RWA canonical market id to name map:", res);
+        throw new Error("Failed to fetch RWA canonical market id to name map from RWA API");
       }
       const final = {} as Record<string, string>;
       for (const rwa of res) {
         if (rwa.category?.includes("RWA Perps")) continue;
-        if (final[rwa.ticker]) continue;
-        final[rwa.ticker] = rwa.assetName;
+        if (!rwa.canonicalMarketId) continue;
+        if (final[rwa.canonicalMarketId]) continue;
+        final[rwa.canonicalMarketId] = rwa.assetName;
       }
       return final;
     }),
@@ -1037,15 +1038,14 @@ async function generateSearchList() {
     });
   }
   const rwaList: Array<SearchResult> = [];
-  for (const ticker of rwaListData.tickers) {
-    const name = rwaTickerToNameMap[ticker];
-    if (!name) continue;
-    const tickerSlug = rwaSlug(ticker);
+  for (const canonicalMarketId of rwaListData.canonicalMarketIds) {
+    const name = rwaTickerToNameMap[canonicalMarketId];
+    const encodedCanonicalMarketId = encodeURIComponent(canonicalMarketId);
     rwaList.push({
-      id: `rwa_asset_${normalize(tickerSlug)}`,
-      ...(name ? { name, symbol: ticker } : { name: ticker }),
-      route: `/rwa/asset/${tickerSlug}`,
-      v: tastyMetrics[`/rwa/asset/${tickerSlug}`] ?? 0,
+      id: `rwa_asset_${normalize(canonicalMarketId)}`,
+      ...(name ? { name, symbol: canonicalMarketId } : { name: canonicalMarketId }),
+      route: `/rwa/asset/${encodedCanonicalMarketId}`,
+      v: tastyMetrics[`/rwa/asset/${encodedCanonicalMarketId}`] ?? 0,
       type: "RWA",
     });
   }

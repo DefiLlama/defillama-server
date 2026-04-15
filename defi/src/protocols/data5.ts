@@ -16898,5 +16898,26 @@ const data5: Protocol[] = [
       aggregators: "rheon"
     }
   },
+  {
+    id: "7674",
+    name: "Travessia Credit",
+    address: null,
+    symbol: "-",
+    url: "https://www.travessiacredit.com/",
+    description:
+      "On-chain credit infrastructure for real-world assets",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/travessia-credit.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA Lending",
+    chains: ["Monad"],
+    module: "travessia/index.js",
+    twitter: "TravessiaCredit",
+    github: ["RedVeil"],
+    audit_links: ["https://docs.travessiacredit.com/pages/security-audits-risk-controls.html"],
+    listedAt: 1776278881
+  },
 ];
 export default data5;

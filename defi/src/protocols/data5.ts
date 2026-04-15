@@ -16919,5 +16919,26 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.travessiacredit.com/pages/security-audits-risk-controls.html"],
     listedAt: 1776278881
   },
+  {
+    id: "7675",
+    name: "FlowDex HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/flowdex-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "flowdex"
+    }
+  },
 ];
 export default data5;

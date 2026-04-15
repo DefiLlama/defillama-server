@@ -11237,6 +11237,26 @@
     }
   },
   "stellar": {
+    "CDGSC6BA4TCAOVSFQCUEHDMOIIHYYVNYBT6YEARS4MX3ITAHUINVGQHX": {
+      "to": "coingecko#safo",
+      "decimals": 5,
+      "symbol": "SAFO"
+    },
+    "CBOOCGZSVRSZFRE4U2NWR2B4RXYVJWRCBTGOUD2JPI2TDJPWMTJX7FZP": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-eur",
+      "decimals": 5,
+      "symbol": "eurSAFO"
+    },
+    "CAGYRRKPFSWKM6SJOE4QAAVYMOSHMDS5WOQ4T5A2E6XNCU7LZZKUNQKP": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-gbp",
+      "decimals": 5,
+      "symbol": "gbpSAFO"
+    },
+    "CAJD2IBSP7VO2VYJQUYJSOGPJINTUYV7MQITINXVPTIH3CCLCUENNMW4": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-chf",
+      "decimals": 5,
+      "symbol": "chfSAFO"
+    },
     "CDT3KU6TQZNOHKNOHNAFFDQZDURVC3MSTL4ML7TUTZGNOPBZCLABP4FR": {
       "decimals": 5,
       "symbol": "UKTBL",

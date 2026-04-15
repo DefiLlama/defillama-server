@@ -84,5 +84,3 @@ export async function safo(timestamp: number = 0): Promise<Write[]> {
 
   return writes;
 }
-
-safo() // ts-node coins/src/adapters/rwa/safo.ts

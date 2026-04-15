@@ -310,9 +310,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             };
             kafkaItems.push(item);
             await ddb.put(item);
-            await dualWriteToChRedis([item]).catch(e => {
-              console.error(`[CH/Redis dual-write] platform mapping non-fatal: ${(e as Error).message}`);
-            });
           } catch (e) {
             console.error(
               `[scripts - getAndStoreCoins] Error storing platform data for ${coin.id} on ${PK}`,
@@ -333,6 +330,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
     deleteStaleKeysPromise,
   ]);
+
+  if (kafkaItems.length > 0) {
+    await dualWriteToChRedis(kafkaItems).catch(e => {
+      console.error(`[CH/Redis dual-write] platform mappings non-fatal: ${(e as Error).message}`);
+    });
+  }
 }
 
 const HOUR = 3600;

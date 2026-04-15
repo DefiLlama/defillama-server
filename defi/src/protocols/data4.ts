@@ -28402,7 +28402,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    tags: ["Prop AMM"],
     chains: ["Sui"],
     module: "dummy.js",
     twitter: "Lotusfinance_io",

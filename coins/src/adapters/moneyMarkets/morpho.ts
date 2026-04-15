@@ -7,6 +7,7 @@ import { getTokenInfoMap } from "../utils/erc20";
 import { request } from "@defillama/sdk/build/util/graph";
 import { getConfig } from "../../utils/cache";
 import getWrites from "../utils/getWrites";
+import { getTokenAndRedirectDataMap } from "../utils/database";
 
 type VaultDatas = {
   [vault: string]: {
@@ -345,10 +346,23 @@ export async function morphoBlue(timestamp: number = 0) {
         };
       });
 
+      // Filter out pools with < $10k TVL
+      const uniqueUnderlyings = [...new Set(Object.values(pricesObject).map((v) => v.underlying))];
+      const underlyingPrices = await getTokenAndRedirectDataMap(uniqueUnderlyings, chain, timestamp);
+      const filteredPricesObject: typeof pricesObject = {};
+      vaults.forEach((vault, i) => {
+        if (!pricesObject[vault]) return;
+        const underlyingPrice = underlyingPrices[pricesObject[vault].underlying]?.price;
+        if (!underlyingPrice) return;
+        const tvl = (Number(totalAssets[i]) / 10 ** (underlyingDecimals[i] ?? 0)) * underlyingPrice;
+        if (tvl < 10_000) return;
+        filteredPricesObject[vault] = pricesObject[vault];
+      });
+
       const chainWrites = await getWrites({
         chain,
         timestamp,
-        pricesObject,
+        pricesObject: filteredPricesObject,
         projectName: "morpho",
         confidence: 0.85
       });

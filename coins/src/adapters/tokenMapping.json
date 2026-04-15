@@ -16202,6 +16202,11 @@
     }
   },
   "monad": {
+    "0xd7acb868f97f8286d5d3a0fd5ef112a8a72ecd90": {
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin",
+      "decimals": 8,
+      "symbol": "enzoBTC"
+    },
     "0x650b616b46fF94000Eb115926aB8393B90788D76": {
       "decimals": "6",
       "symbol": "rwaUSDi",

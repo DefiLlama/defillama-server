@@ -31,7 +31,7 @@ fi
 git pull -q
 
 llama_runner init-defi
-# llama_runner rwa-cron
+llama_runner rwa-cron
 
 # start RWA server
 timeout 6m npx pm2 startOrReload src/rwa/ecosystem.config.js

@@ -15740,7 +15740,7 @@ const data5: Protocol[] = [
     tags: ["Onchain Equity"],
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "apabordeaux",
+    twitter: "apyx_fi",
     dimensions: {
       fees: "apyx-protocol",
     },

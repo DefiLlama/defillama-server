@@ -200,4 +200,5 @@ export default {
   anchored: require("./rwa/anchored"),
   redstone: require("./oracles/redstone"),
   navTokens: require("./rwa/navTokens"),
+  safo: require("./rwa/safo"),
 };

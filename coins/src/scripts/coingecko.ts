@@ -330,6 +330,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
     deleteStaleKeysPromise,
   ]);
+
+  if (kafkaItems.length > 0) {
+    await dualWriteToChRedis(kafkaItems).catch(e => {
+      console.error(`[CH/Redis dual-write] platform mappings non-fatal: ${(e as Error).message}`);
+    });
+  }
 }
 
 const HOUR = 3600;

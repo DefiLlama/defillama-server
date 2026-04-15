@@ -199,4 +199,5 @@ export default {
   m0: require("./other/m0"),
   anchored: require("./rwa/anchored"),
   redstone: require("./oracles/redstone"),
+  navTokens: require("./rwa/navTokens"),
 };

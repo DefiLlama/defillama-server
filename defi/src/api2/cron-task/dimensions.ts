@@ -413,20 +413,6 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
               protocol.info.chains.push(chainLabel)
               protocolChainKeySet.add(chain)
             }
-
-
-            if (skipChainSummary) return;
-            if (!value) return; // skip zero values
-            if (!summary.chainSummary![chain])
-              summary.chainSummary![chain] = initSummaryItem(true)
-            const chainSummary = summary.chainSummary![chain]
-
-            if (!chainSummary.earliestTimestamp || timestamp < chainSummary.earliestTimestamp)
-              chainSummary.earliestTimestamp = timestamp
-
-            chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
-            if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
-            chainSummary.chartBreakdown[timeS][protocolName] = value
             
             // add to categorySummary, only child protocols and not chains
             if (!isParentProtocol && protocol.info.protocolType !== ProtocolType.CHAIN) {
@@ -456,6 +442,19 @@ ${tableToString(invalidFinancialStatementRecords, ['protocol', 'timeframe', 'key
                 categoryChainSummary.chartBreakdown[timeS][protocolName] = (categoryChainSummary.chartBreakdown[timeS][protocolName] ?? 0) + value;
               }
             }
+
+            if (skipChainSummary) return;
+            if (!value) return; // skip zero values
+            if (!summary.chainSummary![chain])
+              summary.chainSummary![chain] = initSummaryItem(true)
+            const chainSummary = summary.chainSummary![chain]
+
+            if (!chainSummary.earliestTimestamp || timestamp < chainSummary.earliestTimestamp)
+              chainSummary.earliestTimestamp = timestamp
+
+            chainSummary.chart[timeS] = (chainSummary.chart[timeS] ?? 0) + value
+            if (!chainSummary.chartBreakdown[timeS]) chainSummary.chartBreakdown[timeS] = {}
+            chainSummary.chartBreakdown[timeS][protocolName] = value
           })
         }
       }

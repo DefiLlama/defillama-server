@@ -2441,7 +2441,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dexfinance",
-    name: "DexFinance",
+    name: "DexFi",
     url: "https://dexfi.com/",
     description:
       "Bringing the world tools to optimize and simplify DeFi investing.",

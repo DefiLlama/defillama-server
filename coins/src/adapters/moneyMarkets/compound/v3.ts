@@ -6,32 +6,30 @@ import { getTokenInfo } from "../../utils/erc20";
 import { Write } from "../../utils/dbInterfaces";
 import * as sdk from "@defillama/sdk";
 
-const assets: { [chain: string]: string } = {
-  base: "0xb125E6687d4313864e53df431d5425969c15Eb2F",
-  arbitrum: "0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf",
+const assets: { [chain: string]: string[] } = {
+  base: ["0xb125E6687d4313864e53df431d5425969c15Eb2F"],
+  arbitrum: [
+    "0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf", // cUSDCv3
+    "0xd98be00b5d27fc98112bde293e487f8d4ca57d07", // cUSDTv3
+  ],
 };
 
-async function getTokenPrices(chain: string, timestamp: number) {
+async function getCometPrices(
+  chain: string,
+  comet: string,
+  timestamp: number,
+) {
   const api = new sdk.ChainApi({ chain, timestamp });
 
   const [numAssets, baseAsset, baseScale] = await Promise.all([
-    api.call({
-      target: assets[chain],
-      abi: "uint8:numAssets",
-    }),
-    api.call({
-      target: assets[chain],
-      abi: "address:baseToken",
-    }),
-    api.call({
-      target: assets[chain],
-      abi: "uint256:baseScale",
-    }),
+    api.call({ target: comet, abi: "uint8:numAssets" }),
+    api.call({ target: comet, abi: "address:baseToken" }),
+    api.call({ target: comet, abi: "uint256:baseScale" }),
   ]);
 
   const assetInfos = await api.multiCall({
     calls: Array.from({ length: numAssets }, (_, i) => ({
-      target: assets[chain],
+      target: comet,
       params: [i],
     })),
     abi: "function getAssetInfo(uint8 i) view returns (tuple(uint8 offset, address asset, address priceFeed, uint64 scale, uint64 borrowCollateralFactor, uint64 liquidateCollateralFactor, uint64 liquidationFactor, uint128 supplyCap))",
@@ -40,7 +38,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
   const [prices, tokenInfo, [baseTokenInfo]] = await Promise.all([
     api.multiCall({
       calls: assetInfos.map((info: any) => ({
-        target: assets[chain],
+        target: comet,
         params: [info.priceFeed],
       })),
       abi: "function getPrice(address PriceFeed) external view returns (uint256)",
@@ -77,7 +75,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
   addToDBWritesList(
     writes,
     chain,
-    assets[chain],
+    comet,
     basePrice,
     baseTokenInfo.decimals,
     baseTokenInfo.symbol,
@@ -91,6 +89,8 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
 export default async function compoundV3(timestamp: number) {
   return Promise.all(
-    Object.keys(assets).map((chain) => getTokenPrices(chain, timestamp)),
+    Object.entries(assets).flatMap(([chain, comets]) =>
+      comets.map((comet) => getCometPrices(chain, comet, timestamp)),
+    ),
   );
 }

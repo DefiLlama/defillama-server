@@ -329,6 +329,47 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
   return supplies;
 }
 
+async function getStarknetSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Starknet adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const STARKNET_RPC = process.env.STARKNET_RPC ?? "https://starknet-mainnet.public.blastapi.io";
+  const TOTAL_SUPPLY_SELECTOR = "0x1557182e4359a1f0c6301278e8f5b35a776ab58d39892581e357578fb287836";
+
+  await PromisePool.withConcurrency(5)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(STARKNET_RPC, {
+          method: "POST",
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "starknet_call",
+            params: [
+              {
+                contract_address: token,
+                entry_point_selector: TOTAL_SUPPLY_SELECTOR,
+                calldata: [],
+              },
+              "latest",
+            ],
+          }),
+          headers: { "Content-Type": "application/json" },
+        }).then((r) => r.json());
+        if (res?.result && res.result.length >= 2) {
+          const low = new BigNumber(res.result[0]);
+          const high = new BigNumber(res.result[1]);
+          const supply = low.plus(high.times(new BigNumber(2).pow(128)));
+          if (supply.gt(0)) supplies[`starknet:${token}`] = supply.toNumber();
+        }
+      } catch (e) {
+        e
+      }
+    });
+
+  return supplies;
+}
+
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -417,6 +458,7 @@ export async function fetchSupplies(
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
     if (chain == "provenance") return await getProvenanceSupplies(tokens, timestamp);
     if (chain == "stellar") return await getStellarSupplies(tokens, timestamp);
+    if (chain == "starknet") return await getStarknetSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);

@@ -5187,7 +5187,7 @@ const data2: Protocol[] = [
     name: "RadioShack",
     address: "0x7a5d3A9Dcd33cb8D527f7b5F96EB4Fef43d55636",
     symbol: "RADIO",
-    url: "https://www.radioshack.org/",
+    url: "https://www.radioshack.com/",
     description: "Uniswap fork",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/radioshack.png`,
@@ -5205,8 +5205,7 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "radioshack",
       dexs: "radioshack"
-    },
-    deadUrl: true
+    }
   },
   {
     id: "1617",
@@ -27901,8 +27900,11 @@ const data2: Protocol[] = [
     name: "CoWSwap",
     address: "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
     symbol: "COW",
+    /*
     url: "https://swap.cow.fi?ref=DEFILLAMA",
     referralUrl: "https://swap.cow.fi?ref=DEFILLAMA",
+*/
+    url: "https://x.com/CoWSwap",
     description:
       "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
     chain: "Ethereum",
@@ -27916,6 +27918,7 @@ const data2: Protocol[] = [
     treasury: "cowswap.js",
     twitter: "CoWSwap",
     governanceID: ["snapshot:cow.eth"],
+    deadUrl: true,
     dimensions: {
       fees: "cow-protocol",
       aggregators: {

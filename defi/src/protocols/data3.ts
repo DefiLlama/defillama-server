@@ -12766,6 +12766,7 @@ const data3_0: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["AMM"],
+    deprecated: true,
     chains: ["Arbitrum"],
     module: "dexswap-arbi/index.js",
     twitter: "DexFinance",
@@ -15040,7 +15041,7 @@ const data3_0: Protocol[] = [
     audits: "0",
     gecko_id: "aark-digital",
     cmcId: "32217",
-    category: "Interface",
+    tags: ["Orderly Builder"],
     chains: ["Arbitrum"],
     module: "aark/index.js",
     twitter: "Aark_Digital",
@@ -33999,7 +34000,7 @@ const data3_2: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    tags: ["AMM"],
+    category: "Bridge",
     chains: ["Blast"],
     module: "ring-few/index.js",
     twitter: "ProtocolRing",
@@ -37094,7 +37095,7 @@ const data3_2: Protocol[] = [
     listedAt: 1711394968,
     dimensions: {
       fees: "javsphere",
-      dexs: "javsphere"
+      derivatives: "javsphere"
     }
   },
   {
@@ -45605,7 +45606,10 @@ const data3_3: Protocol[] = [
     listedAt: 1718102971,
     dimensions: {
       fees: "maverick-v2",
-      dexs: "maverick-v2"
+      dexs: {
+        adapter: "maverick-v2",
+        genuineSpikes: [["2024-11-12", "-"]],
+      }
     }
   },
   {
@@ -47283,6 +47287,7 @@ const data3_3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
+    deprecated: true,
     chains: ["Binance", "Fantom", "Base", "Optimism", "Pulse", "Manta", "Arbitrum", "Avalanche"],
     module: "dexfinance-etf/index.js",
     twitter: "DexFinance",
@@ -48904,6 +48909,7 @@ const data3_3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
+    deprecated: true,
     chains: ["Binance", "Fantom", "Base", "Optimism", "Pulse", "Manta", "Arbitrum", "Avalanche"],
     module: "dexfinance-vault/index.js",
     twitter: "DexFinance",
@@ -54353,7 +54359,6 @@ const data3_3: Protocol[] = [
     parentProtocol: "parent#pear-protocol",
     dimensions: {
       fees: "pear-protocol",
-      dexs: "pear-protocol",
       derivatives: "pear-protocol"
     }
   },

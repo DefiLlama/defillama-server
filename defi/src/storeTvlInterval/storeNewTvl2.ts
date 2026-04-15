@@ -83,10 +83,26 @@ export default async function (
             errorMessage += `\n${token} has ${humanizeNumber(value)}`
           }
       })
-      console.log(errorMessage, usdTokenBalances, currentTvl, tvl, debugData)
+      
+      const problemTable: any = {}
+      for (const [token, value] of Object.entries(usdTokenBalances.tvl ?? {})) {
+        if (value > 1e8) {
+          problemTable[token] = {
+            value: humanizeNumber(value),
+            addresses: debugData?.symbolToAddresses?.[token] ?? []
+          }
+        }
+      }
+
+      console.log(errorMessage, problemTable, currentTvl, tvl)
 
 
-      if (currentTvl < 2e12) // less than 2 trillion
+      let tvlToCompareAgainst = await lastWeeklyTVLRecord;
+      let lastWeekTvlValue = 0
+      if (tvlToCompareAgainst.SK !== undefined)
+        lastWeekTvlValue = calculateTVLWithAllExtraSections(tvlToCompareAgainst)
+
+      if (currentTvl < 2e12 || lastWeekTvlValue > 2e7) // less than 2 trillion and last week less than 20 million
         await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }

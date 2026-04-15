@@ -4,8 +4,11 @@ jest.mock("../spreadsheet", () => ({
 
 import { toFiniteNumberOrZero, perpsSlug, computeProtocolFees, groupBy } from "./utils";
 import { fileNameNormalizer, mergeHistoricalData } from "./file-cache";
+import { buildPerpsList } from "./list";
 import {
+  buildContractBreakdownCharts,
   buildCategoryHistoricalCharts,
+  buildOverviewBreakdownCharts,
   buildPerpsIdMap,
   buildVenueHistoricalCharts,
 } from "./aggregate";
@@ -21,7 +24,19 @@ import {
   setContractMetadata,
   type PerpsContractMetadata,
 } from "./constants";
-import { findMarketById, findMarketsByCategory, findMarketsByContract, findMarketsByVenue, resolvePerpsLookupId } from "./server-helpers";
+import {
+  findMarketById,
+  findMarketsByAssetGroup,
+  findMarketsByCategory,
+  findMarketsByContract,
+  findMarketsByVenue,
+  getPerpsContractBreakdownFilePath,
+  getPerpsOverviewBreakdownFilePath,
+  normalizePerpsAssetGroup,
+  parsePerpsChartTarget,
+  resolvePerpsLookupId,
+  sortPerpsMarketsByOpenInterest,
+} from "./server-helpers";
 import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
 import {
   parseMetaAndAssetCtxs,
@@ -480,6 +495,7 @@ describe("buildVenueHistoricalCharts", () => {
             contract: "xyz:META",
             venue: "xyz",
             referenceAsset: "Meta",
+            referenceAssetGroup: "US Equities",
             assetClass: ["Single stock synthetic perp"],
             category: ["RWA Perpetuals"],
           },
@@ -490,6 +506,7 @@ describe("buildVenueHistoricalCharts", () => {
             contract: "flx:GOLD",
             venue: "flx",
             referenceAsset: "Gold",
+            referenceAssetGroup: "Commodities",
             assetClass: ["Commodity synthetic perp"],
             category: ["Commodities"],
           },
@@ -505,6 +522,7 @@ describe("buildVenueHistoricalCharts", () => {
           contract: "xyz:META",
           venue: "xyz",
           referenceAsset: "Meta",
+          referenceAssetGroup: "US Equities",
           assetClass: ["Single stock synthetic perp"],
           category: ["RWA Perpetuals"],
           openInterest: 10,
@@ -516,6 +534,7 @@ describe("buildVenueHistoricalCharts", () => {
           contract: "xyz:META",
           venue: "xyz",
           referenceAsset: "Meta",
+          referenceAssetGroup: "US Equities",
           assetClass: ["Single stock synthetic perp"],
           category: ["RWA Perpetuals"],
           openInterest: 12,
@@ -529,6 +548,7 @@ describe("buildVenueHistoricalCharts", () => {
           contract: "flx:GOLD",
           venue: "flx",
           referenceAsset: "Gold",
+          referenceAssetGroup: "Commodities",
           assetClass: ["Commodity synthetic perp"],
           category: ["Commodities"],
           openInterest: 7,
@@ -550,6 +570,7 @@ describe("buildCategoryHistoricalCharts", () => {
             contract: "xyz:META",
             venue: "xyz",
             referenceAsset: "Meta",
+            referenceAssetGroup: "US Equities",
             assetClass: ["Single stock synthetic perp"],
             category: ["RWA Perpetuals", "Equities"],
           },
@@ -564,6 +585,7 @@ describe("buildCategoryHistoricalCharts", () => {
         contract: "xyz:META",
         venue: "xyz",
         referenceAsset: "Meta",
+        referenceAssetGroup: "US Equities",
         assetClass: ["Single stock synthetic perp"],
         category: ["RWA Perpetuals"],
         openInterest: 10,
@@ -577,6 +599,7 @@ describe("buildCategoryHistoricalCharts", () => {
         contract: "xyz:META",
         venue: "xyz",
         referenceAsset: "Meta",
+        referenceAssetGroup: "US Equities",
         assetClass: ["Single stock synthetic perp"],
         category: ["Equities"],
         openInterest: 10,
@@ -586,10 +609,112 @@ describe("buildCategoryHistoricalCharts", () => {
   });
 });
 
+describe("buildOverviewBreakdownCharts", () => {
+  it("precomputes overview, venue, and asset-group breakdown datasets for each supported metric", () => {
+    const result = buildOverviewBreakdownCharts(
+      [
+        { id: "xyz:meta", timestamp: 100, open_interest: "10", volume_24h: "3" },
+        { id: "xyz:meta", timestamp: 200, open_interest: "12", volume_24h: "4" },
+        { id: "flx:gold", timestamp: 200, open_interest: "7", volume_24h: "2" },
+        { id: "km:bond", timestamp: 200, open_interest: "5", volume_24h: "1" },
+      ],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            contract: "xyz:META",
+            venue: "xyz",
+            referenceAsset: "Meta",
+            referenceAssetGroup: "US Equities",
+            assetClass: ["Single stock synthetic perp"],
+          },
+        },
+        {
+          id: "flx:gold",
+          data: {
+            contract: "flx:GOLD",
+            venue: "flx",
+            referenceAsset: "Gold",
+            referenceAssetGroup: "Commodities",
+            assetClass: ["Commodity synthetic perp"],
+          },
+        },
+        {
+          id: "km:bond",
+          data: {
+            contract: "km:BOND",
+            venue: "km",
+            referenceAsset: "Bond",
+            assetClass: ["Fixed income synthetic perp"],
+          },
+        },
+      ]
+    );
+
+    expect(result["overview-breakdown/all/openinterest/assetgroup.json"]).toEqual([
+      { timestamp: 100, "US Equities": 10 },
+      { timestamp: 200, "US Equities": 12, Commodities: 7, Unknown: 5 },
+    ]);
+    expect(result["overview-breakdown/venue/xyz/markets/baseasset.json"]).toEqual([
+      { timestamp: 100, Meta: 1 },
+      { timestamp: 200, Meta: 1 },
+    ]);
+    expect(result["overview-breakdown/assetgroup/us-equities/volume24h/venue.json"]).toEqual([
+      { timestamp: 100, xyz: 3 },
+      { timestamp: 200, xyz: 4 },
+    ]);
+    expect(result["overview-breakdown/assetgroup/unknown/openinterest/baseasset.json"]).toEqual([
+      { timestamp: 200, Bond: 5 },
+    ]);
+  });
+});
+
+describe("buildContractBreakdownCharts", () => {
+  it("precomputes contract-level datasets for overview, venue, and asset-group targets", () => {
+    const result = buildContractBreakdownCharts(
+      [
+        { id: "xyz:meta", timestamp: 100, open_interest: "10", volume_24h: "3" },
+        { id: "xyz:meta", timestamp: 200, open_interest: "12", volume_24h: "4" },
+        { id: "flx:gold", timestamp: 200, open_interest: "7", volume_24h: "2" },
+      ],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            contract: "xyz:META",
+            venue: "xyz",
+            referenceAssetGroup: "US Equities",
+          },
+        },
+        {
+          id: "flx:gold",
+          data: {
+            contract: "flx:GOLD",
+            venue: "flx",
+            referenceAssetGroup: "Commodities",
+          },
+        },
+      ]
+    );
+
+    expect(result["contract-breakdown/all/openinterest.json"]).toEqual([
+      { timestamp: 100, "xyz:META": 10 },
+      { timestamp: 200, "xyz:META": 12, "flx:GOLD": 7 },
+    ]);
+    expect(result["contract-breakdown/venue/xyz/markets.json"]).toEqual([
+      { timestamp: 100, "xyz:META": 1 },
+      { timestamp: 200, "xyz:META": 1 },
+    ]);
+    expect(result["contract-breakdown/assetgroup/commodities/volume24h.json"]).toEqual([
+      { timestamp: 200, "flx:GOLD": 2 },
+    ]);
+  });
+});
+
 describe("server route helpers", () => {
   const currentData = [
-    { id: "tsla", contract: "TSLA", venue: "Hyperliquid", category: ["Equities"] },
-    { id: "xyz:meta", contract: "xyz:META", venue: "XYZ", category: ["RWA Perpetuals", "Equities"] },
+    { id: "tsla", contract: "TSLA", venue: "Hyperliquid", category: ["Equities"], referenceAssetGroup: null },
+    { id: "xyz:meta", contract: "xyz:META", venue: "XYZ", category: ["RWA Perpetuals", "Equities"], referenceAssetGroup: "US Equities" },
   ];
 
   it("finds a market by id case-insensitively", () => {
@@ -613,6 +738,11 @@ describe("server route helpers", () => {
     expect(findMarketsByCategory(currentData, "rwa-perpetuals")).toEqual([currentData[1]]);
   });
 
+  it("filters markets by asset group and buckets missing values into Unknown", () => {
+    expect(findMarketsByAssetGroup(currentData, "us-equities")).toEqual([currentData[1]]);
+    expect(findMarketsByAssetGroup(currentData, "unknown")).toEqual([currentData[0]]);
+  });
+
   it("resolves lowercase and slugged aliases through id-map entries", () => {
     const idMap = {
       "xyz:meta": "xyz:meta",
@@ -625,5 +755,131 @@ describe("server route helpers", () => {
     expect(resolvePerpsLookupId(idMap, "xyz-meta")).toBe("xyz:meta");
     expect(resolvePerpsLookupId(idMap, "hyperliquid:TSLA")).toBe("tsla");
     expect(resolvePerpsLookupId(idMap, "hyperliquid-tsla")).toBe("tsla");
+  });
+
+  it("normalizes missing asset groups and parses valid chart targets", () => {
+    expect(normalizePerpsAssetGroup("  ")).toBe("Unknown");
+    expect(parsePerpsChartTarget({})).toEqual({ kind: "all" });
+    expect(parsePerpsChartTarget({ venue: " XYZ " })).toEqual({ kind: "venue", slug: "xyz" });
+    expect(parsePerpsChartTarget({ assetGroup: "US Equities" })).toEqual({ kind: "assetGroup", slug: "us-equities" });
+    expect(parsePerpsChartTarget({ venue: "xyz", assetGroup: "us-equities" })).toBeNull();
+  });
+
+  it("builds cached breakdown file paths and rejects invalid combinations", () => {
+    expect(
+      getPerpsOverviewBreakdownFilePath({
+        target: { kind: "all" },
+        key: "openInterest",
+        breakdown: "assetGroup",
+      })
+    ).toBe("charts/overview-breakdown/all/openinterest/assetgroup.json");
+
+    expect(
+      getPerpsOverviewBreakdownFilePath({
+        target: { kind: "venue", slug: "xyz" },
+        key: "markets",
+        breakdown: "venue",
+      })
+    ).toBeNull();
+
+    expect(
+      getPerpsContractBreakdownFilePath({
+        target: { kind: "assetGroup", slug: "us-equities" },
+        key: "volume24h",
+      })
+    ).toBe("charts/contract-breakdown/assetgroup/us-equities/volume24h.json");
+
+    expect(
+      getPerpsContractBreakdownFilePath({
+        target: { kind: "all" },
+        key: "activeMcap",
+      })
+    ).toBeNull();
+  });
+
+  it("sorts market arrays by descending open interest with deterministic tie-breakers", () => {
+    expect(
+      sortPerpsMarketsByOpenInterest([
+        { id: "beta:meta", contract: "META", venue: "Beta", openInterest: 8 },
+        { id: "alpha:tsla", contract: "TSLA", venue: "Alpha", openInterest: 12 },
+        { id: "alpha:meta", contract: "META", venue: "Alpha", openInterest: 8 },
+        { id: "gamma:aapl", contract: "AAPL", venue: "Gamma", openInterest: 8 },
+      ])
+    ).toEqual([
+      { id: "alpha:tsla", contract: "TSLA", venue: "Alpha", openInterest: 12 },
+      { id: "gamma:aapl", contract: "AAPL", venue: "Gamma", openInterest: 8 },
+      { id: "alpha:meta", contract: "META", venue: "Alpha", openInterest: 8 },
+      { id: "beta:meta", contract: "META", venue: "Beta", openInterest: 8 },
+    ]);
+  });
+});
+
+describe("buildPerpsList", () => {
+  it("sorts all list facets by descending open interest with alphabetical tie-breakers", () => {
+    expect(
+      buildPerpsList([
+        {
+          contract: "xyz:META",
+          venue: "Beta",
+          category: ["Equities", "RWA Perpetuals"],
+          referenceAssetGroup: "US Equities",
+          openInterest: 20,
+        },
+        {
+          contract: "TSLA",
+          venue: "Alpha",
+          category: ["Equities"],
+          referenceAssetGroup: "US Equities",
+          openInterest: 15,
+        },
+        {
+          contract: "GOLD",
+          venue: "Alpha",
+          category: ["Commodities"],
+          referenceAssetGroup: "Commodities",
+          openInterest: 15,
+        },
+        {
+          contract: "xyz:META",
+          venue: "Alpha",
+          category: null,
+          referenceAssetGroup: " ",
+          openInterest: 10,
+        },
+        {
+          contract: "AAPL",
+          venue: "",
+          category: ["Equities"],
+          referenceAssetGroup: null,
+          openInterest: 5,
+        },
+      ])
+    ).toEqual({
+      contracts: ["xyz:META", "GOLD", "TSLA", "AAPL"],
+      venues: ["Alpha", "Beta", "unknown"],
+      categories: ["Equities", "RWA Perpetuals", "Commodities", "Other"],
+      assetGroups: ["US Equities", "Commodities", "Unknown"],
+      total: 5,
+    });
+  });
+
+  it("skips empty contracts but still counts the row toward fallback group totals", () => {
+    expect(
+      buildPerpsList([
+        {
+          contract: "",
+          venue: undefined,
+          category: undefined,
+          referenceAssetGroup: undefined,
+          openInterest: 7,
+        },
+      ])
+    ).toEqual({
+      contracts: [],
+      venues: ["unknown"],
+      categories: ["Other"],
+      assetGroups: ["Unknown"],
+      total: 1,
+    });
   });
 });

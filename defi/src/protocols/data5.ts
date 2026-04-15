@@ -7425,7 +7425,7 @@ const data5: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    tags: ["DEX Aggregator"],
+    category: "DEX Aggregator",
     chains: ["TON"],
     module: "dummy.js",
     twitter: "groyp_on_ton",

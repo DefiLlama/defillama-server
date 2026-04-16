@@ -24,7 +24,7 @@ async function main() {
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.append('Access-Control-Allow-Headers', '*');
 
-    (req as any).isProRequest = skipSubPath || req.headers['x-llama-pro-key'] === PRO_SECRET_KEY || req.query['x-llama-pro-key'] === PRO_SECRET_KEY;
+    (req as any).isProRequest = req.headers['x-llama-pro-key'] === PRO_SECRET_KEY || req.query['x-llama-pro-key'] === PRO_SECRET_KEY;
     // (req as any).isInternalRequest = skipSubPath || req.headers['x-llama-internal-key'] === LLAMA_INTERNAL_API_KEY || req.query['llama_internal_key'] === LLAMA_INTERNAL_API_KEY;
 
     next();

@@ -16391,7 +16391,7 @@ const data3_0: Protocol[] = [
     listedAt: 1692805979,
     dimensions: {
       fees: "hydration-dex",
-      dexs: "hydradx"
+      dexs: "hydration-dex"
     }
   },
   {

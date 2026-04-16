@@ -160,6 +160,13 @@ functions:
       - httpApi:
           path: /prices/first/{coins}
           method: get
+  postCurrentCoinPrices:
+    handler: src/postCurrentCoins.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /prices/current
+          method: post
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
@@ -167,6 +174,13 @@ functions:
       - httpApi:
           path: /prices/historical/{timestamp}/{coins}
           method: get
+  postHistoricalCoinPrices:
+    handler: src/postHistoricalCoins.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /prices/historical
+          method: post
   coinPriceChart:
     handler: src/getCoinPriceChart.default
     timeout: 60

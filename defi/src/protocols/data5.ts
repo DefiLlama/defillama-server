@@ -17381,5 +17381,88 @@ const data5: Protocol[] = [
       fees: "alphaticks"
     }
   },
+  {
+    id: "7697",
+    name: "Bitwise HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/bitwise-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "bitwise-hl-staking"
+    }
+  },
+  {
+    id: "7698",
+    name: "B-Harvest HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/b-harvest-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "b-harvest"
+    }
+  },
+  {
+    id: "7699",
+    name: "Meria HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/meria-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "meria"
+    }
+  },
+  {
+    id: "7700",
+    name: "ARMSys",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://armsys.xyz
+    description:
+      "Oracle-free LVR protection for Uniswap v4 LPs using volatility detection and Aave V3 yield routing",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/armsys.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum", "Base"],
+    module: "armsys/index.js",
+    twitter: "armsysxyz",
+    github: ["ARMSys26"],
+    listedAt: 1776305865
+  },
 ];
 export default data5;

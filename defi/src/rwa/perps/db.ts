@@ -408,11 +408,11 @@ export async function fetchFundingHistoryPG(id: string, startTime?: number, endT
 
 // Close the database connection
 async function closeConnection(): Promise<void> {
-    if (!pgConnection) return;
+    const conn = pgConnection;
+    if (!conn) return;
+    pgConnection = null;
     try {
-        const closing = pgConnection.close()
-        pgConnection = null
-        await closing
+        await conn.close();
         console.log('Database connection closed.');
     } catch (error) {
         console.error('Error while closing the database connection:', error);
@@ -420,4 +420,3 @@ async function closeConnection(): Promise<void> {
 }
 
 process.on('beforeExit', closeConnection);
-process.on('exit', closeConnection);

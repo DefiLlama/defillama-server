@@ -17589,7 +17589,10 @@ const data5: Protocol[] = [
     chains: ["Solana"],
     module: "anoncoin/index.js",
     twitter: "anoncoinit",
-    listedAt: 1776367321
+    listedAt: 1776367321,
+    dimensions: {
+      fees: "anoncoin"
+    }
   },
   {
     id: "7707",

@@ -38,6 +38,9 @@ export const CategoryTagMap = {
     "SYMMIO Builder",
     "Extended Builder"
   ],
+  'Staking Pool': [
+    'Hyperliquid Staking',
+  ],
 }
 
 export const TagCatetgoryMap: Record<string, string> = {}

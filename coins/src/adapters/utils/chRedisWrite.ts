@@ -102,9 +102,13 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
         redisOps.push({ key: `meta:${cid}`, value: JSON.stringify({ canonicalId: cid, symbol: item.symbol || null, decimals: item.decimals ?? null, coingeckoId: cgId, blacklisted: false, blacklistedFrom: null }) });
       }
 
-      if (item.price && item.price > 0 && redisEnabled) {
+      if (item.price && isFinite(item.price) && redisEnabled) {
         const pCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
         redisOps.push({ key: `price:${pCid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence ?? null, source: item.adapter || null, timestamp: tsDT(item.timestamp || now) }), ttl: PRICE_TTL });
+      }
+      if (item.mcap != null && isFinite(item.mcap) && redisEnabled) {
+        const mCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
+        redisOps.push({ key: `mcap:${mCid}`, value: JSON.stringify({ mcap: item.mcap, timestamp: item.timestamp || now }) });
       }
     } else {
       // Price write (SK>0): insert into coins_prices and update Redis current price if recent
@@ -112,7 +116,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
         const chain = pk.startsWith("coingecko#") || pk.startsWith("asset#coingecko#") ? "coingecko" : (pkToChainAddress(pk)?.chain || "unknown");
         priceRows.push([esc(cid), esc(chain), tsDT(sk), tsDT(now), item.price, item.confidence ?? 0, esc(item.adapter || "")].join("\t"));
       }
-      if (item.price && item.price > 0 && redisEnabled && (now - sk) < 600) {
+      if (item.price && isFinite(item.price) && redisEnabled && (now - sk) < 600) {
         redisOps.push({ key: `price:${cid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence ?? null, source: item.adapter || null, timestamp: tsDT(sk) }), ttl: PRICE_TTL });
       }
     }

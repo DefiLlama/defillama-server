@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import {
     createAirtableHeaderToCanonicalKeyMapper,
     toStringArrayOrNull,

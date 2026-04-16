@@ -3,7 +3,7 @@ import {
     toStringArrayOrNull,
     toStringOrNull,
 } from "../utils";
-import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
+import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/adapters/hyperliquid";
 
 export interface PerpsContractMetadata {
     referenceAsset: string | null;

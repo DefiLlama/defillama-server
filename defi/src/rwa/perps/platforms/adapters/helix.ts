@@ -1,5 +1,5 @@
-import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat, safeFetch } from "./types";
+import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "../types";
+import { safeFloat, safeFetch } from "../types";
 
 // Helix — Injective chain
 // LCD: https://sentry.lcd.injective.network
@@ -52,9 +52,9 @@ interface ChronosSummary {
   open: number;
   high: number;
   low: number;
-  volume: number;  // USD notional
+  volume: number; // USD notional
   price: number;
-  change: number;  // percentage
+  change: number; // percentage
 }
 
 // Exchange indexer /api/exchange/derivative/v1/openInterest response
@@ -64,9 +64,25 @@ interface OIResponse {
 
 // Known RWA tickers on Helix
 const HELIX_RWA_BASES = new Set([
-  "AAPL", "AMZN", "ANTHROPIC", "COIN", "CRCL", "EUR", "GBP", "GOOGL",
-  "HOOD", "META", "MSFT", "MSTR", "NVDA", "PLTR", "SPACEX", "TSLA",
-  "USOIL", "XAG", "XAU",
+  "AAPL",
+  "AMZN",
+  "ANTHROPIC",
+  "COIN",
+  "CRCL",
+  "EUR",
+  "GBP",
+  "GOOGL",
+  "HOOD",
+  "META",
+  "MSFT",
+  "MSTR",
+  "NVDA",
+  "PLTR",
+  "SPACEX",
+  "TSLA",
+  "USOIL",
+  "XAG",
+  "XAU",
 ]);
 
 function isRwaTicker(ticker: string): boolean {
@@ -80,14 +96,16 @@ function isRwaTicker(ticker: string): boolean {
 
 async function fetchLcdMarkets(): Promise<InjectiveMarketWrapper[]> {
   const data = await safeFetch<{ markets?: InjectiveMarketWrapper[] }>(
-    `${INJECTIVE_LCD}/injective/exchange/v2/derivative/markets?status=Active`, "Helix fetchLcdMarkets",
+    `${INJECTIVE_LCD}/injective/exchange/v2/derivative/markets?status=Active`,
+    "Helix fetchLcdMarkets"
   );
   return data?.markets ?? [];
 }
 
 async function fetchChronosSummaries(): Promise<Map<string, ChronosSummary>> {
   const data = await safeFetch<ChronosSummary[]>(
-    `${INJECTIVE_INDEXER}/api/chronos/v1/derivative/market_summary_all`, "Helix fetchChronosSummaries",
+    `${INJECTIVE_INDEXER}/api/chronos/v1/derivative/market_summary_all`,
+    "Helix fetchChronosSummaries"
   );
   if (!data) return new Map();
   const map = new Map<string, ChronosSummary>();
@@ -101,7 +119,8 @@ async function fetchOpenInterest(marketIds: string[]): Promise<Map<string, numbe
   if (marketIds.length === 0) return new Map();
   const params = marketIds.map((id) => `marketIDs=${id}`).join("&");
   const data = await safeFetch<OIResponse>(
-    `${INJECTIVE_INDEXER}/api/exchange/derivative/v1/openInterest?${params}`, "Helix fetchOpenInterest",
+    `${INJECTIVE_INDEXER}/api/exchange/derivative/v1/openInterest?${params}`,
+    "Helix fetchOpenInterest"
   );
   if (!data) return new Map();
   const map = new Map<string, number>();
@@ -118,7 +137,7 @@ async function fetchOpenInterest(marketIds: string[]): Promise<Map<string, numbe
 function parseHelixMarkets(
   wrappers: InjectiveMarketWrapper[],
   summaries: Map<string, ChronosSummary>,
-  oiMap: Map<string, number>,
+  oiMap: Map<string, number>
 ): ParsedPerpsMarket[] {
   const result: ParsedPerpsMarket[] = [];
 
@@ -148,9 +167,7 @@ function parseHelixMarkets(
     const priceChange24h = summary?.change ?? 0;
 
     // Funding rate
-    const fundingRate = w.perpetual_info
-      ? safeFloat(w.perpetual_info.market_info.hourly_interest_rate)
-      : 0;
+    const fundingRate = w.perpetual_info ? safeFloat(w.perpetual_info.market_info.hourly_interest_rate) : 0;
 
     // Max leverage = 1 / initial_margin_ratio
     const imr = safeFloat(mkt.initial_margin_ratio);
@@ -195,10 +212,7 @@ export const helixAdapter: PlatformAdapter = {
       .map((w) => w.market.market_id);
 
     // 3. Fetch OI + volume/price in parallel
-    const [summaries, oiMap] = await Promise.all([
-      fetchChronosSummaries(),
-      fetchOpenInterest(rwaMarketIds),
-    ]);
+    const [summaries, oiMap] = await Promise.all([fetchChronosSummaries(), fetchOpenInterest(rwaMarketIds)]);
 
     return parseHelixMarkets(lcdMarkets, summaries, oiMap);
   },

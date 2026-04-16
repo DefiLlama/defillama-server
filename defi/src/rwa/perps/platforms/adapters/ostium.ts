@@ -1,5 +1,5 @@
-import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "./types";
-import { safeFloat, safeFetch } from "./types";
+import type { PlatformAdapter, FundingEntry, ParsedPerpsMarket } from "../types";
+import { safeFloat, safeFetch } from "../types";
 
 // Ostium — Arbitrum
 // Docs: https://ostium-labs.gitbook.io/ostium-docs/developer/api-and-sdk
@@ -73,10 +73,11 @@ async function fetchOstiumPairs(): Promise<OstiumSubgraphPair[]> {
       group { name maxLeverage }
     }
   }`;
-  const json = await safeFetch<{ data?: { pairs?: OstiumSubgraphPair[] } }>(
-    OSTIUM_GRAPH, "Ostium subgraph",
-    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query }) },
-  );
+  const json = await safeFetch<{ data?: { pairs?: OstiumSubgraphPair[] } }>(OSTIUM_GRAPH, "Ostium subgraph", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query }),
+  });
   return json?.data?.pairs ?? [];
 }
 
@@ -97,7 +98,7 @@ async function fetchOstiumVolumes(): Promise<Map<string, number>> {
 function parseOstiumMarkets(
   pairs: OstiumSubgraphPair[],
   prices: Map<string, OstiumPrice>,
-  volumes: Map<string, number>,
+  volumes: Map<string, number>
 ): ParsedPerpsMarket[] {
   const markets: ParsedPerpsMarket[] = [];
 
@@ -151,11 +152,7 @@ export const ostiumAdapter: PlatformAdapter = {
   name: "ostium",
   oiIsNotional: true,
   async fetchMarkets(): Promise<ParsedPerpsMarket[]> {
-    const [pairs, prices, volumes] = await Promise.all([
-      fetchOstiumPairs(),
-      fetchOstiumPrices(),
-      fetchOstiumVolumes(),
-    ]);
+    const [pairs, prices, volumes] = await Promise.all([fetchOstiumPairs(), fetchOstiumPrices(), fetchOstiumVolumes()]);
     if (pairs.length === 0) return [];
     return parseOstiumMarkets(pairs, prices, volumes);
   },

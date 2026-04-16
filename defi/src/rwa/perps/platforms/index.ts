@@ -1,12 +1,12 @@
 import type { PlatformAdapter } from "./types";
 export type { PlatformAdapter, ParsedPerpsMarket, FundingEntry } from "./types";
 
-import { hyperliquidAdapter } from "./hyperliquid";
-import { gtradeAdapter } from "./gtrade";
-import { ostiumAdapter } from "./ostium";
-import { avantisAdapter } from "./avantis";
-import { helixAdapter } from "./helix";
-import { extendedAdapter } from "./extended";
+import { hyperliquidAdapter } from "./adapters/hyperliquid";
+import { gtradeAdapter } from "./adapters/gtrade";
+import { ostiumAdapter } from "./adapters/ostium";
+import { avantisAdapter } from "./adapters/avantis";
+import { helixAdapter } from "./adapters/helix";
+import { extendedAdapter } from "./adapters/extended";
 
 /** All implemented adapters — used by preview tooling and tests. */
 const ALL_ADAPTERS: PlatformAdapter[] = [

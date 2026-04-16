@@ -106,7 +106,6 @@ async function _genFormattedChains() {
 
   // generate route files
   const allData = getFormattedChains('All')
-  console.log(allCategories)
   await storeRouteData('/chains2/All', allData)
 
   for (const category of ['All', 'Non-EVM',].concat(allCategories)) {

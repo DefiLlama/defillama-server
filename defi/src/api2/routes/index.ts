@@ -68,7 +68,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/categories", defaultFileHandler);
   router.get("/langs", defaultFileHandler);
   router.get("/lite/charts/:chain", defaultFileHandler);
-  // router.get("/lite/charts/categories/:category", defaultFileHandler); // deprecated, replaced by getCategoryChartByChainData
+  // router.get("/lite/charts/categories/:category", defaultFileHandler); // deprecated, replaced by getCategoryChartByChainData - used to be a r2 wrapper
   router.get("/lite/chains-by-categories", defaultFileHandler);
   router.get("/lite/chains-by-tags", defaultFileHandler);
   router.get("/charts/categories/:category", ew(getCategoryChartByChainData));

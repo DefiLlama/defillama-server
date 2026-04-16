@@ -106,7 +106,7 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
         const pCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
         redisOps.push({ key: `price:${pCid}`, value: JSON.stringify({ price: String(item.price), confidence: item.confidence ?? null, source: item.adapter || null, timestamp: tsDT(item.timestamp || now) }), ttl: PRICE_TTL });
       }
-      if (item.mcap && redisEnabled) {
+      if (item.mcap != null && isFinite(item.mcap) && redisEnabled) {
         const mCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
         redisOps.push({ key: `mcap:${mCid}`, value: JSON.stringify({ mcap: item.mcap, timestamp: item.timestamp || now }) });
       }

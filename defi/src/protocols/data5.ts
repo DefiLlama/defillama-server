@@ -17504,7 +17504,7 @@ const data5: Protocol[] = [
       "Stratium is a structured products protocol on Hyperliquid delivering volatility perps, asset baskets, and yield strategies. Stake HYPE to receive srHYPE and earn validator rewards plus trading fee share",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/stratium.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
@@ -17514,6 +17514,44 @@ const data5: Protocol[] = [
     audit_links: ["https://docs.stratium.xyz/srhype/audit"],
     github: ["horizonx-tech"],
     listedAt: 1776362641
+  },
+  {
+    id: "7703",
+    name: "Phoenix Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://phusd.behodler.io", 
+    description:
+      "Phoenix Protocol is a yield aggregation protocol that routes stablecoin-backed capital into external yield-bearing assets and holds those positions in strategy contracts to accrue returns on deposited funds",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/phoenix-protocol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    module: "phoenix-protocol/index.js",
+    twitter: "BehodlerAMM",
+    listedAt: 1776363575
+  },
+  {
+    id: "7704",
+    name: "Cronos Gangsters",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://cronosgangsters.com/
+    description:
+      "Leverage Trading DEX on Cronos with up to 100x leverage, staking, farming and NFTs",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/cronos-gangsters.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Cronos"],
+    module: "cronos-gangsters/index.js",
+    twitter: "CronosGangsters",
+    listedAt: 1776363803
   },
 ];
 export default data5;

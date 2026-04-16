@@ -198,6 +198,8 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
           body: JSON.stringify(body),
           headers: { "Content-Type": "application/json" },
         }).then((r) => r.json()).then(r => {
+          if (!r.coins)
+            console.log(`Invalid response from price API for keys ${body.coins.join(", ")}: ${JSON.stringify(r)}`)
           for (const [PK, value] of Object.entries(r.coins)) {
             priceCache[PK] = value
           }

@@ -37,13 +37,13 @@ import {
   resolvePerpsLookupId,
   sortPerpsMarketsByOpenInterest,
 } from "./server-helpers";
-import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/hyperliquid";
+import { HYPERLIQUID_MAKER_FEE, HYPERLIQUID_TAKER_FEE, HYPERLIQUID_DEPLOYER_SHARE } from "./platforms/adapters/hyperliquid";
 import {
   parseMetaAndAssetCtxs,
   parseFundingHistory,
   type MetaAndAssetCtxsResponse,
   type FundingHistoryEntry,
-} from "./platforms/hyperliquid";
+} from "./platforms/adapters/hyperliquid";
 import { getCsvData } from "../spreadsheet";
 
 // ── utils.ts ──────────────────────────────────────────────────────────────────

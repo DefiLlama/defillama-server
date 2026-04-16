@@ -17553,5 +17553,62 @@ const data5: Protocol[] = [
     twitter: "CronosGangsters",
     listedAt: 1776363803
   },
+  {
+    id: "7705",
+    name: "Unified Labs",
+    address: null,
+    symbol: "-",
+    url: "https://unifiedlabs.io/",
+    description:
+      "Unified Labs is Asia's first institutional-grade Risk Curator in the Morpho ecosystem, focused on RWA lending",
+    chain: "Monad",
+    logo: `${baseIconsUrl}/unified-labs.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Monad"],
+    module: "unified-labs/index.js",
+    twitter: "unifiedlabs_",
+    listedAt: 1776367063
+  },
+  {
+    id: "7706",
+    name: "Anoncoin",
+    address: null,
+    symbol: "-",
+    url: "https://anoncoin.it/",
+    description:
+      "Anoncoin is a launchpad that enables users to create meme coins anonymously",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/anoncoin.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Solana"],
+    module: "anoncoin/index.js",
+    twitter: "anoncoinit",
+    listedAt: 1776367321
+  },
+  {
+    id: "7707",
+    name: "Yield AI",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://yieldai.app/
+    description:
+      "Yield AI is a DeFi dashboard for Aptos that integrates 10+ protocols and an AI Agent in one interface. Track balances and positions, compare APRs, and deposit, withdraw, swap, and claim rewards gaslessly to maximize yield",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/yield-ai.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Aptos"],
+    module: "yield-ai/index.js",
+    twitter: "yieldai_app",
+    listedAt: 1776367461
+  },
 ];
 export default data5;

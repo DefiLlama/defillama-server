@@ -17530,8 +17530,8 @@ const data2: Protocol[] = [
   {
     id: "2174",
     name: "DexFinance BSC",
-    address: "bsc:0xf4914E6D97a75f014AcFcF4072f11be5CfFc4cA6",
-    symbol: "dexSHARE",
+    address: "arbitrum:0x92a212d9f5eef0b262ac7d84aea64a0d0758b94f",
+    symbol: "GDEX",
     url: "https://dexfi.com/",
     description:
       "Dex Finance is a decentralized organization providing an ecosystem of sustainable investment vehicles. Our protocols are designed to empower users by simplifying the advanced trading strategies employed by experienced investors. Core products consist of the Dex Money Market, dexIRA, dexETF and dexVAULTS+ offering multi-layered investment portfolio management with the world's most advanced yield optimizer.",

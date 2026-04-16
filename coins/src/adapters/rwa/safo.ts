@@ -1,6 +1,7 @@
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import { addToDBWritesList } from "../utils/database";
+import { getCurrentUnixTimestamp } from "../../utils/date";
 
 const oracles: { [symbol: string]: string } = {
   SAFO: "0x372e37cA79747A2d1671EDBC5f1e2853B96BA351",
@@ -53,34 +54,49 @@ export async function safo(timestamp: number = 0): Promise<Write[]> {
   const symbols = Object.keys(oracles);
 
   const results = await api.multiCall({
-    abi: "function latestRoundData() view returns (uint80, int256, uint256, uint256, uint80)",
+    abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
     calls: symbols.map((s) => oracles[s]),
   });
 
-  const tokenPrices: { [symbol: string]: number } = {};
-  symbols.forEach((symbol, i) => {
-    tokenPrices[symbol] = results[i][1] / 1e6;
-  });
-
+  const now = timestamp === 0 ? getCurrentUnixTimestamp() : timestamp;
   const writes: Write[] = [];
 
-  for (const symbol of symbols) {
-    const price = tokenPrices[symbol];
+  symbols.forEach((symbol, i) => {
+    const [, answer, , updatedAt] = results[i];
+    if (updatedAt < now - 27 * 60 * 60) return;
+
+    const price = answer / 1e6;
     const chains = config[symbol];
+    const arbitrumAddress = chains["arbitrum"];
+
+    addToDBWritesList(
+      writes,
+      "arbitrum",
+      arbitrumAddress,
+      price,
+      5,
+      symbol,
+      timestamp,
+      "safo",
+      0.8,
+    );
+
     for (const chain of Object.keys(chains)) {
+      if (chain === "arbitrum") continue;
       addToDBWritesList(
         writes,
         chain,
         chains[chain],
-        price,
+        undefined,
         5,
         symbol,
         timestamp,
         "safo",
         0.8,
+        `asset#arbitrum:${arbitrumAddress}`,
       );
     }
-  }
+  });
 
   return writes;
 }

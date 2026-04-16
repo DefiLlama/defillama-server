@@ -17234,5 +17234,152 @@ const data5: Protocol[] = [
       fees: "Imperator-HypeRPC"
     }
   },
+  {
+    id: "7690",
+    name: "HyperCN HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypercn-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "HyperCN-hlscan"
+    }
+  },
+  {
+    id: "7691",
+    name: "HypurrCorea HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypurrcorea-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "hypurr-corea"
+    }
+  },
+  {
+    id: "7692",
+    name: "CMI HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/cmi-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "cmi-hype-staking"
+    }
+  },
+  {
+    id: "7693",
+    name: "Hyperbeat-P2P-Hypio HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hyperbeat-p2p-hypio-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "Hyperbeat-P2P-Hypio"
+    }
+  },
+  {
+    id: "7694",
+    name: "USDT0-Luganodes HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/usdt0-luganodes-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "USDT0-Luganodes"
+    }
+  },
+  {
+    id: "7695",
+    name: "Anchorage By Figment HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/anchorage-by-figment-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "anchorage-by-figment"
+    }
+  },
+  {
+    id: "7696",
+    name: "AlphaTicks HYPE Staking",
+    address: null,
+    symbol: "-",
+    url: "https://app.hyperliquid.xyz/staking",
+    description:
+      "Delegated HYPE token staking to earn staking rewards",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/alphaticks-hype-staking.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "HyperliquidX",
+    dimensions: {
+      fees: "alphaticks"
+    }
+  },
 ];
 export default data5;

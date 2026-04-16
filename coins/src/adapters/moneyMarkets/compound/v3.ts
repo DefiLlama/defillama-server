@@ -12,6 +12,7 @@ const assets: { [chain: string]: string[] } = {
     "0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf", // cUSDCv3
     "0xd98be00b5d27fc98112bde293e487f8d4ca57d07", // cUSDTv3
   ],
+  ethereum: ["0x3afdc9bca9213a35503b077a6072f3d0d5ab0840"],
 };
 
 async function getCometPrices(

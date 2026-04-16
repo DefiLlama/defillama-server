@@ -11242,6 +11242,26 @@
     }
   },
   "stellar": {
+    "CDGSC6BA4TCAOVSFQCUEHDMOIIHYYVNYBT6YEARS4MX3ITAHUINVGQHX": {
+      "to": "coingecko#safo",
+      "decimals": 5,
+      "symbol": "SAFO"
+    },
+    "CBOOCGZSVRSZFRE4U2NWR2B4RXYVJWRCBTGOUD2JPI2TDJPWMTJX7FZP": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-eur",
+      "decimals": 5,
+      "symbol": "eurSAFO"
+    },
+    "CAGYRRKPFSWKM6SJOE4QAAVYMOSHMDS5WOQ4T5A2E6XNCU7LZZKUNQKP": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-gbp",
+      "decimals": 5,
+      "symbol": "gbpSAFO"
+    },
+    "CAJD2IBSP7VO2VYJQUYJSOGPJINTUYV7MQITINXVPTIH3CCLCUENNMW4": {
+      "to": "coingecko#spiko-amundi-overnight-swap-fund-chf",
+      "decimals": 5,
+      "symbol": "chfSAFO"
+    },
     "CDT3KU6TQZNOHKNOHNAFFDQZDURVC3MSTL4ML7TUTZGNOPBZCLABP4FR": {
       "decimals": 5,
       "symbol": "UKTBL",
@@ -16207,6 +16227,11 @@
     }
   },
   "monad": {
+    "0xd7acb868f97f8286d5d3a0fd5ef112a8a72ecd90": {
+      "to": "asset#sui:0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::coin",
+      "decimals": 8,
+      "symbol": "enzoBTC"
+    },
     "0x650b616b46fF94000Eb115926aB8393B90788D76": {
       "decimals": "6",
       "symbol": "rwaUSDi",

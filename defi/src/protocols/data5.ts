@@ -16756,7 +16756,10 @@ const data5: Protocol[] = [
     module: "dummy.js",
     twitter: "", // prop amm no twitter
     dimensions: {
-      dexs: "scorch",
+      dexs: {
+        adapter: "scorch",
+        genuineSpikes: [["2026-01-26", "$SOL price volatility"]]
+      }
     }
   },
   {

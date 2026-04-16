@@ -66,6 +66,8 @@ async function run() {
 
   await storeRWAStats()
 
+  await genFormattedChains()
+
   async function initializeProtocolDataMap() {
 
     console.time('getLatestProtocolItems filterLast24Hours')
@@ -498,7 +500,6 @@ runWithRuntimeLogging(run, {
   application: "cron-task",
   type: 'tvl-data',
 })
-  .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)

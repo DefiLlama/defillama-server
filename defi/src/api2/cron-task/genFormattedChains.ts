@@ -58,6 +58,17 @@ let chainMcaps: any = {}
 export async function genFormattedChains() {
   console.time('genFormattedChains')
 
+  try {
+    await _genFormattedChains()
+  } catch (e: any) {
+    console.error('Error in genFormattedChains', e?.message ? e.message : e)
+  }
+
+  console.timeEnd('genFormattedChains')
+}
+
+async function _genFormattedChains() {
+
   // fetch chain list
   res = await readRouteData('/lite/protocols2')
 
@@ -95,6 +106,7 @@ export async function genFormattedChains() {
 
   // generate route files
   const allData = getFormattedChains('All')
+  console.log(allCategories)
   await storeRouteData('/chains2/All', allData)
 
   for (const category of ['All', 'Non-EVM',].concat(allCategories)) {
@@ -106,7 +118,6 @@ export async function genFormattedChains() {
     }
   }
 
-  console.timeEnd('genFormattedChains')
 }
 
 const getFormattedChains = (category: string) => {
@@ -198,7 +209,7 @@ const getFormattedChains = (category: string) => {
 
       Object.keys(data).forEach((tvlType) => {
         if (tvlType === 'tvl') return; // skip tvl as it is already processed
-        extraTvl[tvlType]= getTvlAggData(data, tvlType);
+        extraTvl[tvlType] = getTvlAggData(data, tvlType);
       })
 
 

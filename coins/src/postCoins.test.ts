@@ -23,17 +23,26 @@ const MIXED_CASE_COINS = [
 
 // tokens that should not resolve
 const INVALID_COINS = [
-  "ethereum:0x0000000000000000000000000000000000000000",
   "fakechain:0xdeadbeef",
+  "ethereum:0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddead",
 ];
 
-// cross-chain mix
+// case-sensitive chains (solana, bitcoin, eclipse) must NOT be lowercased
+const CASE_SENSITIVE_COINS = [
+  "solana:So11111111111111111111111111111111111111112",   // Wrapped SOL
+  "solana:mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So", // mSOL
+  "solana:3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh",
+];
+
+// cross-chain mix including case-sensitive chains
 const MULTI_CHAIN_COINS = [
   "ethereum:0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "ethereum:0x0000000000000000000000000000000000000000",   // WETH (valid!)
   "bsc:0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
   "avax:0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
   "polygon:0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
   "arbitrum:0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+  "solana:So11111111111111111111111111111111111111112",
   "coingecko:ethereum",
   "coingecko:bitcoin",
 ];
@@ -232,6 +241,32 @@ describe("POST /prices/current", () => {
     compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
+  it("matches GET for case-sensitive chains (solana)", async () => {
+    const [post, get] = await Promise.all([
+      postCurrent(CASE_SENSITIVE_COINS),
+      getCurrent(CASE_SENSITIVE_COINS),
+    ]);
+    compareCurrentResponse(post.coins, get.coins);
+  }, 30_000);
+
+  it("preserves case for solana addresses (lowercasing would break them)", async () => {
+    const coin = "solana:So11111111111111111111111111111111111111112";
+    const wrongCase = "solana:so11111111111111111111111111111111111111112";
+    const [postCorrect, postWrong] = await Promise.all([
+      postCurrent([coin]),
+      postCurrent([wrongCase]),
+    ]);
+    // correct case should return data
+    expect(Object.keys(postCorrect.coins).length).toBeGreaterThan(0);
+    // wrong case should NOT match the same coin
+    const correctKey = Object.keys(postCorrect.coins)[0];
+    const wrongKeys = Object.keys(postWrong.coins);
+    if (wrongKeys.length > 0) {
+      // if it resolves at all, it should be keyed differently
+      expect(wrongKeys[0]).not.toEqual(correctKey);
+    }
+  }, 30_000);
+
   it("rejects missing body", async () => {
     const res = await fetch(`${PROD_BASE}/prices/current`, {
       method: "POST",
@@ -344,6 +379,32 @@ describe("POST /prices/historical", () => {
     ]);
     compareHistoricalResponse(post.coins, get.coins);
     expect(Object.keys(post.coins).length).toBeGreaterThan(0);
+  }, 30_000);
+
+  it("matches GET batchHistorical for case-sensitive chains (solana)", async () => {
+    const coinsObj = buildCoinsObj(CASE_SENSITIVE_COINS, HISTORICAL_TIMESTAMPS);
+    const [post, get] = await Promise.all([
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
+    ]);
+    compareHistoricalResponse(post.coins, get.coins);
+  }, 30_000);
+
+  it("preserves case for solana addresses in historical lookups", async () => {
+    const coin = "solana:So11111111111111111111111111111111111111112";
+    const wrongCase = "solana:so11111111111111111111111111111111111111112";
+    const [postCorrect, postWrong] = await Promise.all([
+      postHistorical({ [coin]: HISTORICAL_TIMESTAMPS }),
+      postHistorical({ [wrongCase]: HISTORICAL_TIMESTAMPS }),
+    ]);
+    // correct case should return data
+    expect(Object.keys(postCorrect.coins).length).toBeGreaterThan(0);
+    // wrong case should NOT match the same coin
+    const correctKey = Object.keys(postCorrect.coins)[0];
+    const wrongKeys = Object.keys(postWrong.coins);
+    if (wrongKeys.length > 0) {
+      expect(wrongKeys[0]).not.toEqual(correctKey);
+    }
   }, 30_000);
 
   it("supports different timestamps per coin", async () => {

@@ -9,7 +9,7 @@ const STANDARD_COINS = [
   "coingecko:ethereum",
 ];
 
-// coingecko-prefixed coins typically trigger redirect logic
+// coingecko-prefixed coins trigger redirect logic
 const REDIRECT_COINS = [
   "coingecko:ethereum",
   "coingecko:bitcoin",
@@ -38,11 +38,25 @@ const MULTI_CHAIN_COINS = [
   "coingecko:bitcoin",
 ];
 
-const HISTORICAL_TIMESTAMP = 1656944730; // July 4 2022
+const HISTORICAL_TIMESTAMPS = [1656944730, 1659623130]; // July 4 2022, Aug 4 2022
 
 // ──────────────────────────────────────────────
 // Helpers
 // ──────────────────────────────────────────────
+
+/** Build the coins object for POST historical: { "coin": [ts1, ts2], ... } */
+function buildCoinsObj(
+  coins: string[],
+  timestamps: number[],
+): { [coin: string]: number[] } {
+  const obj: { [coin: string]: number[] } = {};
+  for (const coin of coins) {
+    obj[coin] = timestamps;
+  }
+  return obj;
+}
+
+// --- Current endpoints ---
 
 async function getCurrent(coins: string[]) {
   const url = `${PROD_BASE}/prices/current/${coins.join(",")}?searchWidth=12h`;
@@ -57,33 +71,39 @@ async function postCurrent(coins: string[]) {
     body: JSON.stringify({ coins }),
     headers: { "Content-Type": "application/json" },
   });
-  if (!res.ok) throw new Error(`POST current ${res.status}: ${await res.text()}`);
+  if (!res.ok)
+    throw new Error(`POST current ${res.status}: ${await res.text()}`);
   return res.json() as Promise<{ coins: Record<string, any> }>;
 }
 
-async function getHistorical(coins: string[], timestamp: number) {
-  const url = `${PROD_BASE}/prices/historical/${timestamp}/${coins.join(",")}?searchWidth=12h`;
+// --- Historical endpoints ---
+
+async function getBatchHistorical(coinsObj: { [coin: string]: number[] }) {
+  const url = `${PROD_BASE}/batchHistorical?coins=${encodeURIComponent(JSON.stringify(coinsObj))}&searchWidth=12h`;
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`GET historical ${res.status}`);
+  if (!res.ok) throw new Error(`GET batchHistorical ${res.status}`);
   return res.json() as Promise<{ coins: Record<string, any> }>;
 }
 
-async function postHistorical(coins: string[], timestamp: number) {
+async function postHistorical(coinsObj: { [coin: string]: number[] }) {
   const res = await fetch(`${PROD_BASE}/prices/historical`, {
     method: "POST",
-    body: JSON.stringify({ coins, timestamp }),
+    body: JSON.stringify({ coins: coinsObj }),
     headers: { "Content-Type": "application/json" },
   });
-  if (!res.ok) throw new Error(`POST historical ${res.status}: ${await res.text()}`);
+  if (!res.ok)
+    throw new Error(`POST historical ${res.status}: ${await res.text()}`);
   return res.json() as Promise<{ coins: Record<string, any> }>;
 }
 
+// --- Comparison helpers ---
+
 /**
- * Compare two coins response objects.
- * Allows minor timestamp drift (< 300s) since GET and POST may hit
- * slightly different cache windows.
+ * Compare two current-style coin responses (flat price per coin).
+ * Allows minor timestamp drift (< 300s) since GET and POST
+ * may hit slightly different cache windows.
  */
-function compareCoinsResponse(
+function compareCurrentResponse(
   post: Record<string, any>,
   get: Record<string, any>,
 ) {
@@ -104,6 +124,35 @@ function compareCoinsResponse(
   }
 }
 
+/**
+ * Compare two historical-style responses (per-coin price arrays).
+ * Prices within each coin are sorted by timestamp before comparison.
+ */
+function compareHistoricalResponse(
+  post: Record<string, any>,
+  get: Record<string, any>,
+) {
+  const postKeys = Object.keys(post).sort();
+  const getKeys = Object.keys(get).sort();
+  expect(postKeys).toEqual(getKeys);
+
+  for (const key of postKeys) {
+    expect(post[key].symbol).toEqual(get[key].symbol);
+
+    const sortByTs = (a: any, b: any) => a.timestamp - b.timestamp;
+    const postPrices = [...post[key].prices].sort(sortByTs);
+    const getPrices = [...get[key].prices].sort(sortByTs);
+
+    expect(postPrices.length).toEqual(getPrices.length);
+    for (let i = 0; i < postPrices.length; i++) {
+      expect(postPrices[i].price).toEqual(getPrices[i].price);
+      expect(
+        Math.abs(postPrices[i].timestamp - getPrices[i].timestamp),
+      ).toBeLessThan(300);
+    }
+  }
+}
+
 // ──────────────────────────────────────────────
 // POST /prices/current
 // ──────────────────────────────────────────────
@@ -114,7 +163,7 @@ describe("POST /prices/current", () => {
       postCurrent(STANDARD_COINS),
       getCurrent(STANDARD_COINS),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
   it("matches GET for redirect coins (coingecko prefixed)", async () => {
@@ -122,7 +171,7 @@ describe("POST /prices/current", () => {
       postCurrent(REDIRECT_COINS),
       getCurrent(REDIRECT_COINS),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
   it("matches GET for mixed case addresses", async () => {
@@ -130,7 +179,7 @@ describe("POST /prices/current", () => {
       postCurrent(MIXED_CASE_COINS),
       getCurrent(MIXED_CASE_COINS),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
   it("returns empty coins for invalid/nonexistent tokens", async () => {
@@ -153,7 +202,7 @@ describe("POST /prices/current", () => {
       postCurrent(single),
       getCurrent(single),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
   it("matches GET for a large multi-chain batch", async () => {
@@ -161,7 +210,7 @@ describe("POST /prices/current", () => {
       postCurrent(MULTI_CHAIN_COINS),
       getCurrent(MULTI_CHAIN_COINS),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
   it("matches GET for mix of valid and invalid coins", async () => {
@@ -170,7 +219,7 @@ describe("POST /prices/current", () => {
       postCurrent(mixed),
       getCurrent(mixed),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
     expect(Object.keys(post.coins).length).toBeGreaterThan(0);
   }, 30_000);
 
@@ -180,14 +229,13 @@ describe("POST /prices/current", () => {
       postCurrent(duped),
       getCurrent(duped),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareCurrentResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("rejects missing body (no body at all)", async () => {
+  it("rejects missing body", async () => {
     const res = await fetch(`${PROD_BASE}/prices/current`, {
       method: "POST",
     });
-    // should return 400 or 500 with error message
     expect(res.ok).toBe(false);
   }, 30_000);
 
@@ -206,97 +254,109 @@ describe("POST /prices/current", () => {
 // ──────────────────────────────────────────────
 
 describe("POST /prices/historical", () => {
-  it("matches GET for standard coins", async () => {
+  it("matches GET batchHistorical for standard coins with multiple timestamps", async () => {
+    const coinsObj = buildCoinsObj(STANDARD_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(STANDARD_COINS, HISTORICAL_TIMESTAMP),
-      getHistorical(STANDARD_COINS, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("matches GET for redirect coins (coingecko prefixed)", async () => {
+  it("matches GET batchHistorical for redirect coins", async () => {
+    const coinsObj = buildCoinsObj(REDIRECT_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(REDIRECT_COINS, HISTORICAL_TIMESTAMP),
-      getHistorical(REDIRECT_COINS, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("matches GET for mixed case addresses", async () => {
+  it("matches GET batchHistorical for mixed case addresses", async () => {
+    const coinsObj = buildCoinsObj(MIXED_CASE_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(MIXED_CASE_COINS, HISTORICAL_TIMESTAMP),
-      getHistorical(MIXED_CASE_COINS, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
   it("returns empty coins for invalid/nonexistent tokens", async () => {
+    const coinsObj = buildCoinsObj(INVALID_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(INVALID_COINS, HISTORICAL_TIMESTAMP),
-      getHistorical(INVALID_COINS, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
     expect(Object.keys(post.coins).length).toBe(0);
     expect(Object.keys(get.coins).length).toBe(0);
   }, 30_000);
 
-  it("returns empty coins for empty array", async () => {
-    const post = await postHistorical([], HISTORICAL_TIMESTAMP);
+  it("returns empty coins for empty object", async () => {
+    const post = await postHistorical({});
     expect(post.coins).toEqual({});
   }, 30_000);
 
-  it("matches GET for a single coin", async () => {
-    const single = [STANDARD_COINS[0]];
+  it("matches GET batchHistorical for a single coin with single timestamp", async () => {
+    const coinsObj = { [STANDARD_COINS[0]]: [HISTORICAL_TIMESTAMPS[0]] };
     const [post, get] = await Promise.all([
-      postHistorical(single, HISTORICAL_TIMESTAMP),
-      getHistorical(single, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("returns empty for a very old timestamp with no data", async () => {
+  it("returns empty prices for a very old timestamp with no data", async () => {
     const veryOld = 946684800; // Jan 1 2000
+    const coinsObj = buildCoinsObj(STANDARD_COINS, [veryOld]);
     const [post, get] = await Promise.all([
-      postHistorical(STANDARD_COINS, veryOld),
-      getHistorical(STANDARD_COINS, veryOld),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
     expect(Object.keys(post.coins).length).toBe(0);
     expect(Object.keys(get.coins).length).toBe(0);
   }, 30_000);
 
-  it("matches GET for a recent timestamp", async () => {
+  it("matches GET batchHistorical for a recent timestamp", async () => {
     const recent = Math.floor(Date.now() / 1000) - 3600; // 1 hour ago
+    const coinsObj = buildCoinsObj(STANDARD_COINS, [recent]);
     const [post, get] = await Promise.all([
-      postHistorical(STANDARD_COINS, recent),
-      getHistorical(STANDARD_COINS, recent),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("matches GET for a large multi-chain batch", async () => {
+  it("matches GET batchHistorical for a large multi-chain batch", async () => {
+    const coinsObj = buildCoinsObj(MULTI_CHAIN_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(MULTI_CHAIN_COINS, HISTORICAL_TIMESTAMP),
-      getHistorical(MULTI_CHAIN_COINS, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
-  it("matches GET for mix of valid and invalid coins", async () => {
+  it("matches GET batchHistorical for mix of valid and invalid coins", async () => {
     const mixed = [...STANDARD_COINS, ...INVALID_COINS];
+    const coinsObj = buildCoinsObj(mixed, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
-      postHistorical(mixed, HISTORICAL_TIMESTAMP),
-      getHistorical(mixed, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
     expect(Object.keys(post.coins).length).toBeGreaterThan(0);
   }, 30_000);
 
-  it("handles duplicate coins in the array", async () => {
-    const duped = [STANDARD_COINS[0], STANDARD_COINS[0], STANDARD_COINS[0]];
+  it("supports different timestamps per coin", async () => {
+    const coinsObj = {
+      [STANDARD_COINS[0]]: [HISTORICAL_TIMESTAMPS[0]],
+      [STANDARD_COINS[1]]: [HISTORICAL_TIMESTAMPS[1]],
+      [STANDARD_COINS[2]]: HISTORICAL_TIMESTAMPS,
+    };
     const [post, get] = await Promise.all([
-      postHistorical(duped, HISTORICAL_TIMESTAMP),
-      getHistorical(duped, HISTORICAL_TIMESTAMP),
+      postHistorical(coinsObj),
+      getBatchHistorical(coinsObj),
     ]);
-    compareCoinsResponse(post.coins, get.coins);
+    compareHistoricalResponse(post.coins, get.coins);
   }, 30_000);
 
   it("rejects missing body", async () => {

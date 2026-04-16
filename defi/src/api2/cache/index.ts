@@ -182,7 +182,7 @@ async function updateMetadata() {
 async function updateRaises() {
   try {
 
-    const { raises } = await fetch("https://api.llama.fi/raises").then((res) => res.json())
+    const { raises } = await readRouteData("/raises").then((res) => res.json())
     const raisesObject: any = {}
     raises.forEach((r: any) => {
       const id = r.defillamaId

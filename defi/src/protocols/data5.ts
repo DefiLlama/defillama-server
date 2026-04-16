@@ -7202,7 +7202,7 @@ const data5: Protocol[] = [
     symbol: "-",
     url: "https://o1.exchange/@defillama",
     referralUrl: "https://o1.exchange/@defillama",
-    description: "A trading terminal available on Base and Solana, offering advanced trading tools and 45% Cashback.",
+    description: "o1.exchange is an onchain trading aggregator for spot, perpetuals, and prediction markets, allowing users to compose and automate advanced strategies across multiple assets.",
     chain: "Solana",
     logo: `${baseIconsUrl}/o1.exchange.jpg`,
     audits: "0",

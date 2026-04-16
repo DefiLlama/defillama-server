@@ -17472,5 +17472,48 @@ const data5: Protocol[] = [
     github: ["ARMSys26"],
     listedAt: 1776305865
   },
+  {
+    id: "7701",
+    name: "PreStocks",
+    address: null,
+    symbol: "-",
+    url: "https://prestocks.com/",
+    description:
+      "Tokenized Pre-IPO Stocks. 24/7 instant trading. Permissionless. No minimums",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/prestocks.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Stocks & ETFs"],
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "PreStocks",
+    dimensions: {
+      fees: "prestocks"
+    }
+  },
+  {
+    id: "7702",
+    name: "Stratium",
+    address: null,
+    symbol: "-",
+    assetToken: "srHYPE",
+    url: " ", // pending to add url https://stratium.xyz
+    description:
+      "Stratium is a structured products protocol on Hyperliquid delivering volatility perps, asset baskets, and yield strategies. Stake HYPE to receive srHYPE and earn validator rewards plus trading fee share",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/stratium.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Hyperliquid L1"],
+    module: "stratium/index.js",
+    twitter: "StratiumX",
+    audit_links: ["https://docs.stratium.xyz/srhype/audit"],
+    github: ["horizonx-tech"],
+    listedAt: 1776362641
+  },
 ];
 export default data5;

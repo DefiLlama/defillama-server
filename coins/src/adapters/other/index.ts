@@ -560,6 +560,7 @@ async function matrixdock(timestamp: number = 0, writes: Write[] = []) {
 export const adapters = {
   symboitic,
   defiChain,
+  hypezion,
   shlb,
   metronome,
   buck,

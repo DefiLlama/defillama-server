@@ -621,7 +621,8 @@ export function getDimensionProtocolRoutes(route: 'overview' | 'chart' | 'chart-
 }
 
 async function getProtocolFinancials(req: HyperExpress.Request, res: HyperExpress.Response) {
-  validateProRequest(req, res)  // ensure that only pro users can access financial statement data
+  const isValid = validateProRequest(req, res)  // ensure that only pro users can access financial statement data
+  if (!isValid) return;
 
   const protocolSlug = sluggifyString(req.path_parameters.name?.toLowerCase())
   const routeSubPath = `${AdapterType.FEES}/agg-protocol/${protocolSlug}`

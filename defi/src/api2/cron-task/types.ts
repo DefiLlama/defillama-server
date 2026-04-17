@@ -31,6 +31,7 @@ export interface IChainMetadata {
   protocolCount?: number;
   dimAgg?: any;
   incentives?: boolean;
+  tokenRights?: boolean;
 }
 
 export interface IProtocolMetadata {

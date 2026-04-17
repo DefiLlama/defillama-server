@@ -8223,7 +8223,10 @@ const data4: Protocol[] = [
     ],
     listedAt: 1742382739,
     dimensions: {
-      fees: "yo-protocol"
+      fees: {
+        adapter: "yo-protocol",
+        genuineSpikes: [["2026-04-16", "Realized RLP exposure as a loss"]]
+      }
     }
   },
   {
@@ -13279,20 +13282,21 @@ const data4: Protocol[] = [
   },
   {
     id: "6140",
-    name: "CMswap",
+    name: "Junoswap.trade",
+    previousNames: ["CMswap"],
     address: null,
     symbol: "-",
-    url: "https://cmswap.xyz",
+    url: "https://junoswap.trade/swap",
     description: "Crypto Multiverse of Community — A DEX based on Uniswap V3",
     chain: "JBC",
-    logo: `${baseIconsUrl}/cmswap.jpg`,
+    logo: `${baseIconsUrl}/junoswap.trade.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
     tags: ["CLMM"],
     chains: ["JBC", "Bitkub"],
     module: "cmswap/index.js",
-    twitter: "CMswap",
+    twitter: "junoswaptrade",
     forkedFromIds: ["2198"],
     listedAt: 1746552214,
   },

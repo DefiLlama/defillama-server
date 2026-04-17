@@ -59,10 +59,10 @@ export async function fileResponse(filePath: string, res: HyperExpress.Response)
 }
 
 export function validateProRequest(req: HyperExpress.Request, res: HyperExpress.Response) {
-  if ((req as any).isProRequest) return;
+  if ((req as any).isProRequest) return true;
 
   // throw error if not pro
-  res.status(403)
-  res.send('Pro access required', true)
-  return (req as any).isProRequest === true
+  res.status(402)
+  res.send('Upgrade to the paid API plan at https://defillama.com/subscription', true)
+  return false
 }

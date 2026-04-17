@@ -17613,5 +17613,26 @@ const data5: Protocol[] = [
     twitter: "yieldai_app",
     listedAt: 1776367461
   },
+  {
+    id: "7708",
+    name: "Tulpea",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://app.tulpea.org/
+    description:
+      "Tulpea is a decentralized credit infrastructure that enables onchain underwriting of real-world assets, allowing users to access structured debt and yield backed by cash-flowing assets like real estate. It replaces traditional banks by separating ownership and debt, using curated risk assessment and aligned incentives to offer transparent, overcollateralized, and amortizing lending opportunities",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/tulpea.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["MegaETH"],
+    module: "tulpea/index.js",
+    twitter: "Tulpea_org",
+    audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/Tulpea-Security-Review.pdf"],
+    github: ["Tulpea"],
+    listedAt: 1776385465
+  },
 ];
 export default data5;

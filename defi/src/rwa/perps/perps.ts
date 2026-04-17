@@ -8,6 +8,7 @@ import {
   getContractId,
   getContractMetadata,
   hasContractMetadata,
+  isLikelyCryptoOrForex,
   loadContractMetadataFromAirtable,
   CIRCUIT_BREAKER_THRESHOLD,
 } from "./constants";
@@ -55,10 +56,12 @@ export async function main(ts: number = 0): Promise<void> {
     }
   }
 
-  if (missingMetadata.length > 0) {
+  // Only notify about missing RWA markets — skip crypto/forex noise
+  const missingRwa = missingMetadata.filter((c) => !isLikelyCryptoOrForex(c));
+  if (missingRwa.length > 0) {
     const msg = `RWA Perps  ${
-      missingMetadata.length
-    } market(s) skipped — missing spreadsheet metadata:\n${missingMetadata.slice(0, 11).join(", ")}`;
+      missingRwa.length
+    } market(s) skipped — missing spreadsheet metadata:\n${missingRwa.slice(0, 11).join(", ")}`;
     console.warn(msg);
     if (process.env.RWA_WEBHOOK && +Date.now() > +new Date('2025-04-23')) { // Re-enable after Apr 25, 2025
       await sendMessage(msg, process.env.RWA_WEBHOOK, false);

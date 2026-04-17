@@ -121,11 +121,11 @@ function generateIdMap(
   return idMap;
 }
 
-function trimTrailingZeros(data: Array<{ timestamp: number; onChainMcap: number; defiActiveTvl: number; activeMcap?: number }>): typeof data {
+function trimLeadingZeros(data: Array<{ timestamp: number; onChainMcap: number; defiActiveTvl: number; activeMcap?: number }>): typeof data {
   while (data.length > 0) {
-    const last = data[data.length - 1];
-    if (last.onChainMcap === 0 && last.defiActiveTvl === 0 && (!last.activeMcap || last.activeMcap === 0)) {
-      data.pop();
+    const first = data[0];
+    if (first.onChainMcap === 0 && first.defiActiveTvl === 0 && (!first.activeMcap || first.activeMcap === 0)) {
+      data.shift();
     } else {
       break;
     }
@@ -189,7 +189,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
         const newRecords = recordsById[id];
         const existingData = await readHistoricalDataForId(id);
         const mergedData = mergeHistoricalData(existingData, newRecords);
-        await storeHistoricalDataForId(id, trimTrailingZeros(smoothHistoricalData(mergedData)));
+        await storeHistoricalDataForId(id, trimLeadingZeros(smoothHistoricalData(mergedData)));
         updatedIds++;
         totalRecords += newRecords.length;
       } catch (e) {
@@ -218,7 +218,7 @@ async function generateAllHistoricalDataIncremental(metadata: RWAMetadata[]): Pr
           activeMcap: activeMcapData ? toFiniteNumberOrZero(record.aggregatedactivemcap) : undefined,
         }));
 
-        await storeHistoricalDataForId(id, trimTrailingZeros(smoothHistoricalData(historicalData)));
+        await storeHistoricalDataForId(id, trimLeadingZeros(smoothHistoricalData(historicalData)));
         updatedIds++;
         totalRecords += records.length;
 

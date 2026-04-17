@@ -60,7 +60,7 @@ export async function main(ts: number = 0): Promise<void> {
       missingMetadata.length
     } market(s) skipped — missing spreadsheet metadata:\n${missingMetadata.slice(0, 11).join(", ")}`;
     console.warn(msg);
-    if (process.env.RWA_WEBHOOK && Date.now() > new Date('2025-04-23T00:00:00Z').getTime()) { // Re-enable after Apr 25, 2025
+    if (process.env.RWA_WEBHOOK && +Date.now() > +new Date('2025-04-23')) { // Re-enable after Apr 25, 2025
       await sendMessage(msg, process.env.RWA_WEBHOOK, false);
     }
   }

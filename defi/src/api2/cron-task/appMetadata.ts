@@ -53,9 +53,8 @@ protocols.forEach((protocol: any) => {
   if (protocol.tags) protocol.tags.forEach((tag: string) => tagsSet.add(tag));
   if (protocol.parentProtocol) {
     if (!parentProtocolsInfoMap[protocol.parentProtocol]) {
-      console.log('Warning: parent protocol not found for ', protocol.name, protocol.parentProtocol);
-    } else
-      parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
+      console.log("Warning: parent protocol not found for ", protocol.name, protocol.parentProtocol);
+    } else parentProtocolsInfoMap[protocol.parentProtocol].childProtocols.push(protocol);
   } else {
     if (protocol.gecko_id) {
       protocolsWithGeckoIdSet.add(protocol.id);
@@ -71,24 +70,23 @@ const slugMap: any = {
 
 const slug = (tokenName = "") => {
   try {
-    if (!slugMap[tokenName]) slugMap[tokenName] = (tokenName ?? '')?.toLowerCase().split(" ").join("-").split("'").join("");
+    if (!slugMap[tokenName])
+      slugMap[tokenName] = (tokenName ?? "")?.toLowerCase().split(" ").join("-").split("'").join("");
     return slugMap[tokenName];
   } catch (e: any) {
     const errorMsg = `Error in slug for tokenName=${tokenName}, ${e.message}`;
     console.error(errorMsg);
-    return '';
+    return "";
   }
 };
 
 export async function storeAppMetadata() {
-
   console.time("storeAppMetadata");
   console.log("starting to build metadata for front-end");
   try {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
     // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
-
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);
     console.error(e);
@@ -203,20 +201,27 @@ async function _storeAppMetadata() {
     getNftStats(),
     readCachedRouteData({ route: "/token-rights" }).catch(() => []),
     readCachedRouteData({ route: "/dimensions/nft-volume/dvlite", defaultResponse: { allChains: [] } }),
-    readCachedRouteData({ route: "/dimensions/active-users/dau-lite", defaultResponse: { protocols: [], allChains: [] } }),
+    readCachedRouteData({
+      route: "/dimensions/active-users/dau-lite",
+      defaultResponse: { protocols: [], allChains: [] },
+    }),
     readCachedRouteData({ route: "/dimensions/new-users/dnu-lite", defaultResponse: { protocols: [], allChains: [] } }),
-    readCachedRouteData({ route: "/dimensions/active-users/dgu-lite", defaultResponse: { protocols: [], allChains: [] } }),
-    readCachedRouteData({ route: "/dimensions/active-users/dtc-lite", defaultResponse: { protocols: [], allChains: [] } }),
+    readCachedRouteData({
+      route: "/dimensions/active-users/dgu-lite",
+      defaultResponse: { protocols: [], allChains: [] },
+    }),
+    readCachedRouteData({
+      route: "/dimensions/active-users/dtc-lite",
+      defaultResponse: { protocols: [], allChains: [] },
+    }),
   ]);
 
   console.timeEnd("_storeMetadataFile fetch all data");
-  const missingChainIds: any = []
-
+  const missingChainIds: any = [];
 
   await _storeMetadataFile();
   await storeRouteData("/_fe/static/safe-harbor-projects", safeHarborData);
   await notifyMissingChainIds(missingChainIds);
-
 
   async function _storeMetadataFile() {
     for (const chain of tvlData.chains) {
@@ -231,9 +236,10 @@ async function _storeAppMetadata() {
         continue;
       }
       const slugName: string = slug(protocol.name);
-      const hasTvl = protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false
-      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false
-      const hasInflows = (hasTvl && !protocolInfo.misrepresentedTokens) ? true : false
+      const hasTvl =
+        protocol.tvl != null && protocolInfo.module != null && protocolInfo.module !== "dummy.js" ? true : false;
+      const hasBorrowed = protocol.chainTvls?.borrowed?.tvl != null ? true : false;
+      const hasInflows = hasTvl && !protocolInfo.misrepresentedTokens ? true : false;
       finalProtocols[protocol.defillamaId] = {
         name: slugName,
         tvl: hasTvl,
@@ -241,7 +247,7 @@ async function _storeAppMetadata() {
         ...(hasBorrowed ? { borrowed: true } : {}),
         yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {})
+        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
 
       if (protocol.parentProtocol) {
@@ -271,10 +277,10 @@ async function _storeAppMetadata() {
     }
     for (const protocol of tvlData.parentProtocols) {
       if (!finalProtocols[protocol.id]) {
-        console.warn(`Parent Protocol ${protocol.id} not found in finalProtocols`)
+        console.warn(`Parent Protocol ${protocol.id} not found in finalProtocols`);
         finalProtocols[protocol.id] = {
-          ...protocol
-        }
+          ...protocol,
+        };
       }
       const { name: _, ...rest } = finalProtocols[protocol.id];
       const slugName: string = slug(protocol.name);
@@ -287,7 +293,7 @@ async function _storeAppMetadata() {
           : false,
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
-        ...(forksData.forks[protocol.name] ? { forks: true } : {})
+        ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
     }
 
@@ -518,7 +524,7 @@ async function _storeAppMetadata() {
         dexs: true,
       };
     }
-    
+
     for (const protocol of notionalVolumeData.protocols) {
       finalProtocols[protocol.defillamaId] = {
         ...finalProtocols[protocol.defillamaId],
@@ -903,7 +909,6 @@ async function _storeAppMetadata() {
       };
     }
 
-
     const bridgesBySlug = new Set(bridgesData.bridges.map((b: any) => b.slug).filter((s: string | undefined) => !!s));
 
     for (const protocolId in finalProtocols) {
@@ -930,7 +935,6 @@ async function _storeAppMetadata() {
         };
       }
 
-
       if (allNftMarketplaces.has(protocolName)) {
         finalProtocols[protocolId] = {
           ...finalProtocols[protocolId],
@@ -939,12 +943,17 @@ async function _storeAppMetadata() {
       }
     }
 
+    const tokenRightsIds = new Set<string>();
     for (const tokenRight of tokenRightsData) {
-      const protocolId = tokenRight['DefiLlama ID']
-      if (!protocolId || !finalProtocols[protocolId]) continue
+      if (tokenRight["DefiLlama ID"] == null) continue;
+      tokenRightsIds.add(String(tokenRight["DefiLlama ID"]));
+    }
+
+    for (const protocolId of tokenRightsIds) {
+      if (!finalProtocols[protocolId]) continue;
       finalProtocols[protocolId] = {
         ...finalProtocols[protocolId],
-        tokenRights: true
+        tokenRights: true,
       };
     }
 
@@ -996,7 +1005,7 @@ async function _storeAppMetadata() {
     }
 
     for (let chain of stablecoinsData.chains) {
-      chain = chain.name
+      chain = chain.name;
       if (finalChains[slug(chain)]) {
         finalChains[slug(chain)] = { ...(finalChains[slug(chain)] ?? { name: chain }), stablecoins: true };
       }
@@ -1024,6 +1033,7 @@ async function _storeAppMetadata() {
     for (const _chain of Object.values(sortedChainData)) {
       const chain = _chain as any;
       chain.id = chainNameToIdMap[chain.name] ?? slug(chain.name);
+      if (tokenRightsIds.has(chain.id)) chain.tokenRights = true;
       if (!chainNameToIdMap[chain.name]) {
         console.log(`Chain ${chain.name} does not have an id. using ${slug(chain.name)}`);
         missingChainIds.push({ ...chain, slug: slug(chain.name) });
@@ -1285,18 +1295,21 @@ async function _storeAppMetadata() {
         dimAgg: {
           ...categoryAggData,
           chains: undefined,
-        }
+        },
       };
       if (categoryAggData.fees && categoryAggData.fees.df) configs[category].fees = true;
       if (categoryAggData.fees && categoryAggData.fees.dr) configs[category].revenue = true;
       if (categoryAggData.dexs && categoryAggData.dexs.dv) configs[category].dexs = true;
       if (categoryAggData.derivatives && categoryAggData.derivatives.dv) configs[category].perps = true;
       if (categoryAggData.aggregators && categoryAggData.aggregators.dv) configs[category].dexAggregators = true;
-      if (categoryAggData['bridge-aggregators'] && categoryAggData['bridge-aggregators'].dbv) configs[category].bridgeAggregators = true;
-      if (categoryAggData['normalized-volume'] && categoryAggData['normalized-volume'].dnvol) configs[category].normalizedVolume = true;
-      if (categoryAggData['open-interest'] && categoryAggData['open-interest'].doi) configs[category].openInterest = true;
+      if (categoryAggData["bridge-aggregators"] && categoryAggData["bridge-aggregators"].dbv)
+        configs[category].bridgeAggregators = true;
+      if (categoryAggData["normalized-volume"] && categoryAggData["normalized-volume"].dnvol)
+        configs[category].normalizedVolume = true;
+      if (categoryAggData["open-interest"] && categoryAggData["open-interest"].doi)
+        configs[category].openInterest = true;
     }
-      
+
     await storeRouteData("/config/smol/appMetadata-categoriesAndTags.json", {
       categories: Array.from(categoriesSet),
       tags: Array.from(tagsSet),
@@ -1321,14 +1334,13 @@ const STABLECOINS_API = "https://stablecoins.llama.fi/stablecoins";
 
 async function getNftStats() {
   const [collections, marketplaces, chains] = await Promise.all([
-    cachedJSONPull({ endpoint: "https://nft.llama.fi/collections", defaultResponse: [] })
-      .then((res) => res.length),
-    cachedJSONPull({ endpoint: "https://nft.llama.fi/exchangeStats", defaultResponse: [] })
-      .then((res) => res.length),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/collections", defaultResponse: [] }).then((res) => res.length),
+    cachedJSONPull({ endpoint: "https://nft.llama.fi/exchangeStats", defaultResponse: [] }).then((res) => res.length),
     // cachedJSONPull({ endpoint: "https://nft.llama.fi/mints", defaultResponse: [] })
     //   .then((res) => res.length),  // this route doesnt work, plus we were reading only three items in the .all response
-    readCachedRouteData({ route: "/dimensions/nft-volume/dvlite", defaultResponse: { allChains: [] } })
-      .then((res) => res ? res.allChains.length : 0),
+    readCachedRouteData({ route: "/dimensions/nft-volume/dvlite", defaultResponse: { allChains: [] } }).then((res) =>
+      res ? res.allChains.length : 0
+    ),
   ]);
   return {
     collections,
@@ -1338,21 +1350,24 @@ async function getNftStats() {
 }
 
 runWithRuntimeLogging(storeAppMetadata, {
-  application: 'cron-task',
-  type: 'app-metadata',
-}).catch(console.error).then(() => process.exit(0))
+  application: "cron-task",
+  type: "app-metadata",
+})
+  .catch(console.error)
+  .then(() => process.exit(0));
 
 setTimeout(() => {
-  console.log('Running for more than 5 minutes, exiting.');
+  console.log("Running for more than 5 minutes, exiting.");
   process.exit(1);
-}, 5 * 60 * 1000) // keep process alive for 5 minutes in case of hanging promises
-
+}, 5 * 60 * 1000); // keep process alive for 5 minutes in case of hanging promises
 
 async function notifyMissingChainIds(missingChainIds: any) {
   if (missingChainIds.length && process.env.DIM_ERROR_CHANNEL_WEBHOOK) {
     try {
-      const message = `The following chains are missing from chainNameToIdMap in appMetadata.ts:\n${missingChainIds.map((chain: any) => `- ${chain.name} (slug: ${chain.slug})`).join("\n")}`;
-      await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK)
+      const message = `The following chains are missing from chainNameToIdMap in appMetadata.ts:\n${missingChainIds
+        .map((chain: any) => `- ${chain.name} (slug: ${chain.slug})`)
+        .join("\n")}`;
+      await sendMessage(message, process.env.DIM_ERROR_CHANNEL_WEBHOOK);
     } catch (e) {
       console.log("Error sending missing chain ids message to Discord: ", e);
     }

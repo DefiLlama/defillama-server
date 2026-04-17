@@ -7356,7 +7356,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "SmarDex",
+    twitter: "every_thing",
     stablecoins: ["smardex-usdn"],
   },
   {

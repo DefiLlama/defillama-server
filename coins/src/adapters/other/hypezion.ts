@@ -18,8 +18,7 @@ const HZUSD = "0x6E2ade6FFc94d24A81406285c179227dfBFc97CE";
 const BULLHYPE = "0x12cF926C3884dda144e18E11e2659c0675cF20eA";
 const STAKED_HZUSD = "0xce01a9B9bc08f0847fb745044330Eff1181360Cd";
 
-// HypeZionExchangeInformation proxy
-// TODO: Verify address after deploying ExchangeInformation upgrade
+// HypeZionExchangeInformation proxy (Hyperliquid Mainnet)
 const EXCHANGE_INFO = "0x9286ABAC7c29e8A183155E961a4E4BBA2E162c7A";
 
 const abis = {

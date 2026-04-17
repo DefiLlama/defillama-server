@@ -441,13 +441,21 @@ export async function runAtvlForTimestamp(
   // Each timestamp gets its own mutable copy (getActiveTvls / getOnChainTvlAndActiveMcaps mutate finalData)
   const finalData = structuredClone(context.finalData);
 
+  const tFetch = performance.now();
+  const timedFetch = async <T>(label: string, fn: () => Promise<T>): Promise<T> => {
+    const s = performance.now();
+    const result = await fn();
+    console.log(`[timer]   ${label}: ${((performance.now() - s) / 1000).toFixed(1)}s`);
+    return result;
+  };
   const [assetPrices, aggregateRawTvls, totalSupplies, stablecoinsData, excludedAmounts] = await Promise.all([
-    coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp),
-    getAggregateRawTvls(tokensSortedByChain, timestamp),
-    getTotalSupplies(tokensSortedByChain, timestamp),
-    fetchStablecoins(timestamp, ids.length > 0 ? new Set(Object.keys(coingeckoIdToRwaId)) : undefined),
-    getExcludedBalances(ts, finalData, tokenToProjectMap),
+    timedFetch("getPrices", () => coins.getPrices(Object.keys(tokenToProjectMap), timestamp == 0 ? "now" : timestamp)),
+    timedFetch("getAggregateRawTvls", () => getAggregateRawTvls(tokensSortedByChain, timestamp)),
+    timedFetch("getTotalSupplies", () => getTotalSupplies(tokensSortedByChain, timestamp)),
+    timedFetch("fetchStablecoins", () => fetchStablecoins(timestamp, ids.length > 0 ? new Set(Object.keys(coingeckoIdToRwaId)) : undefined)),
+    timedFetch("getExcludedBalances", () => getExcludedBalances(ts, finalData, tokenToProjectMap)),
   ]);
+  console.log(`[timer] Promise.all (5 fetches): ${((performance.now() - tFetch) / 1000).toFixed(1)}s`);
 
   Object.keys(tokenToProjectMap).forEach((address: string) => {
     if (!assetPrices[address]) {
@@ -456,6 +464,7 @@ export async function runAtvlForTimestamp(
     }
   });
 
+  const tCompute = performance.now();
   getActiveTvls(assetPrices, tokenToProjectMap, finalData, protocolIdMap, aggregateRawTvls, projectIdsMap);
   getOnChainTvlAndActiveMcaps(
     assetPrices,
@@ -466,13 +475,16 @@ export async function runAtvlForTimestamp(
     totalSupplies,
     excludedAmounts,
   );
+  console.log(`[timer] compute (getActiveTvls + getOnChainTvlAndActiveMcaps): ${((performance.now() - tCompute) / 1000).toFixed(1)}s`);
 
   const timestampToPublish = timestamp == 0 ? getCurrentUnixTimestamp() : timestamp;
   const res = { data: finalData, timestamp: timestampToPublish };
 
   const skipCB = options.skipCircuitBreaker || ids.length > 0;
   if (!skipCB) {
+    const tCB = performance.now();
     const circuitBreaker = await checkCircuitBreakers(finalData);
+    console.log(`[timer] circuitBreaker: ${((performance.now() - tCB) / 1000).toFixed(1)}s`);
     if (circuitBreaker.triggered) {
       const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
       console.error(message);
@@ -482,10 +494,12 @@ export async function runAtvlForTimestamp(
   }
 
   if (options.storeResults) {
+    const tStore = performance.now();
     await Promise.all([
       timestamp == 0 ? storeMetadata(res) : Promise.resolve(),
       storeHistorical(res as any),
     ]);
+    console.log(`[timer] storeResults: ${((performance.now() - tStore) / 1000).toFixed(1)}s`);
   }
 
   if (process.env.DEBUG_ENABLED) console.log(`Exitting atvlRefill.ts for ts=${timestamp}`)

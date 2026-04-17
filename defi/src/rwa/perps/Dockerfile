@@ -27,5 +27,5 @@ WORKDIR /app/repo/defi
 # Make port 5003 available to the world outside this container
 EXPOSE 5003
 
-# bash command to keep the container running
-CMD ["bash", "-c", "bash src/rwa/perps/rwa_perps_start.sh; while true; do sleep 10000; done"]
+# Start script runs initial setup then loops (git pull + cron + PM2 reload)
+CMD ["bash", "src/rwa/perps/rwa_perps_start.sh"]

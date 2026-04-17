@@ -128,6 +128,52 @@ export function getContractId(contract: string): string {
 
 export const CIRCUIT_BREAKER_THRESHOLD = 0.5;
 
+// ---------------------------------------------------------------------------
+// Crypto / forex filters — used to suppress non-RWA markets in skip alerts
+// ---------------------------------------------------------------------------
+
+const FOREX_CODES = new Set([
+    "EUR", "GBP", "JPY", "AUD", "CAD", "CHF", "NZD", "NOK", "SEK", "DKK",
+    "SGD", "HKD", "CNY", "CNH", "MXN", "ZAR", "TRY", "PLN", "CZK", "HUF",
+    "INR", "BRL", "KRW", "TWD", "THB",
+]);
+
+const CRYPTO_TICKERS = new Set([
+    "BTC", "ETH", "SOL", "DOGE", "XRP", "ADA", "AVAX", "DOT", "MATIC", "LINK",
+    "UNI", "AAVE", "COMP", "MKR", "SNX", "CRV", "SUSHI", "YFI", "LDO", "ARB",
+    "OP", "APT", "SUI", "SEI", "TIA", "NEAR", "ATOM", "FTM", "INJ", "STX",
+    "PEPE", "SHIB", "WIF", "BONK", "FLOKI", "MEME", "WLD", "JUP", "JTO",
+    "PYTH", "RNDR", "FIL", "GRT", "IMX", "MANA", "SAND", "AXS", "APE",
+    "LTC", "BCH", "ETC", "XLM", "ALGO", "HBAR", "VET", "EGLD", "FLR",
+    "BNB", "TON", "TRX", "LEO", "OKB", "CRO", "RUNE", "GALA", "ENS",
+    "EOS", "XTZ", "THETA", "NEO", "WAVES", "ZEC", "DASH", "IOTA", "XMR",
+    "LUNC", "KAVA", "CFX", "BLUR", "STRK", "ZK", "W", "ETHFI", "ENA",
+    "PENDLE", "EIGEN", "MOVE", "HYPE", "VIRTUAL", "AI16Z", "FARTCOIN",
+    "TRUMP", "MELANIA", "TAO", "RENDER", "FET", "AGIX", "OCEAN", "TURBO",
+    "WEN", "MEW", "POPCAT", "NEIRO", "PURR", "DEEP", "BERA", "IP",
+    "KAITO", "TST", "VINE", "ANIME", "LAYER3", "NIL", "PARTI",
+    "ONDO", "MANTRA", "OM",
+]);
+
+/**
+ * Extract the base ticker from a contract string.
+ * e.g. "gtrade:EUR-USD" → "EUR", "BTC" → "BTC", "helix:AAPL-USDT" → "AAPL"
+ */
+function extractBaseTicker(contract: string): string {
+    // Strip platform prefix (before ":")
+    const afterColon = contract.includes(":") ? contract.split(":")[1] : contract;
+    // Strip quote suffix (after "-")
+    const beforeDash = afterColon.includes("-") ? afterColon.split("-")[0] : afterColon;
+    // Strip numeric suffixes like _1, _2 (gTrade uses GOOGL_1)
+    return beforeDash.replace(/_\d+$/, "").toUpperCase();
+}
+
+/** Returns true if the contract looks like a forex pair or crypto ticker (not RWA). */
+export function isLikelyCryptoOrForex(contract: string): boolean {
+    const base = extractBaseTicker(contract);
+    return FOREX_CODES.has(base) || CRYPTO_TICKERS.has(base);
+}
+
 /**
  * Load perps market metadata from the shared RWA Airtable sheet.
  * Only rows with a non-empty `Canonical Market ID` column are relevant.

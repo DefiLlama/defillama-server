@@ -4,6 +4,7 @@ import { getCategoryChartByChainData, getTagChartByChainData } from "../../getCa
 // import { chainAssetHistoricalFlows, chainAssetFlows, chainAssetChart } from "../../api2ChainAssets";
 import { pgGetInflows } from "../db/inflows";
 import { getSimpleChainDatasetInternal } from "./getSimpleChainDataset";
+import { getBorrowedProtocolBreakdownInternal } from "./getBorrowedBreakdown";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
 import { getTweetStats } from "../../twitter/db";
@@ -170,6 +171,10 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/v2/metrics/fork", ew(getForksRoutes('overview')))
   router.get("/v2/chart/fork/protocol-breakdown", ew(getForksRoutes('chart-total')))
   router.get("/v2/chart/fork/protocol/:protocol", ew(getForksRoutes('chart-total')))
+
+  // v2 - borrowed protocol breakdown 
+  router.get("/v2/chart/borrowed/protocol-breakdown", ew(getBorrowedProtocolBreakdown));
+  router.get("/v2/chart/borrowed/chain/:chain/protocol-breakdown", ew(getBorrowedProtocolBreakdown));
 
   // v2 - dimensions
 
@@ -402,6 +407,19 @@ async function getSimpleChainDataset(req: HyperExpress.Request, res: HyperExpres
   res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
 
   return successResponse(res, csv, 30, { isJson: false })
+}
+
+async function getBorrowedProtocolBreakdown(req: HyperExpress.Request, res: HyperExpress.Response) {
+  const chainParam = req.path_parameters.chain
+    ? getChainLabelFromKey(decodeURIComponent(req.path_parameters.chain))
+    : null;
+
+  const data = await getBorrowedProtocolBreakdownInternal(chainParam, {
+    category: req.query_parameters.category,
+    getHistTvlMeta: () => cache.historicalTvlForAllProtocolsMeta,
+  });
+
+  return successResponse(res, data, 30);
 }
 
 async function getDataset(req: HyperExpress.Request, res: HyperExpress.Response) {

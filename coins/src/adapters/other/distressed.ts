@@ -156,6 +156,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MBTC: "0x7c1cca5b25fa0bc9af9275fb53cba89dc172b878",
     NEST: "0x98f8669f6481ebb341b522fcd3663f79a3d1a6a7",
     DOT: "0x8d010bf9c26881788b4e6bf5fd1bdc358c8f90b8", // hacked maybe, has insane supply
+    USDS: "0xde7d1ce109236b12809c45b23d22f30dba0ef424", // radioshack inflated tvl
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

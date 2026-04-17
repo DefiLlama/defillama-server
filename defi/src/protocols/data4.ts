@@ -8223,7 +8223,10 @@ const data4: Protocol[] = [
     ],
     listedAt: 1742382739,
     dimensions: {
-      fees: "yo-protocol"
+      fees: {
+        adapter: "yo-protocol",
+        genuineSpikes: [["2026-04-16", "Realized RLP exposure as a loss"]]
+      }
     }
   },
   {

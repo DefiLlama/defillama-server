@@ -11,6 +11,7 @@ export const deadChains = [
   'kinto', // chain is dead,
   'inevm',
   'fluence',
+  'mint', //operations ceased https://x.com/Mint_Blockchain/status/2044980026819617147
 ]
 
 

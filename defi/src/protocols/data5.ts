@@ -16583,7 +16583,7 @@ const data5: Protocol[] = [
     name: "LilSwap",
     address: null,
     symbol: "-",
-    url: "",
+    url: "https://app.lilswap.xyz",
     description: "Non-custodial swap automation for Aave-related position management and token swaps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lilswap.jpg`,

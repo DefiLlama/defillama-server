@@ -7362,7 +7362,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["Tokemak"],
     oracles: ["RedStone", "Chainlink"], // https://github.com/DefiLlama/defillama-server/pull/8088
     dimensions: {
-      fees: "autofinance",
+      fees: {
+        adapter: "autofinance",
+        genuineSpikes: [["2025-11-03", "Exposure to Balancer v2 exploit"]]
+      }
     },
   },
   {

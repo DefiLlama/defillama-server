@@ -73,7 +73,7 @@ const data6: Protocol[] = [
     audits: "0",
     gecko_id: null,
     cmcId: null,
-    category: "Risk Curator",
+    category: "Risk Curators",
     chains: ["Arbitrum"],
     module: "trinity-protocol/index.js",
     twitter: "cameron_arc_ai",

@@ -2030,7 +2030,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "sudoswap.js",
     github: ["sudoswap"],
   },
-  {
+  /*{ // unified under new RamsesX parent#ramses-exchange-hl
     id: "parent#ramses-exchange",
     name: "Ramses Exchange",
     url: "https://app.ramses.exchange/",
@@ -2042,7 +2042,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RamsesExchange",
     github: ["RamsesExchange"],
-  },
+  },*/
   {
     id: "parent#maple-finance",
     name: "Maple Finance",

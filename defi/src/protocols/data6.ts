@@ -80,5 +80,70 @@ const data6: Protocol[] = [
     audit_links: [],
     listedAt: 1776465699
   },
+  {
+    id: "7711",
+    name: "Liquid Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://app.liquidprotocol.org/tokens",
+    description:
+      "Liquid Protocol deploys ERC-20 tokens on Base with Uniswap V4 pools, locked liquidity, and configurable fee distribution",
+    chain: "Base",
+    logo: `${baseIconsUrl}/liquid-protocol.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "LIQUIDPROTOCOL",
+    github: ["Liquid-Protocol-Ops"],
+    dimensions: {
+      fees: "liquid-protocol",
+    },
+  },
+  {
+    id: "7712",
+    name: "Rainbow Token Launchpad",
+    address: null,
+    symbol: "-",
+    url: "https://rainbow.me/",
+    description:
+      "A launchpad platform built by Rainbow team",
+    chain: "Base",
+    logo: `${baseIconsUrl}/rainbow-token-launchpad.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "rainbowdotme",
+    parentProtocol: "parent#rainbow",
+    dimensions: {
+      fees: "rainbow-token-launchpad",
+    },
+  },
+  {
+    id: "7713",
+    name: "GrelfSwap",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://grelfswap.com/
+    description:
+      "GrelfSwap is a DEX aggregator on Hedera",
+    chain: "Hedera",
+    logo: `${baseIconsUrl}/grelfswap.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "DEX Aggregator",
+    chains: ["Hedera"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      aggregators: "grelfswap",
+    },
+  },
 ];
 export default data6;

@@ -9442,6 +9442,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Polymarket",
   },
+  {
+    id: "parent#circle",
+    name: "Circle",
+    url: "https://www.circle.com/en/", 
+    description: "Circle helps businesses and developers harness the power of USDC for payments and commerce",
+    logo: `${baseIconsUrl}/circle.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "circle",
+    stablecoins: ["usd-coin", "circle-usyc"],
+  },
 ];
 
 export default parentProtocols;

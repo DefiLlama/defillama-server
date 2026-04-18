@@ -145,5 +145,27 @@ const data6: Protocol[] = [
       aggregators: "grelfswap",
     },
   },
+  {
+    id: "7714",
+    name: "Circle CCTP",
+    address: null,
+    symbol: "-",
+    url: "https://www.circle.com/cross-chain-transfer-protocol",
+    description: "Circle helps businesses and developers harness the power of USDC for payments and commerce",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/circle-cctp.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Base", "Polygon", "Optimism", "Arbitrum", "Avalanche", "Monad", "Unichain", "Linea", "Plume Mainnet", "Sonic", "World Chain", "XDC", "Hyperliquid", "Ink"],
+    module: "dummy.js",
+    twitter: "circle",
+    stablecoins: ["usd-coin"],
+    parentProtocol: "parent#circle",
+    dimensions: {
+      fees: "cctp"
+    }
+  },
 ];
 export default data6;

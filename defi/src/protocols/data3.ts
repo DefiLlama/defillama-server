@@ -22119,10 +22119,10 @@ const data3_1: Protocol[] = [
     module: "hashnote/index.js",
     twitter: "circle",
     listedAt: 1698280827,
+    parentProtocol: "parent#circle",
     dimensions: {
       fees: "hashnote-usyc"
     },
-    stablecoins: ["circle-usyc"],
   },
   {
     id: "3699",
@@ -51206,13 +51206,13 @@ const data3_3: Protocol[] = [
   },
   {
     id: "5008",
-    name: "Circle",
+    name: "Circle USDC",
     address: null,
     symbol: "-",
     url: "https://www.circle.com/en/",
     description: "Circle helps businesses and developers harness the power of USDC for payments and commerce",
     chain: "Off Chain",
-    logo: `${baseIconsUrl}/circle.png`,
+    logo: `${baseIconsUrl}/circle-usdc.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -51220,7 +51220,7 @@ const data3_3: Protocol[] = [
     chains: ["Off Chain"],
     module: "dummy.js",
     twitter: "circle",
-    stablecoins: ["usd-coin"],
+    parentProtocol: "parent#circle",
     dimensions: {
       fees: "circle"
     }

@@ -28625,7 +28625,7 @@ const data2: Protocol[] = [
     module: "ramses/index.js",
     twitter: "RamsesExchange",
     forkedFromIds: ["1407"],
-    parentProtocol: "parent#ramses-exchange",
+    parentProtocol: "parent#ramses-exchange-hl",
     listedAt: 1678883899,
     dimensions: {
       fees: "ramses-exchange-v1",

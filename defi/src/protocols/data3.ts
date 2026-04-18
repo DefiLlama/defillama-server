@@ -5748,7 +5748,7 @@ const data3_0: Protocol[] = [
     name: "DXDao",
     address: "0xa1d65e8fb6e87b60feccbc582f7f97804b725521",
     symbol: "DXD",
-    url: "https://dxdao.eth.limo",
+    url: "https://dxdao.eth.limo", // hijacked domain
     description:
       "DXdao is a decentralized autonomous organization, or DAO, that develops, governs, and grows DeFi products.",
     chain: "Ethereum",
@@ -5761,6 +5761,7 @@ const data3_0: Protocol[] = [
     module: "dummy.js",
     twitter: "DXdao_",
     github: ["DXgovernance"],
+    deadUrl: true,
   },
   {
     id: "2961",
@@ -6191,7 +6192,7 @@ const data3_0: Protocol[] = [
     name: "Kwenta",
     address: "0x920cf626a271321c151d027030d5d08af699456b",
     symbol: "KWENTA",
-    url: "https://kwenta.eth.limo",
+    url: "https://kwenta.eth.limo", // hijacked domain
     description:
       "Kwenta is a decentralized derivatives trading platform offering perpetual futures and options trading on Optimism. Gain exposure to a variety of on-chain and real-world assets, and access advanced functionality through the Kwenta Smart Margin Wallet.",
     chain: "Optimism",
@@ -6209,7 +6210,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "kwenta",
       "aggregator-derivatives": "kwenta"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "2982",
@@ -20057,7 +20059,7 @@ const data3_1: Protocol[] = [
     name: "sDAI",
     address: "gnosis:0xaf204776c7245bF4147c2612BF6e5972Ee483701",
     symbol: "sDAI",
-    url: "https://agavefinance.eth.limo/sdai/",
+    url: "https://agavefinance.eth.limo/sdai/", // hijacked domain
     description:
       "All the DAI bridged to Gnosis Chain is earning interest at MakerDAO. This interest is redirected to the sDAI holder. You can use sDAI in Defi like you would normally use xDAI.",
     chain: "xDai",
@@ -20073,6 +20075,7 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "sdai",
     },
+    deadUrl: true,
   },
   {
     id: "3604",
@@ -29996,7 +29999,7 @@ const data3_1: Protocol[] = [
     name: "Swapr V3",
     address: "arbitrum:0xdE903E2712288A1dA82942DDdF2c20529565aC30",
     symbol: "SWPR",
-    url: "https://swapr.eth.limo/",
+    url: "https://swapr.eth.limo/", // hijacked domain
     description: "Algebra Integral fork on xdai chain",
     chain: "xDai",
     logo: `${baseIconsUrl}/swapr-v3.jpg`,
@@ -30013,7 +30016,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "swapr-v3",
       dexs: "swapr-v3"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "4058",

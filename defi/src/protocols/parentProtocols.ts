@@ -3724,7 +3724,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#swapr",
     name: "Swapr",
-    url: "https://swapr.eth.limo/",
+    url: "https://swapr.eth.limo/", // hijacked domain
     description: `A governance-enabled automated-market maker with adjustable fees, made by DXdao.`,
     logo: `${baseIconsUrl}/swapr.jpg`,
     gecko_id: "swapr",
@@ -3733,6 +3733,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Swapr_dapp",
     governanceID: ["snapshot:swpr.eth"],
     github: ["levelkdev"],
+    deadUrl: true,
   },
   {
     id: "parent#dojoswap",

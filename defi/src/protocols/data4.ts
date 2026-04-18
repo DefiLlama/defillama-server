@@ -22318,7 +22318,7 @@ const data4: Protocol[] = [
     name: "AmplifyFinance",
     address: null,
     symbol: "-",
-    url: "https://amplifyfinance.eth.limo/",
+    url: "https://amplifyfinance.eth.limo/", // hijacked domain
     description:
       "AmplifyFinance is a DeFi yield amplification protocol delivering exceptional returns through automated intelligent looping smart contracts. All through a simple, set-and-forget interface without the complexity of manual position management",
     chain: "Ethereum",
@@ -22332,6 +22332,7 @@ const data4: Protocol[] = [
     twitter: "AmplifyFinance_",
     audit_links: ["https://amplifyfinance.gitbook.io/docs/security-and-audits"],
     listedAt: 1754371237,
+    deadUrl: true,
   },
   {
     id: "6527",

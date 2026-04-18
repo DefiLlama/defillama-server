@@ -49,13 +49,13 @@ const data6: Protocol[] = [
     description:
       "MOKEE Protocol is the first non-custodial crypto fail-safe protocol. Users deposit native tokens into personal vaults, designate heirs, and set an inactivity threshold",
     chain: "Binance",
-    logo: `${baseIconsUrl}/monkee.jpg`,
+    logo: `${baseIconsUrl}/mokee.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
     category: "Token Locker",
     chains: ["Binance", "Base","Ethereum", "Polygon", "Arbitrum", "Optimism"],
-    module: "monkee/index.js",
+    module: "mokee/index.js",
     twitter: "MokeeApp",
     audit_links: [],
     listedAt: 1776463251

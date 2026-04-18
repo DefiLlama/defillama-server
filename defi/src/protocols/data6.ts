@@ -158,7 +158,7 @@ const data6: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Base", "Polygon", "Optimism", "Arbitrum", "Avalanche", "Monad", "Unichain", "Linea", "Plume Mainnet", "Sonic", "World Chain", "XDC", "Hyperliquid", "Ink"],
+    chains: ["Ethereum", "Base", "Polygon", "Optimism", "Arbitrum", "Avalanche", "Monad", "Unichain", "Linea", "Plume Mainnet", "Sonic", "World Chain", "XDC", "Hyperliquid L1", "Ink"],
     module: "dummy.js",
     twitter: "circle",
     stablecoins: ["usd-coin"],

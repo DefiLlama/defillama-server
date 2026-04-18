@@ -13287,7 +13287,7 @@ const data4: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://junoswap.trade/swap",
-    description: "Crypto Multiverse of Community — A DEX based on Uniswap V3",
+    description: "Junoswap is a multi-chain swap aggregator and bridge frontend that routes trades through external DeFi protocols, with a launchpad and built-in liquidity setup for new tokens",
     chain: "JBC",
     logo: `${baseIconsUrl}/junoswap.trade.jpg`,
     audits: "0",

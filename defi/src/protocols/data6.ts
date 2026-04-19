@@ -167,5 +167,27 @@ const data6: Protocol[] = [
       fees: "cctp"
     }
   },
+  {
+    id: "7715",
+    name: "Paxos Stablecoin Issuer",
+    address: null,
+    symbol: "-",
+    url: "https://paxos.com/",
+    description:
+      "Paxos is a financial technology company that provides stablecoin services to businesses and developers",
+    chain: "Off Chain",
+    logo: `${baseIconsUrl}/paxos-stablecoin-issuer.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Stablecoin Issuer",
+    chains: ["Off Chain"],
+    module: "dummy.js",
+    twitter: "Paxos",
+    parentProtocol: "parent#paxos",
+    dimensions: {
+      fees: "paxos"
+    }
+  },
 ];
 export default data6;

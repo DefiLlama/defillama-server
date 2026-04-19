@@ -48043,13 +48043,14 @@ const data3_3: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/paxos-gold.png`,
     audits: "0",
-    gecko_id: "pax-gold",
-    cmcId: "4705",
+    gecko_id: null,
+    cmcId: null,
     tags: ["Commodities"],
     chains: ["Ethereum"],
     module: "paxos-gold/index.js",
     twitter: "Paxos",
     listedAt: 1720549017,
+    parentProtocol: "parent#paxos",
     dimensions: {
       fees: "paxos-gold"
     }

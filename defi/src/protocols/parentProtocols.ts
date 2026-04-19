@@ -9454,6 +9454,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "circle",
     stablecoins: ["usd-coin", "circle-usyc"],
   },
+  {
+    id: "parent#paxos",
+    name: "Paxos",
+    url: "https://www.paxos.com/", 
+    description: "Blockchain infrastructure for enterprises. Regulated by the OCC in the US, FIN-FSA in the EU, and MAS in Singapore",
+    logo: `${baseIconsUrl}/paxos.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Paxos",
+  },
 ];
 
 export default parentProtocols;

@@ -67,7 +67,9 @@ function getPageSearchKeywords(keywords?: string[]): string[] | undefined {
 }
 
 function mergeKeywords(...keywordSets: Array<string[] | undefined>): string[] | undefined {
-  const merged = Array.from(new Set(keywordSets.flatMap((keywords) => keywords ?? []).map((keyword) => keyword.trim())));
+  const merged = Array.from(
+    new Set(keywordSets.flatMap((keywords) => keywords ?? []).map((keyword) => keyword.trim()))
+  );
   return merged.length > 0 ? merged : undefined;
 }
 
@@ -82,12 +84,7 @@ function dedupeFrontendPageResults(results: SearchResult[]): SearchResult[] {
       continue;
     }
 
-    const keywords = mergeKeywords(
-      existing.keywords,
-      result.keywords,
-      [existing.name],
-      [result.name]
-    );
+    const keywords = mergeKeywords(existing.keywords, result.keywords);
 
     deduped.set(dedupeKey, {
       ...existing,
@@ -511,7 +508,7 @@ async function generateSearchList() {
     rwaTickerToNameMap,
     rwaPerpsListData,
     rwaPerpContractToNameMap,
-    equitiesData
+    equitiesData,
   ]: [
     {
       chains: string[];
@@ -601,7 +598,7 @@ async function generateSearchList() {
       }
       return final;
     }),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`)
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
   ]);
   const slugToProtocolName = new Map<string, string>();
   for (const id in protocolsMetadata) {
@@ -1026,35 +1023,42 @@ async function generateSearchList() {
     });
   }
 
-  let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
-    id: `metric_${normalize(i.name)}`,
-    name: i.name,
-    route: i.route,
-    ...(getPageSearchKeywords(i.searchKeywords) ? { keywords: getPageSearchKeywords(i.searchKeywords) } : {}),
-    r: SEARCH_RANK.navPage,
-    v: tastyMetrics[i.route] ?? 0,
-    type: "Metric",
-  }));
+  let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => {
+    const keywords = getPageSearchKeywords(i.searchKeywords);
+    return {
+      id: `metric_${normalize(i.name)}`,
+      name: i.name,
+      route: i.route,
+      ...(keywords ? { keywords } : {}),
+      r: SEARCH_RANK.navPage,
+      v: tastyMetrics[i.route] ?? 0,
+      type: "Metric",
+    };
+  });
 
-  let tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
-    id: `tool_${normalize(t.name)}`,
-    name: t.name,
-    route: t.route,
-    ...(getPageSearchKeywords(t.searchKeywords) ? { keywords: getPageSearchKeywords(t.searchKeywords) } : {}),
-    r: SEARCH_RANK.navPage,
-    v: tastyMetrics[t.route] ?? 0,
-    type: "Tool",
-  }));
+  let tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => {
+    const keywords = getPageSearchKeywords(t.searchKeywords);
+    return {
+      id: `tool_${normalize(t.name)}`,
+      name: t.name,
+      route: t.route,
+      ...(keywords ? { keywords } : {}),
+      r: SEARCH_RANK.navPage,
+      v: tastyMetrics[t.route] ?? 0,
+      type: "Tool",
+    };
+  });
 
   let otherPages: Array<SearchResult> = [];
   for (const category in frontendPages) {
     if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
+      const keywords = getPageSearchKeywords(page.searchKeywords);
       otherPages.push({
         id: `others_${normalize(page.name)}`,
         name: page.name,
         route: page.route,
-        ...(getPageSearchKeywords(page.searchKeywords) ? { keywords: getPageSearchKeywords(page.searchKeywords) } : {}),
+        ...(keywords ? { keywords } : {}),
         r: SEARCH_RANK.navPage,
         v: tastyMetrics[page.route] ?? 0,
         type: "Others",
@@ -1226,7 +1230,7 @@ async function generateSearchList() {
     dats,
     rwaList,
     rwaPerpsList,
-    equities
+    equities,
   ] as const;
   for (const group of sortedGroups) group.sort(sortDesc);
 
@@ -1248,7 +1252,7 @@ async function generateSearchList() {
       ...dats,
       ...rwaList,
       ...rwaPerpsList,
-      ...equities
+      ...equities,
     ].map((result: any) => ({
       ...result,
       r: result.r ?? 1,

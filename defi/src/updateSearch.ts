@@ -471,8 +471,7 @@ async function generateSearchList() {
     rwaTickerToNameMap,
     rwaPerpsListData,
     rwaPerpContractToNameMap,
-    equitiesData,
-    liquidationsData
+    equitiesData
   ]: [
     {
       chains: string[];
@@ -500,8 +499,7 @@ async function generateSearchList() {
     Record<string, string>,
     { contracts: string[]; venues: string[]; assetGroups: string[] },
     Record<string, string>,
-    Array<{ name: string; ticker: string }>,
-    Array<string>
+    Array<{ name: string; ticker: string }>
   ] = await Promise.all([
     cachedJSONPull("https://api.llama.fi/lite/protocols2"),
     cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
@@ -563,8 +561,7 @@ async function generateSearchList() {
       }
       return final;
     }),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/liquidations/protocols`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`)
   ]);
   const slugToProtocolName = new Map<string, string>();
   for (const id in protocolsMetadata) {
@@ -1165,16 +1162,6 @@ async function generateSearchList() {
     type: "Equities",
   }));
 
-  const liquidations: Array<SearchResult> = (Array.isArray(liquidationsData) ? liquidationsData : []).map((slug) => ({
-    id: `liquidations_${normalize(slug)}`,
-    name: slugToProtocolName.get(slug) ?? slug,
-    logo: `https://icons.llamao.fi/icons/protocols/${slug}?w=48&h=48`,
-    route: `/liquidations/${slug}`,
-    r: SEARCH_RANK.collection,
-    v: tastyMetrics[`/liquidations/${slug}`] ?? 0,
-    type: "Liquidations",
-  }));
-
   const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
   const sortedGroups = [
     chains,
@@ -1190,8 +1177,7 @@ async function generateSearchList() {
     dats,
     rwaList,
     rwaPerpsList,
-    equities,
-    liquidations,
+    equities
   ] as const;
   for (const group of sortedGroups) group.sort(sortDesc);
 
@@ -1213,8 +1199,7 @@ async function generateSearchList() {
       ...dats,
       ...rwaList,
       ...rwaPerpsList,
-      ...equities,
-      ...liquidations,
+      ...equities
     ].map((result: any) => ({
       ...result,
       r: result.r ?? 1,

@@ -127,20 +127,19 @@ const data6: Protocol[] = [
   {
     id: "7713",
     name: "GrelfSwap",
-    address: null,
-    symbol: "-",
-    url: " ", // pending to add url https://grelfswap.com/
-    description:
-      "GrelfSwap is a DEX aggregator on Hedera",
+    address: "hedera:0.0.1159074",
+    symbol: "GRELF",
+    url: "https://grelfswap.com",
+    description: "GrelfSwap is a DEX aggregator on Hedera",
     chain: "Hedera",
     logo: `${baseIconsUrl}/grelfswap.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "grelf",
     cmcId: null,
     category: "DEX Aggregator",
     chains: ["Hedera"],
     module: "dummy.js",
-    twitter: null,
+    twitter: "GRELF_",
     dimensions: {
       aggregators: "grelfswap",
     },

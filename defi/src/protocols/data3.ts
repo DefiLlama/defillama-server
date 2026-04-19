@@ -5070,7 +5070,6 @@ const data3_0: Protocol[] = [
     twitter: "sparkdotfi",
     forkedFromIds: ["1599"],
     // https://github.com/DefiLlama/defillama-server/pull/8015 + new  https://github.com/DefiLlama/defillama-server/pull/9240
-    oracles: ["Chainlink", "Chronicle", "RedStone"],
     oraclesBreakdown: [
       {
         name: "Chainlink",

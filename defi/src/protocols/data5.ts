@@ -16812,13 +16812,19 @@ const data5: Protocol[] = [
     description: "Bounce.Tech is a non-custodial leveraged token protocol on Hyperliquid that lets users mint and redeem ERC-20 tokens representing rebalanced perpetual futures exposure to underlying assets.",
     chain: "Hyperliquid L1",
     logo: `${baseIconsUrl}/bounce.tech.jpg`,
-    audits: "0",
+    audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
     module: "dummy.js",
     twitter: "BounceTech",
+    audit_links: [
+      "https://bounce.tech/bounce-guardian-audit-2.pdf",
+      "https://bounce.tech/bounce-obsidian-audit-2.pdf",
+      "https://bounce.tech/bounce-phage-audit.pdf",
+    ],
+    github: ["bounce-tech"],
     dimensions: {
       fees: "bounce-tech",
     }

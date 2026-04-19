@@ -63,7 +63,6 @@ curl \
     "v",
     "tvl",
     "name",
-    "deprecated",
     "mcapRank",
     "r"
   ]'
@@ -135,6 +134,5 @@ curl \
     "v",
     "tvl",
     "name",
-    "r",
-    "deprecated"
+    "r"
   ]'

@@ -53914,7 +53914,10 @@ const data3_3: Protocol[] = [
     listedAt: 1725968902,
     audit_links: ["https://github.com/treehouse-gaia/audit-report"],
     dimensions: {
-      fees: "treehouse-protocol"
+      fees: {
+        adapter: "treehouse-protocol",
+        genuineSpikes: [["2026-04-19", "Large number of panic redemptions due to rsETH exploit"]]
+      }
     }
   },
   {

@@ -46,8 +46,17 @@ interface SearchResult {
   mcapRank?: number;
   previousNames?: string[];
   nameVariants?: string[];
+  r?: number;
   v: number;
 }
+
+const SEARCH_RANK = {
+  navPage: 4,
+  entity: 3,
+  collection: 2,
+  subPage: 1,
+  deprecated: -1,
+} as const;
 
 const getProtocolSubSections = ({
   result,
@@ -278,7 +287,7 @@ const getProtocolSubSections = ({
   return subSections.map((result) => ({
     ...result,
     v: tastyMetrics[result.route] ?? 0,
-    r: 0,
+    r: SEARCH_RANK.subPage,
   }));
 };
 
@@ -347,6 +356,7 @@ function buildDirectoryResults(
     id: `others_${normalize(page.name)}`,
     name: page.name,
     route: page.route,
+    r: SEARCH_RANK.navPage,
     v: 1000,
   })) as Array<SearchResult>;
 
@@ -375,6 +385,7 @@ function buildDirectoryResults(
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: parent.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[route] ?? 0,
     });
   }
@@ -416,6 +427,7 @@ function buildDirectoryResults(
       ...(protocol.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: protocol.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[route] ?? 0,
     });
   }
@@ -428,6 +440,7 @@ function buildDirectoryResults(
       ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
       route: cex.url!,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
     }));
 
@@ -458,7 +471,7 @@ async function generateSearchList() {
     rwaTickerToNameMap,
     rwaPerpsListData,
     rwaPerpContractToNameMap,
-    equitiesData,
+    equitiesData
   ]: [
     {
       chains: string[];
@@ -548,8 +561,14 @@ async function generateSearchList() {
       }
       return final;
     }),
-    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`)
   ]);
+  const slugToProtocolName = new Map<string, string>();
+  for (const id in protocolsMetadata) {
+    const meta = protocolsMetadata[id];
+    if (!meta?.name || !meta?.displayName) continue;
+    slugToProtocolName.set(meta.name, meta.displayName);
+  }
   const parentTvl = {} as any;
   const chainTvl = {} as any;
   const categoryTvl = {} as any;
@@ -590,6 +609,7 @@ async function generateSearchList() {
       ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: parent.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -624,6 +644,7 @@ async function generateSearchList() {
       ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: protocol.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -651,6 +672,7 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/chains/rsz_${sluggifyString(chain)}?w=48&h=48`,
       tvl: chainTvl[chain],
       route: `/chain/${sluggifyString(chain)}`,
+      r: SEARCH_RANK.entity,
       v: tastyMetrics[`/chain/${sluggifyString(chain)}`] ?? 0,
       type: "Chain",
     };
@@ -894,18 +916,30 @@ async function generateSearchList() {
       });
     }
 
-    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
+    subChains.push(
+      ...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: SEARCH_RANK.subPage }))
+    );
   }
 
   const categories: Array<SearchResult> = [];
+  const categoriesToExclude = new Set([
+    "RWA",
+    "RWA Perps",
+    "Dex Aggregator",
+    "Bridge Aggregator",
+    "Perp Aggregator",
+    "Derivatives",
+    "Liquidations",
+  ]);
 
   for (const category in categoryTvl) {
-    if (category === "RWA") continue;
+    if (categoriesToExclude.has(category)) continue;
     categories.push({
       id: `category_${normalize(category)}`,
       name: category,
       tvl: categoryTvl[category],
       route: `/protocols/${sluggifyString(category)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/protocols/${sluggifyString(category)}`] ?? 0,
       type: "Category",
     });
@@ -919,6 +953,7 @@ async function generateSearchList() {
       name: tag,
       tvl: tagTvl[tag],
       route: `/protocols/${sluggifyString(tag)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/protocols/${sluggifyString(tag)}`] ?? 0,
       type: "Tag",
     });
@@ -931,6 +966,7 @@ async function generateSearchList() {
     mcap: stablecoin.circulating.peggedUSD,
     logo: `https://icons.llamao.fi/icons/pegged/${sluggifyString(stablecoin.name)}?w=48&h=48`,
     route: `/stablecoin/${sluggifyString(stablecoin.name)}`,
+    r: SEARCH_RANK.entity,
     v: tastyMetrics[`/stablecoin/${sluggifyString(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
@@ -944,6 +980,7 @@ async function generateSearchList() {
       volume: brg.monthlyVolume,
       logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
       route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
+      r: SEARCH_RANK.entity,
       v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
       type: "Bridge",
     });
@@ -953,6 +990,7 @@ async function generateSearchList() {
     id: `metric_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
+    r: SEARCH_RANK.navPage,
     v: tastyMetrics[i.route] ?? 0,
     type: "Metric",
   }));
@@ -961,6 +999,7 @@ async function generateSearchList() {
     id: `tool_${normalize(t.name)}`,
     name: t.name,
     route: t.route,
+    r: SEARCH_RANK.navPage,
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
@@ -973,6 +1012,7 @@ async function generateSearchList() {
         id: `others_${normalize(page.name)}`,
         name: page.name,
         route: page.route,
+        r: SEARCH_RANK.navPage,
         v: tastyMetrics[page.route] ?? 0,
         type: "Others",
         hideType: true,
@@ -986,6 +1026,7 @@ async function generateSearchList() {
       name: c.name,
       route: `/cex/${sluggifyString(c.slug!)}`,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(c.slug!)}?w=48&h=48`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/cex/${sluggifyString(c.slug!)}`] ?? 0,
       type: "CEX",
     }));
@@ -998,6 +1039,7 @@ async function generateSearchList() {
       subName: "Token Usage",
       route: `/token-usage?token=${coin.symbol}`,
       mcapRank: coin.mcap_rank ?? 0,
+      r: SEARCH_RANK.subPage,
       v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
       type: "Token Usage",
     });
@@ -1008,6 +1050,7 @@ async function generateSearchList() {
         subName: "Token Yields",
         route: `/yields?token=${coin.symbol}`,
         mcapRank: coin.mcap_rank ?? 0,
+        r: SEARCH_RANK.subPage,
         v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
         type: "Token Yields",
       });
@@ -1021,6 +1064,7 @@ async function generateSearchList() {
       name: datsData.assetMetadata[asset].name,
       symbol: datsData.assetMetadata[asset].ticker,
       route: `/digital-asset-treasuries/${asset}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/digital-asset-treasuries/${asset}`] ?? 0,
       type: "DAT",
     });
@@ -1031,6 +1075,7 @@ async function generateSearchList() {
       name: datsData.institutionMetadata[institution].name,
       symbol: datsData.institutionMetadata[institution].ticker,
       route: `/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`,
+      r: SEARCH_RANK.collection,
       v:
         tastyMetrics[`/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`] ??
         0,
@@ -1045,6 +1090,7 @@ async function generateSearchList() {
       id: `rwa_asset_${normalize(canonicalMarketId)}`,
       ...(name ? { name, symbol: canonicalMarketId } : { name: canonicalMarketId }),
       route: `/rwa/asset/${encodedCanonicalMarketId}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/asset/${encodedCanonicalMarketId}`] ?? 0,
       type: "RWA",
     });
@@ -1055,6 +1101,7 @@ async function generateSearchList() {
       id: `rwa_platform_${normalize(platformSlug)}`,
       name: platform,
       route: `/rwa/platform/${platformSlug}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/platform/${platformSlug}`] ?? 0,
       type: "RWA",
     });
@@ -1066,6 +1113,7 @@ async function generateSearchList() {
       id: `rwa_category_${normalize(categorySlug)}`,
       name: category,
       route: `/rwa/category/${categorySlug}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
       type: "RWA",
     });
@@ -1078,6 +1126,7 @@ async function generateSearchList() {
       id: `rwa_perps_contract_${normalize(contract)}`,
       name: name,
       route: `/rwa/perps/contract/${encodeURIComponent(contract)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/perps/contract/${encodeURIComponent(contract)}`] ?? 0,
       type: "RWA Perps",
     });
@@ -1087,6 +1136,7 @@ async function generateSearchList() {
       id: `rwa_perps_venue_${normalize(venue)}`,
       name: venue,
       route: `/rwa/perps/venue/${rwaSlug(venue)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/perps/venue/${rwaSlug(venue)}`] ?? 0,
       type: "RWA Perps",
     });
@@ -1096,6 +1146,7 @@ async function generateSearchList() {
       id: `rwa_perps_asset_group_${normalize(assetGroup)}`,
       name: assetGroup,
       route: `/rwa/perps/asset-group/${rwaSlug(assetGroup)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/rwa/perps/asset-group/${rwaSlug(assetGroup)}`] ?? 0,
       type: "RWA Perps",
     });
@@ -1106,6 +1157,7 @@ async function generateSearchList() {
     symbol: equity.ticker,
     logo: `https://icons.llamao.fi/icons/equities/${equity.ticker}?w=48&h=48`,
     route: `/equities/${equity.ticker.toLowerCase()}`,
+    r: SEARCH_RANK.collection,
     v: tastyMetrics[`/equities/${equity.ticker.toLowerCase()}`] ?? 0,
     type: "Equities",
   }));
@@ -1125,7 +1177,7 @@ async function generateSearchList() {
     dats,
     rwaList,
     rwaPerpsList,
-    equities,
+    equities
   ] as const;
   for (const group of sortedGroups) group.sort(sortDesc);
 
@@ -1147,7 +1199,7 @@ async function generateSearchList() {
       ...dats,
       ...rwaList,
       ...rwaPerpsList,
-      ...equities,
+      ...equities
     ].map((result: any) => ({
       ...result,
       r: result.r ?? 1,

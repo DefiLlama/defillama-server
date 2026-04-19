@@ -230,6 +230,7 @@ const data6: Protocol[] = [
     ],
     twitter: "Enni_Index",
     audit_links: ["https://enni.ch/Hashlock-Audit.pdf", "https://enni.ch/Blockbite-Audit.pdf"],
+    github: ["enni-ch"],
     listedAt: 1776628713,
   },
 ];

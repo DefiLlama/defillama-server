@@ -459,6 +459,7 @@ async function generateSearchList() {
     rwaPerpsListData,
     rwaPerpContractToNameMap,
     equitiesData,
+    liquidationsData
   ]: [
     {
       chains: string[];
@@ -486,7 +487,8 @@ async function generateSearchList() {
     Record<string, string>,
     { contracts: string[]; venues: string[]; assetGroups: string[] },
     Record<string, string>,
-    Array<{ name: string; ticker: string }>
+    Array<{ name: string; ticker: string }>,
+    Array<string>
   ] = await Promise.all([
     cachedJSONPull("https://api.llama.fi/lite/protocols2"),
     cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
@@ -549,7 +551,14 @@ async function generateSearchList() {
       return final;
     }),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/liquidations/protocols`),
   ]);
+  const slugToProtocolName = new Map<string, string>();
+  for (const id in protocolsMetadata) {
+    const meta = protocolsMetadata[id];
+    if (!meta?.name || !meta?.displayName) continue;
+    slugToProtocolName.set(meta.name, meta.displayName);
+  }
   const parentTvl = {} as any;
   const chainTvl = {} as any;
   const categoryTvl = {} as any;
@@ -898,9 +907,18 @@ async function generateSearchList() {
   }
 
   const categories: Array<SearchResult> = [];
+  const categoriesToExclude = new Set([
+    "RWA",
+    "RWA Perps",
+    "Dex Aggregator",
+    "Bridge Aggregator",
+    "Perp Aggregator",
+    "Derivatives",
+    "Liquidations",
+  ]);
 
   for (const category in categoryTvl) {
-    if (category === "RWA") continue;
+    if (categoriesToExclude.has(category)) continue;
     categories.push({
       id: `category_${normalize(category)}`,
       name: category,
@@ -1110,6 +1128,15 @@ async function generateSearchList() {
     type: "Equities",
   }));
 
+  const liquidations: Array<SearchResult> = (Array.isArray(liquidationsData) ? liquidationsData : []).map((slug) => ({
+    id: `liquidations_${normalize(slug)}`,
+    name: slugToProtocolName.get(slug) ?? slug,
+    logo: `https://icons.llamao.fi/icons/protocols/${slug}?w=48&h=48`,
+    route: `/liquidations/${slug}`,
+    v: tastyMetrics[`/liquidations/${slug}`] ?? 0,
+    type: "Liquidations",
+  }));
+
   const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
   const sortedGroups = [
     chains,
@@ -1126,6 +1153,7 @@ async function generateSearchList() {
     rwaList,
     rwaPerpsList,
     equities,
+    liquidations,
   ] as const;
   for (const group of sortedGroups) group.sort(sortDesc);
 
@@ -1148,6 +1176,7 @@ async function generateSearchList() {
       ...rwaList,
       ...rwaPerpsList,
       ...equities,
+      ...liquidations,
     ].map((result: any) => ({
       ...result,
       r: result.r ?? 1,

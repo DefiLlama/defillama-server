@@ -27102,7 +27102,7 @@ const data4: Protocol[] = [
     category: "Onchain Capital Allocator",
     chains: ["Sui"],
     module: "ember-protocol/index.js",
-    twitter: "EmberProtocol_",
+    twitter: "EmberProtocol",
     audit_links: ["https://ember.so/documents/ember_protocol_audit.pdf"],
     listedAt: 1758144089,
     dimensions: {

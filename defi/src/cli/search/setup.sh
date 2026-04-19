@@ -29,6 +29,7 @@ curl \
     "name",
     "previousNames",
     "nameVariants",
+    "keywords",
     "subName"
   ]'
 

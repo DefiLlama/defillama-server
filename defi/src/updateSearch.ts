@@ -46,6 +46,7 @@ interface SearchResult {
   mcapRank?: number;
   previousNames?: string[];
   nameVariants?: string[];
+  keywords?: string[];
   r?: number;
   v: number;
 }
@@ -57,6 +58,45 @@ const SEARCH_RANK = {
   subPage: 1,
   deprecated: -1,
 } as const;
+
+function getPageSearchKeywords(keywords?: string[]): string[] | undefined {
+  if (!Array.isArray(keywords)) return undefined;
+
+  const cleaned = Array.from(new Set(keywords.map((keyword) => keyword?.trim()).filter(Boolean)));
+  return cleaned.length > 0 ? cleaned : undefined;
+}
+
+function mergeKeywords(...keywordSets: Array<string[] | undefined>): string[] | undefined {
+  const merged = Array.from(new Set(keywordSets.flatMap((keywords) => keywords ?? []).map((keyword) => keyword.trim())));
+  return merged.length > 0 ? merged : undefined;
+}
+
+function dedupeFrontendPageResults(results: SearchResult[]): SearchResult[] {
+  const deduped = new Map<string, SearchResult>();
+
+  for (const result of results) {
+    const dedupeKey = `${result.route}::${result.name.trim().toLowerCase()}`;
+    const existing = deduped.get(dedupeKey);
+    if (!existing) {
+      deduped.set(dedupeKey, result);
+      continue;
+    }
+
+    const keywords = mergeKeywords(
+      existing.keywords,
+      result.keywords,
+      [existing.name],
+      [result.name]
+    );
+
+    deduped.set(dedupeKey, {
+      ...existing,
+      ...(keywords ? { keywords } : {}),
+    });
+  }
+
+  return Array.from(deduped.values());
+}
 
 const getProtocolSubSections = ({
   result,
@@ -481,7 +521,7 @@ async function generateSearchList() {
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
     { bridges: Array<{ name: string; displayName: string; icon: string; monthlyVolume: number; slug?: string }> },
-    Record<string, Array<{ name: string; route: string }>>,
+    Record<string, Array<{ name: string; route: string; searchKeywords?: string[] }>>,
     Record<string, number>,
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
@@ -986,25 +1026,27 @@ async function generateSearchList() {
     });
   }
 
-  const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
+  let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
     id: `metric_${normalize(i.name)}`,
     name: i.name,
     route: i.route,
+    ...(getPageSearchKeywords(i.searchKeywords) ? { keywords: getPageSearchKeywords(i.searchKeywords) } : {}),
     r: SEARCH_RANK.navPage,
     v: tastyMetrics[i.route] ?? 0,
     type: "Metric",
   }));
 
-  const tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
+  let tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
     id: `tool_${normalize(t.name)}`,
     name: t.name,
     route: t.route,
+    ...(getPageSearchKeywords(t.searchKeywords) ? { keywords: getPageSearchKeywords(t.searchKeywords) } : {}),
     r: SEARCH_RANK.navPage,
     v: tastyMetrics[t.route] ?? 0,
     type: "Tool",
   }));
 
-  const otherPages: Array<SearchResult> = [];
+  let otherPages: Array<SearchResult> = [];
   for (const category in frontendPages) {
     if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
@@ -1012,6 +1054,7 @@ async function generateSearchList() {
         id: `others_${normalize(page.name)}`,
         name: page.name,
         route: page.route,
+        ...(getPageSearchKeywords(page.searchKeywords) ? { keywords: getPageSearchKeywords(page.searchKeywords) } : {}),
         r: SEARCH_RANK.navPage,
         v: tastyMetrics[page.route] ?? 0,
         type: "Others",
@@ -1019,6 +1062,12 @@ async function generateSearchList() {
       });
     }
   }
+
+  const dedupedFrontendPages = dedupeFrontendPageResults([...metrics, ...tools, ...otherPages]);
+  metrics = dedupedFrontendPages.filter((page) => page.type === "Metric");
+  tools = dedupedFrontendPages.filter((page) => page.type === "Tool");
+  otherPages = dedupedFrontendPages.filter((page) => page.type === "Others");
+
   const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
     .map((c) => ({

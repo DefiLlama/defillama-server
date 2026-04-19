@@ -189,5 +189,48 @@ const data6: Protocol[] = [
       fees: "paxos"
     }
   },
+  {
+    id: "7716",
+    name: "Lucky38",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://randomy.fun/
+    description:
+      "On-chain games for Openclaw on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/lucky38.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Luck Games",
+    chains: ["Base"],
+    module: "lucky38/index.js",
+    twitter: null,
+    listedAt: 1776628155
+  },
+  {
+    id: "7717",
+    name: "ENNI",
+    address: "0xE364450b3F702d12b02F0290E0392f02DE53b8E2",
+    symbol: "ENNI",
+    url: " ", // pending to add url https://enni.ch
+    description:
+      "Immutable CDP protocol on Ethereum. Borrow stablecoins against WETH at 0% interest. No governance. No admin keys",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/enni.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "enni/index.js",
+    oraclesBreakdown: [ 
+      { name: "Chainlink", type: "Primary", proof: ["https://enni.ch/docs/security/oracles"] },
+      { name: "RedStone", type: "Fallback", proof: ["https://enni.ch/docs/security/oracles"] } 
+    ],
+    twitter: "Enni_Index",
+    audit_links: ["https://enni.ch/Hashlock-Audit.pdf", "https://enni.ch/Blockbite-Audit.pdf"],
+    listedAt: 1776628713,
+  },
 ];
 export default data6;

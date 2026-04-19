@@ -8993,6 +8993,9 @@ const data4: Protocol[] = [
     twitter: "centrifuge",
     parentProtocol: "parent#centrifuge",
     listedAt: 1722495600,
+    dimensions: {
+      fees: "centrifuge"
+    }
   },
   {
     id: "5949",

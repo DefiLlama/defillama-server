@@ -1,6 +1,7 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 import { normalizePerpsMetadataInPlace } from "./constants";
+import { PREVIOUS_CHANGE_LOOKUP_TOLERANCE_SECONDS } from "./utils";
 
 class META_RWA_PERPS_DATA extends Model { }
 export class DAILY_RWA_PERPS_DATA extends Model { }
@@ -323,9 +324,8 @@ export async function fetchCurrentPG(): Promise<any[]> {
             SELECT open_interest, volume_24h, price
             FROM "${HOURLY_RWA_PERPS_DATA.getTableName()}" previous
             WHERE previous.id = latest.id
-              AND previous.timestamp >= (latest.timestamp - (latest.timestamp % ${secondsInDay})) - ${secondsInDay}
-              AND previous.timestamp < (latest.timestamp - (latest.timestamp % ${secondsInDay}))
-            ORDER BY previous.timestamp DESC
+              AND ABS(previous.timestamp - (latest.timestamp - ${secondsInDay})) <= ${PREVIOUS_CHANGE_LOOKUP_TOLERANCE_SECONDS}
+            ORDER BY ABS(previous.timestamp - (latest.timestamp - ${secondsInDay})) ASC, previous.timestamp DESC
             LIMIT 1
         ) previous ON true`,
         { type: QueryTypes.SELECT }

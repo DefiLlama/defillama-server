@@ -2966,14 +2966,14 @@ export const chainCoingeckoIds = {
       fees: "fraxtal",
     },
   },
-  "Areon Network": {
+  "Areum Network": {
     geckoId: "areon-network",
     symbol: "AREA",
     cmcId: "23262",
     categories: ["EVM"],
-    twitter: "AreonNetwork",
-    github: ["areon-network"],
-    url: "https://areon.network",
+    twitter: "areum_global",
+    github: ["Areum-Network"],
+    url: "https://areum.network/",
   },
   "DeFiVerse": {
     geckoId: null,
@@ -6151,6 +6151,7 @@ const newChainLabelMap = {
   "goat": "GOAT",
   "mantra": "MANTRA",
   "orderly": "Orderly Network",
+  "area": "Areum Network",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

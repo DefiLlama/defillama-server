@@ -10990,7 +10990,7 @@ const data5: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Liquidity Manager",
     chains: ["Base"],
     module: "snuggle/index.js",
     twitter: "SnuggleFi",

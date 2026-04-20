@@ -1023,6 +1023,8 @@ async function generateSearchList() {
     });
   }
 
+  console.log(frontendPages.Metrics.find(i => i.name === 'Stablecoins by Market Cap'), 'debug data')
+
   let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => {
     const keywords = getPageSearchKeywords(i.searchKeywords);
     return {

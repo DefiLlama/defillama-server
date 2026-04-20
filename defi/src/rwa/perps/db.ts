@@ -1,6 +1,7 @@
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay, secondsInDay } from "../../utils/date";
 import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 import { normalizePerpsMetadataInPlace } from "./constants";
+import { PREVIOUS_CHANGE_LOOKUP_TOLERANCE_SECONDS } from "./utils";
 
 class META_RWA_PERPS_DATA extends Model { }
 export class DAILY_RWA_PERPS_DATA extends Model { }
@@ -306,11 +307,27 @@ export async function fetchMetadataPG(): Promise<any[]> {
 
 // Get one record per id with the largest timestamp
 export async function fetchCurrentPG(): Promise<any[]> {
+    const currentDayStart = getTimestampAtStartOfDay(getCurrentUnixTimestamp());
     const data = await HOURLY_RWA_PERPS_DATA.sequelize!.query(
-        `SELECT DISTINCT ON (id) id, timestamp, open_interest, volume_24h, price,
-                price_change_24h, funding_rate, premium, cumulative_funding, data
-         FROM "${HOURLY_RWA_PERPS_DATA.getTableName()}"
-         ORDER BY id, timestamp DESC`,
+        `WITH latest AS (
+            SELECT DISTINCT ON (id) id, timestamp, open_interest, volume_24h, price,
+                    price_change_24h, funding_rate, premium, cumulative_funding, data
+            FROM "${HOURLY_RWA_PERPS_DATA.getTableName()}"
+            ORDER BY id, timestamp DESC
+        )
+        SELECT latest.*,
+               previous.open_interest AS prev_open_interest,
+               previous.volume_24h AS prev_volume_24h,
+               previous.price AS prev_price
+        FROM latest
+        LEFT JOIN LATERAL (
+            SELECT open_interest, volume_24h, price
+            FROM "${HOURLY_RWA_PERPS_DATA.getTableName()}" previous
+            WHERE previous.id = latest.id
+              AND ABS(previous.timestamp - (latest.timestamp - ${secondsInDay})) <= ${PREVIOUS_CHANGE_LOOKUP_TOLERANCE_SECONDS}
+            ORDER BY ABS(previous.timestamp - (latest.timestamp - ${secondsInDay})) ASC, previous.timestamp DESC
+            LIMIT 1
+        ) previous ON true`,
         { type: QueryTypes.SELECT }
     ) as any[];
 
@@ -321,6 +338,7 @@ export async function fetchCurrentPG(): Promise<any[]> {
         } catch {
             copy.data = {};
         }
+        copy.is_latest_current = Number(copy.timestamp) >= currentDayStart;
         return copy;
     });
 }

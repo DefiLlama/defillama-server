@@ -3,6 +3,20 @@ export function toFiniteNumberOrZero(value: any): number {
     return Number.isFinite(num) ? num : 0;
 }
 
+export const PREVIOUS_CHANGE_LOOKUP_TOLERANCE_SECONDS = 2 * 60 * 60;
+
+export function getPercentChangeOrNull(currentValue: unknown, previousValue: unknown): number | null {
+    const current = typeof currentValue === "number" ? currentValue : Number(currentValue);
+    const previous = typeof previousValue === "number" ? previousValue : Number(previousValue);
+
+    if (!Number.isFinite(current) || !Number.isFinite(previous) || previous === 0) {
+        return null;
+    }
+
+    const percentChange = ((current - previous) / previous) * 100;
+    return Number.isFinite(percentChange) ? percentChange : null;
+}
+
 
 const LEADING_DASH_REGEX = /^-+/;
 const TRAILING_DASH_REGEX = /-+$/;

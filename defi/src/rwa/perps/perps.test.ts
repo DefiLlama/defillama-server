@@ -2,7 +2,7 @@ jest.mock("../spreadsheet", () => ({
   getCsvData: jest.fn(),
 }));
 
-import { toFiniteNumberOrZero, perpsSlug, computeProtocolFees, groupBy } from "./utils";
+import { toFiniteNumberOrZero, getPercentChangeOrNull, perpsSlug, computeProtocolFees, groupBy } from "./utils";
 import { fileNameNormalizer, mergeHistoricalData } from "./file-cache";
 import { buildPerpsList } from "./list";
 import {
@@ -68,6 +68,19 @@ describe("toFiniteNumberOrZero", () => {
     expect(toFiniteNumberOrZero(null)).toBe(0);
     expect(toFiniteNumberOrZero("abc")).toBe(0);
     expect(toFiniteNumberOrZero("")).toBe(0);
+  });
+});
+
+describe("getPercentChangeOrNull", () => {
+  it("computes percent change from the previous value", () => {
+    expect(getPercentChangeOrNull(120, 100)).toBe(20);
+    expect(getPercentChangeOrNull(80, 100)).toBe(-20);
+  });
+
+  it("returns null when the previous value is missing or zero", () => {
+    expect(getPercentChangeOrNull(120, 0)).toBeNull();
+    expect(getPercentChangeOrNull(120, null)).toBeNull();
+    expect(getPercentChangeOrNull(120, undefined)).toBeNull();
   });
 });
 

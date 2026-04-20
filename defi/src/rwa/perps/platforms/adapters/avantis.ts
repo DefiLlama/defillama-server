@@ -88,7 +88,9 @@ function parseAvantisMarkets(
       venue: "avantis",
       platform: "avantis",
       openInterest,
-      volume24h: 0, // Not available from socket API; requires Dune/on-chain data
+      volume24h: 0, // TODO: Avantis has no public per-pair volume API.
+                    // socket-api /data has OI only; analytics endpoints are auth-gated.
+                    // Would need a Dune query or on-chain trade log indexing.
       markPx: price,
       oraclePx: price,
       midPx: price,

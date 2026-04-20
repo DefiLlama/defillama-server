@@ -123,6 +123,8 @@ async function getTokenPrices(timestamp: number) {
     if (pool.address) seenPools.add(pool.address);
   }
 
+  const exceptions = ['enzoBTC']
+
   // --- Process v3 CLMM pools not already covered by v2 ---
   for (const pool of v3Pools) {
     if (seenPools.has(pool.pool)) continue;
@@ -135,8 +137,6 @@ async function getTokenPrices(timestamp: number) {
     const coinA = pool.coinA;
     const coinB = pool.coinB;
     if (!coinA?.coinType || !coinB?.coinType) continue;
-
-    const exceptions = ['enzoBTC']
 
     if (poolTvl < 10_000 || vol24h < 1_000 && (!exceptions.includes(coinA.symbol) && !exceptions.includes(coinB.symbol))) continue;
 
@@ -182,6 +182,7 @@ async function getTokenPrices(timestamp: number) {
       decimals,
       symbol,
       tvl,
+      confidence: exceptions.includes(symbol) ? 1 : 0.8,
     };
   }
 
@@ -190,6 +191,5 @@ async function getTokenPrices(timestamp: number) {
     timestamp,
     pricesObject,
     projectName: "cetus",
-    confidence: 0.8,
   });
 }

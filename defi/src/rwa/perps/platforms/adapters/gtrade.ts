@@ -81,6 +81,7 @@ const OSTIUM_SYMBOL_ALIASES: Record<string, string> = {
   NAS100: "NDXUSD",   // Ostium index symbol
   USA30: "DJIUSD",    // Ostium index symbol
   BRENT: "BRENTUSD",  // Ostium commodity symbol
+  NATGAS: "UNGUSD",   // Nat-gas ETF proxy (Pyth has no simple NATGAS feed)
 };
 
 /**

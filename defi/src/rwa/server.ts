@@ -192,6 +192,14 @@ function setRoutes(router: HyperExpress.Router): void {
             const data = Object.entries(pgCache)
                 .map(([timestamp, record]) => ({ timestamp: Number(timestamp), ...record }))
                 .sort((a, b) => a.timestamp - b.timestamp);
+            while (data.length > 0) {
+                const first = data[0];
+                if (first.onChainMcap === 0 && first.defiActiveTvl === 0 && (!first.activeMcap || first.activeMcap === 0)) {
+                    data.shift();
+                } else {
+                    break;
+                }
+            }
             return successResponse(res, data, 30);
         })
     );

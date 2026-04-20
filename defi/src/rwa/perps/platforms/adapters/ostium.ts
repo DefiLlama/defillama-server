@@ -135,8 +135,9 @@ function parseOstiumMarkets(
       priceChange24h: 0,
       fundingRate: 0, // Ostium adaptive funding — not a simple rate
       premium: 0,
-      // Pair-level maxLeverage is 0 in subgraph; use group maxLeverage / 100
-      maxLeverage: safeFloat(pair.maxLeverage) || safeFloat(pair.group?.maxLeverage) / 100,
+      // Both pair.maxLeverage and group.maxLeverage are stored ×100
+      // (e.g., 5000 = 50×, 10000 = 100×). Pair overrides group when non-zero.
+      maxLeverage: (safeFloat(pair.maxLeverage) || safeFloat(pair.group?.maxLeverage)) / 100,
       szDecimals: 0,
     });
   }

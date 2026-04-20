@@ -27,9 +27,9 @@ curl \
   --data-binary '[
     "symbol",
     "name",
+    "keywords",
     "previousNames",
     "nameVariants",
-    "keywords",
     "subName"
   ]'
 
@@ -42,8 +42,8 @@ curl \
     "typo",
     "proximity",
     "attribute",
-    "exactness",
     "r:desc",
+    "exactness",
     "v:desc",
     "sort"
   ]'
@@ -96,8 +96,8 @@ curl \
     "typo",
     "proximity",
     "attribute",
-    "exactness",
     "r:desc",
+    "exactness",
     "v:desc",
     "sort"
   ]'

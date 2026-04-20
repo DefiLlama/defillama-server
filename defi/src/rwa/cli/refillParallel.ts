@@ -20,19 +20,13 @@ import { Op, QueryTypes } from "sequelize";
 
 // ── Configuration ────────────────────────────────────────────────────
 const DRY_RUN = false;
-const START_DATE = "2021-09-01";
+const START_DATE = "2025-09-01";
 const END_DATE = "2026-04-14";
 const BACKFILL_CONCURRENCY = 5;
 const ID_CONCURRENCY = 10;
 const PRICE_FETCH_CONCURRENCY = 8;
 // Private Equity & Venture asset group IDs
-const IDS = [
-  "134", "138", "139", "406", "407", "408", "409", "410", "541", "547",
-  "548", "550", "552", "554", "556", "557", "1972", "2293", "2701", "2711",
-  "2712", "2713", "2714", "2715", "2716", "2729", "2835", "2836", "2842",
-  "2974", "2975", "2976", "2977", "2978", "2979", "2980", "2981", "2982",
-  "2983", "2984", "2985", "2986", "2987", "2988", "2989", "2990", "2991",
-  "2999", "3010", "3011", "3012", "3083", "3084", "3085",
+const IDS = [ "2999",
 ];
 
 // Early-stop: if an ID has 0 data for this many consecutive days (going backwards), skip it
@@ -427,7 +421,7 @@ interface IdResult {
   priceFixCount: number;
 }
 
-interface ChartSeries { timestamp: number; mcap: number }
+interface ChartSeries { timestamp: number; mcap: number; activeMcap: number }
 
 async function processOneId(
   id: string,
@@ -459,6 +453,7 @@ async function processOneId(
   const raw: ChartSeries[] = rows.map((r: any) => ({
     timestamp: Number(r.timestamp),
     mcap: Number(r.aggregatemcap) || sumObj(parseJson(r.mcap)),
+    activeMcap: Number(r.aggregatedactivemcap) || sumObj(parseJson(r.activemcap)),
   }));
 
   // Phase 2: Spike removal
@@ -475,6 +470,7 @@ async function processOneId(
   const afterSpikes: ChartSeries[] = rowsAfterSpikes.map((r: any) => ({
     timestamp: Number(r.timestamp),
     mcap: Number(r.aggregatemcap) || sumObj(parseJson(r.mcap)),
+    activeMcap: Number(r.aggregatedactivemcap) || sumObj(parseJson(r.activemcap)),
   }));
 
   if (!DRY_RUN && spikeTimestamps.size > 0) {
@@ -508,6 +504,7 @@ async function processOneId(
   const afterPriceFix: ChartSeries[] = fixedRows.map((r: any) => ({
     timestamp: Number(r.timestamp),
     mcap: Number(r.aggregatemcap) || sumObj(parseJson(r.mcap)),
+    activeMcap: Number(r.aggregatedactivemcap) || sumObj(parseJson(r.activemcap)),
   }));
 
   // DB updates for price fixes
@@ -564,6 +561,9 @@ function generateHtml(results: IdResult[]): string {
     const rawMap = new Map(r.raw.map((p) => [p.timestamp, p.mcap]));
     const spikeMap = new Map(r.afterSpikes.map((p) => [p.timestamp, p.mcap]));
     const fixMap = new Map(r.afterPriceFix.map((p) => [p.timestamp, p.mcap]));
+    const rawActiveMap = new Map(r.raw.map((p) => [p.timestamp, p.activeMcap]));
+    const spikeActiveMap = new Map(r.afterSpikes.map((p) => [p.timestamp, p.activeMcap]));
+    const fixActiveMap = new Map(r.afterPriceFix.map((p) => [p.timestamp, p.activeMcap]));
 
     const labels = sorted.map((ts) => `"${new Date(ts * 1000).toISOString().slice(0, 10)}"`).join(",");
     const rawData = sorted.map((ts) => ((rawMap.get(ts) || 0) / 1e6).toFixed(3)).join(",");
@@ -573,6 +573,15 @@ function generateHtml(results: IdResult[]): string {
     }).join(",");
     const fixData = sorted.map((ts) => {
       const v = fixMap.get(ts);
+      return v != null ? (v / 1e6).toFixed(3) : "null";
+    }).join(",");
+    const rawActiveData = sorted.map((ts) => ((rawActiveMap.get(ts) || 0) / 1e6).toFixed(3)).join(",");
+    const spikeActiveData = sorted.map((ts) => {
+      const v = spikeActiveMap.get(ts);
+      return v != null ? (v / 1e6).toFixed(3) : "null";
+    }).join(",");
+    const fixActiveData = sorted.map((ts) => {
+      const v = fixActiveMap.get(ts);
       return v != null ? (v / 1e6).toFixed(3) : "null";
     }).join(",");
 
@@ -593,15 +602,18 @@ function generateHtml(results: IdResult[]): string {
                 data: {
                     labels: [${labels}],
                     datasets: [
-                        { label: "Raw DB ($M)", data: [${rawData}], borderColor: "#bbb", borderWidth: 1.5, borderDash: [5,3], pointRadius: 0, fill: false },
-                        { label: "After spike removal ($M)", data: [${spikeData}], borderColor: "#f58231", borderWidth: 1.5, pointRadius: 0, fill: false, spanGaps: true },
-                        { label: "After price fix ($M)", data: [${fixData}], borderColor: "#4363d8", borderWidth: 2, pointRadius: 0, fill: false, spanGaps: true },
+                        { label: "Raw DB aggregate ($M)", data: [${rawData}], borderColor: "#bbb", borderWidth: 1.5, borderDash: [5,3], pointRadius: 0, fill: false },
+                        { label: "After spike removal aggregate ($M)", data: [${spikeData}], borderColor: "#f58231", borderWidth: 1.5, pointRadius: 0, fill: false, spanGaps: true },
+                        { label: "After price fix aggregate ($M)", data: [${fixData}], borderColor: "#4363d8", borderWidth: 2, pointRadius: 0, fill: false, spanGaps: true },
+                        { label: "Raw DB active ($M)", data: [${rawActiveData}], borderColor: "#888", borderWidth: 1, borderDash: [2,2], pointRadius: 0, fill: false },
+                        { label: "After spike removal active ($M)", data: [${spikeActiveData}], borderColor: "#c2571a", borderWidth: 1, borderDash: [4,2], pointRadius: 0, fill: false, spanGaps: true },
+                        { label: "After price fix active ($M)", data: [${fixActiveData}], borderColor: "#2a4494", borderWidth: 1.5, borderDash: [4,2], pointRadius: 0, fill: false, spanGaps: true },
                     ]
                 },
                 options: {
                     responsive: true,
                     interaction: { mode: "index", intersect: false },
-                    plugins: { title: { display: true, text: "${r.ticker} — aggregateMcap" } },
+                    plugins: { title: { display: true, text: "${r.ticker} — aggregateMcap (solid) vs activeMcap (dashed)" } },
                     scales: {
                         x: { ticks: { maxTicksLimit: 25 } },
                         y: { title: { display: true, text: "$ millions" } }
@@ -631,7 +643,8 @@ function generateHtml(results: IdResult[]): string {
         Generated ${new Date().toISOString()}<br>
         IDs: ${results.map((r) => `${r.ticker} (${r.id})`).join(", ")}<br>
         DRY_RUN: ${DRY_RUN} — ${DRY_RUN ? "no DB changes made" : "changes applied to DB"}<br>
-        Grey dashed = raw DB. Orange = after spike removal. Blue = after price-failure fix (final).
+        Grey = raw DB. Orange = after spike removal. Blue = after price-failure fix (final).<br>
+        Solid = aggregateMcap. Thin dashed = activeMcap.
     </p>
     ${sections}
 </body>

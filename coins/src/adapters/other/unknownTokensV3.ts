@@ -80,6 +80,12 @@ const config: any = {
     "0x876e7F2f30935118a654fc0E1f807aFc49EFe500":
       "0xe9c02ca07931f9670fa87217372b3c9aa5a8a934", // PUP
   },
+  etlk: {
+    "0x93f5475da60143c50e8be3fed10c143b0cf8b9e9": 
+      "0x86d2f4ef99915652bfc3adf29683752334582b4d", // VNXAU
+    "0x6Ce393fF9Ed5465CC4DEf456B8401e03cEF64d5e": 
+    "0x35C888a9afc0866Fec5bBAdEf790e5EC1d845653", // RARE
+  }
 };
 
 const configCustomAbi: any = {

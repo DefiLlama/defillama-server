@@ -3980,7 +3980,7 @@ const data5: Protocol[] = [
     url: "https://www.novaswap.io/",
     description: "An intents-based protocol that allows seamless cross-chain swaps.",
     chain: "Base",
-    logo: `${baseIconsUrl}/mynth.jpg`,
+    logo: `${baseIconsUrl}/novaswap-crosschain.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

@@ -3974,10 +3974,10 @@ const data5: Protocol[] = [
     }, */
   {
     id: "7063",
-    name: "Mynth",
+    name: "Novaswap Crosschain",
     address: null,
     symbol: "-",
-    url: "https://www.mynth.ai/",
+    url: "https://www.novaswap.io/",
     description: "An intents-based protocol that allows seamless cross-chain swaps.",
     chain: "Base",
     logo: `${baseIconsUrl}/mynth.jpg`,
@@ -3987,7 +3987,7 @@ const data5: Protocol[] = [
     category: "Bridge Aggregators",
     chains: ["Base", "Cardano", "Hyperliquid L1", "Plasma", "Solana", "Sui", "Tron"],
     module: "dummy.js",
-    twitter: "_mynth_",
+    twitter: "Novaswap",
     dimensions: {
       "bridge-aggregators": "mynth",
     },

@@ -274,5 +274,24 @@ const data6: Protocol[] = [
     github: ["Duriandotfun"],
     listedAt: 1776659179,
   },
+  {
+    id: "7720",
+    name: "Milk Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.basedmilk.com",
+    description:
+      "Milk Finance is a USDC-backed stablecoin lending protocol on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/milk-finance.jpg`,
+    audits: "3",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "milk-finance/index.js",
+    twitter: "gotBasedMilk",
+    listedAt: 1776659651,
+  },
 ];
 export default data6;

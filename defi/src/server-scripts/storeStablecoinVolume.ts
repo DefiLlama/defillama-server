@@ -16,11 +16,12 @@
 import { ALLIUM_CHAIN_MAP, queryAllium } from '../../dimension-adapters/helpers/allium';
 import { CHAIN } from '../../dimension-adapters/helpers/chains';
 import { getR2JSONString, storeR2JSONString } from '../utils/r2';
+import { NoSuchKey } from "@aws-sdk/client-s3";
 
 const DAY = 24 * 3600;
 const STORE_KEY = 'stablecoins/dailyVolumes';
 const START_DATE = '2021-01-01';
-const R2_WRITE_INTERVAL = 20; // after querying this many new days, flush current cache to R2
+const R2_WRITE_INTERVAL = 10; // after querying this many new days, flush current cache to R2
 
 const getCurrentTimestamp = () => Math.floor(new Date().getTime() / 1000);
 const getUnixTimestamp = (date: string) => Math.floor(new Date(date).getTime() / 1000);
@@ -79,8 +80,13 @@ async function loadCache(): Promise<VolumeCache> {
     const data = await getR2JSONString(STORE_KEY);
     return data || {};
   } catch (e) {
-    console.log(`no existing cache found at ${STORE_KEY}, starting empty (${(e as Error).message})`);
-    return {};
+    if (e instanceof NoSuchKey) {
+      console.log(`no existing cache at ${STORE_KEY}, starting empty`);
+      return {};
+    } else {
+      console.log(e)
+      throw new Error(`failed to load cache from ${STORE_KEY}`);
+    }
   }
 }
 

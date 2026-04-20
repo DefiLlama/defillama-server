@@ -25,16 +25,6 @@ const getCoingeckoId = (tokenNk: string | undefined) => {
   return geckoId || null;
 };
 
-const getGeckoIdsFromMetadata = (metadata: Record<string, any>) => {
-  const geckoIds = new Set<string>();
-  for (const item of Object.values(metadata ?? {})) {
-    if (typeof item?.gecko_id === "string" && item.gecko_id.trim()) {
-      geckoIds.add(item.gecko_id.trim().toLowerCase());
-    }
-  }
-  return geckoIds;
-};
-
 const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProtocolId: string) => {
   if (!currentProtocolId) return true;
   if (!nextProtocolId) return false;
@@ -134,35 +124,29 @@ async function generateToken() {
     throw new Error(`Expected an array from ${SOURCE_URL}`);
   }
 
-  const allowedGeckoIds = new Set([
-    ...getGeckoIdsFromMetadata(protocolsMetadata),
-    ...getGeckoIdsFromMetadata(chainsMetadata),
-  ]);
   const extrasByGeckoId = getTokenMetadataExtrasByGeckoId(protocolsMetadata, chainsMetadata);
   const previousTokens = await loadPreviousTokens();
-  const filteredCoins: any[] = [];
+  const uniqueCoins: any[] = [];
   const seenTokenNks = new Set<string>();
 
-  let skippedWithoutMatchCount = 0;
   let skippedDuplicateTokenNkCount = 0;
 
   for (const item of coins) {
-    const geckoId = getCoingeckoId(item.token_nk);
     if (seenTokenNks.has(item.token_nk)) {
       skippedDuplicateTokenNkCount++;
       continue;
     }
-    if (!geckoId || !allowedGeckoIds.has(geckoId)) {
-      skippedWithoutMatchCount++;
-      continue;
-    }
     seenTokenNks.add(item.token_nk);
-    filteredCoins.push(item);
+    uniqueCoins.push(item);
   }
 
   const nextTokensByTokenNk = new Map<string, { item: any; extras: any }>();
-  for (const item of filteredCoins) {
+  let includedWithoutMetadataCount = 0;
+  for (const item of uniqueCoins) {
     const extras = extrasByGeckoId.get(getCoingeckoId(item.token_nk)!) ?? {};
+    if (Object.keys(extras).length === 0) {
+      includedWithoutMetadataCount++;
+    }
     nextTokensByTokenNk.set(item.token_nk, { item, extras });
   }
 
@@ -188,7 +172,7 @@ async function generateToken() {
     consumedTokenNks.add(tokenNk);
   }
 
-  for (const [index, item] of filteredCoins.entries()) {
+  for (const [index, item] of uniqueCoins.entries()) {
     if (consumedTokenNks.has(item.token_nk)) continue;
 
     const symbolSlug = slug(item.symbol);
@@ -204,11 +188,16 @@ async function generateToken() {
 
   await storeRouteData(OUTPUT_ROUTE, bySlug);
 
-  console.log(`Wrote ${Object.keys(bySlug).length} tokens to ${OUTPUT_ROUTE}. Used fallback key selection for ${nameFallbackCount} tokens, Skipped ${skippedWithoutMatchCount} tokens without matching protocol/chain gecko_id, Skipped ${skippedDuplicateTokenNkCount} duplicate token_nk rows, Preserved ${preservedMissingTokenCount} existing tokens missing from the current feed`);
+  console.log(`Wrote ${Object.keys(bySlug).length} tokens to ${OUTPUT_ROUTE}. Used fallback key selection for ${nameFallbackCount} tokens, Included ${includedWithoutMetadataCount} tokens without protocol/chain metadata, Skipped ${skippedDuplicateTokenNkCount} duplicate token_nk rows, Preserved ${preservedMissingTokenCount} existing tokens missing from the current feed`);
 }
 
 
 export async function genTokenConfig() {
+  setTimeout(() => {
+    console.log("Running for more than 5 minutes, exiting.");
+    process.exit(1);
+  }, 5 * 60 * 1000);
+
   await runWithRuntimeLogging(generateToken, {
     application: "cron-task",
     type: "generate-token",
@@ -216,8 +205,4 @@ export async function genTokenConfig() {
     .catch(console.error)
     .then(() => process.exit(0));
 
-  setTimeout(() => {
-    console.log("Running for more than 5 minutes, exiting.");
-    process.exit(1);
-  }, 5 * 60 * 1000);
 }

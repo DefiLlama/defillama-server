@@ -3042,6 +3042,7 @@ const data2: Protocol[] = [
     twitter: "dominationfi",
     audit_links: ["https://docs.domination.finance/docs/security/audits/"],
     listedAt: 1646684579,
+    hallmarks: [['2026-04-18', "Derivatives launch"]],
   },
   {
     id: "1518",

@@ -9,7 +9,6 @@ import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
 import { rwaSlug } from "./rwa/utils";
-import { readRouteData } from "./api2/cache/file-cache";
 import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
@@ -573,7 +572,7 @@ async function generateSearchList() {
     }),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    readRouteData("config/smol/token.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/token.json"),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/dat/institutions`),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/list`),
     cachedJSONPull({
@@ -612,7 +611,7 @@ async function generateSearchList() {
   ]);
   if (!coinsData || Array.isArray(coinsData)) {
     console.log("Unexpected response while reading token cache:", coinsData);
-    throw new Error("Failed to read token cache from config/smol/token.json");
+    throw new Error("Failed to fetch token cache from https://api.llama.fi/config/smol/token.json");
   }
   const slugToProtocolName = new Map<string, string>();
   for (const id in protocolsMetadata) {

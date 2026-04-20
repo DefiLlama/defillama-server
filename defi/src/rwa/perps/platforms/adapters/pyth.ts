@@ -51,8 +51,12 @@ async function getFeedMap(): Promise<Map<string, string[]>> {
     };
 
     for (const f of feeds) {
-      const { base, quote_currency, symbol } = f.attributes;
+      const { base, quote_currency, symbol, asset_type } = f.attributes;
       if (quote_currency !== "USD") continue;
+      // Skip Crypto feeds — this map is used by RWA adapters (gTrade), and
+      // symbol collisions (e.g., META stock vs META crypto token at ~$2) would
+      // otherwise return the wrong price. Equity/Metal/FX/Commodity are what we want.
+      if (String(asset_type).toLowerCase() === "crypto") continue;
       const key = base?.toLowerCase();
       if (!key) continue;
       const feedId = "0x" + f.id;

@@ -22,6 +22,9 @@ const ALL_ADAPTERS: PlatformAdapter[] = [
 const PUBLISHED_ADAPTERS: PlatformAdapter[] = [
   hyperliquidAdapter,
   ostiumAdapter,
+  gtradeAdapter,
+  helixAdapter,
+  extendedAdapter,
 ];
 
 const ADAPTER_MAP = new Map<string, PlatformAdapter>(

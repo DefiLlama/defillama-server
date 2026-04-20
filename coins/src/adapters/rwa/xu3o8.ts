@@ -64,7 +64,7 @@ async function getXU3o8Price(
     target: poolContract,
   });
 
-  const sqrtPriceX96 = slot0Data[0]; // First return value is sqrtPriceX96
+  const sqrtPriceX96 = Number(slot0Data[0]); // First return value is sqrtPriceX96
   const xu3o8Price = convertSqrtPriceX96ToXU3O8Price(sqrtPriceX96, decimals);
 
   return xu3o8Price;

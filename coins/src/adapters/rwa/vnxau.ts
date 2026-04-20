@@ -44,7 +44,7 @@ async function getTokenPrices(timestamp: number) {
     api.call({ abi: slot0Abi, target: poolContract }),
   ]);
 
-  const sqrtPriceX96: number = slot0[0];
+  const sqrtPriceX96: number = Number(slot0[0]);
   const priceRaw = (sqrtPriceX96 / 2 ** 96) ** 2;
   const priceUsdcInVnxau = priceRaw * 10 ** (6 - 18);
   const price = 1 / priceUsdcInVnxau;

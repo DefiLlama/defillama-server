@@ -42,7 +42,7 @@ async function getTokenPrices(timestamp: number) {
     api.call({ abi: slot0Abi, target: poolContract }),
   ]);
 
-  const sqrtPriceX96: number = slot0[0];
+  const sqrtPriceX96: number = Number(slot0[0]);
   const price = (sqrtPriceX96 / 2 ** 96) ** 2 * 10 ** (4 - 6);
 
   addToDBWritesList(

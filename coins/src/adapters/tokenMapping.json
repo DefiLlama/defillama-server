@@ -16842,5 +16842,57 @@
       "decimals": 18,
       "symbol": "WiKAS"
     }
+  },
+  "strato": {
+    "0x491cdfe98470bfe69b662ab368826dca0fc2f24d": {
+      "to": "coingecko#pax-gold",
+      "decimals": 18,
+      "symbol": "PAXG"
+    },
+    "0x47de839c03a3b014c0cc4f3b9352979a5038f910": {
+      "to": "coingecko#tether-gold",
+      "decimals": 18,
+      "symbol": "XAUt"
+    },
+    "0x6e2d93d323edf1b3cc4672a909681b6a430cae64": {
+      "to": "coingecko#susds",
+      "decimals": 18,
+      "symbol": "sUSDS"
+    },
+    "0xc6c3e9881665d53ae8c222e24ca7a8d069aa56ca": {
+      "to": "coingecko#syrupusdc",
+      "decimals": 18,
+      "symbol": "syrupUSDC"
+    },
+    "0x6aeacaa19c68e53035bf495d15e0a328fc600ba8": {
+      "to": "coingecko#usd-coin",
+      "decimals": 18,
+      "symbol": "USDC"
+    },
+    "0x5ed0bdfb378ac0d06249d70759536d7a41906216": {
+      "to": "coingecko#tether",
+      "decimals": 18,
+      "symbol": "USDT"
+    },
+    "0x7a99b5ba11ac280cdd5caf52c12fe89fb1b8d2f9": {
+      "to": "coingecko#wrapped-bitcoin",
+      "decimals": 18,
+      "symbol": "WBTC"
+    },
+    "0x93fb7295859b2d70199e0a4883b7c320cf874e6c": {
+      "to": "coingecko#ethereum",
+      "decimals": 18,
+      "symbol": "ETH"
+    },
+    "0xf2aa370405030a434ae07e7826178325c675e925": {
+      "to": "coingecko#wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH"
+    },
+    "0x2e4789eb7db143576da25990a3c0298917a8a87d": {
+      "to": "coingecko#rocket-pool-eth",
+      "decimals": 18,
+      "symbol": "rETH"
+    }
   }
 }

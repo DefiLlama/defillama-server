@@ -165,7 +165,7 @@ functions:
     timeout: 60
     events:
       - httpApi:
-          path: /prices/current
+          path: /prices/multi
           method: post
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
@@ -179,7 +179,7 @@ functions:
     timeout: 60
     events:
       - httpApi:
-          path: /prices/historical
+          path: /prices/multiHistorical
           method: post
   coinPriceChart:
     handler: src/getCoinPriceChart.default

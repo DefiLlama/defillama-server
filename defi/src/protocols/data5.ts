@@ -16817,7 +16817,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
-    module: "dummy.js",
+    module: "bounce-tech/.js",
     twitter: "BounceTech",
     audit_links: [
       "https://bounce.tech/bounce-guardian-audit-2.pdf",
@@ -16827,7 +16827,8 @@ const data5: Protocol[] = [
     github: ["bounce-tech"],
     dimensions: {
       fees: "bounce-tech",
-    }
+    },
+    listedAt: 1776709207
   },
   {
     id: "7670",

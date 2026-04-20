@@ -83,6 +83,52 @@ function formatRwaEmbed(data) {
     return { embeds: [{ title: `🆕 RWA Token Submission: ${data.tokenName || data.ticker || 'Unknown'}`, color: 0x58a6ff, fields, footer: { text: `Submitted at ${new Date().toISOString()}` } }] };
 }
 
+// ── RWA: Batch Discord embed (multiple tokens in one message) ─────────────────
+function formatRwaBatchEmbed(tokens) {
+    const fields = [];
+    const issuer = tokens[0]?.issuer || 'Unknown';
+    const website = tokens[0]?.website || '';
+    const twitter = tokens[0]?.twitter || '';
+    const contactEmail = tokens[0]?.contactEmail || '';
+
+    // Shared issuer header
+    const issuerLines = [`**Issuer:** ${issuer}`];
+    if (website) issuerLines.push(`**Website:** ${website}`);
+    if (twitter) issuerLines.push(`**Twitter:** ${twitter}`);
+    if (contactEmail) issuerLines.push(`**Contact:** ${contactEmail}`);
+    fields.push({ name: '🏢 Issuer Information', value: issuerLines.join('\n'), inline: false });
+
+    for (let i = 0; i < tokens.length; i++) {
+        const data = tokens[i];
+        const contractsStr = (data.blockchain?.contracts || []).filter(c => c.chain && c.address).map(c => `\`${c.chain}:${c.address}\``).join(', ');
+        const internalStr = (data.blockchain?.internalAddresses || []).filter(a => a.address).map(a => {
+            let s = `\`${a.chain ? a.chain + ':' : ''}${a.address}\``;
+            if (a.label) s += ` (${a.label})`;
+            return s;
+        }).join(', ');
+
+        const lines = [
+            `**Ticker:** ${data.ticker || 'N/A'}`,
+            `**Category:** ${data.category || 'N/A'} | **Asset Class:** ${data.assetClass || 'N/A'} | **Group:** ${data.assetGroup || 'N/A'}`,
+            `**Chain:** ${data.blockchain?.primaryChain || 'N/A'}${data.blockchain?.allChains ? ` (All: ${data.blockchain.allChains})` : ''}`,
+        ];
+        if (contractsStr) lines.push(`**Contracts:** ${contractsStr}`);
+        if (internalStr) lines.push(`**Internal:** ${internalStr}`);
+        if (data.coingeckoId) lines.push(`**CoinGecko:** ${data.coingeckoId}`);
+        lines.push(`**CEX:** ${data.exchange?.cexListed ?? 'N/A'}${data.exchange?.cexDetails ? ` (${data.exchange.cexDetails})` : ''} | **KYC Mint:** ${data.exchange?.kycToMint ?? 'N/A'} | **KYC Hold:** ${data.exchange?.kycWhitelist ?? 'N/A'}`);
+        lines.push(`**Transferable:** ${data.custody?.transferable ?? 'N/A'} | **Self Custody:** ${data.custody?.selfCustody ?? 'N/A'}`);
+        if (data.redemption) lines.push(`**Redemption:** ${data.redemption}`);
+        if (data.attestation) lines.push(`**Attestation:** ${data.attestation}`);
+        if (data.description) lines.push(`**Desc:** ${data.description.slice(0, 200)}`);
+        if (data.logo) lines.push(`**Logo:** ${data.logo}`);
+
+        fields.push({ name: `📋 Token #${i + 1}: ${data.tokenName || 'N/A'}`, value: lines.join('\n'), inline: false });
+    }
+
+    const tickers = tokens.map(t => t.ticker || '?').join(', ');
+    return { embeds: [{ title: `🆕 RWA Batch Submission (${tokens.length} tokens): ${tickers}`, color: 0x58a6ff, fields, footer: { text: `Submitted at ${new Date().toISOString()}` } }] };
+}
+
 // ── Validator ──────────────────────────────────────────────────────────────────
 function validateRwa(data) {
     if (!data.tokenName || typeof data.tokenName !== 'string') return { valid: false, error: 'Token name is required' };
@@ -174,6 +220,36 @@ const server = http.createServer(async (req, res) => {
             return sendJson(res, 200, { success: true, message: 'Submission received' });
         } catch (error) {
             console.error('Error processing RWA submission:', error);
+            return sendJson(res, 500, { error: 'Internal server error' });
+        }
+    }
+
+    if (p === '/rwa-submission/api/submit-batch' && req.method === 'POST') {
+        try {
+            const body = await parseBody(req);
+            const tokens = body?.tokens;
+            if (!Array.isArray(tokens) || tokens.length === 0) return sendJson(res, 400, { error: 'At least one token is required' });
+            if (tokens.length > 50) return sendJson(res, 400, { error: 'Maximum 50 tokens per batch' });
+
+            for (let i = 0; i < tokens.length; i++) {
+                const v = validateRwa(tokens[i]);
+                if (!v.valid) return sendJson(res, 400, { error: `Token #${i + 1}: ${v.error}` });
+            }
+
+            const tickers = tokens.map(t => t.ticker).join(', ');
+            console.log('='.repeat(60));
+            console.log('New RWA Batch Submission:', new Date().toISOString());
+            console.log(`${tokens.length} tokens: ${tickers}`);
+            console.log('Issuer:', tokens[0]?.issuer || 'N/A');
+            if (tokens[0]?.contactEmail) console.log('Contact:', tokens[0].contactEmail);
+            console.log('='.repeat(60));
+
+            const sent = await postToDiscord(DISCORD_WEBHOOK_URL, formatRwaBatchEmbed(tokens));
+            if (!sent && DISCORD_WEBHOOK_URL) console.error('Failed to send RWA batch to Discord');
+
+            return sendJson(res, 200, { success: true, message: `${tokens.length} token(s) received` });
+        } catch (error) {
+            console.error('Error processing RWA batch submission:', error);
             return sendJson(res, 500, { error: 'Internal server error' });
         }
     }

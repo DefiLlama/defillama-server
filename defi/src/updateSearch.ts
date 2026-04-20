@@ -639,7 +639,6 @@ async function generateSearchList() {
     const result = {
       id: `protocol_parent_${normalize(parent.name)}`,
       name: parent.name,
-      symbol: parent.symbol,
       tvl: parentTvl[parent.id] ?? 0,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(parent.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(parent.name)}`,
@@ -674,7 +673,6 @@ async function generateSearchList() {
     const result = {
       id: `protocol_${normalize(protocol.name)}`,
       name: protocol.name,
-      symbol: protocol.symbol,
       tvl: protocol.tvl,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(protocol.name)}?w=48&h=48`,
       route: `/protocol/${sluggifyString(protocol.name)}`,

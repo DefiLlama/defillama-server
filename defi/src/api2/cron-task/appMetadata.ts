@@ -6,6 +6,7 @@
 
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
+import { genTokenConfig } from "./generateToken";
 
 // import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
@@ -1354,6 +1355,7 @@ runWithRuntimeLogging(storeAppMetadata, {
   type: "app-metadata",
 })
   .catch(console.error)
+  .then(genTokenConfig)
   .then(() => process.exit(0));
 
 setTimeout(() => {

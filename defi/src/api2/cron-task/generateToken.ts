@@ -209,7 +209,7 @@ async function generateToken() {
 
 
 export async function genTokenConfig() {
-  runWithRuntimeLogging(generateToken, {
+  await runWithRuntimeLogging(generateToken, {
     application: "cron-task",
     type: "generate-token",
   })

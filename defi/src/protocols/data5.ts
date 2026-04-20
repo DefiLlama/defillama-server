@@ -16817,7 +16817,7 @@ const data5: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Hyperliquid L1"],
-    module: "bounce-tech/.js",
+    module: "bounce-tech/index.js",
     twitter: "BounceTech",
     audit_links: [
       "https://bounce.tech/bounce-guardian-audit-2.pdf",

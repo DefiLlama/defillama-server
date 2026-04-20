@@ -140,6 +140,8 @@ export default {
   jtoDerivs: require("./solana/jtoDerivs"),
   pac: require("./rwa/thepac"),
   xu3o8: require("./rwa/xu3o8"),
+  vnxau: require("./rwa/vnxau"),
+  rare: require("./rwa/rare"),
   tonDerivs: require("./other/ton"),
   asseto: require("./rwa/asseto"),
   lsulp: require("./markets/radix"),

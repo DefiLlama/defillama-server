@@ -18,7 +18,7 @@ import {
     fetchMaxUpdatedAtPG,
     fetchAllDailyIdsPG,
 } from './db';
-import { toFiniteNumberOrZero, groupBy } from './utils';
+import { getPercentChangeOrNull, toFiniteNumberOrZero, groupBy } from './utils';
 import { main as runPipeline } from './perps';
 import {
     buildCategoryHistoricalCharts,
@@ -56,9 +56,15 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
             id: record.id,
             timestamp: record.timestamp,
             openInterest: toFiniteNumberOrZero(record.open_interest),
+            openInterestChange24h: record.is_latest_current
+                ? getPercentChangeOrNull(record.open_interest, record.prev_open_interest)
+                : null,
             volume24h: toFiniteNumberOrZero(record.volume_24h),
+            volume24hChange24h: record.is_latest_current
+                ? getPercentChangeOrNull(record.volume_24h, record.prev_volume_24h)
+                : null,
             price: toFiniteNumberOrZero(record.price),
-            priceChange24h: toFiniteNumberOrZero(record.price_change_24h),
+            priceChange24h: record.is_latest_current ? getPercentChangeOrNull(record.price, record.prev_price) : null,
             fundingRate: toFiniteNumberOrZero(record.funding_rate),
             premium: toFiniteNumberOrZero(record.premium),
             cumulativeFunding: toFiniteNumberOrZero(record.cumulative_funding),

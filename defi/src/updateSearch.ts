@@ -9,6 +9,7 @@ import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
 import { rwaSlug } from "./rwa/utils";
+import { readRouteData } from "./api2/cache/file-cache";
 import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
@@ -49,6 +50,15 @@ interface SearchResult {
   keywords?: string[];
   r?: number;
   v: number;
+}
+
+interface TokenSearchData {
+  name: string;
+  symbol: string;
+  token_nk: string;
+  route: string;
+  is_yields: boolean;
+  mcap_rank?: number;
 }
 
 const SEARCH_RANK = {
@@ -522,7 +532,7 @@ async function generateSearchList() {
     Record<string, number>,
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
-    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>,
+    Record<string, TokenSearchData>,
     {
       assetMetadata: Record<string, { name: string; ticker: string }>;
       institutionMetadata: Record<string, { name: string; ticker: string }>;
@@ -563,7 +573,7 @@ async function generateSearchList() {
     }),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
     cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    cachedJSONPull("https://ask.llama.fi/coins"),
+    readRouteData("config/smol/token.json"),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/dat/institutions`),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/list`),
     cachedJSONPull({
@@ -600,6 +610,10 @@ async function generateSearchList() {
     }),
     cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
   ]);
+  if (!coinsData || Array.isArray(coinsData)) {
+    console.log("Unexpected response while reading token cache:", coinsData);
+    throw new Error("Failed to read token cache from config/smol/token.json");
+  }
   const slugToProtocolName = new Map<string, string>();
   for (const id in protocolsMetadata) {
     const meta = protocolsMetadata[id];
@@ -1087,29 +1101,17 @@ async function generateSearchList() {
     }));
 
   const coins: Array<SearchResult> = [];
-  for (const coin of coinsData) {
+  for (const tokenKey in coinsData) {
+    const coin = coinsData[tokenKey];
     coins.push({
-      id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_usage`,
+      id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token`,
       name: coin.symbol,
-      subName: "Token Usage",
-      route: `/token-usage?token=${coin.symbol}`,
+      route: `/token/${encodeURIComponent(coin.symbol)}`,
       mcapRank: coin.mcap_rank ?? 0,
       r: SEARCH_RANK.subPage,
-      v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
-      type: "Token Usage",
+      v: tastyMetrics[`/token/${coin.symbol}`] ?? 0,
+      type: "Token",
     });
-    if (coin.on_yields) {
-      coins.push({
-        id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_yields`,
-        name: coin.symbol,
-        subName: "Token Yields",
-        route: `/yields?token=${coin.symbol}`,
-        mcapRank: coin.mcap_rank ?? 0,
-        r: SEARCH_RANK.subPage,
-        v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
-        type: "Token Yields",
-      });
-    }
   }
 
   const dats: Array<SearchResult> = [];

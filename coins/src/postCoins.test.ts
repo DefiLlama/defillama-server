@@ -75,7 +75,7 @@ async function getCurrent(coins: string[]) {
 }
 
 async function postCurrent(coins: string[]) {
-  const res = await fetch(`${PROD_BASE}/prices/multi`, {
+  const res = await fetch(`${PROD_BASE}/pro/prices/current`, {
     method: "POST",
     body: JSON.stringify({ coins }),
     headers: { "Content-Type": "application/json" },
@@ -95,7 +95,7 @@ async function getBatchHistorical(coinsObj: { [coin: string]: number[] }) {
 }
 
 async function postHistorical(coinsObj: { [coin: string]: number[] }) {
-  const res = await fetch(`${PROD_BASE}/prices/multiHistorical`, {
+  const res = await fetch(`${PROD_BASE}/pro/prices/historical`, {
     method: "POST",
     body: JSON.stringify({ coins: coinsObj }),
     headers: { "Content-Type": "application/json" },
@@ -163,10 +163,10 @@ function compareHistoricalResponse(
 }
 
 // ──────────────────────────────────────────────
-// POST /prices/multi
+// POST /pro/prices/current
 // ──────────────────────────────────────────────
 
-describe("POST /prices/multi", () => {
+describe("POST /pro/prices/current", () => {
   it("matches GET for standard coins across multiple chains", async () => {
     const [post, get] = await Promise.all([
       postCurrent(STANDARD_COINS),
@@ -268,14 +268,14 @@ describe("POST /prices/multi", () => {
   }, 30_000);
 
   it("rejects missing body", async () => {
-    const res = await fetch(`${PROD_BASE}/prices/multi`, {
+    const res = await fetch(`${PROD_BASE}/pro/prices/current`, {
       method: "POST",
     });
     expect(res.ok).toBe(false);
   }, 30_000);
 
   it("rejects invalid JSON body", async () => {
-    const res = await fetch(`${PROD_BASE}/prices/multi`, {
+    const res = await fetch(`${PROD_BASE}/pro/prices/current`, {
       method: "POST",
       body: "not json",
       headers: { "Content-Type": "application/json" },
@@ -285,10 +285,10 @@ describe("POST /prices/multi", () => {
 });
 
 // ──────────────────────────────────────────────
-// POST /prices/multiHistorical
+// POST /pro/prices/historical
 // ──────────────────────────────────────────────
 
-describe("POST /prices/multiHistorical", () => {
+describe("POST /pro/prices/historical", () => {
   it("matches GET batchHistorical for standard coins with multiple timestamps", async () => {
     const coinsObj = buildCoinsObj(STANDARD_COINS, HISTORICAL_TIMESTAMPS);
     const [post, get] = await Promise.all([
@@ -421,14 +421,14 @@ describe("POST /prices/multiHistorical", () => {
   }, 30_000);
 
   it("rejects missing body", async () => {
-    const res = await fetch(`${PROD_BASE}/prices/multiHistorical`, {
+    const res = await fetch(`${PROD_BASE}/pro/prices/historical`, {
       method: "POST",
     });
     expect(res.ok).toBe(false);
   }, 30_000);
 
   it("rejects invalid JSON body", async () => {
-    const res = await fetch(`${PROD_BASE}/prices/multiHistorical`, {
+    const res = await fetch(`${PROD_BASE}/pro/prices/historical`, {
       method: "POST",
       body: "not json",
       headers: { "Content-Type": "application/json" },

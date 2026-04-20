@@ -11447,11 +11447,6 @@
       "decimals": 7,
       "symbol": "CETES"
     },
-    "CBHIQPUXLFLC5O44ZJVUTCL5LMZFLVGU5DEIGSYKBSAPFMOGTKOQEPFM": {
-      "to": "coingecko#bitcoin",
-      "decimals": 15,
-      "symbol": "BTCLN"
-    },
     "CCG27OZ5AV4WUXS6XTECWAXEY5UOMEFI2CWFA3LHZGBTLYZWTJF3MJYQ": {
       "to": "coingecko#afreum",
       "decimals": 7,

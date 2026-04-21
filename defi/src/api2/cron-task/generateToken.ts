@@ -195,7 +195,7 @@ async function generateToken() {
       symbolMap[symbol] = key
     } else {
       if (/old|bridged|wormhole|\(|\[/i.test(key)) {
-        // console.log(`Skipping potential duplicate symbol ${symbol} for key ${key} due to blacklist pattern match`);
+        // console.log(`Skipping duplicate ${symbol} <- ${key}`);
         delete bySlug[key];
       }
     }

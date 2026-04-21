@@ -42,18 +42,15 @@ const handler = async (
           return;
         }
 
-        if (typeof coin?.decimals === 'string' && !isNaN(Number(coin.decimals)))
-          coin.decimals = Number(coin.decimals);
-
         PKTransforms[coin.PK].forEach((coinName) => {
           if (response[coinName] == undefined) {
             response[coinName] = {
               symbol: coin.symbol,
-              decimals: coin.decimals,
+              decimals: coin.decimals == null ? undefined : Number(coin.decimals),
               prices: [
                 {
                   timestamp: finalCoin.SK,
-                  price: finalCoin.price,
+                  price: Number(finalCoin.price),
                   confidence: finalCoin.confidence,
                 },
               ],
@@ -61,7 +58,7 @@ const handler = async (
           } else {
             response[coinName].prices.push({
               timestamp: finalCoin.SK,
-              price: finalCoin.price,
+              price: Number(finalCoin.price),
               confidence: finalCoin.confidence,
             });
           }

@@ -5801,6 +5801,9 @@ export const chainCoingeckoIds = {
     twitter: "tempo",
     url: "https://tempo.xyz/",
     chainId: 4217,
+    dimensions: {
+      fees: "tempo",
+    },
   },
   "Everclear": {
     geckoId: null,
@@ -5867,6 +5870,14 @@ export const chainCoingeckoIds = {
     twitter: "versatizecoin",
     url: "https://versatizecoin.com/",
     chainId: 3030,
+  },
+  "TxFlow": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "TxFlow_L1",
+    url: "https://txflow.com/",
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -6115,6 +6126,7 @@ const chainLabelMap = {
   "edgex": "edgeX L1",
   "blockdag": "BlockDAG",
   "bcypher": "BCHyper",
+  "txflow": "TxFlow",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

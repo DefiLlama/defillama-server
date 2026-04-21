@@ -534,5 +534,28 @@ const data6: Protocol[] = [
       fees: "hitone",
     },
   },
+  {
+    id: "7733",
+    name: "TxFlow Perps",
+    address: null,
+    symbol: "-",
+    url: "https://app.txflow.com/",
+    description:
+      "TxFlow perpetuals are derivative products with no expiration date. They maintain price convergence with the underlying spot asset through funding payments rather than settlement dates",
+    chain: "TxFlow",
+    logo: `${baseIconsUrl}/txflow-perps.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["TxFlow"],
+    module: "dummy.js",
+    twitter: "TxFlow_L1",
+    dimensions: {
+      derivatives: "txflow-perps",
+      fees: "txflow-perps",
+      "open-interest": "txflow-perps-oi",
+    },
+  },
 ];
 export default data6;

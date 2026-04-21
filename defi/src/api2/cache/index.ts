@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
 import { IRaise, IProtocol } from '../../types';
+import { fetchMcaps } from '../../utils/coinsApi';
 import sluggify, { sluggifyString } from '../../utils/sluggify';
 import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
@@ -246,18 +247,11 @@ async function updateMCaps() {
   })
 
   async function getProtocolMcaps(geckoIds: string[]) {
-    const mcaps = await fetch("https://coins.llama.fi/mcaps", {
-      method: "POST",
-      body: JSON.stringify({
-        coins: geckoIds.map((id) => `coingecko:${id}`),
-      }),
-    }).then((r) => r.json())
+    return fetchMcaps(geckoIds.map((id) => `coingecko:${id}`))
       .catch((err) => {
         console.log(err);
         return {};
       });
-
-    return mcaps
   };
 }
 

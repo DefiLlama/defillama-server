@@ -22,7 +22,7 @@ import { storeHistoricalToDB } from "./storeToDb";
 import { stablecoins } from "../../src/getProtocols";
 import { metadata as rwaMetadata } from "../../src/rwa/protocols";
 import { verifyChanges } from "../verifyChanges";
-import { initializePriceQueryFilter, whitelistedTokenSetRawPids } from "../../src/storeTvlInterval/computeTVL";
+import { fetchTokensList } from "../../src/utils/coinsApi";
 import { getClosestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
 import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
 import { Balances } from "@defillama/sdk";
@@ -31,25 +31,6 @@ import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { coins } from "@defillama/sdk";
 
 const searchWidth = 10800; // 3hr
-const allTokens: { [chain: Chain]: string[] } = {};
-
-// fetch a list of all token addresses from ES
-async function fetchAllTokens() {
-  await initializePriceQueryFilter();
-
-  whitelistedTokenSetRawPids.forEach((t) => {
-    const seperater = t.indexOf(":");
-    const chain = t.substring(0, seperater);
-
-    const address = t.substring(seperater + 1);
-    if (address == "undefined") return;
-
-    if (!allTokens[chain]) allTokens[chain] = [];
-    allTokens[chain].push(address);
-  });
-
-  return allTokens;
-}
 
 // find the prices, mcaps and supplies of all tokens on all chains
 async function fetchNativeAndMcaps(timestamp: number): Promise<{
@@ -88,12 +69,12 @@ async function fetchNativeAndMcaps(timestamp: number): Promise<{
         try {
           const start = new Date().getTime();
 
-          const storedTokens =
+          const storedTokens: string[] =
             chain == "cardano"
               ? await fetchAdaTokens()
               : [...chainsThatShouldNotBeLowerCased, ...chainsWithCaseSensitiveDataProviders].includes(chain)
               ? await fetchAllTokensFromDB(chain)
-              : allTokens[chain];
+              : (await fetchTokensList(chain)).map((t) => t.address);
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address
@@ -367,7 +348,6 @@ const newChainAssets = () => ({
 // main function
 export async function storeChainAssetsV2(override: boolean = false) {
   const timestamp = 0;
-  await fetchAllTokens();
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
   const incomingAssets = await fetchIncomingAssetsList();
   const excludedAmounts = await fetchExcludedAmounts(timestamp);

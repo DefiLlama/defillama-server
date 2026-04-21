@@ -102,7 +102,6 @@ export const bridges = [
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import { dualWriteToChRedis } from "../utils/chRedisWrite";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 
@@ -223,7 +222,6 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
   await dualWriteToChRedis(writes).catch(e => {
     console.error(`[CH/Redis dual-write] bridges non-fatal error: ${(e as Error).message}`);
   });
-  await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }
 export async function storeTokens() {

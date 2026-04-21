@@ -1,5 +1,5 @@
 import { initPG, storeHistoricalPG, storeMetadataPG, storeFundingHistoryPG } from "./db";
-import { getContractId, getContractMetadata } from "./constants";
+import { getContractId, getContractMetadata, resolveContractKey } from "./constants";
 import { sendMessage } from "../../utils/discord";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
@@ -69,10 +69,12 @@ export async function storeMetadata(res: {
         const metadata = getContractMetadata(entry.contract);
         if (!metadata) return acc; // skip markets without spreadsheet metadata
 
+        const canonicalContract = resolveContractKey(entry.contract) ?? entry.contract;
+
         acc.push({
             id,
             data: JSON.stringify({
-                contract: entry.contract,
+                contract: canonicalContract,
                 venue: entry.venue,
                 ...metadata,
             }),

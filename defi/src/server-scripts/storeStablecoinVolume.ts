@@ -13,8 +13,9 @@
 //   4. flush cache to R2 every R2_WRITE_INTERVAL days + once at the end
 //
 
-import { ALLIUM_CHAIN_MAP, queryAllium } from '../../dimension-adapters/helpers/allium';
-import { CHAIN } from '../../dimension-adapters/helpers/chains';
+import retry from "async-retry";
+import plimit from "p-limit";
+import axios, { AxiosRequestConfig } from "axios";
 import { getR2JSONString, storeR2JSONString } from '../utils/r2';
 import { NoSuchKey } from "@aws-sdk/client-s3";
 
@@ -22,6 +23,129 @@ const DAY = 24 * 3600;
 const STORE_KEY = 'stablecoins/dailyVolumes';
 const START_DATE = '2021-01-01';
 const R2_WRITE_INTERVAL = 10; // after querying this many new days, flush current cache to R2
+
+// inlined from dimension-adapters/helpers/allium.ts
+// keys are llama chain names, values are the chain names as they appear in allium data
+const ALLIUM_CHAIN_MAP: Record<string, string> = {
+  'ethereum': 'ethereum',
+  'base': 'base',
+  'optimism': 'optimism',
+  'scroll': 'scroll',
+  'bsc': 'bsc',
+  'arbitrum': 'arbitrum',
+  'avax': 'avalanche',
+  'polygon': 'polygon',
+  'tron': 'tron',
+  'unichain': 'unichain',
+  'zora': 'zora',
+  'near': 'near',
+  'xdai': 'gnosis',
+  'ink': 'ink',
+  'berachain': 'berachain',
+  'polygon_zkevm': 'polygon_zkevm',
+  'plasma': 'plasma',
+  'monad': 'monad',
+  'era': 'zksync',
+  'rsk': 'rootstock',
+  'wc': 'worldchain',
+  'manta': 'manta_pacific',
+  'hyperliquid': 'hyperevm',
+};
+
+const _alliumTokens: Record<string, string> = {};
+const _alliumLimit = plimit(3);
+const ALLIUM_HEADERS = {
+  "Content-Type": "application/json",
+  "X-API-KEY": process.env.ALLIUM_API_KEY,
+};
+const successCodes = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226];
+
+async function alliumGet(url: string, options?: AxiosRequestConfig) {
+  const res = await axios.get(url, options);
+  if (!successCodes.includes(res.status)) throw new Error(`Error fetching ${url}: ${res.status} ${res.statusText}`);
+  return res.data;
+}
+
+async function alliumPost(url: string, data: any, options?: AxiosRequestConfig) {
+  const res = await axios.post(url, data, options);
+  if (!successCodes.includes(res.status)) throw new Error(`Error fetching ${url}: ${res.status} ${res.statusText}`);
+  return res.data;
+}
+
+async function startAlliumQuery(sqlQuery: string) {
+  const query = await alliumPost(`https://api.allium.so/api/v1/explorer/queries/phBjLzIZ8uUIDlp0dD3N/run-async`, {
+    parameters: { fullQuery: sqlQuery }
+  }, { headers: ALLIUM_HEADERS });
+  return query["run_id"];
+}
+
+async function retrieveAlliumResults(queryId: string) {
+  const results = await alliumGet(`https://api.allium.so/api/v1/explorer/query-runs/${queryId}/results?f=json`, {
+    headers: ALLIUM_HEADERS,
+  });
+  return results.data;
+}
+
+async function _queryAllium(sqlQuery: string) {
+  const metadata: any = {
+    application: "allium",
+    query: sqlQuery,
+    table: sqlQuery.split(/from/i)[1].split(/\s/)[1],
+  };
+  if (!ALLIUM_HEADERS["X-API-KEY"]) {
+    throw new Error("Allium API Key is required");
+  }
+
+  const _response = retry(
+    async (bail) => {
+      if (!_alliumTokens[sqlQuery]) {
+        try {
+          _alliumTokens[sqlQuery] = await startAlliumQuery(sqlQuery);
+        } catch (e) {
+          console.log("query run-async", e);
+          throw e;
+        }
+      }
+
+      if (!_alliumTokens[sqlQuery]) throw new Error("Couldn't get a token from allium");
+
+      const statusReq = await alliumGet(`https://api.allium.so/api/v1/explorer/query-runs/${_alliumTokens[sqlQuery]}/status`, {
+        headers: ALLIUM_HEADERS,
+      });
+
+      const status = statusReq;
+      if (status === "success") {
+        return retrieveAlliumResults(_alliumTokens[sqlQuery]);
+      } else if (status === "failed") {
+        console.log(`Query ${sqlQuery} failed`, statusReq.data);
+        bail(new Error(`Query ${sqlQuery} failed, error ${JSON.stringify(statusReq.data)}`));
+        return;
+      }
+      throw new Error("Still running");
+    },
+    {
+      retries: 15,
+      maxTimeout: 1000 * 60 * 2,
+      minTimeout: 1000 * 10,
+      randomize: true,
+    }
+  );
+
+  let response;
+  let success = false;
+  try {
+    response = await _response;
+    success = true;
+    metadata.rows = response?.length;
+  } catch (e) {
+    throw e;
+  }
+  return response;
+}
+
+async function queryAllium(sqlQuery: string) {
+  return _alliumLimit(() => _queryAllium(sqlQuery));
+}
 
 const getCurrentTimestamp = () => Math.floor(new Date().getTime() / 1000);
 const getUnixTimestamp = (date: string) => Math.floor(new Date(date).getTime() / 1000);
@@ -36,7 +160,7 @@ function formatChain(chain: string): string {
     if (chain === alliumChain) return llamaChain;
   }
 
-  for (const llamaChain of Object.values(CHAIN)) {
+  for (const llamaChain of Object.keys(ALLIUM_CHAIN_MAP)) {
     if (chain === llamaChain) return llamaChain;
   }
 

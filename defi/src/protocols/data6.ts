@@ -373,5 +373,46 @@ const data6: Protocol[] = [
     twitter: null,
     listedAt: 1776741959,
   },
+  {
+    id: "7725",
+    name: "TopStrike",
+    address: null,
+    symbol: "-",
+    url: "https://topstrike.io",
+    description:
+      "Real-time, one-tap Football trading game powered by MegaETH",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/topstrike.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "TopStrikeIO",
+    dimensions: {
+      dexs: "topstrike",
+    },
+  },
+  {
+    id: "7726",
+    name: "ASPE Labs",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://aspelabs.xyz
+    description:
+      "Automated yield vault on HyperEVM. ERC4626-compliant; deposits USDC, trades on HyperCore via an agent wallet, and returns profits through share price appreciation",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/aspe-labs.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Hyperliquid L1"],
+    module: "aspe-labs/index.js",
+    twitter: "AspeLabs",
+    github: ["aspe-labs"],
+    listedAt: 1776742731,
+  },
 ];
 export default data6;

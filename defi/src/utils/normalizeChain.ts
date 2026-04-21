@@ -5700,6 +5700,9 @@ export const chainCoingeckoIds = {
     categories: [],
     twitter: "Zcash",
     url: "https://z.cash/",
+    dimensions: {
+      fees: "zcash",
+    },
   },
   "Union": {
     geckoId: "union-2",

@@ -2299,7 +2299,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-cl.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -2325,7 +2325,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-legacy.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

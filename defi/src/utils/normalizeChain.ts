@@ -247,7 +247,13 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/",
     dimensions: {
       fees: "solana",
-    },
+      'active-users': {
+        adapter: 'solana',
+        genuineSpikes: [
+          ["2026-04-20", "-"] // new listing spike
+        ]
+      },
+    }
   },
   "Polygon": {
     geckoId: "polygon-ecosystem-token",

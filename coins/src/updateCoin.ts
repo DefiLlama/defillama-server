@@ -48,8 +48,8 @@ const currentCoins = async (
       if (isFresh(coin.timestamp, searchWidth)) {
         PKTransforms[coin.PK].forEach((coinName) => {
           response[coinName] = {
-            decimals: coin.decimals,
-            price: coin.price,
+            decimals: coin.decimals == null ? undefined : Number(coin.decimals),
+            price: Number(coin.price),
             symbol: coin.symbol,
             timestamp: coin.timestamp,
             confidence: coin.confidence,
@@ -71,9 +71,9 @@ const currentCoins = async (
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
           PKTransforms[ogCoin.PK].forEach((coinName) => {
             response[coinName] = {
-              decimals: ogCoin.decimals,
+              decimals: ogCoin.decimals == null ? undefined : Number(ogCoin.decimals),
               symbol: ogCoin.symbol,
-              price: redirectedCoin.price,
+              price: Number(redirectedCoin.price),
               timestamp: redirectedCoin.timestamp,
               confidence: redirectedCoin.confidence,
             };
@@ -160,8 +160,8 @@ const handler = async (event: any): Promise<IResponse> => {
 
     PKTransforms[PK].forEach((coinName) => {
       response[coinName] = {
-        decimals,
-        price,
+        decimals: decimals == null ? undefined : Number(decimals),
+        price: Number(price),
         symbol,
         timestamp: SK,
         confidence,

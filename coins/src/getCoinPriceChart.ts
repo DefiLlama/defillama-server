@@ -145,13 +145,13 @@ function addToResponse(
       response[coinName] = {
         symbol: coin.symbol,
         confidence: coin.confidence,
-        decimals: coin.decimals,
-        prices: [{ timestamp: record.SK, price: record.price }],
+        decimals: coin.decimals == null ? undefined : Number(coin.decimals),
+        prices: [{ timestamp: record.SK, price: Number(record.price) }],
       };
     } else {
       response[coinName].prices.push({
         timestamp: record.SK,
-        price: record.price,
+        price: Number(record.price),
       });
     }
   });

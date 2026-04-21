@@ -414,5 +414,25 @@ const data6: Protocol[] = [
     github: ["aspe-labs"],
     listedAt: 1776742731,
   },
+  {
+    id: "7727",
+    name: "Hubra",
+    address: null,
+    symbol: "-",
+    url: "https://hubra.app/",
+    description:
+      "Hubra is a Solana-based DeFi protocol providing institutional-grade, non-custodial yield products, including liquid staking (raSOL) and automated yield vaults (raUSDC, raUSDT, raUSDS, raUSDG, raUSD1). It is designed to make professional yield strategies accessible to everyone",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/hubra.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Solana"],
+    module: "hubra/index.js",
+    twitter: "HubraApp",
+    github: ["Hubra-labs"],
+    listedAt: 1776742981,
+  },
 ];
 export default data6;

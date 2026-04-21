@@ -6923,8 +6923,8 @@ const data3_0: Protocol[] = [
   },
   {
     id: "3014",
-    name: "Morpho V0 AaveV3",
-    previousNames: ["Morpho AaveV3"],
+    name: "Morpho Optimizer AaveV3",
+    previousNames: ["Morpho AaveV3", "Morpho V0 AaveV3"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev3.morpho.org/",
@@ -29271,8 +29271,8 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4025",
-    name: "Morpho V1",
-    previousNames: ["Morpho Blue"],
+    name: "Morpho Blue",
+    previousNames: ["Morpho V1"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://app.morpho.org",

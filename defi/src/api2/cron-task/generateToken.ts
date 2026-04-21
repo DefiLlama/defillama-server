@@ -186,6 +186,21 @@ async function generateToken() {
     seenKeys.add(key);
   }
 
+
+  // we find duplicate symbols and remove the one that matches blacklist patterns in the key, this is to skip bridged/old versions of tokens that have same symbol as the original token
+  const symbolMap: Record<string, any> = {};
+  for (const [key, item] of Object.entries(bySlug)) {
+    const symbol = item.symbol.toLowerCase();
+    if (!symbolMap[symbol]) {
+      symbolMap[symbol] = key
+    } else {
+      if (/old|bridged|wormhole|\(|\[/i.test(key)) {
+        // console.log(`Skipping potential duplicate symbol ${symbol} for key ${key} due to blacklist pattern match`);
+        delete bySlug[key];
+      }
+    }
+  }
+
   await storeRouteData(OUTPUT_ROUTE, bySlug);
 
   console.log(`Wrote ${Object.keys(bySlug).length} tokens to ${OUTPUT_ROUTE}. Used fallback key selection for ${nameFallbackCount} tokens, Included ${includedWithoutMetadataCount} tokens without protocol/chain metadata, Skipped ${skippedDuplicateTokenNkCount} duplicate token_nk rows, Preserved ${preservedMissingTokenCount} existing tokens missing from the current feed`);

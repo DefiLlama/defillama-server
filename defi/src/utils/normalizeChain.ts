@@ -646,6 +646,9 @@ export const chainCoingeckoIds = {
     cmcId: "5034",
     twitter: "kusamanetwork",
     url: "https://kusama.network/",
+    dimensions: {
+      fees: "kusama",
+    },
   },
   "Shiden": {
     geckoId: "shiden",
@@ -994,6 +997,9 @@ export const chainCoingeckoIds = {
     github: ["paritytech"],
     twitter: "Polkadot",
     url: "https://polkadot.network/",
+    dimensions: {
+      fees: "polkadot",
+    },
   },
   "CosmosHub": {
     geckoId: "cosmos",
@@ -4681,6 +4687,9 @@ export const chainCoingeckoIds = {
     twitter: "peaq",
     url: "https://www.peaq.xyz/",
     chainId: 3338,
+    dimensions: {
+      fees: "peaq",
+    },
   },
   "Moonchain": {
     geckoId: "mxc",

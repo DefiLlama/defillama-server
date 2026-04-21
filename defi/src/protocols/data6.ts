@@ -476,14 +476,14 @@ const data6: Protocol[] = [
   },
   {
     id: "7730",
-    name: "TxFlow",
+    name: "TxFlow Bridge",
     address: null,
     symbol: "-",
     url: "https://txflow.com/",
     description:
       "TxFlow is an open Layer 1 with multi-application ecosystem around TIP Liquidity Standards — where every Channel shares on-chain liquidity, settlement, and market data without bridging",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/txflow.jpg`,
+    logo: `${baseIconsUrl}/txflow-bridge.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -511,6 +511,28 @@ const data6: Protocol[] = [
     module: "sail/index.js",
     twitter: "SaildotMoney",
     listedAt: 1776799163,
+  },
+  {
+    id: "7732",
+    name: "Hit One",
+    address: null,
+    symbol: "-",
+    url: "https://app.hit.one/",
+    description:
+      "Hit One is a perpetual futures trading platform on MegaETH. Trades are aggregated off-chain at the venue layer (similar to Hyperliquid's model), so per-trade data is served from a public stats endpoint rather than indexed from on-chain events",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/hit-one.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "hitdotone",
+    dimensions: {
+      derivatives: "hitone",
+      fees: "hitone",
+    },
   },
 ];
 export default data6;

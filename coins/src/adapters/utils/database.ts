@@ -147,11 +147,12 @@ export function addToDBWritesList(
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
       : `asset#${chain}:${lowercase(token, chain)}`;
+  const priceNum = price == null ? undefined : Number(price);
   if (redirect && timestamp == 0) {
     writes.push({
       SK: 0,
       PK,
-      price,
+      price: priceNum,
       symbol,
       decimals: Number(decimals),
       redirect,
@@ -165,14 +166,14 @@ export function addToDBWritesList(
         {
           SK: getCurrentUnixTimestamp(),
           PK,
-          price,
+          price: priceNum,
           adapter,
           confidence: Number(confidence),
         },
         {
           SK: 0,
           PK,
-          price,
+          price: priceNum,
           symbol,
           decimals: Number(decimals),
           redirect,
@@ -190,7 +191,7 @@ export function addToDBWritesList(
       SK: timestamp,
       PK,
       redirect,
-      price,
+      price: priceNum,
       adapter,
       confidence: Number(confidence),
     });

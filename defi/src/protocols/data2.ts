@@ -13505,8 +13505,8 @@ const data2: Protocol[] = [
   },
   {
     id: "1997",
-    name: "Morpho V0 CompoundV2",
-    previousNames: ["Morpho Compound"],
+    name: "Morpho Optimizer CompoundV2",
+    previousNames: ["Morpho Compound", "Morpho V0 CompoundV2"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://compound.morpho.org/?network=mainnet",
@@ -17383,8 +17383,8 @@ const data2: Protocol[] = [
   },
   {
     id: "2168",
-    name: "Morpho V0 AaveV2",
-    previousNames: ["Morpho Aave"],
+    name: "Morpho Optimizer AaveV2",
+    previousNames: ["Morpho Aave", "Morpho V0 AaveV2"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev2.morpho.org/?network=mainnet",

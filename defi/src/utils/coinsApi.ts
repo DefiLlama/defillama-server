@@ -26,7 +26,6 @@ export type PricesResponse = {
   coins: { [coin: string]: { decimals?: number; price: number; symbol: string; timestamp: number; confidence?: number } };
 };
 
-// Flat shape {coin: {mcap, timestamp}} — matches both legacy Lambda and v4 API.
 // Routes to v4 when COINS_API_URL is set, else coins.llama.fi/mcaps.
 export async function fetchMcaps(
   coins: string[],

@@ -73,7 +73,9 @@ async function fetchNativeAndMcaps(timestamp: number): Promise<{
             try {
               return (await fetchTokensList(chain)).map((t) => t.address);
             } catch (e) {
-              console.warn(`[L2 v2] fetchTokensList failed for ${chain}: ${(e as Error).message} — using empty list`);
+              const msg = (e as Error).message;
+              if (msg.includes("COINS_API_URL not set")) throw e;
+              console.warn(`[L2 v2] fetchTokensList failed for ${chain}: ${msg} — using empty list`);
               return [];
             }
           };

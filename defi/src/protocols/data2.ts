@@ -2894,6 +2894,7 @@ const data2: Protocol[] = [
     module: "miniversefinance/index.js",
     twitter: "miniverse_fin",
     listedAt: 1646428683,
+    deadUrl: true,
   },
   {
     id: "1511",

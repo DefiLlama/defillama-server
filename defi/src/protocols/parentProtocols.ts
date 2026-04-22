@@ -9468,13 +9468,25 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#txflow",
     name: "TxFlow",
-    url: "https://txflow.com/", 
+    url: "https://txflow.com/",
     description: "TxFlow is an open Layer 1 with multi-application ecosystem around TIP Liquidity Standards — where every Channel shares on-chain liquidity, settlement, and market data without bridging.",
     logo: `${baseIconsUrl}/txflow.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
     twitter: "TxFlow_L1",
+  },
+  {
+    id: "parent#flying-tulip",
+    name: "Flying Tulip",
+    url: "https://flyingtulip.com/",
+    description: "Flying Tulip offers yield-bearing wrappers, the ftUSD yield-bearing stablecoin, and an on-chain lending market.",
+    logo: `${baseIconsUrl}/flying-tulip.jpg`,
+    gecko_id: "flying-tulip",
+    cmcId: null,
+    chains: [],
+    twitter: "flyingtulip_",
+    audit_links: ["https://docs.flyingtulip.com/risks/"],
   },
 ];
 

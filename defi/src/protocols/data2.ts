@@ -3199,6 +3199,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#mars-protocol",
     openSource: true,
     listedAt: 1646854377,
+    deadUrl: true,
   },
   {
     id: "1525",
@@ -5738,6 +5739,7 @@ const data2: Protocol[] = [
     module: "eklipse/index.js",
     twitter: "eklipseFinance",
     listedAt: 1649713407,
+    deadUrl: true,
   },
   {
     id: "1641",
@@ -8541,6 +8543,7 @@ const data2: Protocol[] = [
     twitter: "ClayStack_HQ",
     parentProtocol: "parent#claystack",
     listedAt: 1652905173,
+    deadUrl: true,
   },
   {
     id: "1771",
@@ -10431,6 +10434,7 @@ const data2: Protocol[] = [
     twitter: "klapfinance",
     audit_links: ["https://docs.klap.finance/useful-info/audit"],
     listedAt: 1656139895,
+    deadUrl: true,
   },
   {
     id: "1856",
@@ -12758,6 +12762,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/SiO2-Finance/contracts/tree/main/audits"],
     listedAt: 1660050871,
     github: ["SiO2-Finance"],
+    deadUrl: true,
   },
   {
     id: "1963",

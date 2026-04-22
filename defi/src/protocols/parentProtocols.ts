@@ -3662,6 +3662,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "kumadotbid",
     github: ["idexio"],
+    deadUrl: true,
   },
   {
     id: "parent#cega",
@@ -3897,6 +3898,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ClayStack_HQ",
+    deadUrl: true,
   },
   {
     id: "parent#supswap",
@@ -6270,6 +6272,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mars_protocol",
     github: ["mars-protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#metropolis-exchange",
@@ -8562,6 +8565,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SwyrlFi",
     github: ["SwyrlFi"],
+    deadUrl: true,
   },
   {
     id: "parent#kuru",

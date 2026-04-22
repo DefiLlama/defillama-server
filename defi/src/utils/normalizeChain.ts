@@ -3799,6 +3799,7 @@ export const chainCoingeckoIds = {
     dimensions: {
       fees: "xchain",
     },
+    deadUrl: true,
   },
   "Zircuit": {
     geckoId: "zircuit",
@@ -4414,6 +4415,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "penumbrazone",
     url: "https://penumbra.zone/",
+    deadUrl: true,
   },
   "Berachain": {
     geckoId: "berachain-bera",

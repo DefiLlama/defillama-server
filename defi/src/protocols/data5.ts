@@ -2359,6 +2359,7 @@ const data5: Protocol[] = [
     module: "0xRoulette/index.js",
     twitter: "0xRoulette",
     listedAt: 1763085777,
+    deadUrl: true,
   },
   {
     id: "6996",
@@ -3128,6 +3129,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-cl",
     },
+    deadUrl: true,
   },
   {
     id: "7027",
@@ -3151,6 +3153,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-legacy",
     },
+    deadUrl: true,
   },
   {
     id: "7028",
@@ -14420,6 +14423,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "lotto-run",
     },
+    deadUrl: true
   },
   {
     id: "7558",

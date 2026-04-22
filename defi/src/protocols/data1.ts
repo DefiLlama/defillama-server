@@ -2754,7 +2754,8 @@ const data: Protocol[] = [
     parentProtocol: "parent#idex",
     dimensions: {
       dexs: "idex-classic"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "231",
@@ -4712,6 +4713,7 @@ const data: Protocol[] = [
     module: "ram.js",
     twitter: null,
     forkedFromIds: ["114"],
+    deadUrl: true,
   },
   {
     id: "322",
@@ -11077,6 +11079,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "rocketswap.js",
     twitter: "RSwapOfficial",
     forkedFromIds: ["2197"],
+    deadUrl: true,
   },
   {
     id: "607",
@@ -15363,6 +15366,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Pureswap1",
     forkedFromIds: ["2197"],
     listedAt: 1636441951,
+    deadUrl: true,
   },
   {
     id: "816",
@@ -17569,6 +17573,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637892027,
     github: ["Pacoca-io"],
+    deadUrl: true,
   },
   {
     id: "918",
@@ -19400,7 +19405,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639116787,
     dimensions: {
       dexs: "yokaiswap"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1003",

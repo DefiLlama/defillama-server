@@ -518,7 +518,8 @@ const data6: Protocol[] = [
     name: "Hit One",
     address: null,
     symbol: "-",
-    url: "https://app.hit.one/",
+    url: "https://app.hit.one/r/5YPD66",
+    referralUrl: "https://app.hit.one/r/5YPD66",
     description:
       "Hit One is a perpetual futures trading platform on MegaETH. Trades are aggregated off-chain at the venue layer (similar to Hyperliquid's model), so per-trade data is served from a public stats endpoint rather than indexed from on-chain events",
     chain: "MegaETH",

@@ -491,6 +491,7 @@ const data6: Protocol[] = [
     chains: ["Arbitrum"],
     module: "txflow/index.js",
     twitter: "TxFlow_L1",
+    parentProtocol: "parent#txflow",
     listedAt: 1776799092,
   },
   {
@@ -551,6 +552,7 @@ const data6: Protocol[] = [
     chains: ["TxFlow"],
     module: "dummy.js",
     twitter: "TxFlow_L1",
+    parentProtocol: "parent#txflow",
     dimensions: {
       derivatives: "txflow-perps",
       fees: "txflow-perps",

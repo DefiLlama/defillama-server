@@ -1298,9 +1298,11 @@ async function main() {
     // Raw DB metadata can contain newlines/extra spaces (e.g. "Stablecoins\n  backed by RWAs")
     // which would create separate aggregation keys that slugify identically, causing
     // one set of chart data to silently overwrite the other when saved to disk.
-    const metadata = await fetchMetadataPG();
-    metadata.forEach((m: any) => { if (m.data) normalizeRwaMetadataForApiInPlace(m.data); });
-    console.log(`Fetched metadata for ${metadata.length} RWA assets`);
+    const allMetadata = await fetchMetadataPG();
+    allMetadata.forEach((m: any) => { if (m.data) normalizeRwaMetadataForApiInPlace(m.data); });
+    const metadata = allMetadata.filter((m: any) => m.data?.delisted !== true);
+    const delistedCount = allMetadata.length - metadata.length;
+    console.log(`Fetched metadata for ${metadata.length} RWA assets (excluded ${delistedCount} delisted)`);
 
     // Generate current data
     const currentData = await generateCurrentData(metadata);

@@ -8839,17 +8839,19 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       {
         name: "cLabs",
         type: "Aggregator",
+        endDate: "2026-04-21",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
       {
         name: "RedStone",
         type: "Aggregator",
+        endDate: "2026-04-21",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
        {
         name: "Chainlink",
-        type: "Aggregator",
-        proof: ["https://docs.mento.org/mento/overview/core-concepts/oracles-and-price-feeds#oracle-providers"]
+        type: "Primary",
+        proof: ["https://docs.mento.org/mento-v3?q=oracle#fixed-price-market-makers-fpmms-the-core-of-v3"]
       }
     ],
     dimensions: {

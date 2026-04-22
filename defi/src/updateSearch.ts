@@ -70,6 +70,7 @@ interface TokenSearchData {
   route: string;
   is_yields: boolean;
   mcap_rank?: number;
+  logo?: string;
 }
 
 const SEARCH_RANK = {
@@ -1152,6 +1153,7 @@ async function generateSearchList() {
       id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token`,
       name: coin.symbol,
       route: `/token/${encodeURIComponent(coin.symbol)}`,
+      ...(coin.logo ? { logo: coin.logo } : {}),
       mcapRank: coin.mcap_rank ?? 0,
       r: SEARCH_RANK.subPage,
       v: tastyMetrics[`/token/${coin.symbol}`] ?? 0,

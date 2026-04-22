@@ -11,7 +11,6 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
-import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 import { RUN_TYPE } from "../utils";
 import { updateProtocolMetadataUsingCache } from "../../protocols/data";
 
@@ -40,7 +39,6 @@ export const cache: {
   allTvlData: any,
   historicalTvlForAllProtocolsMeta: any,
   feesAdapterCache: any,
-  twitterOverview: any,
   otherProtocolsMap: any,
   latestHourlyData: {
     tvl: any,
@@ -72,7 +70,6 @@ export const cache: {
   allTvlData: {},
   historicalTvlForAllProtocolsMeta: {},
   feesAdapterCache: {},
-  twitterOverview: {},
   otherProtocolsMap: {},
   latestHourlyData: {
     tvl: {},
@@ -116,8 +113,6 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
     addChildProtocolNames()
   }
 
-
-  cache.twitterOverview = await getTwitterOverviewFileV2()
 
   console.timeEnd('Cache initialized: ' + cacheType)
 }

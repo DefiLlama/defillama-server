@@ -62,7 +62,6 @@
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
     "store-block-explorers": "npx ts-node --logError --transpile-only src/server-scripts/storeBlockExplorers.ts",
     "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/checkForDeadProtocols.ts",
-    "twitter-update": "npx ts-node --logError --transpile-only src/twitter/updateTwitterData.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",
     "run-check-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/check.ts",
     "ui-tool": "pnpm -s run load-all-repos; pnpm -s run init; cd ui-tool; pnpm -s i; pnpm run start-server",

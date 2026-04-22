@@ -330,10 +330,10 @@ const getProtocolSubSections = ({
     });
   }
 
-  return subSections.map((result) => ({
-    ...result,
-    v: tastyMetrics[result.route] ?? 0,
-    r: SEARCH_RANK.subPage,
+  return subSections.map(({ symbol, ...rest }) => ({
+    ...rest,
+    v: tastyMetrics[rest.route] ?? 0,
+    r: rest.r === SEARCH_RANK.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.subPage,
   }));
 };
 
@@ -967,7 +967,11 @@ async function generateSearchList() {
     }
 
     subChains.push(
-      ...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: SEARCH_RANK.subPage }))
+      ...subSections.map(({ symbol, ...rest }) => ({
+        ...rest,
+        v: tastyMetrics[rest.route] ?? 0,
+        r: SEARCH_RANK.subPage,
+      }))
     );
   }
 

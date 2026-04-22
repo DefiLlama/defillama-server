@@ -39,18 +39,17 @@ export async function notifyOutdatedPG() {
 
     const tvlUpdateCount = await getHourlyTvlUpdatedRecordsCount()
     const dimUpdateCount = await getDimensionsUpdatedRecordsCount()
-    const tweetsPulledCount = currentHour % 6 === 0 ? await getTweetsPulledCount() : 0
+    // const tweetsPulledCount = currentHour % 6 === 0 ? await getTweetsPulledCount() : 0
     const debugString = `
   tvl update count: ${tvlUpdateCount} (in the last 2 hours)
   dimensions update count: ${dimUpdateCount} (in the last 2 hours)
-  tweets pulled count: ${tweetsPulledCount} (in the last 3 days)
     `
 
     globalRunStats.tvlUpdateCount = tvlUpdateCount
     globalRunStats.tvlUpdateDuration = 'last 2 hours'
     globalRunStats.dimUpdateCount = dimUpdateCount
     globalRunStats.dimUpdateDuration = 'last 2 hours'
-    globalRunStats.tweetsPulledCount = tweetsPulledCount
+    // globalRunStats.tweetsPulledCount = tweetsPulledCount
     globalRunStats.tweetsPulledDuration = 'last 3 days'
     globalRunStats.timestamp = new Date().toISOString()
 
@@ -63,8 +62,8 @@ export async function notifyOutdatedPG() {
     if (dimUpdateCount < 500)
       await sendMessage(`Only ${dimUpdateCount} dimension records were updated in the last 2 hours, check the pipeline if everything is fine`, teamwebhookUrl)
 
-    if (tweetsPulledCount < 500 && currentHour % 6 === 0)
-      await sendMessage(`Only ${tweetsPulledCount} tweets were pulled in the last 3 days, check the pipeline if everything is fine`, teamwebhookUrl)
+    // if (tweetsPulledCount < 500 && currentHour % 6 === 0)
+    //   await sendMessage(`Only ${tweetsPulledCount} tweets were pulled in the last 3 days, check the pipeline if everything is fine`, teamwebhookUrl)
 
   } catch (e) {
     console.error(e)

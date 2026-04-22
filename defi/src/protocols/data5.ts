@@ -16826,7 +16826,9 @@ const data5: Protocol[] = [
     ],
     github: ["bounce-tech"],
     dimensions: {
+      derivatives: "bounce-tech",
       fees: "bounce-tech",
+      "open-interest": "bounce-tech-oi",
     },
     listedAt: 1776709207
   },

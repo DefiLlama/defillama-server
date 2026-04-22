@@ -25,8 +25,8 @@ curl \
   -H "Authorization: Bearer $SEARCH_MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
-    "symbol",
     "name",
+    "symbol",
     "previousNames",
     "nameVariants",
     "keywords",
@@ -41,9 +41,9 @@ curl \
     "words",
     "typo",
     "proximity",
-    "attribute",
     "exactness",
     "r:desc",
+    "attribute",
     "v:desc",
     "sort"
   ]'
@@ -95,9 +95,9 @@ curl \
     "words",
     "typo",
     "proximity",
-    "attribute",
     "exactness",
     "r:desc",
+    "attribute",
     "v:desc",
     "sort"
   ]'
@@ -120,8 +120,8 @@ curl \
   -H "Authorization: Bearer $SEARCH_MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
-    "symbol",
     "name",
+    "symbol",
     "previousNames",
     "nameVariants",
     "route"

@@ -197,6 +197,11 @@ export async function loadContractMetadataFromAirtable(): Promise<number> {
 
     let count = 0;
     for (const row of rows as any[]) {
+        // Delisted markets must be excluded from the perps pipeline entirely —
+        // by not registering metadata, `hasContractMetadata` returns false and the
+        // market is skipped in both ingest (perps.ts) and output (cron.ts).
+        if (row?.Delisted === true) continue;
+
         const mapped: Record<string, unknown> = {};
         for (const [header, value] of Object.entries(row || {})) {
             const key = headerToKey(String(header));

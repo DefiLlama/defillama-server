@@ -27,7 +27,7 @@ import {
     buildPerpsIdMap,
     buildVenueHistoricalCharts
 } from './aggregate';
-import { normalizePerpsMetadataInPlace } from './constants';
+import { normalizePerpsMetadataInPlace, hasContractMetadata } from './constants';
 import { buildPerpsList } from './list';
 import { normalizePerpsAssetGroup, sortPerpsMarketsByOpenInterest } from './server-helpers';
 
@@ -44,7 +44,9 @@ async function generateCurrentData(metadata: PerpsMetadata[]): Promise<any[]> {
     const metadataMap = new Map<string, any>();
     metadata.forEach((m) => metadataMap.set(m.id, m.data));
 
-    const result = sortPerpsMarketsByOpenInterest(currentData.map((record: any) => {
+    const result = sortPerpsMarketsByOpenInterest(currentData
+        .filter((record: any) => metadataMap.has(record.id))
+        .map((record: any) => {
         const meta = metadataMap.get(record.id) || {};
         const merged = {
             ...(record.data || {}),
@@ -174,6 +176,9 @@ async function generateHistoricalCharts(): Promise<void> {
     let processedCount = 0;
 
     for (const id in recordsById) {
+        // Skip delisted/unknown markets — keeps their per-ID chart file stale
+        // but prevents new data from being appended.
+        if (!hasContractMetadata(id)) continue;
         const records = recordsById[id];
         const newData = records.map((r: any) => ({
             timestamp: r.timestamp,
@@ -276,9 +281,12 @@ async function cron(): Promise<void> {
     console.log('[rwa-perps-cron] Running data pipeline...');
     await runPipeline();
 
-    // 3. Fetch metadata
-    const metadata = await fetchMetadataPG();
-    console.log(`[rwa-perps-cron] Loaded ${metadata.length} metadata records`);
+    // 3. Fetch metadata — runPipeline() above re-loaded CONTRACT_METADATA from Airtable,
+    //    so `hasContractMetadata` excludes both unknown and delisted contracts.
+    const allMetadata = await fetchMetadataPG();
+    const metadata = allMetadata.filter((m: any) => hasContractMetadata(m.id));
+    const excludedCount = allMetadata.length - metadata.length;
+    console.log(`[rwa-perps-cron] Loaded ${metadata.length} metadata records (excluded ${excludedCount} delisted/unknown)`);
 
     // 4. Generate cache files
     const currentData = await generateCurrentData(metadata);

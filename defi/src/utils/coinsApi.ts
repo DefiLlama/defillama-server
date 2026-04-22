@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import axios from "axios";
 
 const LEGACY_BASE = "https://coins.llama.fi";
 
@@ -8,7 +8,7 @@ function v4Base(): string | null {
 }
 
 function v4Headers(): Record<string, string> {
-  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  const headers: Record<string, string> = {};
   if (process.env.COINS_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_INTERNAL_PASSWORD;
   return headers;
 }
@@ -22,9 +22,12 @@ export type TokenListEntry = {
   canonical_id: string;
 };
 
+export type PricesResponse = {
+  coins: { [coin: string]: { decimals?: number; price: number; symbol: string; timestamp: number; confidence?: number } };
+};
+
 // Flat shape {coin: {mcap, timestamp}} — matches both legacy Lambda and v4 API.
 // Routes to v4 when COINS_API_URL is set, else coins.llama.fi/mcaps.
-// legacyApiKey is only applied to the legacy fallback URL.
 export async function fetchMcaps(
   coins: string[],
   opts: { legacyApiKey?: string } = {},
@@ -32,29 +35,16 @@ export async function fetchMcaps(
   if (!coins.length) return {};
   const base = v4Base();
   if (base) {
-    const r = await fetch(`${base}/mcaps`, {
-      method: "POST",
-      body: JSON.stringify({ coins }),
-      headers: v4Headers(),
-    });
-    if (!r.ok) throw new Error(`fetchMcaps v4: HTTP ${r.status}`);
-    return r.json();
+    const r = await axios.post(`${base}/mcaps`, { coins }, { headers: v4Headers() });
+    return r.data;
   }
-  const url = opts.legacyApiKey
-    ? `${LEGACY_BASE}/mcaps?apikey=${opts.legacyApiKey}`
-    : `${LEGACY_BASE}/mcaps`;
-  const r = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify({ coins }),
-    headers: { "Content-Type": "application/json" },
-  });
-  if (!r.ok) throw new Error(`fetchMcaps legacy: HTTP ${r.status}`);
-  return r.json();
+  const r = await axios.post(
+    `${LEGACY_BASE}/mcaps`,
+    { coins },
+    { params: opts.legacyApiKey ? { apikey: opts.legacyApiKey } : undefined },
+  );
+  return r.data;
 }
-
-export type PricesResponse = {
-  coins: { [coin: string]: { decimals?: number; price: number; symbol: string; timestamp: number; confidence?: number } };
-};
 
 // Current-price fetch. v4: POST /prices (Redis-current, 24h freshness).
 // Legacy: GET /prices/current/:coins with optional apikey + searchWidth.
@@ -65,21 +55,14 @@ export async function fetchCurrentPrices(
   if (!coins.length) return { coins: {} };
   const base = v4Base();
   if (base) {
-    const r = await fetch(`${base}/prices`, {
-      method: "POST",
-      body: JSON.stringify({ coins }),
-      headers: v4Headers(),
-    });
-    if (!r.ok) throw new Error(`fetchCurrentPrices v4: HTTP ${r.status}`);
-    return r.json();
+    const r = await axios.post(`${base}/prices`, { coins }, { headers: v4Headers() });
+    return r.data;
   }
-  const params: string[] = [];
-  if (opts.searchWidth) params.push(`searchWidth=${opts.searchWidth}`);
-  if (opts.legacyApiKey) params.push(`apikey=${opts.legacyApiKey}`);
-  const qs = params.length ? `?${params.join("&")}` : "";
-  const r = await fetch(`${LEGACY_BASE}/prices/current/${coins.join(",")}${qs}`);
-  if (!r.ok) throw new Error(`fetchCurrentPrices legacy: HTTP ${r.status}`);
-  return r.json();
+  const params: Record<string, string> = {};
+  if (opts.searchWidth) params.searchWidth = opts.searchWidth;
+  if (opts.legacyApiKey) params.apikey = opts.legacyApiKey;
+  const r = await axios.get(`${LEGACY_BASE}/prices/current/${coins.join(",")}`, { params });
+  return r.data;
 }
 
 // GET /tokens/list?chain=<chain> — lists all known tokens for a chain from CH.
@@ -87,8 +70,6 @@ export async function fetchCurrentPrices(
 export async function fetchTokensList(chain: string): Promise<TokenListEntry[]> {
   const base = v4Base();
   if (!base) throw new Error("fetchTokensList: COINS_API_URL not set — tokens list requires the coins v4 API");
-  const r = await fetch(`${base}/tokens/list?chain=${encodeURIComponent(chain)}`, { headers: v4Headers() });
-  if (!r.ok) throw new Error(`fetchTokensList(${chain}): HTTP ${r.status}`);
-  const data: any = await r.json();
-  return data?.tokens ?? [];
+  const r = await axios.get(`${base}/tokens/list`, { params: { chain }, headers: v4Headers() });
+  return r.data?.tokens ?? [];
 }

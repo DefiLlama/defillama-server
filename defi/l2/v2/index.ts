@@ -355,6 +355,9 @@ const newChainAssets = () => ({
 
 // main function
 export async function storeChainAssetsV2(override: boolean = false) {
+  if (!process.env.COINS_API_URL) {
+    throw new Error("storeChainAssetsV2 requires COINS_API_URL — run with coins v4 API configured");
+  }
   const timestamp = 0;
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
   const incomingAssets = await fetchIncomingAssetsList();

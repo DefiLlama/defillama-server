@@ -333,7 +333,7 @@ const getProtocolSubSections = ({
   return subSections.map(({ symbol, ...rest }) => ({
     ...rest,
     v: tastyMetrics[rest.route] ?? 0,
-    r: SEARCH_RANK.subPage,
+    r: rest.r === SEARCH_RANK.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.subPage,
   }));
 };
 
@@ -967,7 +967,7 @@ async function generateSearchList() {
     }
 
     subChains.push(
-      ...subSections.map(({ symbol, ...rest }: any) => ({
+      ...subSections.map(({ symbol, ...rest }) => ({
         ...rest,
         v: tastyMetrics[rest.route] ?? 0,
         r: SEARCH_RANK.subPage,

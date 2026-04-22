@@ -912,7 +912,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "plexus",
       aggregators: "plexus"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "2741",
@@ -1699,6 +1700,7 @@ const data3_0: Protocol[] = [
     module: "gmcash/index.js",
     twitter: "gmcashfi",
     listedAt: 1680775135,
+    deadUrl: true
   },
   /*
   {
@@ -10101,7 +10103,8 @@ const data3_0: Protocol[] = [
     listedAt: 1687807087,
     dimensions: {
       dexs: "litx"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "3160",
@@ -11765,6 +11768,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["205"],
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/July_2023/ColaToken.pdf"],
     listedAt: 1689589539,
+    deadUrl: true
   },
   {
     id: "3237",
@@ -15097,6 +15101,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["337"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1691864027,
+    deadUrl: true
   },
   {
     id: "3379",
@@ -15814,6 +15819,7 @@ const data3_0: Protocol[] = [
     twitter: "PixelSwapFi",
     forkedFromIds: ["2197"],
     listedAt: 1692325568,
+    deadUrl: true,
   },
   {
     id: "3412",
@@ -15922,6 +15928,7 @@ const data3_0: Protocol[] = [
       "https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf",
     ],
     listedAt: 1692376612,
+    deadUrl: true
   },
   {
     id: "3418",
@@ -16078,6 +16085,7 @@ const data3_0: Protocol[] = [
       "https://techright.io/audit/raccoon/",
     ],
     listedAt: 1692626899,
+    deadUrl: true,
   },
   {
     id: "3425",
@@ -17425,6 +17433,7 @@ const data3_1: Protocol[] = [
     twitter: "stealthpadxyz",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/1-tba/audit.pdf"],
     listedAt: 1693952992,
+    deadUrl: true,
   },
   {
     id: "3488",
@@ -20602,6 +20611,7 @@ const data3_1: Protocol[] = [
     twitter: "KeySeaXyz",
     github: ["KeySeaXyz"],
     listedAt: 1697345844,
+    deadUrl: true,
   },
   {
     id: "3629",
@@ -21656,6 +21666,7 @@ const data3_1: Protocol[] = [
     module: "scribeswap/index.js",
     twitter: "scribeswap",
     listedAt: 1698053529,
+    deadUrl: true
   },
   {
     id: "3677",
@@ -22527,6 +22538,8 @@ const data3_1: Protocol[] = [
       "https://4021155802-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLpn0ro0rTFSY7pLROElj%2Fuploads%2FJVxJuuhKySaFxumakZMo%2FRiveraMoney_Audit_Report.pdf?alt=media&token=50ad231b-91b1-49d5-86dc-d861eaf9fb30",
     ],
     listedAt: 1698679600,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "3718",
@@ -28627,6 +28640,7 @@ const data3_1: Protocol[] = [
     module: "cmdao-gameswap/index.js",
     twitter: null,
     listedAt: 1704733585,
+    deadUrl: true,
   },
   {
     id: "3997",
@@ -29599,6 +29613,7 @@ const data3_1: Protocol[] = [
     module: "size/index.js",
     twitter: "SizeLending",
     listedAt: 1705488185,
+    deadUrl: true
   },
   {
     id: "4040",
@@ -30216,6 +30231,7 @@ const data3_1: Protocol[] = [
     twitter: "iLendorg",
     parentProtocol: "parent#ilend",
     listedAt: 1706186055,
+    deadUrl: true
   },
   {
     id: "4066",
@@ -33107,6 +33123,7 @@ const data3_2: Protocol[] = [
     twitter: "iLendorg",
     parentProtocol: "parent#ilend",
     listedAt: 1709071101,
+    deadUrl: true
   },
   {
     id: "4186",
@@ -34432,6 +34449,7 @@ const data3_2: Protocol[] = [
     module: "alta-finance/index.js",
     twitter: "altafinance",
     listedAt: 1709675515,
+    deadUrl: true,
   },
   {
     id: "4244",
@@ -38033,6 +38051,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#frogswap",
     listedAt: 1711808701,
+    deadUrl: true,
   },
   {
     id: "4409",
@@ -38235,6 +38254,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["205"],
     parentProtocol: "parent#frogswap",
     listedAt: 1712006251,
+    deadUrl: true,
   },
   {
     id: "4417",
@@ -39535,7 +39555,8 @@ const data3_2: Protocol[] = [
         message: "ShibaNova has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true
   },
   {
     id: "4475",
@@ -41640,6 +41661,7 @@ const data3_2: Protocol[] = [
     module: "OreSwap/index.js",
     twitter: "oreswap",
     listedAt: 1715016813,
+    deadUrl: true
   },
   {
     id: "4570",
@@ -53358,7 +53380,8 @@ const data3_3: Protocol[] = [
     chains: ["TON"],
     module: "TonStable/index.js",
     twitter: "TonStable",
-    listedAt: 1725543948
+    listedAt: 1725543948,
+    deadUrl: true
   },
   {
     id: "5105",

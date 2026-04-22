@@ -876,6 +876,7 @@ const data: Protocol[] = [
     ],
     forkedFromIds: ["3"],
     github: ["SwerveFinance"], //check
+    deadUrl: true
   },
   {
     id: "143",
@@ -9381,6 +9382,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "shadecash/index.js",
     twitter: "ShadeCash_",
     forkedFromIds: ["148"],
+    deadUrl: true
   },
   {
     id: "530",
@@ -16242,6 +16244,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Fortune_DAO",
     forkedFromIds: ["340"],
     listedAt: 1637266964,
+    deadUrl: true,
   },
   {
     id: "857",
@@ -18446,6 +18449,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EsterFinance",
     listedAt: 1638458112,
     github: ["esterfinance"],
+    deadUrl: true,
   },
   {
     id: "959",

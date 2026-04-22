@@ -2478,6 +2478,7 @@ const data2: Protocol[] = [
     audit_links: ["https://consensys.net/diligence/audits/private/adash47d-chainbridge/"],
     listedAt: 1646164456,
     github: ["RelayChain"],
+    deadUrl: true
   },
   {
     id: "1492",
@@ -3302,6 +3303,7 @@ const data2: Protocol[] = [
     module: "gamblefi/index.js",
     twitter: "GambleFinance",
     listedAt: 1646949250,
+    deadUrl: true,
   },
   {
     id: "1530",
@@ -5206,7 +5208,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "radioshack",
       dexs: "radioshack"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1617",
@@ -8497,6 +8500,7 @@ const data2: Protocol[] = [
     module: "jelly/index.js",
     twitter: "jellyprotocol",
     listedAt: 1652905173,
+    deadUrl: true,
   },
   {
     id: "1769",
@@ -8688,7 +8692,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "pandora",
       dexs: "pandora"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1778",
@@ -15450,6 +15455,7 @@ const data2: Protocol[] = [
     audit_links: ["https://symphonyfi.gitbook.io/docs/audit"],
     listedAt: 1662981929,
     github: ["symphony-finance"],
+    deadUrl: true
   },
   {
     id: "2083",
@@ -20897,6 +20903,7 @@ const data2: Protocol[] = [
     github: ["2pinetwork"],
     audit_links: ["https://github.com/2pinetwork/security/tree/master/audits"],
     listedAt: 1669733991,
+    deadUrl: true
   },
   {
     id: "2322",

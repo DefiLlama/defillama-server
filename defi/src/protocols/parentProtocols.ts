@@ -4054,6 +4054,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "iLendorg",
+    deadUrl: true
   },
   {
     id: "parent#standard-protocol",
@@ -4303,6 +4304,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FrogSwapETH",
+    deadUrl: true,
   },
   {
     id: "parent#marginx",

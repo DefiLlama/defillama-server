@@ -11812,6 +11812,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
     audit_links: ["https://github.com/arche-labs/assets/blob/main/audits/Arche%20Protocol%20Audit%20Report.pdf"],
     listedAt: 1745249658,
+    deadUrl: true
   },
   {
     id: "6074",

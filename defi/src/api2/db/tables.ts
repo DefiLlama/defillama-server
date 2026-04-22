@@ -29,6 +29,8 @@ class HOURLY_RAW_TOKENS_TVL extends Model { }
 // class JSON_CACHE extends Model { }
 class DIMENSIONS_DATA extends Model { }
 class DIMENSIONS_HOURLY_DATA extends Model { }
+class CG_TOKEN_METADATA extends Model { }
+class CMC_TOKEN_METADATA extends Model { }
 
 export const Tables = {
   DAILY_TVL,
@@ -42,6 +44,8 @@ export const Tables = {
   // JSON_CACHE,
   DIMENSIONS_DATA,
   DIMENSIONS_HOURLY_DATA,
+  CG_TOKEN_METADATA,
+  CMC_TOKEN_METADATA,
 }
 
 export function initializeTables(sequelize: Sequelize) {
@@ -191,6 +195,21 @@ export function initializeTables(sequelize: Sequelize) {
       { name: 'dimensions_hourly_data_updatedat_index',fields: ['updatedat'] },
     ],
   })
+
+  const tokenMetadataColumns = {
+    id: { type: DataTypes.STRING, primaryKey: true },
+    data: { type: DataTypes.JSON },
+  }
+  const getTokenMetadataOptions = (tableName: string) => ({
+    sequelize,
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+    tableName,
+  })
+
+  CG_TOKEN_METADATA.init(tokenMetadataColumns, getTokenMetadataOptions('cg_token_metadata'))
+  CMC_TOKEN_METADATA.init(tokenMetadataColumns, getTokenMetadataOptions('cmc_token_metadata'))
 
   return Tables
 }

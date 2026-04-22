@@ -38,7 +38,7 @@ export function normalizeChain(chain: string) {
 const doublecountedCategorySet = new Set([
   "Yield Aggregator",
   "Yield",
-  "Liquidity manager",
+  "Liquidity Manager",
   "Onchain Capital Allocator",
   "Risk Curators",
   "Treasury Manager",
@@ -185,6 +185,7 @@ export const chainCoingeckoIds = {
     github: ["polynetwork"],
     twitter: "PolyNetwork2",
     url: "https://www.poly.network/#/",
+    deadUrl: true,
   },
   "Conflux": {
     geckoId: "conflux-token",
@@ -246,7 +247,13 @@ export const chainCoingeckoIds = {
     url: "https://solana.com/",
     dimensions: {
       fees: "solana",
-    },
+      'active-users': {
+        adapter: 'solana',
+        genuineSpikes: [
+          ["2026-04-20", "-"] // new listing spike
+        ]
+      },
+    }
   },
   "Polygon": {
     geckoId: "polygon-ecosystem-token",
@@ -639,6 +646,9 @@ export const chainCoingeckoIds = {
     cmcId: "5034",
     twitter: "kusamanetwork",
     url: "https://kusama.network/",
+    dimensions: {
+      fees: "kusama",
+    },
   },
   "Shiden": {
     geckoId: "shiden",
@@ -962,6 +972,9 @@ export const chainCoingeckoIds = {
     cmcId: "2634",
     twitter: "XDCNetwork",
     url: "https://xinfin.org/",
+    dimensions: {
+      fees: "xdc",
+    },
   },
   "Velas": {
     geckoId: "velas",
@@ -984,6 +997,9 @@ export const chainCoingeckoIds = {
     github: ["paritytech"],
     twitter: "Polkadot",
     url: "https://polkadot.network/",
+    dimensions: {
+      fees: "polkadot",
+    },
   },
   "CosmosHub": {
     geckoId: "cosmos",
@@ -1340,7 +1356,6 @@ export const chainCoingeckoIds = {
   },
   "DFK": {
     geckoId: "defi-kingdoms",
-    github: ["DefiKingdoms"],
     symbol: "JEWEL",
     cmcId: "12319",
     categories: ["EVM"],
@@ -1485,6 +1500,7 @@ export const chainCoingeckoIds = {
     chainId: 225,
     twitter: "0xLachain",
     url: "https://lachain.io/",
+    deadUrl: true,
   },
   "Coti": {
     geckoId: "coti",
@@ -1502,6 +1518,9 @@ export const chainCoingeckoIds = {
     symbol: "BCH",
     cmcId: "1831",
     url: "https://bch.info/en/",
+    dimensions: {
+      'active-users': 'bch' 
+    }
   },
   "Litecoin": {
     geckoId: "litecoin",
@@ -2068,7 +2087,6 @@ export const chainCoingeckoIds = {
   },
   "Bitindi": {
     geckoId: "bitindi-chain",
-    github: ["bitindi"],
     symbol: "BNI",
     cmcId: "22026",
     categories: ["EVM"],
@@ -2224,6 +2242,8 @@ export const chainCoingeckoIds = {
     url: "https://polygon.technology/",
     dimensions: {
       fees: "polygon-zkevm",
+      'active-users': 'polygon_zkevm',
+      'new-users': 'polygon_zkevm',
     },
   },
   "Meta": {
@@ -2313,6 +2333,9 @@ export const chainCoingeckoIds = {
     chainid: 369,
     twitter: "PulsechainCom",
     url: "https://pulsechain.com/",
+    dimensions: {
+      fees: "pulsechain",
+    },
   },
   "XPLA": {
     geckoId: "xpla",
@@ -2364,6 +2387,14 @@ export const chainCoingeckoIds = {
     symbol: "CCD",
     cmcId: "18031",
     github: ["Concordium"],
+  },
+  "Chia": {
+    geckoId: "chia",
+    symbol: "XCH",
+    cmcId: "9258",
+    github: ["Chia-Network"],
+    twitter: "chia_project",
+    url: "https://www.chia.net/",
   },
   "Chihuahua": {
     geckoId: "chihuahua-token",
@@ -2628,7 +2659,6 @@ export const chainCoingeckoIds = {
   },
   "Beam": {
     geckoId: null,
-    github: ["Merit-Circle"],
     symbol: "MC",
     cmcId: null,
     categories: ["EVM"],
@@ -2647,8 +2677,8 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Bitcoin Sidechains"],
   },
   "Scroll": {
-    geckoId: null,
-    symbol: null,
+    geckoId: 'scroll',
+    symbol: 'SCR',
     cmcId: null,
     categories: ["EVM", "Rollup"],
     github: ["scroll-tech"],
@@ -2855,6 +2885,7 @@ export const chainCoingeckoIds = {
     twitter: "ZKFCommunity",
     url: "https://zkfair.io/",
     chainId: 42766,
+    deadUrl: true,
   },
   "CMP": {
     geckoId: "caduceus",
@@ -2886,6 +2917,7 @@ export const chainCoingeckoIds = {
     governanceID: ["snapshot:airdaofoundation.eth"],
     url: "https://airdao.io/",
     chainId: 16718,
+    deadUrl: true,
   },
   "dYdX": {
     geckoId: "dydx-chain",
@@ -2946,14 +2978,14 @@ export const chainCoingeckoIds = {
       fees: "fraxtal",
     },
   },
-  "Areon Network": {
+  "Areum Network": {
     geckoId: "areon-network",
     symbol: "AREA",
     cmcId: "23262",
     categories: ["EVM"],
-    twitter: "AreonNetwork",
-    github: ["areon-network"],
-    url: "https://areon.network",
+    twitter: "areum_global",
+    github: ["Areum-Network"],
+    url: "https://areum.network/",
   },
   "DeFiVerse": {
     geckoId: null,
@@ -3123,6 +3155,7 @@ export const chainCoingeckoIds = {
     twitter: "KintoXYZ",
     github: ["KintoXYZ"],
     url: "https://www.kinto.xyz/",
+    deadUrl: true,
   },
   "Immutable zkEVM": {
     geckoId: "immutable-x",
@@ -3134,6 +3167,7 @@ export const chainCoingeckoIds = {
     chainId: 13371,
     dimensions: {
       fees: "imx",
+      'nft-volume': 'immutablex',
     },
   },
   "Zora": {
@@ -3495,6 +3529,7 @@ export const chainCoingeckoIds = {
     twitter: "joltify_finance",
     url: "https://joltify.io/",
     github: ["joltify-finance"],
+    deadUrl: true,
   },
   "IOTA": {
     geckoId: "iota",
@@ -3816,7 +3851,7 @@ export const chainCoingeckoIds = {
       da: "Ethereum",
     },
     url: "https://lisk.com/",
-    twitter: "LiskHQ",
+    twitter: "Lisk",
     github: ["LiskHQ"],
     chainId: 1135,
     dimensions: {
@@ -3877,6 +3912,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "fuel_network",
     url: "https://fuel.network/",
+    dimensions: {
+      fees: "fuel-ignition",
+    },
   },
   "World Chain": {
     geckoId: "worldcoin-wld",
@@ -3968,7 +4006,7 @@ export const chainCoingeckoIds = {
     symbol: "SHIDO",
     cmcId: "28211",
     categories: ["EVM", "Cosmos"],
-    twitter: "ShidoGlobal",
+    twitter: "ShidoNetwork",
     url: "https://shido.io/",
   },
   "Redbelly": {
@@ -4033,6 +4071,7 @@ export const chainCoingeckoIds = {
     twitter: "SonicLabs",
     url: "https://www.soniclabs.com",
     chainId: 146,
+    stablecoins: ["us-sonic-dollar"],
     dimensions: {
       fees: "sonic",
     },
@@ -4185,9 +4224,9 @@ export const chainCoingeckoIds = {
     chainId: 181,
   },
   "MANTRA": {
-    geckoId: "mantra-dao",
-    symbol: "OM",
-    cmcId: "6536",
+    geckoId: "mantra",
+    symbol: "MANTRA",
+    cmcId: "39611",
     categories: ["Cosmos", "EVM"],
     twitter: "MANTRA_Chain",
     url: "https://www.mantrachain.io/",
@@ -4469,6 +4508,7 @@ export const chainCoingeckoIds = {
     chainId: 478,
     twitter: "0xForm",
     url: "https://form.network/",
+    deadUrl: true,
   },
   "HyperEVM": {
     geckoId: null,
@@ -4647,6 +4687,9 @@ export const chainCoingeckoIds = {
     twitter: "peaq",
     url: "https://www.peaq.xyz/",
     chainId: 3338,
+    dimensions: {
+      fees: "peaq",
+    },
   },
   "Moonchain": {
     geckoId: "mxc",
@@ -4796,14 +4839,16 @@ export const chainCoingeckoIds = {
     cmcId: "20874",
     categories: ["Cosmos"],
     twitter: "milky_way_zone",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
+    deadUrl: true,
   },
   "MilkyWay Rollup": {
     geckoId: null,
     symbol: "MILK",
     cmcId: null,
     twitter: "milky_way_zone",
-    url: "https://www.milkyway.zone/",
+    url: "https://www.milkyway.zone/",//deadUrl
+    deadUrl: true,
   },
   "Namada": {
     geckoId: "namada",
@@ -4898,6 +4943,9 @@ export const chainCoingeckoIds = {
     twitter: "katana",
     url: "https://katana.network/",
     chainId: 747474,
+    dimensions: {
+      fees: "katana-chain",
+    },
   },
   "XRPL EVM": {
     geckoId: null,
@@ -4919,6 +4967,9 @@ export const chainCoingeckoIds = {
     twitter: "BotanixLabs",
     url: "https://botanixlabs.com",
     chainId: 3637,
+    dimensions: {
+      fees: "botanix",
+    },
   },
   "DChain": {
     geckoId: null,
@@ -5024,6 +5075,9 @@ export const chainCoingeckoIds = {
     twitter: "ENI__Official",
     url: "https://eni.top/",
     chainId: 173,
+    dimensions: {
+      fees: "eni",
+    },
   },
   "soonBase": {
     geckoId: null,
@@ -5081,7 +5135,7 @@ export const chainCoingeckoIds = {
     twitter: "tradeparadex",
     url: "https://app.paradex.trade/r/defillama",
   },
-  "edgeX": {
+  "edgeX L1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -5148,6 +5202,7 @@ export const chainCoingeckoIds = {
     twitter: "eteriaio",
     url: "https://eteria.io/",
     chainId: 140,
+    deadUrl: true,
   },
   "Plasma": {
     geckoId: "plasma",
@@ -5590,6 +5645,9 @@ export const chainCoingeckoIds = {
     url: "https://www.megaeth.com/",
     chainId: 4326,
     stablecoins: ["megausd"],
+    dimensions: {
+      fees: "megaeth",
+    },
   },
   "Quai": {
     geckoId: "quai-network",
@@ -5657,6 +5715,9 @@ export const chainCoingeckoIds = {
     categories: [],
     twitter: "Zcash",
     url: "https://z.cash/",
+    dimensions: {
+      fees: "zcash",
+    },
   },
   "Union": {
     geckoId: "union-2",
@@ -5682,6 +5743,188 @@ export const chainCoingeckoIds = {
     twitter: "N1Chain",
     url: "https://www.n1.xyz/",
   },
+  "Spark": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "spark",
+    url: "https://www.spark.money/",
+  },
+  "Keeta": {
+    geckoId: "keeta",
+    symbol: "KTA",
+    cmcId: "36066",
+    categories: [],
+    twitter: "KeetaNetwork",
+    url: "https://www.keeta.com/",
+  },
+  "W Chain": {
+    geckoId: "wadzcoin",
+    symbol: "WCO",
+    cmcId: "35082",
+    categories: ["EVM"],
+    twitter: "WChainNetwork",
+    url: "https://w-chain.com/",
+    chainId: 171717,
+  },
+  "QIE": {
+    geckoId: "qie",
+    symbol: "QIE",
+    cmcId: "21988",
+    categories: ["EVM"],
+    twitter: "qieblockchain",
+    url: "https://www.qie.digital/",
+    chainId: 1990,
+  },
+  "Voi Network": {
+    geckoId: "voi-network",
+    github: ["VoiNetwork"],
+    symbol: "VOI",
+    cmcId: null,
+    twitter: "Voi_Net",
+    url: "https://www.voi.network/",
+  },
+  "Neony": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: [],
+    twitter: "NeonyExchange",
+    url: "https://www.neony.exchange/",
+  },
+  "Tempo": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "tempo",
+    url: "https://tempo.xyz/",
+    chainId: 4217,
+    dimensions: {
+      fees: "tempo",
+    },
+  },
+  "Everclear": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    twitter: "EverclearOrg",
+    url: "https://www.everclear.org/",
+    chainId: 25327,
+  },
+  "Space and Time": {
+    geckoId: "space-and-time",
+    symbol: "SXT",
+    cmcId: "36405",
+    twitter: "spaceandtime",
+    url: "https://www.spaceandtime.io/",
+  },
+  "Canton": {
+    geckoId: "canton-network",
+    symbol: "CC",
+    cmcId: "37263",
+    twitter: "CantonNetwork",
+    url: "https://www.canton.network/",
+    dimensions: {
+      fees: "canton",
+    },
+  },
+  "Hotstuff": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "tradehotstuff",
+    url: "https://www.hotstuff.trade/",
+  },
+  "Igra": {
+    geckoId: null,
+    symbol: "IGRA",
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 38833,
+    github: ["IgraLabs"],
+    twitter: "IgraNetwork",
+    url: "https://igralabs.com",
+  },
+  /*"BlockDAG": {
+    geckoId: "blockdag",
+    symbol: "BDAG",
+    cmcId: "31162",
+    twitter: "blockdagnetwork",
+    url: "https://blockdag.network/", // url flagged as malicious by phantom wallet
+  },*/
+  "Cabal": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "CabalFDN",
+    url: "https://thecabal.xyz/",
+  },
+  "BCHyper": {
+    geckoId: "versatize-coin",
+    symbol: "VTCN",
+    cmcId: "23619",
+    categories: ["EVM"],
+    twitter: "versatizecoin",
+    url: "https://versatizecoin.com/",
+    chainId: 3030,
+  },
+  "TxFlow": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "TxFlow_L1",
+    url: "https://txflow.com/",
+  },
+  "Pendulum": {
+    geckoId: "pendulum-chain",
+    symbol: "PEN",
+    cmcId: "23476",
+    categories: ["EVM"],
+    twitter: "pendulum_chain",
+    url: "https://txflow.com/",
+    dimensions: {
+      fees: "pendulum",
+    },
+  },
+  "NeuroWeb": {
+    geckoId: "neurowebai",
+    symbol: "NEURO",
+    cmcId: "34681",
+    categories: ["EVM"],
+    twitter: "NeuroWebAI",
+    url: "https://txflow.com/",
+    dimensions: {
+      fees: "neuroweb",
+    },
+  },
+  "Mythos": {
+    geckoId: "mythos",
+    symbol: "MYTH",
+    cmcId: "22125",
+    twitter: "EnterTheMythos",
+    url: "https://mythos.foundation/",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"],
+    },
+    dimensions: {
+      fees: "mythos",
+    },
+  },
+  "Heima": {
+    geckoId: "heima",
+    symbol: "HEI",
+    cmcId: "35724",
+    twitter: "heimaNetwork",
+    url: "https://www.heima.network/",
+    dimensions: {
+      fees: "heima",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys
@@ -5698,6 +5941,7 @@ export function transformNewChainName(chain: string) {
 // if chain display name is capitalized chain id that we use, we add a mapping here like 'fuel' -> 'Fuel Ignition'
 const chainLabelMap = {
   "zklink": "zkLink",
+  "aleph_zero_evm": "Aleph Zero EVM",
   "bitkub": "Bitkub",
   "lyra": "Lyra Chain",
   "fuel": "Fuel",
@@ -5866,6 +6110,7 @@ const chainLabelMap = {
   "winr": "WINR",
   "mtt_network": "MTT Network",
   "hsk": "HashKey Chain",
+  "wchain": "W Chain",
   //"hashkey": "HashKey Chain", not possible to have two different chains with the same name
   "fhe": "Mind Network",
   "ao": "AO",
@@ -5919,6 +6164,19 @@ const chainLabelMap = {
   "megaeth": "MegaETH",
   "standx": "StandX",
   "orderly": "Orderly",
+  "xrpl": "XRPL", // force xrpl -> XRPL, old adapters are using xrpl for ripple that is wrong
+  "qiev3": "QIE",
+  "voi": "Voi Network",
+  "everclear": "Everclear",
+  "space_and_time": "Space and Time",
+  "edgex": "edgeX L1",
+  "blockdag": "BlockDAG",
+  "bcypher": "BCHyper",
+  "txflow": "TxFlow",
+  "pendulum": "Pendulum",
+  "neuroweb": "NeuroWeb",
+  "mythos": "Mythos",
+  "heima": "Heima",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here
@@ -5973,6 +6231,7 @@ const newChainLabelMap = {
   "goat": "GOAT",
   "mantra": "MANTRA",
   "orderly": "Orderly Network",
+  "area": "Areum Network",
 } as { [key: string]: string }
 
 const allChainLabelMap = {

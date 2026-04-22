@@ -69,7 +69,7 @@ const humanizeDuration = (ms: number) => {
 export const handler2 = async (options: DimensionRunOptions) => {
   const defaultMaxConcurrency = 21
   let {
-    timestamp = timestampAtStartofHour,
+    timestamp = timestampAnHourAgo,
     adapterType,
     protocolNames,
     maxConcurrency = defaultMaxConcurrency,
@@ -85,9 +85,6 @@ export const handler2 = async (options: DimensionRunOptions) => {
     skipHourlyCache = false,
     parallelHourlyProcessCount = 1,
   } = options
-
-  if (!isRunFromRefillScript)
-    console.log(`- Date: ${new Date(timestamp! * 1e3).toDateString()} (timestamp ${timestamp})`)
 
   let recentData: any = {}
 
@@ -119,7 +116,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       }
     }
   } else if (runType === 'store-all') {
-    fromTimestamp = timestampAtStartofHour - ONE_DAY_IN_SECONDS
+    fromTimestamp = timestamp - ONE_DAY_IN_SECONDS
     toTimestamp = fromTimestamp + ONE_DAY_IN_SECONDS - 1
   }
 
@@ -131,7 +128,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
   const shouldBuildHourlyCache = runType === 'store-all' && !skipHourlyCache
   let hourlyCacheData: { cache: Map<string, Map<string, HourlySlice>>, range: { from: number, to: number } } | undefined
   if (shouldBuildHourlyCache) {
-    const cacheTo = timestampAtStartofHour + 2 * ONE_HOUR_IN_SECONDS // we add 2 hours to the current hour to have some buffer
+    const cacheTo = timestamp + 3 * ONE_HOUR_IN_SECONDS // we add 3 hours to the current hour to have some buffer
     const cacheFrom = cacheTo - 50 * ONE_HOUR_IN_SECONDS
     hourlyCacheData = await buildHourlyCache({ adapterType, fromTimestamp: cacheFrom, toTimestamp: cacheTo })
   }
@@ -140,6 +137,8 @@ export const handler2 = async (options: DimensionRunOptions) => {
   const dataModule = loadAdaptorsData(adapterType)
   // Import some utils
   const { importModule, KEYS_TO_STORE, protocolAdaptors } = dataModule
+
+  if (!KEYS_TO_STORE) console.error(`No KEYS_TO_STORE found for adapter type ${adapterType}`)
 
   // Get list of adaptors to run
   let protocols = protocolAdaptors
@@ -210,6 +209,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
     if (!isRunFromRefillScript && !isDryRun) {
       console.log(`[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}s`)
+      console.log('[JSON-log]', JSON.stringify({ success: results.length, errors: errors.length, timeTaken: timeTakenSeconds, type: 'adapterFinalRes', key: 'adapterFinalRes-' + adapterType, adapterType }))
       try {
         await sendDiscordAlert(
           `[${adapterType}] Success: ${results.length} Errors: ${errors.length} Time taken: ${timeTakenSeconds}`,
@@ -233,9 +233,12 @@ export const handler2 = async (options: DimensionRunOptions) => {
         }
       }
 
-      if (errorObjects.length > 1)
+      if (errorObjects.length > 1) {
+        const logs = errorObjects.map(({ adapter, message, chain }: any, i: any) => ({ i, adapter, error: message, chain }))
+        console.log('[JSON-log]', JSON.stringify({ errors: logs, type: 'adapterErrors', key: 'adapterErrors-' + adapterType, adapterType }))
+
         console.table(errorObjects)
-      else
+      } else
         console.log('dim run error:', `${errorObjects[0].adapter} - ${errorObjects[0].message} - ${errorObjects[0].chain}`)
     }
 
@@ -318,7 +321,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       if (isRunFromRefillScript) {
         recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
         const todayStartOfDay = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000))
-        if (toTimestamp >= todayStartOfDay) {
+        if (toTimestamp >= todayStartOfDay+ONE_HOUR_IN_SECONDS) {
           if (isAdapterVersionV1 && !runAtCurrTime) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
           recordTimestamp = toTimestamp
         }
@@ -361,8 +364,14 @@ export const handler2 = async (options: DimensionRunOptions) => {
 
 
         if (runAtCurrTime || !isAdapterVersionV1) {
-          recordTimestamp = timestampAtStartofHour
-          endTimestamp = timestampAtStartofHour
+          if (runAtCurrTime) {  // for adapters running at current time, we want to store the record at the timestamp of the run
+            recordTimestamp = timestampAtStartofHour
+            endTimestamp = timestampAtStartofHour
+          } else if (!isAdapterVersionV1) { // for v2 adapters, we run one hour ago to give time for data to be available
+            recordTimestamp = timestamp
+            endTimestamp = timestamp
+          }
+
 
           const skipRefillYesterday = process.env.DIM_SKIP_REFILL_YESTERDAY === 'true'
 
@@ -388,7 +397,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            // console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 
@@ -465,7 +474,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           tbl = tbl ?? built.tbl
           tblc = tblc ?? built.tblc
         }
+
       }
+
 
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)   // remove unmapped record types and convert keys to short names
 
@@ -491,7 +502,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         const chains = Object.keys(adaptor.adapter || {})
         const allChainsAreDead = chains.every(chain => deadChainsSet?.has(chain))
         if (allChainsAreDead) {
-          console.log(`Skipping storing data for ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
+          console.log(`Skipping ${adapterType} - ${module} - all chains are dead: ${chains.join(', ')}`)
           return;
         }
       }
@@ -508,7 +519,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
         protocolName: protocol.displayName,
       }
 
-      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, })
+      const adapterRecord = AdapterRecord2.formAdaptarRecord2({ jsonData: adaptorRecordV2JSON, protocolType: adaptor.protocolType, adapterType, protocol, tokenBreakdown: tb, tokenBreakdownByLabel: tbl, tokenBreakdownByLabelByChain: tblc, })
 
       async function storeTokenBreakdownData() {
         if (!adapterRecord) return;
@@ -610,7 +621,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
     await elastic.addRuntimeLog({ runtime: endTime - startTime, success, metadata, })
 
     if (errorObject) {
-      await elastic.addErrorLog({ error: errorObject, metadata })
+      await elastic.addErrorLog({ errorStringFull: JSON.stringify(errorObject), metadata } as any)
       throw errorObject
     }
   }
@@ -776,5 +787,5 @@ function calculateStats(numbers: number[]) {
     median = numbers[mid];
   }
 
-  return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
+  return { sum, average, median, size: numbers.length, highest: Math.max(Math.abs(numbers[0]), numbers[numbers.length - 1]), lowest: numbers[0] };
 }

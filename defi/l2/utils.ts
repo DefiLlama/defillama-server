@@ -114,21 +114,57 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
+  const rpc = process.env.APTOS_RPC;
 
   await PromisePool.withConcurrency(1)
     .for(tokens)
     .process(async (token) => {
       try {
-        const res = await fetch(
-          `${process.env.APTOS_RPC}/v1/accounts/${token.substring(
-            0,
-            token.indexOf("::")
-          )}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+        const isCoinType = token.includes("::");
+        if (isCoinType) {
+          // Legacy Coin standard: fetch CoinInfo resource
+          const accountAddr = token.substring(0, token.indexOf("::"));
+          const res = await fetch(
+            `${rpc}/v1/accounts/${accountAddr}/resource/0x1::coin::CoinInfo%3C${token}%3E`
+          ).then((r) => r.json());
+          if (res?.data?.supply?.vec?.[0]?.integer?.vec?.[0]?.value != null) {
+            supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+            return;
+          }
+          if (res?.data?.supply?.vec?.[0]?.aggregator?.vec?.[0]?.handle) {
+            // Aggregator-based supply (e.g. native APT) — resolve via table item
+            const { handle, key } = res.data.supply.vec[0].aggregator.vec[0];
+            const aggRes = await fetch(`${rpc}/v1/tables/${handle}/item`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ key_type: "address", value_type: "u128", key }),
+            }).then((r) => r.json());
+            if (typeof aggRes === "string" || typeof aggRes === "number") {
+              supplies[`aptos:${token}`] = Number(aggRes);
+              return;
+            }
+          }
+        }
+
+        // Fungible Asset standard: token is an object address (no "::")
+        const objectAddr = isCoinType ? token.substring(0, token.indexOf("::")) : token;
+        // Try ConcurrentSupply first (newer)
+        const concurrentRes = await fetch(
+          `${rpc}/v1/accounts/${objectAddr}/resource/0x1::fungible_asset::ConcurrentSupply`
         ).then((r) => r.json());
-        if (res && res.data && res.data.supply)
-          supplies[`aptos:${token}`] = res.data.supply.vec[0].integer.vec[0].value;
+        if (concurrentRes?.data?.current?.value != null) {
+          supplies[`aptos:${token}`] = Number(concurrentRes.data.current.value);
+          return;
+        }
+        // Fall back to Supply resource
+        const supplyRes = await fetch(
+          `${rpc}/v1/accounts/${objectAddr}/resource/0x1::fungible_asset::Supply`
+        ).then((r) => r.json());
+        if (supplyRes?.data?.current != null) {
+          supplies[`aptos:${token}`] = Number(supplyRes.data.current);
+        }
       } catch (e) {
-        // console.log(token);
+        // silent — supply will be missing and logged upstream
       }
     });
 
@@ -214,6 +250,126 @@ async function getSolanaTokenSupply(
 
   return supplies;
 }
+async function getProvenanceSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Provenance adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const PROVENANCE_LCD = "https://api.provenance.io";
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(
+          `${PROVENANCE_LCD}/cosmos/bank/v1beta1/supply/by_denom?denom=${encodeURIComponent(token)}`
+        ).then((r) => r.json());
+        if (res?.amount?.amount) supplies[`provenance:${token}`] = Number(res.amount.amount);
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
+// Soroban SAC contract ID -> classic "code-issuer" mapping
+const stellarSacToClassic: { [contractId: string]: string } = {
+  "CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75": "USDC-GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+  "CDTKPWPLOURQA2SGTKTUQOWRCBZEORB4BWBOMJ3D3ZTQQSGE5F6JBQLV": "EURC-GDHU6WRG4IEQXM5NZ4BMPKOXHW76MZM4Y2IEMFDVXBSDP6SJY4ITNPP2",
+  "CAUIKL3IYGMERDRUN6YSCLWVAKIFG5Q4YJHUKM4S4NJZQIA3BAS6OJPK": "AQUA-GBNZILSTVQZ4R7IKQDGHYGY2QXL5QOFJYQMXPKWRRM5PAV7Y4M67AQUA",
+  "CD25MNVTZDL4Y3XBCPCJXGXATV5WUHHOWMYFF4YBEGU5FCPGMYTVG5JY": "BLND-GDJEHTBE6ZHUXSWFI642DCGLUOECLHPF3KSXHPXTSTJ7E3JF6MQ5EZYY",
+  "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA": "XLM",
+};
+
+// Fetch total_supply() from a native Soroban token contract via rpc-proxy
+async function getSorobanTokenSupply(contractId: string): Promise<number | null> {
+  const res = await fetch(`${process.env.RPC_PROXY_URL}/stellar/total-supply/${contractId}`).then((r) => r.json());
+  if (typeof res === "string" || typeof res === "number") return Number(res);
+  if (res?.error) return null;
+  return null;
+}
+
+function isSorobanContractId(token: string): boolean {
+  return /^C[A-Z2-7]{55}$/.test(token) && !(token in stellarSacToClassic);
+}
+
+async function getStellarSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Stellar adapter!`);
+  const supplies: { [token: string]: number } = {};
+
+  await PromisePool.withConcurrency(3)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        // Native Soroban contracts: call total_supply() via RPC
+        if (isSorobanContractId(token)) {
+          const supply = await getSorobanTokenSupply(token);
+          if (supply != null && supply > BigInt(0)) supplies[`stellar:${token}`] = Number(supply);
+          return;
+        }
+
+        // Resolve Soroban SAC contract IDs to classic "code-issuer" format
+        const classicKey = stellarSacToClassic[token] ?? token;
+        if (classicKey === "XLM") return; // native asset handled by ownTokens
+
+        // Token format: "{asset_code}-{asset_issuer}" (dash-separated)
+        const dashIdx = classicKey.lastIndexOf("-");
+        if (dashIdx === -1) return;
+        const asset_code = classicKey.substring(0, dashIdx);
+        const asset_issuer = classicKey.substring(dashIdx + 1);
+        const res = await fetch(
+          `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
+        ).then((r) => r.json());
+        const record = res?._embedded?.records?.[0];
+        if (record?.balances?.authorized != null) {
+          // Horizon exposes amount in display units with 7 implicit decimal places.
+          // Multiply by 1e7 to align with decimals=7 returned by the price API.
+          supplies[`stellar:${token}`] = Math.round(parseFloat(record.balances.authorized) * 1e7);
+        }
+      } catch (e) {}
+    });
+
+  return supplies;
+}
+
+async function getStarknetSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
+  if (timestamp) throw new Error(`timestamp incompatible with Starknet adapter!`);
+  const supplies: { [token: string]: number } = {};
+  const STARKNET_RPC = process.env.STARKNET_RPC ?? "https://starknet-mainnet.public.blastapi.io";
+  const TOTAL_SUPPLY_SELECTOR = "0x1557182e4359a1f0c6301278e8f5b35a776ab58d39892581e357578fb287836";
+
+  await PromisePool.withConcurrency(5)
+    .for(tokens)
+    .process(async (token) => {
+      try {
+        const res = await fetch(STARKNET_RPC, {
+          method: "POST",
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "starknet_call",
+            params: [
+              {
+                contract_address: token,
+                entry_point_selector: TOTAL_SUPPLY_SELECTOR,
+                calldata: [],
+              },
+              "latest",
+            ],
+          }),
+          headers: { "Content-Type": "application/json" },
+        }).then((r) => r.json());
+        if (res?.result && res.result.length >= 2) {
+          const low = new BigNumber(res.result[0]);
+          const high = new BigNumber(res.result[1]);
+          const supply = low.plus(high.times(new BigNumber(2).pow(128)));
+          if (supply.gt(0)) supplies[`starknet:${token}`] = supply.toNumber();
+        }
+      } catch (e) {
+        e
+      }
+    });
+
+  return supplies;
+}
+
 async function getSuiSupplies(tokens: Address[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Sui adapter!`);
   const supplies: { [token: string]: number } = {};
@@ -300,6 +456,9 @@ export async function fetchSupplies(
     if (chain == "aptos") return await getAptosSupplies(tokens, timestamp);
     if (Object.keys(endpointMap).includes(chain)) return await getSolanaTokenSupply(tokens, chain, timestamp);
     if (chain == "sui") return await getSuiSupplies(tokens, timestamp);
+    if (chain == "provenance") return await getProvenanceSupplies(tokens, timestamp);
+    if (chain == "stellar") return await getStellarSupplies(tokens, timestamp);
+    if (chain == "starknet") return await getStarknetSupplies(tokens, timestamp);
     return await getEVMSupplies(chain, tokens, timestamp);
   } catch (e) {
     throw new Error(`multicalling token supplies failed for chain ${chain} with ${e}`);

@@ -33,6 +33,7 @@ import anvu from "./anvu";
 import monad from "./monad";
 import megaeth from "./megaeth";
 import pepu from "./pepu";
+import tempo from "./tempo";
 import * as sdk from "@defillama/sdk";
 
 export type Token =
@@ -95,9 +96,11 @@ export const bridges = [
   monad,
   megaeth,
   pepu,
+  tempo,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
+import { dualWriteToChRedis } from "../utils/chRedisWrite";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import produceKafkaTopics from "../../utils/coins3/produce";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
@@ -217,6 +220,9 @@ async function _storeTokensOfBridge(bridge: Bridge, i: number) {
 
   const ddbWriteRes = await batchWrite(writes, true);
   sdk.log(`Wrote ${ddbWriteRes.writeCount} bridge token entries`);
+  await dualWriteToChRedis(writes).catch(e => {
+    console.error(`[CH/Redis dual-write] bridges non-fatal error: ${(e as Error).message}`);
+  });
   await produceKafkaTopics(writes, ["coins-metadata"]);
   return tokens;
 }

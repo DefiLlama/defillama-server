@@ -56,8 +56,18 @@ const tests2 = [
     ["Klaytn", "klaytn"],
     ["Kaia", "klaytn"],
     ["kaia", "klaytn"],
+    ["XRPL", "ripple"],
 ]
 
 test("getChainKeyFromLabel", () => {
   tests2.forEach(t => expect(getChainKeyFromLabel(t[0])).toBe(t[1]))
+})
+
+const tests3 = [
+    ["ripple", "XRPL"],
+    ["xrpl", "XRPL"],
+]
+
+test("getChainKeyFromLabel", () => {
+  tests3.forEach(t => expect(getChainDisplayName(t[0], true)).toBe(t[1]))
 })

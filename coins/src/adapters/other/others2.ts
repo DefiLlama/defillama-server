@@ -8,6 +8,7 @@ import { getObject, } from "../utils/sui";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { CoinData, Write } from "../utils/dbInterfaces";
 import axios from "axios";
+import { BigNumber } from "@ethersproject/bignumber";
 
 
 async function solanaAVS(timestamp: number = 0) {
@@ -168,9 +169,58 @@ async function cabal(timestamp: number = 0) {
   });
 }
 
+async function fusdlp(timestamp: number = 0) {
+  // FUSDLP is a yield-bearing LP token backed by reserve assets.
+  // Same address on every supported chain (CREATE2 deterministic deployment).
+  const FUSDLP = "0x3fea1cb36D2C5523c062d0E060EAC253608b4DAf";
+
+  // Ethereum is the canonical chain for FUSDLP pricing. Reserves and the
+  // adjustmentFactor are kept in sync across chains by protocol governance,
+  // so we read the exchange rate once on Ethereum and mirror it everywhere.
+  const chain = "ethereum";
+
+  const api = await getApi(chain, timestamp);
+  const rawExchangeRate = await api.call({ target: FUSDLP, abi: "uint256:getExchangeRateWithAdjustment", });
+  const fusdlpPrice = Number(rawExchangeRate) / 1e18;
+
+  return getWrites({ chain, timestamp, pricesObject: { [FUSDLP]: { price: fusdlpPrice, }, }, projectName: "other2", });
+}
+
+async function wJAAA(timestamp: number = 0) {
+  const chain = "ethereum";
+
+  const api = await getApi(chain, timestamp);
+  const token = "0x86b495e4cb00ab18ad94bfd7920479cc79e8ebfe";
+  const underlying = "0x5a0F93D040De44e78F251b03c43be9CF317Dcf64";
+  const balance = await api.call({ abi: 'erc20:balanceOf', target: underlying, params: token })
+  const supply = await api.call({ abi: 'erc20:totalSupply', target: token })
+  const price = balance / supply
+  const pricesObject: any = {
+    [token]: { price, underlying }
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+};
+
+async function prism(timestamp: number = 0) {
+  const chain = "ethereum";
+
+  const api = await getApi(chain, timestamp);
+  const token = "0x06Bb4ab600b7D22eB2c312f9bAbC22Be6a619046";
+  const underlying = "0x8238884Ec9668Ef77B90C6dfF4D1a9F4F4823BFe";
+  const redeemer = '0x807570e6c416f910d9d0fa6c11d03b6ce56e5e4e'
+  const testRedeemAmount = BigNumber.from("5000").mul(BigNumber.from("1000000000000000000")) // redeeming 5000 Prism tokens as a test case
+  const balance = await api.call({ abi: 'function previewRedeem(uint256) view returns (uint256 feeAmt, uint256 redeemAmt)', target: redeemer, params: testRedeemAmount.toString() })
+  const price = (+balance.redeemAmt + +balance.feeAmt) / +testRedeemAmount.toString()
+  const pricesObject: any = {
+    [token]: { price, underlying }
+  }
+  return getWrites({ chain, timestamp, pricesObject, projectName: "other2", });
+};
+
 export const adapters = {
   solanaAVS,
   wstBFC, stOAS, wSTBT, beraborrow, feUBTC, cabal, cana, pikeSPA,
+  fusdlp, wJAAA, prism,
 
   springSUI: async (timestamp: number = 0) => {
     if (timestamp > 0 && Date.now() / 1000 - timestamp > 86400) {

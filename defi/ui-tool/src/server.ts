@@ -7,8 +7,9 @@ process.env.LLAMA_DEBUG_MODE = 'TRUE'
 const WS = require('ws');
 const { spawn, } = require('child_process');
 
-import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords } from './dimensions'
+import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
+import { runSpikesCommand } from './spikes';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
 import { setConfig } from './utils/config';
@@ -60,6 +61,10 @@ async function start() {
           PORT: process.env.UI_TOOL_FORCE_DEV_MODE ? 5002: 5001
         }
       });
+
+      // Pipe stdout and stderr to terminal
+      reactApp.stdout.pipe(process.stdout);
+      reactApp.stderr.pipe(process.stderr);
     } catch (error) {
       console.error('Error starting React app:', error);
     }
@@ -146,6 +151,7 @@ async function start() {
     sendWaitingRecords(ws);
     sendTvlStoreWaitingRecords(ws);
     sendTvlDeleteWaitingRecords(ws);
+    sendDimensionsDeleteWaitingRecords(ws);
 
     // start streaming logs to the client
     const wrappedLog = (...args: any) => {
@@ -187,6 +193,18 @@ async function start() {
         case 'reload-table':
           sendWaitingRecords(ws);
           break;
+        case 'dimensions-delete-get-list':
+          await dimensionsDeleteGetList(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-records':
+          await dimensionsDeleteSelectedRecords(ws, data.data);
+          break;
+        case 'dimensions-delete-delete-all':
+          await dimensionsDeleteAllRecords(ws);
+          break;
+        case 'dimensions-delete-clear-list':
+          dimensionsDeleteClearList(ws);
+          break;
 
 
 
@@ -215,6 +233,10 @@ async function start() {
 
         case 'misc-runCommand':
           runMiscCommand(ws, data.data);
+          break;
+
+        case 'spikes-runCommand':
+          runSpikesCommand(ws, data.data);
           break;
 
         default: console.error('Unknown message type:', data.type); break;

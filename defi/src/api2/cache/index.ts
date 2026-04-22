@@ -180,15 +180,21 @@ async function updateMetadata() {
 }
 
 async function updateRaises() {
-  const { raises } = await fetch("https://api.llama.fi/raises").then((res) => res.json())
-  const raisesObject: any = {}
-  raises.forEach((r: any) => {
-    const id = r.defillamaId
-    if (!id) return;
-    if (!raisesObject[id]) raisesObject[id] = []
-    raisesObject[id].push(r)
-  })
-  cache.raises = raisesObject
+  try {
+
+    const { raises } = await readRouteData("/raises").then((res) => res.json())
+    const raisesObject: any = {}
+    raises.forEach((r: any) => {
+      const id = r.defillamaId
+      if (!id) return;
+      if (!raisesObject[id]) raisesObject[id] = []
+      raisesObject[id].push(r)
+    })
+    cache.raises = raisesObject
+  } catch (e) {
+    console.error('Error updating raises', e);
+    cache.raises = {}
+  }
 }
 
 async function updateAllTvlData(cacheType?: string) {
@@ -324,7 +330,7 @@ async function tvlProtocolDataUpdate(cacheType?: string) {
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
-  return cache.tvlProtocol[protocol.id]  
+  return cache.tvlProtocol[protocol.id]
 }
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {

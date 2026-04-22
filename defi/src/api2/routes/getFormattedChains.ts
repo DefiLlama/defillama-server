@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import { LiteProtocol } from "../../types";
 import { errorResponse, } from "../../utils/shared";
 import { readRouteData } from "../cache/file-cache";
+import { getPrevTvlFromChart } from "../utils/tvlChart";
 
 interface IResponse {
   chains: string[];
@@ -29,10 +30,6 @@ interface IExtraPropPerChain {
     };
   };
 }
-
-export const getPrevTvlFromChart = (chart: any, daysBefore: number) => {
-  return chart[chart.length - 1 - daysBefore]?.[1] ?? null;
-};
 
 export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   const adjustedPercentChange =

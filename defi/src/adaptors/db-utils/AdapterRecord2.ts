@@ -3,6 +3,9 @@ import { AdapterType, ProtocolType, AdaptorRecordType, IJSON, ProtocolAdaptor } 
 import { getTimestampString } from "../../api2/utils"
 import { getUnixTimeNow } from "../../api2/utils/time"
 import { humanizeNumber } from "@defillama/sdk"
+import { initializeTVLCacheDB } from "../../api2/db"
+import { Tables } from "../../api2/db/tables"
+import dynamodb from "../../utils/shared/dynamodb"
 
 export function toStartOfDay(unixTimestamp: number) {
   const date = new Date(unixTimestamp * 1e3)
@@ -30,6 +33,10 @@ type ValidationOptions = {
   skipDefaultSpikeCheck?: boolean,
 }
 
+const AdapterTypesWithoutChainLevelData = new Set<AdapterType>([
+  AdapterType.NEW_USERS
+])
+
 export class AdapterRecord2 {
   data: DataJSON
   timeS: string
@@ -38,10 +45,13 @@ export class AdapterRecord2 {
   protocolType?: ProtocolType
   breakdownByLabel?: IJSON<IJSON<number>>
   breakdownByLabelByChain?: IJSON<IJSON<IJSON<number>>>
+  tokenBreakdown?: any
+  tokenBreakdownByLabel?: any
+  tokenBreakdownByLabelByChain?: any
   id: string
   name?: string
 
-  constructor({ data, adaptorId, timestamp, adapterType, breakdownByLabel, breakdownByLabelByChain, name }: {
+  constructor({ data, adaptorId, timestamp, adapterType, breakdownByLabel, breakdownByLabelByChain, tokenBreakdown, tokenBreakdownByLabel, tokenBreakdownByLabelByChain, name }: {
     data: DataJSON,
     adaptorId: string,
     timestamp: number,
@@ -49,6 +59,9 @@ export class AdapterRecord2 {
     protocolType?: ProtocolType,
     breakdownByLabel?: IJSON<IJSON<number>>
     breakdownByLabelByChain?: IJSON<IJSON<IJSON<number>>>
+    tokenBreakdown?: any
+    tokenBreakdownByLabel?: any
+    tokenBreakdownByLabelByChain?: any
     name?: string
   }) {
     this.data = data
@@ -58,10 +71,13 @@ export class AdapterRecord2 {
     this.id = adaptorId
     this.breakdownByLabel = breakdownByLabel
     this.breakdownByLabelByChain = breakdownByLabelByChain
+    this.tokenBreakdown = tokenBreakdown
+    this.tokenBreakdownByLabel = tokenBreakdownByLabel
+    this.tokenBreakdownByLabelByChain = tokenBreakdownByLabelByChain
     this.name = name
   }
 
-  static formAdaptarRecord2({ jsonData, protocolType, adapterType, protocol, }: {
+  static formAdaptarRecord2({ jsonData, protocolType, adapterType, protocol, tokenBreakdown, tokenBreakdownByLabel, tokenBreakdownByLabelByChain }: {
     jsonData: {
       timestamp?: number,
       aggregated: IJSON<IRecordAdaptorRecordData>,
@@ -71,6 +87,9 @@ export class AdapterRecord2 {
     protocolType?: ProtocolType,
     adapterType: AdapterType,
     protocol: ProtocolAdaptor,
+    tokenBreakdown?: any
+    tokenBreakdownByLabel?: any
+    tokenBreakdownByLabelByChain?: any
   }): AdapterRecord2 | null {
 
     // clone to be safe 
@@ -91,41 +110,38 @@ export class AdapterRecord2 {
       return null
     }
 
-    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, breakdownByLabel: jsonData.breakdownByLabel, breakdownByLabelByChain: jsonData.breakdownByLabelByChain, name: protocol.name })
+    return new AdapterRecord2({ data, adaptorId: protocol.id2, adapterType, timestamp: timestamp!, protocolType, breakdownByLabel: jsonData.breakdownByLabel, breakdownByLabelByChain: jsonData.breakdownByLabelByChain, tokenBreakdown, tokenBreakdownByLabel, tokenBreakdownByLabelByChain, name: protocol.name })
 
 
     function validateRecord(record: any) {
-      const printRecordInfo = () => console.info('invalid chainDataKey', JSON.stringify(record), protocol.id2, protocol.name, protocolType, adapterType)
+      const printRecordInfo = (message: string) => {
+        console.log('invalid chainDataKey: ', message, JSON.stringify(record), protocol.id2, protocol.name, protocolType, adapterType)
+        throw new Error(`Invalid record: ${message}`)
+      }
       if (!record) {
-        printRecordInfo()
-        throw new Error('Invalid record');
+        printRecordInfo('Record is null or undefined')
       }
 
       const { value, chains } = record;
 
       if (typeof value !== 'number' || isNaN(value)) {
-        printRecordInfo()
-        throw new Error('Invalid value in record');
+        printRecordInfo('Invalid value in record')
       }
 
       if (typeof chains !== 'object' || chains === null) {
-        printRecordInfo()
-        throw new Error('Invalid chains in record');
+        printRecordInfo('Invalid chains in record')
       }
 
-      if (Object.keys(chains).length === 0) {
-        printRecordInfo()
-        throw new Error('Chains object is empty');
+      if (Object.keys(chains).length === 0 && !AdapterTypesWithoutChainLevelData.has(adapterType)) {
+        printRecordInfo('Chains object is empty')
       }
 
       for (const [chain, chainValue] of Object.entries(chains)) {
         if (typeof chain !== 'string' || chain.trim() === '') {
-          printRecordInfo()
-          throw new Error('Invalid chain name in chains');
+          printRecordInfo('Invalid chain name in chains')
         }
         if (typeof chainValue !== 'number' || isNaN(chainValue)) {
-          printRecordInfo()
-          throw new Error(`Invalid value for chain ${chain} in chains`);
+          printRecordInfo(`Invalid value for chain ${chain} in chains`)
         }
       }
     }
@@ -144,6 +160,9 @@ export class AdapterRecord2 {
       data: this.data,
       bl: this.breakdownByLabel,
       blc: this.breakdownByLabelByChain,
+      tb: this.tokenBreakdown ?? null,
+      tbl: this.tokenBreakdownByLabel ?? null,
+      tblc: this.tokenBreakdownByLabelByChain ?? null,
     }
   }
 
@@ -285,6 +304,23 @@ export class AdapterRecord2 {
         })
       }
     }
+  }
+
+  static async deleteFromDB({ adapterType, id, timeS, timestamp, data, bl, blc }: { adapterType: AdapterType, id: string, timeS: string, timestamp?: number, data?: any, bl?: any, blc?: any }) {
+    await initializeTVLCacheDB()
+    await dynamodb.putEventData({
+      PK: `dimension-delete#${adapterType}#${id}`,
+      SK: String(timestamp ?? timeS),
+      source: 'dimension-delete',
+      adapterType,
+      id,
+      timeS,
+      timestamp,
+      data,
+      bl,
+      blc,
+    })
+    await Tables.DIMENSIONS_DATA.destroy({ where: { type: adapterType, id, timeS } })
   }
 
   getValidationError(data: { message: string, metadata?: any, type?: string }) {

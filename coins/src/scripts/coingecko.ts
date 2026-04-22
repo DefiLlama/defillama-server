@@ -21,6 +21,7 @@ import { storeAllTokens } from "../utils/shared/bridgedTvlPostgres";
 import { sendMessage } from "../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../utils/shared/constants";
 import { cacheSolanaTokens, getSymbolAndDecimals } from "./coingeckoUtils";
+import { dualWriteToChRedis } from "../adapters/utils/chRedisWrite";
 import * as sdk from "@defillama/sdk";
 
 // Kill the script after 5 minutes to prevent infinite execution
@@ -71,6 +72,10 @@ async function storeCoinData(coinData: Write[]) {
     batchWrite(items, false),
   ]);
 
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
+    console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
+  });
+
   sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko current price entries`);
 }
 
@@ -93,6 +98,11 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     ),
     batchWrite(items, false),
   ]);
+
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
+    console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
+  });
+
   sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko historical price entries`);
 }
 
@@ -320,6 +330,12 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
     deleteStaleKeysPromise,
   ]);
+
+  if (kafkaItems.length > 0) {
+    await dualWriteToChRedis(kafkaItems).catch(e => {
+      console.error(`[CH/Redis dual-write] platform mappings non-fatal: ${(e as Error).message}`);
+    });
+  }
 }
 
 const HOUR = 3600;
@@ -359,6 +375,11 @@ async function getAndStoreHourly(
     ),
     batchWrite(items, false),
   ]);
+
+  await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
+    console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
+  });
+
   sdk.log(`Wrote ${ddbWriteResult.writeCount} coingecko historical price entries`);
 }
 

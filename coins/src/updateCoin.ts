@@ -1,5 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { batchWrite } from "./utils/shared/dynamodb";
+import { dualWriteToChRedis } from "./adapters/utils/chRedisWrite";
 import {
   CoinsResponse,
   fetchCgPriceData,
@@ -199,6 +200,9 @@ const handler = async (event: any): Promise<IResponse> => {
     batchWrite(writes, false),
     storeR2JSONString("updated-coins", JSON.stringify(bulk)),
   ]);
+  await dualWriteToChRedis(writes).catch(e => {
+    console.error(`[CH/Redis dual-write] updateCoin non-fatal: ${(e as Error).message}`);
+  });
 
   // respond
   const end = new Date().getTime();

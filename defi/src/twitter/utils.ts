@@ -72,9 +72,10 @@ export function transformHandleV2({ handleData = {}, lastTweet, user: _user, }: 
   return removeEmptyFields(response)
 }
 
-export function transformTweetV2(tweet: any, handle: string) {
+export function transformTweetV2(tweet: any, handle?: string) {
+  const tweetHandle = handle || tweet.user?.screen_name
   const response = {
-    id: '' + tweet.id,
+    id: tweet.id_str ?? ('' + tweet.id),
     text: tweet.full_text,
     time: +new Date(tweet.tweet_created_at),
     stats: {
@@ -85,7 +86,7 @@ export function transformTweetV2(tweet: any, handle: string) {
       views: tweet.views_count,
       bookmarks: tweet.bookmark_count,
     },
-    handle,
+    handle: tweetHandle,
     userId: tweet.user?.id_str,
     truncated: tweet.truncated,
   }
@@ -145,4 +146,28 @@ export async function getAllTweets(handle: string, lastTweet?: any) {
     console.log(handle, tweets.length, cursor)
   } while (cursor)
   return allTweets.map((i: any) => transformTweetV2(i, handle))
+}
+
+export function buildBatchQuery(handles: string[], sinceTime: number): string {
+  const fromClauses = handles.map(h => `from:${h}`).join(' OR ')
+  return `(${fromClauses}) -filter:replies since_time:${sinceTime}`
+}
+
+export async function fetchBatchTweets(handles: string[], sinceTime: number, maxPages = 15): Promise<{ tweets: any[], truncated: boolean }> {
+  const query = buildBatchQuery(handles, sinceTime)
+  const allTweets: any[] = []
+  let cursor: string | undefined
+  let page = 0
+  do {
+    const { tweets, next_cursor } = (await twitterApi.get(`/search`, {
+      params: { query, cursor }
+    })).data
+    allTweets.push(...tweets)
+    cursor = next_cursor
+    page++
+    if (!tweets.length || tweets.length < 19) cursor = undefined
+    console.log(`batch page ${page}: ${tweets.length} tweets, cursor: ${cursor ? 'yes' : 'no'}`)
+  } while (cursor && page < maxPages)
+  const truncated = !!(cursor && page >= maxPages)
+  return { tweets: allTweets, truncated }
 }

@@ -4,7 +4,6 @@ import parentProtocols from "../parentProtocols";
 import { sluggifyString } from "../../utils/sluggify";
 import { importAdapter } from "../../utils/imports/importAdapter";
 import { isDoubleCounted } from "../../utils/normalizeChain";
-import tokenRightsMap from '../tokenRights';
 
 import fs from 'fs';
 import path from 'path';
@@ -35,7 +34,7 @@ protocols.forEach((protocol: Protocol) => {
   // TODO: this is a hack to remove bad addresses like 'sui:-', we should fix this in the listings and remove this code
   if (typeof protocol.address === "string" && protocol.address.endsWith(':-'))
     protocol.address = null
-  if (protocol.deadUrl === true) {
+  if (protocol.deadUrl === true || protocol.rugged === true) {
     protocol.url = "" // kill urls to prevent urls that are dead from having scammers taking them over
   }
 })
@@ -56,24 +55,19 @@ protocols.forEach((protocol: Protocol) => {
     }
     parentChildProtocolMap[protocol.parentProtocol].push(protocol);
   }
-
-  const tr = tokenRightsMap[protocol.id]
-  if (tr)
-    protocol.tokenRights = tr
-
 })
 
 // if cmcId/gecko_id/symbol or address is missing in the parent metadata but found in the child metadata, copy it to the parent
 parentProtocols.forEach((protocol: IParentProtocol) => {
 
-  const tr = tokenRightsMap[protocol.id]
-  if (tr)
-    protocol.tokenRights = tr
+  if (protocol.deadUrl === true || protocol.rugged === true) {
+    protocol.url = ""
+  }
 
   const childProtocols = parentChildProtocolMap[protocol.id] ?? []
   if (!childProtocols.length) return;
 
-  const fields = ['gecko_id', 'cmcId', 'symbol', 'address', 'tokenRights'] as (keyof Protocol)[]
+  const fields = ['gecko_id', 'cmcId', 'symbol', 'address'] as (keyof Protocol)[]
 
   for (const field of fields) {
     if ((protocol as Protocol)[field] !== undefined) continue;  // already has the field
@@ -106,6 +100,8 @@ export type _InternalProtocolMetadata = {
   misrepresentedTokens: boolean;
   methodology?: string;
   hallmarks?: Hallmark[];
+  tvlCodePath?: string | null;
+  treasuryCodePath?: string | null;
   hasChainSlug: (chainSlug: string) => boolean;
 }
 
@@ -127,6 +123,13 @@ export function setProtocolMetadata(protocol: Protocol) {
     if (module.deadFrom && !protocol.deadFrom)
       protocol.deadFrom = module.deadFrom
 
+    let modulePath = protocol.module
+    if (module.meta?.moduleFilePath)
+      modulePath = module.meta.moduleFilePath
+    else 
+      modulePath = `projects/${modulePath}`
+
+    let treasuryModulePath = protocol.treasury ? `projects/treasury/${protocol.treasury}` : null
 
     const metadata = {
       id: protocol.id,
@@ -140,12 +143,14 @@ export function setProtocolMetadata(protocol: Protocol) {
       misrepresentedTokens: !!module.misrepresentedTokens,
       methodology: module.methodology,
       hallmarks: module.hallmarks,
+      tvlCodePath: modulePath.includes("dummy.js") ? null : `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${modulePath}`,
+      treasuryCodePath: treasuryModulePath ? `https://github.com/DefiLlama/DefiLlama-Adapters/blob/main/${treasuryModulePath}` : null,
       hasChainSlug: (_chainSlug: string) => { throw new Error('Need to pull info from cache first') },
     }
 
     _InternalProtocolMetadataMap[protocol.id] = metadata
 
-    const protocolMissingFields = ['methodology', 'misrepresentedTokens', 'deadFrom', 'doublecounted']
+    const protocolMissingFields = ['methodology', 'misrepresentedTokens', 'deadFrom', 'doublecounted', 'tvlCodePath']
 
     protocolMissingFields.forEach((field) => {
       if ((protocol as any)[field] === undefined) {

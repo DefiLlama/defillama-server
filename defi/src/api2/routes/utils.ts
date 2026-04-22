@@ -46,6 +46,10 @@ export async function fileResponse(filePath: string, res: HyperExpress.Response)
   try {
     res.set('Cache-Control', 'public, max-age=600'); // Set caching to 10 minutes
     const ab = await readRouteData(filePath, { readAsArrayBuffer: true })
+    if (!ab) {
+      res.status(404)
+      return res.send('Data not found', true)
+    }
     res.set('Content-Type', 'application/json')
     res.send(ab)
   } catch (e) {
@@ -55,10 +59,10 @@ export async function fileResponse(filePath: string, res: HyperExpress.Response)
 }
 
 export function validateProRequest(req: HyperExpress.Request, res: HyperExpress.Response) {
-  if ((req as any).isProRequest) return;
+  if ((req as any).isProRequest) return true;
 
   // throw error if not pro
-  res.status(403)
-  res.send('Pro access required', true)
-  return (req as any).isProRequest === true
+  res.status(402)
+  res.send('Upgrade to the paid API plan at https://defillama.com/subscription', true)
+  return false
 }

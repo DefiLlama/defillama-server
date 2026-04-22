@@ -10,8 +10,9 @@ import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normali
 import { cachedFetch } from "@defillama/sdk/build/util/cache";
 import { getCurrentUnixTimestamp, getTimestampAtStartOfDay } from "../utils/date";
 import { storeHistorical, storeMetadata } from "./historical";
-import { fetchEvm, fetchSolana, type WalletEntry } from './balances';
-import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains } from "./constants";
+import { initPG, fetchLatestAggregateTotals } from "./db";
+import { fetchEvm, fetchSolana, fetchProvenance, fetchStellar, type WalletEntry } from './balances';
+import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains, ONCHAIN_MCAP_EQUALS_ACTIVE_PLATFORMS } from "./constants";
 import { RWA_KEY_MAP } from "./metadataConstants";
 import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
 import { sendMessage } from "../utils/discord";
@@ -71,26 +72,31 @@ async function getTotalSupplies(tokensSortedByChain: { [chain: string]: string[]
 
   return totalSupplies;
 }
-// fetch balances of wallets to be excluded from active mcap 
-async function getExcludedBalances(
+// Build wallet-by-chain map for a given holder field and fetch balances
+async function fetchHolderBalances(
   timestamp: number,
   finalData: { [protocol: string]: { [key: string]: any } },
-  tokenToProjectMap: { [token: string]: string }
+  tokenToProjectMap: { [token: string]: string },
+  field: string,
+  addBurnAddresses: boolean = false,
+  addressesToSkip?: { [id: string]: { [chainLabel: string]: Set<string> } }
 ) {
   const walletsByChain: { [chain: string]: { [wallet: string]: WalletEntry[] } } = {};
   Object.keys(finalData).forEach((id: string) => {
-    const chains = finalData[id]?.holdersToRemove;
+    const chains = finalData[id]?.[field];
     if (!chains || !Object.keys(chains).length) return;
     Object.keys(chains).forEach((chain: string) => {
-      const wallets = chains[chain];
+      const wallets: string[] = chains[chain];
       const chainRaw = getChainIdFromDisplayName(chain);
       const assets = finalData[id]?.contracts?.[chain];
 
       if (!assets) return;
       if (!(chainRaw in walletsByChain)) walletsByChain[chainRaw] = {};
 
-      const burnAddresses = fetchBurnAddresses(chainRaw);
-      [...wallets, ...burnAddresses].forEach((address: string) => {
+      const skipSet = addressesToSkip?.[id]?.[chain];
+      const allWallets = addBurnAddresses ? [...wallets, ...fetchBurnAddresses(chainRaw)] : wallets;
+      allWallets.forEach((address: string) => {
+        if (skipSet?.has(address)) return;
         if (!(address in walletsByChain[chainRaw])) walletsByChain[chainRaw][address] = [];
         walletsByChain[chainRaw][address].push({ id, assets });
       });
@@ -107,20 +113,35 @@ async function getExcludedBalances(
     }));
   });
 
-  const excludedAmounts: { [id: string]: { [chain: string]: BigNumber } } = {};
+  const amounts: { [id: string]: { [chain: string]: BigNumber } } = {};
   await runInPromisePool({
     items: Object.keys(walletsSortedByChain),
     concurrency: 1,
     processor: async (chain: any) => {
       try {
-        if (chain == 'solana') await fetchSolana(timestamp, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        if (chain == 'solana') await fetchSolana(timestamp, walletsSortedByChain[chain], tokenToProjectMap, amounts);
+        else if (chain == 'provenance') await fetchProvenance(timestamp, walletsSortedByChain[chain], tokenToProjectMap, amounts);
+        else if (chain == 'stellar') await fetchStellar(timestamp, walletsSortedByChain[chain], tokenToProjectMap, amounts);
         else if (unsupportedChains.includes(chain)) return;
-        else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, excludedAmounts);
+        else await fetchEvm(timestamp, chain, walletsSortedByChain[chain], tokenToProjectMap, amounts);
       } catch (e) {
         console.error(`Failed to fetch balances for ${chain}`)
       }
     },
   });
+
+  return amounts;
+}
+
+// fetch balances of wallets to be excluded from active mcap
+async function getExcludedBalances(
+  timestamp: number,
+  finalData: { [protocol: string]: { [key: string]: any } },
+  tokenToProjectMap: { [token: string]: string }
+) {
+  const excludedAmounts = await fetchHolderBalances(
+    timestamp, finalData, tokenToProjectMap, 'holdersToRemove', true
+  );
 
   return excludedAmounts;
 }
@@ -240,7 +261,7 @@ function getOnChainTvlAndActiveMcaps(
   coingeckoIdToRwaId: { [cgId: string]: string },
   stablecoinsData: any,
   totalSupplies: any,
-  excludedAmounts: any
+  excludedAmounts: any,
 ) {
   Object.keys(stablecoinsData).forEach((cgId: string) => {
     const rwaId = coingeckoIdToRwaId[cgId];
@@ -258,8 +279,11 @@ function getOnChainTvlAndActiveMcaps(
 
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
+      if (!finalData[rwaId][RWA_KEY_MAP.price] && assetPrices[pk]?.price) {
+        finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices[pk].price);
+      }
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
-        if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
+        if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...finalData[rwaId][RWA_KEY_MAP.onChain] };
         findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
       }
       return;
@@ -283,14 +307,24 @@ function getOnChainTvlAndActiveMcaps(
 
       const aum = (price * supply) / 10 ** decimals;
       finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+
       if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
 
-      finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = toFixedNumber(aum, 0);
+      finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName];
 
       findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
     } catch (e) {
       console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }
+  });
+
+  // For xStock/Backed Finance: set onChainMcap = activeMcap
+  Object.keys(finalData).forEach((rwaId) => {
+    const platform = finalData[rwaId]?.parentPlatform;
+    if (!platform || !ONCHAIN_MCAP_EQUALS_ACTIVE_PLATFORMS.has(platform)) return;
+    const activeMcap = finalData[rwaId][RWA_KEY_MAP.activeMcap];
+    if (!activeMcap) return;
+    finalData[rwaId][RWA_KEY_MAP.onChain] = { ...activeMcap };
   });
 }
 // deduct excluded amounts for active mcaps
@@ -301,6 +335,9 @@ function findActiveMcaps(
   assetPrices: { price: number; decimals: number },
   chain: string
 ) {
+  if (!finalData[rwaId][RWA_KEY_MAP.price]) {
+    finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices.price);
+  }
   if (!finalData[rwaId][RWA_KEY_MAP.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;
   const thisChainExcluded = excludedAmounts[rwaId][chain];
@@ -310,6 +347,63 @@ function findActiveMcaps(
     finalData[rwaId][RWA_KEY_MAP.activeMcap][chain] - excludedUsdValue.toNumber(),
     0
   );
+}
+
+const CIRCUIT_BREAKER_THRESHOLD = 0.5; // 50% change triggers circuit breaker
+
+async function checkCircuitBreakers(
+  data: { [id: string]: any }
+): Promise<{ triggered: boolean; details: string[] }> {
+  const details: string[] = [];
+
+  // Compute new aggregate totals (same aggregation logic as storeHistorical)
+  let newDefiActiveTvl = 0;
+  let newOnChainMcap = 0;
+  let newActiveMcap = 0;
+
+  Object.keys(data).forEach((id) => {
+    const defiActive = data[id][RWA_KEY_MAP.defiActive];
+    const onChain = data[id][RWA_KEY_MAP.onChain];
+    const activeMcap = data[id][RWA_KEY_MAP.activeMcap];
+
+    Object.values(defiActive ?? {}).forEach((chain: any) => {
+      if (typeof chain === "object") {
+        Object.values(chain).forEach((val: any) => {
+          newDefiActiveTvl += Number(val) || 0;
+        });
+      }
+    });
+
+    Object.values(onChain ?? {}).forEach((val: any) => {
+      newOnChainMcap += Number(val) || 0;
+    });
+
+    Object.values(activeMcap ?? {}).forEach((val: any) => {
+      newActiveMcap += Number(val) || 0;
+    });
+  });
+
+  // Fetch previous aggregate totals from DB
+  await initPG();
+  const previous = await fetchLatestAggregateTotals();
+  if (!previous) return { triggered: false, details: [] };
+
+  const checks = [
+    { name: "defiActiveTvl", prev: previous.defiActiveTvl, curr: newDefiActiveTvl },
+    { name: "onChainMcap", prev: previous.onChainMcap, curr: newOnChainMcap },
+    { name: "activeMcap", prev: previous.activeMcap, curr: newActiveMcap },
+  ];
+
+  for (const { name, prev, curr } of checks) {
+    if (prev < 1) continue;
+    const ratio = curr / prev;
+    if (ratio > 1 + CIRCUIT_BREAKER_THRESHOLD || ratio < 1 - CIRCUIT_BREAKER_THRESHOLD) {
+      const changePercent = ((ratio - 1) * 100).toFixed(2);
+      details.push(`${name}: $${prev.toFixed(0)} -> $${curr.toFixed(0)} (${changePercent}% change)`);
+    }
+  }
+
+  return { triggered: details.length > 0, details };
 }
 
 // main entry
@@ -382,7 +476,7 @@ export default async function main(ts: number = 0) {
     coingeckoIdToRwaId,
     stablecoinsData,
     totalSupplies,
-    excludedAmounts
+    excludedAmounts,
   );
 
   // for read API usage
@@ -404,6 +498,15 @@ export default async function main(ts: number = 0) {
   // });
 
   const res = { data: filteredFinalData, timestamp: timestampToPublish };
+
+  // Circuit breaker: check for big jumps before saving
+  const circuitBreaker = await checkCircuitBreakers(filteredFinalData);
+  if (circuitBreaker.triggered) {
+    const message = `ATVL Circuit Breaker Triggered - results NOT saved!\n${circuitBreaker.details.join("\n")}`;
+    console.error(message);
+    await sendMessage(message, process.env.RWA_WEBHOOK!, false);
+    return finalData;
+  }
 
   await Promise.all([
     timestamp == 0 ? storeMetadata(res) : Promise.resolve(),

@@ -1,8 +1,10 @@
 import postgres from "postgres";
 
-let accountsDBConnection: ReturnType<typeof postgres>;
+// let accountsDBConnection: ReturnType<typeof postgres>;
 let errorReportsConnection: ReturnType<typeof postgres>;
 let pgConnection: Promise<ReturnType<typeof postgres>>;
+
+/* migrated the data to dimensions db
 
 export function getAccountsDBConnection() {
   if (!accountsDBConnection) accountsDBConnection = postgres(process.env.ACCOUNTS_DB!);
@@ -10,6 +12,7 @@ export function getAccountsDBConnection() {
   return accountsDBConnection;
 }
 
+ */
 export function getErrorDBConnection() {
   if (!errorReportsConnection) errorReportsConnection = postgres(process.env.ERROR_REPORTS_DB!);
 
@@ -36,11 +39,11 @@ export async function getPgConnection() {
 }
 
 export async function closeConnection() {
-  if (accountsDBConnection) {
-    console.log("Closing Accounts DB connection");
-    await accountsDBConnection.end({ timeout: 2 });
-    console.log("Accounts DB connection closed");
-  }
+  // if (accountsDBConnection) {
+  //   console.log("Closing Accounts DB connection");
+  //   await accountsDBConnection.end({ timeout: 2 });
+  //   console.log("Accounts DB connection closed");
+  // }
 
   if (errorReportsConnection) {
     console.log("Closing Error Reports DB connection");

@@ -127,7 +127,7 @@ export function getUniV2Adapter({
         pair.token0.id = pair.token0.id.toLowerCase();
         pair.token1.id = pair.token1.id.toLowerCase();
       });
-        allData.push(
+      allData.push(
         ...pairs.filter(
           ({ token0, token1 }: any) =>
             coreTokenSet.has(token0.id) || coreTokenSet.has(token1.id),
@@ -178,12 +178,10 @@ export function getUniV2Adapter({
         const knownTokenBalance = knownToken == token0 ? token0Balances[i] : token1Balances[i];
         if (!knownTokenBalance) return { price: subgraphPrice, confidence };
 
-        const supply = pair.totalSupply;
         const aum = knownTokenPrice.price * knownTokenBalance * 2 / 10 ** knownTokenPrice.decimals;
 
         if (aum < minLiquidity) return { price: undefined, confidence };
-
-        const onChainPrice = aum / supply;
+        const onChainPrice = aum / pair.totalSupply;
         return { price: Math.min(onChainPrice, subgraphPrice), confidence: calculateConfidence(aum) };
       }
 
@@ -205,8 +203,9 @@ export function getUniV2Adapter({
 
       function addTokenData(token: any) {
         if (skipToken(token)) return;
-        const liquidity = pair.reserveUSD / 2;
-        const supply = token.id === token0.id ? pair.reserve0 : pair.reserve1;
+        if (!price) return;
+        const liquidity = price * pair.totalSupply / 2;
+        const supply = (token.id === token0.id ? token0Balances[i] : token1Balances[i]) / 10 ** token.decimals
         if (!tokenData[token.id]) {
           tokenData[token.id] = {
             metadata: token,
@@ -267,7 +266,7 @@ export function getUniV2Adapter({
     let { pairs, token0s, token1s, symbols } = res;
     if (!pairs?.length)
       throw new Error("No pairs found, is there TVL adapter for this already?");
-    if (pairs.length > 20 * 1000)
+    if (pairs.length > 20 * 1000 && project != "aerodrome")
       throw new Error("Too many pairs found, try using the graph?");
 
     pairs = pairs.map((i: any) => i.toLowerCase());
@@ -299,6 +298,15 @@ export function getUniV2Adapter({
     if (hasStablePools) uniqueLPNames = true;
     if (uniqueLPNames) lpSymbols = await getTokenInfoMap(chain, pairs);
 
+    let stableFlags: (boolean | null)[] = [];
+    if (hasStablePools) {
+      stableFlags = await api.multiCall({
+        abi: "function stable() view returns (bool)",
+        calls: pairs,
+        permitFailure: true,
+      });
+    }
+
     const writes: Write[] = [];
 
     const tokenData: any = {};
@@ -309,6 +317,7 @@ export function getUniV2Adapter({
       const [reserve0, reserve1] = reserves[idx];
       const token0 = token0s[idx];
       const token1 = token1s[idx];
+
       const t1Data = coinsDataMap[token1];
       const t0Data = coinsDataMap[token0];
       if (!t1Data && !t0Data) return; // we dont know the price of underlying tokens
@@ -319,7 +328,7 @@ export function getUniV2Adapter({
       if (uniqueLPNames) symbol = lpSymbols[pair]?.symbol ?? symbol;
 
       let reserveUSD = 0;
-      const isStablePool = hasStablePools && symbol.includes(stablePoolSymbol);
+      const isStablePool = hasStablePools && (stableFlags[idx] === true || symbol.includes(stablePoolSymbol));
 
       if (isStablePool) {
         if (!t1Data || !t0Data) return; // we dont know the price of underlying tokens

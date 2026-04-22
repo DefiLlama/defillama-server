@@ -29,6 +29,10 @@ fi
 git pull -q
 
 llama_runner init-defi
+
+# this will work if there is already a cache, and cut down the startup time while we update the cache
+timeout 6m npx pm2 startOrReload src/api2/ecosystem.config.js
+
 llama_runner cron-raises
 llama_runner cron-tvl
 llama_runner cron-dimensions

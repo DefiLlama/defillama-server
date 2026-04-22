@@ -30,8 +30,15 @@ export const chainsWithoutCanonicalBridges: string[] = [
   "berachain",
   "flow",
   "somnia",
-  "plasma", 
-  "monad"
+  "plasma",
+  "monad",
+  "provenance",
+  "stellar",
+  "flare",
+  "katana",
+  "hedera",
+  "sei",
+  "stable"
 ];
 
 export const canonicalBridgeIds: { [id: string]: Chain } = {
@@ -70,7 +77,7 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   "4236": "blast",
   "4237": "mode",
   // "4335": "zklink",
-  "4336": "kinto",
+  // "4336": "kinto",
   "4384": "rss3_vsl",
   "4438": "degen",
   "4439": "pulsechain",
@@ -123,7 +130,10 @@ export const canonicalBridgeIds: { [id: string]: Chain } = {
   //"6730": "eteria",
   "7128": "supra",
   "7203": "megaeth",
-  "4548": "mezo"
+  "4548": "mezo",
+  "7371": "keeta",
+  //"7512": "qiev3",
+  // "6938": "move",
 };
 
 export const protocolBridgeIds: { [chain: string]: Chain } = {
@@ -146,11 +156,11 @@ export const protocolBridgeIds: { [chain: string]: Chain } = {
   "6150": "treasure",
   "6151": "zkcandy",
   "6284": "ao",
-  "6401": "embr",
+  // "6401": "embr",
   "6414": "xion",
   "6438": "echelon_initia",
   "6439": "inertia",
-  "6440": "milkyway_rollup",
+  // "6440": "milkyway_rollup",
   "5026": "noble", 
   "5599": "grvt", 
   "7118": "appchain", 
@@ -268,4 +278,13 @@ export const ownTokens: { [chain: Chain]: { ticker: string; address: string } } 
   // noble: { ticker: "", address: "coingecko:" },
   "mezo": { ticker: "MEZO", address: "" },
   "monad": { ticker: "MON", address: "coingecko:monad" },
+  "keeta": { ticker: "KTA", address: "coingecko:keeta" },
+  "provenance": { ticker: "HASH", address: "coingecko:hash-2" },
+  "stellar": { ticker: "XLM", address: "coingecko:stellar" },
+  "flare": { ticker: "FLR", address: "coingecko:flare-networks" },
+  "move": { ticker: "MOVE", address: "coingecko:movement" },
+  "katana": { ticker: "KAT", address: "coingecko:katana-network-token" },
+  "hedera": { ticker: "HBAR", address: "coingecko:hedera-hashgraph" },
+  "sei": { ticker: "SEI", address: "coingecko:sei-network" },
+  "stable": { ticker: "STABLE", address: "coingecko:stable-2" },
 };

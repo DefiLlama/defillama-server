@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWA Token Submission | DefiLlama</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --success: #3fb950;
+            --error: #f85149;
+            --warning: #d29922;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 {
+            font-size: 2rem; margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        header p { color: var(--text-secondary); font-size: 1rem; }
+
+        .form-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .form-section { margin-bottom: 30px; }
+        .form-section:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-size: 1.1rem; font-weight: 600;
+            margin-bottom: 20px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title .icon { font-size: 1.2rem; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group:last-child { margin-bottom: 0; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-primary); }
+        label .required { color: var(--error); margin-left: 2px; }
+        label .hint {
+            font-weight: 400; color: var(--text-secondary);
+            font-size: 0.85rem; display: block; margin-top: 4px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%; padding: 12px 14px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--text-secondary); opacity: 0.7;
+        }
+
+        textarea { min-height: 100px; resize: vertical; }
+
+        select {
+            cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .triple-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+
+        @media (max-width: 768px) { .triple-fields { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .inline-fields { grid-template-columns: 1fr; } }
+
+        .resource-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px; margin-bottom: 15px;
+            position: relative;
+        }
+        .resource-item .form-group { margin-bottom: 15px; }
+        .resource-item .form-group:last-child { margin-bottom: 0; }
+
+        .add-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; background: transparent;
+            border: 1px dashed var(--border-color); border-radius: 8px;
+            color: var(--text-secondary); cursor: pointer;
+            transition: all 0.2s; font-size: 0.9rem;
+        }
+        .add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .remove-btn {
+            background: transparent; border: none; color: var(--error);
+            cursor: pointer; font-size: 0.85rem; padding: 5px;
+            margin-left: auto; display: block;
+        }
+        .remove-btn:hover { text-decoration: underline; }
+
+        /* Toggle switches for boolean fields */
+        .toggle-group {
+            display: flex; gap: 8px; align-items: center;
+        }
+        .toggle-group .toggle-btn {
+            padding: 8px 18px; border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: pointer; font-size: 0.9rem; font-weight: 500;
+            transition: all 0.15s;
+        }
+        .toggle-group .toggle-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+        .toggle-group .toggle-btn.active {
+            border-color: var(--accent); background: rgba(88,166,255,0.15);
+            color: var(--accent);
+        }
+
+        .submit-btn {
+            width: 100%; padding: 16px;
+            background: linear-gradient(135deg, var(--accent), #a371f7);
+            border: none; border-radius: 10px;
+            color: white; font-size: 1.1rem; font-weight: 600;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(88,166,255,0.3); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .alert {
+            padding: 15px 20px; border-radius: 8px;
+            margin-bottom: 20px; display: none;
+        }
+        .alert.success { background: rgba(63,185,80,0.15); border: 1px solid var(--success); color: var(--success); }
+        .alert.error   { background: rgba(248,81,73,0.15);  border: 1px solid var(--error);   color: var(--error); }
+        .alert.show { display: block; }
+
+        footer { text-align: center; padding: 30px; color: var(--text-secondary); font-size: 0.9rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* View mode toggle */
+        .view-toggle {
+            display: flex; justify-content: center; gap: 0;
+            margin-bottom: 30px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 460px;
+            margin-left: auto; margin-right: auto;
+        }
+        .view-toggle button {
+            flex: 1; padding: 12px 20px;
+            background: transparent; border: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .view-toggle button:first-child { border-right: 1px solid var(--border-color); }
+        .view-toggle button.active {
+            background: rgba(88,166,255,0.12);
+            color: var(--accent);
+        }
+        .view-toggle button:hover:not(.active) { color: var(--text-primary); }
+
+        /* Token entry card in multi-mode */
+        .token-entry {
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 5px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .token-entry .form-card {
+            border: none; margin-bottom: 0;
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 0;
+        }
+        .token-entry .form-card:last-child { border-bottom: none; }
+
+        .token-entry-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 25px;
+            background: var(--bg-tertiary);
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .token-entry-header h3 {
+            font-size: 1.05rem; font-weight: 600; color: var(--accent);
+        }
+        .token-remove-btn {
+            background: transparent; border: 1px solid var(--error);
+            color: var(--error); padding: 6px 14px; border-radius: 6px;
+            cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+        }
+        .token-remove-btn:hover { background: rgba(248,81,73,0.15); }
+
+        .add-token-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 16px;
+            background: transparent;
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 1rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s;
+            margin-bottom: 20px;
+        }
+        .add-token-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Compact token entry for multi-mode */
+        .token-entry-compact {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .token-entry-compact .token-entry-header {
+            padding: 12px 20px;
+            border-radius: 0;
+        }
+        .token-entry-compact .token-body { padding: 20px; }
+        .token-entry-compact .form-group { margin-bottom: 14px; }
+        .token-entry-compact .form-group:last-child { margin-bottom: 0; }
+
+        .override-toggle {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer; font-size: 0.85rem;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        .override-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .override-toggle.open { border-color: var(--accent); color: var(--accent); }
+        .override-section {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        .override-section.open { display: block; }
+
+        .shared-defaults-note {
+            color: var(--text-secondary); font-size: 0.85rem;
+            font-style: italic; margin-bottom: 20px;
+            padding: 10px 14px;
+            background: rgba(88,166,255,0.06);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>RWA Token Submission</h1>
+            <p>Submit your Real-World Asset token information for listing on DefiLlama</p>
+        </header>
+
+        <div class="view-toggle">
+            <button type="button" id="singleModeBtn" class="active" onclick="setViewMode('single')">Single Token</button>
+            <button type="button" id="multiModeBtn" onclick="setViewMode('multi')">Multiple Tokens (Same Issuer)</button>
+        </div>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="rwaForm">
+
+            <!-- ═══════════════ SINGLE TOKEN MODE ═══════════════ -->
+            <div id="singleMode">
+
+            <!-- Section 1: Basic Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📋</span> 1. Basic Information</h2>
+
+                    <div class="form-group">
+                        <label>Token Name <span class="required">*</span>
+                            <span class="hint">Full official name of the tokenized asset</span>
+                        </label>
+                        <input type="text" name="tokenName" required placeholder="e.g., Ondo US Dollar Yield Token">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Ticker <span class="required">*</span>
+                                <span class="hint">3-8 uppercase letters, must match onchain listings</span>
+                            </label>
+                            <input type="text" name="ticker" required placeholder="e.g., USYC" style="text-transform: uppercase;">
+                        </div>
+                        <div class="form-group">
+                            <label>Logo URL
+                                <span class="hint">PNG or SVG, min 200x200, transparent bg preferred</span>
+                            </label>
+                            <input type="url" name="logo" placeholder="https://icons.llamao.fi/icons/protocols/ondo-finance?w=48&h=48">
+                        </div>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="url" name="website" placeholder="https://ondo.finance">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter / X Profile</label>
+                            <input type="url" name="twitter" placeholder="https://x.com/ondofinance">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telegram OR Discord
+                            <span class="hint">Official community or team communication channel</span>
+                        </label>
+                        <input type="text" name="telegram" placeholder="https://t.me/projectname  or  https://discord.gg/projectname">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Blockchain Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">⛓️</span> 2. Blockchain Information</h2>
+
+                    <div class="inline-fields" style="margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label>Primary Chain <span class="required">*</span>
+                                <span class="hint">Main blockchain where the canonical token is issued</span>
+                            </label>
+                            <input type="text" name="primaryChain" required placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>All Chains
+                                <span class="hint">All blockchains where the token exists</span>
+                            </label>
+                            <input type="text" name="allChains" placeholder="e.g., ethereum, arbitrum, base">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contracts
+                            <span class="hint">Official token contract addresses in chain:address format</span>
+                        </label>
+                        <div id="contracts">
+                            <div class="resource-item">
+                                <div class="inline-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="contract_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contract Address</label>
+                                        <input type="text" name="contract_address_0" placeholder="0x1234567890abcdef...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addContract()">+ Add Contract</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Internal Addresses
+                            <span class="hint">Issuer-controlled addresses for treasury, minting, custody, etc.</span>
+                        </label>
+                        <div id="internalAddresses">
+                            <div class="resource-item">
+                                <div class="triple-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="internal_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" name="internal_address_0" placeholder="0xabc123...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Label</label>
+                                        <input type="text" name="internal_label_0" placeholder="e.g., Treasury">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addInternalAddress()">+ Add Address</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Asset Classification -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📂</span> 3. Asset Classification</h2>
+
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span>
+                            <span class="hint">Primary classification bucket for the RWA token</span>
+                        </label>
+                        <select name="category" required>
+                            <option value="">Select a category...</option>
+                            <option value="Bond & MMF Funds">Bond & MMF Funds</option>
+                            <option value="Carbon & Environment">Carbon & Environment</option>
+                            <option value="Crypto Funds">Crypto Funds</option>
+                            <option value="ETFs">ETFs</option>
+                            <option value="Fiat Stablecoins">Fiat Stablecoins</option>
+                            <option value="Gold & Commodities">Gold & Commodities</option>
+                            <option value="Governance Tokens">Governance Tokens</option>
+                            <option value="Non-RWA Stablecoins">Non-RWA Stablecoins</option>
+                            <option value="Other RWAs">Other RWAs</option>
+                            <option value="Private Credit">Private Credit</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="RWA Perps">RWA Perps</option>
+                            <option value="RWA Stablecoins">RWA Stablecoins</option>
+                            <option value="RWA Wrappers">RWA Wrappers</option>
+                            <option value="Stocks & Equities">Stocks & Equities</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Asset Class <span class="required">*</span>
+                            <span class="hint">Specific asset type within the category</span>
+                        </label>
+                        <select name="assetClass" required>
+                            <option value="">Select an asset class...</option>
+                            <option value="USD Stable">USD Stable</option>
+                            <option value="EUR Stable">EUR Stable</option>
+                            <option value="Other Fiat Stable">Other Fiat Stable</option>
+                            <option value="Bank Deposit Token">Bank Deposit Token</option>
+                            <option value="Yield Fiat Stable">Yield Fiat Stable</option>
+                            <option value="RWA Fiat Stable">RWA Fiat Stable</option>
+                            <option value="Yield RWA Stable">Yield RWA Stable</option>
+                            <option value="Multi-Asset RWA Stable">Multi-Asset RWA Stable</option>
+                            <option value="Crypto Stable">Crypto Stable</option>
+                            <option value="Algo Stable">Algo Stable</option>
+                            <option value="T-Bills">T-Bills</option>
+                            <option value="Sovereign Bond Fund">Sovereign Bond Fund</option>
+                            <option value="Corp Bond Fund">Corp Bond Fund</option>
+                            <option value="MMF">MMF</option>
+                            <option value="Mixed RWA Fund">Mixed RWA Fund</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Platinum">Platinum</option>
+                            <option value="Palladium">Palladium</option>
+                            <option value="Uranium">Uranium</option>
+                            <option value="Other Commodity">Other Commodity</option>
+                            <option value="Commodity Basket">Commodity Basket</option>
+                            <option value="Single Property">Single Property</option>
+                            <option value="REIT">REIT</option>
+                            <option value="RE Revenue Share">RE Revenue Share</option>
+                            <option value="RE Credit">RE Credit</option>
+                            <option value="Stock Synthetic">Stock Synthetic</option>
+                            <option value="Stock Backed">Stock Backed</option>
+                            <option value="Equity Basket">Equity Basket</option>
+                            <option value="PE / Venture">PE / Venture</option>
+                            <option value="Collectibles">Collectibles</option>
+                            <option value="IP / Royalty">IP / Royalty</option>
+                            <option value="Other Exotic">Other Exotic</option>
+                            <option value="Domain Venue">Domain Venue</option>
+                            <option value="Collectibles Venue">Collectibles Venue</option>
+                            <option value="Credit Pool">Credit Pool</option>
+                            <option value="Trade Finance">Trade Finance</option>
+                            <option value="Structured Credit">Structured Credit</option>
+                            <option value="Other Credit">Other Credit</option>
+                            <option value="Reinsurance Pool">Reinsurance Pool</option>
+                            <option value="Lending Venue">Lending Venue</option>
+                            <option value="Stable Yield Wrapper">Stable Yield Wrapper</option>
+                            <option value="Single Asset Wrapper">Single Asset Wrapper</option>
+                            <option value="RWA Basket Vault">RWA Basket Vault</option>
+                            <option value="RWA LP Wrapper">RWA LP Wrapper</option>
+                            <option value="Leveraged RWA Vault">Leveraged RWA Vault</option>
+                            <option value="Structured Note">Structured Note</option>
+                            <option value="Yield Pool">Yield Pool</option>
+                            <option value="Active Vault">Active Vault</option>
+                            <option value="Carbon Credit">Carbon Credit</option>
+                            <option value="Other Environmental">Other Environmental</option>
+                            <option value="Governance Token">Governance Token</option>
+                            <option value="Revenue Share">Revenue Share</option>
+                            <option value="Carbon Reserve">Carbon Reserve</option>
+                            <option value="Synthetic Stable">Synthetic Stable</option>
+                            <option value="Crypto Index Fund">Crypto Index Fund</option>
+                            <option value="Crypto Hedge Fund">Crypto Hedge Fund</option>
+                            <option value="ETF Backed">ETF Backed</option>
+                            <option value="Stock Perp">Stock Perp</option>
+                            <option value="ETF Perp">ETF Perp</option>
+                            <option value="Equity Perp">Equity Perp</option>
+                            <option value="Commodity Perp">Commodity Perp</option>
+                            <option value="Bond Perp">Bond Perp</option>
+                            <option value="Perp Venue">Perp Venue</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Asset Group <span class="required">*</span>
+                            <span class="hint">Broader grouping for cross-category aggregation</span>
+                        </label>
+                        <select name="assetGroup" required>
+                            <option value="">Select an asset group...</option>
+                            <option value="Agricultural Commodities">Agricultural Commodities</option>
+                            <option value="AI & Compute Infrastructure">AI & Compute Infrastructure</option>
+                            <option value="Bonds">Bonds</option>
+                            <option value="Carbon Credits">Carbon Credits</option>
+                            <option value="Collectibles & Luxury Goods">Collectibles & Luxury Goods</option>
+                            <option value="Commodity Baskets">Commodity Baskets</option>
+                            <option value="Digital Assets">Digital Assets</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Equity ETFs">Equity ETFs</option>
+                            <option value="Equity Indices">Equity Indices</option>
+                            <option value="Fiat Currencies">Fiat Currencies</option>
+                            <option value="Industrial Metals">Industrial Metals</option>
+                            <option value="Intellectual Property & Royalties">Intellectual Property & Royalties</option>
+                            <option value="Mixed Public Markets">Mixed Public Markets</option>
+                            <option value="Multi-Asset RWAs">Multi-Asset RWAs</option>
+                            <option value="Natural Gas">Natural Gas</option>
+                            <option value="Oil">Oil</option>
+                            <option value="Precious Metals">Precious Metals</option>
+                            <option value="Private Credit">Private Credit</option>
+                            <option value="Private Equity & Venture">Private Equity & Venture</option>
+                            <option value="Public Equities">Public Equities</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Reinsurance">Reinsurance</option>
+                            <option value="RWA Infrastructure">RWA Infrastructure</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Market Data -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📊</span> 4. Market Data</h2>
+
+                    <div class="form-group">
+                        <label>CoinGecko ID
+                            <span class="hint">Used to fetch live token price. Write "Not listed" if not on CoinGecko.</span>
+                        </label>
+                        <input type="text" name="coingeckoId" placeholder="e.g., ondo-us-dollar-yield  or  Not listed">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Issuer Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏢</span> 5. Issuer Information</h2>
+
+                    <div class="form-group">
+                        <label>Issuer <span class="required">*</span>
+                            <span class="hint">Full legal entity name issuing the tokenized asset</span>
+                        </label>
+                        <input type="text" name="issuer" required placeholder="e.g., SolBridge Energy Foundation">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Proof & Verification -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🔍</span> 6. Proof & Verification</h2>
+
+                    <div class="form-group">
+                        <label>Attestation
+                            <span class="hint">Proof that underlying assets exist and are properly backed (attestation report, audit, custodian verification, or proof of reserves). Write "None" if unavailable.</span>
+                        </label>
+                        <input type="text" name="attestation" placeholder="https://...  or  None">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Exchange & Access -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏦</span> 7. Exchange & Access</h2>
+
+                    <div class="form-group">
+                        <label>CEX Listing
+                            <span class="hint">Is the token listed on centralized exchanges?</span>
+                        </label>
+                        <div class="toggle-group" data-field="cexListed">
+                            <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                            <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                        </div>
+                        <input type="hidden" name="cexListed" value="">
+                    </div>
+
+                    <div class="form-group" id="cexDetailsGroup" style="display:none;">
+                        <label>Exchange Names
+                            <span class="hint">Which exchanges is it listed on?</span>
+                        </label>
+                        <input type="text" name="cexDetails" placeholder="e.g., Coinbase, Kraken">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>KYC Required to Mint
+                                <span class="hint">Is KYC required to mint/redeem tokens with issuer?</span>
+                            </label>
+                            <div class="toggle-group" data-field="kycToMint">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="kycToMint" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>KYC Whitelist to Hold/Transfer
+                                <span class="hint">Must wallet be approved to hold or receive tokens?</span>
+                            </label>
+                            <div class="toggle-group" data-field="kycWhitelist">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="kycWhitelist" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Transfer & Custody -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🔄</span> 8. Transfer & Custody</h2>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Transferable
+                                <span class="hint">Can tokens be transferred freely between wallets?</span>
+                            </label>
+                            <div class="toggle-group" data-field="transferable">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="transferable" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Self Custody
+                                <span class="hint">Can users hold tokens in their own wallet?</span>
+                            </label>
+                            <div class="toggle-group" data-field="selfCustody">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="selfCustody" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9: Optional but Recommended -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📝</span> 9. Additional Information</h2>
+
+                    <div class="form-group">
+                        <label>Description
+                            <span class="hint">Short explanation of the asset and its backing</span>
+                        </label>
+                        <textarea name="description" placeholder="e.g., USYC is a tokenized money market fund backed by short-duration US Treasuries..."></textarea>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Documentation Link
+                                <span class="hint">Technical or legal docs explaining token structure</span>
+                            </label>
+                            <input type="url" name="documentationLink" placeholder="https://docs.example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" name="contactEmail" placeholder="team@issuer.com">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 10: Redemption -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">💱</span> 10. Redemption</h2>
+
+                    <div class="form-group">
+                        <label>Redemption <span class="required">*</span>
+                            <span class="hint">How token holders can redeem</span>
+                        </label>
+                        <select name="redemption" required>
+                            <option value="">Select redemption type...</option>
+                            <option value="Redeemable for the underlying asset">Redeemable for the underlying asset</option>
+                            <option value="Redeemable for equivalent value (cash/stablecoin)">Redeemable for equivalent value (cash/stablecoin)</option>
+                            <option value="Not redeemable">Not redeemable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Redemption Process
+                            <span class="hint">Brief description of how redemption works (platform/URL, minimum amounts, settlement timeline, requirements)</span>
+                        </label>
+                        <textarea name="redemptionProcess" placeholder="e.g., Holders redeem via app.ondo.finance with a $5,000 minimum. Settlement takes T+1 to a linked bank account. KYC required."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            </div><!-- /singleMode -->
+
+            <!-- ═══════════════ MULTI TOKEN MODE ═══════════════ -->
+            <div id="multiMode" style="display:none;">
+
+            <!-- Shared Issuer Information -->
+            <div class="form-card">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">🏢</span> Issuer Information (shared across all tokens)</h2>
+
+                    <div class="form-group">
+                        <label>Issuer <span class="required">*</span>
+                            <span class="hint">Full legal entity name issuing all tokens below</span>
+                        </label>
+                        <input type="text" name="multi_issuer" placeholder="e.g., Ondo Finance">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Website</label>
+                            <input type="url" name="multi_website" placeholder="https://ondo.finance">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter / X Profile</label>
+                            <input type="url" name="multi_twitter" placeholder="https://x.com/ondofinance">
+                        </div>
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Telegram OR Discord
+                                <span class="hint">Official community or team communication channel</span>
+                            </label>
+                            <input type="text" name="multi_telegram" placeholder="https://t.me/projectname  or  https://discord.gg/projectname">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Email</label>
+                            <input type="email" name="multi_contactEmail" placeholder="team@issuer.com">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shared Defaults for all tokens -->
+            <div class="form-card" id="multiSharedDefaults">
+                <div class="form-section">
+                    <h2 class="section-title"><span class="icon">📂</span> Shared Defaults (apply to all tokens unless overridden)</h2>
+                    <p class="shared-defaults-note">Fill these once -- they apply to every token below. You can override per-token if needed.</p>
+
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span></label>
+                        <select name="multi_category" id="multi_default_category">
+                            <option value="">Select a category...</option>
+                            <option value="Bond & MMF Funds">Bond & MMF Funds</option>
+                            <option value="Carbon & Environment">Carbon & Environment</option>
+                            <option value="Crypto Funds">Crypto Funds</option>
+                            <option value="ETFs">ETFs</option>
+                            <option value="Fiat Stablecoins">Fiat Stablecoins</option>
+                            <option value="Gold & Commodities">Gold & Commodities</option>
+                            <option value="Governance Tokens">Governance Tokens</option>
+                            <option value="Non-RWA Stablecoins">Non-RWA Stablecoins</option>
+                            <option value="Other RWAs">Other RWAs</option>
+                            <option value="Private Credit">Private Credit</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="RWA Perps">RWA Perps</option>
+                            <option value="RWA Stablecoins">RWA Stablecoins</option>
+                            <option value="RWA Wrappers">RWA Wrappers</option>
+                            <option value="Stocks & Equities">Stocks & Equities</option>
+                        </select>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Asset Class <span class="required">*</span></label>
+                            <select name="multi_assetClass" id="multi_default_assetClass">
+                                <option value="">Select an asset class...</option>
+                                <option value="USD Stable">USD Stable</option>
+                                <option value="EUR Stable">EUR Stable</option>
+                                <option value="Other Fiat Stable">Other Fiat Stable</option>
+                                <option value="Bank Deposit Token">Bank Deposit Token</option>
+                                <option value="Yield Fiat Stable">Yield Fiat Stable</option>
+                                <option value="RWA Fiat Stable">RWA Fiat Stable</option>
+                                <option value="Yield RWA Stable">Yield RWA Stable</option>
+                                <option value="Multi-Asset RWA Stable">Multi-Asset RWA Stable</option>
+                                <option value="Crypto Stable">Crypto Stable</option>
+                                <option value="Algo Stable">Algo Stable</option>
+                                <option value="T-Bills">T-Bills</option>
+                                <option value="Sovereign Bond Fund">Sovereign Bond Fund</option>
+                                <option value="Corp Bond Fund">Corp Bond Fund</option>
+                                <option value="MMF">MMF</option>
+                                <option value="Mixed RWA Fund">Mixed RWA Fund</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Platinum">Platinum</option>
+                                <option value="Palladium">Palladium</option>
+                                <option value="Uranium">Uranium</option>
+                                <option value="Other Commodity">Other Commodity</option>
+                                <option value="Commodity Basket">Commodity Basket</option>
+                                <option value="Single Property">Single Property</option>
+                                <option value="REIT">REIT</option>
+                                <option value="RE Revenue Share">RE Revenue Share</option>
+                                <option value="RE Credit">RE Credit</option>
+                                <option value="Stock Synthetic">Stock Synthetic</option>
+                                <option value="Stock Backed">Stock Backed</option>
+                                <option value="Equity Basket">Equity Basket</option>
+                                <option value="PE / Venture">PE / Venture</option>
+                                <option value="Collectibles">Collectibles</option>
+                                <option value="IP / Royalty">IP / Royalty</option>
+                                <option value="Other Exotic">Other Exotic</option>
+                                <option value="Domain Venue">Domain Venue</option>
+                                <option value="Collectibles Venue">Collectibles Venue</option>
+                                <option value="Credit Pool">Credit Pool</option>
+                                <option value="Trade Finance">Trade Finance</option>
+                                <option value="Structured Credit">Structured Credit</option>
+                                <option value="Other Credit">Other Credit</option>
+                                <option value="Reinsurance Pool">Reinsurance Pool</option>
+                                <option value="Lending Venue">Lending Venue</option>
+                                <option value="Stable Yield Wrapper">Stable Yield Wrapper</option>
+                                <option value="Single Asset Wrapper">Single Asset Wrapper</option>
+                                <option value="RWA Basket Vault">RWA Basket Vault</option>
+                                <option value="RWA LP Wrapper">RWA LP Wrapper</option>
+                                <option value="Leveraged RWA Vault">Leveraged RWA Vault</option>
+                                <option value="Structured Note">Structured Note</option>
+                                <option value="Yield Pool">Yield Pool</option>
+                                <option value="Active Vault">Active Vault</option>
+                                <option value="Carbon Credit">Carbon Credit</option>
+                                <option value="Other Environmental">Other Environmental</option>
+                                <option value="Governance Token">Governance Token</option>
+                                <option value="Revenue Share">Revenue Share</option>
+                                <option value="Carbon Reserve">Carbon Reserve</option>
+                                <option value="Synthetic Stable">Synthetic Stable</option>
+                                <option value="Crypto Index Fund">Crypto Index Fund</option>
+                                <option value="Crypto Hedge Fund">Crypto Hedge Fund</option>
+                                <option value="ETF Backed">ETF Backed</option>
+                                <option value="Stock Perp">Stock Perp</option>
+                                <option value="ETF Perp">ETF Perp</option>
+                                <option value="Equity Perp">Equity Perp</option>
+                                <option value="Commodity Perp">Commodity Perp</option>
+                                <option value="Bond Perp">Bond Perp</option>
+                                <option value="Perp Venue">Perp Venue</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Asset Group <span class="required">*</span></label>
+                            <select name="multi_assetGroup" id="multi_default_assetGroup">
+                                <option value="">Select an asset group...</option>
+                                <option value="Agricultural Commodities">Agricultural Commodities</option>
+                                <option value="AI & Compute Infrastructure">AI & Compute Infrastructure</option>
+                                <option value="Bonds">Bonds</option>
+                                <option value="Carbon Credits">Carbon Credits</option>
+                                <option value="Collectibles & Luxury Goods">Collectibles & Luxury Goods</option>
+                                <option value="Commodity Baskets">Commodity Baskets</option>
+                                <option value="Digital Assets">Digital Assets</option>
+                                <option value="Energy">Energy</option>
+                                <option value="Equity ETFs">Equity ETFs</option>
+                                <option value="Equity Indices">Equity Indices</option>
+                                <option value="Fiat Currencies">Fiat Currencies</option>
+                                <option value="Industrial Metals">Industrial Metals</option>
+                                <option value="Intellectual Property & Royalties">Intellectual Property & Royalties</option>
+                                <option value="Mixed Public Markets">Mixed Public Markets</option>
+                                <option value="Multi-Asset RWAs">Multi-Asset RWAs</option>
+                                <option value="Natural Gas">Natural Gas</option>
+                                <option value="Oil">Oil</option>
+                                <option value="Precious Metals">Precious Metals</option>
+                                <option value="Private Credit">Private Credit</option>
+                                <option value="Private Equity & Venture">Private Equity & Venture</option>
+                                <option value="Public Equities">Public Equities</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="Reinsurance">Reinsurance</option>
+                                <option value="RWA Infrastructure">RWA Infrastructure</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Attestation</label>
+                        <input type="text" name="multi_attestation" id="multi_default_attestation" placeholder="https://...  or  None">
+                    </div>
+
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>CEX Listing</label>
+                            <div class="toggle-group" data-field="multi_cexListed">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="multi_cexListed" id="multi_default_cexListed" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>KYC Required to Mint</label>
+                            <div class="toggle-group" data-field="multi_kycToMint">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="multi_kycToMint" id="multi_default_kycToMint" value="">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>KYC Whitelist to Hold/Transfer</label>
+                            <div class="toggle-group" data-field="multi_kycWhitelist">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="multi_kycWhitelist" id="multi_default_kycWhitelist" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Transferable</label>
+                            <div class="toggle-group" data-field="multi_transferable">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="multi_transferable" id="multi_default_transferable" value="">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Self Custody</label>
+                            <div class="toggle-group" data-field="multi_selfCustody">
+                                <button type="button" class="toggle-btn" data-value="TRUE">Yes</button>
+                                <button type="button" class="toggle-btn" data-value="FALSE">No</button>
+                            </div>
+                            <input type="hidden" name="multi_selfCustody" id="multi_default_selfCustody" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Redemption</label>
+                            <select name="multi_redemption" id="multi_default_redemption">
+                                <option value="">Select redemption type...</option>
+                                <option value="Redeemable for the underlying asset">Redeemable for the underlying asset</option>
+                                <option value="Redeemable for equivalent value (cash/stablecoin)">Redeemable for equivalent value (cash/stablecoin)</option>
+                                <option value="Not redeemable">Not redeemable</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Token entries container -->
+            <div id="tokenEntries"></div>
+
+            <button type="button" class="add-token-btn" onclick="addTokenEntry()">+ Add Another Token</button>
+
+            </div><!-- /multiMode -->
+
+            <button type="submit" class="submit-btn">Submit RWA Token Information</button>
+        </form>
+
+        <footer>
+            <p>Questions? Reach out on <a href="https://discord.defillama.com" target="_blank">Discord</a> or <a href="https://twitter.com/defillama" target="_blank">Twitter</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let contractCount = 1;
+        let internalCount = 1;
+        let viewMode = 'single';
+        let tokenEntryCount = 0;
+        let isSubmitting = false;
+
+        // Per-token counters for multi-mode dynamic fields
+        const multiContractCounts = {};
+        const multiInternalCounts = {};
+
+        // ── Toggle button groups (delegated) ─────────────────────────────────
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.toggle-btn');
+            if (!btn) return;
+            const group = btn.closest('.toggle-group');
+            if (!group) return;
+
+            const field = group.dataset.field;
+            const hidden = group.parentElement.querySelector(`input[name="${field}"]`);
+
+            if (btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                if (hidden) hidden.value = '';
+            } else {
+                group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if (hidden) hidden.value = btn.dataset.value;
+            }
+
+            // Show/hide CEX details field
+            if (field.endsWith('cexListed')) {
+                const cexGroup = btn.closest('.form-section').querySelector('[id$="cexDetailsGroup"], .cex-details-group');
+                if (cexGroup) cexGroup.style.display = (hidden?.value === 'TRUE') ? 'block' : 'none';
+            }
+        });
+
+        // ── (Category "Other" toggle removed — no longer needed with new taxonomy) ──
+
+        // ── View mode switching ───────────────────────────────────────────────
+        function setViewMode(mode) {
+            viewMode = mode;
+            document.getElementById('singleModeBtn').classList.toggle('active', mode === 'single');
+            document.getElementById('multiModeBtn').classList.toggle('active', mode === 'multi');
+            document.getElementById('singleMode').style.display = mode === 'single' ? 'block' : 'none';
+            document.getElementById('multiMode').style.display = mode === 'multi' ? 'block' : 'none';
+
+            // Toggle required attributes so hidden mode doesn't block submit
+            document.querySelectorAll('#singleMode [data-req]').forEach(el => el.required = mode === 'single');
+            document.querySelectorAll('#multiMode [data-req]').forEach(el => el.required = mode === 'multi');
+
+            // Seed first token entry if switching to multi for the first time
+            if (mode === 'multi' && tokenEntryCount === 0) {
+                addTokenEntry();
+            }
+        }
+
+        // Mark single-mode required fields
+        document.querySelectorAll('#singleMode [required]').forEach(el => el.setAttribute('data-req', ''));
+
+        // ── Multi-mode: add compact token entry ──────────────────────────────
+        function addTokenEntry() {
+            const idx = tokenEntryCount++;
+            multiContractCounts[idx] = 1;
+            multiInternalCounts[idx] = 1;
+
+            const html = `
+            <div class="token-entry-compact" id="tokenEntry_${idx}">
+                <div class="token-entry-header">
+                    <h3>Token #${idx + 1}</h3>
+                    ${idx > 0 ? `<button type="button" class="token-remove-btn" onclick="removeTokenEntry(${idx})">Remove</button>` : ''}
+                </div>
+                <div class="token-body">
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Token Name <span class="required">*</span></label>
+                            <input type="text" name="t${idx}_tokenName" data-req required placeholder="e.g., Ondo US Dollar Yield Token">
+                        </div>
+                        <div class="form-group">
+                            <label>Ticker <span class="required">*</span></label>
+                            <input type="text" name="t${idx}_ticker" data-req required placeholder="e.g., USYC" style="text-transform: uppercase;">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Primary Chain <span class="required">*</span></label>
+                            <input type="text" name="t${idx}_primaryChain" data-req required placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>All Chains</label>
+                            <input type="text" name="t${idx}_allChains" placeholder="e.g., ethereum, arbitrum, base">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contracts</label>
+                        <div id="t${idx}_contracts">
+                            <div class="resource-item">
+                                <div class="inline-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="t${idx}_contract_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contract Address</label>
+                                        <input type="text" name="t${idx}_contract_address_0" placeholder="0x1234567890abcdef...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addMultiContract(${idx})">+ Add Contract</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Internal Addresses</label>
+                        <div id="t${idx}_internalAddresses">
+                            <div class="resource-item">
+                                <div class="triple-fields">
+                                    <div class="form-group">
+                                        <label>Chain</label>
+                                        <input type="text" name="t${idx}_internal_chain_0" placeholder="e.g., ethereum">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" name="t${idx}_internal_address_0" placeholder="0xabc123...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Label</label>
+                                        <input type="text" name="t${idx}_internal_label_0" placeholder="e.g., Treasury">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addMultiInternal(${idx})">+ Add Address</button>
+                    </div>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>CoinGecko ID</label>
+                            <input type="text" name="t${idx}_coingeckoId" placeholder="e.g., ondo-us-dollar-yield  or  Not listed">
+                        </div>
+                        <div class="form-group">
+                            <label>Logo URL</label>
+                            <input type="url" name="t${idx}_logo" placeholder="https://icons.llamao.fi/icons/protocols/...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="t${idx}_description" style="min-height:60px;" placeholder="Short explanation of the asset and its backing..."></textarea>
+                    </div>
+
+                    <button type="button" class="override-toggle" onclick="toggleOverrides(${idx})">Override shared defaults for this token</button>
+                    <div class="override-section" id="t${idx}_overrides">
+                        <p class="shared-defaults-note">Leave fields blank to use the shared defaults above.</p>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="t${idx}_category">
+                                <option value="">(use shared default)</option>
+                                <option value="Bond & MMF Funds">Bond & MMF Funds</option>
+                                <option value="Carbon & Environment">Carbon & Environment</option>
+                                <option value="Crypto Funds">Crypto Funds</option>
+                                <option value="ETFs">ETFs</option>
+                                <option value="Fiat Stablecoins">Fiat Stablecoins</option>
+                                <option value="Gold & Commodities">Gold & Commodities</option>
+                                <option value="Governance Tokens">Governance Tokens</option>
+                                <option value="Non-RWA Stablecoins">Non-RWA Stablecoins</option>
+                                <option value="Other RWAs">Other RWAs</option>
+                                <option value="Private Credit">Private Credit</option>
+                                <option value="Real Estate">Real Estate</option>
+                                <option value="RWA Perps">RWA Perps</option>
+                                <option value="RWA Stablecoins">RWA Stablecoins</option>
+                                <option value="RWA Wrappers">RWA Wrappers</option>
+                                <option value="Stocks & Equities">Stocks & Equities</option>
+                            </select>
+                        </div>
+                        <div class="inline-fields">
+                            <div class="form-group">
+                                <label>Asset Class</label>
+                                <select name="t${idx}_assetClass">
+                                    <option value="">(use shared default)</option>
+                                    <option value="USD Stable">USD Stable</option>
+                                    <option value="EUR Stable">EUR Stable</option>
+                                    <option value="Other Fiat Stable">Other Fiat Stable</option>
+                                    <option value="Bank Deposit Token">Bank Deposit Token</option>
+                                    <option value="Yield Fiat Stable">Yield Fiat Stable</option>
+                                    <option value="RWA Fiat Stable">RWA Fiat Stable</option>
+                                    <option value="Yield RWA Stable">Yield RWA Stable</option>
+                                    <option value="Multi-Asset RWA Stable">Multi-Asset RWA Stable</option>
+                                    <option value="Crypto Stable">Crypto Stable</option>
+                                    <option value="Algo Stable">Algo Stable</option>
+                                    <option value="T-Bills">T-Bills</option>
+                                    <option value="Sovereign Bond Fund">Sovereign Bond Fund</option>
+                                    <option value="Corp Bond Fund">Corp Bond Fund</option>
+                                    <option value="MMF">MMF</option>
+                                    <option value="Mixed RWA Fund">Mixed RWA Fund</option>
+                                    <option value="Gold">Gold</option>
+                                    <option value="Silver">Silver</option>
+                                    <option value="Platinum">Platinum</option>
+                                    <option value="Palladium">Palladium</option>
+                                    <option value="Uranium">Uranium</option>
+                                    <option value="Other Commodity">Other Commodity</option>
+                                    <option value="Commodity Basket">Commodity Basket</option>
+                                    <option value="Single Property">Single Property</option>
+                                    <option value="REIT">REIT</option>
+                                    <option value="RE Revenue Share">RE Revenue Share</option>
+                                    <option value="RE Credit">RE Credit</option>
+                                    <option value="Stock Synthetic">Stock Synthetic</option>
+                                    <option value="Stock Backed">Stock Backed</option>
+                                    <option value="Equity Basket">Equity Basket</option>
+                                    <option value="PE / Venture">PE / Venture</option>
+                                    <option value="Collectibles">Collectibles</option>
+                                    <option value="IP / Royalty">IP / Royalty</option>
+                                    <option value="Other Exotic">Other Exotic</option>
+                                    <option value="Domain Venue">Domain Venue</option>
+                                    <option value="Collectibles Venue">Collectibles Venue</option>
+                                    <option value="Credit Pool">Credit Pool</option>
+                                    <option value="Trade Finance">Trade Finance</option>
+                                    <option value="Structured Credit">Structured Credit</option>
+                                    <option value="Other Credit">Other Credit</option>
+                                    <option value="Reinsurance Pool">Reinsurance Pool</option>
+                                    <option value="Lending Venue">Lending Venue</option>
+                                    <option value="Stable Yield Wrapper">Stable Yield Wrapper</option>
+                                    <option value="Single Asset Wrapper">Single Asset Wrapper</option>
+                                    <option value="RWA Basket Vault">RWA Basket Vault</option>
+                                    <option value="RWA LP Wrapper">RWA LP Wrapper</option>
+                                    <option value="Leveraged RWA Vault">Leveraged RWA Vault</option>
+                                    <option value="Structured Note">Structured Note</option>
+                                    <option value="Yield Pool">Yield Pool</option>
+                                    <option value="Active Vault">Active Vault</option>
+                                    <option value="Carbon Credit">Carbon Credit</option>
+                                    <option value="Other Environmental">Other Environmental</option>
+                                    <option value="Governance Token">Governance Token</option>
+                                    <option value="Revenue Share">Revenue Share</option>
+                                    <option value="Carbon Reserve">Carbon Reserve</option>
+                                    <option value="Synthetic Stable">Synthetic Stable</option>
+                                    <option value="Crypto Index Fund">Crypto Index Fund</option>
+                                    <option value="Crypto Hedge Fund">Crypto Hedge Fund</option>
+                                    <option value="ETF Backed">ETF Backed</option>
+                                    <option value="Stock Perp">Stock Perp</option>
+                                    <option value="ETF Perp">ETF Perp</option>
+                                    <option value="Equity Perp">Equity Perp</option>
+                                    <option value="Commodity Perp">Commodity Perp</option>
+                                    <option value="Bond Perp">Bond Perp</option>
+                                    <option value="Perp Venue">Perp Venue</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Asset Group</label>
+                                <select name="t${idx}_assetGroup">
+                                    <option value="">(use shared default)</option>
+                                    <option value="Agricultural Commodities">Agricultural Commodities</option>
+                                    <option value="AI & Compute Infrastructure">AI & Compute Infrastructure</option>
+                                    <option value="Bonds">Bonds</option>
+                                    <option value="Carbon Credits">Carbon Credits</option>
+                                    <option value="Collectibles & Luxury Goods">Collectibles & Luxury Goods</option>
+                                    <option value="Commodity Baskets">Commodity Baskets</option>
+                                    <option value="Digital Assets">Digital Assets</option>
+                                    <option value="Energy">Energy</option>
+                                    <option value="Equity ETFs">Equity ETFs</option>
+                                    <option value="Equity Indices">Equity Indices</option>
+                                    <option value="Fiat Currencies">Fiat Currencies</option>
+                                    <option value="Industrial Metals">Industrial Metals</option>
+                                    <option value="Intellectual Property & Royalties">Intellectual Property & Royalties</option>
+                                    <option value="Mixed Public Markets">Mixed Public Markets</option>
+                                    <option value="Multi-Asset RWAs">Multi-Asset RWAs</option>
+                                    <option value="Natural Gas">Natural Gas</option>
+                                    <option value="Oil">Oil</option>
+                                    <option value="Precious Metals">Precious Metals</option>
+                                    <option value="Private Credit">Private Credit</option>
+                                    <option value="Private Equity & Venture">Private Equity & Venture</option>
+                                    <option value="Public Equities">Public Equities</option>
+                                    <option value="Real Estate">Real Estate</option>
+                                    <option value="Reinsurance">Reinsurance</option>
+                                    <option value="RWA Infrastructure">RWA Infrastructure</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Attestation</label>
+                            <input type="text" name="t${idx}_attestation" placeholder="(use shared default)">
+                        </div>
+                        <div class="form-group">
+                            <label>Redemption</label>
+                            <select name="t${idx}_redemption">
+                                <option value="">(use shared default)</option>
+                                <option value="Redeemable for the underlying asset">Redeemable for the underlying asset</option>
+                                <option value="Redeemable for equivalent value (cash/stablecoin)">Redeemable for equivalent value (cash/stablecoin)</option>
+                                <option value="Not redeemable">Not redeemable</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Redemption Process</label>
+                            <textarea name="t${idx}_redemptionProcess" style="min-height:60px;" placeholder="(use shared default or leave blank)"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Documentation Link</label>
+                            <input type="url" name="t${idx}_documentationLink" placeholder="https://docs.example.com">
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById('tokenEntries').insertAdjacentHTML('beforeend', html);
+        }
+
+        function toggleOverrides(idx) {
+            const section = document.getElementById(`t${idx}_overrides`);
+            const btn = section.previousElementSibling;
+            section.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+
+        function removeTokenEntry(idx) {
+            const entry = document.getElementById(`tokenEntry_${idx}`);
+            if (entry) entry.remove();
+            // Re-number headers
+            document.querySelectorAll('.token-entry-compact').forEach((el, i) => {
+                el.querySelector('.token-entry-header h3').textContent = `Token #${i + 1}`;
+            });
+        }
+
+        // ── Multi-mode: dynamic contract/internal fields ──────────────────────
+        function addMultiContract(tokenIdx) {
+            const c = multiContractCounts[tokenIdx]++;
+            const container = document.getElementById(`t${tokenIdx}_contracts`);
+            container.insertAdjacentHTML('beforeend', `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#t${tokenIdx}_contracts')">Remove</button>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="t${tokenIdx}_contract_chain_${c}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Contract Address</label>
+                            <input type="text" name="t${tokenIdx}_contract_address_${c}" placeholder="0x1234567890abcdef...">
+                        </div>
+                    </div>
+                </div>`);
+        }
+
+        function addMultiInternal(tokenIdx) {
+            const c = multiInternalCounts[tokenIdx]++;
+            const container = document.getElementById(`t${tokenIdx}_internalAddresses`);
+            container.insertAdjacentHTML('beforeend', `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#t${tokenIdx}_internalAddresses')">Remove</button>
+                    <div class="triple-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="t${tokenIdx}_internal_chain_${c}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="t${tokenIdx}_internal_address_${c}" placeholder="0xabc123...">
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" name="t${tokenIdx}_internal_label_${c}" placeholder="e.g., Treasury">
+                        </div>
+                    </div>
+                </div>`);
+        }
+
+        // ── Single-mode dynamic fields (unchanged) ────────────────────────────
+        function addContract() {
+            const container = document.getElementById('contracts');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#contracts')">Remove</button>
+                    <div class="inline-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="contract_chain_${contractCount}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Contract Address</label>
+                            <input type="text" name="contract_address_${contractCount}" placeholder="0x1234567890abcdef...">
+                        </div>
+                    </div>
+                </div>`;
+            container.insertAdjacentHTML('beforeend', html);
+            contractCount++;
+        }
+
+        function addInternalAddress() {
+            const container = document.getElementById('internalAddresses');
+            const html = `
+                <div class="resource-item">
+                    <button type="button" class="remove-btn" onclick="removeItem(this, '#internalAddresses')">Remove</button>
+                    <div class="triple-fields">
+                        <div class="form-group">
+                            <label>Chain</label>
+                            <input type="text" name="internal_chain_${internalCount}" placeholder="e.g., ethereum">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="internal_address_${internalCount}" placeholder="0xabc123...">
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input type="text" name="internal_label_${internalCount}" placeholder="e.g., Treasury">
+                        </div>
+                    </div>
+                </div>`;
+            container.insertAdjacentHTML('beforeend', html);
+            internalCount++;
+        }
+
+        function removeItem(btn, containerSelector) {
+            const items = document.querySelectorAll(`${containerSelector} .resource-item`);
+            if (items.length > 1) {
+                btn.parentElement.remove();
+            }
+        }
+
+        // ── Alert ─────────────────────────────────────────────────────────────
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type} show`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (type === 'success') {
+                setTimeout(() => { alert.className = 'alert'; }, 5000);
+            }
+        }
+
+        // ── Collect single-token data from FormData ───────────────────────────
+        function collectSingleToken(fd) {
+            const data = {};
+            data.tokenName = fd.get('tokenName');
+            data.ticker = (fd.get('ticker') || '').toUpperCase();
+            data.logo = fd.get('logo');
+            data.website = fd.get('website');
+            data.twitter = fd.get('twitter');
+            data.telegram = fd.get('telegram');
+
+            data.blockchain = {
+                primaryChain: fd.get('primaryChain'),
+                allChains: fd.get('allChains'),
+                contracts: [],
+                internalAddresses: [],
+            };
+
+            for (let i = 0; i < contractCount; i++) {
+                const chain = fd.get(`contract_chain_${i}`);
+                const address = fd.get(`contract_address_${i}`);
+                if (chain || address) {
+                    data.blockchain.contracts.push({ chain: chain || '', address: address || '' });
+                }
+            }
+
+            for (let i = 0; i < internalCount; i++) {
+                const chain = fd.get(`internal_chain_${i}`);
+                const address = fd.get(`internal_address_${i}`);
+                const label = fd.get(`internal_label_${i}`);
+                if (chain || address) {
+                    data.blockchain.internalAddresses.push({
+                        chain: chain || '', address: address || '', label: label || '',
+                    });
+                }
+            }
+
+            data.category = fd.get('category');
+            data.assetClass = fd.get('assetClass');
+            data.assetGroup = fd.get('assetGroup');
+
+            data.coingeckoId = fd.get('coingeckoId');
+            data.issuer = fd.get('issuer');
+            data.attestation = fd.get('attestation');
+
+            data.exchange = {
+                cexListed: fd.get('cexListed'),
+                cexDetails: fd.get('cexDetails'),
+                kycToMint: fd.get('kycToMint'),
+                kycWhitelist: fd.get('kycWhitelist'),
+            };
+
+            data.custody = {
+                transferable: fd.get('transferable'),
+                selfCustody: fd.get('selfCustody'),
+            };
+
+            data.description = fd.get('description');
+            data.documentationLink = fd.get('documentationLink');
+            data.contactEmail = fd.get('contactEmail');
+            data.redemption = fd.get('redemption');
+            data.redemptionProcess = fd.get('redemptionProcess');
+
+            return data;
+        }
+
+        // ── Collect one token entry from multi-mode ───────────────────────────
+        function collectMultiToken(fd, idx, sharedIssuer, sharedDefaults) {
+            const p = `t${idx}_`;
+            const data = {};
+
+            data.tokenName = fd.get(p + 'tokenName');
+            data.ticker = (fd.get(p + 'ticker') || '').toUpperCase();
+            data.logo = fd.get(p + 'logo');
+            data.website = sharedIssuer.website;
+            data.twitter = sharedIssuer.twitter;
+            data.telegram = sharedIssuer.telegram;
+
+            data.blockchain = {
+                primaryChain: fd.get(p + 'primaryChain'),
+                allChains: fd.get(p + 'allChains'),
+                contracts: [],
+                internalAddresses: [],
+            };
+
+            const cc = multiContractCounts[idx] || 1;
+            for (let i = 0; i < cc; i++) {
+                const chain = fd.get(`${p}contract_chain_${i}`);
+                const address = fd.get(`${p}contract_address_${i}`);
+                if (chain || address) {
+                    data.blockchain.contracts.push({ chain: chain || '', address: address || '' });
+                }
+            }
+
+            const ic = multiInternalCounts[idx] || 1;
+            for (let i = 0; i < ic; i++) {
+                const chain = fd.get(`${p}internal_chain_${i}`);
+                const address = fd.get(`${p}internal_address_${i}`);
+                const label = fd.get(`${p}internal_label_${i}`);
+                if (chain || address) {
+                    data.blockchain.internalAddresses.push({
+                        chain: chain || '', address: address || '', label: label || '',
+                    });
+                }
+            }
+
+            // Per-token overrides fall back to shared defaults
+            data.category = fd.get(p + 'category') || sharedDefaults.category;
+            data.assetClass = fd.get(p + 'assetClass') || sharedDefaults.assetClass;
+            data.assetGroup = fd.get(p + 'assetGroup') || sharedDefaults.assetGroup;
+
+            data.coingeckoId = fd.get(p + 'coingeckoId');
+            data.issuer = sharedIssuer.issuer;
+            data.attestation = fd.get(p + 'attestation') || sharedDefaults.attestation;
+
+            data.exchange = {
+                cexListed: sharedDefaults.cexListed,
+                cexDetails: '',
+                kycToMint: sharedDefaults.kycToMint,
+                kycWhitelist: sharedDefaults.kycWhitelist,
+            };
+
+            data.custody = {
+                transferable: sharedDefaults.transferable,
+                selfCustody: sharedDefaults.selfCustody,
+            };
+
+            data.description = fd.get(p + 'description');
+            data.documentationLink = fd.get(p + 'documentationLink');
+            data.contactEmail = sharedIssuer.contactEmail;
+            data.redemption = fd.get(p + 'redemption') || sharedDefaults.redemption;
+            data.redemptionProcess = fd.get(p + 'redemptionProcess');
+
+            return data;
+        }
+
+        // ── Form submission ───────────────────────────────────────────────────
+        document.getElementById('rwaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (isSubmitting) return;
+            isSubmitting = true;
+
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const fd = new FormData(form);
+
+            try {
+                if (viewMode === 'single') {
+                    const data = collectSingleToken(fd);
+                    const res = await fetch('/rwa-submission/api/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+                    const result = await res.json();
+                    if (res.ok) {
+                        showAlert('Thank you! Your RWA token submission has been received. Our team will review it shortly.', 'success');
+                    } else {
+                        showAlert(result.error || 'Submission failed. Please try again.', 'error');
+                    }
+                } else {
+                    // Multi-token mode: shared issuer info
+                    const sharedIssuer = {
+                        issuer: fd.get('multi_issuer'),
+                        website: fd.get('multi_website'),
+                        twitter: fd.get('multi_twitter'),
+                        telegram: fd.get('multi_telegram'),
+                        contactEmail: fd.get('multi_contactEmail'),
+                    };
+
+                    if (!sharedIssuer.issuer) {
+                        showAlert('Issuer name is required.', 'error');
+                        return;
+                    }
+
+                    const sharedDefaults = {
+                        category: fd.get('multi_category'),
+                        assetClass: fd.get('multi_assetClass'),
+                        assetGroup: fd.get('multi_assetGroup'),
+                        attestation: fd.get('multi_attestation'),
+                        cexListed: fd.get('multi_cexListed'),
+                        kycToMint: fd.get('multi_kycToMint'),
+                        kycWhitelist: fd.get('multi_kycWhitelist'),
+                        transferable: fd.get('multi_transferable'),
+                        selfCustody: fd.get('multi_selfCustody'),
+                        redemption: fd.get('multi_redemption'),
+                    };
+
+                    if (!sharedDefaults.category || !sharedDefaults.assetClass || !sharedDefaults.assetGroup) {
+                        showAlert('Category, Asset Class, and Asset Group are required in the shared defaults.', 'error');
+                        return;
+                    }
+
+                    // Collect all visible token entries
+                    const entries = document.querySelectorAll('#tokenEntries .token-entry-compact');
+                    if (entries.length === 0) {
+                        showAlert('Please add at least one token.', 'error');
+                        return;
+                    }
+
+                    const tokens = [];
+                    for (const entry of entries) {
+                        const idx = parseInt(entry.id.split('_')[1]);
+                        tokens.push(collectMultiToken(fd, idx, sharedIssuer, sharedDefaults));
+                    }
+
+                    // Validate each token has name + ticker
+                    for (let i = 0; i < tokens.length; i++) {
+                        if (!tokens[i].tokenName || !tokens[i].ticker) {
+                            showAlert(`Token #${i + 1}: Token Name and Ticker are required.`, 'error');
+                            return;
+                        }
+                    }
+
+                    // Submit all tokens in a single batch request
+                    const res = await fetch('/rwa-submission/api/submit-batch', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ tokens }),
+                    });
+                    const result = await res.json();
+                    if (res.ok) {
+                        showAlert(`All ${tokens.length} token(s) submitted successfully! Our team will review them shortly.`, 'success');
+                    } else {
+                        showAlert(result.error || 'Submission failed. Please try again.', 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Submit error:', error);
+                showAlert('Network error. Please check your connection and try again.', 'error');
+            } finally {
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit RWA Token Information';
+            }
+        });
+    </script>
+</body>
+</html>

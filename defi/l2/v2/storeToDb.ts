@@ -98,8 +98,20 @@ export async function fetchHistoricalFromDB(
     if (cached && Array.isArray(cached) && cached.length > 0) return cached;
   }
 
-  // fallback to DB for cache misses, raw, or breakdown queries
-  return fetchHistoricalFromDBDirect(chain, isRaw, breakdown);
+  const result = await fetchHistoricalFromDBDirect(chain, isRaw, breakdown);
+
+  // Warm the cache on read-path misses so subsequent requests don't re-hit the DB.
+  // Totals-only: raw/breakdown responses bypass the cache and aren't stored.
+  if (!isRaw && !breakdown && Array.isArray(result) && result.length > 0) {
+    try {
+      if (chain) await storeChainHistory(chain, result);
+      else await storeAllChainsHistory(result);
+    } catch (e: any) {
+      console.error("cache warm failed:", e?.message);
+    }
+  }
+
+  return result;
 }
 
 async function fetchHistoricalFromDBDirect(
@@ -153,6 +165,7 @@ async function fetchHistoricalFromDBDirect(
             totalsEntry.data[section] = d[chain][section].total;
           });
         } else {
+          if (!d[c]) return;
           const readableChain = getChainDisplayName(c, true);
           totalsEntry.data[readableChain] = {};
           Object.keys(d[c]).map((section) => {
@@ -167,7 +180,7 @@ async function fetchHistoricalFromDBDirect(
     return totalsData;
   }
 
-  const symbolMap: { [key: string]: string } = await getR2JSONString("chainAssetsSymbolMap");
+  const symbolMap: { [key: string]: string } = (await getR2JSONString("chainAssetsSymbolMap")) ?? {};
 
   const symbolData: any[] = [];
   data.map((d: any) => {
@@ -177,13 +190,14 @@ async function fetchHistoricalFromDBDirect(
       if (chain) {
         if (!d[chain]) return;
         Object.keys(d[chain]).map((section) => {
-          symbolEntry.data[section] = { total: d[c][section].total, breakdown: {} };
-          Object.keys(d[c][section].breakdown ?? {}).forEach((asset: string) => {
+          symbolEntry.data[section] = { total: d[chain][section].total, breakdown: {} };
+          Object.keys(d[chain][section].breakdown ?? {}).forEach((asset: string) => {
             if (!symbolMap[asset]) return;
-            symbolEntry.data[section].breakdown[symbolMap[asset]] = d[c][section].breakdown[asset];
+            symbolEntry.data[section].breakdown[symbolMap[asset]] = d[chain][section].breakdown[asset];
           });
         });
       } else {
+        if (!d[c]) return;
         const readableChain = getChainDisplayName(c, true);
         symbolEntry.data[readableChain] = {};
         Object.keys(d[c]).map((section) => {

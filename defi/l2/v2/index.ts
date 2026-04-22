@@ -21,7 +21,7 @@ import { additional, excluded } from "../adapters/manual";
 import { storeHistoricalToDB } from "./storeToDb";
 import { stablecoins } from "../../src/getProtocols";
 import { metadata as rwaMetadata } from "../../src/rwa/protocols";
-import { verifyChanges } from "../verifyChanges";
+import { verifyChangesV2 } from "./verifyChanges";
 import { initializePriceQueryFilter, whitelistedTokenSetRawPids } from "../../src/storeTvlInterval/computeTVL";
 import { getClosestProtocolItem, getLatestProtocolItems, initializeTVLCacheDB } from "../../src/api2/db";
 import { hourlyRawTokensTvl } from "../../src/utils/getLastRecord";
@@ -217,21 +217,26 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
   const sourceChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const protocolAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
   const destinationChainAmounts: { [chain: Chain]: { [token: string]: BigNumber } } = {};
+
   tvls.map(({ data, id }: any) => {
     if (!ids.includes(id)) return;
-    Object.keys(data).map((chain: string) => {
-      if (excludedTvlKeys.includes(chain)) return;
+    Object.keys(data).map((rawChain: string) => {
+      if (excludedTvlKeys.includes(rawChain)) return;
+      // Some canonical-bridge adapters (xion, noble, echelon_initia, inertia, ...)
+      // report their source chain in display case ("XION", "Noble"), which would
+      // never match our lowercase chain keys when we later look up sourceChainAmounts[chain].
+      const chain = rawChain.toLowerCase();
       if (!sourceChainAmounts[chain]) sourceChainAmounts[chain] = {};
-      Object.keys(data[chain]).map((token: string) => {
+      Object.keys(data[rawChain]).map((token: string) => {
         const key = normalizeKey(token);
         if (!sourceChainAmounts[chain][key]) sourceChainAmounts[chain][key] = zero;
-        sourceChainAmounts[chain][key] = sourceChainAmounts[chain][key].plus(data[chain][token]);
+        sourceChainAmounts[chain][key] = sourceChainAmounts[chain][key].plus(data[rawChain][token]);
 
         if (Object.keys(protocolBridgeIds).includes(id)) {
           const protocolSlug = protocolBridgeIds[id];
           if (!protocolAmounts[protocolSlug]) protocolAmounts[protocolSlug] = {};
           if (!protocolAmounts[protocolSlug][key]) protocolAmounts[protocolSlug][key] = zero;
-          protocolAmounts[protocolSlug][key] = protocolAmounts[protocolSlug][key].plus(data[chain][token]);
+          protocolAmounts[protocolSlug][key] = protocolAmounts[protocolSlug][key].plus(data[rawChain][token]);
           return;
         }
 
@@ -240,7 +245,7 @@ async function fetchOutgoingAmountsFromDB(timestamp: number): Promise<{
         if (!destinationChainAmounts[destinationChain]) destinationChainAmounts[destinationChain] = {};
         if (!destinationChainAmounts[destinationChain][key]) destinationChainAmounts[destinationChain][key] = zero;
         destinationChainAmounts[destinationChain][key] = destinationChainAmounts[destinationChain][key].plus(
-          data[chain][token]
+          data[rawChain][token]
         );
       });
     });
@@ -292,22 +297,45 @@ async function fetchExcludedAmounts(timestamp: number) {
   return excludedAmounts;
 }
 
+// The open endpoints (yields.llama.fi/lsdRates, stablecoins.llama.fi/stablecoins)
+// are paywalled for some hosts. Use the authenticated pro-api path when
+// INTERNAL_API_KEY is set — same base used throughout the rest of the codebase
+// (see src/rwa/index.ts, src/updateSearch.ts, etc.).
+function proApi(path: string, publicFallback: string): string {
+  const key = process.env.INTERNAL_API_KEY;
+  return key ? `https://pro-api.llama.fi/${key}/${path.replace(/^\//, "")}` : publicFallback;
+}
+
 // fetch stablecoin symbols
 async function fetchStablecoinSymbols() {
-  const { peggedAssets } = await cachedFetch({
-    key: "stablecoin-symbols",
-    endpoint: "https://stablecoins.llama.fi/stablecoins",
-  });
-  const symbols = peggedAssets.map((s: any) => s.symbol);
+  let symbols: string[] = [];
+  try {
+    const res: any = await cachedFetch({
+      key: "stablecoin-symbols",
+      endpoint: proApi("stablecoins/stablecoins", "https://stablecoins.llama.fi/stablecoins"),
+    });
+    if (Array.isArray(res?.peggedAssets)) symbols = res.peggedAssets.map((s: any) => s.symbol);
+    else console.warn("fetchStablecoinSymbols: unexpected response shape, falling back to hardcoded list");
+  } catch (e: any) {
+    console.warn("fetchStablecoinSymbols failed, falling back to hardcoded list:", e?.message);
+  }
   const allSymbols = [...new Set([...symbols, ...stablecoins].map((t) => t.toUpperCase()))];
   return allSymbols;
 }
 
 // fetch lst symbols
 async function fetchLstSymbols() {
-  const assets = await cachedFetch({ key: "lst-symbols", endpoint: "https://yields.llama.fi/lsdRates" });
-  const symbols = assets.map((s: any) => s.symbol.toUpperCase());
-  return symbols;
+  try {
+    const assets: any = await cachedFetch({
+      key: "lst-symbols",
+      endpoint: proApi("yields/lsdRates", "https://yields.llama.fi/lsdRates"),
+    });
+    if (Array.isArray(assets)) return assets.map((s: any) => s.symbol?.toUpperCase()).filter(Boolean);
+    console.warn("fetchLstSymbols: non-array response, skipping LST classification");
+  } catch (e: any) {
+    console.warn("fetchLstSymbols failed, skipping LST classification:", e?.message);
+  }
+  return [] as string[];
 }
 
 // fetch rwa symbols
@@ -365,7 +393,7 @@ const newChainAssets = () => ({
 });
 
 // main function
-export async function storeChainAssetsV2(override: boolean = false) {
+export async function storeChainAssetsV2(override: boolean = false, dryRun: boolean = false) {
   const timestamp = 0;
   await fetchAllTokens();
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);
@@ -375,6 +403,43 @@ export async function storeChainAssetsV2(override: boolean = false) {
   const stablecoinSymbols = await fetchStablecoinSymbols();
   const lstSymbols = await fetchLstSymbols();
   const rwaSymbols = fetchRwaSymbols();
+
+  // Bridge / protocol-bridge adapters (noble, xion, echelon_initia, inertia, ...)
+  // emit tokens keyed by CoinGecko slug ("usd-coin", "xion-2", "celestia", "initia")
+  // or sometimes by bare symbol ("osmo", "axl"). `fetchNativeAndMcaps` only prices
+  // tokens it saw on per-chain native lists, so keys like `coingecko:usd-coin`
+  // are absent from allPrices. Collect everything the bridge-fetch step produced,
+  // pick out whatever allPrices is missing, and resolve it in one batch.
+  const allBridgeKeys = new Set<string>();
+  Object.values(destinationChainAmounts).forEach((m) => Object.keys(m).forEach((k) => allBridgeKeys.add(k)));
+  Object.values(protocolAmounts).forEach((m) => Object.keys(m).forEach((k) => allBridgeKeys.add(k)));
+  const missingBridgeKeys = [...allBridgeKeys].filter((k) => !allPrices[k]);
+  if (missingBridgeKeys.length) {
+    console.log(`[bridge-price-fill] resolving ${missingBridgeKeys.length} missing bridge/protocol keys via coins API`);
+    try {
+      const extra = await coins.getPrices(missingBridgeKeys, timestamp);
+      const got = Object.keys(extra).length;
+      console.log(`[bridge-price-fill]   resolved ${got}/${missingBridgeKeys.length}  (sample:`, Object.keys(extra).slice(0, 5), ")");
+      Object.keys(extra).forEach((k) => {
+        if (k.startsWith("coingecko:")) (extra[k] as any).decimals = 0; // match native-side convention
+        allPrices[k] = extra[k];
+      });
+    } catch (e: any) {
+      console.warn("[bridge-price-fill] failed:", e?.message);
+    }
+  }
+
+  // Some canonical-bridge adapters emit tokens keyed by uppercase symbol
+  // ("AXLUSDC", "ATOM"). normalizeKey turns those into "coingecko:axlusdc", which
+  // almost never matches a real coingecko id. Build a reverse symbol → pricing
+  // index from allPrices so those can still be resolved in the destination loop.
+  const symbolToPrice: { [symbol: string]: CoinsApiData } = {};
+  Object.values(allPrices).forEach((p) => {
+    const sym = p?.symbol?.toUpperCase();
+    if (!sym) return;
+    // Prefer the first resolution; symbol collisions are ambiguous by construction.
+    if (!symbolToPrice[sym]) symbolToPrice[sym] = p;
+  });
 
   // adjust native asset balances by excluded and outgoing amounts
   const nativeDataAfterDeductions: { [chain: Chain]: { [token: string]: BigNumber } } = {};
@@ -405,9 +470,23 @@ export async function storeChainAssetsV2(override: boolean = false) {
       const destinationChainAmount = destinationChainAmounts[chain];
       Object.keys(destinationChainAmount).map((token: string) => {
         const key = normalizeKey(token);
-        const coinData = allPrices[key];
+        let coinData = allPrices[key];
+        // When the adapter was symbol-keyed, `key` looks like "coingecko:axlusdc" but
+        // there is no such coingecko id. Fall back to a symbol reverse lookup.
+        // Symbol-keyed adapter output is also typically in whole tokens, not base
+        // units, so we must skip the `/ 10^decimals` step for these.
+        let isWholeTokenAmount = false;
+        if ((!coinData || !coinData.price) && key.startsWith("coingecko:")) {
+          const symbol = key.slice("coingecko:".length).toUpperCase();
+          const resolved = symbolToPrice[symbol];
+          if (resolved?.price) {
+            coinData = resolved;
+            isWholeTokenAmount = true;
+          }
+        }
         if (!coinData || !coinData.price) return;
-        const usdAmount = destinationChainAmount[token].times(coinData.price).div(BigNumber(10).pow(coinData.decimals));
+        const divisor = isWholeTokenAmount ? BigNumber(1) : BigNumber(10).pow(coinData.decimals);
+        const usdAmount = destinationChainAmount[token].times(coinData.price).div(divisor);
         nativeDataAfterDeductions[chain][key] = usdAmount;
       });
     }
@@ -492,8 +571,10 @@ export async function storeChainAssetsV2(override: boolean = false) {
     });
   });
 
-  // create symbol key data
-  const symbolMapPromise = storeR2JSONString("chainAssetsSymbolMap", JSON.stringify(symbolMap));
+  // create symbol key data — only actually issue the R2 write when not in dry-run mode
+  const symbolMapPromise = dryRun
+    ? Promise.resolve()
+    : storeR2JSONString("chainAssetsSymbolMap", JSON.stringify(symbolMap));
   [rawData, symbolData].map((allData) => {
     Object.keys(allData).map((chain: Chain) => {
       let totalTotal = zero;
@@ -531,7 +612,12 @@ export async function storeChainAssetsV2(override: boolean = false) {
     });
   });
 
-  if (!override) await verifyChanges(symbolData);
+  if (!override) await verifyChangesV2(symbolData);
+
+  if (dryRun) {
+    console.log("[dryRun] skipping prod writes (chainAssetsSymbolMap R2, chainassets2 DB, chainAssets2 R2)");
+    return { rawData, symbolData };
+  }
 
   await Promise.all([
     symbolMapPromise,

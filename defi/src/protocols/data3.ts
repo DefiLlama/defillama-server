@@ -13809,7 +13809,6 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "navi",
-        disableFromResponse: true // currently investigating a mismatch between the borrow interest fees from their api and dune  
       },
     }
   },

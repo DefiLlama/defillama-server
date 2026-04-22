@@ -181,7 +181,10 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       const r = await fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json())
       if (!r?.coins) console.log(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
       const coins = r?.coins ?? {}
-      for (const [PK, value] of Object.entries(coins)) priceCache[PK] = value
+      // Only cache current-price responses — historical prices would skew later "now" lookups.
+      if (timestamp === "now") {
+        for (const [PK, value] of Object.entries(coins)) priceCache[PK] = value
+      }
       return cachedTokenData.concat(Object.entries(coins).map(([PK, value]) => ({ ...(value as any), PK })))
     }
 
@@ -201,8 +204,11 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
         }).then((r) => r.json()).then(r => {
           if (!r.coins)
             console.log(`Invalid response from price API for keys ${body.coins.join(", ")}: ${JSON.stringify(r)}`)
-          for (const [PK, value] of Object.entries(r.coins)) {
-            priceCache[PK] = value
+          // Only cache current-price responses — historical prices would skew later "now" lookups.
+          if (timestamp === "now") {
+            for (const [PK, value] of Object.entries(r.coins)) {
+              priceCache[PK] = value
+            }
           }
           return Object.entries(r.coins).map(
             ([PK, value]) => ({

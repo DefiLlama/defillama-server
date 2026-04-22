@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 const LEGACY_BASE = "https://coins.llama.fi";
 
 function v4Base(): string | null {
@@ -35,6 +37,7 @@ export async function fetchMcaps(
       body: JSON.stringify({ coins }),
       headers: v4Headers(),
     });
+    if (!r.ok) throw new Error(`fetchMcaps v4: HTTP ${r.status}`);
     return r.json();
   }
   const url = opts.legacyApiKey
@@ -45,6 +48,7 @@ export async function fetchMcaps(
     body: JSON.stringify({ coins }),
     headers: { "Content-Type": "application/json" },
   });
+  if (!r.ok) throw new Error(`fetchMcaps legacy: HTTP ${r.status}`);
   return r.json();
 }
 
@@ -66,6 +70,7 @@ export async function fetchCurrentPrices(
       body: JSON.stringify({ coins }),
       headers: v4Headers(),
     });
+    if (!r.ok) throw new Error(`fetchCurrentPrices v4: HTTP ${r.status}`);
     return r.json();
   }
   const params: string[] = [];
@@ -73,6 +78,7 @@ export async function fetchCurrentPrices(
   if (opts.legacyApiKey) params.push(`apikey=${opts.legacyApiKey}`);
   const qs = params.length ? `?${params.join("&")}` : "";
   const r = await fetch(`${LEGACY_BASE}/prices/current/${coins.join(",")}${qs}`);
+  if (!r.ok) throw new Error(`fetchCurrentPrices legacy: HTTP ${r.status}`);
   return r.json();
 }
 

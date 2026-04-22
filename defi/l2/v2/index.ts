@@ -69,12 +69,20 @@ async function fetchNativeAndMcaps(timestamp: number): Promise<{
         try {
           const start = new Date().getTime();
 
+          const fetchChainTokensSafe = async (): Promise<string[]> => {
+            try {
+              return (await fetchTokensList(chain)).map((t) => t.address);
+            } catch (e) {
+              console.warn(`[L2 v2] fetchTokensList failed for ${chain}: ${(e as Error).message} — using empty list`);
+              return [];
+            }
+          };
           const storedTokens: string[] =
             chain == "cardano"
               ? await fetchAdaTokens()
               : [...chainsThatShouldNotBeLowerCased, ...chainsWithCaseSensitiveDataProviders].includes(chain)
               ? await fetchAllTokensFromDB(chain)
-              : (await fetchTokensList(chain)).map((t) => t.address);
+              : await fetchChainTokensSafe();
 
           const ownTokenCgid: string | undefined = ownTokens[chain]?.address.startsWith("coingecko:")
             ? ownTokens[chain].address

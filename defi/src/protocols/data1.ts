@@ -6763,8 +6763,16 @@ const data: Protocol[] = [
     module: "thorchain/index.js",
     twitter: "THORChain",
     dimensions: {
-      fees: "thorchain-dex",
-      dexs: "thorchain-dex"
+      fees: {
+        adapter: "thorchain-dex",
+        genuineSpikes: [["2026-04-21", "-"]]
+      },
+      dexs: {
+        adapter: "thorchain-dex",
+        genuineSpikes: [
+          ["2026-04-21", "Laundering by Kelp DAO hacker"] //0xF9802c5EB6b972Ba686aFa7CA615910Ea8310b85
+        ]
+      },
     },
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },

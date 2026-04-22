@@ -392,6 +392,7 @@ const data6: Protocol[] = [
     twitter: "TopStrikeIO",
     dimensions: {
       dexs: "topstrike",
+      fees: "topstrike",
     },
   },
   {

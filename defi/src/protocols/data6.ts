@@ -797,5 +797,43 @@ const data6: Protocol[] = [
       dexs: "ramsesx-arb-legacy",
     },
   },
+  {
+    id: "7745",
+    name: "YFarmer",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://yfarmer.xyz
+    description:
+      "YFarmer is a DeFi yield vault and risk curation protocol where users deposit USDC to access actively managed strategies.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yfarmer.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    module: "yfarmer/index.js",
+    twitter: null,
+    listedAt: 1776882319,
+  },
+  {
+    id: "7746",
+    name: "Altera Finance",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://altera.finance
+    description:
+      "Altera Vaults deploy capital into market-neutral, hedged, and structured-credit strategies operated by licensed fund managers.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/altera-finance.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Risk Curators",
+    chains: ["Ethereum"],
+    module: "altera-finance/index.js",
+    twitter: null,
+    listedAt: 1776882684,
+  },
 ];
 export default data6;

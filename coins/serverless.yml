@@ -139,6 +139,20 @@ functions:
       - httpApi:
           path: /coin/timestamps
           method: post
+  postCurrentCoinPrices:
+    handler: src/postCurrentCoins.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /pro/prices/current
+          method: post
+  postHistoricalCoinPrices:
+    handler: src/postHistoricalCoins.default
+    timeout: 60
+    events:
+      - httpApi:
+          path: /pro/prices/historical
+          method: post
   currentCoinPrices:
     handler: src/getCurrentCoins.default
     timeout: 60

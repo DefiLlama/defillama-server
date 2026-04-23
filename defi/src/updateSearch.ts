@@ -47,6 +47,18 @@ interface SearchResult {
   previousNames?: string[];
   nameVariants?: string[];
   keywords?: string[];
+  // Up to 5 single-value copies of `keywords`. Meilisearch's `exactness`
+  // ranking rule concatenates array attributes, so an array-valued `keywords`
+  // field can only ever produce `matchesStart` for a single-word query. By
+  // mirroring each keyword into its own scalar field at the top of
+  // `searchable-attributes`, a query matching that keyword yields
+  // `exactMatch` (score 1.0) and lets `r:desc` rank important pages above
+  // same-named entities.
+  alias1?: string;
+  alias2?: string;
+  alias3?: string;
+  alias4?: string;
+  alias5?: string;
   r?: number;
   v: number;
 }
@@ -58,6 +70,7 @@ interface TokenSearchData {
   route: string;
   is_yields: boolean;
   mcap_rank?: number;
+  logo?: string;
 }
 
 const SEARCH_RANK = {
@@ -75,6 +88,17 @@ function getPageSearchKeywords(keywords?: string[]): string[] | undefined {
   return cleaned.length > 0 ? cleaned : undefined;
 }
 
+function getPageSearchAliases(
+  keywords: string[] | undefined
+): Pick<SearchResult, "alias1" | "alias2" | "alias3" | "alias4" | "alias5"> {
+  if (!keywords?.length) return {};
+  const aliases: Record<string, string> = {};
+  for (let i = 0; i < Math.min(keywords.length, 5); i++) {
+    aliases[`alias${i + 1}`] = keywords[i];
+  }
+  return aliases;
+}
+
 function mergeKeywords(...keywordSets: Array<string[] | undefined>): string[] | undefined {
   const merged = Array.from(
     new Set(keywordSets.flatMap((keywords) => keywords ?? []).map((keyword) => keyword.trim()))
@@ -86,18 +110,36 @@ function dedupeFrontendPageResults(results: SearchResult[]): SearchResult[] {
   const deduped = new Map<string, SearchResult>();
 
   for (const result of results) {
-    const dedupeKey = `${result.route}::${result.name.trim().toLowerCase()}`;
+    const dedupeKey = result.route;
     const existing = deduped.get(dedupeKey);
     if (!existing) {
       deduped.set(dedupeKey, result);
       continue;
     }
 
+    // Two frontend pages resolve to the same route (e.g. sidebar "Stablecoins"
+    // and metric "Stablecoins by Market Cap" both point to `/stablecoins`).
+    // Collapse into one doc: keep the shorter/cleaner name for the UI, drop
+    // the longer one into `nameVariants` so it still matches at search time,
+    // and union `keywords` + recompute aliases.
+    const sameName = existing.name.trim().toLowerCase() === result.name.trim().toLowerCase();
+    const [primary, secondary] =
+      result.name.length < existing.name.length ? [result, existing] : [existing, result];
+
+    const nameVariants = sameName
+      ? mergeKeywords(existing.nameVariants, result.nameVariants)
+      : mergeKeywords(existing.nameVariants, result.nameVariants, [secondary.name]);
+    const previousNames = mergeKeywords(existing.previousNames, result.previousNames);
     const keywords = mergeKeywords(existing.keywords, result.keywords);
 
     deduped.set(dedupeKey, {
-      ...existing,
+      ...primary,
       ...(keywords ? { keywords } : {}),
+      ...(previousNames ? { previousNames } : {}),
+      ...(nameVariants ? { nameVariants } : {}),
+      ...getPageSearchAliases(keywords),
+      r: Math.max(existing.r ?? 0, result.r ?? 0),
+      v: Math.max(existing.v ?? 0, result.v ?? 0),
     });
   }
 
@@ -330,10 +372,10 @@ const getProtocolSubSections = ({
     });
   }
 
-  return subSections.map((result) => ({
-    ...result,
-    v: tastyMetrics[result.route] ?? 0,
-    r: SEARCH_RANK.subPage,
+  return subSections.map(({ symbol, ...rest }) => ({
+    ...rest,
+    v: tastyMetrics[rest.route] ?? 0,
+    r: rest.r === SEARCH_RANK.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.subPage,
   }));
 };
 
@@ -967,7 +1009,11 @@ async function generateSearchList() {
     }
 
     subChains.push(
-      ...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: SEARCH_RANK.subPage }))
+      ...subSections.map(({ symbol, ...rest }) => ({
+        ...rest,
+        v: tastyMetrics[rest.route] ?? 0,
+        r: SEARCH_RANK.subPage,
+      }))
     );
   }
 
@@ -1036,8 +1082,6 @@ async function generateSearchList() {
     });
   }
 
-  console.log(frontendPages.Metrics.find(i => i.name === 'Stablecoins by Market Cap'), 'debug data')
-
   let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => {
     const keywords = getPageSearchKeywords(i.searchKeywords);
     return {
@@ -1045,6 +1089,7 @@ async function generateSearchList() {
       name: i.name,
       route: i.route,
       ...(keywords ? { keywords } : {}),
+      ...getPageSearchAliases(keywords),
       r: SEARCH_RANK.navPage,
       v: tastyMetrics[i.route] ?? 0,
       type: "Metric",
@@ -1058,6 +1103,7 @@ async function generateSearchList() {
       name: t.name,
       route: t.route,
       ...(keywords ? { keywords } : {}),
+      ...getPageSearchAliases(keywords),
       r: SEARCH_RANK.navPage,
       v: tastyMetrics[t.route] ?? 0,
       type: "Tool",
@@ -1074,6 +1120,7 @@ async function generateSearchList() {
         name: page.name,
         route: page.route,
         ...(keywords ? { keywords } : {}),
+        ...getPageSearchAliases(keywords),
         r: SEARCH_RANK.navPage,
         v: tastyMetrics[page.route] ?? 0,
         type: "Others",
@@ -1106,6 +1153,7 @@ async function generateSearchList() {
       id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token`,
       name: coin.symbol,
       route: `/token/${encodeURIComponent(coin.symbol)}`,
+      ...(coin.logo ? { logo: coin.logo } : {}),
       mcapRank: coin.mcap_rank ?? 0,
       r: SEARCH_RANK.subPage,
       v: tastyMetrics[`/token/${coin.symbol}`] ?? 0,

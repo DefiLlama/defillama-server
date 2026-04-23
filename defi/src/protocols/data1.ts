@@ -876,6 +876,7 @@ const data: Protocol[] = [
     ],
     forkedFromIds: ["3"],
     github: ["SwerveFinance"], //check
+    deadUrl: true
   },
   {
     id: "143",
@@ -2753,7 +2754,8 @@ const data: Protocol[] = [
     parentProtocol: "parent#idex",
     dimensions: {
       dexs: "idex-classic"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "231",
@@ -4711,6 +4713,7 @@ const data: Protocol[] = [
     module: "ram.js",
     twitter: null,
     forkedFromIds: ["114"],
+    deadUrl: true,
   },
   {
     id: "322",
@@ -6763,8 +6766,16 @@ const data: Protocol[] = [
     module: "thorchain/index.js",
     twitter: "THORChain",
     dimensions: {
-      fees: "thorchain-dex",
-      dexs: "thorchain-dex"
+      fees: {
+        adapter: "thorchain-dex",
+        genuineSpikes: [["2026-04-21", "-"]]
+      },
+      dexs: {
+        adapter: "thorchain-dex",
+        genuineSpikes: [
+          ["2026-04-21", "Laundering by Kelp DAO hacker"] //0xF9802c5EB6b972Ba686aFa7CA615910Ea8310b85
+        ]
+      },
     },
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },
@@ -9373,6 +9384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "shadecash/index.js",
     twitter: "ShadeCash_",
     forkedFromIds: ["148"],
+    deadUrl: true
   },
   {
     id: "530",
@@ -11067,6 +11079,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "rocketswap.js",
     twitter: "RSwapOfficial",
     forkedFromIds: ["2197"],
+    deadUrl: true,
   },
   {
     id: "607",
@@ -15353,6 +15366,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Pureswap1",
     forkedFromIds: ["2197"],
     listedAt: 1636441951,
+    deadUrl: true,
   },
   {
     id: "816",
@@ -16234,6 +16248,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Fortune_DAO",
     forkedFromIds: ["340"],
     listedAt: 1637266964,
+    deadUrl: true,
   },
   {
     id: "857",
@@ -17558,6 +17573,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637892027,
     github: ["Pacoca-io"],
+    deadUrl: true,
   },
   {
     id: "918",
@@ -18438,6 +18454,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EsterFinance",
     listedAt: 1638458112,
     github: ["esterfinance"],
+    deadUrl: true,
   },
   {
     id: "959",
@@ -19388,7 +19405,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639116787,
     dimensions: {
       dexs: "yokaiswap"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1003",

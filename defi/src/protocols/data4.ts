@@ -4094,7 +4094,8 @@ const data4: Protocol[] = [
     listedAt: 1738852769,
     dimensions: {
       dexs: "penumbra-dex"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5740",
@@ -6058,13 +6059,13 @@ const data4: Protocol[] = [
     symbol: "-",
     url: "https://hermetica.fi",
     description: `Hermetica is a synthetic dollar protocol built on Bitcoin.`,
-    chain: "Bitcoin",
+    chain: "Stacks",
     logo: `${baseIconsUrl}/hermetica-usdh.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
     category: "Basis Trading",
-    chains: ["Bitcoin","Stacks"],
+    chains: ["Stacks"],
     module: "hermetica/index.js",
     twitter: "HermeticaFi",
     audit_links: ["https://docs.hermetica.fi/usdh/audits"],
@@ -7207,6 +7208,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["376"],
     twitter: "MatrixAIOnSonic",
     listedAt: 1741358231,
+    deadUrl: true,
   },
   {
     id: "5873",
@@ -8153,7 +8155,8 @@ const data4: Protocol[] = [
     listedAt: 1742218445,
     dimensions: {
       fees: "chedda-finance"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5913",
@@ -8553,7 +8556,8 @@ const data4: Protocol[] = [
     twitter: "getHemiNames",
     dimensions: {
       fees: "getHemiNames"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "5930",
@@ -9639,6 +9643,7 @@ const data4: Protocol[] = [
     module: "spindash/index.js",
     twitter: "spindash_sonic",
     listedAt: 1743456601,
+    deadUrl: true,
   },
   {
     id: "5977",
@@ -11812,6 +11817,7 @@ const data4: Protocol[] = [
     oraclesBreakdown: [{ name: "Pyth", type: "Primary", proof: [] }], // https://github.com/DefiLlama/DefiLlama-Adapters/pull/14315
     audit_links: ["https://github.com/arche-labs/assets/blob/main/audits/Arche%20Protocol%20Audit%20Report.pdf"],
     listedAt: 1745249658,
+    deadUrl: true
   },
   {
     id: "6074",
@@ -12281,6 +12287,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "lifiprotocol",
     audit_links: ["https://docs.li.fi/smart-contracts/audits"],
+    parentProtocol: "parent#li.fi",
     dimensions: {
       fees: "lifi",
       "bridge-aggregators": "lifi",
@@ -19075,6 +19082,7 @@ const data4: Protocol[] = [
     module: "hyperiondex/index.js",
     twitter: null,
     listedAt: 1751458815,
+    deadUrl: true,
   },
   {
     id: "6384",
@@ -24974,6 +24982,7 @@ const data4: Protocol[] = [
     twitter: "amberfi_io",
     github: ["Amber-Finance"],
     listedAt: 1756753051,
+    deadUrl: true,
   },
   {
     id: "6646",
@@ -24993,7 +25002,8 @@ const data4: Protocol[] = [
     twitter: "MintiqMarket",
     dimensions: {
       dexs: "mintiq-market"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "6647",
@@ -28648,6 +28658,7 @@ const data4: Protocol[] = [
     forkedFromIds: ["2197"],
     twitter: "SwapX009",
     listedAt: 1759774769,
+    deadUrl: true,
   },
   {
     id: "6813",

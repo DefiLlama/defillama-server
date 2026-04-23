@@ -646,6 +646,9 @@ export const chainCoingeckoIds = {
     cmcId: "5034",
     twitter: "kusamanetwork",
     url: "https://kusama.network/",
+    dimensions: {
+      fees: "kusama",
+    },
   },
   "Shiden": {
     geckoId: "shiden",
@@ -994,6 +997,9 @@ export const chainCoingeckoIds = {
     github: ["paritytech"],
     twitter: "Polkadot",
     url: "https://polkadot.network/",
+    dimensions: {
+      fees: "polkadot",
+    },
   },
   "CosmosHub": {
     geckoId: "cosmos",
@@ -3793,6 +3799,7 @@ export const chainCoingeckoIds = {
     dimensions: {
       fees: "xchain",
     },
+    deadUrl: true,
   },
   "Zircuit": {
     geckoId: "zircuit",
@@ -4408,6 +4415,7 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
     twitter: "penumbrazone",
     url: "https://penumbra.zone/",
+    deadUrl: true,
   },
   "Berachain": {
     geckoId: "berachain-bera",
@@ -4681,6 +4689,9 @@ export const chainCoingeckoIds = {
     twitter: "peaq",
     url: "https://www.peaq.xyz/",
     chainId: 3338,
+    dimensions: {
+      fees: "peaq",
+    },
   },
   "Moonchain": {
     geckoId: "mxc",
@@ -5792,6 +5803,9 @@ export const chainCoingeckoIds = {
     twitter: "tempo",
     url: "https://tempo.xyz/",
     chainId: 4217,
+    dimensions: {
+      fees: "tempo",
+    },
   },
   "Everclear": {
     geckoId: null,
@@ -5858,6 +5872,60 @@ export const chainCoingeckoIds = {
     twitter: "versatizecoin",
     url: "https://versatizecoin.com/",
     chainId: 3030,
+  },
+  "TxFlow": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    twitter: "TxFlow_L1",
+    url: "https://txflow.com/",
+  },
+  "Pendulum": {
+    geckoId: "pendulum-chain",
+    symbol: "PEN",
+    cmcId: "23476",
+    categories: ["EVM"],
+    twitter: "pendulum_chain",
+    url: "https://txflow.com/",
+    dimensions: {
+      fees: "pendulum",
+    },
+  },
+  "NeuroWeb": {
+    geckoId: "neurowebai",
+    symbol: "NEURO",
+    cmcId: "34681",
+    categories: ["EVM"],
+    twitter: "NeuroWebAI",
+    url: "https://txflow.com/",
+    dimensions: {
+      fees: "neuroweb",
+    },
+  },
+  "Mythos": {
+    geckoId: "mythos",
+    symbol: "MYTH",
+    cmcId: "22125",
+    twitter: "EnterTheMythos",
+    url: "https://mythos.foundation/",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"],
+    },
+    dimensions: {
+      fees: "mythos",
+    },
+  },
+  "Heima": {
+    geckoId: "heima",
+    symbol: "HEI",
+    cmcId: "35724",
+    twitter: "heimaNetwork",
+    url: "https://www.heima.network/",
+    dimensions: {
+      fees: "heima",
+    },
   },
 } as unknown as ChainCoinGekcoIds;
 
@@ -6106,6 +6174,11 @@ const chainLabelMap = {
   "edgex": "edgeX L1",
   "blockdag": "BlockDAG",
   "bcypher": "BCHyper",
+  "txflow": "TxFlow",
+  "pendulum": "Pendulum",
+  "neuroweb": "NeuroWeb",
+  "mythos": "Mythos",
+  "heima": "Heima",
 } as { [key: string]: string }
 
 // When we decide to change the display name of a chain, we add the mapping for the new name here

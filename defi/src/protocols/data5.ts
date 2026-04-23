@@ -2299,7 +2299,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-cl.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -2325,7 +2325,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-legacy.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -2359,6 +2359,7 @@ const data5: Protocol[] = [
     module: "0xRoulette/index.js",
     twitter: "0xRoulette",
     listedAt: 1763085777,
+    deadUrl: true,
   },
   {
     id: "6996",
@@ -3128,6 +3129,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-cl",
     },
+    deadUrl: true,
   },
   {
     id: "7027",
@@ -3151,6 +3153,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-legacy",
     },
+    deadUrl: true,
   },
   {
     id: "7028",
@@ -14420,6 +14423,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "lotto-run",
     },
+    deadUrl: true
   },
   {
     id: "7558",
@@ -16826,7 +16830,9 @@ const data5: Protocol[] = [
     ],
     github: ["bounce-tech"],
     dimensions: {
+      derivatives: "bounce-tech",
       fees: "bounce-tech",
+      "open-interest": "bounce-tech-oi",
     },
     listedAt: 1776709207
   },

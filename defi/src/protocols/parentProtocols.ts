@@ -3662,6 +3662,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "kumadotbid",
     github: ["idexio"],
+    deadUrl: true,
   },
   {
     id: "parent#cega",
@@ -3897,6 +3898,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ClayStack_HQ",
+    deadUrl: true,
   },
   {
     id: "parent#supswap",
@@ -4054,6 +4056,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "iLendorg",
+    deadUrl: true
   },
   {
     id: "parent#standard-protocol",
@@ -4303,6 +4306,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FrogSwapETH",
+    deadUrl: true,
   },
   {
     id: "parent#marginx",
@@ -6268,6 +6272,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mars_protocol",
     github: ["mars-protocol"],
+    deadUrl: true,
   },
   {
     id: "parent#metropolis-exchange",
@@ -8528,7 +8533,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "RamsesX",
     url: "https://www.ramses.xyz/",
     description:
-      "RamsesX is a ve(3,3) liquidity layer and exchange with legacy and concentrated liquidity deployments across Arbitrum and HyperEVM.",
+      "RamsesX is a ve(3,3) liquidity layer and exchange with legacy and concentrated liquidity deployments across Arbitrum, Polygon, and HyperEVM.",
     logo: `${baseIconsUrl}/ramsesx.png`,
     gecko_id: "ramses-exchange",
     cmcId: "23858",
@@ -8560,6 +8565,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SwyrlFi",
     github: ["SwyrlFi"],
+    deadUrl: true,
   },
   {
     id: "parent#kuru",
@@ -9464,6 +9470,17 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Paxos",
+  },
+  {
+    id: "parent#txflow",
+    name: "TxFlow",
+    url: "https://txflow.com/", 
+    description: "TxFlow is an open Layer 1 with multi-application ecosystem around TIP Liquidity Standards — where every Channel shares on-chain liquidity, settlement, and market data without bridging.",
+    logo: `${baseIconsUrl}/txflow.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TxFlow_L1",
   },
 ];
 

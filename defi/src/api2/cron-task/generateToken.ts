@@ -25,6 +25,12 @@ const getCoingeckoId = (tokenNk: string | undefined) => {
   return geckoId || null;
 };
 
+const getTokenLogo = (tokenNk: string | undefined) => {
+  const geckoId = getCoingeckoId(tokenNk);
+  if (!geckoId) return null;
+  return `https://token-icons.llamao.fi/icons/tokens/gecko/${geckoId}?w=48&h=48`;
+};
+
 const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProtocolId: string) => {
   if (!currentProtocolId) return true;
   if (!nextProtocolId) return false;
@@ -110,6 +116,7 @@ const createTokenRecord = (item: any, routeSource: string, extras: any = {}) => 
   route: `/token/${encodeURIComponent(routeSource === "symbol" ? item.symbol : item.name)}`,
   is_yields: Boolean(item.on_yields),
   mcap_rank: item.mcap_rank,
+  logo: getTokenLogo(item.token_nk),
   ...extras,
 });
 
@@ -184,6 +191,21 @@ async function generateToken() {
 
     bySlug[key] = createTokenRecord(item, routeSource, extras);
     seenKeys.add(key);
+  }
+
+
+  // we find duplicate symbols and remove the one that matches blacklist patterns in the key, this is to skip bridged/old versions of tokens that have same symbol as the original token
+  const symbolMap: Record<string, any> = {};
+  for (const [key, item] of Object.entries(bySlug)) {
+    const symbol = item.symbol.toLowerCase();
+    if (!symbolMap[symbol]) {
+      symbolMap[symbol] = key
+    } else {
+      if (/old|bridged|wormhole|\(|\[/i.test(key)) {
+        // console.log(`Skipping duplicate ${symbol} <- ${key}`);
+        delete bySlug[key];
+      }
+    }
   }
 
   await storeRouteData(OUTPUT_ROUTE, bySlug);

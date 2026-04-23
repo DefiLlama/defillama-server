@@ -912,7 +912,8 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: "plexus",
       aggregators: "plexus"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "2741",
@@ -1699,6 +1700,7 @@ const data3_0: Protocol[] = [
     module: "gmcash/index.js",
     twitter: "gmcashfi",
     listedAt: 1680775135,
+    deadUrl: true
   },
   /*
   {
@@ -4026,6 +4028,7 @@ const data3_0: Protocol[] = [
     twitter: "purplelabs_",
     audit_links: ["https://docs.purplebridge.link/audit-report/sooho"],
     listedAt: 1682356960,
+    deadUrl: true
   },
   {
     id: "2884",
@@ -4772,6 +4775,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["148"],
     twitter: "tonic_cash",
     listedAt: 1682949293,
+    deadUrl: true
   },
   {
     id: "2916",
@@ -6923,15 +6927,15 @@ const data3_0: Protocol[] = [
   },
   {
     id: "3014",
-    name: "Morpho V0 AaveV3",
-    previousNames: ["Morpho AaveV3"],
+    name: "Morpho Optimizer AaveV3",
+    previousNames: ["Morpho AaveV3", "Morpho V0 AaveV3"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://aavev3.morpho.org/",
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-aavev3.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-aavev3.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -10101,7 +10105,8 @@ const data3_0: Protocol[] = [
     listedAt: 1687807087,
     dimensions: {
       dexs: "litx"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "3160",
@@ -10840,6 +10845,7 @@ const data3_0: Protocol[] = [
     twitter: "Protectoratexyz",
     audit_links: ["https://gitbook.protectorate.xyz/protectorate-protocol/audit-report-v0.1"],
     listedAt: 1688430345,
+    deadUrl: true,
   },
   {
     id: "3193",
@@ -11765,6 +11771,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["205"],
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/July_2023/ColaToken.pdf"],
     listedAt: 1689589539,
+    deadUrl: true
   },
   {
     id: "3237",
@@ -13809,7 +13816,6 @@ const data3_0: Protocol[] = [
     dimensions: {
       fees: {
         adapter: "navi",
-        disableFromResponse: true // currently investigating a mismatch between the borrow interest fees from their api and dune  
       },
     }
   },
@@ -14018,6 +14024,7 @@ const data3_0: Protocol[] = [
     twitter: "ignore_fud",
     audit_links: ["https://ignore-fud.gitbook.io/ignore-fud/security-audit"],
     listedAt: 1691011919,
+    deadUrl: true,
   },
   {
     id: "3333",
@@ -14678,6 +14685,7 @@ const data3_0: Protocol[] = [
     github: ["aquarius-loan"],
     audit_links: ["https://docs.aquarius.loan/security/formal-verification"],
     listedAt: 1691521815,
+    deadUrl: true,
   },
   {
     id: "3361",
@@ -15098,6 +15106,7 @@ const data3_0: Protocol[] = [
     forkedFromIds: ["337"],
     oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: []} ],
     listedAt: 1691864027,
+    deadUrl: true
   },
   {
     id: "3379",
@@ -15815,6 +15824,7 @@ const data3_0: Protocol[] = [
     twitter: "PixelSwapFi",
     forkedFromIds: ["2197"],
     listedAt: 1692325568,
+    deadUrl: true,
   },
   {
     id: "3412",
@@ -15923,6 +15933,7 @@ const data3_0: Protocol[] = [
       "https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf",
     ],
     listedAt: 1692376612,
+    deadUrl: true
   },
   {
     id: "3418",
@@ -16079,6 +16090,7 @@ const data3_0: Protocol[] = [
       "https://techright.io/audit/raccoon/",
     ],
     listedAt: 1692626899,
+    deadUrl: true,
   },
   {
     id: "3425",
@@ -17426,6 +17438,7 @@ const data3_1: Protocol[] = [
     twitter: "stealthpadxyz",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/1-tba/audit.pdf"],
     listedAt: 1693952992,
+    deadUrl: true,
   },
   {
     id: "3488",
@@ -18237,13 +18250,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "3524",
-    name: "Jumper Exchange",
+    name: "Jumper (LI.FI powered)",
+    previousNames: ["Jumper Exchange"],
     address: null,
     symbol: "-",
     url: "https://jumper.xyz/",
     description: "Crypto's Everything Exchange",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/jumper-exchange.jpg`,
+    logo: `${baseIconsUrl}/jumper-(li.fi-powered).jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -20603,6 +20617,7 @@ const data3_1: Protocol[] = [
     twitter: "KeySeaXyz",
     github: ["KeySeaXyz"],
     listedAt: 1697345844,
+    deadUrl: true,
   },
   {
     id: "3629",
@@ -21657,6 +21672,7 @@ const data3_1: Protocol[] = [
     module: "scribeswap/index.js",
     twitter: "scribeswap",
     listedAt: 1698053529,
+    deadUrl: true
   },
   {
     id: "3677",
@@ -22528,6 +22544,8 @@ const data3_1: Protocol[] = [
       "https://4021155802-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLpn0ro0rTFSY7pLROElj%2Fuploads%2FJVxJuuhKySaFxumakZMo%2FRiveraMoney_Audit_Report.pdf?alt=media&token=50ad231b-91b1-49d5-86dc-d861eaf9fb30",
     ],
     listedAt: 1698679600,
+    deadUrl: true,
+    deprecated: true,
   },
   {
     id: "3718",
@@ -28628,6 +28646,7 @@ const data3_1: Protocol[] = [
     module: "cmdao-gameswap/index.js",
     twitter: null,
     listedAt: 1704733585,
+    deadUrl: true,
   },
   {
     id: "3997",
@@ -28673,7 +28692,8 @@ const data3_1: Protocol[] = [
     dimensions: {
       fees: "idex-v1",
       dexs: "idex-v1"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "3999",
@@ -29271,14 +29291,14 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4025",
-    name: "Morpho V1",
-    previousNames: ["Morpho Blue"],
+    name: "Morpho Blue",
+    previousNames: ["Morpho V1"],
     address: "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     symbol: "MORPHO",
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v1.png`,
+    logo: `${baseIconsUrl}/morpho-blue.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -29600,6 +29620,7 @@ const data3_1: Protocol[] = [
     module: "size/index.js",
     twitter: "SizeLending",
     listedAt: 1705488185,
+    deadUrl: true
   },
   {
     id: "4040",
@@ -30217,6 +30238,7 @@ const data3_1: Protocol[] = [
     twitter: "iLendorg",
     parentProtocol: "parent#ilend",
     listedAt: 1706186055,
+    deadUrl: true
   },
   {
     id: "4066",
@@ -31438,6 +31460,7 @@ const data3_1: Protocol[] = [
     audit_links: ["https://chainsecurity.com/security-audit/claystack-matic"],
     parentProtocol: "parent#claystack",
     listedAt: 1707314660,
+    deadUrl: true,
   },
   {
     id: "4115",
@@ -33108,6 +33131,7 @@ const data3_2: Protocol[] = [
     twitter: "iLendorg",
     parentProtocol: "parent#ilend",
     listedAt: 1709071101,
+    deadUrl: true
   },
   {
     id: "4186",
@@ -34433,6 +34457,7 @@ const data3_2: Protocol[] = [
     module: "alta-finance/index.js",
     twitter: "altafinance",
     listedAt: 1709675515,
+    deadUrl: true,
   },
   {
     id: "4244",
@@ -34946,6 +34971,7 @@ const data3_2: Protocol[] = [
     module: "minerPepe/index.js",
     twitter: "MinerPepe_Coin",
     listedAt: 1709918594,
+    deadUrl: true,
   },
   {
     id: "4268",
@@ -38034,6 +38060,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["2197"],
     parentProtocol: "parent#frogswap",
     listedAt: 1711808701,
+    deadUrl: true,
   },
   {
     id: "4409",
@@ -38236,6 +38263,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["205"],
     parentProtocol: "parent#frogswap",
     listedAt: 1712006251,
+    deadUrl: true,
   },
   {
     id: "4417",
@@ -39536,7 +39564,8 @@ const data3_2: Protocol[] = [
         message: "ShibaNova has some red flags and multiple users have reported concerns. Be careful.",
         level: "alert",
       }
-    ]
+    ],
+    deadUrl: true
   },
   {
     id: "4475",
@@ -39667,6 +39696,7 @@ const data3_2: Protocol[] = [
     module: "mage/index.js",
     twitter: "Mage_Finance",
     listedAt: 1713205353,
+    deadUrl: true
   },
   {
     id: "4481",
@@ -39787,6 +39817,7 @@ const data3_2: Protocol[] = [
       "https://2227259712-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdiKpPMQRzcvmKZPuBfGZ%2Fuploads%2Fxfzaty6B6Gtxx18McMTQ%2FOlive%20Audit%20Report.pdf?alt=media&token=0a360c6d-cf15-4c7b-b0e5-4762590078d9",
     ],
     listedAt: 1713438820,
+    deadUrl: true
   },
   {
     id: "4487",
@@ -41641,6 +41672,7 @@ const data3_2: Protocol[] = [
     module: "OreSwap/index.js",
     twitter: "oreswap",
     listedAt: 1715016813,
+    deadUrl: true
   },
   {
     id: "4570",
@@ -43456,6 +43488,7 @@ const data3_2: Protocol[] = [
     forkedFromIds: ["3365"],
     twitter: "btcyyexio",
     listedAt: 1716372223,
+    deadUrl: true
   },
   {
     id: "4654",
@@ -52818,7 +52851,8 @@ const data3_3: Protocol[] = [
     listedAt: 1724962213,
     dimensions: {
       derivatives: "kuma-v1"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5080",
@@ -53359,7 +53393,8 @@ const data3_3: Protocol[] = [
     chains: ["TON"],
     module: "TonStable/index.js",
     twitter: "TonStable",
-    listedAt: 1725543948
+    listedAt: 1725543948,
+    deadUrl: true
   },
   {
     id: "5105",
@@ -54018,7 +54053,8 @@ const data3_3: Protocol[] = [
     chains: ["Cronos zkEVM"],
     module: "microswap/index.js",
     twitter: "microswaporg",
-    listedAt: 1726130843
+    listedAt: 1726130843,
+    deadUrl: true
   },
   {
     id: "5137",
@@ -61908,7 +61944,8 @@ const data3_3: Protocol[] = [
       fees: "mars-perp",
       derivatives: "mars-perp",
       "open-interest": "mars-perp"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "5499",

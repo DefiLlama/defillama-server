@@ -133,6 +133,14 @@ const contracts: Record<string, TokenConfig[]> = {
       denomination: "BTC",
     },
   ],
+  optimism: [
+    {
+      name: "mRe7ETH",
+      token: "0xE7Ba07519dFA06e60059563F484d6090dedF21B3",
+      oracle: "0xcFfe26979e96B9E0454cC83aa03FC973C9Eb0E5E",
+      denomination: "ETH",
+    },
+  ],
   // base: [
   //   {
   //     name: "mTBILL",

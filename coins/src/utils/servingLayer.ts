@@ -98,9 +98,9 @@ export async function redisCurrentPrices(requestedCoins: string[]): Promise<Coin
       const price = priceMap.get(mapping.canonical_id);
       if (!price) return;
       response[coin] = {
-        decimals: mapping.decimals ?? undefined,
+        decimals: mapping.decimals == null ? undefined : Number(mapping.decimals),
         symbol: mapping.symbol ?? "",
-        price: parseFloat(price.price),
+        price: Number(price.price),
         timestamp: typeof price.timestamp === "string" ? Math.floor(new Date(price.timestamp).getTime() / 1000) : price.timestamp,
         confidence: price.confidence ?? undefined,
       };
@@ -153,9 +153,9 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
       const price = priceMap.get(mapping.canonical_id);
       if (!price) return;
       response[coin] = {
-        decimals: mapping.decimals ?? undefined,
+        decimals: mapping.decimals == null ? undefined : Number(mapping.decimals),
         symbol: mapping.symbol ?? "",
-        price: price.price,
+        price: Number(price.price),
         timestamp: typeof price.timestamp === "string" ? Math.floor(new Date(price.timestamp).getTime() / 1000) : price.timestamp,
         confidence: price.confidence ?? undefined,
       };

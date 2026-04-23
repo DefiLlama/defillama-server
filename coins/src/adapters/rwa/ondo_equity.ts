@@ -80,7 +80,7 @@ export async function ondo_equity(timestamp: number): Promise<Write[]> {
         writes,
         chain,
         address,
-        price,
+        Number(price),
         decimals,
         symbol,
         0,

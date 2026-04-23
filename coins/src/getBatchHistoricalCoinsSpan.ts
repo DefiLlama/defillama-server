@@ -69,7 +69,7 @@ async function fetchDBData(
               prices: [
                 {
                   timestamp: finalCoin.SK,
-                  price: finalCoin.price,
+                  price: Number(finalCoin.price),
                   confidence: coin.confidence,
                 },
               ],
@@ -77,7 +77,7 @@ async function fetchDBData(
           } else {
             response[coinName].prices.push({
               timestamp: finalCoin.SK,
-              price: finalCoin.price,
+              price: Number(finalCoin.price),
                 confidence: coin.confidence,
               });
             }

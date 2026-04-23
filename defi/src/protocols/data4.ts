@@ -934,7 +934,7 @@ const data4: Protocol[] = [
     id: "5599",
     name: "Grvt Bridge", // previous name GRVT
     address: null,
-    symbol: "-",
+    symbol: "GRVT",
     url: "https://grvt.io/?ref=WCDISXW",
     referralUrl: "https://grvt.io/?ref=WCDISXW",
     description: "Grvt is the preeminent DEX for onchain financial privacy that is powered by zero-knowledge technology, ensuring private, trustless, scalable and secure infrastructure",
@@ -6784,8 +6784,8 @@ const data4: Protocol[] = [
   {
     id: "5854",
     name: "Hemi",
-    address: null,
-    symbol: "-",
+    address: "0xeb964a1a6fab73b8c72a0d15c7337fa4804f484d",
+    symbol: "HEMI",
     url: "https://hemi.xyz/",
     description:
       "Hemi is a modular protocol for superior scaling, security, and interoperability, powered by Bitcoin and Ethereum",
@@ -7391,8 +7391,8 @@ const data4: Protocol[] = [
   {
     id: "5881",
     name: "hemiBTC",
-    address: null,
-    symbol: "-",
+    address: "0xeb964a1a6fab73b8c72a0d15c7337fa4804f484d",
+    symbol: "HEMI",
     url: "https://app.hemi.xyz/en/tunnel/",
     description: "Hemi's native BTC representation.",
     chain: "Bitcoin",
@@ -7568,8 +7568,8 @@ const data4: Protocol[] = [
   {
     id: "5889",
     name: "Hemi Staking",
-    address: null,
-    symbol: "-",
+    address: "0xeb964a1a6fab73b8c72a0d15c7337fa4804f484d",
+    symbol: "HEMI",
     url: "https://app.hemi.xyz/en/stake/dashboard/",
     description: "Stake your assets to earn rewards and boost your points",
     chain: "Hemi",
@@ -10428,8 +10428,8 @@ const data4: Protocol[] = [
   {
     id: "6011",
     name: "Fuel Staking",
-    address: null,
-    symbol: "-",
+    address: "fuel:0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82",
+    symbol: "FUEL",
     url: "https://app.fuel.network/staking/on-fuel",
     description: "Help secure the FUEL network by delegating your tokens to Fuel validators.",
     chain: "Fuel",
@@ -20350,7 +20350,7 @@ const data4: Protocol[] = [
     id: "6438",
     name: "Echelon Initia Bridge",
     address: null,
-    symbol: "-",
+    symbol: "ELON",
     url: "https://echelon.market/",
     description: "Echelon is a universal lending market connecting liquidity and supercharging yields on Move.",
     chain: "Echelon Chain",
@@ -27900,8 +27900,8 @@ const data4: Protocol[] = [
   {
     id: "6778",
     name: "PacaSwap Bridge",
-    address: null,
-    symbol: "-",
+    address: "pacaswap:DAG7X5idd4aLfp4XC6WQdG1eDfR3LGPVEwtUUB2W",
+    symbol: "SWAP",
     url: "https://pacaswap.com/dashboard",
     description: "Bridge for PacaSwap on Constellation",
     chain: "Constellation",
@@ -27919,8 +27919,8 @@ const data4: Protocol[] = [
   {
     id: "6779",
     name: "PacaSwap DEX",
-    address: null,
-    symbol: "-",
+    address: "pacaswap:DAG7X5idd4aLfp4XC6WQdG1eDfR3LGPVEwtUUB2W",
+    symbol: "SWAP",
     url: "https://pacaswap.com/dashboard",
     description: "PacaSwap is a decentralized exchange (DEX) on Constellation Network",
     chain: "Constellation",
@@ -28969,7 +28969,7 @@ const data4: Protocol[] = [
     id: "6826",
     name: "Grvt Perps",
     address: null,
-    symbol: "-",
+    symbol: "GRVT",
     url: "https://grvt.io/?ref=WCDISXW",
     referralUrl: "https://grvt.io/?ref=WCDISXW",
     description:

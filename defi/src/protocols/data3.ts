@@ -41173,8 +41173,8 @@ const data3_2: Protocol[] = [
     id: "4548",
     name: "Mezo Bridge",
     previousNames: ["Mezo Network"],
-    address: null,
-    symbol: "-",
+    address: "mezo:0x7b7c000000000000000000000000000000000001",
+    symbol: "MEZO",
     url: "https://mezo.org",
     description:
       "Mezo is the Bitcoin Economic Layer: a Bitcoin-first network with a dual staking model for rewards and validation.",
@@ -55323,8 +55323,8 @@ const data3_3: Protocol[] = [
   {
     id: "5194",
     name: "Corn Kernels",
-    address: null,
-    symbol: "-",
+    address: "corn:0x44f49ff0da2498bcb1d3dc7c0f999578f67fd8c6",
+    symbol: "CORN",
     url: "https://usecorn.com/",
     description:
       "Kernels are off-chain points that represent your share of the initial $CORN Community Airdrop",
@@ -56504,15 +56504,15 @@ const data3_3: Protocol[] = [
   {
     id: "5248",
     name: "Fuel Bridge",
-    address: null,
-    symbol: "-",
+    address: "fuel:0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82",
+    symbol: "FUEL",
     url: "https://app.fuel.network/bridge",
     description:
       "Bridge between Fuel Ignition and Ethereum",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fuel.jpg`,
     audits: "2",
-    gecko_id: null,
+    gecko_id: "fuel-network",
     cmcId: null,
     category: "Bridge",
     chains: ["Ethereum"],

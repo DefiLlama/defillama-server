@@ -13524,7 +13524,7 @@ const data2: Protocol[] = [
     description:
       "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-compoundv2.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-compoundv2.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -17403,7 +17403,7 @@ const data2: Protocol[] = [
     description:
       "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-aavev2.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-aavev2.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,

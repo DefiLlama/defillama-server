@@ -6935,7 +6935,7 @@ const data3_0: Protocol[] = [
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-aavev3.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-aavev3.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -29297,7 +29297,7 @@ const data3_1: Protocol[] = [
     url: "https://app.morpho.org",
     description: "Morpho Blue is a trustless and efficient lending primitive with permissionless market creation",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v1.png`,
+    logo: `${baseIconsUrl}/morpho-blue.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,

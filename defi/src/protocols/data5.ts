@@ -14175,6 +14175,13 @@ const data5: Protocol[] = [
     module: "mento-v3/index.js",
     twitter: "MentoLabs",
     parentProtocol: "parent#mento",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.mento.org/mento-v3?q=oracle#fixed-price-market-makers-fpmms-the-core-of-v3"]
+      }
+    ],
     listedAt: 1773583724,
     audit_links: [
       "https://www.chainsecurity.com/security-audit/mento-core-v3",

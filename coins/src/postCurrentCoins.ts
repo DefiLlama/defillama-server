@@ -8,15 +8,7 @@ const handler = async (event: any): Promise<IResponse> => {
 
   const response = await getCurrentCoins({ requestedCoins });
 
-
-  const date = new Date();
-  const minutes = date.getMinutes();
-  date.setMinutes(minutes + 5 - (minutes % 5));
-  date.setSeconds(20);
-  return successResponse({ coins: response, },
-    undefined,
-    { Expires: date.toUTCString(), },
-  );
+  return successResponse({ coins: response, });
 };
 
 export default wrap(handler);

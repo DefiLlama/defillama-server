@@ -11,7 +11,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const coinsObj: { [coin: string]: number[] } = body.coins;
   const response = await fetchDBData(coinsObj, searchWidth)
 
-  return successResponse({ coins: response, }, 3600);
+  return successResponse({ coins: response, });
 };
 
 export default wrap(handler);

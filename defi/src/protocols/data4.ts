@@ -12237,7 +12237,7 @@ const data4: Protocol[] = [
     url: "https://li.fi/",
     description: `A cross-chain liquidity aggregation protocol designed to simplify and optimize asset swaps and transfers across multiple blockchain networks`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/li.fi-bridge-aggregator.jpg`,
+    logo: `${baseIconsUrl}/li.fi.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -12287,6 +12287,7 @@ const data4: Protocol[] = [
     module: "dummy.js",
     twitter: "lifiprotocol",
     audit_links: ["https://docs.li.fi/smart-contracts/audits"],
+    parentProtocol: "parent#li.fi",
     dimensions: {
       fees: "lifi",
       "bridge-aggregators": "lifi",

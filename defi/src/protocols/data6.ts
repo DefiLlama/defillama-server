@@ -875,5 +875,28 @@ const data6: Protocol[] = [
     audit_links: ["https://github.com/shieldify-security/audits-portfolio/blob/main/reports/SpringX-Security-Review.pdf"],
     listedAt: 1776964034,
   },
+  {
+    id: "7749",
+    name: "Alchemix V3",
+    address: "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
+    symbol: "ALCX",
+    url: "https://alchemix.fi/",
+    description:
+      "Alchemix is a DeFi protocol that allows for the creation of synthetic tokens that represent the future yield of a deposit. It enables users to retrieve near instant tokenized value against temporary* deposits of stablecoins.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/alchemix-v3.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Ethereum", "Arbitrum", "Optimism"],
+    module: "alchemix-v3/index.js",
+    twitter: "AlchemixFi",
+    audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v3.pdf"],
+    parentProtocol: "parent#alchemix",
+    dimensions: {
+      fees: "alchemix"
+    }
+  },
 ];
 export default data6;

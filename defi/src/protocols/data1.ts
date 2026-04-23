@@ -2153,18 +2153,17 @@ const data: Protocol[] = [
   },
   {
     id: "204",
-    name: "Alchemix",
+    name: "Alchemix V2",
     address: "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
     symbol: "ALCX",
     url: "https://alchemix.fi/",
     description:
       "Alchemix is a DeFi protocol that allows for the creation of synthetic tokens that represent the future yield of a deposit. It enables users to retrieve near instant tokenized value against temporary* deposits of stablecoins.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/alchemix.jpg`,
+    logo: `${baseIconsUrl}/alchemix-v2.jpg`,
     audits: "2",
-    treasury: "alchemix.js",
-    gecko_id: "alchemix",
-    cmcId: "8613",
+    gecko_id: null,
+    cmcId: null,
     category: "Synthetics",
     chains: ["Ethereum", "Fantom"],
     module: "alchemix/index.js",
@@ -2172,9 +2171,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v2.pdf",
     ],
-    governanceID: ["snapshot:alchemixstakers.eth"],
-    stablecoins: ["alchemix-usd"],
-    github: ["alchemix-finance"],
+    parentProtocol: "parent#alchemix",
     dimensions: {
       fees: "alchemix"
     }

@@ -9482,6 +9482,21 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TxFlow_L1",
   },
+  {
+    id: "parent#alchemix",
+    name: "Alchemix",
+    url: "https://alchemix.fi/", 
+    description: "Alchemix is a protocol for creating and managing synthetic assets, allowing users to mint and burn synthetic assets backed by real-world assets.",
+    logo: `${baseIconsUrl}/alchemix.jpg`,
+    gecko_id: "alchemix",
+    cmcId: "8613",
+    chains: [],
+    twitter: "AlchemixFi",
+    governanceID: ["snapshot:alchemixstakers.eth"],
+    stablecoins: ["alchemix-usd"],
+    github: ["alchemix-finance"],
+    treasury: "alchemix.js",
+  },
 ];
 
 export default parentProtocols;

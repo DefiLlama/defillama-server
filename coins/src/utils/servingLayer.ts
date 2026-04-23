@@ -152,10 +152,12 @@ export async function chCurrentPrices(requestedCoins: string[]): Promise<CoinsRe
       if (!mapping) return;
       const price = priceMap.get(mapping.canonical_id);
       if (!price) return;
+      const priceNum = typeof price.price === "number" ? price.price : Number(price.price);
+      if (!Number.isFinite(priceNum)) return;
       response[coin] = {
         decimals: mapping.decimals ?? undefined,
         symbol: mapping.symbol ?? "",
-        price: price.price,
+        price: priceNum,
         timestamp: typeof price.timestamp === "string" ? Math.floor(new Date(price.timestamp).getTime() / 1000) : price.timestamp,
         confidence: price.confidence ?? undefined,
       };
@@ -215,7 +217,10 @@ async function triggerRedisRebuild(): Promise<void> {
     for (let i = 0; i < prices.length; i += BATCH) {
       const pipeline = redis.pipeline();
       for (const p of prices.slice(i, i + BATCH)) {
-        if (p.price && p.price !== "0") pipeline.set(`price:${p.cid}`, JSON.stringify({ price: p.price, confidence: p.confidence ? parseFloat(p.confidence) : null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
+        if (!p.price || p.price === "0") continue;
+        const priceNum = Number(p.price);
+        if (!Number.isFinite(priceNum)) continue;
+        pipeline.set(`price:${p.cid}`, JSON.stringify({ price: priceNum, confidence: p.confidence ? parseFloat(p.confidence) : null, source: p.adapter || null, timestamp: p.ts || null }), "EX", 86400);
       }
       await execPipeline(pipeline);
     }

@@ -131,6 +131,39 @@ export async function getTokenAndRedirectDataMap(
   return map;
 }
 
+const warnedNumericKeys = new Set<string>();
+
+function warnInvalidNumericField(
+  value: unknown,
+  field: string,
+  adapter: string,
+  reason: string,
+): void {
+  const key = `${adapter}:${field}:${reason}`;
+  if (warnedNumericKeys.has(key)) return;
+  warnedNumericKeys.add(key);
+  const msg = `coins: addToDBWritesList[${adapter}] invalid ${field} (${reason}): ${JSON.stringify(value)} (${typeof value}). Write proceeds with coerced value; please fix the adapter to pass a finite number.`;
+  console.error(msg);
+  if (process.env.STALE_COINS_ADAPTERS_WEBHOOK) {
+    sendMessage(msg, process.env.STALE_COINS_ADAPTERS_WEBHOOK, false).catch(() => {});
+  }
+}
+
+function coerceNumericField(
+  value: unknown,
+  field: string,
+  adapter: string,
+  allowUndefined: boolean,
+): number | undefined {
+  if (value === undefined || value === null) {
+    if (!allowUndefined) warnInvalidNumericField(value, field, adapter, "missing");
+    return allowUndefined ? undefined : (Number(value) as number);
+  }
+  const n = typeof value === "number" ? value : Number(value);
+  if (!Number.isFinite(n)) warnInvalidNumericField(value, field, adapter, "non-finite");
+  return n;
+}
+
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -143,6 +176,9 @@ export function addToDBWritesList(
   confidence: number,
   redirect: string | undefined = undefined,
 ) {
+  const priceNum = coerceNumericField(price, "price", adapter, true);
+  const decimalsNum = coerceNumericField(decimals, "decimals", adapter, true);
+  const confidenceNum = coerceNumericField(confidence, "confidence", adapter, false)!;
   const PK: string =
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
@@ -151,13 +187,13 @@ export function addToDBWritesList(
     writes.push({
       SK: 0,
       PK,
-      price,
+      price: priceNum,
       symbol,
-      decimals: Number(decimals),
+      decimals: decimalsNum,
       redirect,
       timestamp: getCurrentUnixTimestamp(),
       adapter,
-      confidence: Number(confidence),
+      confidence: confidenceNum,
     });
   } else if (timestamp == 0) {
     writes.push(
@@ -165,20 +201,20 @@ export function addToDBWritesList(
         {
           SK: getCurrentUnixTimestamp(),
           PK,
-          price,
+          price: priceNum,
           adapter,
-          confidence: Number(confidence),
+          confidence: confidenceNum,
         },
         {
           SK: 0,
           PK,
-          price,
+          price: priceNum,
           symbol,
-          decimals: Number(decimals),
+          decimals: decimalsNum,
           redirect,
           timestamp: getCurrentUnixTimestamp(),
           adapter,
-          confidence: Number(confidence),
+          confidence: confidenceNum,
         },
       ],
     );
@@ -190,9 +226,9 @@ export function addToDBWritesList(
       SK: timestamp,
       PK,
       redirect,
-      price,
+      price: priceNum,
       adapter,
-      confidence: Number(confidence),
+      confidence: confidenceNum,
     });
   }
 }

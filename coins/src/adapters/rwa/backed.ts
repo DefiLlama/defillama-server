@@ -107,24 +107,14 @@ async function getTokenPrices(chain: string, timestamp: number) {
     })),
   );
 
-  writes.map((w: Write) => {
-    writes.push({
-      ...w,
-      PK: `asset#avax:${w.PK.substring(w.PK.indexOf(":") + 1)}`,
-    });
-    writes.push({
-      ...w,
-      PK: `asset#base:${w.PK.substring(w.PK.indexOf(":") + 1)}`,
-    });
-    writes.push({
-      ...w,
-      PK: `asset#polygon:${w.PK.substring(w.PK.indexOf(":") + 1)}`,
-    });
-    writes.push({
-      ...w,
-      PK: `asset#xdai:${w.PK.substring(w.PK.indexOf(":") + 1)}`,
-    });
-  });
+  const extraChains = ["avax", "base", "polygon", "xdai"];
+  const originals = writes.slice();
+  for (const w of originals) {
+    const addressPart = w.PK.substring(w.PK.indexOf(":") + 1);
+    for (const extraChain of extraChains) {
+      writes.push({ ...w, PK: `asset#${extraChain}:${addressPart}` });
+    }
+  }
   return writes;
 }
 

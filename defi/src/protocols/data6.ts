@@ -142,6 +142,7 @@ const data6: Protocol[] = [
     twitter: "GRELF_",
     dimensions: {
       aggregators: "grelfswap",
+      fees: "grelfswap",
     },
   },
   {

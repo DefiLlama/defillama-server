@@ -74,7 +74,7 @@ async function fetchNativeAndMcaps(timestamp: number): Promise<{
               return (await fetchTokensList(chain)).map((t) => t.address);
             } catch (e) {
               const msg = (e as Error).message;
-              if (msg.includes("COINS_API_URL not set")) throw e;
+              if (msg.includes("COINS_V4_API_URL not set")) throw e;
               console.warn(`[L2 v2] fetchTokensList failed for ${chain}: ${msg} — using empty list`);
               return [];
             }
@@ -357,8 +357,8 @@ const newChainAssets = () => ({
 
 // main function
 export async function storeChainAssetsV2(override: boolean = false) {
-  if (!process.env.COINS_API_URL) {
-    throw new Error("storeChainAssetsV2 requires COINS_API_URL — run with coins v4 API configured");
+  if (!process.env.COINS_V4_API_URL) {
+    throw new Error("storeChainAssetsV2 requires COINS_V4_API_URL — run with coins v4 API configured");
   }
   const timestamp = 0;
   const { sourceChainAmounts, protocolAmounts, destinationChainAmounts } = await fetchOutgoingAmountsFromDB(timestamp);

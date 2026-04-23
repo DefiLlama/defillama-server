@@ -3,13 +3,13 @@ import axios from "axios";
 const LEGACY_BASE = "https://coins.llama.fi";
 
 function v4Base(): string | null {
-  const base = process.env.COINS_API_URL;
+  const base = process.env.COINS_V4_API_URL;
   return base ? base.replace(/\/$/, "") : null;
 }
 
 function v4Headers(): Record<string, string> {
   const headers: Record<string, string> = {};
-  if (process.env.COINS_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_INTERNAL_PASSWORD;
+  if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD;
   return headers;
 }
 
@@ -26,7 +26,7 @@ export type PricesResponse = {
   coins: { [coin: string]: { decimals?: number; price: number; symbol: string; timestamp: number; confidence?: number } };
 };
 
-// Routes to v4 when COINS_API_URL is set, else coins.llama.fi/mcaps.
+// Routes to v4 when COINS_V4_API_URL is set, else coins.llama.fi/mcaps.
 export async function fetchMcaps(
   coins: string[],
   opts: { legacyApiKey?: string } = {},
@@ -65,10 +65,10 @@ export async function fetchCurrentPrices(
 }
 
 // GET /tokens/list?chain=<chain> — lists all known tokens for a chain from CH.
-// Only available on coins v4 (no legacy equivalent); throws if COINS_API_URL unset.
+// Only available on coins v4 (no legacy equivalent); throws if COINS_V4_API_URL unset.
 export async function fetchTokensList(chain: string): Promise<TokenListEntry[]> {
   const base = v4Base();
-  if (!base) throw new Error("fetchTokensList: COINS_API_URL not set — tokens list requires the coins v4 API");
+  if (!base) throw new Error("fetchTokensList: COINS_V4_API_URL not set — tokens list requires the coins v4 API");
   const r = await axios.get(`${base}/tokens/list`, { params: { chain }, headers: v4Headers() });
   return r.data?.tokens ?? [];
 }

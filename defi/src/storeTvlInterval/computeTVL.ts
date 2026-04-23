@@ -171,13 +171,13 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
 
     sdk.log(`price request count:  ${readKeys.length}`)
 
-    if (process.env.COINS_API_URL) {
+    if (process.env.COINS_V4_API_URL) {
       // coins v4: single call, routes to Redis (current) or ClickHouse (historical)
       const body: any = { coins: readKeys }
       if (timestamp !== "now") body.timestamp = timestamp
       const headers: any = { "Content-Type": "application/json" }
-      if (process.env.COINS_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_INTERNAL_PASSWORD
-      const url = `${process.env.COINS_API_URL.replace(/\/$/, '')}/prices`
+      if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD
+      const url = `${process.env.COINS_V4_API_URL.replace(/\/$/, '')}/prices`
       const r = await fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json())
       if (!r?.coins) console.log(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
       const coins = r?.coins ?? {}

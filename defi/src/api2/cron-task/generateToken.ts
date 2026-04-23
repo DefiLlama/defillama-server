@@ -28,7 +28,7 @@ const getCoingeckoId = (tokenNk: string | undefined) => {
 const getTokenLogo = (tokenNk: string | undefined) => {
   const geckoId = getCoingeckoId(tokenNk);
   if (!geckoId) return null;
-  return `https://icons.llamao.fi/icons/tokens/gecko/${geckoId}?w=48&h=48`;
+  return `https://token-icons.llamao.fi/icons/tokens/gecko/${geckoId}?w=48&h=48`;
 };
 
 const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProtocolId: string) => {

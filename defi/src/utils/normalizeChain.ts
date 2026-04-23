@@ -3695,8 +3695,8 @@ export const chainCoingeckoIds = {
     },
   },
   "ReyaChain": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "reya",
+    symbol: "REYA",
     cmcId: null,
     categories: ["EVM"],
     parent: {
@@ -4776,8 +4776,8 @@ export const chainCoingeckoIds = {
     url: "https://opengpu.network/",
   },
   "Echelon Initia": {
-    geckoId: null,
-    symbol: null,
+    geckoId: "echelon-token",
+    symbol: "ELON",
     cmcId: null,
     categories: ["Cosmos"],
     twitter: "EchelonMarket",
@@ -5122,9 +5122,9 @@ export const chainCoingeckoIds = {
     },
   },
   "Camp Network": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "camp-network",
+    symbol: "CAMP",
+    cmcId: "38195",
     categories: ["EVM"],
     twitter: "campnetworkxyz",
     url: "https://www.campnetwork.xyz/",

@@ -8303,7 +8303,7 @@ const parentProtocols: IParentProtocol[] = [
     referralUrl: "https://app.reya.xyz/trade?referredBy=z9hwcwwd",
     description: "The only DEX where speed never compromises security. Uniquely built as a based-rollup powered by zk-proofs, Reya DEX delivers 1 millisecond speed, 0 trading fess and 100% Ethereum uptime and security",
     logo: `${baseIconsUrl}/reya.jpg`,
-    gecko_id: null,
+    gecko_id: "reya",
     cmcId: null,
     chains: [],
     twitter: "reya_xyz",

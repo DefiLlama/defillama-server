@@ -846,7 +846,7 @@ const data6: Protocol[] = [
     chain: "Solana",
     logo: `${baseIconsUrl}/streamlock.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "streamlock",
     cmcId: null,
     category: "Launchpad",
     chains: ["Solana"],

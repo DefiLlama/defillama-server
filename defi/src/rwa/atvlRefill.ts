@@ -295,6 +295,11 @@ function getOnChainTvlAndActiveMcaps(
     if (!finalData[rwaId][RWA_KEY_MAP.activeMcap] && finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
+  // An RWA can have multiple token addresses on the same chain; aggregate across
+  // them rather than overwriting, and only subtract excluded balances once per
+  // (rwaId, chain) since excludedAmounts is already a per-(rwaId, chain) total.
+  const exclusionApplied = new Set<string>();
+
   Object.keys(assetPrices).forEach((pk: string) => {
     const rwaId = tokenToProjectMap[pk];
     if (!finalData[rwaId]) return;
@@ -331,13 +336,19 @@ function getOnChainTvlAndActiveMcaps(
       if (!finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName]) finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = {};
 
       const aum = (price * supply) / 10 ** decimals;
-      finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(aum, 0);
+      const prevOnChain = Number(finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName]) || 0;
+      finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(prevOnChain + aum, 0);
 
       if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
 
-      finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName];
+      const prevActive = Number(finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName]) || 0;
+      finalData[rwaId][RWA_KEY_MAP.activeMcap][chainDisplayName] = toFixedNumber(prevActive + aum, 0);
 
-      findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      const exclusionKey = `${rwaId}:${chainDisplayName}`;
+      if (!exclusionApplied.has(exclusionKey)) {
+        exclusionApplied.add(exclusionKey);
+        findActiveMcaps(finalData, rwaId, excludedAmounts, assetPrices[pk], chainDisplayName);
+      }
     } catch (e) {
       if (process.env.DEBUG_ENABLED) console.error(`Malformed ${RWA_KEY_MAP.onChain} for ${rwaId}: ${e}`);
     }

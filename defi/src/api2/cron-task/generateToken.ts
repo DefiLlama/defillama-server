@@ -5,12 +5,10 @@
 
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { runWithRuntimeLogging } from "../utils";
-import { getR2JSONString } from "../../utils/r2";
 
 const SOURCE_URL = "https://ask.llama.fi/coins";
 const PROTOCOLS_URL = "/config/smol/appMetadata-protocols.json";
 const CHAINS_URL = "/config/smol/appMetadata-chains.json";
-const LOGOS_R2_KEY = "tokenlist/logos.json";
 const OUTPUT_ROUTE = "config/smol/token.json";
 
 const slug = (value = "") =>
@@ -27,6 +25,12 @@ const getCoingeckoId = (tokenNk: string | undefined) => {
   return geckoId || null;
 };
 
+const getTokenLogo = (tokenNk: string | undefined) => {
+  const geckoId = getCoingeckoId(tokenNk);
+  if (!geckoId) return null;
+  return `https://icons.llamao.fi/icons/tokens/gecko/${geckoId}?w=48&h=48`;
+};
+
 const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProtocolId: string) => {
   if (!currentProtocolId) return true;
   if (!nextProtocolId) return false;
@@ -36,11 +40,7 @@ const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProto
   return false;
 };
 
-const getTokenMetadataExtrasByGeckoId = (
-  protocolsMetadata: Record<string, any>,
-  chainsMetadata: Record<string, any>,
-  logosByGeckoId: Record<string, string>,
-) => {
+const getTokenMetadataExtrasByGeckoId = (protocolsMetadata: Record<string, any>, chainsMetadata: Record<string, any>) => {
   const extrasByGeckoId = new Map<string, any>();
 
   for (const [protocolId, item] of Object.entries(protocolsMetadata ?? {})) {
@@ -63,16 +63,6 @@ const getTokenMetadataExtrasByGeckoId = (
       ...(previous.chainId || typeof item?.id !== "string" || !item.id ? {} : { chainId: item.id }),
       ...(item?.tokenRights ? { tokenRights: true } : {}),
     });
-  }
-
-  for (const geckoId in logosByGeckoId) {
-    const logo = logosByGeckoId[geckoId];
-    if (typeof logo !== "string" || !logo) continue;
-    const id = geckoId.trim().toLowerCase();
-    const previous = extrasByGeckoId.get(id) ?? {};
-    if (!previous.logo) {
-      extrasByGeckoId.set(id, { ...previous, logo });
-    }
   }
 
   return extrasByGeckoId;
@@ -126,22 +116,22 @@ const createTokenRecord = (item: any, routeSource: string, extras: any = {}) => 
   route: `/token/${encodeURIComponent(routeSource === "symbol" ? item.symbol : item.name)}`,
   is_yields: Boolean(item.on_yields),
   mcap_rank: item.mcap_rank,
+  logo: getTokenLogo(item.token_nk),
   ...extras,
 });
 
 async function generateToken() {
-  const [coins, protocolsMetadata, chainsMetadata, logosByGeckoId] = await Promise.all([
+  const [coins, protocolsMetadata, chainsMetadata] = await Promise.all([
     fetchJson(SOURCE_URL),
     readRouteData(PROTOCOLS_URL),
     readRouteData(CHAINS_URL),
-    getR2JSONString(LOGOS_R2_KEY).catch(() => ({})),
   ]);
 
   if (!Array.isArray(coins)) {
     throw new Error(`Expected an array from ${SOURCE_URL}`);
   }
 
-  const extrasByGeckoId = getTokenMetadataExtrasByGeckoId(protocolsMetadata, chainsMetadata, logosByGeckoId ?? {});
+  const extrasByGeckoId = getTokenMetadataExtrasByGeckoId(protocolsMetadata, chainsMetadata);
   const previousTokens = await loadPreviousTokens();
   const uniqueCoins: any[] = [];
   const seenTokenNks = new Set<string>();

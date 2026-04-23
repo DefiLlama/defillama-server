@@ -898,5 +898,27 @@ const data6: Protocol[] = [
       fees: "alchemix"
     }
   },
+  {
+    id: "7750",
+    name: "Flying Tulip Lend",
+    address: "0x5DD1A7A369e8273371d2DBf9d83356057088082c",
+    symbol: "FT",
+    url: "https://flyingtulip.com/lend/",
+    description: "Flying Tulip Lend is a custom lending market on Sonic.",
+    chain: "Sonic",
+    logo: `${baseIconsUrl}/flying-tulip-lend.jpg`,
+    audits: "2",
+    gecko_id: "flying-tulip",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Sonic"],
+    module: "dummy.js",
+    audit_links: ["https://docs.flyingtulip.com/risks/"],
+    twitter: "flyingtulip_",
+    listedAt: 1769459609,
+    dimensions: {
+      fees: "flying-tulip-lend"
+    }
+  },
 ];
 export default data6;

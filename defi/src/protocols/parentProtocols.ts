@@ -9497,6 +9497,18 @@ const parentProtocols: IParentProtocol[] = [
     github: ["alchemix-finance"],
     treasury: "alchemix.js",
   },
+  {
+    id: "parent#flying-tulip",
+    name: "Flying Tulip",
+    url: "https://flyingtulip.com/", 
+    description: "Flying Tulip is a yield aggregation protocol that pools user deposits into wrapper contracts and deploys them into automated yield strategies.",
+    logo: `${baseIconsUrl}/flying-tulip.jpg`,
+    gecko_id: "flying-tulip",
+    cmcId: "38544",
+    chains: [],
+    twitter: "flyingtulip_",
+    treasury: "flying-tulip.js",
+  },
 ];
 
 export default parentProtocols;

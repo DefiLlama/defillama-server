@@ -894,9 +894,7 @@ const data6: Protocol[] = [
     twitter: "AlchemixFi",
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v3.pdf"],
     parentProtocol: "parent#alchemix",
-    dimensions: {
-      fees: "alchemix"
-    }
+    listedAt: 1776975864,
   },
   {
     id: "7750",

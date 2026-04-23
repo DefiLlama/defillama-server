@@ -2,6 +2,23 @@ import { getTokenAndRedirectDataMap } from "../utils/database";
 import axios from "axios";
 import getWrites from "../utils/getWrites";
 
+async function fetchWithRetry(url: string, config: any, maxRetries = 5) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await axios.get(url, config);
+    } catch (e: any) {
+      if (e?.response?.status === 429 && attempt < maxRetries) {
+        const retryAfter = +(e.response.headers?.["retry-after"] ?? 0);
+        const waitMs = retryAfter > 0 ? retryAfter * 1000 : 2000 * 2 ** attempt;
+        await new Promise((r) => setTimeout(r, waitMs));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw new Error("cetus: exhausted retries");
+}
+
 export function cetus(timestamp: number) {
   const THIRY_MINUTES = 1800;
   if (+timestamp !== 0 && timestamp < +new Date() / 1e3 - THIRY_MINUTES)
@@ -30,7 +47,7 @@ async function paginateV2() {
   while (offset < total) {
     const {
       data: { data },
-    } = await axios.get(`https://api-sui.cetus.zone/v2/sui/stats_pools`, {
+    } = await fetchWithRetry(`https://api-sui.cetus.zone/v2/sui/stats_pools`, {
       params: {
         is_vaults: false,
         display_all_pools: true,
@@ -61,7 +78,7 @@ async function paginateV3() {
   while (offset < total) {
     const {
       data: { data },
-    } = await axios.get(
+    } = await fetchWithRetry(
       `https://api-sui.cetus.zone/v3/sui/clmm/stats_pools`,
       { params: { limit, offset } },
     );

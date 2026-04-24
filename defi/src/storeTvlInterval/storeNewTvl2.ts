@@ -35,6 +35,12 @@ export default async function (
   overwriteExistingData = false,
   extraOptions: any = {},
 ) {
+
+  if (process.env.DRY_RUN) {
+    console.log(`DRY RUN - skipping db update, id: ${protocol.id} | name: ${protocol.name} | current tvl: ${tvl.tvl} | hn: ${humanizeNumber(tvl.tvl)}`, tvl.tvl)
+    return;
+  }
+  
   const { debugData } = extraOptions
   const hourlyPK = hourlyTvl(protocol.id);
   const currentTvl = calculateTVLWithAllExtraSections(tvl)

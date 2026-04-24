@@ -104,6 +104,7 @@ const priceCache: { [PK: string]: any } = {
   "coingecko:tether": {
     price: 1,
     symbol: "USDT",
+    PK: "coingecko:tether",
     timestamp: Math.floor(Date.now() / 1e3 + 3600) // an hour from script start time
   }
 }
@@ -162,11 +163,28 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       readKeys = readKeys.filter((PK: string) => {
         if (timestamp !== 'now') return true
         if (priceCache[PK]) {
-          cachedTokenData.push({ ...priceCache[PK], PK })
+          cachedTokenData.push(priceCache[PK])
           return false
         }
         return true
       })
+    }
+
+    function addToCache(tokenData: any) {
+      // Only cache current-price responses — historical prices would skew later "now" lookups.
+
+      if (timestamp !== 'now') return;
+      for (const [PK, value] of Object.entries(tokenData)) {
+        (value as any).PK = PK
+        priceCache[PK] = value
+      }
+    }
+
+    function addPKToResponse(res: any) {
+      if (!res) return;
+      for ( const [PK, value] of Object.entries(res)) {
+        (value as any).PK = PK
+      }
     }
 
 
@@ -183,24 +201,37 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
         if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD
         const url = `${process.env.COINS_V4_API_URL.replace(/\/$/, '')}/prices`
         const chunkSize = 40000
-        const v4Requests = []
+        const chunks: string[][] = []
         for (let i = 0; i < readKeys.length; i += chunkSize) {
-          const body: any = { coins: readKeys.slice(i, i + chunkSize) }
-          if (timestamp !== "now") body.timestamp = timestamp
-          v4Requests.push(
-            fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json()).then((r) => {
-              if (!r?.coins) throw new Error(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
-              return r.coins
-            })
-          )
+          chunks.push(readKeys.slice(i, i + chunkSize))
         }
-        const results = await Promise.all(v4Requests)
         const allCoins: Record<string, any> = {}
-        for (const coins of results) Object.assign(allCoins, coins)
-        if (timestamp === "now") {
-          for (const [PK, value] of Object.entries(allCoins)) priceCache[PK] = value
-        }
-        return cachedTokenData.concat(Object.entries(allCoins).map(([PK, value]) => ({ ...(value as any), PK })))
+        const { errors } = await sdk.util.runInPromisePool({
+          items: chunks,
+          permitFailure: false,
+          concurrency: 5,
+          processor: async (chunk: any) => {
+            const body: any = { coins: chunk }
+            if (timestamp !== "now") body.timestamp = timestamp
+
+            const r = await fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json())
+            
+            if (!r?.coins) 
+              throw new Error(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
+
+            addPKToResponse(r.coins)
+            addToCache(r.coins)
+
+            Object.assign(allCoins, r.coins) // we are doing this instead of pushing to an array to avoid duplicates if v4 fails and we have to fallback to the old method 
+          }
+        })
+
+        if (errors.length) throw errors[0]
+
+        const allCoinsArray = Object.values(allCoins)
+        sdk.log(`fetched ${allCoinsArray.length} coins from coins v4 API`)
+        return cachedTokenData.concat(allCoinsArray)
+
       } catch (e) {
         console.log(`Coins v4 API failed, falling back to old method: ${e}`)
       }
@@ -208,39 +239,45 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
 
     filterReadKeys()
 
-    const readRequests = [];
+    const chunks: string[][] = []
+
     for (let i = 0; i < readKeys.length; i += 100) {
-      const body = {
-        "coins": readKeys.slice(i, i + 100),
-      } as any
-      if (timestamp !== "now") {
-        body.timestamp = timestamp;
-      }
-      readRequests.push(
-        fetch("https://coins.llama.fi/prices?source=internal", {
+      chunks.push(readKeys.slice(i, i + 100))
+    }
+
+    const { errors } = await sdk.util.runInPromisePool({
+      items: chunks,
+      permitFailure: false,
+      concurrency: 11,
+      processor: async (chunk: any) => {
+        if (!chunk.length) return;
+
+        const body: any = { coins: chunk }
+        if (timestamp !== "now") body.timestamp = timestamp
+        const r = await fetch("https://coins.llama.fi/prices?source=internal", {
           method: "POST",
           body: JSON.stringify(body),
           headers: { "Content-Type": "application/json" },
-        }).then((r) => r.json()).then(r => {
-          if (!r.coins)
-            console.log(`Invalid response from price API for keys ${body.coins.join(", ")}: ${JSON.stringify(r)}`)
-          // Only cache current-price responses — historical prices would skew later "now" lookups.
-          if (timestamp === "now") {
-            for (const [PK, value] of Object.entries(r.coins)) {
-              priceCache[PK] = value
-            }
-          }
-          return Object.entries(r.coins).map(
-            ([PK, value]) => ({
-              ...(value as any),
-              PK
-            })
-          )
-        })
-      );
+        }).then((res) => res.json())
+        if (!r.coins) {
+          console.log(`Invalid response from price API for keys ${chunk.join(", ")}: ${JSON.stringify(r)}`)
+          return;
+        }
+
+        addPKToResponse(r.coins)
+        addToCache(r.coins)
+
+        const resultsArray = Object.values(r.coins)
+        cachedTokenData = cachedTokenData.concat(resultsArray)
+      }
+    })
+
+    if (errors.length) {
+      console.log(`Error fetching from price API: ${errors[0]}`)
+      throw errors[0]
     }
-    const tokenData = cachedTokenData.concat(...(await Promise.all(readRequests)));
-    return tokenData
+
+    return cachedTokenData
   }
 }
 

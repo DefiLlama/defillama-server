@@ -962,5 +962,25 @@ const data6: Protocol[] = [
       dexs: "frenflow",
     }
   },
+  {
+    id: "7753",
+    name: "Telegram Wallet",
+    address: null,
+    symbol: "-",
+    url: "https://t.me/wallet",
+    description: "Buy, sell and transfer crypto with zero fees on Telegram.",
+    chain: "zkLighter",
+    logo: `${baseIconsUrl}/telegram-wallet.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Interface",
+    chains: ["zkLighter"],
+    module: "dummy.js",
+    twitter: "wallet_tg",
+    dimensions: {
+      fees: "telegram-wallet-perps",
+    }
+  },
 ];
 export default data6;

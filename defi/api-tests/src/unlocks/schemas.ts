@@ -1,5 +1,43 @@
 import { z } from 'zod';
 
+export const emissionEventSchema = z.object({
+  description: z.string(),
+  timestamp: z.union([z.number(), z.string()]),
+  noOfTokens: z.array(z.union([z.number(), z.null()])),
+  category: z.string(),
+  unlockType: z.string(),
+  rateDurationDays: z.number().optional(),
+});
+
+export const cliffAllocationSchema = z.object({
+  recipient: z.string(),
+  category: z.string(),
+  unlockType: z.string(),
+  amount: z.number(),
+});
+
+export const linearAllocationSchema = z.object({
+  recipient: z.string(),
+  category: z.string(),
+  unlockType: z.string(),
+  previousRatePerWeek: z.number(),
+  newRatePerWeek: z.union([z.number(), z.null()]),
+  endTimestamp: z.union([z.number(), z.string()]),
+});
+
+export const unlockEventSummarySchema = z.object({
+  totalTokensCliff: z.number().optional(),
+  netChangeInWeeklyRate: z.union([z.number(), z.null()]).optional(),
+  totalNewWeeklyRate: z.union([z.number(), z.null()]).optional(),
+});
+
+export const unlockEventSchema = z.object({
+  timestamp: z.number(),
+  cliffAllocations: z.array(cliffAllocationSchema),
+  linearAllocations: z.array(linearAllocationSchema),
+  summary: unlockEventSummarySchema,
+});
+
 // Schema for emissions list endpoint
 export const emissionItemSchema = z.object({
   token: z.string(),
@@ -18,11 +56,14 @@ export const emissionItemSchema = z.object({
     noOfTokens: z.number().optional(),
     proportion: z.number().optional(),
   }).optional(),
-  tokenPrice: z.union([z.number(), z.string()]).optional(),
+  tokenPrice: z.union([z.number(), z.string(), z.array(z.any())]).optional(),
   mcap: z.number().optional(),
   maxSupply: z.number().optional(),
   unlockedPct: z.number().optional(),
   allocation: z.record(z.string(), z.any()).optional(),
+  events: z.array(emissionEventSchema).optional(),
+  unlockEvents: z.array(unlockEventSchema).optional(),
+  unlocksPerDay: z.union([z.number(), z.null()]).optional(),
 });
 
 export const emissionsResponseSchema = z.array(emissionItemSchema);

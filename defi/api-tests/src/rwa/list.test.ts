@@ -33,11 +33,11 @@ describe('RWA API - List', () => {
       }
     });
 
-    it('should have non-empty tickers array', () => {
-      expectNonEmptyArray(response.data.tickers);
-      response.data.tickers.slice(0, 10).forEach((ticker) => {
-        expect(typeof ticker).toBe('string');
-        expect(ticker.length).toBeGreaterThan(0);
+    it('should have non-empty canonicalMarketIds array', () => {
+      expectNonEmptyArray(response.data.canonicalMarketIds);
+      response.data.canonicalMarketIds.slice(0, 10).forEach((id) => {
+        expect(typeof id).toBe('string');
+        expect(id.length).toBeGreaterThan(0);
       });
     });
 
@@ -51,6 +51,10 @@ describe('RWA API - List', () => {
 
     it('should have non-empty categories array', () => {
       expectNonEmptyArray(response.data.categories);
+    });
+
+    it('should have non-empty assetGroups array', () => {
+      expectNonEmptyArray(response.data.assetGroups);
     });
 
     it('should have non-empty idMap', () => {

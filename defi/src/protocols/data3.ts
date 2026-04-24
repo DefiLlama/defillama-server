@@ -32229,7 +32229,7 @@ const data3_1: Protocol[] = [
   {
     id: "4146",
     name: "KPK",
-    previousNames: ["karpatkey", "kpk"],
+    previousNames: ["karpatkey"],
     address: "0xbf3f63d8ac133b16d7d50c015036b33219dd8d23",
     symbol: "KPK",
     url: "https://kpk.io/",

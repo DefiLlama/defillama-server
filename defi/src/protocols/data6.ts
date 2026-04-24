@@ -923,7 +923,7 @@ const data6: Protocol[] = [
     name: "FrenFlow",
     address: null,
     symbol: "-",
-    url: "https://frenflow.com",
+    url: "https://www.frenflow.com",
     description: "FrenFlow is the social + execution layer for prediction markets. A unified trading UI and Telegram bot with self-custody routing across Polymarket, Kalshi (via DFlow), and Predict.fun — plus native copytrading, social feed, and leaderboards.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/frenflow.jpg`,

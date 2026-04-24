@@ -32228,13 +32228,13 @@ const data3_1: Protocol[] = [
   },
   {
     id: "4146",
-    name: "kpk",
-    previousNames: ["karpatkey"],
+    name: "KPK",
+    previousNames: ["karpatkey", "kpk"],
     address: "0xbf3f63d8ac133b16d7d50c015036b33219dd8d23",
     symbol: "KPK",
     url: "https://kpk.io/",
     description:
-      "kpk provides infrastructure to secure, manage, and grow onchain assets—contributing to the development of the largest liquidity network in crypto, aligned with the strategic goals of onchain organisations.",
+      "KPK is a noncustodial onchain asset manager for DAOs, institutions and capital allocators, actively managing capital across DeFi since 2020. Over $2bn deployed onchain,",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kpk.jpg`,
     audits: "0",

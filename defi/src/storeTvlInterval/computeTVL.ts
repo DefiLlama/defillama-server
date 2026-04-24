@@ -163,7 +163,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       readKeys = readKeys.filter((PK: string) => {
         if (timestamp !== 'now') return true
         if (priceCache[PK]) {
-          cachedTokenData.push(priceCache[PK])
+          cachedTokenData.push({...priceCache[PK]})
           return false
         }
         return true
@@ -175,8 +175,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
 
       if (timestamp !== 'now') return;
       for (const [PK, value] of Object.entries(tokenData)) {
-        (value as any).PK = PK
-        priceCache[PK] = value
+        priceCache[PK] = {...(value as any), PK}
       }
     }
 

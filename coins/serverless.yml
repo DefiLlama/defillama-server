@@ -144,14 +144,14 @@ functions:
     timeout: 60
     events:
       - httpApi:
-          path: /pro/prices/current
+          path: /prices/pro/current
           method: post
   postHistoricalCoinPrices:
     handler: src/postHistoricalCoins.default
     timeout: 60
     events:
       - httpApi:
-          path: /pro/prices/historical
+          path: /prices/pro/historical
           method: post
   currentCoinPrices:
     handler: src/getCurrentCoins.default

@@ -26,14 +26,15 @@ export const rwaCurrentResponseSchema = z.array(rwaItemSchema);
 
 // ============================================================================
 // RWA List Schema (from /list endpoint)
-// Returns an object with tickers, platforms, chains, categories, idMap
+// Returns an object with canonicalMarketIds, platforms, chains, categories, assetGroups, idMap
 // ============================================================================
 
 export const rwaListResponseSchema = z.object({
-  tickers: z.array(z.string()),
+  canonicalMarketIds: z.array(z.string()),
   platforms: z.array(z.string()),
   chains: z.array(z.string()),
   categories: z.array(z.string()),
+  assetGroups: z.array(z.string()),
   idMap: z.record(z.string(), z.union([z.string(), z.number()])),
 }).passthrough();
 

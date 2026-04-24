@@ -939,5 +939,27 @@ const data6: Protocol[] = [
       fees: "eva"
     }
   },
+  {
+    id: "7752",
+    name: "FrenFlow",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://frenflow.com
+    description: "The social hub of Prediction Markets. Predict with frens, copy and win together. No CA. Only flow.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/frenflow.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Markets",
+    chains: ["Polygon"],
+    module: "dummy.js",
+    twitter: "frenflow",
+    github: ["frenflow"],
+    dimensions: {
+      fees: "frenflow",
+      dexs: "frenflow",
+    }
+  },
 ];
 export default data6;

@@ -21,7 +21,7 @@ const handler = async (
         timestampRequested,
         searchWidth
       );
-      if (finalCoin?.SK === undefined) {
+      if (finalCoin.SK === undefined) {
         // if (process.env.DEFILLAMA_SDK_MUTED == "true") {
         //   const currentCoin = await getRecordClosestToTimestamp(
         //     coin.redirect ?? coin.PK,

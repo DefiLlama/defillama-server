@@ -9,17 +9,14 @@ import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
-const defaultSearchWidth = quantisePeriod("6h");
-
-export async function fetchDBData(
+async function fetchDBData(
   coinsObj: any,
-  searchWidth: number = defaultSearchWidth
+  coins: any[],
+  PKTransforms: { [key: string]: string[] },
+  searchWidth: number
 ) {
   let response = {} as any;
   const promises: Promise<any>[] = [];
-
-  const coinQueries: string[] = Object.keys(coinsObj);
-  const { PKTransforms, coins } = await getBasicCoins(coinQueries);
 
   coins.forEach((coin) => {
     PKTransforms[coin.PK].forEach((coinName) => {
@@ -32,7 +29,7 @@ export async function fetchDBData(
             timestamp,
             searchWidth
           );
-          if (finalCoin?.SK === undefined) {
+          if (finalCoin.SK === undefined) {
             return;
           }
           if (response[coinName] == undefined) {
@@ -76,8 +73,14 @@ const handler = async (event: any): Promise<IResponse> => {
     const searchWidth: number = quantisePeriod(
       event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
     );
+    const { PKTransforms, coins } = await getBasicCoins(coinQueries);
 
-    const dbData = await fetchDBData(coinsObj, searchWidth);
+    const dbData = await fetchDBData(
+      coinsObj,
+      coins,
+      PKTransforms,
+      searchWidth
+    );
 
     return successResponse({ coins: dbData }, 3600); // 1 hour cache
   } catch (e: any) {

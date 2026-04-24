@@ -17,6 +17,7 @@
     "test": "jest",
     "test:protocols-metadata": "npm run prebuild && jest --testPathPattern='protocols/data.test' --reporters=default --reporters=./reporters/data-test-discord-reporter.js --no-coverage --forceExit",
     "test:api": "cd api-tests && jest",
+    "test:beta-api": "cd api-tests && jest --testPathPattern='beta'",
     "pretest": "npm run prebuild",
     "build": "sls package",
     "updateAdapters": "node -e \"console.log('No longer needed')\"",

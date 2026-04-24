@@ -17,7 +17,6 @@ import pLimit from "p-limit";
 import * as sdk from '@defillama/sdk'
 const { sliceIntoChunks, } = sdk.util
 
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
@@ -438,9 +437,8 @@ export async function batchWriteWithAlerts(
       (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price) || i.redirect);
     const writeItems = [...filteredItems, ...redirectChanges]
     const ddbWriteResult = await batchWrite(writeItems, failOnError);
-    await produceKafkaTopics(writeItems as any[]);
 
-    // Dual-write: normalized PKs to DDB only (no Kafka, no alerts)
+    // Dual-write: normalized PKs to DDB only (no alerts)
     const normalizedMap = new Map<string, any>();
     writeItems.forEach((item: any) => {
       const nPK = normalizedPKFor(item.PK);

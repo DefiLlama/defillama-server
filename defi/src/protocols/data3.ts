@@ -7581,6 +7581,9 @@ const data3_0: Protocol[] = [
     twitter: "steerprotocol",
     audit_links: ["https://docs.steer.finance/audit-reports"],
     listedAt: 1685437944,
+    dimensions: {
+      fees: "steer"
+    }
   },
   {
     id: "3044",
@@ -25805,6 +25808,9 @@ const data3_1: Protocol[] = [
     audit_links: ["https://learn.charm.fi/charm/appendix/audit-reports"],
     listedAt: 1701375467,
     parentProtocol: "parent#charm-finance",
+    dimensions: {
+      fees: "charm-fi-vaults-2"
+    }
   },
   {
     id: "3870",

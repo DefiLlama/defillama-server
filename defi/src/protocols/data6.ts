@@ -918,5 +918,26 @@ const data6: Protocol[] = [
       fees: "flying-tulip-lend"
     }
   },
+  {
+    id: "7751",
+    name: "eva Markets",
+    address: null,
+    symbol: "-",
+    url: "https://www.eva.markets",
+    description: "eva Markets allows users to mint portable tokens backed by isolated credit.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eva-markets.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Private Credit"],
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    audit_links: ["https://docs.flyingtulip.com/risks/"],
+    twitter: "eva_markets",
+    dimensions: {
+      fees: "eva"
+    }
+  },
 ];
 export default data6;

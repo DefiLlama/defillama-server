@@ -10048,7 +10048,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/magic-land.png`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "magic-token",
     cmcId: "12455",
     category: "Yield",
     chains: ["Arbitrum"],

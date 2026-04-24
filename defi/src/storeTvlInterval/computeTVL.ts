@@ -53,10 +53,10 @@ export default async function (balances: { [address: string]: string }, timestam
         const balance = balances[address];
         const { price, decimals } = response;
         if (!price) return;
-        
+
         const symbol = (response.symbol as string).toUpperCase();
         const amount = response.PK.startsWith('coingecko:') ? Number(balance) : new BigNumber(balance).div(10 ** decimals).toNumber();
-        
+
         const usdAmount = amount * price;
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
@@ -157,36 +157,56 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
   async function _getTokenData() {
     let cachedTokenData: any[] = []
 
-    // read data from cache where possible
-    readKeys = readKeys.filter((PK: string) => {
-      if (timestamp !== 'now') return true
-      if (priceCache[PK]) {
-        cachedTokenData.push({ ...priceCache[PK], PK })
-        return false
-      }
-      return true
-    })
+    function filterReadKeys() {
+      // read data from cache where possible
+      readKeys = readKeys.filter((PK: string) => {
+        if (timestamp !== 'now') return true
+        if (priceCache[PK]) {
+          cachedTokenData.push({ ...priceCache[PK], PK })
+          return false
+        }
+        return true
+      })
+    }
+
 
     if (!readKeys.length) return cachedTokenData
 
     sdk.log(`price request count:  ${readKeys.length}`)
 
     if (process.env.COINS_V4_API_URL) {
-      // coins v4: single call, routes to Redis (current) or ClickHouse (historical)
-      const body: any = { coins: readKeys }
-      if (timestamp !== "now") body.timestamp = timestamp
-      const headers: any = { "Content-Type": "application/json" }
-      if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD
-      const url = `${process.env.COINS_V4_API_URL.replace(/\/$/, '')}/prices`
-      const r = await fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json())
-      if (!r?.coins) console.log(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
-      const coins = r?.coins ?? {}
-      // Only cache current-price responses — historical prices would skew later "now" lookups.
-      if (timestamp === "now") {
-        for (const [PK, value] of Object.entries(coins)) priceCache[PK] = value
+      try {
+
+        filterReadKeys()
+
+        const headers: any = { "Content-Type": "application/json" }
+        if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD
+        const url = `${process.env.COINS_V4_API_URL.replace(/\/$/, '')}/prices`
+        const chunkSize = 40000
+        const v4Requests = []
+        for (let i = 0; i < readKeys.length; i += chunkSize) {
+          const body: any = { coins: readKeys.slice(i, i + chunkSize) }
+          if (timestamp !== "now") body.timestamp = timestamp
+          v4Requests.push(
+            fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json()).then((r) => {
+              if (!r?.coins) throw new Error(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
+              return r.coins
+            })
+          )
+        }
+        const results = await Promise.all(v4Requests)
+        const allCoins: Record<string, any> = {}
+        for (const coins of results) Object.assign(allCoins, coins)
+        if (timestamp === "now") {
+          for (const [PK, value] of Object.entries(allCoins)) priceCache[PK] = value
+        }
+        return cachedTokenData.concat(Object.entries(allCoins).map(([PK, value]) => ({ ...(value as any), PK })))
+      } catch (e) {
+        console.log(`Coins v4 API failed, falling back to old method: ${e}`)
       }
-      return cachedTokenData.concat(Object.entries(coins).map(([PK, value]) => ({ ...(value as any), PK })))
     }
+
+    filterReadKeys()
 
     const readRequests = [];
     for (let i = 0; i < readKeys.length; i += 100) {

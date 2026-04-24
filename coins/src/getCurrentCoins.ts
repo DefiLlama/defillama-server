@@ -12,18 +12,13 @@ const isFresh = (timestamp: number, searchWidth: number) => {
   return now - timestamp < searchWidth;
 };
 
-const defaultSearchWidth = quantisePeriod("12h");
-
-export async function getCurrentCoins({
-  response = {},
-  searchWidth = defaultSearchWidth,
-  requestedCoins = [],
-}: {
-  response?: CoinsResponse;
-  searchWidth?: number;
-  requestedCoins?: string[];
-} = {}): Promise<CoinsResponse> {
+const handler = async (event: any): Promise<IResponse> => {
+  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  const searchWidth: number = quantisePeriod(
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h",
+  );
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
+  const response = {} as CoinsResponse;
   const coinsWithRedirect = {} as { [redirect: string]: any[] };
   coins.forEach((coin) => {
     if (coin.redirect === undefined) {
@@ -64,17 +59,6 @@ export async function getCurrentCoins({
       });
     });
   }
-
-  return response
-};
-
-
-const handler = async (event: any): Promise<IResponse> => {
-  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
-  const searchWidth: number = quantisePeriod(
-    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h",
-  );
-  const response = await getCurrentCoins({ requestedCoins, searchWidth });
 
   // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
   const date = new Date();

@@ -205,7 +205,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
           chunks.push(readKeys.slice(i, i + chunkSize))
         }
         const allCoins: Record<string, any> = {}
-        const { errors } = await sdk.util.runInPromisePool({
+        await sdk.util.runInPromisePool({
           items: chunks,
           permitFailure: false,
           concurrency: 5,
@@ -225,8 +225,6 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
           }
         })
 
-        if (errors.length) throw errors[0]
-
         const allCoinsArray = Object.values(allCoins)
         sdk.log(`fetched ${allCoinsArray.length} coins from coins v4 API`)
         return cachedTokenData.concat(allCoinsArray)
@@ -244,7 +242,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       chunks.push(readKeys.slice(i, i + 100))
     }
 
-    const { errors } = await sdk.util.runInPromisePool({
+    await sdk.util.runInPromisePool({
       items: chunks,
       permitFailure: false,
       concurrency: 11,
@@ -270,11 +268,6 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
         cachedTokenData = cachedTokenData.concat(resultsArray)
       }
     })
-
-    if (errors.length) {
-      console.log(`Error fetching from price API: ${errors[0]}`)
-      throw errors[0]
-    }
 
     return cachedTokenData
   }

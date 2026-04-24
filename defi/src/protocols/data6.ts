@@ -659,7 +659,7 @@ const data6: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/dumpfun"],
     listedAt: 1776810088,
   },
-  // { 
+  // { // ownership was transffered to Uniswap: https://github.com/DefiLlama/DefiLlama-Adapters/pull/18866
   //   id: "7739",
   //   name: "Oku Trade",
   //   address: null,

@@ -18,7 +18,7 @@ import { TABLES } from "../api2/db"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 import { storeAllTokens } from "../../src/utils/shared/bridgedTvlPostgres";
-import { elastic } from '@defillama/sdk';
+import { elastic, humanizeNumber } from '@defillama/sdk';
 import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { deadChainsSet } from "../config/deadChains";
@@ -581,7 +581,9 @@ export async function storeTvl(
       }
     }
 
-    if (!process.env.DRY_RUN) {
+    if (process.env.DRY_RUN) {
+      console.log(`DRY RUN - skipping db update, id: ${protocol.id} | name: ${protocol.name} | current tvl: ${usdTvls.tvl} | hn: ${humanizeNumber(usdTvls.tvl)}`)
+    } else {
       await storeFn()
     }
   } catch (e) {
@@ -679,14 +681,12 @@ function hackForMorphoKatana({ protocol, usdTvls, tokensBalances, usdTokenBalanc
       delete tokensBalances.tvl[token]
     }
   })
-  
 
   Object.keys(tokensBalances.borrowed).forEach((token: string) => {
     if (doublecountedTokenSymbols.has(token.toLowerCase())) {
       delete tokensBalances.borrowed[token]
     }
   })
-  
 
 
   Object.keys(rawTokenBalances.tvl).forEach((token: string) => {

@@ -914,6 +914,7 @@ const data6: Protocol[] = [
     audit_links: ["https://docs.flyingtulip.com/risks/"],
     twitter: "flyingtulip_",
     listedAt: 1769459609,
+    parentProtocol: "parent#flying-tulip",
     dimensions: {
       fees: "flying-tulip-lend"
     }

@@ -12677,6 +12677,14 @@ const data5: Protocol[] = [
     twitter: "purrlend",
     audit_links: ["https://github.com/Purrlend/Purrlend-AUDIT"],
     oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://purrlends.gitbook.io/purrlend/protocol/oracles-and-data-feeds"],},],
+    warningBanners: [
+      {
+        message:
+          "Purrlend appears to be exploited on both MegaETH and HyperEVM. Be safe.",
+        level: "alert",
+        until: "2026-04-30",
+      },
+    ],
     listedAt: 1772205522,
   },
   {

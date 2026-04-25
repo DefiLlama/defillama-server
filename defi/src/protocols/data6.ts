@@ -933,9 +933,10 @@ const data6: Protocol[] = [
     cmcId: null,
     tags: ["Private Credit"],
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "eva/index.js",
     audit_links: ["https://docs.flyingtulip.com/risks/"],
     twitter: "eva_markets",
+    listedAt: 1777136758,
     dimensions: {
       fees: "eva"
     }

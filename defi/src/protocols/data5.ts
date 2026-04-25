@@ -8586,7 +8586,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#standx",
     stablecoins: ["standx-dusd"],
     dimensions: {
-      fees: "standx-dusd",
+      //fees: "standx-dusd", // it includes only withdrawl fees which misrepresents overall parent adapter stats, so disabling until perp fee stats are available
+                             // more info https://github.com/DefiLlama/dimension-adapters/pull/6461 & https://github.com/DefiLlama/dimension-adapters/pull/6477#discussion_r3137067079
     },
   },
   {

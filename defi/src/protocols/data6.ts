@@ -704,7 +704,7 @@ const data6: Protocol[] = [
     description:
       "RamsesX is a concentrated liquidity layer and exchange on Polygon, powered by x(3,3).",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/ramsesx.png`,
+    logo: `${baseIconsUrl}/ramsesx-polygon-cl.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -730,7 +730,7 @@ const data6: Protocol[] = [
     description:
       "RamsesX is a ve(3,3) exchange on Polygon with legacy liquidity pools and x(3,3) governance.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/ramsesx.png`,
+    logo: `${baseIconsUrl}/ramsesx-polygon-legacy.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -755,7 +755,7 @@ const data6: Protocol[] = [
     description:
       "RamsesX is a concentrated liquidity layer and exchange on Arbitrum, powered by x(3,3).",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/ramsesx.png`,
+    logo: `${baseIconsUrl}/ramsesx-arbitrum-cl.jpg`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -781,7 +781,7 @@ const data6: Protocol[] = [
     description:
       "RamsesX is a ve(3,3) exchange on Arbitrum with legacy liquidity pools and x(3,3) governance.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/ramsesx.png`,
+    logo: `${baseIconsUrl}/ramsesx-arbitrum-legacy.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

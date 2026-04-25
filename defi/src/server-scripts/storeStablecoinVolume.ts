@@ -13,16 +13,24 @@
 //   4. flush cache to R2 every R2_WRITE_INTERVAL days + once at the end
 //
 
+import * as sdk from "@defillama/sdk";
 import retry from "async-retry";
 import plimit from "p-limit";
 import axios, { AxiosRequestConfig } from "axios";
-import { getR2JSONString, storeR2JSONString } from '../utils/r2';
-import { NoSuchKey } from "@aws-sdk/client-s3";
 
 const DAY = 24 * 3600;
 const STORE_KEY = 'stablecoins/dailyVolumes';
 const START_DATE = '2021-01-01';
 const R2_WRITE_INTERVAL = 10; // after querying this many new days, flush current cache to R2
+const RUN_FIRST_TIME = process.argv.includes('--runFirstTime');
+const _refillIdx = process.argv.indexOf('--refill');
+const REFILL_DATE = _refillIdx !== -1 ? process.argv[_refillIdx + 1] : null;
+if (_refillIdx !== -1 && (!REFILL_DATE || !/^\d{4}-\d{2}-\d{2}$/.test(REFILL_DATE))) {
+  throw new Error('--refill requires a date arg in YYYY-MM-DD format, e.g. --refill 2025-01-01');
+}
+
+// tokens with known-bad volume data on allium; excluded from aggregation
+const TOKEN_BLACKLIST = new Set<string>(['DUSD']);
 
 // inlined from dimension-adapters/helpers/allium.ts
 // keys are llama chain names, values are the chain names as they appear in allium data
@@ -50,6 +58,21 @@ const ALLIUM_CHAIN_MAP: Record<string, string> = {
   'wc': 'worldchain',
   'manta': 'manta_pacific',
   'hyperliquid': 'hyperevm',
+  'sui': 'sui',
+  'solana': 'solana',
+  'blast': 'blast',
+  'aptos': 'aptos',
+  'ton': 'ton',
+  'soneium': 'soneium',
+  'celo': 'celo',
+  'mode': 'mode',
+  'plume_mainnet': 'plume',
+  'stellar': 'stellar',
+  'sonic': 'sonic',
+  'stable': 'stable',
+  'sei': 'sei',
+  'linea': 'linea',
+  'tempo': 'tempo',
 };
 
 const _alliumTokens: Record<string, string> = {};
@@ -132,10 +155,8 @@ async function _queryAllium(sqlQuery: string) {
   );
 
   let response;
-  let success = false;
   try {
     response = await _response;
-    success = true;
     metadata.rows = response?.length;
   } catch (e) {
     throw e;
@@ -177,15 +198,16 @@ function formatToken(token: string): string {
 
 interface DailyVolume {
   timestamp: number;
-  chains: Record<string, number>;
-  tokens: Record<string, number>;
-  currencies: Record<string, number>;
+  chains: Record<string, {
+    tokens: Record<string, number>;
+    currencies: Record<string, number>;
+  }>;
 }
 
 type VolumeCache = Record<string, DailyVolume>;
 
 function buildEmptyDaily(timestamp: number): DailyVolume {
-  return { timestamp, chains: {}, tokens: {}, currencies: {} };
+  return { timestamp, chains: {} };
 }
 
 function aggregateRecord(daily: DailyVolume, record: any) {
@@ -194,24 +216,27 @@ function aggregateRecord(daily: DailyVolume, record: any) {
   const currency = formatToken(record.currency);
   const volume = Number(record.volume_usd);
 
-  daily.chains[chain] = (daily.chains[chain] || 0) + volume;
-  daily.tokens[token] = (daily.tokens[token] || 0) + volume;
-  daily.currencies[currency] = (daily.currencies[currency] || 0) + volume;
+  if (TOKEN_BLACKLIST.has(token)) return;
+
+  daily.chains[chain] = daily.chains[chain] || { tokens: {}, currencies: {} };
+
+  daily.chains[chain].tokens[token] = (daily.chains[chain].tokens[token] || 0) + volume;
+  daily.chains[chain].currencies[currency] = (daily.chains[chain].currencies[currency] || 0) + volume;
 }
 
 async function loadCache(): Promise<VolumeCache> {
-  try {
-    const data = await getR2JSONString(STORE_KEY);
-    return data || {};
-  } catch (e) {
-    if (e instanceof NoSuchKey) {
-      console.log(`no existing cache at ${STORE_KEY}, starting empty`);
-      return {};
-    } else {
-      console.log(e)
-      throw new Error(`failed to load cache from ${STORE_KEY}`);
-    }
+  const MAX_ATTEMPTS = 5;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const data = await sdk.cache.readCache(STORE_KEY, { readFromR2Cache: true });
+    if (data && Object.keys(data).length > 0) return data;
+    console.log(`# cache empty on attempt ${attempt}/${MAX_ATTEMPTS}`);
+    if (attempt < MAX_ATTEMPTS) await new Promise(r => setTimeout(r, 2000 * attempt));
   }
+  if (RUN_FIRST_TIME) {
+    console.log(`# --runFirstTime flag set, starting with empty cache`);
+    return {};
+  }
+  throw new Error(`failed to load cache from ${STORE_KEY} after ${MAX_ATTEMPTS} attempts (cache missing or persistent read failure). use --runFirstTime to bootstrap`);
 }
 
 async function queryDay(timestamp: number): Promise<DailyVolume> {
@@ -248,6 +273,16 @@ async function queryDay(timestamp: number): Promise<DailyVolume> {
   const cache = await loadCache();
   console.log(`# cache loaded from R2, existing days: ${Object.keys(cache).length}`);
 
+  if (REFILL_DATE) {
+    const ts = getStartDayTimestamp(getUnixTimestamp(REFILL_DATE));
+    console.log(`# refilling ${REFILL_DATE} (ts=${ts})`);
+    const daily = await queryDay(ts);
+    cache[String(ts)] = daily;
+    await sdk.cache.writeCache(STORE_KEY, cache, { skipR2CacheWrite: false });
+    console.log(`# refill complete, wrote cache to R2`);
+    return;
+  }
+
   const missingDays: number[] = [];
   for (let ts = startTs; ts <= yesterdayStart; ts += DAY) {
     if (!cache[String(ts)]) missingDays.push(ts);
@@ -265,13 +300,13 @@ async function queryDay(timestamp: number): Promise<DailyVolume> {
     updatedCount++;
 
     if (updatedCount % R2_WRITE_INTERVAL === 0) {
-      await storeR2JSONString(STORE_KEY, JSON.stringify(cache));
+      await sdk.cache.writeCache(STORE_KEY, cache, { skipR2CacheWrite: false });
       console.log(`# flushed cache to R2 (${updatedCount} new days so far)`);
     }
   }
 
   const payload = JSON.stringify(cache);
-  await storeR2JSONString(STORE_KEY, payload);
+  await sdk.cache.writeCache(STORE_KEY, cache, { skipR2CacheWrite: false });
 
   const totalDays = Object.keys(cache).length;
   const bytes = Buffer.byteLength(payload);

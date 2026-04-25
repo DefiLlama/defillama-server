@@ -3075,7 +3075,7 @@ const data5: Protocol[] = [
     chain: "Solana",
     logo: `${baseIconsUrl}/godl-protocol.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "godl-2",
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Solana"],

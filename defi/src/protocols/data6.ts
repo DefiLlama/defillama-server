@@ -1016,7 +1016,7 @@ const data6: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum"],
-    module: "dummy.js",
+    module: "kyan-blue/index.js",
     twitter: "KyanExchange",
     parentProtocol: "parent#kyan",
     dimensions: {

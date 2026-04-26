@@ -30781,7 +30781,7 @@ const data3_1: Protocol[] = [
     ],
     dimensions: {
       fees: "garden",
-      dexs: "garden",
+      //dexs: "garden", // we track under bridges
       //"bridge-aggregators": "garden"
     }
   },

@@ -2827,15 +2827,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#premia",
-    name: "Premia",
-    url: "https://premia.finance",
+    name: "Kyan", // previous Premia
+    url: "https://kyan.blue",
     description:
-      "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
-    logo: `${baseIconsUrl}/premia.jpg`,
-    gecko_id: "premia",
-    cmcId: "8476",
+      "Kyan is an orderbook-based crypto derivatives exchange with support for Request for Quote (RFQ) orders.",
+    logo: `${baseIconsUrl}/kyan.jpg`,
+    gecko_id: null,
+    cmcId: null,
     chains: [],
-    twitter: "PremiaFinance",
+    twitter: "KyanExchange",
     governanceID: ["snapshot:premia.eth"],
     github: ["Premian-Labs"],
   },
@@ -9509,6 +9509,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "flyingtulip_",
     treasury: "flying-tulip.js",
   },
+  // { rebranded Premia to Kyan
+  //   id: "parent#kyan-blue",
+  //   name: "Kyan",
+  //   url: "https://kyan.blue/", 
+  //   description: "Kyan is an orderbook-based crypto derivatives exchange with support for Request for Quote (RFQ) orders.",
+  //   logo: `${baseIconsUrl}/kyan.jpg`,
+  //   gecko_id: null,
+  //   cmcId: null,
+  //   chains: [],
+  //   twitter: "KyanExchange",
+  // },
 ];
 
 export default parentProtocols;

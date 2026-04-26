@@ -1018,7 +1018,7 @@ const data6: Protocol[] = [
     chains: ["Arbitrum"],
     module: "kyan-blue/index.js",
     twitter: "KyanExchange",
-    parentProtocol: "parent#kyan",
+    parentProtocol: "parent#premia",
     dimensions: {
       derivatives: "kyan",
       fees: "kyan",
@@ -1041,7 +1041,7 @@ const data6: Protocol[] = [
     chains: ["Arbitrum"],
     module: "dummy.js",
     twitter: "KyanExchange",
-    parentProtocol: "parent#kyan",
+    parentProtocol: "parent#premia",
     dimensions: {
       options: "kyan",
     },

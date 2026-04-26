@@ -948,7 +948,7 @@ const data6: Protocol[] = [
     address: null,
     symbol: "-",
     url: " ", // pending to add url https://frenflow.com
-    description: "The social hub of Prediction Markets. Predict with frens, copy and win together. No CA. Only flow.",
+    description: "FrenFlow is the social + execution layer for prediction markets. A unified trading UI and Telegram bot with self-custody routing across Polymarket, Kalshi (via DFlow), and Predict.fun — plus native copytrading, social feed, and leaderboards.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/frenflow.jpg`,
     audits: "0",

@@ -25450,7 +25450,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["Cryptorubic"],
     dimensions: {
       aggregators: "rubic",
-      "bridge-aggregators": "rubic"
+      "bridge-aggregators": {
+        adapter: "rubic",
+        genuineSpikes: [
+          ["2026-04-24", "Large stablecoin swaps"],
+        ]
+      }
     }
   },
   {

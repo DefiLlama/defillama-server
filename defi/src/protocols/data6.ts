@@ -44,7 +44,7 @@ const data6: Protocol[] = [
     id: "7709",
     name: "MOKEE",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://www.mokee.app/
     description:
       "MOKEE Protocol is the first non-custodial crypto fail-safe protocol. Users deposit native tokens into personal vaults, designate heirs, and set an inactivity threshold",
@@ -64,7 +64,7 @@ const data6: Protocol[] = [
     id: "7710",
     name: "Trinity Protocol",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://graceful-begonia-2b7634.netlify.app/.
     description:
       "Gold-collateralized USDC lending market on Morpho Blue (Arbitrum One)",
@@ -84,7 +84,7 @@ const data6: Protocol[] = [
     id: "7711",
     name: "Liquid Protocol",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://app.liquidprotocol.org/tokens",
     description:
       "Liquid Protocol deploys ERC-20 tokens on Base with Uniswap V4 pools, locked liquidity, and configurable fee distribution",
@@ -106,7 +106,7 @@ const data6: Protocol[] = [
     id: "7712",
     name: "Rainbow Token Launchpad",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://rainbow.me/",
     description:
       "A launchpad platform built by Rainbow team",
@@ -128,7 +128,7 @@ const data6: Protocol[] = [
     id: "7713",
     name: "GrelfSwap",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://grelfswap.com/
     description:
       "GrelfSwap is a DEX aggregator on Hedera",
@@ -149,7 +149,7 @@ const data6: Protocol[] = [
     id: "7714",
     name: "Circle CCTP",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://www.circle.com/cross-chain-transfer-protocol",
     description: "Circle helps businesses and developers harness the power of USDC for payments and commerce",
     chain: "Ethereum",
@@ -171,7 +171,7 @@ const data6: Protocol[] = [
     id: "7715",
     name: "Paxos Stablecoin Issuer",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://paxos.com/",
     description:
       "Paxos is a financial technology company that provides stablecoin services to businesses and developers",
@@ -193,7 +193,7 @@ const data6: Protocol[] = [
     id: "7716",
     name: "Lucky38",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://randomy.fun/
     description:
       "On-chain games for Openclaw on Base",
@@ -237,7 +237,7 @@ const data6: Protocol[] = [
     id: "7718",
     name: "SuiDex",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://dex.suidex.org/",
     description:
       "SuiDex is a Uniswap V2-style AMM DEX on Sui with 54 active trading pairs, yield farming (SuiFarm), and a VICTORY token locker",
@@ -257,7 +257,7 @@ const data6: Protocol[] = [
     id: "7719",
     name: "Durianfun",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://durianfun.xyz/
     description:
       "Fair-launch meme-token launchpad on KUB. Tokens start on an exponential bonding curve, then graduate to a sealed DurianAMM liquidity pool. No presale, no team allocation, 14.3% of trading fees shared back to creators",
@@ -278,7 +278,7 @@ const data6: Protocol[] = [
     id: "7720",
     name: "Milk Finance",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://app.basedmilk.com",
     description:
       "Milk Finance is a USDC-backed stablecoin lending protocol on Base",
@@ -297,7 +297,7 @@ const data6: Protocol[] = [
     id: "7721",
     name: "SoulBound Finance",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://soulbound.finance
     description:
       "SoulBound Finance is a privacy-focused transfer protocol on Arbitrum that enables encrypted, wallet-to-wallet payments using one-time redeemable codes. It supports assets like ETH and stablecoins, with batched redemptions and a design that prevents linking senders to recipients",
@@ -317,7 +317,7 @@ const data6: Protocol[] = [
     id: "7722",
     name: "Pyron",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://pyron.fi/",
     description:
       "Asset productivity layer of Fogo. Lend and Borrow without the wait, noise, or limits",
@@ -358,7 +358,7 @@ const data6: Protocol[] = [
     id: "7724",
     name: "Vaultfire",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url project didn't submit url
     description:
       "Vaultfire is an AI agent trust infrastructure protocol",
@@ -377,7 +377,7 @@ const data6: Protocol[] = [
     id: "7725",
     name: "TopStrike",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://topstrike.io",
     description:
       "Real-time, one-tap Football trading game powered by MegaETH",
@@ -399,7 +399,7 @@ const data6: Protocol[] = [
     id: "7726",
     name: "ASPE Labs",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://aspelabs.xyz
     description:
       "Automated yield vault on HyperEVM. ERC4626-compliant; deposits USDC, trades on HyperCore via an agent wallet, and returns profits through share price appreciation",
@@ -419,7 +419,7 @@ const data6: Protocol[] = [
     id: "7727",
     name: "Hubra",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://hubra.app/",
     description:
       "Hubra is a Solana-based DeFi protocol providing institutional-grade, non-custodial yield products, including liquid staking (raSOL) and automated yield vaults (raUSDC, raUSDT, raUSDS, raUSDG, raUSD1). It is designed to make professional yield strategies accessible to everyone",
@@ -458,7 +458,7 @@ const data6: Protocol[] = [
     id: "7729",
     name: "Dumpfun Gamified Launcher",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://dumpfun.io
     description:
       "Dumpfun Gamified Launcher is a gamified token launchpad on Solana. Anyone can launch a mining token; users deploy SOL to a 5x5 grid per round, and VRF-picked winning squares split a SOL + token reward pool. Per reset: 87% winners, 1% creator, 10% buy-and-burn, 0.5% platform fee, 1.4% per-token motherlode, 0.1% global motherlode",
@@ -479,7 +479,7 @@ const data6: Protocol[] = [
     id: "7730",
     name: "TxFlow Bridge",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://txflow.com/",
     description:
       "TxFlow is an open Layer 1 with multi-application ecosystem around TIP Liquidity Standards — where every Channel shares on-chain liquidity, settlement, and market data without bridging",
@@ -499,7 +499,7 @@ const data6: Protocol[] = [
     id: "7731",
     name: "Sail.Money",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://sail.money/",
     description:
       "Sail is a non-custodial personal AI agent that manages stablecoins across DeFi protocols and networks, automatically reallocating capital to optimize risk-adjusted yield while helping protect capital with continuous risk monitoring and user-controlled permissions",
@@ -518,7 +518,7 @@ const data6: Protocol[] = [
     id: "7732",
     name: "Hit One",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://app.hit.one/r/5YPD66",
     referralUrl: "https://app.hit.one/r/5YPD66",
     description:
@@ -541,7 +541,7 @@ const data6: Protocol[] = [
     id: "7733",
     name: "TxFlow Perps",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://app.txflow.com/",
     description:
       "TxFlow perpetuals are derivative products with no expiration date. They maintain price convergence with the underlying spot asset through funding payments rather than settlement dates",
@@ -585,7 +585,7 @@ const data6: Protocol[] = [
     id: "7735",
     name: "Premarket",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://premarket.xyz/",
     description:
       "Premarket is a prediction-market style protocol for trading premarket/outcome exposure",
@@ -605,7 +605,7 @@ const data6: Protocol[] = [
     id: "7736",
     name: "Chisino",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url chisino.io
     description:
       "Chisino is an instant payout game protocol on MegaETH. Its pioneer game is no-loss scratch cards. Scratch for instant prizes up to $10,000. 55% of cards pay out across 16 prize tiers. Every card you play, win or lose, generates a recovery ticket that works to return what you spent. No permanent loss. The protocol is built on Klarhaus, a prize-linked savings engine that splits each play between instant prizes, entry recovery, and protocol rewards. Deposits are backed 1:1 by stablecoins. All outcomes are determined by onchain VRF. Earn rewards every time you play",
@@ -624,7 +624,7 @@ const data6: Protocol[] = [
     id: "7737",
     name: "RISE Bridge",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://risechain.com/",
     description:
       "RISE is an Ethereum Layer 2 blockchain delivering near-instant transactions at unprecedented scale with sub-3ms latency and 100,000+ TPS capacity, all secured by Ethereum",
@@ -643,7 +643,7 @@ const data6: Protocol[] = [
     id: "7738",
     name: "DumpFlow",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://dumpfun.io
     description:
       "DumpFlow is Dumpfun's bonding-curve token launchpad on Solana. Anyone can mint a meme token with a configurable virtual SOL reserve, sell-lock period, and dynamic ramping limits. Buys/sells route SOL through a per-token liquidity pool; a 1% SOL fee accrues to the platform fee wallet and sell-side fees split 2.5%/2.5% to creator/company",
@@ -663,7 +663,7 @@ const data6: Protocol[] = [
   //   id: "7739",
   //   name: "Oku Trade",
   //   address: null,
-  //   symbol: "-",
+  //   symbol: "arUSD",
   //   url: "https://oku.trade/",
   //   description: "Oku Trade is a premium DEX interface offering advanced trading, deep liquidity, and superior analytics on the chain",
   //   chain: "0G",
@@ -681,8 +681,8 @@ const data6: Protocol[] = [
     id: "7740",
     name: "Arche",
     address: null,
-    symbol: "-",
-    url: " ", // pending to add url https://arche.money
+    symbol: "arUSD",
+    url: "https://arche.money",
     description: "Yield-bearing stablecoin vault aggregating best-in-class DeFi yields",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arche.jpg`,
@@ -801,7 +801,7 @@ const data6: Protocol[] = [
     id: "7745",
     name: "YFarmer",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://yfarmer.xyz
     description:
       "YFarmer is a DeFi yield vault and risk curation protocol where users deposit USDC to access actively managed strategies.",
@@ -820,7 +820,7 @@ const data6: Protocol[] = [
     id: "7746",
     name: "Altera Finance",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://altera.finance
     description:
       "Altera Vaults deploy capital into market-neutral, hedged, and structured-credit strategies operated by licensed fund managers.",
@@ -859,7 +859,7 @@ const data6: Protocol[] = [
     id: "7748",
     name: "SpringX",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://springx.finance/",
     description:
       "SpringX is the gateway to the Plasma DeFi ecosystem facilitating yield generation through efficient auto-liquidity management.",
@@ -923,7 +923,7 @@ const data6: Protocol[] = [
     id: "7751",
     name: "eva Markets",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://www.eva.markets",
     description: "eva Markets allows users to mint portable tokens backed by isolated credit.",
     chain: "Ethereum",
@@ -945,7 +945,7 @@ const data6: Protocol[] = [
     id: "7752",
     name: "FrenFlow",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: " ", // pending to add url https://frenflow.com
     description: "The social hub of Prediction Markets. Predict with frens, copy and win together. No CA. Only flow.",
     chain: "Polygon",
@@ -967,7 +967,7 @@ const data6: Protocol[] = [
     id: "7753",
     name: "Telegram Wallet",
     address: null,
-    symbol: "-",
+    symbol: "arUSD",
     url: "https://t.me/wallet",
     description: "Buy, sell and transfer crypto with zero fees on Telegram.",
     chain: "zkLighter",

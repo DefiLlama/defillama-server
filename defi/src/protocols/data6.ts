@@ -946,7 +946,7 @@ const data6: Protocol[] = [
     name: "FrenFlow",
     address: null,
     symbol: "-",
-    url: " ", // pending to add url https://frenflow.com
+    url: "https://www.frenflow.com",
     description: "The social hub of Prediction Markets. Predict with frens, copy and win together. No CA. Only flow.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/frenflow.jpg`,

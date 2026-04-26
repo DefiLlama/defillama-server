@@ -23599,6 +23599,9 @@ const data4: Protocol[] = [
     twitter: "securitize",
     parentProtocol: "parent#securitize",
     listedAt: 1755190033,
+    dimensions: {
+      fees: "acred",
+    },
   },
   {
     // this listing will be for slasher yields dashboard , they are making the adapter
@@ -24852,6 +24855,9 @@ const data4: Protocol[] = [
     twitter: "vaneck_us",
     parentProtocol: "parent#securitize",
     listedAt: 1756395301,
+    dimensions: {
+      fees: "vbill",
+    },
   },
   {
     id: "6640",

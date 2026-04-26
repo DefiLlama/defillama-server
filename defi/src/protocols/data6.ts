@@ -143,6 +143,7 @@ const data6: Protocol[] = [
     twitter: null,
     dimensions: {
       aggregators: "grelfswap",
+      fees: "grelfswap",
     },
   },
   {
@@ -982,6 +983,24 @@ const data6: Protocol[] = [
     dimensions: {
       fees: "telegram-wallet-perps",
     }
+  },
+  {
+    id: "7754",
+    name: "HypePool",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://hypepool.app
+    description: "The first on-chain game protocol on HyperEVM. Multiple ways to play, with verifiable randomness via Chainlink VRF v2.5 routed through Base via CCIP.",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/hypepool.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Hyperliquid L1"],
+    module: "hypepool/index.js",
+    twitter: "HypePoolX",
+    listedAt: 1777230068,
   },
 ];
 export default data6;

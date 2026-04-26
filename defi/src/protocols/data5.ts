@@ -6827,6 +6827,9 @@ const data5: Protocol[] = [
     twitter: "Securitize",
     parentProtocol: "parent#securitize",
     listedAt: 1767120857,
+    dimensions: {
+      fees: "stac-clo",
+    },
   },
   {
     id: "7197",
@@ -14998,6 +15001,9 @@ const data5: Protocol[] = [
     module: "grove/index.js",
     twitter: "grovedotfinance",
     listedAt: 1774489318,
+    dimensions: {
+      fees: "grove",
+    },
   },
   {
     id: "7584",

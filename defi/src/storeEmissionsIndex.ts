@@ -126,7 +126,7 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
       const protocolId = res.metadata.protocolIds?.[0] ?? null;
       protocolsData.push({
         token: res.metadata.token,
-        sources: res.metadata.sources,
+        sources: [],
         protocolId,
         protocolSlug: getProtocolSlug(protocolId),
         name: res.name,

@@ -38,7 +38,7 @@ export async function getRaisesInternal() {
       sector: r.fields[SECTOR]?.endsWith("\n") ? r.fields[SECTOR].slice(-1) : r.fields[SECTOR] || null,
       category: r.fields["General Sector"] ?? null,
       categoryGroup: categoryGroupMapping[r.fields["General Sector"]] ?? null,
-      source: r.fields["Source (twitter/news links better because blogposts go down quite often)"],
+      source: "",
       leadInvestors: r.fields["Lead Investor"] ?? [],
       otherInvestors: r.fields["Other investors"] ?? [],
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,

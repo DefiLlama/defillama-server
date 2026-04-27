@@ -15703,8 +15703,14 @@ const data5: Protocol[] = [
     twitter: "tradeparagon",
     oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://docs.paragon.trade/protocol/oracles"],}],
     dimensions: {
-      fees: "paragon",
-      derivatives: "paragon",
+      fees: {
+        adapter: "paragon",
+        genuineSpikes: [["2026-04-26", "-"]],
+      },
+      derivatives: {
+        adapter: "paragon",
+        genuineSpikes: [["2026-04-26", "Large volumes on $TOTAL2 market"]],
+      },
       "open-interest": "paragon-oi",
     },
   },

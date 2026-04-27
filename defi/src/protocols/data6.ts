@@ -1047,6 +1047,25 @@ const data6: Protocol[] = [
   },
   {
     id: "7757",
+    name: "WeDeFin",
+    address: null,
+    symbol: "-",
+    url: "https://app.wedefin.com/",
+    description: "WeDeFin is a non-custodial index and portfolio app that lets users follow community-ranked crypto strategies, rebalance through DEXs, and route supported assets into Aave for yield.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wedefin.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum", "Base", "Arbitrum"],
+    module: "wedefin/index.js",
+    twitter: "wedefin",
+    audit_links: ["https://docs.wedefin.com/technical-overview/audits"],
+    listedAt: 1777310614,
+  },
+  {
+    id: "7758",
     name: "ShapeSwap",
     address: null,
     symbol: "-",
@@ -1069,7 +1088,7 @@ const data6: Protocol[] = [
     },
   },
   {
-    id: "7758",
+    id: "7759",
     name: "ShapeSwap AMM",
     address: null,
     symbol: "-",
@@ -1090,6 +1109,6 @@ const data6: Protocol[] = [
       fees: "shapeswap-v2",
       dexs: "shapeswap-v2",
     },
-  },
+  }
 ];
 export default data6;

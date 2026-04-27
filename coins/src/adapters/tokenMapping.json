@@ -11638,6 +11638,16 @@
       "to": "coingecko#ethereum",
       "decimals": 18,
       "symbol": "ETH"
+    },
+    "0xdb7DD8B00EdC5778Fe00B2408bf35C7c054f8BBe": {
+      "to": "coingecko#shape-bridged-usdc-shape",
+      "decimals": 6,
+      "symbol": "USDC.e"
+    },
+    "0x360aac543a23dbcefa8049d4c4d8b18da1cca360": {
+      "to": "coingecko#wrapped-shape",
+      "decimals": 18,
+      "symbol": "SHAPE"
     }
   },
   "hela": {

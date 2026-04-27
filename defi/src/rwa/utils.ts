@@ -471,10 +471,10 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   target.stablecoin = flags.stablecoin;
   target.governance = flags.governance;
 
-  // Normalize price
+  // Normalize price (do not run through formatNumAsNumber — it lossy-rounds tiny
+  // values like 0.0000397 to 0).
   if (!("price" in target)) target.price = null;
   target.price = toFiniteNumberOrNull(target.price);
-  if (target.price != null) target.price = formatNumAsNumber(target.price);
 
   return target;
 }

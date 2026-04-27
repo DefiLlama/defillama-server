@@ -14592,24 +14592,6 @@ const data5: Protocol[] = [
     listedAt: 1774368695
   },
   {
-    id: "7758",
-    name: "Pool Party",
-    address: null,
-    symbol: "-",
-    url: "https://poolparty.fun",
-    description: "Pool Party is the first AMM on Canton Network, built by Send Foundation. It enables non-custodial swaps and liquidity provision in CC, CUSD (Send's privacy stablecoin), and USDCx (bridged USDC) directly from the Send Canton Wallet. Launched February 2026.",
-    chain: "Canton",
-    logo: `${baseIconsUrl}/pool-party.jpg`,
-    audits: "0",
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Canton"],
-    module: "pool-party/index.js",
-    twitter: "send",
-    listedAt: 1777311338
-  },
-  {
     id: "7565",
     name: "Rocket Perp",
     address: null,

@@ -19,8 +19,8 @@ const CHAINS: ChainTokens[] = [
     chain: "bsc",
     tokens: [
       {
-        name: "GIFT",
-        tokenAddress: "0x6Eca9D3B1ef79F5b45572fb8204835C6A4502bE9",
+        name: "GYTW",
+        tokenAddress: "0xfC787d44f3754aDd0242204533b2B4A7eB9876e1",
         pricerAddress: "0xCcaCA7A3b472843016E98db8EAF921A7a770f9eA",
       },
     ],

@@ -20,4 +20,35 @@ describe("generateToken token rights flags", () => {
       )
     ).toEqual({ protocolId: "balancer" });
   });
+
+  it("returns existing tokenRights extras without overwriting", () => {
+    const tokenRightsSymbols = getTokenRightsSymbols([{ Token: ["BP"] }]);
+    const extras = { tokenRights: true };
+
+    expect(
+      getTokenExtras(
+        { symbol: "BP", token_nk: "coingecko:backpack" },
+        new Map([["backpack", extras]]),
+        tokenRightsSymbols
+      )
+    ).toBe(extras);
+  });
+
+  it("merges tokenRights with existing protocol and chain metadata", () => {
+    const tokenRightsSymbols = getTokenRightsSymbols([{ Token: ["BP"] }]);
+
+    expect(
+      getTokenExtras(
+        { symbol: "BP", token_nk: "coingecko:backpack" },
+        new Map([["backpack", { protocolId: "4266", chainId: "backpack" }]]),
+        tokenRightsSymbols
+      )
+    ).toEqual({ protocolId: "4266", chainId: "backpack", tokenRights: true });
+  });
+
+  it("returns extras when symbol is missing", () => {
+    const tokenRightsSymbols = getTokenRightsSymbols([{ Token: ["BP"] }]);
+
+    expect(getTokenExtras({ token_nk: "coingecko:backpack" }, new Map(), tokenRightsSymbols)).toEqual({});
+  });
 });

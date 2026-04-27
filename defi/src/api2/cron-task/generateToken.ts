@@ -86,7 +86,11 @@ const getTokenMetadataExtrasByGeckoId = (
 
 export const getTokenExtras = (item: any, extrasByGeckoId: Map<string, any>, tokenRightsSymbols: Set<string>) => {
   const extras = extrasByGeckoId.get(getCoingeckoId(item.token_nk)!) ?? {};
-  if (!tokenRightsSymbols.has(item.symbol.trim().toLowerCase()) || extras.tokenRights) return extras;
+  if (!tokenRightsSymbols.size || extras.tokenRights) return extras;
+  const symbol = String(item?.symbol ?? "")
+    .trim()
+    .toLowerCase();
+  if (!tokenRightsSymbols.has(symbol)) return extras;
   return { ...extras, tokenRights: true };
 };
 

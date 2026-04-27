@@ -1008,6 +1008,9 @@ export const chainCoingeckoIds = {
     cmcId: "3794",
     twitter: "cosmos",
     url: "https://cosmos.network/",
+    dimensions: {
+      fees: "cosmoshub",
+    },
   },
   "EthereumClassic": {
     geckoId: "ethereum-classic",
@@ -2558,6 +2561,9 @@ export const chainCoingeckoIds = {
     },
     twitter: "hydration_net",
     url: "https://hydration.net/",
+    dimensions: {
+      fees: "hydration-chain",
+    },
   },
   "Shibarium": {
     geckoId: "bone-shibaswap",
@@ -2596,6 +2602,9 @@ export const chainCoingeckoIds = {
     cmcId: "5798",
     github: ["darwinia-network"],
     categories: ["EVM"],
+    dimensions: {
+      fees: "darwinia",
+    },
   },
   "Pego": {
     geckoId: "pego-network-2",

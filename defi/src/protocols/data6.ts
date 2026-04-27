@@ -1079,7 +1079,7 @@ const data6: Protocol[] = [
     tags: ["CLMM"],
     chains: ["Shape"],
     module: "shapeswap-v3/index.js",
-    twitter: "Shape_L2",
+    twitter: "shape",
     forkedFromIds: ["2198"],
     listedAt: 1777292000,
     dimensions: {
@@ -1102,7 +1102,7 @@ const data6: Protocol[] = [
     tags: ["AMM"],
     chains: ["Shape"],
     module: "shapeswap-v2/index.js",
-    twitter: "Shape_L2",
+    twitter: "shape",
     forkedFromIds: ["2197"],
     listedAt: 1777292000,
     dimensions: {

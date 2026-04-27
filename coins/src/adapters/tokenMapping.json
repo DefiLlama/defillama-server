@@ -16466,6 +16466,11 @@
       "to": "coingecko#midas-hyperithm-btc",
       "decimals": 18,
       "symbol": "mHyperBTC"
+    },
+    "0xCE6170EA245dC8D1f275A710a062b70f125F0110": {
+      "decimals": "6",
+      "symbol": "FXRP",
+      "to": "coingecko#flare-bridged-xrp-flare"
     }
   },
   "stable": {

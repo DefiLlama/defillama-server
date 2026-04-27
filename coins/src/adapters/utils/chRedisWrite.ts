@@ -82,18 +82,26 @@ export async function dualWriteToChRedis(writeItems: any[]): Promise<void> {
     if (sk < 0) continue;
 
     if (sk === 0) {
-      // Metadata write (SK=0): update tokens, token_addresses, and Redis mappings
+      // Metadata write (SK=0): update tokens, token_addresses, and Redis mappings.
+      // Address-level decimals are gated: an adapter that doesn't compute decimals
+      // (e.g. RPC failure for an EVM token) would otherwise overwrite the stored
+      // value with 0 and break TVL math downstream. Skipping preserves the last
+      // good value via ReplacingMergeTree's natural behavior.
+      const itemDecimals =
+        typeof item.decimals === "number" ? item.decimals : Number(item.decimals);
+      const validDecimals = Number.isFinite(itemDecimals) && itemDecimals > 0;
+
       if (item.symbol) {
         const cgId = pk.startsWith("coingecko#") ? pk.slice(10) : "";
         tokenRows.push([esc(cid), esc(item.symbol || ""), item.decimals || 0, esc(cgId), 1, tsDT(item.timestamp || now), tsDT(now)].join("\t"));
       }
 
       const parsed = pkToChainAddress(pk);
-      if (parsed) {
+      if (parsed && validDecimals) {
         const addrCid = item.redirect ? pkToCanonicalId(item.redirect) : cid;
         const redirectTo = item.redirect ? pkToCanonicalId(item.redirect) : "";
-        addressRows.push([esc(parsed.chain), esc(parsed.address), esc(addrCid), esc(item.symbol || ""), item.decimals || 0, esc(redirectTo), 1, tsDT(now)].join("\t"));
-        if (redisEnabled) redisOps.push({ key: `mapping:${parsed.chain}:${parsed.address}`, value: JSON.stringify({ canonical_id: addrCid, symbol: item.symbol || null, decimals: item.decimals ?? null }) });
+        addressRows.push([esc(parsed.chain), esc(parsed.address), esc(addrCid), esc(item.symbol || ""), itemDecimals, esc(redirectTo), 1, tsDT(now)].join("\t"));
+        if (redisEnabled) redisOps.push({ key: `mapping:${parsed.chain}:${parsed.address}`, value: JSON.stringify({ canonical_id: addrCid, symbol: item.symbol || null, decimals: itemDecimals }) });
       }
 
       if (pk.startsWith("coingecko#") && redisEnabled) {

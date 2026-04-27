@@ -1045,5 +1045,27 @@ const data6: Protocol[] = [
       options: "kyan",
     },
   },
+  {
+    id: "7757",
+    name: "NextRare",
+    address: null,
+    symbol: "-",
+    url: "https://nextrare.cards",
+    description:
+      "NextRare is the onchain home for serious TCG collectors & traders. Backed by a local partner with over 20mil GMV, NextRare comes with real inventory, real odds, and access most platforms simply can't offer.",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/nextrare.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Physical TCG",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "Nextrare_cards",
+    dimensions: {
+      fees: "nextrare",
+    },
+    listedAt: 1776683811,
+  },
 ];
 export default data6;

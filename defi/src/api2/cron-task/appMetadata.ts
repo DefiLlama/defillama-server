@@ -8,7 +8,6 @@ import { readRouteData, storeRouteData } from "../cache/file-cache";
 import * as sdk from "@defillama/sdk";
 import { genTokenConfig } from "./generateToken";
 
-// import { pullDevMetricsData } from "./githubMetrics";
 import { chainNameToIdMap, extraSections, getChainKeyFromLabel } from "../../utils/normalizeChain";
 import protocols from "../../protocols/data";
 import parentProtocols from "../../protocols/parentProtocols";
@@ -86,7 +85,6 @@ export async function storeAppMetadata() {
   console.log("starting to build metadata for front-end");
   try {
     // await pullRaisesDataIfMissing();  // not needed anymore as raises data is always updated before this line is invoked
-    // await pullDevMetricsData();  // we no longer use this data
     await _storeAppMetadata();
   } catch (e) {
     console.log("Error in storeAppMetadata: ", e);

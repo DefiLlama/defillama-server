@@ -13481,6 +13481,9 @@ const data3_0: Protocol[] = [
     audit_links: ["https://github.com/sablier-labs/audits"],
     parentProtocol: "parent#sablier-finance",
     listedAt: 1690655852,
+    dimensions: {
+      fees: "sablier",
+    },
   },
   {
     id: "3309",

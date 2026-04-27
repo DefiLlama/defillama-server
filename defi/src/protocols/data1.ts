@@ -2073,9 +2073,6 @@ const data: Protocol[] = [
     twitter: "Sablier",
     audit_links: ["https://certificate.quantstamp.com/full/sablier"],
     parentProtocol: "parent#sablier-finance",
-    dimensions: {
-      fees: "sablier"
-    }
   },
   {
     id: "200",

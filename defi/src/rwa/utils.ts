@@ -1,5 +1,16 @@
 import { bridgedTvlMixedCaseChains } from "../utils/shared/constants";
-import { getChainDisplayName } from "../utils/normalizeChain";
+import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normalizeChain";
+
+/**
+ * Normalize an Airtable chain value (which may be a chain key like "optimism",
+ * a display name like "OP Mainnet", or a typo'd casing like "op mainnet") to
+ * the canonical display name. Going through getChainIdFromDisplayName first
+ * collapses casing/spelling variants to the chain key, then back to the
+ * canonical display so chain[] and contracts keys always agree.
+ */
+function rwaChainLabel(rawChain: string): string {
+  return getChainDisplayName(getChainIdFromDisplayName(rawChain), true);
+}
 import {
   RWA_ALWAYS_STRING_ARRAY_FIELDS,
   RWA_BOOLEAN_OR_NULL_FIELDS,
@@ -342,10 +353,20 @@ function getAccessModel(asset: {
 }
 
 function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {
-  // Already in parsed { chainLabel: string[] } form (e.g. re-normalization of DB data) — return as-is
+  // Already in parsed { chainLabel: string[] } form (e.g. re-normalization of DB data) —
+  // re-normalize the keys so they match the chain[] array (Airtable labels like
+  // "OP Mainnet" / "Plume Mainnet" must round-trip to the canonical display).
   if (value && typeof value === "object" && !Array.isArray(value)) {
     const keys = Object.keys(value);
-    if (keys.length && keys.every((k) => Array.isArray(value[k]))) return value;
+    if (keys.length && keys.every((k) => Array.isArray(value[k]))) {
+      const renamed: { [chainLabel: string]: string[] } = {};
+      for (const k of keys) {
+        const label = rwaChainLabel(k);
+        renamed[label] = renamed[label] ? [...renamed[label], ...value[k]] : value[k];
+      }
+      for (const k of Object.keys(renamed)) renamed[k] = Array.from(new Set(renamed[k]));
+      return renamed;
+    }
   }
 
   const items = toStringArrayOrNull(value);
@@ -359,7 +380,7 @@ function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: st
     const chainRaw = raw.slice(0, idx);
     const address = raw.slice(idx + 1);
     if (!chainRaw || !address) continue;
-    const chainLabel = getChainDisplayName(chainRaw.toLowerCase(), true);
+    const chainLabel = rwaChainLabel(chainRaw);
     if (!out[chainLabel]) out[chainLabel] = [];
     out[chainLabel].push(address);
   }
@@ -437,14 +458,17 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   // Must always be a valid enum value (default to "Unknown" when missing/unknown)
   target.accessModel = getAccessModel(target as any);
 
-  // Normalize chain display names
+  // Normalize chain display names. Use rwaChainLabel (display->id->display roundtrip)
+  // so Airtable labels like "OP Mainnet" / "Plume Mainnet" don't get downcased into
+  // unrecognized keys ("op mainnet") that fall through to title-case ("Op mainnet")
+  // and then mismatch the contracts map keys.
   if (Array.isArray(target.chain)) {
     target.chain = target.chain.length
-      ? target.chain.map((c: any) => (typeof c === "string" ? getChainDisplayName(c.toLowerCase(), true) : c)).filter(Boolean)
+      ? target.chain.map((c: any) => (typeof c === "string" ? rwaChainLabel(c) : c)).filter(Boolean)
       : null;
   }
   if (typeof target.primaryChain === "string" && target.primaryChain) {
-    target.primaryChain = getChainDisplayName(target.primaryChain.toLowerCase(), true);
+    target.primaryChain = rwaChainLabel(target.primaryChain);
   }
 
   // Normalize Contracts -> { [chainLabel]: string[] }

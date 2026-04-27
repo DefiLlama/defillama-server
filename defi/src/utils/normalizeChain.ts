@@ -5936,6 +5936,16 @@ export const chainCoingeckoIds = {
       fees: "heima",
     },
   },
+  "Robonomics": {
+    geckoId: "robonomics-network",
+    symbol: "XRT",
+    cmcId: "4757",
+    twitter: "AIRA_Robonomics",
+    url: "https://robonomics.network/",
+    dimensions: {
+      fees: "robonomics",
+    },
+  },
 } as unknown as ChainCoinGekcoIds;
 
 // We are creating the list here because, later in the code, we include historical chain labels with the same chain metadata, so, chainCoingeckoIds will have duplicate keys

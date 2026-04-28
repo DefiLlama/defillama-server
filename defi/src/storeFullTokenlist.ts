@@ -36,6 +36,9 @@ async function getNfts() {
   return nfts.sort((a:any, b:any)=>(b.mcap ?? 0) - (a.mcap ?? 0))
 }
 
+/**
+ * Builds the protocol entries used by the token/search index
+ */
 async function getProtocols() {
   const raw = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
   const parentProtocols:any[] = raw.parentProtocols.map((p:any)=>({...p, tvl:0}));

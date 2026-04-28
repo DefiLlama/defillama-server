@@ -26,7 +26,7 @@ import { initPG, fetchLatestAggregateTotals } from "./db";
 import { fetchEvm, fetchSolana, fetchProvenance, fetchStellar, type WalletEntry } from './balances';
 import { excludedProtocolCategories, protocolIdMap, categoryMap, unsupportedChains, ONCHAIN_MCAP_EQUALS_ACTIVE_PLATFORMS } from "./constants";
 import { RWA_KEY_MAP } from "./metadataConstants";
-import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, formatNumAsNumber, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
+import { createAirtableHeaderToCanonicalKeyMapper, fetchBurnAddresses, normalizeRwaMetadataForApiInPlace, sortTokensByChain, toFiniteNumberOrNull, toFixedNumber } from "./utils";
 import { sendMessage } from "../utils/discord";
 
 // ── Internal helpers (copied from atvl.ts — identical logic) ────────
@@ -310,7 +310,7 @@ function getOnChainTvlAndActiveMcaps(
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
       if (!finalData[rwaId][RWA_KEY_MAP.price] && assetPrices[pk]?.price) {
-        finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices[pk].price);
+        finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(assetPrices[pk].price);
       }
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
         if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...finalData[rwaId][RWA_KEY_MAP.onChain] };
@@ -320,14 +320,16 @@ function getOnChainTvlAndActiveMcaps(
     }
 
     const { price, decimals } = assetPrices[pk];
+    // Write price independently of supply: a missing supply (e.g. RPC failure for an
+    // Aptos FA) shouldn't blank out a price we already have from coins.
+    if (price && !finalData[rwaId][RWA_KEY_MAP.price]) {
+      finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(price);
+    }
+
     const supply = totalSupplies[pk];
     if (!supply || !price) {
       if (process.env.DEBUG_ENABLED) console.error(`No supply or price for ${pk}`);
       return;
-    }
-
-    if (!finalData[rwaId][RWA_KEY_MAP.price]) {
-      finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(price);
     }
 
     try {
@@ -372,7 +374,7 @@ function findActiveMcaps(
   chain: string
 ) {
   if (!finalData[rwaId][RWA_KEY_MAP.price]) {
-    finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices.price);
+    finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(assetPrices.price);
   }
   if (!finalData[rwaId][RWA_KEY_MAP.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;

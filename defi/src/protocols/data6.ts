@@ -1064,5 +1064,27 @@ const data6: Protocol[] = [
     audit_links: ["https://docs.wedefin.com/technical-overview/audits"],
     listedAt: 1777310614,
   },
+  {
+    id: "7758",
+    name: "LayerZero V1",
+    address: "ethereum:0x6985884c4392d348587b19cb9eaaf157f13271cd",
+    symbol: "ZRO",
+    url: "https://layerzero.network/",
+    description:
+      "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/layerzero-v1.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Optimism", "Base", "Avalanche", "Harmony", "Fantom", "Linea", "TRON", "Scroll", "Mantle", "Blase", "Mode", "Aurora", "Celo", "Story", "Ink", 
+      "Polygon zkEVM", "Sonic", "Berachain", "Unichain", "Movement", "Abstract", "MegaETH", "Sophon", "Morph", "Plasma", "Flare", "Monad"],
+    module: "dummy.js",
+    twitter: "LayerZero_Core",
+    parentProtocol: "parent#layerzero",
+    dimensions: {
+      fees: "layerzerov1",
+    }
+  },
 ];
 export default data6;

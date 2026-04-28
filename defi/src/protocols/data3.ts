@@ -48183,20 +48183,21 @@ const data3_3: Protocol[] = [
   },
   {
     id: "4867",
-    name: "LayerZero",
+    name: "LayerZero V2",
     address: "ethereum:0x6985884c4392d348587b19cb9eaaf157f13271cd",
     symbol: "ZRO",
     url: "https://layerzero.network/",
     description:
       "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/layerzero.jpg`,
-    gecko_id: "layerzero",
-    cmcId: "26997",
+    logo: `${baseIconsUrl}/layerzero-v2.jpg`,
+    gecko_id: null,
+    cmcId: null,
     category: "Bridge",
     chains: ["Ethereum"],
     module: "dummy.js",
-    twitter: "LayerZero_Labs",
+    twitter: "LayerZero_Core",
+    parentProtocol: "parent#layerzero",
     dimensions: {
       fees: "layerzero",
     }

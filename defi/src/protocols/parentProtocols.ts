@@ -9520,6 +9520,17 @@ const parentProtocols: IParentProtocol[] = [
   //   chains: [],
   //   twitter: "KyanExchange",
   // },
+  {
+    id: "parent#layerzero",
+    name: "LayerZero",
+    url: "https://layerzero.network/", 
+    description: "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
+    logo: `${baseIconsUrl}/layerzero.jpg`,
+    gecko_id: "layerzero",
+    cmcId: "26997",
+    chains: [],
+    twitter: "LayerZero_Core",
+  },
 ];
 
 export default parentProtocols;

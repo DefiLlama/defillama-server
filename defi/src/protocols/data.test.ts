@@ -1,6 +1,6 @@
 import { importAdapter, } from "../utils/imports/importAdapter";
 import { chainCoingeckoIds, getChainDisplayName, normalizeChain, transformNewChainName } from "../utils/normalizeChain";
-import protocols from "./data";
+import protocols, { convertHallmarkStrings } from "./data";
 import parentProtocols, { parentProtocolsById } from "./parentProtocols";
 import treasuries from "./treasury";
 import operationalCosts from "../operationalCosts/daos";
@@ -8,6 +8,17 @@ import { sluggifyString } from "../utils/sluggify";
 import { ADAPTER_TYPES, AdaptorRecordType } from "../adaptors/data/types";
 const fs = require("fs");
 import loadAdaptorsData from "../adaptors/data";
+
+test("normalizes range hallmarks", () => {
+  expect(convertHallmarkStrings([
+    [["2024-01-01", "2024-01-03"], "Range hallmark"],
+    ["2024-01-04", "Single-day hallmark"],
+    [["bad-date", "2024-01-05"], "Bad range hallmark"],
+  ])).toEqual([
+    [[1704067200, 1704240000], "Range hallmark"],
+    [1704326400, "Single-day hallmark"],
+  ])
+});
 
 test("operational expenses: script has been run", async () => {
   const outputData = JSON.parse(fs.readFileSync(`${__dirname}/../operationalCosts/output/expenses.json`, 'utf8'));

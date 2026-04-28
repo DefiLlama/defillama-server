@@ -2485,7 +2485,7 @@ const data4: Protocol[] = [
     audits: "2",
     gecko_id: null,
     cmcId: null,
-    category: "Chain",
+    category: "Farm",
     chains: ["Sophon"],
     module: "sophon-farm/index.js",
     twitter: "sophon",

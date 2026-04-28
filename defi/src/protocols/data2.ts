@@ -3460,7 +3460,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: [],
+    chains: ["Fantom"],
     module: "jetmine/index.js",
     twitter: "defi_waterfall",
     audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],

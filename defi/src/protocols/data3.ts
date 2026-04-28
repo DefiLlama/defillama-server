@@ -16475,7 +16475,7 @@ const data3_0: Protocol[] = [
   },
   {
     id: "3443",
-    name: "Loot  DAO",
+    name: "Loot DAO",
     address: "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7",
     symbol: "LOOT",
     url: "https://www.royaltydao.com/",

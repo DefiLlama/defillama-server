@@ -44,7 +44,7 @@ if (_refillIdx !== -1 && (!REFILL_DATE || !/^\d{4}-\d{2}-\d{2}$/.test(REFILL_DAT
 // tokens with known-bad volume data on allium; excluded from aggregation
 //   'all'    -> drop the token from every day
 //   string[] -> drop the token only on the listed YYYY-MM-DD dates (UTC)
-const TOKEN_BLACKLIST: Record<string, 'all' | string[]> = {
+export const TOKEN_BLACKLIST: Record<string, 'all' | string[]> = {
   DUSD: 'all',
   USDX: 'all',
   USDZ: ['2022-08-14'],  // example: blacklist USDZ on specific dates only
@@ -52,7 +52,7 @@ const TOKEN_BLACKLIST: Record<string, 'all' | string[]> = {
   SUSD: ['2025-08-06'],
 };
 
-function isTokenBlacklisted(token: string, dayTimestamp: number): boolean {
+export function isTokenBlacklisted(token: string, dayTimestamp: number): boolean {
   const rule = TOKEN_BLACKLIST[token];
   if (!rule) return false;
   if (rule === 'all') return true;
@@ -224,7 +224,7 @@ function formatToken(token: string): string {
   return token.toUpperCase();
 }
 
-interface DailyVolume {
+export interface DailyVolume {
   timestamp: number;
   chains: Record<string, {
     tokens: Record<string, number>;
@@ -232,13 +232,13 @@ interface DailyVolume {
   }>;
 }
 
-type VolumeCache = Record<string, DailyVolume>;
+export type VolumeCache = Record<string, DailyVolume>;
 
 function buildEmptyDaily(timestamp: number): DailyVolume {
   return { timestamp, chains: {} };
 }
 
-function median(xs: number[]): number {
+export function median(xs: number[]): number {
   const s = [...xs].sort((a, b) => a - b);
   const n = s.length;
   if (n === 0) return 0;
@@ -275,7 +275,7 @@ function logSpikes() {
   }
 }
 
-function collectHistoricalVolumes(cache: VolumeCache, chain: string, token: string, excludeTs: number): number[] {
+export function collectHistoricalVolumes(cache: VolumeCache, chain: string, token: string, excludeTs: number): number[] {
   const out: number[] = [];
   for (const [ts, daily] of Object.entries(cache)) {
     if (Number(ts) === excludeTs) continue;
@@ -283,6 +283,48 @@ function collectHistoricalVolumes(cache: VolumeCache, chain: string, token: stri
     if (typeof vol === 'number' && isFinite(vol) && vol > 0) out.push(vol);
   }
   return out;
+}
+
+export type SpikeDetectionOpts = {
+  spikeAbsFloor?: number;
+  spikeRatio?: number;
+  spikeMinObs?: number;
+};
+
+/**
+ * Pure spike detection helper used by queryDay().
+ * Returns the set of `${chain}|${token}` keys to drop for the provided timestamp.
+ */
+export function detectSpikesFromTotals(
+  totals: Map<string, number>,
+  history: VolumeCache,
+  timestamp: number,
+  opts: SpikeDetectionOpts = {},
+): { spiked: Set<string>; spikes: DetectedSpike[] } {
+  const spikeAbsFloor = opts.spikeAbsFloor ?? SPIKE_ABS_FLOOR;
+  const spikeRatio = opts.spikeRatio ?? SPIKE_RATIO;
+  const spikeMinObs = opts.spikeMinObs ?? SPIKE_MIN_OBS;
+
+  const spiked = new Set<string>();
+  const spikes: DetectedSpike[] = [];
+
+  for (const [k, total] of totals) {
+    if (total < spikeAbsFloor) continue;
+    const [chain, token] = k.split('|');
+    const past = collectHistoricalVolumes(history, chain, token, timestamp);
+    if (past.length < spikeMinObs) continue;
+    const med = median(past);
+    if (med <= 0) continue;
+    const ratio = total / med;
+    if (ratio >= spikeRatio) {
+      const date = new Date(timestamp * 1000).toISOString().split('T')[0];
+      const rec = { date, chain, token, volume: total, median: med, ratio, historyN: past.length };
+      spikes.push(rec);
+      spiked.add(k);
+    }
+  }
+
+  return { spiked, spikes };
 }
 
 async function loadCache(): Promise<VolumeCache> {
@@ -342,21 +384,8 @@ async function queryDay(timestamp: number, history: VolumeCache): Promise<DailyV
   }
 
   // detect spikes vs historical median for this (chain, token)
-  const spiked = new Set<string>();
-  for (const [k, total] of totals) {
-    if (total < SPIKE_ABS_FLOOR) continue;
-    const [chain, token] = k.split('|');
-    const past = collectHistoricalVolumes(history, chain, token, timestamp);
-    if (past.length < SPIKE_MIN_OBS) continue;
-    const med = median(past);
-    if (med <= 0) continue;
-    const ratio = total / med;
-    if (ratio >= SPIKE_RATIO) {
-      const date = new Date(timestamp * 1000).toISOString().split('T')[0];
-      detectedSpikes.push({ date, chain, token, volume: total, median: med, ratio, historyN: past.length });
-      spiked.add(k);
-    }
-  }
+  const { spiked, spikes } = detectSpikesFromTotals(totals, history, timestamp);
+  detectedSpikes.push(...spikes);
 
   // build daily, skipping spike-detected (blacklist already filtered above)
   const daily = buildEmptyDaily(timestamp);
@@ -369,7 +398,7 @@ async function queryDay(timestamp: number, history: VolumeCache): Promise<DailyV
   return daily;
 }
 
-(async function () {
+export async function main() {
   const currentTimestamp = getCurrentTimestamp();
   const yesterdayStart = getStartDayTimestamp(currentTimestamp - DAY);
   const startTs = getStartDayTimestamp(getUnixTimestamp(START_DATE));
@@ -429,4 +458,11 @@ async function queryDay(timestamp: number, history: VolumeCache): Promise<DailyV
   console.log(`# cache size: ${bytes.toLocaleString()} bytes (${mb.toFixed(2)} MB, ~${perDayKb.toFixed(2)} KB/day)`);
   logSpikes();
   console.log('');
-})()
+}
+
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

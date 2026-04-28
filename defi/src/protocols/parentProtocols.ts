@@ -2444,7 +2444,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "DexFi",
     url: "https://dexfi.com/",
     description:
-      "Bringing the world tools to optimize and simplify DeFi investing.",
+      "DexFi offers an ecosystem of financial products designed to empower users and simplify the DeFi experience. DexFi’s AiLM (Automated Intelligent Liquidity Manager), powers DeFi’s most sophisticated yield aggregator to actively manage v3 liquidity positions.",
     logo: `${baseIconsUrl}/dexfinance.png`,
     gecko_id: "dexfi-governance",
     cmcId: null,

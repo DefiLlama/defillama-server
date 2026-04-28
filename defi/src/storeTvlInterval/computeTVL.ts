@@ -100,7 +100,12 @@ const counter: Counter = {
 const emitter = new EventEmitter()
 emitter.setMaxListeners(500000)
 
-const PRICE_CACHE_TTL_MS = +(process.env.PRICE_CACHE_TTL_MS ?? 15 * 60 * 1000)
+const DEFAULT_PRICE_CACHE_TTL_MS = 15 * 60 * 1000
+const parsedPriceCacheTtlMs = Number(process.env.PRICE_CACHE_TTL_MS ?? DEFAULT_PRICE_CACHE_TTL_MS)
+const PRICE_CACHE_TTL_MS =
+  Number.isFinite(parsedPriceCacheTtlMs) && parsedPriceCacheTtlMs > 0
+    ? parsedPriceCacheTtlMs
+    : DEFAULT_PRICE_CACHE_TTL_MS
 
 type PriceCacheEntry = { value: any; expiresAt: number }
 const priceCache: { [PK: string]: PriceCacheEntry } = {

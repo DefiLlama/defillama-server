@@ -1,6 +1,6 @@
 import { createApiClient, ApiResponse } from '../../utils/config/apiClient';
 import { endpoints } from '../../utils/config/endpoints';
-import { RwaCurrentResponse, RwaFilterResponse } from './types';
+import { RwaCurrentResponse, RwaFilterResponse, RwaListResponse } from './types';
 import {
   expectSuccessfulResponse,
   expectObjectResponse,
@@ -74,6 +74,37 @@ describe('RWA API - Filter by Chain', () => {
   it('should return empty data for non-existent chain', async () => {
     const response = await apiClient.get<RwaFilterResponse>(
       endpoints.RWA.CHAIN('NonExistentChain12345')
+    );
+    expectSuccessfulResponse(response);
+    expect(response.data).toHaveProperty('data');
+    expect(response.data.data).toHaveLength(0);
+  });
+});
+
+describe('RWA API - Filter by Asset Group', () => {
+  let listResponse: ApiResponse<RwaListResponse>;
+
+  beforeAll(async () => {
+    listResponse = await apiClient.get<RwaListResponse>(endpoints.RWA.LIST);
+  });
+
+  it('should return RWAs filtered by assetGroup', async () => {
+    const assetGroups = listResponse.data.assetGroups;
+    if (!assetGroups || assetGroups.length === 0) return;
+
+    const assetGroup = assetGroups[0];
+    const response = await apiClient.get<RwaFilterResponse>(
+      endpoints.RWA.ASSET_GROUP(assetGroup)
+    );
+    expectSuccessfulResponse(response);
+    expectObjectResponse(response);
+    expect(response.data).toHaveProperty('data');
+    expect(Array.isArray(response.data.data)).toBe(true);
+  });
+
+  it('should return empty data for non-existent assetGroup', async () => {
+    const response = await apiClient.get<RwaFilterResponse>(
+      endpoints.RWA.ASSET_GROUP('NonExistentAssetGroup12345')
     );
     expectSuccessfulResponse(response);
     expect(response.data).toHaveProperty('data');

@@ -78,3 +78,15 @@ export const rwaBreakdownChartResponseSchema = z.array(rwaBreakdownChartPointSch
 export const rwaFilterResponseSchema = z.object({
   data: z.array(rwaItemSchema),
 }).passthrough();
+
+// ============================================================================
+// RWA Flows Schema (from /flows/:id endpoint)
+// Net flow = (supply_t - supply_start) * price_t per chain
+// ============================================================================
+
+export const rwaFlowsResponseSchema = z.object({
+  id: z.union([z.string(), z.number()]),
+  start: z.number(),
+  end: z.number(),
+  data: z.array(z.object({ timestamp: z.number() }).passthrough()),
+}).passthrough();

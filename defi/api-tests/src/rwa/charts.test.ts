@@ -1,6 +1,6 @@
 import { createApiClient, ApiResponse } from '../../utils/config/apiClient';
 import { endpoints } from '../../utils/config/endpoints';
-import { RwaCurrentResponse, RwaIdMap } from './types';
+import { RwaCurrentResponse, RwaIdMap, RwaListResponse } from './types';
 import {
   expectSuccessfulResponse,
   expectNonEmptyArray,
@@ -8,6 +8,16 @@ import {
 } from '../../utils/testHelpers';
 
 const apiClient = createApiClient(endpoints.RWA.BASE_URL);
+
+// Asset-breakdown endpoints return { [metricKey]: Array<{timestamp, ...assets}> }
+function expectAssetBreakdownShape(data: any) {
+  expect(typeof data).toBe('object');
+  expect(data).not.toBeNull();
+  expect(Array.isArray(data)).toBe(false);
+
+  const arrayValuedKeys = Object.keys(data).filter((k) => Array.isArray(data[k]));
+  expect(arrayValuedKeys.length).toBeGreaterThan(0);
+}
 
 describe('RWA API - Chart by ID', () => {
   let currentResponse: ApiResponse<RwaCurrentResponse>;
@@ -72,6 +82,12 @@ describe('RWA API - Breakdown Charts', () => {
     expect(Array.isArray(response.data)).toBe(true);
   });
 
+  it('should return assetGroup breakdown chart data', async () => {
+    const response = await apiClient.get(endpoints.RWA.CHART_ASSET_GROUP_BREAKDOWN);
+    expectSuccessfulResponse(response);
+    expect(Array.isArray(response.data)).toBe(true);
+  });
+
   it('should support key query parameter', async () => {
     const response = await apiClient.get(
       `${endpoints.RWA.CHART_CHAIN_BREAKDOWN}?key=activeMcap`
@@ -114,6 +130,14 @@ describe('RWA API - Chart by Chain', () => {
       expect(Array.isArray(response.data)).toBe(true);
     }
   });
+
+  it('should return chain asset-breakdown chart data', async () => {
+    const response = await apiClient.get(endpoints.RWA.CHART_BY_CHAIN_ASSET_BREAKDOWN('Ethereum'));
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expectAssetBreakdownShape(response.data);
+    }
+  });
 });
 
 describe('RWA API - Chart by Category', () => {
@@ -134,6 +158,86 @@ describe('RWA API - Chart by Category', () => {
     expect([200, 404]).toContain(response.status);
     if (response.status === 200) {
       expect(Array.isArray(response.data)).toBe(true);
+    }
+  });
+
+  it('should return category asset-breakdown chart data', async () => {
+    const withCategory = currentResponse.data.find(
+      (item) => item.category && item.category.length > 0
+    );
+    if (!withCategory) return;
+
+    const category = withCategory.category![0];
+    const response = await apiClient.get(endpoints.RWA.CHART_BY_CATEGORY_ASSET_BREAKDOWN(category));
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expectAssetBreakdownShape(response.data);
+    }
+  });
+});
+
+describe('RWA API - Chart by Platform', () => {
+  let listResponse: ApiResponse<RwaListResponse>;
+
+  beforeAll(async () => {
+    listResponse = await apiClient.get<RwaListResponse>(endpoints.RWA.LIST);
+  });
+
+  it('should return chart data for a valid platform', async () => {
+    const platforms = listResponse.data.platforms;
+    if (!platforms || platforms.length === 0) return;
+
+    const platform = platforms[0];
+    const response = await apiClient.get(endpoints.RWA.CHART_BY_PLATFORM(platform));
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expect(Array.isArray(response.data)).toBe(true);
+    }
+  });
+
+  it('should return platform asset-breakdown chart data', async () => {
+    const platforms = listResponse.data.platforms;
+    if (!platforms || platforms.length === 0) return;
+
+    const platform = platforms[0];
+    const response = await apiClient.get(endpoints.RWA.CHART_BY_PLATFORM_ASSET_BREAKDOWN(platform));
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expectAssetBreakdownShape(response.data);
+    }
+  });
+});
+
+describe('RWA API - Chart by Asset Group', () => {
+  let listResponse: ApiResponse<RwaListResponse>;
+
+  beforeAll(async () => {
+    listResponse = await apiClient.get<RwaListResponse>(endpoints.RWA.LIST);
+  });
+
+  it('should return chart data for a valid assetGroup', async () => {
+    const assetGroups = listResponse.data.assetGroups;
+    if (!assetGroups || assetGroups.length === 0) return;
+
+    const assetGroup = assetGroups[0];
+    const response = await apiClient.get(endpoints.RWA.CHART_BY_ASSET_GROUP(assetGroup));
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expect(Array.isArray(response.data)).toBe(true);
+    }
+  });
+
+  it('should return assetGroup asset-breakdown chart data', async () => {
+    const assetGroups = listResponse.data.assetGroups;
+    if (!assetGroups || assetGroups.length === 0) return;
+
+    const assetGroup = assetGroups[0];
+    const response = await apiClient.get(
+      endpoints.RWA.CHART_BY_ASSET_GROUP_ASSET_BREAKDOWN(assetGroup)
+    );
+    expect([200, 404]).toContain(response.status);
+    if (response.status === 200) {
+      expectAssetBreakdownShape(response.data);
     }
   });
 });

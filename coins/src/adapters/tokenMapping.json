@@ -16471,6 +16471,11 @@
       "decimals": "6",
       "symbol": "FXRP",
       "to": "coingecko#flare-bridged-xrp-flare"
+    },
+    "0xD7aCB868F97F8286D5d3A0Fd5Ef112a8a72eCD90": {
+      "decimals": "8",
+      "symbol": "enzoBTC",
+      "to": "coingecko#lorenzo-wrapped-bitcoin"
     }
   },
   "stable": {

@@ -57,7 +57,7 @@ export async function craftProtocolV2({
   const isDeadProtocol = !!protocolData.deadFrom || isDummyProtocol
   const fetchHourlyData = !isDeadProtocol && !skipCachedHourlyData
 
-  const [protocolCache, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
+  let [protocolCache, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
     isDummyProtocol ? {} : getCachedProtocolData(protocolData, true),
     getCachedMCap(protocolData.gecko_id),
     fetchHourlyData ? getLastHourlyRecord(protocolData as any) : null,

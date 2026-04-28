@@ -724,6 +724,12 @@ describe("buildOverviewBreakdownCharts", () => {
       { timestamp: 200, Meta: 4 },
       { timestamp: 300, Meta: 0 },
     ]);
+    expect(result["overview-breakdown/all/markets/baseasset.json"]).toEqual([
+      { timestamp: 100, Meta: 1, Gold: 1 },
+      { timestamp: 150, Meta: 1 },
+      { timestamp: 200, Meta: 1 },
+      { timestamp: 300, Meta: 1 },
+    ]);
   });
 });
 
@@ -808,6 +814,12 @@ describe("buildContractBreakdownCharts", () => {
       { timestamp: 150, "xyz:META": 0 },
       { timestamp: 200, "xyz:META": 4 },
       { timestamp: 300, "xyz:META": 0 },
+    ]);
+    expect(result["contract-breakdown/all/markets.json"]).toEqual([
+      { timestamp: 100, "xyz:META": 1, "flx:GOLD": 1 },
+      { timestamp: 150, "xyz:META": 1 },
+      { timestamp: 200, "xyz:META": 1 },
+      { timestamp: 300, "xyz:META": 1 },
     ]);
   });
 });

@@ -148,7 +148,7 @@ function buildBreakdownChartRows(
     const seriesLabel = String(getSeriesLabel(row) || UNKNOWN_PERPS_ASSET_GROUP);
     const metricValue = getMetricValue(row, key);
     if (!Number.isFinite(metricValue)) continue;
-    if (hasPerpsBreakdownData(row)) {
+    if (key === "markets" || hasPerpsBreakdownData(row)) {
       startedSeries.add(seriesLabel);
     } else if (!startedSeries.has(seriesLabel)) {
       continue;

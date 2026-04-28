@@ -70,7 +70,8 @@
     "load-tvl-repo": "bash src/cli/loadTvlRepo.sh",
     "load-dimensions-repo": "bash src/cli/loadDimensionsRepo.sh",
     "load-all-repos": "npm run load-tvl-repo --silent && npm run load-dimensions-repo --silent",
-    "validate-api": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts"
+    "validate-api": "npx ts-node --logError --transpile-only src/utils/validateAPI.ts",
+    "compare-external-metrics": "npx ts-node --logError --transpile-only src/cli/compareExternalMetrics.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

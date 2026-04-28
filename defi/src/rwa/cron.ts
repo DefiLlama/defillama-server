@@ -19,6 +19,7 @@ import {
 } from './file-cache';
 import { initPG, fetchCurrentPG, fetchMetadataPG, fetchAllDailyRecordsPG, fetchMaxUpdatedAtPG, fetchAllDailyIdsPG, fetchDailyRecordsForIdPG, fetchDailyRecordsWithChainsPG, fetchDailyRecordsWithChainsForIdPG } from './db';
 
+import { shouldEmitRwaBreakdownItem } from './chartBreakdown';
 import { rwaSlug, toFiniteNumberOrZero, smoothHistoricalData, normalizeRwaMetadataForApiInPlace } from './utils';
 import { parentProtocolsById } from '../protocols/parentProtocols';
 import { protocolsById } from '../protocols/data';
@@ -930,6 +931,10 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
   const platformBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
   // timestamp => assetType => key => assetGroup
   const assetGroupBreakdownAndAssetTypes: { [timestamp: number]: HistoricalDataPointAssetTypes } = {};
+  const chainBreakdownStartedItems = new Set<string>();
+  const categoryBreakdownStartedItems = new Set<string>();
+  const platformBreakdownStartedItems = new Set<string>();
+  const assetGroupBreakdownStartedItems = new Set<string>();
 
   function ensureDataPoint(
     map: { [key: string]: { [timestamp: number]: HistoricalDataPoint } },
@@ -971,8 +976,9 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
     (map[timestamp] as any)[assetType][key][chain] += value;
   }
   
-  function updateBreakdownAndAssetTypes(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, m: any, timestamp: number, data: any) {
+  function updateBreakdownAndAssetTypes(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, m: any, timestamp: number, data: any, startedItems: Set<string>) {
     function _addToBreakdownItem(map: { [timestamp: number]: HistoricalDataPointAssetTypes }, timestamp: number, assetType: string, itemKey: string, itemValues: any) {
+      if (!shouldEmitRwaBreakdownItem(startedItems, `${assetType}:${itemKey}`, itemValues as any)) return;
       _updateBreakdownAndAssetTypes(map, timestamp, assetType, "onChainMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.onChainMcap));
       _updateBreakdownAndAssetTypes(map, timestamp, assetType, "activeMcap", itemKey, toFiniteNumberOrZero((itemValues as any)?.activeMcap));
       _updateBreakdownAndAssetTypes(map, timestamp, assetType, "defiActiveTvl", itemKey, toFiniteNumberOrZero((itemValues as any)?.defiActiveTvl));
@@ -1114,10 +1120,10 @@ async function generateAggregatedHistoricalCharts(metadata: RWAMetadata[]): Prom
       }
 
       // update chart breakdown
-      updateBreakdownAndAssetTypes(chainBreakdownAndAssetTypes, m, timestamp, chains);
-      updateBreakdownAndAssetTypes(categoryBreakdownAndAssetTypes, m, timestamp, categoryItems);
-      updateBreakdownAndAssetTypes(platformBreakdownAndAssetTypes, m, timestamp, platformItems);
-      updateBreakdownAndAssetTypes(assetGroupBreakdownAndAssetTypes, m, timestamp, assetGroupItems);
+      updateBreakdownAndAssetTypes(chainBreakdownAndAssetTypes, m, timestamp, chains, chainBreakdownStartedItems);
+      updateBreakdownAndAssetTypes(categoryBreakdownAndAssetTypes, m, timestamp, categoryItems, categoryBreakdownStartedItems);
+      updateBreakdownAndAssetTypes(platformBreakdownAndAssetTypes, m, timestamp, platformItems, platformBreakdownStartedItems);
+      updateBreakdownAndAssetTypes(assetGroupBreakdownAndAssetTypes, m, timestamp, assetGroupItems, assetGroupBreakdownStartedItems);
     }
     processedCount++;
   }

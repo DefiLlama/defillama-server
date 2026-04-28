@@ -472,7 +472,7 @@ export async function storeTvl(
             fallback_used: true,
             fallback_reason: 'ok',
             cached_tvl: tempStoreKeyCache.usdTvls ?? 0,
-            total_tvl: 0,
+            total_tvl: tempStoreKeyCache._totalTvl ?? 0,
           })
 
           usdTvls[key] = tempStoreKeyCache.usdTvls;
@@ -694,7 +694,10 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
     invalidCacheTime: cacheCheck.invalidCacheTime! ?? 0,
   })
 
-  return tempStoreKeyCache
+  // Surface totalTvl on the returned cache object so the caller can record it on the failure row.
+  // Prefixed with `_` to make it clear this is metadata for failure tracking, not part of the
+  // cache snapshot itself.
+  return { ...tempStoreKeyCache, _totalTvl: totalTvl! }
 
   async function pullTvlNumber(protocol: Protocol): Promise<number | null> {
     try {

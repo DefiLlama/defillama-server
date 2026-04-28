@@ -81,9 +81,10 @@ export async function notifyChainTvlFailures(): Promise<void> {
   try {
     const sql = await getPgConnection();
     const allColumns = [...columns, "consecutive_failures"];
-    const stored: (ChainTvlFailure & { consecutive_failures: number })[] = await sql`
-      select ${(sql as any)(allColumns)} from chain_tvl_failures order by last_failure_at asc
-    `;
+    const stored: (ChainTvlFailure & { consecutive_failures: number })[] = await queryPostgresWithRetry(
+      sql`select ${(sql as any)(allColumns)} from chain_tvl_failures order by last_failure_at asc`,
+      sql,
+    );
     if (!stored.length) return;
 
     const now = Date.now() / 1000;

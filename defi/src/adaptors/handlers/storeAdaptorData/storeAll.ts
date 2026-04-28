@@ -210,7 +210,16 @@ setTimeout(() => {
 
 run().catch((e) => {
   console.error("Error in dimensions-store-all", e)
-}).then(() => process.exit(0))
+}).then(async () => {
+  // Print Dune credit usage summary at end of run
+  try {
+    const { printDuneCreditSummary } = await import('../../../../dimension-adapters/helpers/dune');
+    printDuneCreditSummary();
+  } catch (e) {
+    // silently ignore if dimension-adapters not available
+  }
+  process.exit(0)
+})
 
 
 

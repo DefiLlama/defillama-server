@@ -1,7 +1,7 @@
 
 import { readFromPGCache, deleteFromPGCache, } from "../cache/file-cache";
 import * as HyperExpress from "hyper-express";
-import { errorResponse } from "./utils";
+import { errorResponse, errorWrapper as ew, successResponse } from "./utils";
 import { craftProtocolV2 } from "../utils/craftProtocolV2";
 import { getLatestProtocolItems } from "../db";
 import { hourlyTokensTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
@@ -47,6 +47,59 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
     }
   }
 
+  // ==================== Dune Credit Dashboard Routes ====================
+
+  /**
+   * GET /_internal/dune-credits
+   * Fetches current billing period credit usage from Dune API.
+   * Query params: ?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD (optional)
+   */
+  router.get('/_internal/dune-credits', ew(async (req: HyperExpress.Request, res: HyperExpress.Response) => {
+    try {
+      const { getDuneCreditUsage } = await import('../../../dimension-adapters/helpers/dune');
+
+      const startDate = req.query_parameters.start_date;
+      const endDate = req.query_parameters.end_date;
+
+      const usage = await getDuneCreditUsage(startDate, endDate);
+      return successResponse(res, usage, 5); // cache for 5 minutes
+    } catch (e: any) {
+      console.error('Error fetching Dune credits:', e.message);
+      return errorResponse(res, `Failed to fetch Dune credit usage: ${e.message}`, { statusCode: 500 });
+    }
+  }));
+
+  /**
+   * GET /_internal/dune-credits/run-report
+   * Returns the in-memory credit tracking report for the current/last run.
+   * Shows per-adapter breakdown, expensive queries, and totals.
+   */
+  router.get('/_internal/dune-credits/run-report', ew(async (_req: HyperExpress.Request, res: HyperExpress.Response) => {
+    try {
+      const { generateDuneCreditReport } = await import('../../../dimension-adapters/helpers/dune');
+      const report = generateDuneCreditReport();
+      return successResponse(res, report, 1); // cache for 1 minute
+    } catch (e: any) {
+      console.error('Error generating Dune credit report:', e.message);
+      return errorResponse(res, `Failed to generate credit report: ${e.message}`, { statusCode: 500 });
+    }
+  }));
+
+  /**
+   * DELETE /_internal/dune-credits/reset
+   * Resets the in-memory credit tracker. Useful between runs.
+   */
+  router.delete('/_internal/dune-credits/reset', ew(async (_req: HyperExpress.Request, res: HyperExpress.Response) => {
+    try {
+      const { resetDuneCreditTracker } = await import('../../../dimension-adapters/helpers/dune');
+      resetDuneCreditTracker();
+      return successResponse(res, { success: true, message: 'Credit tracker reset' }, 0);
+    } catch (e: any) {
+      return errorResponse(res, `Failed to reset credit tracker: ${e.message}`, { statusCode: 500 });
+    }
+  }));
+
+  // ==================== End Dune Credit Dashboard Routes ====================
 
 }
 

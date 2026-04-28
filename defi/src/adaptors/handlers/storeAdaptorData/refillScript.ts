@@ -207,6 +207,7 @@ async function refillAllProtocols() {
     process.exit(1)
   }, 1000 * 60 * 60 * 6) // 6 hours
   let timeRange = 365 // 1 year
+  
   const envTimeRange = process.env.refill_adapters_timeRange
   if (envTimeRange && !isNaN(+envTimeRange)) timeRange = +envTimeRange
   const startTime = Math.floor(Date.now() / 1000) - timeRange * 24 * 60 * 60
@@ -313,7 +314,14 @@ async function refillAllProtocols() {
 
 console.time('Script execution time')
 
-run().catch(console.error).then(() => {
+run().catch(console.error).then(async () => {
   console.timeEnd('Script execution time')
+  // Print Dune credit usage summary at end of run
+  try {
+    const { printDuneCreditSummary } = await import('../../../../dimension-adapters/helpers/dune');
+    printDuneCreditSummary();
+  } catch (e) {
+    // silently ignore if dimension-adapters not available
+  }
   process.exit(0)
 })

@@ -8,6 +8,7 @@ import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "
 import { getOraclesInternal } from "../routes/getOracles";
 import { getForksInternal } from "../routes/getForks";
 import { getCategoriesInternal } from "../routes/getCategories";
+import { getParentProtocolsInternal } from "../routes/getParentProtocols";
 import { storeLangs } from "../routes/storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
@@ -61,6 +62,7 @@ async function run() {
   await storeGetCharts(processProtocolsOptions)
   console.timeEnd('write /charts')
   await writeProtocolsChart()
+  await writeParentProtocols()
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
@@ -398,6 +400,20 @@ async function run() {
     const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, getYesterdayTokensUsd, getLastWeekTokensUsd, getLastMonthTokensUsd, })
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
+    console.timeEnd(debugString)
+  }
+
+  async function writeParentProtocols() {
+    const debugString = 'write /parent-protocols'
+    console.time(debugString)
+    const protocols2Data = await readRouteData('lite/protocols2')
+    if (!protocols2Data) {
+      console.warn('skip /parent-protocols: lite/protocols2 not available')
+      console.timeEnd(debugString)
+      return
+    }
+    const data = getParentProtocolsInternal(protocols2Data)
+    await storeRouteData('parent-protocols', data)
     console.timeEnd(debugString)
   }
 

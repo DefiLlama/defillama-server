@@ -104,9 +104,29 @@ function sortHistoricalRows(rows: AggregateHistoricalRow[]) {
   return rows;
 }
 
+function sortHistoricalChartRows<T extends { timestamp: number; id?: string }>(rows: T[]): T[] {
+  rows.sort((a, b) => a.timestamp - b.timestamp || String(a.id ?? "").localeCompare(String(b.id ?? "")));
+  return rows;
+}
+
 function sortBreakdownChartRows(rows: PerpsBreakdownChartRow[]) {
   rows.sort((a, b) => a.timestamp - b.timestamp);
   return rows;
+}
+
+export function mergeUpdatedHistoricalChartRows<T extends { timestamp: number; id?: string }>(
+  existingRows: T[] | null,
+  updatedRows: T[],
+  updatedTimestamps?: number[]
+): T[] {
+  if (!existingRows || existingRows.length === 0) return sortHistoricalChartRows([...updatedRows]);
+
+  const timestamps = updatedTimestamps ?? updatedRows.map((row) => Number(row.timestamp));
+  const updatedTimestampSet = new Set(timestamps.filter(Number.isFinite));
+  if (updatedTimestampSet.size === 0) return sortHistoricalChartRows([...existingRows]);
+
+  const retainedRows = existingRows.filter((row) => !updatedTimestampSet.has(Number(row.timestamp)));
+  return sortHistoricalChartRows([...retainedRows, ...updatedRows]);
 }
 
 function getMetricValue(row: AggregateHistoricalRow, key: PerpsChartMetricKey): number {

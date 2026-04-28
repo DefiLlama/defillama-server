@@ -357,6 +357,18 @@ export async function fetchAllDailyRecordsPG(updatedAfter?: Date): Promise<any[]
     });
 }
 
+export async function fetchDailyRecordsByTimestampsPG(timestamps: number[]): Promise<any[]> {
+    const uniqueTimestamps = Array.from(new Set(timestamps.filter(Number.isFinite)));
+    if (uniqueTimestamps.length === 0) return [];
+
+    return await DAILY_RWA_PERPS_DATA.findAll({
+        attributes: ['id', 'timestamp', 'open_interest', 'volume_24h', 'price', 'price_change_24h', 'funding_rate', 'premium', 'cumulative_funding', 'updated_at'],
+        where: { timestamp: { [Op.in]: uniqueTimestamps } },
+        order: [['id', 'ASC'], ['timestamp', 'ASC']],
+        raw: true,
+    });
+}
+
 // Get the list of unique IDs from daily records
 export async function fetchAllDailyIdsPG(): Promise<string[]> {
     const results = await DAILY_RWA_PERPS_DATA.sequelize!.query(

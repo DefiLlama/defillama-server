@@ -11,6 +11,7 @@ import {
   buildOverviewBreakdownCharts,
   buildPerpsIdMap,
   buildVenueHistoricalCharts,
+  mergeUpdatedHistoricalChartRows,
 } from "./aggregate";
 import {
   getContractId,
@@ -821,6 +822,41 @@ describe("buildContractBreakdownCharts", () => {
       { timestamp: 200, "xyz:META": 1 },
       { timestamp: 300, "xyz:META": 1 },
     ]);
+  });
+});
+
+describe("mergeUpdatedHistoricalChartRows", () => {
+  it("replaces all existing rows for timestamps that were regenerated", () => {
+    const result = mergeUpdatedHistoricalChartRows(
+      [
+        { timestamp: 100, id: "xyz:meta", openInterest: 10 },
+        { timestamp: 200, id: "xyz:meta", openInterest: 12 },
+        { timestamp: 200, id: "flx:gold", openInterest: 7 },
+      ],
+      [
+        { timestamp: 200, id: "xyz:meta", openInterest: 14 },
+        { timestamp: 300, id: "xyz:meta", openInterest: 0 },
+      ]
+    );
+
+    expect(result).toEqual([
+      { timestamp: 100, id: "xyz:meta", openInterest: 10 },
+      { timestamp: 200, id: "xyz:meta", openInterest: 14 },
+      { timestamp: 300, id: "xyz:meta", openInterest: 0 },
+    ]);
+  });
+
+  it("can remove regenerated timestamps even when the updated chart has no row for them", () => {
+    const result = mergeUpdatedHistoricalChartRows(
+      [
+        { timestamp: 100, Meta: 10 },
+        { timestamp: 200, Meta: 12 },
+      ],
+      [],
+      [200]
+    );
+
+    expect(result).toEqual([{ timestamp: 100, Meta: 10 }]);
   });
 });
 

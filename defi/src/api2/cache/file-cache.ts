@@ -84,7 +84,7 @@ async function storeData(subPath: string, data: any) {
   const dirPath = path.dirname(filePath)
   await ensureDirExists(dirPath)
   try {
-    return await fs.promises.writeFile(filePath, JSON.stringify(data))
+    return await fs.promises.writeFile(filePath, typeof data === 'string' ? data : JSON.stringify(data))
   } catch (e) {
     log(`Error storing data to ${filePath}:`, (e as any)?.message)
     return null

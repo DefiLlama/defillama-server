@@ -6,7 +6,6 @@ import { pgGetInflows } from "../db/inflows";
 import { getSimpleChainDatasetInternal } from "./getSimpleChainDataset";
 import { getTokensInProtocolsInternal } from "../../getTokenInProtocols";
 import craftCsvDataset from "../../storeTvlUtils/craftCsvDataset";
-import { getTweetStats } from "../../twitter/db";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { chainNameToIdMap, chainKeyToChainLabelMap, chainLabelsToKeyMap, getChainLabelFromKey } from "../../utils/normalizeChain";
 import { getR2 } from "../../utils/r2";
@@ -105,9 +104,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/chain-assets/flows/24h", defaultFileHandler);  // pre-computed now
   // not used anywhere atm, need to pre-compute it if start using it
   // router.get("/chain-assets/historical-flows/:chain/:period", ew(async (req: any, res: any) => chainAssetsHandler(req, res, { isFlows: true, isHistorical: true })));
-
-  router.get("/twitter/overview", ew(getTwitterOverview))
-  router.get("/twitter/user/:handle", ew(getTwitterData))
 
   router.get("/charts", v1ChartsGlobalResponse)
   router.get("/charts/:name", defaultFileHandler)
@@ -308,21 +304,6 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
     if (protocolData) return successResponse(res, protocolData, 60);
     return fileResponse('config/smol/' + req.path_parameters.name, res);
   }
-
-
-  function getTwitterOverview(_req: HyperExpress.Request, res: HyperExpress.Response) {
-    return successResponse(res, cache.twitterOverview, 60);
-  }
-
-  async function getTwitterData(req: HyperExpress.Request, res: HyperExpress.Response) {
-    const tweetHandle = req.path_parameters.handle
-    let data = cache.twitterOverview[tweetHandle]
-    if (!data) return successResponse(res, {}, 60)
-    data = { ...data }
-    data.tweetStats = await getTweetStats(tweetHandle)
-    return successResponse(res, data, 60);
-  }
-
 }
 
 async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false }: GetProtocolishOptions) {

@@ -9,6 +9,7 @@ import { runWithRuntimeLogging } from "../utils";
 const SOURCE_URL = "https://ask.llama.fi/coins";
 const PROTOCOLS_URL = "/config/smol/appMetadata-protocols.json";
 const CHAINS_URL = "/config/smol/appMetadata-chains.json";
+const TOKEN_RIGHTS_URL = "/token-rights";
 const OUTPUT_ROUTE = "config/smol/token.json";
 
 const slug = (value = "") =>
@@ -25,6 +26,12 @@ const getCoingeckoId = (tokenNk: string | undefined) => {
   return geckoId || null;
 };
 
+const getTokenLogo = (tokenNk: string | undefined) => {
+  const geckoId = getCoingeckoId(tokenNk);
+  if (!geckoId) return null;
+  return `https://token-icons.llamao.fi/icons/tokens/gecko/${geckoId}?w=48&h=48`;
+};
+
 const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProtocolId: string) => {
   if (!currentProtocolId) return true;
   if (!nextProtocolId) return false;
@@ -34,7 +41,22 @@ const shouldPreferProtocolId = (currentProtocolId: string | undefined, nextProto
   return false;
 };
 
-const getTokenMetadataExtrasByGeckoId = (protocolsMetadata: Record<string, any>, chainsMetadata: Record<string, any>) => {
+export const getTokenRightsSymbols = (tokenRightsData: any[] | null) => {
+  const symbols = new Set<string>();
+  for (const item of tokenRightsData ?? []) {
+    if (!Array.isArray(item?.Token)) continue;
+    for (const token of item.Token) {
+      if (typeof token !== "string" || !token.trim()) continue;
+      symbols.add(token.trim().toLowerCase());
+    }
+  }
+  return symbols;
+};
+
+const getTokenMetadataExtrasByGeckoId = (
+  protocolsMetadata: Record<string, any>,
+  chainsMetadata: Record<string, any>
+) => {
   const extrasByGeckoId = new Map<string, any>();
 
   for (const [protocolId, item] of Object.entries(protocolsMetadata ?? {})) {
@@ -60,6 +82,16 @@ const getTokenMetadataExtrasByGeckoId = (protocolsMetadata: Record<string, any>,
   }
 
   return extrasByGeckoId;
+};
+
+export const getTokenExtras = (item: any, extrasByGeckoId: Map<string, any>, tokenRightsSymbols: Set<string>) => {
+  const extras = extrasByGeckoId.get(getCoingeckoId(item.token_nk)!) ?? {};
+  if (!tokenRightsSymbols.size || extras.tokenRights) return extras;
+  const symbol = String(item?.symbol ?? "")
+    .trim()
+    .toLowerCase();
+  if (!tokenRightsSymbols.has(symbol)) return extras;
+  return { ...extras, tokenRights: true };
 };
 
 const inferRouteSource = (key: string, item: any) => {
@@ -110,14 +142,16 @@ const createTokenRecord = (item: any, routeSource: string, extras: any = {}) => 
   route: `/token/${encodeURIComponent(routeSource === "symbol" ? item.symbol : item.name)}`,
   is_yields: Boolean(item.on_yields),
   mcap_rank: item.mcap_rank,
+  logo: getTokenLogo(item.token_nk),
   ...extras,
 });
 
 async function generateToken() {
-  const [coins, protocolsMetadata, chainsMetadata] = await Promise.all([
+  const [coins, protocolsMetadata, chainsMetadata, tokenRightsData] = await Promise.all([
     fetchJson(SOURCE_URL),
     readRouteData(PROTOCOLS_URL),
     readRouteData(CHAINS_URL),
+    readRouteData(TOKEN_RIGHTS_URL),
   ]);
 
   if (!Array.isArray(coins)) {
@@ -125,6 +159,7 @@ async function generateToken() {
   }
 
   const extrasByGeckoId = getTokenMetadataExtrasByGeckoId(protocolsMetadata, chainsMetadata);
+  const tokenRightsSymbols = getTokenRightsSymbols(tokenRightsData);
   const previousTokens = await loadPreviousTokens();
   const uniqueCoins: any[] = [];
   const seenTokenNks = new Set<string>();
@@ -143,8 +178,8 @@ async function generateToken() {
   const nextTokensByTokenNk = new Map<string, { item: any; extras: any }>();
   let includedWithoutMetadataCount = 0;
   for (const item of uniqueCoins) {
-    const extras = extrasByGeckoId.get(getCoingeckoId(item.token_nk)!) ?? {};
-    if (Object.keys(extras).length === 0) {
+    const extras = getTokenExtras(item, extrasByGeckoId, tokenRightsSymbols);
+    if (!extras.protocolId && !extras.chainId) {
       includedWithoutMetadataCount++;
     }
     nextTokensByTokenNk.set(item.token_nk, { item, extras });
@@ -186,13 +221,12 @@ async function generateToken() {
     seenKeys.add(key);
   }
 
-
   // we find duplicate symbols and remove the one that matches blacklist patterns in the key, this is to skip bridged/old versions of tokens that have same symbol as the original token
   const symbolMap: Record<string, any> = {};
   for (const [key, item] of Object.entries(bySlug)) {
     const symbol = item.symbol.toLowerCase();
     if (!symbolMap[symbol]) {
-      symbolMap[symbol] = key
+      symbolMap[symbol] = key;
     } else {
       if (/old|bridged|wormhole|\(|\[/i.test(key)) {
         // console.log(`Skipping duplicate ${symbol} <- ${key}`);
@@ -203,9 +237,12 @@ async function generateToken() {
 
   await storeRouteData(OUTPUT_ROUTE, bySlug);
 
-  console.log(`Wrote ${Object.keys(bySlug).length} tokens to ${OUTPUT_ROUTE}. Used fallback key selection for ${nameFallbackCount} tokens, Included ${includedWithoutMetadataCount} tokens without protocol/chain metadata, Skipped ${skippedDuplicateTokenNkCount} duplicate token_nk rows, Preserved ${preservedMissingTokenCount} existing tokens missing from the current feed`);
+  console.log(
+    `Wrote ${
+      Object.keys(bySlug).length
+    } tokens to ${OUTPUT_ROUTE}. Used fallback key selection for ${nameFallbackCount} tokens, Included ${includedWithoutMetadataCount} tokens without protocol/chain metadata, Skipped ${skippedDuplicateTokenNkCount} duplicate token_nk rows, Preserved ${preservedMissingTokenCount} existing tokens missing from the current feed`
+  );
 }
-
 
 export async function genTokenConfig() {
   setTimeout(() => {
@@ -219,5 +256,4 @@ export async function genTokenConfig() {
   })
     .catch(console.error)
     .then(() => process.exit(0));
-
 }

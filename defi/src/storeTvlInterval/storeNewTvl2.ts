@@ -35,6 +35,7 @@ export default async function (
   overwriteExistingData = false,
   extraOptions: any = {},
 ) {
+ 
   const { debugData } = extraOptions
   const hourlyPK = hourlyTvl(protocol.id);
   const currentTvl = calculateTVLWithAllExtraSections(tvl)
@@ -144,9 +145,12 @@ export default async function (
           newTokens = newTokens.sort((a, b) => b.value - a.value);
           let details = '';
           if (spikedTokens.length) {
-            details += ' spiked tokens: ' + spikedTokens.slice(0, 15).map(t =>
-              `${t.coin}: ${humanizeNumber(t.prevValue)} → ${humanizeNumber(t.value)} (+${t.pctChange.toFixed(0)}%)`
-            ).join(', ');
+            const displayTable = spikedTokens.slice(0, 5).map(t => ({
+              jump: `${t.pctChange.toFixed(0)}%`,
+              message: ` ${humanizeNumber(t.prevValue)} → ${humanizeNumber(t.value)}`,
+              coin: t.coin,
+            }));
+            details += util.tableToString(displayTable, {title: 'Spiked Tokens', }) + '\n';
           }
           if (newTokens.length) {
             details += ' new tokens: ' + newTokens.slice(0, 10).map(t =>

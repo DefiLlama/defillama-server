@@ -114,6 +114,10 @@ function getMetricValue(row: AggregateHistoricalRow, key: PerpsChartMetricKey): 
   return toFiniteNumberOrZero(row[key]);
 }
 
+function hasPerpsBreakdownData(row: AggregateHistoricalRow): boolean {
+  return row.openInterest !== 0 || row.volume24h !== 0;
+}
+
 function toOverviewSeriesLabel(row: AggregateHistoricalRow, breakdown: PerpsOverviewBreakdown): string {
   switch (breakdown) {
     case "venue":
@@ -135,6 +139,7 @@ function buildBreakdownChartRows(
   getSeriesLabel: (row: AggregateHistoricalRow) => string
 ): PerpsBreakdownChartRow[] {
   const byTimestamp = new Map<number, PerpsBreakdownChartRow>();
+  const startedSeries = new Set<string>();
 
   for (const row of rows) {
     const timestamp = Number(row.timestamp);
@@ -143,6 +148,11 @@ function buildBreakdownChartRows(
     const seriesLabel = String(getSeriesLabel(row) || UNKNOWN_PERPS_ASSET_GROUP);
     const metricValue = getMetricValue(row, key);
     if (!Number.isFinite(metricValue)) continue;
+    if (key === "markets" || hasPerpsBreakdownData(row)) {
+      startedSeries.add(seriesLabel);
+    } else if (!startedSeries.has(seriesLabel)) {
+      continue;
+    }
 
     const existing = byTimestamp.get(timestamp) ?? { timestamp };
     existing[seriesLabel] = (existing[seriesLabel] ?? 0) + metricValue;

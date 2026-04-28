@@ -815,7 +815,26 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     address: "0xF65460B84c13eeb911303336Ab0f9D63CC79839f",
-  }
+  },
+  wSTRC: {
+    rate: async ({ api }) => {
+      const [supply, balance] = await Promise.all([
+        api.call({
+          abi: "erc20:totalSupply",
+          target: "0x546E01d65f2B1C64C657bD69Ce00f8584Ed798cc",
+        }),
+        api.call({
+          abi: "erc20:balanceOf",
+          target: "0x1aad217b8f78dba5e6693460e8470f8b1a3977f3",
+          params: "0x546E01d65f2B1C64C657bD69Ce00f8584Ed798cc",
+        }),
+      ]);
+      return balance / supply;
+    },
+    chain: "ink",
+    underlying: "0x1aad217b8f78dba5e6693460e8470f8b1a3977f3",
+    address: "0x546E01d65f2B1C64C657bD69Ce00f8584Ed798cc",
+  },
 };
 
 export async function derivs(timestamp: number) {

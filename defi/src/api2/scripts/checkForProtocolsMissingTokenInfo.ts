@@ -7,10 +7,11 @@ import axios from 'axios';
 import protocols from '../../protocols/data'
 import parentProtocols, { parentProtocolsById } from "../../protocols/parentProtocols";
 import { tableToString } from '../utils';
-import { addCGTokenMetadatas, addCMCTokenMetadatas, getAllCGTokenMetadata, getAllCMCTokenMetadata } from '../../../dev-metrics/db';
+import { addCGTokenMetadatas, addCMCTokenMetadatas, getAllCGTokenMetadata, getAllCMCTokenMetadata } from '../db/tokenMetadata';
 import { IProtocol } from '../../types';
 import { chainCoingeckoIds } from '../../utils/normalizeChain';
 import sleep from '../../utils/shared/sleep';
+import { cexsData } from '../../protocols/cex';
 
 // create chain metadata objects from chainCoingeckoIds like protocols from data.ts
 const chains = Object.entries(chainCoingeckoIds).map(([chain, id]: any) => {
@@ -30,8 +31,13 @@ let cmcSymbolCoinMap: any = {}
 let cgSymbolCoinMap: any = {}
 const parentChildProtocolMap: any = {} // map of parent id and array of child protocols + parent protocol object
 
+const getDomain = (url: string) => {
+  return url.split('://')[1].split('/')[0].split('.').slice(-2).join('.').toLowerCase()
+}
+
 const ignoredDomains = [
-  'coinbase.com', 't.me', 'twitter.com', 'binance.com', 'dexscreener.com', 'kraken.com', 'gitbook.io', 'opensea.io', 'pump.fun', 'vercel.app',
+  'coinbase.com', 't.me', 'twitter.com', 'x.com', 'binance.com', 'dexscreener.com', 'kraken.com', 'gitbook.io', 'opensea.io', 'pump.fun', 'vercel.app',
+  ...cexsData.filter(c => c.url).map(c => getDomain(c.url!)),
 ]
 
 const configs: any = {
@@ -135,7 +141,7 @@ async function getCoinTableData(coinType: string) {
     if (!tags) tags = []
     if (tags.includes('memes') || tags.includes('pump-fun-ecosystem')) return;
     name = name.toLowerCase()
-    if (['staked ', 'wrapped ', ' usd',].some((i: any) => name.includes(i))) return;
+    if (['staked ', 'wrapped ', ' usd', 'bridged ', ' eth', ' btc', 'hype',].some((i: any) => name.includes(i))) return;
     filteredCount++;
     if (!urls) urls = {}
 
@@ -187,7 +193,16 @@ async function getCoinTableData(coinType: string) {
   // console.table(Object.entries(tagStats).filter(([_, count]: any) => count > 10).sort((a: any, b: any) => b[1] - a[1]))
 
 
-  let filteredProtocols = protocols.concat(chains).filter((protocol: any) => !hasCoinInfo(protocol))
+  // Build set of cg/cmc IDs already used by any protocol
+  const usedCoinIds = new Set<string>()
+  allMetadata.forEach((protocol: any) => {
+    if (protocol.metadatas) {
+      protocol.metadatas.gecko_ids?.forEach((id: string) => usedCoinIds.add(id))
+      protocol.metadatas.cmc_ids?.forEach((id: string) => usedCoinIds.add(id))
+    }
+  })
+
+  let filteredProtocols = protocols.concat(chains).filter((protocol: any) => !hasCoinInfo(protocol) && protocol.category !== 'Canonical Bridge')
   console.log('protocols missing coin info:', filteredProtocols.length, 'from', protocols.concat(chains).length, 'total protocols (& chains)');
 
   const protocolsFound: any = {}
@@ -254,30 +269,48 @@ async function getCoinTableData(coinType: string) {
   })
 
 
-  console.log('Protocols found:', Object.keys(protocolsFound).length, `[${coinType}]`);
-  const tableData = Object.values(protocolsFound).map((entry: any, _idx: number) => {
+  // Group by parent protocol: if multiple children share a parent, show the parent instead
+  const groupedByParent: Record<string, any> = {}
+  Object.values(protocolsFound).forEach((entry: any) => {
+    const parentId = entry.protocol.parentProtocol
+    if (parentId && parentProtocolsById[parentId]) {
+      if (!groupedByParent[parentId]) {
+        groupedByParent[parentId] = {
+          protocol: parentProtocolsById[parentId],
+          coins: [],
+          domainKey: entry.domainKey,
+          twitterHandle: entry.twitterHandle,
+          childCount: 0,
+        }
+      }
+      groupedByParent[parentId].coins.push(...entry.coins)
+      groupedByParent[parentId].childCount++
+      if (entry.domainKey) groupedByParent[parentId].domainKey = entry.domainKey
+      if (entry.twitterHandle) groupedByParent[parentId].twitterHandle = entry.twitterHandle
+    } else {
+      groupedByParent[entry.protocol.id] = entry
+    }
+  })
+
+  console.log('Protocols found:', Object.keys(groupedByParent).length, `[${coinType}]`);
+  const tableData = Object.values(groupedByParent).map((entry: any) => {
     let coinSet = new Set<string>()
     let coins = entry.coins.filter((coin: any) => {
-      if (coinSet.has(coin.id)) return false
+      if (coinSet.has(coin.id) || usedCoinIds.has(coin.id)) return false
       coinSet.add(coin.id)
       return true
     })
+    if (coins.length === 0) return null
     return {
-      // idx: idx + 1,
-      // id: entry.protocol.id,
       name: entry.protocol.name.slice(0, 16),
-      // url: entry.protocol.url || entry.protocol.parentProtocol?.url,
-      // twitter: entry.protocol.twitter || entry.protocol.parentProtocol?.twitter,
-      // github: entry.protocol.github || entry.protocol.parentProtocol?.github,
       domainK: entry.domainKey ?? '',
       twitterK: entry.twitterHandle ?? '',
-      // githubK: entry.githubHandle ?? '',
       symbols: coins.map((coin: any) => coin.symbol).join(', ').slice(0, 16),
       coinIds: coins.map((coin: any) => coin.id).join(', ').slice(0, 25),
       coins: coins.map((coin: any) => coin.name).join(', ').slice(0, 25),
       category: entry.protocol.category
     }
-  })
+  }).filter(Boolean)
 
   // sort table data by domainK
   tableData.sort(sortTableData);
@@ -432,6 +465,8 @@ function getMissingSymbols() {
       if (_cgMetadataMap?.[protocol.gecko_id]) {
         missingSymbols.push({
           protocolId: protocol.id,
+          name: protocol.name,
+          address: protocol.address || '',
           symbol: _cgMetadataMap[protocol.gecko_id].metadata.symbol,
           source: 'cg',
         });
@@ -443,6 +478,8 @@ function getMissingSymbols() {
       if (_cmcMetadataMap?.[protocol.cmcId]) {
         missingSymbols.push({
           protocolId: protocol.id,
+          name: protocol.name,
+          address: protocol.address || '',
           symbol: _cmcMetadataMap[protocol.cmcId].metadata.symbol,
           source: 'cmc',
         });
@@ -470,6 +507,8 @@ function getMissingAddresses() {
         if (!contract_address || !asset_platform_id) return;
         missingAddresses.push({
           protocolId: protocol.id,
+          name: protocol.name,
+          symbol: _cgMetadataMap[protocol.gecko_id].metadata.symbol,
           address: `${asset_platform_id}:${contract_address}`,
           source: 'cg',
         });
@@ -483,6 +522,8 @@ function getMissingAddresses() {
         if (!name || !token_address) return;
         missingAddresses.push({
           protocolId: protocol.id,
+          name: protocol.name,
+          symbol: _cmcMetadataMap[protocol.cmcId].metadata.symbol,
           address: `${name}:${token_address}`,
           source: 'cmc',
         });
@@ -510,12 +551,6 @@ const sortTableData = (a: any, b: any) => {
   if (a.twitterK > b.twitterK) return 1;
   return 0;
 }
-
-const getDomain = (url: string) => {
-  // console.log('getDomain', url)
-  return url.split('://')[1].split('/')[0].split('.').slice(-2).join('.').toLowerCase()
-}
-
 
 async function init() {
 

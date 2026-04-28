@@ -12,7 +12,6 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { CgEntry, Write } from "../adapters/utils/dbInterfaces";
 import { getRedisConnection } from "../../coins2";
 import chainToCoingeckoId, { cgPlatformtoChainId } from "../../../common/chainToCoingeckoId";
-import produceKafkaTopics, { Dynamo } from "../utils/coins3/produce";
 import {
   fetchCgPriceData,
   retryCoingeckoRequest,
@@ -62,15 +61,7 @@ async function storeCoinData(coinData: Write[]) {
       adapter: 'coingecko'
     }))
     .filter((c: Write) => c.symbol != null);
-  const [_, ddbWriteResult] = await Promise.all([
-    produceKafkaTopics(
-      items.map((i) => {
-        const { volume, ...rest } = i;
-        return ({ decimals: 0, ...rest } as Dynamo)
-      }),
-    ),
-    batchWrite(items, false),
-  ]);
+  const ddbWriteResult = await batchWrite(items, false);
 
   await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
@@ -87,17 +78,7 @@ async function storeHistoricalCoinData(coinData: Write[]) {
     confidence: c.confidence,
     volume: c.volume,
   }));
-  const [_, ddbWriteResult] = await Promise.all([
-    produceKafkaTopics(
-      items.map((i) => ({
-        adapter: "coingecko",
-        timestamp: i.SK,
-        ...i,
-      })) as Dynamo[],
-      ["coins-timeseries"],
-    ),
-    batchWrite(items, false),
-  ]);
+  const ddbWriteResult = await batchWrite(items, false);
 
   await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
@@ -323,13 +304,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
   );
 
-  await Promise.all([
-    produceKafkaTopics(
-      kafkaItems.map((i) => ({ adapter: "coingecko", ...i })),
-      ["coins-metadata"],
-    ),
-    deleteStaleKeysPromise,
-  ]);
+  await deleteStaleKeysPromise;
 
   if (kafkaItems.length > 0) {
     await dualWriteToChRedis(kafkaItems).catch(e => {
@@ -366,15 +341,7 @@ async function getAndStoreHourly(
       confidence: 0.99,
     }));
 
-  const [_ , ddbWriteResult] = await Promise.all([
-    produceKafkaTopics(
-      items.map(
-        (i) => ({ adapter: "coingecko", timestamp: i.SK, ...i }),
-        ["coins-timeseries"],
-      ),
-    ),
-    batchWrite(items, false),
-  ]);
+  const ddbWriteResult = await batchWrite(items, false);
 
   await dualWriteToChRedis(items.map(i => ({ ...i, adapter: "coingecko" }))).catch(e => {
     console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
@@ -478,9 +445,9 @@ async function triggerFetchCoingeckoData(hourly: boolean, coinType?: string) {
     console.error("Error type:", typeof e);
     console.error("Error message:", e instanceof Error ? e.message : e);
     console.error("Error stack:", e instanceof Error ? e.stack : "No stack trace");
-    
+
     const errorMessage = e instanceof Error ? e.message : String(e);
-    
+
     if (process.env.URGENT_COINS_WEBHOOK)
       await sendMessage(
         `coingecko ${hourly} ${coinType} failed with: ${errorMessage}`,

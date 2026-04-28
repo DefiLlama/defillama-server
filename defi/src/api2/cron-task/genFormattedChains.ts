@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import { LiteProtocol } from "../../types";
 import { chainCoingeckoIds } from "../../utils/normalizeChain";
+import { fetchMcaps } from "../../utils/coinsApi";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
 import { getPrevTvlFromChart } from "../utils/tvlChart";
 
@@ -86,19 +87,14 @@ async function _genFormattedChains() {
   }
 
   // fetch chain token prices
-  chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: Object.values(chainCoingeckoIds)
-        .filter((c) => c.geckoId)
-        .map((c) => `coingecko:${c.geckoId}`),
-    }),
-  })
-    .then((r) => r.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
+  chainMcaps = await fetchMcaps(
+    Object.values(chainCoingeckoIds)
+      .filter((c) => c.geckoId)
+      .map((c) => `coingecko:${c.geckoId}`),
+  ).catch((err) => {
+    console.log(err);
+    return {};
+  });
 
 
   // generate route files

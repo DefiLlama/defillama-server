@@ -17,7 +17,6 @@ import pLimit from "p-limit";
 import * as sdk from '@defillama/sdk'
 const { sliceIntoChunks, } = sdk.util
 
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
@@ -147,11 +146,12 @@ export function addToDBWritesList(
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
       : `asset#${chain}:${lowercase(token, chain)}`;
+  const priceNum = price == null ? undefined : Number(price);
   if (redirect && timestamp == 0) {
     writes.push({
       SK: 0,
       PK,
-      price,
+      price: priceNum,
       symbol,
       decimals: Number(decimals),
       redirect,
@@ -165,14 +165,14 @@ export function addToDBWritesList(
         {
           SK: getCurrentUnixTimestamp(),
           PK,
-          price,
+          price: priceNum,
           adapter,
           confidence: Number(confidence),
         },
         {
           SK: 0,
           PK,
-          price,
+          price: priceNum,
           symbol,
           decimals: Number(decimals),
           redirect,
@@ -190,7 +190,7 @@ export function addToDBWritesList(
       SK: timestamp,
       PK,
       redirect,
-      price,
+      price: priceNum,
       adapter,
       confidence: Number(confidence),
     });
@@ -437,9 +437,8 @@ export async function batchWriteWithAlerts(
       (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price) || i.redirect);
     const writeItems = [...filteredItems, ...redirectChanges]
     const ddbWriteResult = await batchWrite(writeItems, failOnError);
-    await produceKafkaTopics(writeItems as any[]);
 
-    // Dual-write: normalized PKs to DDB only (no Kafka, no alerts)
+    // Dual-write: normalized PKs to DDB only (no alerts)
     const normalizedMap = new Map<string, any>();
     writeItems.forEach((item: any) => {
       const nPK = normalizedPKFor(item.PK);

@@ -10,6 +10,7 @@ import {
   Modal,
   Tag,
   Space,
+  Collapse,
 } from 'antd';
 import { PlayCircleOutlined, ClearOutlined, MoonOutlined, SaveOutlined, LineChartOutlined, DeleteOutlined, ApiOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined, ExclamationCircleOutlined, CheckOutlined, CloseOutlined, ReloadOutlined, SearchOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
@@ -1300,6 +1301,11 @@ const App = () => {
       > Clear list </Button>)
 
     let data = ''
+    const cgData = miscOutputTableData.data?.coingecko || []
+    const cmcData = miscOutputTableData.data?.coinmarketcap || []
+    const allCategories = [...new Set([...cgData, ...cmcData].map(r => r.category).filter(Boolean))].sort()
+    const categoryFilters = allCategories.map(c => ({ text: c, value: c }))
+
     const cgCMCColumns = [
       { title: 'Protocol/chain', dataIndex: 'name', key: 'name', sorter: (a, b) => a.name.localeCompare(b.name) },
       { title: 'Domain', dataIndex: 'domainK', key: 'domainK', sorter: (a, b) => a.domainK.localeCompare(b.domainK) },
@@ -1307,65 +1313,75 @@ const App = () => {
       { title: 'Symbols', dataIndex: 'symbols', key: 'symbols', sorter: (a, b) => a.symbols.localeCompare(b.symbols) },
       { title: 'Coin IDs', dataIndex: 'coinIds', key: 'coinIds', sorter: (a, b) => a.coinIds.localeCompare(b.coinIds) },
       { title: 'Coins', dataIndex: 'coins', key: 'coins', sorter: (a, b) => a.coins.localeCompare(b.coins) },
-      { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category) },
+      { title: 'Category', dataIndex: 'category', key: 'category', sorter: (a, b) => a.category.localeCompare(b.category), filters: categoryFilters, onFilter: (value, record) => record.category === value },
     ]
     switch (miscOutputTableData.type) {
       case 'get-protocols-missing-tokens-response':
         data = (
-          <div>
-            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
-              Missing CG Mappings
-            </div>
-            <Table
-              columns={cgCMCColumns}
-              dataSource={miscOutputTableData.data?.coingecko || []}
-              pagination={{ pageSize: 100 }}
-              rowKey={(record) => record.name}
-            />
-
-            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
-              Missing CMC Mappings
-            </div>
-            <Table
-              columns={cgCMCColumns}
-              dataSource={miscOutputTableData.data?.coinmarketcap || []}
-              pagination={{ pageSize: 100 }}
-              rowKey={(record) => record.name}
-            />
-
-
-            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
-              Protocols missing symbol info
-            </div>
-            <Table
-              columns={[
-                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
-                { title: 'Symbol', dataIndex: 'symbol', key: 'symbol', sorter: (a, b) => a.symbol.localeCompare(b.symbol) },
-                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
-              ]}
-              dataSource={miscOutputTableData.data?.protocolsMissingSymbols || []}
-              pagination={{ pageSize: 100 }}
-              rowKey={(record) => record.name}
-            />
-
-
-            <div style={{ marginBottom: 10, fontWeight: 'bold', fontSize: '16px' }}>
-              Protocols missing Address info
-            </div>
-            <Table
-              columns={[
-                { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
-                { title: 'Address', dataIndex: 'address', key: 'address', sorter: (a, b) => a.address.localeCompare(b.address) },
-                { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
-              ]}
-              dataSource={miscOutputTableData.data?.protocolsMissingAddresses || []}
-              pagination={{ pageSize: 100 }}
-              rowKey={(record) => record.name}
-            />
-
-
-
-          </div>
+          <Collapse defaultActiveKey={[]} style={{ marginBottom: 10 }}
+            items={[
+              {
+                key: 'cg',
+                label: `Missing CG Mappings (${cgData.length})`,
+                children: (
+                  <Table
+                    columns={cgCMCColumns}
+                    dataSource={cgData}
+                    pagination={{ pageSize: 100 }}
+                    rowKey={(record) => record.name}
+                  />
+                ),
+              },
+              {
+                key: 'cmc',
+                label: `Missing CMC Mappings (${cmcData.length})`,
+                children: (
+                  <Table
+                    columns={cgCMCColumns}
+                    dataSource={cmcData}
+                    pagination={{ pageSize: 100 }}
+                    rowKey={(record) => record.name}
+                  />
+                ),
+              },
+              {
+                key: 'symbols',
+                label: `Protocols missing symbol info (${(miscOutputTableData.data?.protocolsMissingSymbols || []).length})`,
+                children: (
+                  <Table
+                    columns={[
+                      { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                      { title: 'Name', dataIndex: 'name', key: 'name', sorter: (a, b) => (a.name || '').localeCompare(b.name || '') },
+                      { title: 'Symbol', dataIndex: 'symbol', key: 'symbol', sorter: (a, b) => a.symbol.localeCompare(b.symbol) },
+                      { title: 'Address', dataIndex: 'address', key: 'address', sorter: (a, b) => (a.address || '').localeCompare(b.address || '') },
+                      { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+                    ]}
+                    dataSource={miscOutputTableData.data?.protocolsMissingSymbols || []}
+                    pagination={{ pageSize: 100 }}
+                    rowKey={(record) => record.protocolId + record.source}
+                  />
+                ),
+              },
+              {
+                key: 'addresses',
+                label: `Protocols missing Address info (${(miscOutputTableData.data?.protocolsMissingAddresses || []).length})`,
+                children: (
+                  <Table
+                    columns={[
+                      { title: 'Protocol Id', dataIndex: 'protocolId', key: 'protocolId', sorter: (a, b) => a.protocolId.localeCompare(b.protocolId) },
+                      { title: 'Name', dataIndex: 'name', key: 'name', sorter: (a, b) => (a.name || '').localeCompare(b.name || '') },
+                      { title: 'Symbol', dataIndex: 'symbol', key: 'symbol', sorter: (a, b) => (a.symbol || '').localeCompare(b.symbol || '') },
+                      { title: 'Address', dataIndex: 'address', key: 'address', sorter: (a, b) => a.address.localeCompare(b.address) },
+                      { title: 'Source', dataIndex: 'source', key: 'source', sorter: (a, b) => a.source.localeCompare(b.source) },
+                    ]}
+                    dataSource={miscOutputTableData.data?.protocolsMissingAddresses || []}
+                    pagination={{ pageSize: 100 }}
+                    rowKey={(record) => record.protocolId + record.address}
+                  />
+                ),
+              },
+            ]}
+          />
         )
         break;
       case 'get-protocols-token-dominance-response':

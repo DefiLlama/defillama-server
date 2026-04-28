@@ -876,6 +876,7 @@ const data: Protocol[] = [
     ],
     forkedFromIds: ["3"],
     github: ["SwerveFinance"], //check
+    deadUrl: true
   },
   {
     id: "143",
@@ -2152,18 +2153,17 @@ const data: Protocol[] = [
   },
   {
     id: "204",
-    name: "Alchemix",
+    name: "Alchemix V2",
     address: "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
     symbol: "ALCX",
     url: "https://alchemix.fi/",
     description:
       "Alchemix is a DeFi protocol that allows for the creation of synthetic tokens that represent the future yield of a deposit. It enables users to retrieve near instant tokenized value against temporary* deposits of stablecoins.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/alchemix.jpg`,
+    logo: `${baseIconsUrl}/alchemix-v2.jpg`,
     audits: "2",
-    treasury: "alchemix.js",
-    gecko_id: "alchemix",
-    cmcId: "8613",
+    gecko_id: null,
+    cmcId: null,
     category: "Synthetics",
     chains: ["Ethereum", "Fantom"],
     module: "alchemix/index.js",
@@ -2171,9 +2171,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v2.pdf",
     ],
-    governanceID: ["snapshot:alchemixstakers.eth"],
-    stablecoins: ["alchemix-usd"],
-    github: ["alchemix-finance"],
+    parentProtocol: "parent#alchemix",
     dimensions: {
       fees: "alchemix"
     }
@@ -2753,7 +2751,8 @@ const data: Protocol[] = [
     parentProtocol: "parent#idex",
     dimensions: {
       dexs: "idex-classic"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "231",
@@ -4711,6 +4710,7 @@ const data: Protocol[] = [
     module: "ram.js",
     twitter: null,
     forkedFromIds: ["114"],
+    deadUrl: true,
   },
   {
     id: "322",
@@ -6770,7 +6770,34 @@ const data: Protocol[] = [
       dexs: {
         adapter: "thorchain-dex",
         genuineSpikes: [
-          ["2026-04-21", "Laundering by Kelp DAO hacker"] //0xF9802c5EB6b972Ba686aFa7CA615910Ea8310b85
+          ["2023-10-01", "Laundering by FTX Hacker"],
+          ["2023-10-02", "Laundering by FTX Hacker"],
+          ["2023-10-03", "Laundering by FTX Hacker"],
+          ["2023-10-04", "Laundering by FTX Hacker"],
+          ["2023-10-05", "Laundering by FTX Hacker"],
+          ["2023-10-06", "Laundering by FTX Hacker"],
+          ["2023-10-07", "Laundering by FTX Hacker"],
+          ["2025-02-22", "Laundering by Bybit Hacker"],
+          ["2025-02-23", "Laundering by Bybit Hacker"], 
+          ["2025-02-24", "Laundering by Bybit Hacker"],
+          ["2025-02-25", "Laundering by Bybit Hacker"],
+          ["2025-02-26", "Laundering by Bybit Hacker"],
+          ["2025-02-27", "Laundering by Bybit Hacker"],
+          ["2025-02-28", "Laundering by Bybit Hacker"],
+          ["2025-03-01", "Laundering by Bybit Hacker"],
+          ["2025-03-02", "Laundering by Bybit Hacker"],
+          ["2025-03-03", "Laundering by Bybit Hacker"],
+          ["2025-03-03", "Laundering by Bybit Hacker"],
+          ["2025-05-13", "Laundering by Bitpro Hacker"],
+          ["2025-05-14", "Laundering by Bitpro Hacker"],
+          ["2025-05-21", "Laundering by Coinbase fake customer support scammer"],
+          ["2025-05-22", "Laundering by Coinbase fake customer support scammer"],
+          ["2026-01-13", "Social engineering scam laundering (Hardware wallet victim)"],
+          ["2026-01-15", "Social engineering scam laundering (Hardware wallet victim)"],
+          ["2026-01-16", "Social engineering scam laundering (Hardware wallet victim)"],
+          ["2026-03-31", "Social engineering scam laundering (Kraken user victim)"],
+          ["2026-04-21", "Laundering by Kelp DAO hacker"], //0xF9802c5EB6b972Ba686aFa7CA615910Ea8310b85
+          ["2026-04-22", "Laundering by Kelp DAO hacker"],
         ]
       },
     },
@@ -8839,17 +8866,19 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       {
         name: "cLabs",
         type: "Aggregator",
+        endDate: "2026-04-21",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
       {
         name: "RedStone",
         type: "Aggregator",
+        endDate: "2026-04-21",
         proof: ["https://celo.stake.id/#/proposal/145"]
       },
        {
         name: "Chainlink",
-        type: "Aggregator",
-        proof: ["https://docs.mento.org/mento/overview/core-concepts/oracles-and-price-feeds#oracle-providers"]
+        type: "Primary",
+        proof: ["https://docs.mento.org/mento-v3?q=oracle#fixed-price-market-makers-fpmms-the-core-of-v3"]
       }
     ],
     dimensions: {
@@ -9381,6 +9410,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "shadecash/index.js",
     twitter: "ShadeCash_",
     forkedFromIds: ["148"],
+    deadUrl: true
   },
   {
     id: "530",
@@ -10018,7 +10048,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/magic-land.png`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "magic-token",
     cmcId: "12455",
     category: "Yield",
     chains: ["Arbitrum"],
@@ -11075,6 +11105,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "rocketswap.js",
     twitter: "RSwapOfficial",
     forkedFromIds: ["2197"],
+    deadUrl: true,
   },
   {
     id: "607",
@@ -15361,6 +15392,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Pureswap1",
     forkedFromIds: ["2197"],
     listedAt: 1636441951,
+    deadUrl: true,
   },
   {
     id: "816",
@@ -16242,6 +16274,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Fortune_DAO",
     forkedFromIds: ["340"],
     listedAt: 1637266964,
+    deadUrl: true,
   },
   {
     id: "857",
@@ -17566,6 +17599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637892027,
     github: ["Pacoca-io"],
+    deadUrl: true,
   },
   {
     id: "918",
@@ -18446,6 +18480,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EsterFinance",
     listedAt: 1638458112,
     github: ["esterfinance"],
+    deadUrl: true,
   },
   {
     id: "959",
@@ -19396,7 +19431,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639116787,
     dimensions: {
       dexs: "yokaiswap"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1003",
@@ -25414,7 +25450,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     github: ["Cryptorubic"],
     dimensions: {
       aggregators: "rubic",
-      "bridge-aggregators": "rubic"
+      "bridge-aggregators": {
+        adapter: "rubic",
+        genuineSpikes: [
+          ["2026-04-24", "Large stablecoin swaps"],
+        ]
+      }
     }
   },
   {

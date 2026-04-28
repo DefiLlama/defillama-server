@@ -2478,6 +2478,7 @@ const data2: Protocol[] = [
     audit_links: ["https://consensys.net/diligence/audits/private/adash47d-chainbridge/"],
     listedAt: 1646164456,
     github: ["RelayChain"],
+    deadUrl: true
   },
   {
     id: "1492",
@@ -2893,6 +2894,7 @@ const data2: Protocol[] = [
     module: "miniversefinance/index.js",
     twitter: "miniverse_fin",
     listedAt: 1646428683,
+    deadUrl: true,
   },
   {
     id: "1511",
@@ -3197,6 +3199,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#mars-protocol",
     openSource: true,
     listedAt: 1646854377,
+    deadUrl: true,
   },
   {
     id: "1525",
@@ -3302,6 +3305,7 @@ const data2: Protocol[] = [
     module: "gamblefi/index.js",
     twitter: "GambleFinance",
     listedAt: 1646949250,
+    deadUrl: true,
   },
   {
     id: "1530",
@@ -5206,7 +5210,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "radioshack",
       dexs: "radioshack"
-    }
+    },
+    deadUrl: true,
   },
   {
     id: "1617",
@@ -5734,6 +5739,7 @@ const data2: Protocol[] = [
     module: "eklipse/index.js",
     twitter: "eklipseFinance",
     listedAt: 1649713407,
+    deadUrl: true,
   },
   {
     id: "1641",
@@ -8497,6 +8503,7 @@ const data2: Protocol[] = [
     module: "jelly/index.js",
     twitter: "jellyprotocol",
     listedAt: 1652905173,
+    deadUrl: true,
   },
   {
     id: "1769",
@@ -8536,6 +8543,7 @@ const data2: Protocol[] = [
     twitter: "ClayStack_HQ",
     parentProtocol: "parent#claystack",
     listedAt: 1652905173,
+    deadUrl: true,
   },
   {
     id: "1771",
@@ -8688,7 +8696,8 @@ const data2: Protocol[] = [
     dimensions: {
       fees: "pandora",
       dexs: "pandora"
-    }
+    },
+    deadUrl: true
   },
   {
     id: "1778",
@@ -10425,6 +10434,7 @@ const data2: Protocol[] = [
     twitter: "klapfinance",
     audit_links: ["https://docs.klap.finance/useful-info/audit"],
     listedAt: 1656139895,
+    deadUrl: true,
   },
   {
     id: "1856",
@@ -12752,6 +12762,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/SiO2-Finance/contracts/tree/main/audits"],
     listedAt: 1660050871,
     github: ["SiO2-Finance"],
+    deadUrl: true,
   },
   {
     id: "1963",
@@ -13513,7 +13524,7 @@ const data2: Protocol[] = [
     description:
       "Morpho Compound is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-compoundv2.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-compoundv2.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -15450,6 +15461,7 @@ const data2: Protocol[] = [
     audit_links: ["https://symphonyfi.gitbook.io/docs/audit"],
     listedAt: 1662981929,
     github: ["symphony-finance"],
+    deadUrl: true
   },
   {
     id: "2083",
@@ -17391,7 +17403,7 @@ const data2: Protocol[] = [
     description:
       "Morpho AaveV2 is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/morpho-v0-aavev2.png`,
+    logo: `${baseIconsUrl}/morpho-optimizer-aavev2.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -20897,6 +20909,7 @@ const data2: Protocol[] = [
     github: ["2pinetwork"],
     audit_links: ["https://github.com/2pinetwork/security/tree/master/audits"],
     listedAt: 1669733991,
+    deadUrl: true
   },
   {
     id: "2322",

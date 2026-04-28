@@ -25,7 +25,30 @@ const protocolDataMap: { [key: string]: any } = {}
 let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Function
 let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
+// written to r2 in the cron-raises script
+async function storeCachedR2Files() {
+  const r2Data = [
+    'raises', 'hacks',
+    'token-rights',
+    'news/articles'
+  ]
+
+  for (const subPath of r2Data) {
+    try {
+      const data = await sdk.cache.readCache(`cron-task/${subPath}`, {
+        readFromR2Cache: true,
+        skipCompression: true,
+      })
+      await storeRouteData(subPath, data)
+    } catch (e) {
+      console.log(`Failed to read/write ${subPath} from R2 cache, skipping:`, e)
+    }
+  }
+}
+
+
 async function run() {
+  await storeCachedR2Files()
 
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON })
@@ -224,17 +247,17 @@ async function run() {
 
     // keep old cache file for old api routes
     await storeRouteData('oracles', data)
-    
+
     // write breakdown oracles cache files for v2 routes
     await writeOraclesBreakdown(data);
-    
+
     console.timeEnd(debugString)
-    
+
     async function writeOraclesBreakdown(data: any) {
       // overview data without charts
       function transformOraclesTVS(oraclesTVS: any): any {
         const transformedOraclesTVS = oraclesTVS;
-        
+
         for (const [oracle, protocolTvs] of Object.entries(oraclesTVS)) {
           // delete keys from oraclesTVS
           for (const [protocolName, keyAndTvs] of Object.entries(protocolTvs as any)) {
@@ -243,7 +266,7 @@ async function run() {
             }
           }
         }
-        
+
         return transformedOraclesTVS;
       }
 
@@ -252,19 +275,19 @@ async function run() {
         chainsByOracle: data.chainsByOracle,
         oraclesTVS: transformOraclesTVS(data.oraclesTVS),
       })
-      
+
       // total chart per key, key => timestamp => value
       const totalChartByKeys: Record<string, Record<number, number>> = {};
       // total chart per oracle, oracle => timestamp => value
       const totalChartByOracles: Record<string, Record<number, number>> = {};
       // total chart per chain, chain => timestamp => value
       const totalChartByChains: Record<string, Record<number, number>> = {};
-      
+
       // total chart per key, key => timestamp => chain => value
       const totalChartByKeysAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
       // total chart per key, key => timestamp => protocol => value
       const totalChartByKeysAndProtocolBreakdown: Record<string, Record<number, Record<string, number>>> = {};
-      
+
       // chart protocol chain-breakdown => key => timestamp => chain => value
       const totalChartByProtocolsAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
 
@@ -274,7 +297,7 @@ async function run() {
       for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
         const ts = Number(timestamp);
         const os = oracles as any;
-        
+
         // { Chronicle: { Ethereum: 1, Ethereum-staking: 0 } }
         for (const [oracle, chains] of Object.entries(os)) {
           for (const [itemKey, itemValue] of Object.entries(chains as any)) {
@@ -285,34 +308,34 @@ async function run() {
             // add to total
             ensureItemValue(totalChartByKeys, key, ts, Number(itemValue));
             ensureItemValue(totalChartByKeys, 'all', ts, Number(itemValue));
-            
+
             // add to chain total
             ensureItemValue(totalChartByChains, `${chain}-${key}`, ts, Number(itemValue));
             ensureItemValue(totalChartByChains, `${chain}-all`, ts, Number(itemValue));
-            
+
             // add to protocol total
             ensureItemValue(totalChartByOracles, `${oracle}-${key}`, ts, Number(itemValue));
             ensureItemValue(totalChartByOracles, `${oracle}-all`, ts, Number(itemValue));
-            
+
             // add to total chain-breakdown
             ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, key, ts, chain, Number(itemValue));
             ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, 'all', ts, chain, Number(itemValue));
-            
+
             // add to total protocol-breakdown
             ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, key, ts, oracle, Number(itemValue))
             ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, 'all', ts, oracle, Number(itemValue))
-            
+
             // add to protocol chain-breakdown
             ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-${key}`, ts, chain, Number(itemValue))
             ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-all`, ts, chain, Number(itemValue))
-            
+
             // add to chain protocol-breakdown
             ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-${key}`, ts, oracle, Number(itemValue))
             ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-all`, ts, oracle, Number(itemValue))
           }
         }
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(totalChartByKeys)) {
         await storeRouteData(`oracles-v2/charts/total-${key}`, buildTimeseriesItemValue(valueByTimestamp));
       }
@@ -322,7 +345,7 @@ async function run() {
       for (const [key, valueByTimestamp] of Object.entries(totalChartByKeysAndProtocolBreakdown)) {
         await storeRouteData(`oracles-v2/charts/total-${key}-protocol-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(totalChartByOracles)) {
         await storeRouteData(`oracles-v2/charts/protocols/${key}`, buildTimeseriesItemValue(valueByTimestamp));
       }
@@ -346,34 +369,34 @@ async function run() {
 
     // keep old cache file for old api routes
     await storeRouteData('forks', data)
-    
+
     // write breakdown forks cache files for v2 routes
     await writeForksBreakdown(data);
-    
+
     console.timeEnd(debugString)
-    
+
     async function writeForksBreakdown(data: any) {
       // overview data without charts
       await storeRouteData('forks-v2/overview', data.forks)
-      
+
       // key => timestamp => protocol => value
       const chartByKeys: Record<string, Record<number, Record<string, number>>> = {};
-      
+
       // protocol => timestamp => value
       const chartByProtocols: Record<string, Record<number, number>> = {};
-      
+
       for (const [timestamp, forks] of Object.entries(data.chart)) {
         for (const [protocol, items] of Object.entries(forks as any)) {
           for (const [key, value] of Object.entries(items as any)) {
             ensureItemValue(chartByProtocols, `${protocol}-${key}`, Number(timestamp), Number(value));
             ensureItemValue(chartByProtocols, `${protocol}-all`, Number(timestamp), Number(value));
-            
+
             ensureItemValueBreakdown(chartByKeys, `total-${key}-protocol-breakdown`, Number(timestamp), protocol, Number(value));
             ensureItemValueBreakdown(chartByKeys, 'total-all-protocol-breakdown', Number(timestamp), protocol, Number(value));
           }
         }
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(chartByKeys)) {
         await storeRouteData(`forks-v2/charts/${key}`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
       }

@@ -53,6 +53,7 @@ export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
   "selfCustody",
   "stablecoin",
   "governance",
+  "delisted",
 ]);
 
 export const RWA_STABLECOIN_CATEGORIES = new Set([

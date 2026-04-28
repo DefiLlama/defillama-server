@@ -2299,7 +2299,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-cl.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "2",
     gecko_id: null,
     cmcId: null,
@@ -2325,7 +2325,7 @@ const data5: Protocol[] = [
     description:
       "Ramses is a concentrated liquidity layer and exchange built on HyperEVM, powered by x(3,3)—a more fluid and accessible version of the popular ve(3,3) model",
     chain: "Hyperliquid L1",
-    logo: `${baseIconsUrl}/ramses-hl-legacy.jpg`,
+    logo: `${baseIconsUrl}/ramsesx.png`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -2359,6 +2359,7 @@ const data5: Protocol[] = [
     module: "0xRoulette/index.js",
     twitter: "0xRoulette",
     listedAt: 1763085777,
+    deadUrl: true,
   },
   {
     id: "6996",
@@ -3074,7 +3075,7 @@ const data5: Protocol[] = [
     chain: "Solana",
     logo: `${baseIconsUrl}/godl-protocol.jpg`,
     audits: "0",
-    gecko_id: null,
+    gecko_id: "godl-2",
     cmcId: null,
     category: "Gamified Mining",
     chains: ["Solana"],
@@ -3128,6 +3129,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-cl",
     },
+    deadUrl: true,
   },
   {
     id: "7027",
@@ -3151,6 +3153,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "swyrl-legacy",
     },
+    deadUrl: true,
   },
   {
     id: "7028",
@@ -5105,14 +5108,14 @@ const data5: Protocol[] = [
     id: "7114",
     name: "Everclear",
     address: null,
-    symbol: "-",
+    symbol: "CLEAR",
     url: "https://www.everclear.org/",
     description: "The Crosschain Clearing and Settlement Protocol.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/everclear.jpg`,
     audits: "0",
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "everclear",
+    cmcId: "34512",
     category: "Cross Chain Bridge",
     chains: ["Linea", "Binance", "Scroll", "Optimism", "Ethereum", "Unichain", "Blast", "Polygon", "Avalanche", "Base", "Arbitrum", "Mode", "Ronin", "Taiko", "xDai", "zkSync Era", "Mantle", "ApeChain", "Berachain", "Zircuit", "Ink", "Sonic"],
     module: "everclear/index.js",
@@ -6824,6 +6827,9 @@ const data5: Protocol[] = [
     twitter: "Securitize",
     parentProtocol: "parent#securitize",
     listedAt: 1767120857,
+    dimensions: {
+      fees: "stac-clo",
+    },
   },
   {
     id: "7197",
@@ -8393,8 +8399,8 @@ const data5: Protocol[] = [
   {
     id: "7270",
     name: "Mezo Borrow",
-    address: null,
-    symbol: "-",
+    address: "mezo:0x7b7c000000000000000000000000000000000001",
+    symbol: "MEZO",
     url: "https://mezo.org/",
     description:
       "Mezo borrow allows users to borrow against their bitcoin for MUSD, Mezo's native stable coin.",
@@ -8583,7 +8589,8 @@ const data5: Protocol[] = [
     parentProtocol: "parent#standx",
     stablecoins: ["standx-dusd"],
     dimensions: {
-      fees: "standx-dusd",
+      //fees: "standx-dusd", // it includes only withdrawl fees which misrepresents overall parent adapter stats, so disabling until perp fee stats are available
+                             // more info https://github.com/DefiLlama/dimension-adapters/pull/6461 & https://github.com/DefiLlama/dimension-adapters/pull/6477#discussion_r3137067079
     },
   },
   {
@@ -9186,23 +9193,23 @@ const data5: Protocol[] = [
   },
   {
     id: "7307",
-    name: "Flying Tulip",
+    name: "Flying Tulip Yield",
     address: "0x5DD1A7A369e8273371d2DBf9d83356057088082c",
     symbol: "FT",
     url: "https://flyingtulip.com/",
     description: "Flying Tulip is a yield aggregation protocol that pools user deposits into wrapper contracts and deploys them into automated yield strategies.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/flying-tulip.jpg`,
+    logo: `${baseIconsUrl}/flying-tulip-yield.jpg`,
     audits: "2",
-    gecko_id: "flying-tulip",
+    gecko_id: null,
     cmcId: null,
     category: "Services",
     chains: ["Ethereum"],
     module: "dummy.js",
-    treasury: "flying-tulip.js",
     audit_links: ["https://docs.flyingtulip.com/risks/"],
     twitter: "flyingtulip_",
     listedAt: 1769459609,
+    parentProtocol: "parent#flying-tulip",
     dimensions: {
       fees: "flying-tulip"
     }
@@ -12674,6 +12681,14 @@ const data5: Protocol[] = [
     twitter: "purrlend",
     audit_links: ["https://github.com/Purrlend/Purrlend-AUDIT"],
     oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://purrlends.gitbook.io/purrlend/protocol/oracles-and-data-feeds"],},],
+    warningBanners: [
+      {
+        message:
+          "Purrlend appears to be exploited on both MegaETH and HyperEVM. Be safe.",
+        level: "alert",
+        until: "2026-04-30",
+      },
+    ],
     listedAt: 1772205522,
   },
   {
@@ -14172,6 +14187,13 @@ const data5: Protocol[] = [
     module: "mento-v3/index.js",
     twitter: "MentoLabs",
     parentProtocol: "parent#mento",
+    oraclesBreakdown: [
+      {
+        name: "Chainlink",
+        type: "Primary",
+        proof: ["https://docs.mento.org/mento-v3?q=oracle#fixed-price-market-makers-fpmms-the-core-of-v3"]
+      }
+    ],
     listedAt: 1773583724,
     audit_links: [
       "https://www.chainsecurity.com/security-audit/mento-core-v3",
@@ -14293,9 +14315,9 @@ const data5: Protocol[] = [
     name: "Orbit Finance",
     address: null,
     symbol: "-",
-    url: "https://orbitdex.io/en",
+    url: "https://markets.cipherlabsx.com",
     description:
-      "Perpetual futures with up to 300x leverage. Non-custodial, fully on-chain.",
+      "Orbit Finance is a DLMM (Dynamic Liquidity Market Maker) on Solana. Concentrated liquidity pools with configurable fee tiers, built on the CipherDLMM program.",
     chain: "Solana",
     logo: `${baseIconsUrl}/orbit-finance.jpg`,
     audits: "0",
@@ -14420,6 +14442,7 @@ const data5: Protocol[] = [
     dimensions: {
       dexs: "lotto-run",
     },
+    deadUrl: true
   },
   {
     id: "7558",
@@ -14978,6 +15001,9 @@ const data5: Protocol[] = [
     module: "grove/index.js",
     twitter: "grovedotfinance",
     listedAt: 1774489318,
+    dimensions: {
+      fees: "grove",
+    },
   },
   {
     id: "7584",
@@ -15677,8 +15703,14 @@ const data5: Protocol[] = [
     twitter: "tradeparagon",
     oraclesBreakdown: [{name: "Pyth",type: "Primary",proof: ["https://docs.paragon.trade/protocol/oracles"],}],
     dimensions: {
-      fees: "paragon",
-      derivatives: "paragon",
+      fees: {
+        adapter: "paragon",
+        genuineSpikes: [["2026-04-26", "-"]],
+      },
+      derivatives: {
+        adapter: "paragon",
+        genuineSpikes: [["2026-04-26", "Large volumes on $TOTAL2 market"]],
+      },
       "open-interest": "paragon-oi",
     },
   },
@@ -16826,7 +16858,9 @@ const data5: Protocol[] = [
     ],
     github: ["bounce-tech"],
     dimensions: {
+      derivatives: "bounce-tech",
       fees: "bounce-tech",
+      "open-interest": "bounce-tech-oi",
     },
     listedAt: 1776709207
   },

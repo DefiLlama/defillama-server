@@ -2762,7 +2762,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["CLMM"],
-    chains: ["Zero Network", "Abstract", "Ink", "Shape", "Redstone"],
+    chains: ["Zero Network", "Abstract", "Ink", "Redstone"],
     module: "reservoir-tools-v3/index.js",
     twitter: "protofire",
     forkedFromIds: ["2198"],

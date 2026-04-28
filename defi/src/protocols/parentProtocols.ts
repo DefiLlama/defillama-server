@@ -9552,7 +9552,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Bulletxyz",
-    github: ["bulletxyz"],
+    github: ["bulletxyz", "zetamarkets"],
   },
   {
     id: "parent#shapeswap",

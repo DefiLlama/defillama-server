@@ -1176,9 +1176,10 @@ const data6: Protocol[] = [
     tags: ["AMM"],
     chains: ["Shape"],
     forkedFromIds: ["2197"],
-    module: "shapeswap-v3/index.js",
+    module: "shapeswap-v2/index.js",
     twitter: "shape",
     parentProtocol: "parent#shapeswap",
+    listedAt: 1777404083,
     dimensions: {
       dexs: "shapeswap-v2",
       fees: "shapeswap-v2",
@@ -1203,10 +1204,31 @@ const data6: Protocol[] = [
     module: "shapeswap-v3/index.js",
     twitter: "shape",
     parentProtocol: "parent#shapeswap",
+    listedAt: 1777404089,
     dimensions: {
       dexs: "shapeswap-v3",
       fees: "shapeswap-v3",
     }
+  },
+  {
+    id: "7764",
+    name: "RSwap",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://dex.reddicks.meme
+    description:
+      "RSwap is a meme-driven DEX built for the DCKS ecosystem. Designed as the core trading layer of DCKS, RSwap combines efficient pricing with high-energy community participation, making it both a functional DEX and a growth engine for the ecosystem.",
+    chain: "Radix",
+    logo: `${baseIconsUrl}/rswap.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Radix"],
+    module: "rswap/index.js",
+    twitter: "REDDICKS_XRD",
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/b886ee548241bc8066843ab110287058ff33ba4f/DefiPlaza%20Radix%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    listedAt: 1777404095,
   },
 ];
 export default data6;

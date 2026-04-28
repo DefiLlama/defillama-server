@@ -5,8 +5,10 @@ import type { LiteProtocol } from "../../types";
 interface ChildProtocol {
   id: string;
   name: string;
+  symbol: string | null;
   tvl: number | null;
   chains: string[];
+  excludedFromParentTvl?: boolean;
 }
 
 export interface ParentProtocolEntry extends IParentProtocol {
@@ -16,6 +18,11 @@ export interface ParentProtocolEntry extends IParentProtocol {
   childProtocols: ChildProtocol[];
 }
 
+interface ChildExclusionMeta {
+  excludeTvlFromParent?: boolean;
+  tokensExcludedFromParent?: { [chain: string]: string[] };
+}
+
 interface Protocols2DataLike {
   protocols: LiteProtocol[];
   parentProtocols: Array<IParentProtocol & { mcap?: number | null }>;
@@ -23,6 +30,7 @@ interface Protocols2DataLike {
 
 export function getParentProtocolsInternal(
   protocols2Data: Protocols2DataLike,
+  childMetadataById: Map<string, ChildExclusionMeta> = new Map(),
 ): ParentProtocolEntry[] {
   const { protocols, parentProtocols } = protocols2Data;
 
@@ -48,27 +56,44 @@ export function getParentProtocolsInternal(
     let tvl: number | null = null;
     const chainTvls: { [chain: string]: number } = {};
     const childProtocols: ChildProtocol[] = [];
+    let inferredSymbol: string | null = null;
 
     for (const child of children) {
-      const childTvl = child.tvl;
-      if (childTvl !== null) tvl = (tvl ?? 0) + childTvl;
+      const meta = childMetadataById.get(child.defillamaId);
+      const excludeFromParent =
+        meta?.excludeTvlFromParent === true ||
+        meta?.tokensExcludedFromParent !== undefined;
 
-      for (const [chain, value] of Object.entries(child.chainTvls)) {
-        const tvlValue = value?.tvl;
-        if (typeof tvlValue !== "number") continue;
-        chainTvls[chain] = (chainTvls[chain] ?? 0) + tvlValue;
+      const childTvl = child.tvl;
+
+      if (!excludeFromParent) {
+        if (childTvl !== null) tvl = (tvl ?? 0) + childTvl;
+
+        for (const [chain, value] of Object.entries(child.chainTvls)) {
+          const tvlValue = value?.tvl;
+          if (typeof tvlValue !== "number") continue;
+          chainTvls[chain] = (chainTvls[chain] ?? 0) + tvlValue;
+        }
       }
 
-      childProtocols.push({
+      if (inferredSymbol === null && child.symbol && child.symbol !== "-") {
+        inferredSymbol = child.symbol;
+      }
+
+      const childEntry: ChildProtocol = {
         id: child.defillamaId,
         name: child.name,
+        symbol: child.symbol && child.symbol !== "-" ? child.symbol : null,
         tvl: childTvl,
         chains: child.chains,
-      });
+      };
+      if (excludeFromParent) childEntry.excludedFromParentTvl = true;
+      childProtocols.push(childEntry);
     }
 
     result.push({
       ...baseParent,
+      symbol: baseParent.symbol ?? inferredSymbol ?? null,
       chains: enriched?.chains ?? baseParent.chains,
       mcap: enriched?.mcap ?? null,
       tvl,

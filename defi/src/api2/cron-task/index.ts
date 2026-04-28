@@ -405,7 +405,16 @@ async function run() {
 
   async function writeParentProtocols(protocols2Data: Awaited<ReturnType<typeof writeProtocolsChart>>) {
     console.time('write /parent-protocols')
-    const data = getParentProtocolsInternal(protocols2Data)
+    const childMetadataById = new Map(
+      (cache.metadata.protocols ?? []).map((p: any) => [
+        p.id,
+        {
+          excludeTvlFromParent: p.excludeTvlFromParent,
+          tokensExcludedFromParent: p.tokensExcludedFromParent,
+        },
+      ]),
+    )
+    const data = getParentProtocolsInternal(protocols2Data, childMetadataById)
     await storeRouteData('parent-protocols', data)
     console.timeEnd('write /parent-protocols')
   }

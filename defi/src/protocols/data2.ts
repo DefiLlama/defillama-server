@@ -19797,6 +19797,10 @@ const data2: Protocol[] = [
     module: "binance/index.js",
     twitter: "binance",
     listedAt: 1668170565,
+    dimensions: {
+      derivatives: "binance",
+      "open-interest": "binance-oi",
+    },
   },
   {
     id: "2270",
@@ -19860,6 +19864,10 @@ const data2: Protocol[] = [
     module: "okex/index.js",
     twitter: "okx",
     listedAt: 1668185769,
+    dimensions: {
+      derivatives: "okx",
+      "open-interest": "okx-oi",
+    },
   },
   {
     id: "2273",
@@ -20121,6 +20129,10 @@ const data2: Protocol[] = [
     module: "bybit/index.js",
     twitter: "Bybit_Official",
     listedAt: 1668595021,
+    dimensions: {
+      derivatives: "bybit",
+      "open-interest": "bybit-oi",
+    },
   },
   /*
   {

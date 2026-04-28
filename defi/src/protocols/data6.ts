@@ -1160,5 +1160,53 @@ const data6: Protocol[] = [
       "open-interest": "bullet"
     }
   },
+  {
+    id: "7762",
+    name: "ShapeSwap V2",
+    address: null,
+    symbol: "-",
+    url: "https://shapeswap.xyz/",
+    description:
+      "Concentrated-liquidity DEX on Shape chain. Uniswap V3 fork with a companion V2/AMM deployment.",
+    chain: "Shape",
+    logo: `${baseIconsUrl}/shapeswap-v2.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["AMM"],
+    chains: ["Shape"],
+    forkedFromIds: ["2197"],
+    module: "shapeswap-v3/index.js",
+    twitter: "shape",
+    parentProtocol: "parent#shapeswap",
+    dimensions: {
+      dexs: "shapeswap-v2",
+      fees: "shapeswap-v2",
+    }
+  },
+  {
+    id: "7763",
+    name: "ShapeSwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://shapeswap.xyz/",
+    description:
+      "Concentrated-liquidity DEX on Shape chain. Uniswap V3 fork with a companion V2/AMM deployment.",
+    chain: "Shape",
+    logo: `${baseIconsUrl}/shapeswap-v3.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    chains: ["Shape"],
+    forkedFromIds: ["2198"],
+    module: "shapeswap-v3/index.js",
+    twitter: "shape",
+    parentProtocol: "parent#shapeswap",
+    dimensions: {
+      dexs: "shapeswap-v3",
+      fees: "shapeswap-v3",
+    }
+  },
 ];
 export default data6;

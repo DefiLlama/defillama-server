@@ -9554,6 +9554,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Bulletxyz",
     github: ["bulletxyz"],
   },
+  {
+    id: "parent#shapeswap",
+    name: "ShapeSwap",
+    url: "https://shapeswap.xyz/", 
+    description: "Concentrated-liquidity DEX on Shape chain. Uniswap V3 fork with a companion V2/AMM deployment.",
+    logo: `${baseIconsUrl}/shapeswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "shape",
+    github: ["protofire"],
+  },
 ];
 
 export default parentProtocols;

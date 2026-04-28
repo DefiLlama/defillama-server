@@ -680,6 +680,57 @@ describe("buildOverviewBreakdownCharts", () => {
       { timestamp: 200, Bond: 5 },
     ]);
   });
+
+  it("omits zero-only pre-launch breakdown keys and keeps post-start zeroes", () => {
+    const result = buildOverviewBreakdownCharts(
+      [
+        { id: "xyz:meta", timestamp: 100, open_interest: "0", volume_24h: "0" },
+        { id: "flx:gold", timestamp: 100, open_interest: "7", volume_24h: "2" },
+        { id: "xyz:meta", timestamp: 150, open_interest: "5", volume_24h: "0" },
+        { id: "xyz:meta", timestamp: 200, open_interest: "12", volume_24h: "4" },
+        { id: "xyz:meta", timestamp: 300, open_interest: "0", volume_24h: "0" },
+      ],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            contract: "xyz:META",
+            venue: "xyz",
+            referenceAsset: "Meta",
+            referenceAssetGroup: "US Equities",
+          },
+        },
+        {
+          id: "flx:gold",
+          data: {
+            contract: "flx:GOLD",
+            venue: "flx",
+            referenceAsset: "Gold",
+            referenceAssetGroup: "Commodities",
+          },
+        },
+      ]
+    );
+
+    expect(result["overview-breakdown/all/openinterest/baseasset.json"]).toEqual([
+      { timestamp: 100, Gold: 7 },
+      { timestamp: 150, Meta: 5 },
+      { timestamp: 200, Meta: 12 },
+      { timestamp: 300, Meta: 0 },
+    ]);
+    expect(result["overview-breakdown/all/volume24h/baseasset.json"]).toEqual([
+      { timestamp: 100, Gold: 2 },
+      { timestamp: 150, Meta: 0 },
+      { timestamp: 200, Meta: 4 },
+      { timestamp: 300, Meta: 0 },
+    ]);
+    expect(result["overview-breakdown/all/markets/baseasset.json"]).toEqual([
+      { timestamp: 100, Meta: 1, Gold: 1 },
+      { timestamp: 150, Meta: 1 },
+      { timestamp: 200, Meta: 1 },
+      { timestamp: 300, Meta: 1 },
+    ]);
+  });
 });
 
 describe("buildContractBreakdownCharts", () => {
@@ -720,6 +771,55 @@ describe("buildContractBreakdownCharts", () => {
     ]);
     expect(result["contract-breakdown/assetgroup/commodities/volume24h.json"]).toEqual([
       { timestamp: 200, "flx:GOLD": 2 },
+    ]);
+  });
+
+  it("omits zero-only pre-launch contract keys and keeps post-start zeroes", () => {
+    const result = buildContractBreakdownCharts(
+      [
+        { id: "xyz:meta", timestamp: 100, open_interest: "0", volume_24h: "0" },
+        { id: "flx:gold", timestamp: 100, open_interest: "7", volume_24h: "2" },
+        { id: "xyz:meta", timestamp: 150, open_interest: "5", volume_24h: "0" },
+        { id: "xyz:meta", timestamp: 200, open_interest: "12", volume_24h: "4" },
+        { id: "xyz:meta", timestamp: 300, open_interest: "0", volume_24h: "0" },
+      ],
+      [
+        {
+          id: "xyz:meta",
+          data: {
+            contract: "xyz:META",
+            venue: "xyz",
+            referenceAssetGroup: "US Equities",
+          },
+        },
+        {
+          id: "flx:gold",
+          data: {
+            contract: "flx:GOLD",
+            venue: "flx",
+            referenceAssetGroup: "Commodities",
+          },
+        },
+      ]
+    );
+
+    expect(result["contract-breakdown/all/openinterest.json"]).toEqual([
+      { timestamp: 100, "flx:GOLD": 7 },
+      { timestamp: 150, "xyz:META": 5 },
+      { timestamp: 200, "xyz:META": 12 },
+      { timestamp: 300, "xyz:META": 0 },
+    ]);
+    expect(result["contract-breakdown/all/volume24h.json"]).toEqual([
+      { timestamp: 100, "flx:GOLD": 2 },
+      { timestamp: 150, "xyz:META": 0 },
+      { timestamp: 200, "xyz:META": 4 },
+      { timestamp: 300, "xyz:META": 0 },
+    ]);
+    expect(result["contract-breakdown/all/markets.json"]).toEqual([
+      { timestamp: 100, "xyz:META": 1, "flx:GOLD": 1 },
+      { timestamp: 150, "xyz:META": 1 },
+      { timestamp: 200, "xyz:META": 1 },
+      { timestamp: 300, "xyz:META": 1 },
     ]);
   });
 });

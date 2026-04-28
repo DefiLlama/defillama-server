@@ -53,6 +53,13 @@ if (refillAllProtocolsMissing) {
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60
 async function refillAdapter() {
+  // Reset Dune credit tracker at start of run to avoid cross-run accumulation
+  try {
+    const { resetDuneCreditTracker } = await import('../../../../dimension-adapters/helpers/dune');
+    resetDuneCreditTracker();
+  } catch (e) {
+    // silently ignore if dimension-adapters not available
+  }
 
   console.log('\n\n\n\n\n')
   console.log('------------------------------------')

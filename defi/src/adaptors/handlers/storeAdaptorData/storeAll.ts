@@ -45,6 +45,14 @@ if (skipHourlyCache) {
 }
 
 async function run() {
+  // Reset Dune credit tracker at start of run to avoid cross-run accumulation
+  try {
+    const { resetDuneCreditTracker } = await import('../../../../dimension-adapters/helpers/dune');
+    resetDuneCreditTracker();
+  } catch (e) {
+    // silently ignore if dimension-adapters not available
+  }
+
   const startTimeAll = getUnixTimeNow()
   console.time("**** Run All Adaptor types")
 

@@ -23,8 +23,36 @@ import { getBlocksRetry, getCurrentBlock } from "./blocks";
 import { importAdapterDynamic } from "../utils/imports/importAdapter";
 import { deadChainsSet } from "../config/deadChains";
 import { getJSON, setJSON } from "./redis";
+import { recordChainFailure, clearChainFailure } from "./chainTvlFailures";
 import axios from "axios";
 import sluggify from "../utils/sluggify";
+
+const FALLBACK_DEFAULT_MAX_AGE_SEC = 7 * 24 * 3600;
+const FALLBACK_DEFAULT_MAX_SHARE = 0.05;
+
+export type CacheFreshness = { isFresh: boolean; invalidCacheTime?: number; reason?: string };
+
+// Decides whether a per-chain cached TVL value is fresh enough to substitute for
+// a failed live fetch. Two checks (per issue #11354):
+//   1. Time bound — never use a value older than TVL_FALLBACK_MAX_AGE_SEC (default 7d).
+//      Without this, a months-old cached value could pass the share check below and
+//      silently mask broken adapters indefinitely.
+//   2. Share threshold — only substitute when the failing chain's last-known share is
+//      small enough that masking it can't materially mislead total TVL. Default 5%.
+// Both thresholds are env-tunable.
+export function isCacheDataFresh(cacheData: any, totalTvl: number): CacheFreshness {
+  if (!cacheData?.usdTvls || !cacheData?.tokensBalances || !cacheData?.usdTokenBalances || !cacheData?.rawTokenBalances || !cacheData?.timestamp)
+    return { isFresh: false, reason: 'malformed-cache' }
+
+  const maxAgeSec = +(process.env.TVL_FALLBACK_MAX_AGE_SEC ?? FALLBACK_DEFAULT_MAX_AGE_SEC)
+  const ageSec = (Date.now() / 1000) - cacheData.timestamp
+  if (ageSec > maxAgeSec) return { isFresh: false, invalidCacheTime: ageSec, reason: 'too-old' }
+
+  const maxShare = +(process.env.TVL_FALLBACK_MAX_SHARE ?? FALLBACK_DEFAULT_MAX_SHARE)
+  if ((cacheData.usdTvls / totalTvl) >= maxShare) return { isFresh: false, reason: 'over-threshold' }
+
+  return { isFresh: true }
+}
 
 async function insertOnDb(useCurrentPrices: boolean, table: any, data: any, probabilitySampling: number = 1) {
   if (process.env.LOCAL === 'true' || !useCurrentPrices || Math.random() > probabilitySampling) return;
@@ -417,7 +445,35 @@ export async function storeTvl(
       for (const key of storedKeys) {
 
         if (tvlErrorsObject[key]) {
-          const tempStoreKeyCache = await getCachedTvlData({ protocol, storeKey: key, options, tvlErrorsObject })
+          const errMsg = (tvlErrorsObject[key]?.message ?? 'unknown').slice(0, 200)
+          let tempStoreKeyCache: any
+          try {
+            tempStoreKeyCache = await getCachedTvlData({ protocol, storeKey: key, options, tvlErrorsObject })
+          } catch (e: any) {
+            // Fallback exhausted — record the failure for the team's tracker, then re-throw to preserve existing behavior.
+            await recordChainFailure({
+              protocol_id: String(protocol.id),
+              chain: key,
+              error_class: errMsg,
+              last_failure_at: Math.floor(Date.now() / 1000),
+              fallback_used: false,
+              fallback_reason: e?.fallbackReason ?? 'unknown',
+              cached_tvl: 0,
+              total_tvl: 0,
+            })
+            throw e
+          }
+          // Fallback succeeded — record that this chain ran on cached data so the team can act on chronic offenders.
+          await recordChainFailure({
+            protocol_id: String(protocol.id),
+            chain: key,
+            error_class: errMsg,
+            last_failure_at: Math.floor(Date.now() / 1000),
+            fallback_used: true,
+            fallback_reason: 'ok',
+            cached_tvl: tempStoreKeyCache.usdTvls ?? 0,
+            total_tvl: 0,
+          })
 
           usdTvls[key] = tempStoreKeyCache.usdTvls;
           tokensBalances[key] = tempStoreKeyCache.tokensBalances;
@@ -426,6 +482,9 @@ export async function storeTvl(
 
           // if all the data is present, store temp cache for key to use in future if needed
         } else if (runType === 'cron-task' && usdTvls[key] !== undefined && tokensBalances[key] !== undefined && usdTokenBalances[key] !== undefined && rawTokenBalances[key] !== undefined) {
+          // Successful per-chain run — clear any prior failure record (fire-and-forget; never blocks the pipeline).
+          void clearChainFailure(String(protocol.id), key)
+
           const tempStoreKeyResultCaheKey = getCachedTvlDataKey(protocol, key)
 
           // store temp result cache for key
@@ -599,26 +658,31 @@ function getCachedTvlDataKey(protocol: Protocol, key: string) {
   return `storeTvlInterval-cache-${protocol.id}-${key}`
 }
 
+function throwWithReason(err: any, reason: string): never {
+  if (err && typeof err === 'object') (err as any).fallbackReason = reason
+  throw err ?? new Error('cache-not-fresh')
+}
+
 async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }: { options: StoreTvlOptions, storeKey: string, protocol: Protocol, tvlErrorsObject: tvlsObject<Error> }) {
 
   // cron-task and allow to use temp cache
   if (options.runType !== 'cron-task' || options.tempCacheInfo === undefined) {
-    throw tvlErrorsObject[storeKey];
+    throwWithReason(tvlErrorsObject[storeKey], 'not-cron-task')
   }
 
   const totalTvl = await pullTvlNumber(protocol);
 
   if (totalTvl === null || (totalTvl as number) < 10e3)  // if total tvl is very low, it's better to fail than return cached data
-    throw tvlErrorsObject[storeKey];
+    throwWithReason(tvlErrorsObject[storeKey], 'low-total-tvl')
 
   const tempStoreKeyCache = await getJSON(getCachedTvlDataKey(protocol, storeKey), { throwErrorWhenFailed: false });
 
   // query redis but cache was not found, throw Error
   if (tempStoreKeyCache === null)
-    throw tvlErrorsObject[storeKey];
+    throwWithReason(tvlErrorsObject[storeKey], 'no-cache')
 
   const cacheCheck = isCacheDataFresh(tempStoreKeyCache, totalTvl!);
-  if (!cacheCheck.isFresh) throw tvlErrorsObject[storeKey];
+  if (!cacheCheck.isFresh) throwWithReason(tvlErrorsObject[storeKey], cacheCheck.reason ?? 'unknown')
 
 
   options.tempCacheInfo.push({
@@ -631,14 +695,6 @@ async function getCachedTvlData({ options, storeKey, protocol, tvlErrorsObject }
   })
 
   return tempStoreKeyCache
-
-  function isCacheDataFresh(cacheData: any, totalTvl: number): { isFresh: boolean, invalidCacheTime?: number } {
-    if (!cacheData?.usdTvls || !cacheData?.tokensBalances || !cacheData?.usdTokenBalances || !cacheData?.rawTokenBalances || !cacheData?.timestamp)
-      return { isFresh: false }
-
-    // if the cached tvl is less than 5% of total tvl, consider it fresh regardless of cache age, because it's not significant enough to cause big errors. This is to avoid unnecessary cache invalidation for low tvl protocols.
-    return { isFresh: (cacheData.usdTvls / totalTvl) < (5 / 100) }
-  }
 
   async function pullTvlNumber(protocol: Protocol): Promise<number | null> {
     try {

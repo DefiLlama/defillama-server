@@ -103,7 +103,11 @@ export async function notifyChainTvlFailures(): Promise<void> {
     const promises: any[] = [];
     if (summary && process.env.STALE_COINS_ADAPTERS_WEBHOOK) {
       promises.push(
-        sendMessage(`Chain TVL failures (last 24h):${summary}`, process.env.STALE_COINS_ADAPTERS_WEBHOOK, true),
+        sendMessage(
+          `Open chain TVL failures (cleared automatically on next successful run):${summary}`,
+          process.env.STALE_COINS_ADAPTERS_WEBHOOK,
+          true,
+        ),
       );
     }
     if (escalation && process.env.TEAM_WEBHOOK) {
@@ -119,4 +123,15 @@ export async function notifyChainTvlFailures(): Promise<void> {
   } catch (e) {
     console.error(`notifyChainTvlFailures failed: ${e}`);
   }
+}
+
+// Allow this module to be invoked as a standalone script, mirroring staleCoins.ts.
+// Use: RUN_SCRIPT_MODE=true ts-node defi/src/storeTvlInterval/chainTvlFailures.ts
+if (process.env.RUN_SCRIPT_MODE) {
+  notifyChainTvlFailures()
+    .catch(console.error)
+    .then(() => {
+      console.log("Done");
+      process.exit(0);
+    });
 }

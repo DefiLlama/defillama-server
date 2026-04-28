@@ -14315,9 +14315,9 @@ const data5: Protocol[] = [
     name: "Orbit Finance",
     address: null,
     symbol: "-",
-    url: "https://orbitdex.io/en",
+    url: "https://markets.cipherlabsx.com",
     description:
-      "Perpetual futures with up to 300x leverage. Non-custodial, fully on-chain.",
+      "Orbit Finance is a DLMM (Dynamic Liquidity Market Maker) on Solana. Concentrated liquidity pools with configurable fee tiers, built on the CipherDLMM program.",
     chain: "Solana",
     logo: `${baseIconsUrl}/orbit-finance.jpg`,
     audits: "0",

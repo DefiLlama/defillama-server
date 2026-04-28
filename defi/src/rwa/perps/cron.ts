@@ -8,6 +8,7 @@ import {
     setSyncMetadata,
     storeHistoricalDataForId,
     readHistoricalDataForId,
+    readRouteData,
     mergeHistoricalData,
 } from './file-cache';
 import {
@@ -15,6 +16,7 @@ import {
     fetchCurrentPG,
     fetchMetadataPG,
     fetchAllDailyRecordsPG,
+    fetchDailyRecordsByTimestampsPG,
     fetchMaxUpdatedAtPG,
     fetchAllDailyIdsPG,
 } from './db';
@@ -25,7 +27,8 @@ import {
     buildContractBreakdownCharts,
     buildOverviewBreakdownCharts,
     buildPerpsIdMap,
-    buildVenueHistoricalCharts
+    buildVenueHistoricalCharts,
+    mergeUpdatedHistoricalChartRows,
 } from './aggregate';
 import { normalizePerpsMetadataInPlace, hasContractMetadata } from './constants';
 import { buildPerpsList } from './list';
@@ -158,12 +161,9 @@ async function generateList(currentData: any[]): Promise<void> {
     console.log(`Generated list.json`);
 }
 
-async function generateHistoricalCharts(): Promise<void> {
+async function generateHistoricalCharts(lastSync?: Date): Promise<void> {
     console.log('Generating historical charts...');
     const startTime = Date.now();
-
-    const syncMeta = await getSyncMetadata();
-    const lastSync = syncMeta?.lastSyncTimestamp ? new Date(syncMeta.lastSyncTimestamp) : undefined;
 
     const allRecords = await fetchAllDailyRecordsPG(lastSync);
     if (allRecords.length === 0) {
@@ -197,67 +197,41 @@ async function generateHistoricalCharts(): Promise<void> {
         processedCount++;
     }
 
-    // Update sync metadata
-    const maxUpdatedAt = await fetchMaxUpdatedAtPG();
-    await setSyncMetadata({
-        lastSyncTimestamp: maxUpdatedAt?.toISOString() || null,
-        lastSyncDate: new Date().toISOString(),
-        totalIds: (await fetchAllDailyIdsPG()).length,
-    });
-
     console.log(`Generated charts for ${processedCount} markets in ${Date.now() - startTime}ms`);
 }
 
-// TODO: perf — this fetches ALL daily records on every cron run (no lastSync filter).
-// Fine for now, but will need incremental sync like generateHistoricalCharts once history grows.
-async function generateAggregateHistoricalCharts(metadata: PerpsMetadata[]): Promise<void> {
+async function writeHistoricalCharts(subPathPrefix: string, charts: Record<string, any[]>, updatedTimestamps: number[]): Promise<number> {
+    let count = 0;
+    for (const key in charts) {
+        const rows = charts[key];
+        const subPath = subPathPrefix ? `${subPathPrefix}/${key}.json` : key;
+        const existingRows = await readRouteData(subPath, { skipErrorLog: true });
+        await storeRouteData(subPath, mergeUpdatedHistoricalChartRows(existingRows, rows, updatedTimestamps));
+        count++;
+    }
+    return count;
+}
+
+async function generateAggregateHistoricalCharts(metadata: PerpsMetadata[], lastSync?: Date): Promise<void> {
     console.log('Generating aggregate historical charts...');
 
-    const allDailyRecords = await fetchAllDailyRecordsPG();
+    const updatedRecords = await fetchAllDailyRecordsPG(lastSync);
+    if (updatedRecords.length === 0) {
+        console.log('No new records to process for aggregate charts.');
+        return;
+    }
+
+    const updatedTimestamps = Array.from(new Set(updatedRecords.map((record: any) => Number(record.timestamp)).filter(Number.isFinite)));
+    const allDailyRecords = lastSync ? await fetchDailyRecordsByTimestampsPG(updatedTimestamps) : updatedRecords;
     const venueCharts = buildVenueHistoricalCharts(allDailyRecords, metadata);
     const categoryCharts = buildCategoryHistoricalCharts(allDailyRecords, metadata);
     const overviewBreakdownCharts = buildOverviewBreakdownCharts(allDailyRecords, metadata);
     const contractBreakdownCharts = buildContractBreakdownCharts(allDailyRecords, metadata);
 
-    for (const venueKey in venueCharts) {
-        const rows = venueCharts[venueKey];
-        await storeRouteData(`charts/venue/${venueKey}.json`, rows);
-    }
-
-    for (const categoryKey in categoryCharts) {
-        const rows = categoryCharts[categoryKey];
-        await storeRouteData(`charts/category/${categoryKey}.json`, rows);
-    }
-
-    for (const subPath in overviewBreakdownCharts) {
-        const rows = overviewBreakdownCharts[subPath];
-        await storeRouteData(`charts/${subPath}`, rows);
-    }
-
-    for (const subPath in contractBreakdownCharts) {
-        const rows = contractBreakdownCharts[subPath];
-        await storeRouteData(`charts/${subPath}`, rows);
-    }
-
-    let venueChartCount = 0;
-    for (const _venue in venueCharts) {
-        venueChartCount++;
-    }
-
-    let categoryChartCount = 0;
-    for (const _category in categoryCharts) {
-        categoryChartCount++;
-    }
-
-    let overviewBreakdownCount = 0;
-    for (const _subPath in overviewBreakdownCharts) {
-        overviewBreakdownCount++;
-    }
-
-    let contractBreakdownCount = 0;
-    for (const _subPath in contractBreakdownCharts) {
-        contractBreakdownCount++;
-    }
+    const venueChartCount = await writeHistoricalCharts('charts/venue', venueCharts, updatedTimestamps);
+    const categoryChartCount = await writeHistoricalCharts('charts/category', categoryCharts, updatedTimestamps);
+    const overviewBreakdownCount = await writeHistoricalCharts('charts', overviewBreakdownCharts, updatedTimestamps);
+    const contractBreakdownCount = await writeHistoricalCharts('charts', contractBreakdownCharts, updatedTimestamps);
 
     console.log(
         `Generated aggregate historical charts for ${venueChartCount} venues, ${categoryChartCount} categories, ${overviewBreakdownCount} overview breakdowns, and ${contractBreakdownCount} contract breakdowns`
@@ -289,12 +263,21 @@ async function cron(): Promise<void> {
     console.log(`[rwa-perps-cron] Loaded ${metadata.length} metadata records (excluded ${excludedCount} delisted/unknown)`);
 
     // 4. Generate cache files
+    const syncMeta = await getSyncMetadata();
+    const lastSync = syncMeta?.lastSyncTimestamp ? new Date(syncMeta.lastSyncTimestamp) : undefined;
     const currentData = await generateCurrentData(metadata);
     await generateIdMap(metadata);
     await generateStats(currentData);
     await generateList(currentData);
-    await generateHistoricalCharts();
-    await generateAggregateHistoricalCharts(metadata);
+    await generateHistoricalCharts(lastSync);
+    await generateAggregateHistoricalCharts(metadata, lastSync);
+
+    const maxUpdatedAt = await fetchMaxUpdatedAtPG();
+    await setSyncMetadata({
+        lastSyncTimestamp: maxUpdatedAt?.toISOString() || null,
+        lastSyncDate: new Date().toISOString(),
+        totalIds: (await fetchAllDailyIdsPG()).length,
+    });
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`[rwa-perps-cron] Complete in ${elapsed}s`);

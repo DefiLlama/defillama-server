@@ -1079,7 +1079,7 @@ const data6: Protocol[] = [
     category: "Dexes",
     chains: ["Canton"],
     module: "pool-party/index.js",
-    twitter: "send",
+    twitter: "Send",
     listedAt: 1777311905,
   },
 ];

@@ -1080,7 +1080,7 @@ const data6: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Optimism", "Base", "Avalanche", "Harmony", "Fantom", "Linea", "TRON", "Scroll", "Mantle", "Blase", "Mode", "Aurora", "Celo", "Story", "Ink", 
+    chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Optimism", "Base", "Avalanche", "Harmony", "Fantom", "Linea", "Tron", "Scroll", "Mantle", "Blast", "Mode", "Aurora", "Celo", "Story", "Ink", 
       "Polygon zkEVM", "Sonic", "Berachain", "Unichain", "Movement", "Abstract", "MegaETH", "Sophon", "Morph", "Plasma", "Flare", "Monad"],
     module: "dummy.js",
     twitter: "LayerZero_Core",

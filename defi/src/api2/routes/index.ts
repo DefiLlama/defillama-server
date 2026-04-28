@@ -13,7 +13,7 @@ import { get20MinDate } from "../../utils/shared";
 import sluggify from "../../utils/sluggify";
 import { cache, getLastHourlyRecord, getLastHourlyTokensUsd, protocolHasMisrepresentedTokens, } from "../cache";
 import { cachedCraftParentProtocolV2, craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { craftProtocolV2 } from "../utils/craftProtocolV2";
+import { craftProtocolV2, cachedCraftProtocolV2 } from "../utils/craftProtocolV2";
 import { getDimensionsMetadata } from "../utils/dimensionsUtils";
 import { getDimensionCategoryChainRoutes, getDimensionCategoryRoutes, getDimensionChainRoutes, getDimensionOverviewRoutes, getDimensionProtocolFileRoute, getDimensionProtocolRoutes, getOverviewFileRoute, } from "./dimensions";
 import { errorResponse, errorWrapper as ew, fileResponse, successResponse } from "./utils";
@@ -43,6 +43,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   router.get("/updatedProtocol/:name", (async (req, res) => getProtocolishData(req, res, {
     dataType: 'protocol', skipAggregatedTvl: req.query_parameters.includeAggregatedTvl !== 'true',
     restrictResponseSize: req.query_parameters.restrictResponseSize !== 'false',
+    useCached: true,
   })));
 
   router.get("/tokenProtocols/:symbol", ew(getTokenInProtocols));
@@ -306,7 +307,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
   }
 }
 
-async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false }: GetProtocolishOptions) {
+async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.Response, { dataType, skipAggregatedTvl = true, useNewChainNames = true, restrictResponseSize = true, feMini = false, useCached = false }: GetProtocolishOptions) {
   let name = decodeURIComponent(req.path_parameters.name);
   name = sluggify({ name } as any);
   const protocolData = (cache as any)[dataType + 'SlugMap'][name];
@@ -318,7 +319,8 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
   if (!protocolData && dataType === 'protocol') {
     const parentProtocol = (cache as any)['parentProtocolSlugMap'][name];
     if (parentProtocol) {
-      const responseData = await craftParentProtocolV2({
+      const parentCraftFn = useCached ? cachedCraftParentProtocolV2 : craftParentProtocolV2;
+      const responseData = await parentCraftFn({
         parentProtocol: parentProtocol,
         skipAggregatedTvl,
         feMini,
@@ -335,7 +337,8 @@ async function getProtocolishData(req: HyperExpress.Request, res: HyperExpress.R
 
   restrictResponseSize = false // hack to revert to old behavior
 
-  const responseData = await craftProtocolV2({
+  const craftFn = useCached ? cachedCraftProtocolV2 : craftProtocolV2;
+  const responseData = await craftFn({
     protocolData,
     useNewChainNames,
     skipAggregatedTvl,
@@ -411,6 +414,7 @@ type GetProtocolishOptions = {
   useNewChainNames?: boolean,
   restrictResponseSize?: boolean,
   feMini?: boolean, // for fetching only aggregated tvl data without token breakdown & without raw token balances
+  useCached?: boolean,
 }
 
 async function getInflows(req: HyperExpress.Request, res: HyperExpress.Response) {

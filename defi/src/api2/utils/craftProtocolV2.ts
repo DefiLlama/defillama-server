@@ -54,34 +54,20 @@ export async function craftProtocolV2({
   // protocol module is set to dummy.js if we are not tracking tvl of a given protocol
   const isDummyProtocol = protocolData.module === "dummy.js";
   const skipTokenBreakdownData = heavyProtocols.has(protocolData.id)
-
-  // const debug_t0 = performance.now(); // start the timer
-  let protocolCache: any = {}
   const isDeadProtocol = !!protocolData.deadFrom || isDummyProtocol
+  const fetchHourlyData = !isDeadProtocol && !skipCachedHourlyData
 
-  if (!isDummyProtocol)
-    protocolCache = await getCachedProtocolData(protocolData, true)
-
-  let _getLastHourlyRecord: any = null
-  let _getLastHourlyTokensUsd: any = null
-  let _getLastHourlyTokens: any = null
-
-  if (!isDeadProtocol && !skipCachedHourlyData) {
-    _getLastHourlyRecord = getLastHourlyRecord(protocolData as any)
-    _getLastHourlyTokensUsd = getLastHourlyTokensUsd(protocolData as any)
-    _getLastHourlyTokens = getLastHourlyTokens(protocolData as any)
-  }
+  const [protocolCache, mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
+    isDummyProtocol ? {} : getCachedProtocolData(protocolData, true),
+    getCachedMCap(protocolData.gecko_id),
+    fetchHourlyData ? getLastHourlyRecord(protocolData as any) : null,
+    fetchHourlyData ? getLastHourlyTokensUsd(protocolData as any) : null,
+    fetchHourlyData ? getLastHourlyTokens(protocolData as any) : null,
+  ]);
 
   let historicalUsdTvl: any = protocolCache[0] ?? []
   let historicalUsdTokenTvl: any = protocolCache[1] ?? []
   let historicalTokenTvl: any = protocolCache[2] ?? []
-
-  let [mcap, lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord] = await Promise.all([
-    getCachedMCap(protocolData.gecko_id),
-    _getLastHourlyRecord,
-    _getLastHourlyTokensUsd,
-    _getLastHourlyTokens,
-  ]);
 
 
   if (feMini || skipTokenBreakdownData) {

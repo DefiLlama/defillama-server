@@ -134,11 +134,19 @@ export async function notifyChainTvlFailures(): Promise<void> {
 
 // Allow this module to be invoked as a standalone script, mirroring staleCoins.ts.
 // Use: RUN_SCRIPT_MODE=true ts-node defi/src/storeTvlInterval/chainTvlFailures.ts
+//
+// Note: failures must surface to the caller (e.g. cron scheduler) as a non-zero
+// exit code. The `.catch().then()` pattern in staleCoins.ts swallows the error
+// and always exits 0, which hides scheduled-job failures — we deliberately fix
+// that here.
 if (process.env.RUN_SCRIPT_MODE) {
   notifyChainTvlFailures()
-    .catch(console.error)
     .then(() => {
       console.log("Done");
       process.exit(0);
+    })
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
     });
 }

@@ -9564,7 +9564,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "shape",
-    github: ["protofire"],
   },
 ];
 

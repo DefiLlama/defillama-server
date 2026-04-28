@@ -18,7 +18,7 @@ export interface ParentProtocolEntry extends IParentProtocol {
 
 interface Protocols2DataLike {
   protocols: LiteProtocol[];
-  parentProtocols: Array<IParentProtocol & { mcap?: number | null; chains?: string[] }>;
+  parentProtocols: Array<IParentProtocol & { mcap?: number | null }>;
 }
 
 export function getParentProtocolsInternal(
@@ -31,17 +31,11 @@ export function getParentProtocolsInternal(
     const parentId = protocol.parentProtocol;
     if (!parentId) continue;
     const bucket = childrenByParent.get(parentId);
-    if (bucket) {
-      bucket.push(protocol);
-    } else {
-      childrenByParent.set(parentId, [protocol]);
-    }
+    if (bucket) bucket.push(protocol);
+    else childrenByParent.set(parentId, [protocol]);
   }
 
-  const parentMetaById = new Map<string, IParentProtocol & { mcap?: number | null; chains?: string[] }>();
-  for (const parent of parentProtocols) {
-    parentMetaById.set(parent.id, parent);
-  }
+  const parentMetaById = new Map(parentProtocols.map((p) => [p.id, p]));
 
   const result: ParentProtocolEntry[] = [];
 
@@ -56,27 +50,26 @@ export function getParentProtocolsInternal(
     const childProtocols: ChildProtocol[] = [];
 
     for (const child of children) {
-      if (typeof child.tvl === "number") {
-        tvl = (tvl ?? 0) + child.tvl;
+      const childTvl = child.tvl;
+      if (childTvl !== null) tvl = (tvl ?? 0) + childTvl;
+
+      for (const [chain, value] of Object.entries(child.chainTvls)) {
+        const tvlValue = value?.tvl;
+        if (typeof tvlValue !== "number") continue;
+        chainTvls[chain] = (chainTvls[chain] ?? 0) + tvlValue;
       }
-      if (child.chainTvls) {
-        for (const [chain, value] of Object.entries(child.chainTvls)) {
-          const tvlValue = value?.tvl;
-          if (typeof tvlValue !== "number") continue;
-          chainTvls[chain] = (chainTvls[chain] ?? 0) + tvlValue;
-        }
-      }
+
       childProtocols.push({
         id: child.defillamaId,
         name: child.name,
-        tvl: typeof child.tvl === "number" ? child.tvl : null,
-        chains: Array.isArray(child.chains) ? child.chains : [],
+        tvl: childTvl,
+        chains: child.chains,
       });
     }
 
     result.push({
       ...baseParent,
-      chains: enriched?.chains ?? [],
+      chains: enriched?.chains ?? baseParent.chains,
       mcap: enriched?.mcap ?? null,
       tvl,
       chainTvls,

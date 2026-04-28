@@ -61,8 +61,8 @@ async function run() {
   console.time('write /charts')
   await storeGetCharts(processProtocolsOptions)
   console.timeEnd('write /charts')
-  await writeProtocolsChart()
-  await writeParentProtocols()
+  const protocols2Data = await writeProtocolsChart()
+  await writeParentProtocols(protocols2Data)
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
@@ -395,26 +395,19 @@ async function run() {
   }
 
   async function writeProtocolsChart() {
-    const debugString = 'write /lite/protocols2'
-    console.time(debugString)
+    console.time('write /lite/protocols2')
     const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, getYesterdayTokensUsd, getLastWeekTokensUsd, getLastMonthTokensUsd, })
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
-    console.timeEnd(debugString)
+    console.timeEnd('write /lite/protocols2')
+    return protocols2Data
   }
 
-  async function writeParentProtocols() {
-    const debugString = 'write /parent-protocols'
-    console.time(debugString)
-    const protocols2Data = await readRouteData('lite/protocols2')
-    if (!protocols2Data) {
-      console.warn('skip /parent-protocols: lite/protocols2 not available')
-      console.timeEnd(debugString)
-      return
-    }
+  async function writeParentProtocols(protocols2Data: Awaited<ReturnType<typeof writeProtocolsChart>>) {
+    console.time('write /parent-protocols')
     const data = getParentProtocolsInternal(protocols2Data)
     await storeRouteData('parent-protocols', data)
-    console.timeEnd(debugString)
+    console.timeEnd('write /parent-protocols')
   }
 
   async function writeBitcoinAddressesFile() {

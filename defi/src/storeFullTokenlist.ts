@@ -39,10 +39,11 @@ async function getNfts() {
 async function getProtocols() {
   const raw = await fetch("https://api.llama.fi/lite/protocols2").then((res) => res.json());
   const parentProtocols:any[] = raw.parentProtocols.map((p:any)=>({...p, tvl:0}))
+  const parentProtocolsById = new Map(parentProtocols.map((p: any) => [p.id, p]));
   raw["protocols"].forEach((p:any)=>{
     if(p.parentProtocol){
-      const parent = parentProtocols.find(pp=>pp.id === p.parentProtocol)
-      parent.tvl += p.tvl
+      const parent = parentProtocolsById.get(p.parentProtocol)
+      if (parent) parent.tvl += p.tvl
     }
   })
   const protocols = raw["protocols"].concat(parentProtocols).filter((protocol:any)=> (protocol.tvl > 10e3 || protocol.mcap > 100e3) && !protocol.parentProtocol).map((x: any) => ({

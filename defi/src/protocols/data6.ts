@@ -1063,6 +1063,9 @@ const data6: Protocol[] = [
     twitter: "wedefin",
     audit_links: ["https://docs.wedefin.com/technical-overview/audits"],
     listedAt: 1777310614,
+    dimensions: {
+      fees: "wedefin",
+    }
   },
   {
     id: "7758",
@@ -1084,6 +1087,29 @@ const data6: Protocol[] = [
     parentProtocol: "parent#layerzero",
     dimensions: {
       fees: "layerzerov1",
+    }
+  },
+  {
+    id: "7759",
+    name: "Flying Tulip ftUSD",
+    address: null,
+    symbol: "-",
+    url: "https://flyingtulip.com/",
+    description: "ftUSD is a yield-bearing stablecoin backed by USDC, USDT and ftUSD-wrapped collateral deployed via MintAndRedeem into Aave yield strategies. Holders can stake into sftUSD to earn FT rewards funded by protocol fees that buy FT on the open market.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/flying-tulip-ftusd.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum", "Sonic"],
+    module: "dummy.js",
+    audit_links: ["https://docs.flyingtulip.com/risks/"],
+    twitter: "flyingtulip_",
+    listedAt: 1777298400,
+    parentProtocol: "parent#flying-tulip",
+    dimensions: {
+      fees: "flying-tulip-ftusd"
     }
   },
 ];

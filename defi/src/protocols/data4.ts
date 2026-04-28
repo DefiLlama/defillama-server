@@ -754,7 +754,7 @@ const data4: Protocol[] = [
     description:
       "dLEND is a fork of the Aave v3 protocol, designed for secure lending and borrowing of dUSD and other digital assets. By default, dUSD is the sole borrowable asset, and loans can only be taken against other supplied assets, excluding dUSD. This prevents rehypothecation of collateral, reducing protocol risks and subsidy arbitrage. Borrowing rates for dUSD are subsidized through regular interest rebates, encouraging demand and utilization while offering lower costs for borrowers and sustainable yields for lenders",
     chain: "Fraxtal",
-    logo: `${baseIconsUrl}/dtrinity.png`,
+    logo: `${baseIconsUrl}/dtrinity.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

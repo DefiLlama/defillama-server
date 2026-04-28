@@ -598,7 +598,6 @@ const data6: Protocol[] = [
     chains: ["MegaETH"],
     module: "premarket/index.js",
     twitter: "premarket_xyz",
-    github: ["stryke-xyz"],
     listedAt: 1776809132,
   },
   {

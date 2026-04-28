@@ -24547,7 +24547,6 @@ const data3_1: Protocol[] = [
     module: "coupon-finance/index.js",
     twitter: "CouponFinance",
     audit_links: ["https://docs.coupon.finance/etc/audit"],
-    github: ["clober-dex"],
     listedAt: 1700489895,
   },
   {

@@ -501,7 +501,6 @@ const data2: Protocol[] = [
     ],
     listedAt: 1644685001,
     governanceID: ["snapshot:moonwell-apollo-governance.eth"],
-    github: ["moonwell-fi"],
     dimensions: {
       fees: "moonwell-apollo"
     }
@@ -9318,7 +9317,6 @@ const data2: Protocol[] = [
     module: "zeta/index.js",
     twitter: "ZetaMarkets",
     listedAt: 1654452112,
-    github: ["zetamarkets"],
     deprecated: true,
     parentProtocol: "parent#bullet",
     dimensions: {
@@ -9872,7 +9870,6 @@ const data2: Protocol[] = [
     audit_links: ["https://gfx.cafe/ip/contracts/-/blob/master/audit/GFX_IP_Protocol_Audit_Report.pdf"],
     listedAt: 1655545050,
     stablecoins: ["interest-protocol"],
-    github: ["interest-protocol"],
   },
   {
     id: "1830",
@@ -23412,7 +23409,7 @@ const data2: Protocol[] = [
     twitter: "Arcade_xyz",
     audit_links: ["https://docs.arcade.xyz/docs/audit-reports"],
     listedAt: 1673781145,
-    github: ["arcadexyz", "PawnFi"],
+    github: ["arcadexyz"],
   },
   /*
   {

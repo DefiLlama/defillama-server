@@ -619,7 +619,6 @@ const data: Protocol[] = [
     treasury: "tokenIon.js",
     twitter: "tokenlon",
     audit_links: ["https://cure53.de/pentest-report_imtoken.pdf"],
-    github: ["consenlabs"], //check
     deprecated: true,
     deadUrl: true,
   },

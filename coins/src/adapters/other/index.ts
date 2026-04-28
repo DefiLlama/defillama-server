@@ -35,6 +35,7 @@ import gmdV2 from "./gmdV2";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
 import cap from "./cap";
+import hypezionAdapter from "./hypezion";
 
 export { glp };
 
@@ -58,6 +59,9 @@ export function opdx(timestamp: number = 0) {
 }
 export function defiChain(timestamp: number = 0) {
   return defiChainAdapter(timestamp);
+}
+export function hypezion(timestamp: number = 0) {
+  return hypezionAdapter(timestamp);
 }
 export function synthetix(timestamp: number = 0) {
   return synthetixAdapter(timestamp);
@@ -556,6 +560,7 @@ async function matrixdock(timestamp: number = 0, writes: Write[] = []) {
 export const adapters = {
   symboitic,
   defiChain,
+  hypezion,
   shlb,
   metronome,
   buck,

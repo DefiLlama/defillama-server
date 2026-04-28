@@ -310,7 +310,7 @@ function getOnChainTvlAndActiveMcaps(
     if (cgId && stablecoinsData[cgId]) {
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
       if (!finalData[rwaId][RWA_KEY_MAP.price] && assetPrices[pk]?.price) {
-        finalData[rwaId][RWA_KEY_MAP.price] = assetPrices[pk].price;
+        finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(assetPrices[pk].price);
       }
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
         if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...finalData[rwaId][RWA_KEY_MAP.onChain] };
@@ -323,7 +323,7 @@ function getOnChainTvlAndActiveMcaps(
     // Write price independently of supply: a missing supply (e.g. RPC failure for an
     // Aptos FA) shouldn't blank out a price we already have from coins.
     if (price && !finalData[rwaId][RWA_KEY_MAP.price]) {
-      finalData[rwaId][RWA_KEY_MAP.price] = price;
+      finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(price);
     }
 
     const supply = totalSupplies[pk];
@@ -374,7 +374,7 @@ function findActiveMcaps(
   chain: string
 ) {
   if (!finalData[rwaId][RWA_KEY_MAP.price]) {
-    finalData[rwaId][RWA_KEY_MAP.price] = assetPrices.price;
+    finalData[rwaId][RWA_KEY_MAP.price] = toFiniteNumberOrNull(assetPrices.price);
   }
   if (!finalData[rwaId][RWA_KEY_MAP.activeMcap][chain]) return;
   if (!(rwaId in excludedAmounts)) return;

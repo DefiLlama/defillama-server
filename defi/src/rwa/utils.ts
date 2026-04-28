@@ -464,7 +464,7 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   // and then mismatch the contracts map keys.
   if (Array.isArray(target.chain)) {
     target.chain = target.chain.length
-      ? target.chain.map((c: any) => (typeof c === "string" ? rwaChainLabel(c) : c)).filter(Boolean)
+      ? Array.from(new Set(target.chain.map((c: any) => (typeof c === "string" ? rwaChainLabel(c) : c)).filter(Boolean)))
       : null;
   }
   if (typeof target.primaryChain === "string" && target.primaryChain) {

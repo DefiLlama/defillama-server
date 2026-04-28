@@ -6397,7 +6397,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://dtrinity.org/",
     description:
       `dTRINITY (short for "DeFi Trinity") is the world's first subsidized stablecoin protocol, a new DeFi primitive designed to supercharge on-chain credit markets. At its core is dUSD, a decentralized stablecoin fully backed by exogenous, yield-bearing reserve assets. Rather than paying yield to passive stablecoin holders or stakers, dTRINITY distributes its reserve earnings as interest rebates to subsidize dUSD borrowers directly. By stimulating credit, the protocol is able to raise its natural supply-demand equilibrium, unlocking greater yields and capital efficiency for stablecoin users.`,
-    logo: `${baseIconsUrl}/dtrinity.png`,
+    logo: `${baseIconsUrl}/dtrinity.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

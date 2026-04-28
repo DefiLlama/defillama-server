@@ -2737,7 +2737,7 @@ const data4: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     tags: ["AMM"],
-    chains: ["Zero Network", "Abstract", "Ink", "Shape"],
+    chains: ["Zero Network", "Abstract", "Ink"],
     module: "reservoir-tools-v2/index.js",
     twitter: "protofire",
     forkedFromIds: ["2197"],

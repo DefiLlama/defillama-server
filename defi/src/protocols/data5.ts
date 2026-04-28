@@ -16434,7 +16434,7 @@ const data5: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dexfi.jpg`,
     audits: "0",
-    gecko_id: 'dexfi-governance',
+    gecko_id: null,
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum", "Base", "Binance", "Arbitrum", "Sonic", "Avalanche"],

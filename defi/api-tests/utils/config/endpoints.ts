@@ -59,6 +59,7 @@ function getEndpoint(path: string, freeOnly: boolean = false): string {
 export const TVL = {
   BASE_URL: BASE_URLS.TVL,
   PROTOCOLS: '/protocols',
+  PARENT_PROTOCOLS: '/parent-protocols',
   PROTOCOL: (protocol: string) => `/protocol/${protocol}`,
   CHARTS: (chain?: string) => chain ? `/charts/${chain}` : '/charts',
   TVL: (protocol: string) => `/tvl/${protocol}`,

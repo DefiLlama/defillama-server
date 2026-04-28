@@ -47,6 +47,7 @@ export default function setRoutes(router: HyperExpress.Router, routerBasePath: s
 
   router.get("/tokenProtocols/:symbol", ew(getTokenInProtocols));
   router.get("/protocols", protocolsRouteResponse);
+  router.get("/parent-protocols", defaultFileHandler);
   router.get("/config", configRouteResponse);
   router.get("/lite/charts", liteChartsRouteResponse);
 

@@ -9542,6 +9542,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "veaxlabs",
   },
+  {
+    id: "parent#bullet",
+    name: "Bullet",
+    url: "https://bullet.xyz/", 
+    description: "High-performance ZK rollup perpetuals and spot DEX settling on Solana.",
+    logo: `${baseIconsUrl}/bullet.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Bulletxyz",
+    github: ["bulletxyz"],
+  },
 ];
 
 export default parentProtocols;

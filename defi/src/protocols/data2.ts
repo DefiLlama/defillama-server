@@ -9319,6 +9319,8 @@ const data2: Protocol[] = [
     twitter: "ZetaMarkets",
     listedAt: 1654452112,
     github: ["zetamarkets"],
+    deprecated: true,
+    parentProtocol: "parent#bullet",
     dimensions: {
       derivatives: "zeta"
     }

@@ -1135,5 +1135,30 @@ const data6: Protocol[] = [
       derivatives: "veax-perps"
     }
   },
+  {
+    id: "7761",
+    name: "Bullet Perps",
+    address: null,
+    symbol: "-",
+    url: "https://bullet.xyz/",
+    description:
+      "High-performance ZK rollup perpetuals and spot DEX settling on Solana.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/bullet-perps.jpg`,
+    audits: "2",
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "Bulletxyz",
+    audit_links: ["https://docs.bullet.xyz/bullet-network/audits"],
+    oraclesBreakdown: [{name: "Pyth", type: "Primary", proof: ["https://docs.bullet.xyz/bullet-network/architecture/oracle"]}],
+    parentProtocol: "parent#bullet",
+    dimensions: {
+      derivatives: "bullet-perps",
+      "open-interest": "bullet"
+    }
+  },
 ];
 export default data6;

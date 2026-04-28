@@ -3,7 +3,7 @@ import protocols, { Protocol} from "./protocols/data";
 import { getLastRecord, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-function _protocolHasMisrepresentedTokens(protocol: Protocol){
+function _protocolHasMisrepresentedTokens(protocol: Protocol): boolean{
   const module = importAdapter(protocol);
   return module.misrepresentedTokens
 }

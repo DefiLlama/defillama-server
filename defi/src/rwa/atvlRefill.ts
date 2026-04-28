@@ -295,6 +295,15 @@ function getOnChainTvlAndActiveMcaps(
     if (!finalData[rwaId][RWA_KEY_MAP.activeMcap] && finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...stablecoinsData[cgId] };
   });
 
+  // Track per-chain decimal-adjusted total supply alongside onChainMcap.
+  // Multiple token deployments on the same chain share a price, so supply is summed.
+  const setTotalSupply = (rwaId: string, chainDisplayName: string, supplyDelta: number) => {
+    if (!finalData[rwaId]) return;
+    if (!finalData[rwaId][RWA_KEY_MAP.totalSupply]) finalData[rwaId][RWA_KEY_MAP.totalSupply] = {};
+    const prev = Number(finalData[rwaId][RWA_KEY_MAP.totalSupply][chainDisplayName]) || 0;
+    finalData[rwaId][RWA_KEY_MAP.totalSupply][chainDisplayName] = toFixedNumber(prev + supplyDelta, 6);
+  };
+
   // An RWA can have multiple token addresses on the same chain; aggregate across
   // them rather than overwriting, and only subtract excluded balances once per
   // (rwaId, chain) since excludedAmounts is already a per-(rwaId, chain) total.
@@ -311,6 +320,13 @@ function getOnChainTvlAndActiveMcaps(
       finalData[rwaId][RWA_KEY_MAP.onChain] = stablecoinsData[cgId];
       if (!finalData[rwaId][RWA_KEY_MAP.price] && assetPrices[pk]?.price) {
         finalData[rwaId][RWA_KEY_MAP.price] = formatNumAsNumber(assetPrices[pk].price);
+      }
+      // Derive supply from stablecoin mcap / price for this chain (price ~$1 typically).
+      const stablePrice = assetPrices[pk]?.price;
+      const stableMcap = Number(stablecoinsData[cgId]?.[chainDisplayName]) || 0;
+      if (stablePrice && stableMcap) {
+        finalData[rwaId][RWA_KEY_MAP.totalSupply] = finalData[rwaId][RWA_KEY_MAP.totalSupply] || {};
+        finalData[rwaId][RWA_KEY_MAP.totalSupply][chainDisplayName] = toFixedNumber(stableMcap / stablePrice, 6);
       }
       if (finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) {
         if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = { ...finalData[rwaId][RWA_KEY_MAP.onChain] };
@@ -335,9 +351,11 @@ function getOnChainTvlAndActiveMcaps(
       if (!finalData[rwaId][RWA_KEY_MAP.activeMcap]) finalData[rwaId][RWA_KEY_MAP.activeMcap] = {};
       if (!finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName]) finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = {};
 
-      const aum = (price * supply) / 10 ** decimals;
+      const supplyAdjusted = supply / 10 ** decimals;
+      const aum = price * supplyAdjusted;
       const prevOnChain = Number(finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName]) || 0;
       finalData[rwaId][RWA_KEY_MAP.onChain][chainDisplayName] = toFixedNumber(prevOnChain + aum, 0);
+      setTotalSupply(rwaId, chainDisplayName, supplyAdjusted);
 
       if (!finalData[rwaId][RWA_KEY_MAP.activeMcapChecked]) return;
 
@@ -361,6 +379,15 @@ function getOnChainTvlAndActiveMcaps(
     const activeMcap = finalData[rwaId][RWA_KEY_MAP.activeMcap];
     if (!activeMcap) return;
     finalData[rwaId][RWA_KEY_MAP.onChain] = { ...activeMcap };
+    // Recompute totalSupply per chain from the new onChain value to stay consistent with mcap.
+    const price = Number(finalData[rwaId][RWA_KEY_MAP.price]) || 0;
+    if (!price) return;
+    const supplyByChain: { [chain: string]: number } = {};
+    Object.keys(activeMcap).forEach((chain) => {
+      const mcap = Number(activeMcap[chain]) || 0;
+      if (mcap) supplyByChain[chain] = toFixedNumber(mcap / price, 6);
+    });
+    finalData[rwaId][RWA_KEY_MAP.totalSupply] = supplyByChain;
   });
 }
 

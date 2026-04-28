@@ -4,7 +4,7 @@ import { DataTypes, Model, Op, QueryTypes, Sequelize } from 'sequelize'
 class META_RWA_DATA extends Model { }
 export class DAILY_RWA_DATA extends Model { }
 export class HOURLY_RWA_DATA extends Model { }
-class BACKUP_RWA_DATA extends Model { }
+export class BACKUP_RWA_DATA extends Model { }
 
 let pgConnection: any;
 
@@ -28,6 +28,9 @@ async function initPGTables() {
             type: DataTypes.TEXT,
         },
         activemcap: {
+            type: DataTypes.TEXT,
+        },
+        totalsupply: {
             type: DataTypes.TEXT,
         },
         aggregatedefiactivetvl: {
@@ -81,6 +84,9 @@ async function initPGTables() {
         activemcap: {
             type: DataTypes.TEXT,
         },
+        totalsupply: {
+            type: DataTypes.TEXT,
+        },
         aggregatedefiactivetvl: {
             type: DataTypes.DECIMAL,
         },
@@ -127,6 +133,9 @@ async function initPGTables() {
             type: DataTypes.TEXT,
         },
         activemcap: {
+            type: DataTypes.TEXT,
+        },
+        totalsupply: {
             type: DataTypes.TEXT,
         },
         aggregatedefiactivetvl: {
@@ -264,7 +273,7 @@ export async function storeHistoricalPG(inserts: any, timestamp: number): Promis
         updated_at: now,
     }));
 
-    const updateOnDuplicate = ['defiactivetvl', 'mcap', 'activemcap', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'timestamp_actual', 'updated_at'];
+    const updateOnDuplicate = ['defiactivetvl', 'mcap', 'activemcap', 'totalsupply', 'aggregatedefiactivetvl', 'aggregatemcap', 'aggregatedactivemcap', 'timestamp_actual', 'updated_at'];
 
     // Bulk insert with conflict handling - overwrite on duplicate
     await DAILY_RWA_DATA.bulkCreate(dailyInserts, {
@@ -333,14 +342,14 @@ export async function fetchMetadataPG(): Promise<any[]> {
 }
 
 // Get one record per id with the largest timestamp
-export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: object; mcap: object; activemcap: object }[]> {
+export async function fetchCurrentPG(): Promise<{ id: string; timestamp: number; defiactivetvl: object; mcap: object; activemcap: object; totalsupply: object }[]> {
     const data = await HOURLY_RWA_DATA.sequelize!.query(
-        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap
+        `SELECT DISTINCT ON (id) id, timestamp, defiactivetvl, mcap, activemcap, totalsupply
          FROM "${HOURLY_RWA_DATA.getTableName()}"
          ORDER BY id, timestamp DESC`,
         { type: QueryTypes.SELECT }
-    ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string }[];
-    const jsonFields = ['defiactivetvl', 'mcap', 'activemcap']
+    ) as { id: string; timestamp: number; defiactivetvl: string; mcap: string; activemcap: string; totalsupply: string }[];
+    const jsonFields = ['defiactivetvl', 'mcap', 'activemcap', 'totalsupply']
 
     return data.map((d: any) => {
         const copy: any = { ...d }
@@ -409,6 +418,7 @@ function parseChainFields(record: any): any {
         mcap: parseJsonSafe(record.mcap),
         activemcap: parseJsonSafe(record.activemcap),
         defiactivetvl: parseJsonSafe(record.defiactivetvl),
+        totalsupply: parseJsonSafe(record.totalsupply),
     };
 }
 
@@ -419,7 +429,7 @@ export async function fetchDailyRecordsWithChainsPG(updatedAfter: Date): Promise
 
     while (true) {
         const batch = await DAILY_RWA_DATA.findAll({
-            attributes: ['id', 'timestamp', 'mcap', 'activemcap', 'defiactivetvl', 'updated_at'],
+            attributes: ['id', 'timestamp', 'mcap', 'activemcap', 'defiactivetvl', 'totalsupply', 'updated_at'],
             where: { updated_at: { [Op.gt]: updatedAfter } },
             order: [['id', 'ASC'], ['timestamp', 'ASC']],
             limit: PAGE_SIZE,
@@ -443,7 +453,7 @@ export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<an
 
     while (true) {
         const batch = await DAILY_RWA_DATA.findAll({
-            attributes: ['timestamp', 'mcap', 'activemcap', 'defiactivetvl'],
+            attributes: ['timestamp', 'mcap', 'activemcap', 'defiactivetvl', 'totalsupply'],
             where: { id },
             order: [['timestamp', 'ASC']],
             limit: PAGE_SIZE,
@@ -458,6 +468,22 @@ export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<an
     }
 
     return results;
+}
+
+// Fetch daily records for a single ID within a timestamp range, with chain-level mcap + totalsupply.
+// Used by the flows endpoint to compute net-flow time-series for an arbitrary window.
+export async function fetchDailyFlowsForIdPG(id: string, startTs: number, endTs: number): Promise<Array<{ timestamp: number; mcap: any; totalsupply: any }>> {
+    const records = await DAILY_RWA_DATA.findAll({
+        attributes: ['timestamp', 'mcap', 'totalsupply'],
+        where: { id, timestamp: { [Op.gte]: startTs, [Op.lte]: endTs } },
+        order: [['timestamp', 'ASC']],
+        raw: true,
+    }) as any[];
+    return records.map((r) => ({
+        timestamp: r.timestamp,
+        mcap: parseJsonSafe(r.mcap),
+        totalsupply: parseJsonSafe(r.totalsupply),
+    }));
 }
 
 // Fetch unique timestamps

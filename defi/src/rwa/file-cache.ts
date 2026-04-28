@@ -179,11 +179,13 @@ export interface PGCacheRecord {
     onChainMcap: number;
     activeMcap: number;
     defiActiveTvl: number;
+    totalSupply: number;
     chains: {
         [chainKey: string]: {
             onChainMcap: number;
             activeMcap: number;
             defiActiveTvl: number;
+            totalSupply: number;
         };
     };
 }

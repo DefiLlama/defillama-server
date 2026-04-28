@@ -251,7 +251,7 @@ function sumObjectValues(obj: any): number {
   }, 0);
 }
 
-const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl'] as const;
+const PG_CACHE_METRICS = ['onChainMcap', 'activeMcap', 'defiActiveTvl', 'totalSupply'] as const;
 
 // Maximum consecutive anomalous days to bridge (must match utils.ts MAX_SPIKE_RUN)
 const MAX_SPIKE_RUN = 5;
@@ -329,6 +329,7 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
     onChainMcap: data[ts].onChainMcap,
     activeMcap: data[ts].activeMcap,
     defiActiveTvl: data[ts].defiActiveTvl,
+    totalSupply: data[ts].totalSupply ?? 0,
     chains: Object.fromEntries(
       Object.entries(data[ts].chains || {}).map(([k, v]) => [k, { ...v }])
     ),
@@ -344,7 +345,7 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
   }
 
   // Step 1b: remove spikes/dips — per-chain metrics
-  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+  const zeroPGChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, totalSupply: 0 };
   for (const chainKey of allChainKeys) {
     for (const metric of PG_CACHE_METRICS) {
       removePGSpikes(
@@ -361,8 +362,8 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
   // Step 2: fill gaps with linear interpolation
   const result: PGCacheData = {};
   for (let i = 0; i < entries.length; i++) {
-    const { timestamp, chains, onChainMcap, activeMcap, defiActiveTvl } = entries[i];
-    result[timestamp] = { onChainMcap, activeMcap, defiActiveTvl, chains };
+    const { timestamp, chains, onChainMcap, activeMcap, defiActiveTvl, totalSupply } = entries[i];
+    result[timestamp] = { onChainMcap, activeMcap, defiActiveTvl, totalSupply, chains };
 
     if (i < entries.length - 1) {
       const curr = entries[i];
@@ -380,12 +381,14 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
             onChainMcap: cC.onChainMcap + (nC.onChainMcap - cC.onChainMcap) * f,
             activeMcap: cC.activeMcap + (nC.activeMcap - cC.activeMcap) * f,
             defiActiveTvl: cC.defiActiveTvl + (nC.defiActiveTvl - cC.defiActiveTvl) * f,
+            totalSupply: cC.totalSupply + (nC.totalSupply - cC.totalSupply) * f,
           };
         }
         result[intTs] = {
           onChainMcap: curr.onChainMcap + (next.onChainMcap - curr.onChainMcap) * f,
           activeMcap: curr.activeMcap + (next.activeMcap - curr.activeMcap) * f,
           defiActiveTvl: curr.defiActiveTvl + (next.defiActiveTvl - curr.defiActiveTvl) * f,
+          totalSupply: curr.totalSupply + (next.totalSupply - curr.totalSupply) * f,
           chains: intChains,
         };
       }
@@ -397,40 +400,50 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
 
 function processRecordsToPGCache(records: any[]): PGCacheData {
   const data: PGCacheData = {};
+  const zeroChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, totalSupply: 0 };
   for (const record of records) {
     // DB functions already parse JSON fields
-    const { mcap: mcapObj, activemcap: activemcapObj, defiactivetvl: defitvlObj } = record;
+    const { mcap: mcapObj, activemcap: activemcapObj, defiactivetvl: defitvlObj, totalsupply: totalsupplyObj } = record;
 
     const chains: PGCacheRecord['chains'] = {};
     let totalOnChainMcap = 0;
     let totalActiveMcap = 0;
     let totalDefiActiveTvl = 0;
+    let totalSupplyAgg = 0;
 
     for (const [chainKey, value] of Object.entries(mcapObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { ...zeroChain };
       const numValue = Number(value) || 0;
       chains[chainKey].onChainMcap = numValue;
       totalOnChainMcap += numValue;
     }
 
     for (const [chainKey, value] of Object.entries(activemcapObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { ...zeroChain };
       const numValue = Number(value) || 0;
       chains[chainKey].activeMcap = numValue;
       totalActiveMcap += numValue;
     }
 
     for (const [chainKey, protocols] of Object.entries(defitvlObj)) {
-      if (!chains[chainKey]) chains[chainKey] = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0 };
+      if (!chains[chainKey]) chains[chainKey] = { ...zeroChain };
       const numValue = sumObjectValues(protocols);
       chains[chainKey].defiActiveTvl = numValue;
       totalDefiActiveTvl += numValue;
+    }
+
+    for (const [chainKey, value] of Object.entries(totalsupplyObj || {})) {
+      if (!chains[chainKey]) chains[chainKey] = { ...zeroChain };
+      const numValue = Number(value) || 0;
+      chains[chainKey].totalSupply = numValue;
+      totalSupplyAgg += numValue;
     }
 
     data[record.timestamp] = {
       onChainMcap: totalOnChainMcap,
       activeMcap: totalActiveMcap,
       defiActiveTvl: totalDefiActiveTvl,
+      totalSupply: totalSupplyAgg,
       chains,
     };
   }

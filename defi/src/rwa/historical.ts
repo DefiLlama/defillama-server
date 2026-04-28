@@ -13,7 +13,7 @@ const inverseProtocolIdMap: { [name: string]: string } = Object.entries(protocol
   {}
 );
 // Store historical data
-export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMcap: { [chain: string]: string }, activeMcap: { [chain: string]: string } } }, timestamp: number }): Promise<void> {
+export async function storeHistorical(res: { data: { [id: string]: { defiActiveTvl: { [chain: string]: { [name: string]: string } }, onChainMcap: { [chain: string]: string }, activeMcap: { [chain: string]: string }, totalSupply?: { [chain: string]: number | string } } }, timestamp: number }): Promise<void> {
   const { data, timestamp } = res;
   if (Object.keys(data).length == 0) return;
 
@@ -23,6 +23,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     defiactivetvl: string;
     mcap: string;
     activemcap: string;
+    totalsupply: string;
     aggregatedefiactivetvl: number;
     aggregatemcap: number;
     aggregatedactivemcap: number;
@@ -31,7 +32,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
     items: Object.keys(data),
     concurrency: 5,
     processor: async (id: any) => {
-      const { defiActiveTvl, onChainMcap, activeMcap } = data[id];
+      const { defiActiveTvl, onChainMcap, activeMcap, totalSupply } = data[id];
 
     // use chain slugs for defi active tvls and aggregate 
     const defiactivetvl: { [chain: string]: { [id: string]: string } } = {};
@@ -55,13 +56,20 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
       aggregatemcap += Number(onChainMcap[chain]);
     });
 
-    // use chain slugs for active mcaps and aggregate 
+    // use chain slugs for active mcaps and aggregate
     const activemcap: { [chain: string]: string } = {};
     let aggregatedactivemcap: number = 0;
     Object.keys(activeMcap ?? {}).map((chain: string) => {
       const chainSlug = getChainIdFromDisplayName(chain);
       activemcap[chainSlug] = activeMcap[chain];
       aggregatedactivemcap += Number(activeMcap[chain]);
+    });
+
+    // use chain slugs for total supply (decimal-adjusted, summed across token deployments per chain)
+    const totalsupply: { [chain: string]: string } = {};
+    Object.keys(totalSupply ?? {}).map((chain: string) => {
+      const chainSlug = getChainIdFromDisplayName(chain);
+      totalsupply[chainSlug] = String(totalSupply![chain]);
     });
 
     if (isNaN(timestamp) || isNaN(id) || isNaN(aggregatedefiactivetvl) || isNaN(aggregatemcap) || isNaN(aggregatedactivemcap)) {
@@ -75,6 +83,7 @@ export async function storeHistorical(res: { data: { [id: string]: { defiActiveT
       defiactivetvl: JSON.stringify(defiactivetvl),
       mcap: JSON.stringify(mcap),
       activemcap: JSON.stringify(activemcap),
+      totalsupply: JSON.stringify(totalsupply),
       aggregatedefiactivetvl,
       aggregatemcap,
       aggregatedactivemcap,

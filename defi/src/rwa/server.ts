@@ -1,6 +1,8 @@
 import * as HyperExpress from 'hyper-express';
 import { readRouteData, getCacheVersion, readPGCacheForId } from './file-cache';
 import { rwaSlug } from './utils';
+import { initPG, fetchDailyFlowsForIdPG } from './db';
+import { getChainLabelFromKey } from '../utils/normalizeChain';
 
 const webserver = new HyperExpress.Server();
 const port = +(process.env.RWA_PORT ?? 5002);
@@ -279,6 +281,59 @@ function setRoutes(router: HyperExpress.Router): void {
             }
             const key = rwaSlug(assetGroup);
             return fileResponse(`charts/assetGroup-asset-breakdown/${key}.json`, res, 30);
+        })
+    );
+
+    // Get net-flow time-series for a specific RWA over an arbitrary window.
+    // Net flow at each timestamp is computed as (supply_t - supply_start) * price_t per chain,
+    // so price moves do not pollute the flow figure.
+    router.get(
+        '/flows/:id',
+        errorWrapper(async (req, res) => {
+            const { id } = req.params;
+            if (!id) return errorResponse(res, 'Missing id parameter', 400);
+
+            const now = Math.floor(Date.now() / 1000);
+            const startTs = Number(req.query.start);
+            const endTs = Number(req.query.end) || now;
+            if (!Number.isFinite(startTs) || startTs <= 0) {
+                return errorResponse(res, 'Missing or invalid `start` query param (unix seconds)', 400);
+            }
+            if (!Number.isFinite(endTs) || endTs < startTs) {
+                return errorResponse(res, 'Invalid `end` query param', 400);
+            }
+
+            await initPG();
+            const rows = await fetchDailyFlowsForIdPG(String(id), startTs, endTs);
+            if (rows.length === 0) {
+                return successResponse(res, { id, start: startTs, end: endTs, data: [] }, 30);
+            }
+
+            // Anchor supply per chain comes from the first row in range (closest to start).
+            const supplyStart: { [chain: string]: number } = {};
+            const allChains = new Set<string>();
+            for (const row of rows) {
+                for (const c of Object.keys(row.totalsupply || {})) allChains.add(c);
+                for (const c of Object.keys(row.mcap || {})) allChains.add(c);
+            }
+            for (const c of allChains) supplyStart[c] = Number(rows[0].totalsupply?.[c]) || 0;
+
+            const data = rows.map((row) => {
+                const byChain: { [chain: string]: number } = {};
+                let netFlowUsd = 0;
+                for (const chainKey of allChains) {
+                    const supplyT = Number(row.totalsupply?.[chainKey]) || 0;
+                    const mcapT = Number(row.mcap?.[chainKey]) || 0;
+                    // price_t = mcap / supply, derived from stored fields. Skip chains with zero supply.
+                    const priceT = supplyT > 0 ? mcapT / supplyT : 0;
+                    const flow = (supplyT - (supplyStart[chainKey] || 0)) * priceT;
+                    if (flow !== 0) byChain[getChainLabelFromKey(chainKey)] = flow;
+                    netFlowUsd += flow;
+                }
+                return { timestamp: row.timestamp, netFlowUsd, netFlowByChain: byChain };
+            });
+
+            return successResponse(res, { id, start: startTs, end: endTs, data }, 30);
         })
     );
 

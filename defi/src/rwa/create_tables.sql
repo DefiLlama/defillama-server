@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS daily_rwa_data (
     defiactivetvl TEXT,
     mcap TEXT,
     activemcap TEXT,
+    totalsupply TEXT,
     aggregatedefiactivetvl DECIMAL,
     aggregatemcap DECIMAL,
     aggregatedactivemcap DECIMAL,
@@ -29,6 +30,7 @@ CREATE TABLE IF NOT EXISTS hourly_rwa_data (
     defiactivetvl TEXT,
     mcap TEXT,
     activemcap TEXT,
+    totalsupply TEXT,
     aggregatedefiactivetvl DECIMAL,
     aggregatemcap DECIMAL,
     aggregatedactivemcap DECIMAL,
@@ -49,6 +51,7 @@ CREATE TABLE IF NOT EXISTS backup_rwa_data (
     defiactivetvl TEXT,
     mcap TEXT,
     activemcap TEXT,
+    totalsupply TEXT,
     aggregatedefiactivetvl DECIMAL,
     aggregatemcap DECIMAL,
     aggregatedactivemcap DECIMAL,
@@ -73,4 +76,9 @@ CREATE TABLE IF NOT EXISTS meta_rwa_data (
 -- Create indexes for meta_rwa_data
 CREATE INDEX IF NOT EXISTS meta_rwa_id_index ON meta_rwa_data(id);
 CREATE INDEX IF NOT EXISTS meta_rwa_data_updated_at_index ON meta_rwa_data(updated_at);
+
+-- Add totalsupply column to existing tables (idempotent)
+ALTER TABLE daily_rwa_data  ADD COLUMN IF NOT EXISTS totalsupply TEXT;
+ALTER TABLE hourly_rwa_data ADD COLUMN IF NOT EXISTS totalsupply TEXT;
+ALTER TABLE backup_rwa_data ADD COLUMN IF NOT EXISTS totalsupply TEXT;
 

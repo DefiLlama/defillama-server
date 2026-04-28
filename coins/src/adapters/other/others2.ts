@@ -253,4 +253,19 @@ export const adapters = {
       }, projectName: "other2",
     });
   },
+
+  USDnr: async (timestamp: number = 0) => {
+    const usdNr = "0xD48e565561416dE59DA1050ED70b8d75e8eF28f9";
+    const m = "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b";
+    const chain = "fluent";
+    const api = await getApi(chain, timestamp, true)
+    const bal = await api.call({ abi: "erc20:balanceOf", target: m, params: [usdNr] });
+    const supply = await api.call({ abi: "erc20:totalSupply", target: usdNr });
+
+    return getWrites({
+      chain, timestamp, pricesObject: {
+        [usdNr]: { price: bal / supply, underlying: m, }
+      }, projectName: "other2",
+    });
+  },
 };

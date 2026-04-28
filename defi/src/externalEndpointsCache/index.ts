@@ -26,7 +26,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
     if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60) {
         console.info("Response expired, invoking lambda to update it.")
-        await invokeLambda("defillama-prod-cacheExternalResponse", event)
+        await invokeLambda("defillama-prod-cacheExternalResponse", { url })
     }
 
     return successResponse(response.body, 60 * 60); // 1h cache

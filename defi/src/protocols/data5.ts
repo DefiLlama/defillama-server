@@ -15169,8 +15169,8 @@ const data5: Protocol[] = [
   {
     id: "7591",
     name: "Arbitrage Inc",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x5EE54869Ecd5E752C31aF095187326D4A4D50e1c",
+    symbol: "ARBINC",
     url: "https://arbitrage-inc.exchange",
     description:
       "Arbitrage Inc is a DEX aggregator on BSC.",

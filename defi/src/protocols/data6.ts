@@ -1064,5 +1064,24 @@ const data6: Protocol[] = [
     audit_links: ["https://docs.wedefin.com/technical-overview/audits"],
     listedAt: 1777310614,
   },
+  {
+    id: "7758",
+    name: "RektRadar",
+    address: null,
+    symbol: "-",
+    url: "https://rektradar.io",
+    description:
+      "Real-time Ethereum scam detector and rug pull analyzer. Combines on-chain forensics, mempool monitoring, and graph-based deployer clustering to score smart contracts 0-100 across 80+ risk flags (honeypot, hidden owner, dynamic taxes, brand-jacking).",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rektradar.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Security Extension",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "mik3fly__",
+    listedAt: 1777334400,
+  },
 ];
 export default data6;

@@ -21,15 +21,10 @@ export async function storeEmissionsCache(): Promise<{error: string | null}> {
     if (_emissionsData && _emissionsData.unlockUsdChart) {
       const hasBreakdownData = !!_emissionsData.componentData && !!_emissionsData.componentData.sections;
 
+      let breakdownLabelsByTimestamp: Record<number, Record<string, number>> = {};
       if (hasBreakdownData) {
         const breakdownMethodology: Record<string, string> = {};
-        for (const section of Object.values(_emissionsData.componentData.sections)) {
-          const s = section as any;
-          for (const component of Object.values(s.components || {})) {
-            const c = component as any;
-            if (c.methodology && c.name) breakdownMethodology[c.name] = c.methodology;
-          }
-        }
+        breakdownLabelsByTimestamp = buildBreakdownLabelsByTimestamp(_emissionsData.componentData.sections, breakdownMethodology);
         if (Object.keys(breakdownMethodology).length) emissionsProtocolData.breakdownMethodology = breakdownMethodology;
       }
 
@@ -49,7 +44,7 @@ export async function storeEmissionsCache(): Promise<{error: string | null}> {
           
           if (hasBreakdownData) {
             (emissionsProtocolData as any)[timeframe][timeframeKey]['by-label'] = (emissionsProtocolData as any)[timeframe][timeframeKey]['by-label'] || {};
-            const breakdownLabels: any = findBreakdownLabelsAtTimestamp(_emissionsData.componentData.sections, timestamp);
+            const breakdownLabels = breakdownLabelsByTimestamp[timestamp] ?? {};
             for (const [label, value] of Object.entries(breakdownLabels)) {
               (emissionsProtocolData as any)[timeframe][timeframeKey]['by-label'][label] = (emissionsProtocolData as any)[timeframe][timeframeKey]['by-label'][label] || 0;
               (emissionsProtocolData as any)[timeframe][timeframeKey]['by-label'][label] += Number(value);
@@ -63,21 +58,26 @@ export async function storeEmissionsCache(): Promise<{error: string | null}> {
   }
   
   // helper function
-  function findBreakdownLabelsAtTimestamp(sections: any, timestamp: number): any {
-    const labels: Record<string, number> = {};
+  function buildBreakdownLabelsByTimestamp(sections: any, breakdownMethodology: Record<string, string>): Record<number, Record<string, number>> {
+    const labelsByTimestamp: Record<number, Record<string, number>> = {};
     for (const section of Object.values(sections)) {
-      for (const component of Object.values((section as any).components)) {
-        const compomentItem = component as any;
-        if (compomentItem.name && compomentItem.unlockUsdChart && compomentItem.isIncentive) {
-          const label = compomentItem.name;
-          const item = compomentItem.unlockUsdChart.find((item: any) => item[0] === timestamp)
-          if (item) {
-            labels[label] = Number(item[1]);
+      for (const component of Object.values((section as any).components || {})) {
+        const componentItem = component as any;
+        if (componentItem.methodology && componentItem.name) breakdownMethodology[componentItem.name] = componentItem.methodology;
+        if (componentItem.name && componentItem.unlockUsdChart && componentItem.isIncentive) {
+          const label = componentItem.name;
+          const seenTimestamps = new Set<number>();
+          for (const item of componentItem.unlockUsdChart) {
+            const timestamp = item[0];
+            if (seenTimestamps.has(timestamp)) continue;
+            seenTimestamps.add(timestamp);
+            labelsByTimestamp[timestamp] = labelsByTimestamp[timestamp] || {};
+            labelsByTimestamp[timestamp][label] = Number(item[1]);
           }
         }
       }
     }
-    return labels;
+    return labelsByTimestamp;
   }
 
   try {

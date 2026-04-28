@@ -1064,6 +1064,9 @@ const data6: Protocol[] = [
     twitter: "flyingtulip_",
     listedAt: 1777298400,
     parentProtocol: "parent#flying-tulip",
+    dimensions: {
+      fees: "flying-tulip-ftusd"
+    }
   },
 ];
 export default data6;

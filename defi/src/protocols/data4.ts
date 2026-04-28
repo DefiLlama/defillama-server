@@ -1151,7 +1151,7 @@ const data4: Protocol[] = [
     url: "https://sophon.xyz/",
     description: "Sophon is a ZK chain",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/sophon.png`,
+    logo: `${baseIconsUrl}/sophon.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,

@@ -19,7 +19,8 @@ export type ChainTvlFailure = {
   protocol_id: string;
   chain: string;
   error_class: string;
-  last_failure_at: number;        // unix seconds
+  first_failure_at: number;       // unix seconds — preserved across upserts so escalation measures continuous failure duration
+  last_failure_at: number;        // unix seconds — bumped on every failure
   fallback_used: boolean;
   fallback_reason: string | null; // 'too-old' | 'over-threshold' | 'malformed-cache' | 'no-cache' | 'not-cron-task' | 'low-total-tvl' | null
   cached_tvl: number;
@@ -30,6 +31,7 @@ export const columns = [
   "protocol_id",
   "chain",
   "error_class",
+  "first_failure_at",
   "last_failure_at",
   "fallback_used",
   "fallback_reason",
@@ -48,6 +50,7 @@ export async function recordChainFailure(f: ChainTvlFailure): Promise<void> {
         on conflict (protocol_id, chain) do update set
           error_class = excluded.error_class,
           last_failure_at = excluded.last_failure_at,
+          -- first_failure_at deliberately NOT updated on conflict so escalation reflects continuous failure duration
           fallback_used = excluded.fallback_used,
           fallback_reason = excluded.fallback_reason,
           consecutive_failures = chain_tvl_failures.consecutive_failures + 1,
@@ -82,7 +85,7 @@ export async function notifyChainTvlFailures(): Promise<void> {
     const sql = await getPgConnection();
     const allColumns = [...columns, "consecutive_failures"];
     const stored: (ChainTvlFailure & { consecutive_failures: number })[] = await queryPostgresWithRetry(
-      sql`select ${(sql as any)(allColumns)} from chain_tvl_failures order by last_failure_at asc`,
+      sql`select ${(sql as any)(allColumns)} from chain_tvl_failures order by first_failure_at asc`,
       sql,
     );
     if (!stored.length) return;
@@ -91,7 +94,10 @@ export async function notifyChainTvlFailures(): Promise<void> {
     let summary = "";
     let escalation = "";
     for (const f of stored) {
-      const ageHours = (now - f.last_failure_at) / 3600;
+      // Age is measured from first_failure_at so escalation tracks continuous failure duration,
+      // not just time since the latest poke. A chain that fails every cron run for 5 days reports
+      // 5d here even though last_failure_at is "minutes ago".
+      const ageHours = (now - f.first_failure_at) / 3600;
       const ageDays = ageHours / 24;
       const fallbackInfo = f.fallback_used
         ? `fallback used (${f.fallback_reason ?? "ok"})`

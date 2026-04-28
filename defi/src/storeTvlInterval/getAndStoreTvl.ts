@@ -446,16 +446,20 @@ export async function storeTvl(
 
         if (tvlErrorsObject[key]) {
           const errMsg = (tvlErrorsObject[key]?.message ?? 'unknown').slice(0, 200)
+          const failureAt = Math.floor(Date.now() / 1000)
           let tempStoreKeyCache: any
           try {
             tempStoreKeyCache = await getCachedTvlData({ protocol, storeKey: key, options, tvlErrorsObject })
           } catch (e: any) {
             // Fallback exhausted — record the failure for the team's tracker, then re-throw to preserve existing behavior.
+            // first_failure_at is set to the same timestamp as last_failure_at on insert; the upsert keeps the
+            // original first_failure_at on subsequent failures so escalation tracks continuous duration.
             await recordChainFailure({
               protocol_id: String(protocol.id),
               chain: key,
               error_class: errMsg,
-              last_failure_at: Math.floor(Date.now() / 1000),
+              first_failure_at: failureAt,
+              last_failure_at: failureAt,
               fallback_used: false,
               fallback_reason: e?.fallbackReason ?? 'unknown',
               cached_tvl: 0,
@@ -468,7 +472,8 @@ export async function storeTvl(
             protocol_id: String(protocol.id),
             chain: key,
             error_class: errMsg,
-            last_failure_at: Math.floor(Date.now() / 1000),
+            first_failure_at: failureAt,
+            last_failure_at: failureAt,
             fallback_used: true,
             fallback_reason: 'ok',
             cached_tvl: tempStoreKeyCache.usdTvls ?? 0,

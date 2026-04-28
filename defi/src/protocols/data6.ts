@@ -1112,5 +1112,28 @@ const data6: Protocol[] = [
       fees: "flying-tulip-ftusd"
     }
   },
+  {
+    id: "7760",
+    name: "Veax Perps",
+    address: null,
+    symbol: "VEAX",
+    url: "https://veax.com/",
+    description:
+      "Veax is an advanced DEX and PerpDEX built on Near Protocol and Orderly . Bringing together the best features of TradFi and DeFi for an unparalleled swap and trading experience.",
+    chain: "Orderly",
+    logo: `${baseIconsUrl}/veax-perps.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Orderly Builder"],
+    chains: ["Orderly"],
+    module: "dummy.js",
+    twitter: "veaxlabs",
+    parentProtocol: "parent#veax",
+    dimensions: {
+      fees: "veax-perps",
+      derivatives: "veax-perps"
+    }
+  },
 ];
 export default data6;

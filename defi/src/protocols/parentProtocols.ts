@@ -9531,6 +9531,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LayerZero_Core",
   },
+  {
+    id: "parent#veax",
+    name: "Veax",
+    url: "https://veax.com/", 
+    description: "Veax is an advanced DEX and PerpDEX built on Near Protocol and Orderly . Bringing together the best features of TradFi and DeFi for an unparalleled swap and trading experience.",
+    logo: `${baseIconsUrl}/veax.png`,
+    gecko_id: "veax",
+    cmcId: null,
+    chains: [],
+    twitter: "veaxlabs",
+  },
 ];
 
 export default parentProtocols;

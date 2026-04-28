@@ -220,11 +220,7 @@ export function convertHallmarkStrings(hallmarks: any) {
     return item
   }).filter((item) => {
     if (typeof item?.[0] === 'number') return true
-    // if it is a range hallmark
-    if (Array.isArray(item?.[0]) && typeof item[0][0] === 'number' && typeof item[0][1] === 'number') {
-      return true
-    }
-    return false
+    return Array.isArray(item?.[0]) && typeof item[0][0] === 'number' && typeof item[0][1] === 'number'
   })
 }
 

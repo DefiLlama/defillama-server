@@ -102,18 +102,24 @@ async function getTokenPrices(chain: string, timestamp: number) {
     // Impact check using virtual reserves from liquidity + sqrtPrice
     // Skip for hook pools (hooks != zero) since liquidity is managed by the hook, not standard v4 accounting
     const pairedData = pairedPrices[pairedLower];
-    if (pairedData?.price && !hasHooks && liquidity > 0) {
-      const sqrtP = Number(sqrtPriceX96) / 2 ** 96;
-      const pairedIsCurrency1 = tokenIsCurrency0;
-      const pairedReserveRaw = pairedIsCurrency1 ? liquidity * sqrtP : liquidity / sqrtP;
-      const pairedDec = decimalsMap[pairedLower] ?? 18;
-      const pairedReserveUsd = (pairedReserveRaw / 10 ** pairedDec) * pairedData.price;
-      const impact = SELL_AMOUNT_USD / pairedReserveUsd;
-      if (impact > MAX_PRICE_IMPACT) {
-        log(
-          `uniV4: skipping ${token} on ${chain} - est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired virtual reserve $${pairedReserveUsd.toFixed(0)})`,
-        );
+    if (!hasHooks) {
+      if (liquidity <= 0) {
+        log(`uniV4: skipping ${token} on ${chain} - zero liquidity`);
         return;
+      }
+      if (pairedData?.price) {
+        const sqrtP = Number(sqrtPriceX96) / 2 ** 96;
+        const pairedIsCurrency1 = tokenIsCurrency0;
+        const pairedReserveRaw = pairedIsCurrency1 ? liquidity * sqrtP : liquidity / sqrtP;
+        const pairedDec = decimalsMap[pairedLower] ?? 18;
+        const pairedReserveUsd = (pairedReserveRaw / 10 ** pairedDec) * pairedData.price;
+        const impact = SELL_AMOUNT_USD / pairedReserveUsd;
+        if (impact > MAX_PRICE_IMPACT) {
+          log(
+            `uniV4: skipping ${token} on ${chain} - est. price impact ${(impact * 100).toFixed(1)}% exceeds ${MAX_PRICE_IMPACT * 100}% (paired virtual reserve $${pairedReserveUsd.toFixed(0)})`,
+          );
+          return;
+        }
       }
     }
 

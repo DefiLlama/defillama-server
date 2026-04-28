@@ -91,7 +91,6 @@ const dynamodb = {
   ,
   scan: (params: Omit<ScanCommandInput, "TableName">) =>
     client.scan({ TableName, ...params }),
-  getEnvSecrets: (key: DynamoDBItemKey = { PK: 'lambda-secrets' }) => client.get({ TableName: 'secrets', Key: key }),
   getExtensionTwitterConfig: (key: DynamoDBItemKey = { PK: 'twitter' }) => client.get({ TableName: 'secrets', Key: key }),
   putDimensionsData: (
     item: PutCommandInput["Item"],

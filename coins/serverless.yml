@@ -163,6 +163,8 @@ functions:
   updateCoinPrices:
     handler: src/updateCoin.default
     timeout: 60
+    environment:
+      CG_KEY: ${env:CG_KEY}
     events:
       - httpApi:
           path: /prices/update/{coins}

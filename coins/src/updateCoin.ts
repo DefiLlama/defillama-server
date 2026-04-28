@@ -8,7 +8,6 @@ import {
   getBasicCoins,
 } from "./utils/getCoinsUtils";
 import { setTimer } from "./utils/shared/coingeckoLocks";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { quantisePeriod } from "./utils/timestampUtils";
 
@@ -88,8 +87,6 @@ const currentCoins = async (
 
 const handler = async (event: any): Promise<IResponse> => {
   // set up env and init promises
-  await setEnvSecrets();
-  process.env.tableName = "prod-coins-table";
   const start = new Date().getTime();
   const currentPromise = currentCoins(event);
   const bulkPromise: Promise<any> = getR2(`updated-coins`).then((r) =>

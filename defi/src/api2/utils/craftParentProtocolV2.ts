@@ -9,6 +9,7 @@ import * as sdk from '@defillama/sdk'
 type CraftParentProtocolV2Options = {
   parentProtocol: IParentProtocol;
   skipAggregatedTvl: boolean;
+  restrictResponseSize?: boolean;
   feMini?: boolean; // for fetching only aggregated tvl data without token breakdown & without raw token balances
 }
 
@@ -16,6 +17,7 @@ export async function craftParentProtocolV2({
   parentProtocol,
   skipAggregatedTvl,
   feMini = false,
+  restrictResponseSize = true,
 }: CraftParentProtocolV2Options) {
   const debug_t0 = performance.now(); // start the timer
   const childProtocols = cache.childProtocols[parentProtocol.id] ?? []
@@ -56,7 +58,7 @@ export async function craftParentProtocolV2({
 
   const debug_t1 = performance.now(); // start the timer
 
-  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, fetchMcap: getCachedMCap, parentRaises: getRaises(parentProtocol.id) ?? [], feMini, })
+  const res = await craftParentProtocolInternal({ parentProtocol, childProtocolsTvls, skipAggregatedTvl, fetchMcap: getCachedMCap, parentRaises: getRaises(parentProtocol.id) ?? [], feMini, restrictResponseSize, })
   const childNames = cache.otherProtocolsMap[parentProtocol.id] ?? []
 
   res.otherProtocols = [parentProtocol.name, ...childNames]

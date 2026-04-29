@@ -1,7 +1,9 @@
 import fetch from "node-fetch";
 import { LiteProtocol } from "../../types";
 import { chainCoingeckoIds } from "../../utils/normalizeChain";
+import { fetchMcaps } from "../../utils/coinsApi";
 import { readRouteData, storeRouteData } from "../cache/file-cache";
+import { getPrevTvlFromChart } from "../utils/tvlChart";
 
 interface IResponse {
   chains: string[];
@@ -17,10 +19,6 @@ interface IChainGroups {
 interface INumOfProtocolsPerChain {
   [protocol: string]: number;
 }
-
-export const getPrevTvlFromChart = (chart: any, daysBefore: number) => {
-  return chart[chart.length - 1 - daysBefore]?.[1] ?? null;
-};
 
 export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   const adjustedPercentChange =
@@ -58,6 +56,17 @@ let chainMcaps: any = {}
 export async function genFormattedChains() {
   console.time('genFormattedChains')
 
+  try {
+    await _genFormattedChains()
+  } catch (e: any) {
+    console.error('Error in genFormattedChains', e?.message ? e.message : e)
+  }
+
+  console.timeEnd('genFormattedChains')
+}
+
+async function _genFormattedChains() {
+
   // fetch chain list
   res = await readRouteData('/lite/protocols2')
 
@@ -78,19 +87,14 @@ export async function genFormattedChains() {
   }
 
   // fetch chain token prices
-  chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: Object.values(chainCoingeckoIds)
-        .filter((c) => c.geckoId)
-        .map((c) => `coingecko:${c.geckoId}`),
-    }),
-  })
-    .then((r) => r.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
+  chainMcaps = await fetchMcaps(
+    Object.values(chainCoingeckoIds)
+      .filter((c) => c.geckoId)
+      .map((c) => `coingecko:${c.geckoId}`),
+  ).catch((err) => {
+    console.log(err);
+    return {};
+  });
 
 
   // generate route files
@@ -106,7 +110,6 @@ export async function genFormattedChains() {
     }
   }
 
-  console.timeEnd('genFormattedChains')
 }
 
 const getFormattedChains = (category: string) => {
@@ -198,7 +201,7 @@ const getFormattedChains = (category: string) => {
 
       Object.keys(data).forEach((tvlType) => {
         if (tvlType === 'tvl') return; // skip tvl as it is already processed
-        extraTvl[tvlType]= getTvlAggData(data, tvlType);
+        extraTvl[tvlType] = getTvlAggData(data, tvlType);
       })
 
 

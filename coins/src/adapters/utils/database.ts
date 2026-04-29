@@ -17,10 +17,25 @@ import pLimit from "p-limit";
 import * as sdk from '@defillama/sdk'
 const { sliceIntoChunks, } = sdk.util
 
-import produceKafkaTopics from "../../utils/coins3/produce";
 import { lowercase } from "../../utils/coingeckoPlatforms";
 import { sendMessage } from "../../../../defi/src/utils/discord";
 import { chainsThatShouldNotBeLowerCased } from "../../utils/shared/constants";
+import { dualWriteToChRedis } from "./chRedisWrite";
+
+function normalizedPKFor(pk: string): string {
+  if (pk.startsWith("coingecko#")) return pk.toLowerCase();
+  if (pk.startsWith("block#")) return pk.toLowerCase();
+  if (!pk.startsWith("asset#")) return pk;
+  const body = pk.slice("asset#".length); // chain:address
+  const colonIdx = body.indexOf(":");
+  if (colonIdx === -1) return pk.toLowerCase();
+  const chain = body.slice(0, colonIdx).toLowerCase();
+  let address = body.slice(colonIdx + 1).toLowerCase();
+  if (chain === "starknet" && address.length === 66 && address.startsWith("0x0")) {
+    address = address.replace(/^0x0+/, "0x");
+  }
+  return `asset#${chain}:${address}`;
+}
 
 const rateLimited = pLimit(10);
 process.env.tableName = "prod-coins-table";
@@ -131,11 +146,12 @@ export function addToDBWritesList(
     chain == "coingecko"
       ? `coingecko#${token.toLowerCase()}`
       : `asset#${chain}:${lowercase(token, chain)}`;
+  const priceNum = price == null ? undefined : Number(price);
   if (redirect && timestamp == 0) {
     writes.push({
       SK: 0,
       PK,
-      price,
+      price: priceNum,
       symbol,
       decimals: Number(decimals),
       redirect,
@@ -149,14 +165,14 @@ export function addToDBWritesList(
         {
           SK: getCurrentUnixTimestamp(),
           PK,
-          price,
+          price: priceNum,
           adapter,
           confidence: Number(confidence),
         },
         {
           SK: 0,
           PK,
-          price,
+          price: priceNum,
           symbol,
           decimals: Number(decimals),
           redirect,
@@ -174,7 +190,7 @@ export function addToDBWritesList(
       SK: timestamp,
       PK,
       redirect,
-      price,
+      price: priceNum,
       adapter,
       confidence: Number(confidence),
     });
@@ -418,10 +434,32 @@ export async function batchWriteWithAlerts(
   try {
     const { previousItems, redirectChanges } = await readPreviousValues(items);
     const filteredItems: any[] =
-      (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price));
+      (await checkMovement(items, previousItems)).filter((i: any) => isFinite(i.price) || i.redirect);
     const writeItems = [...filteredItems, ...redirectChanges]
     const ddbWriteResult = await batchWrite(writeItems, failOnError);
-    await produceKafkaTopics(writeItems as any[]);
+
+    // Dual-write: normalized PKs to DDB only (no alerts)
+    const normalizedMap = new Map<string, any>();
+    writeItems.forEach((item: any) => {
+      const nPK = normalizedPKFor(item.PK);
+      if (nPK === item.PK) return;
+      const copy = { ...item, PK: nPK };
+      if (copy.redirect) copy.redirect = normalizedPKFor(copy.redirect);
+      normalizedMap.set(`${copy.PK}::${copy.SK}`, copy);
+    });
+    const normalizedItems = [...normalizedMap.values()];
+    if (normalizedItems.length > 0) {
+      await batchWrite(normalizedItems, false);
+    }
+
+    // Dual-write: ClickHouse + Redis (independent — Redis writes even if CH fails)
+    const allItems = [...writeItems, ...normalizedItems];
+    await dualWriteToChRedis(allItems).catch(e => {
+      console.error(`[CH/Redis dual-write] non-fatal error: ${(e as Error).message}`);
+      if (process.env.URGENT_COINS_WEBHOOK)
+        sendMessage(`[CH/Redis dual-write] ${(e as Error).message}`, process.env.URGENT_COINS_WEBHOOK!, false).catch(() => {});
+    });
+
     return ddbWriteResult;
   } catch (e) {
     const adapter = items.find((i) => i.adapter != null)?.adapter;

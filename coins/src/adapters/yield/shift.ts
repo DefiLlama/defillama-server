@@ -8,7 +8,8 @@ const config: { [chain: string]: string[] } = {
   ],
   arbitrum: [
     "0x956bdd9C18B786b082fd50C52722d254f0CB6964",
-    "0x6d7C897cD8B402690C07e7263C9f59B3777ae3c2"
+    "0x6d7C897cD8B402690C07e7263C9f59B3777ae3c2",
+    "0x7174f0bD02664BebDB6Aa79a99fAF949570A10bd"
   ],
 }
 

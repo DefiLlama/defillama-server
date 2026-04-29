@@ -31,6 +31,7 @@ export const RWA_ALWAYS_STRING_ARRAY_FIELDS = new Set<string>([
 ]);
 
 export const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
+  "canonicalMarketId",
   "ticker",
   "name",
   "primaryChain",
@@ -38,6 +39,8 @@ export const RWA_STRING_OR_NULL_FIELDS = new Set<string>([
   "rwaClassification",
   "issuer",
   "isin",
+  "assetGroup",
+  "parentPlatform",
 ]);
 
 export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
@@ -50,6 +53,7 @@ export const RWA_BOOLEAN_OR_NULL_FIELDS = new Set<string>([
   "selfCustody",
   "stablecoin",
   "governance",
+  "delisted",
 ]);
 
 export const RWA_STABLECOIN_CATEGORIES = new Set([
@@ -79,4 +83,3 @@ export const RWA_GOVERNANCE_ASSET_CLASSES = new Set([
   "Revenue / fee share token (RWA protocol)",
 ]);
 export const RWA_GOVERNANCE_CLASSIFICATIONS = new Set(["Non-RWA (Gov/Utility)"]);
-

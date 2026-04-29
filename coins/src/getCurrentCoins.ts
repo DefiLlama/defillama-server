@@ -12,24 +12,26 @@ const isFresh = (timestamp: number, searchWidth: number) => {
   return now - timestamp < searchWidth;
 };
 
-const handler = async (event: any): Promise<IResponse> => {
-  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
-  const searchWidth: number = quantisePeriod(
-    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h",
-  );
+const defaultSearchWidth = quantisePeriod("12h");
+
+export async function getCurrentCoins({
+  response = {},
+  searchWidth = defaultSearchWidth,
+  requestedCoins = [],
+}: {
+  response?: CoinsResponse;
+  searchWidth?: number;
+  requestedCoins?: string[];
+} = {}): Promise<CoinsResponse> {
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
-  const response = {} as CoinsResponse;
   const coinsWithRedirect = {} as { [redirect: string]: any[] };
   coins.forEach((coin) => {
-    if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
-      coin.decimals = Number(coin.decimals);
-
     if (coin.redirect === undefined) {
       if (isFresh(coin.timestamp, searchWidth)) {
         PKTransforms[coin.PK].forEach((coinName) => {
           response[coinName] = {
-            decimals: coin.decimals,
-            price: coin.price,
+            decimals: coin.decimals == null ? undefined : Number(coin.decimals),
+            price: Number(coin.price),
             symbol: coin.symbol.replace(/\0/g, ""),
             timestamp: coin.timestamp,
             confidence: coin.confidence,
@@ -50,14 +52,10 @@ const handler = async (event: any): Promise<IResponse> => {
       coinsWithRedirect[redirectedCoin.PK].forEach((ogCoin) => {
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
           PKTransforms[ogCoin.PK].forEach((coin) => {
-
-            if (typeof ogCoin.decimals === 'string' && !isNaN(Number(ogCoin.decimals)))
-              ogCoin.decimals = Number(ogCoin.decimals);
-
             response[coin] = {
-              decimals: ogCoin.decimals,
+              decimals: ogCoin.decimals == null ? undefined : Number(ogCoin.decimals),
               symbol: ogCoin.symbol.replace(/\0/g, ""),
-              price: redirectedCoin.price,
+              price: Number(redirectedCoin.price),
               timestamp: redirectedCoin.timestamp,
               confidence: redirectedCoin.confidence,
             };
@@ -66,6 +64,17 @@ const handler = async (event: any): Promise<IResponse> => {
       });
     });
   }
+
+  return response
+};
+
+
+const handler = async (event: any): Promise<IResponse> => {
+  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  const searchWidth: number = quantisePeriod(
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "12h",
+  );
+  const response = await getCurrentCoins({ requestedCoins, searchWidth });
 
   // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
   const date = new Date();

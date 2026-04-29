@@ -15,15 +15,39 @@ const mmConfig: any = {
   },
 };
 
+// Tokemak Autopool registries - listVaults() returns all ERC4626 autopools
+const tokemakConfig: { [chain: string]: string } = {
+  ethereum: "0x7E5828a3A6Ae75426d739E798140513A2E2964E4",
+  base: "0x4fE7916A10B15DADEFc59D06AC81757112b1feCE",
+  arbitrum: "0xc3b8F578c25bE230A2C0f56Cb466e7B8c6c9D268",
+  plasma: "0x0dA0E8f8dF8b6541affB071C6e0FF6835154e1dc",
+  linea: "0xf25f616CCc086ddA1129323381EfA1edC8d5F42c",
+};
+
 export async function misc4626(timestamp: number = 0) {
   const metaMorphos = Object.keys(mmConfig).map((c) =>
     getMetaMorphos(c, timestamp),
+  );
+  const tokemakPools = Object.keys(tokemakConfig).map((c) =>
+    getTokemakVaults(c, timestamp),
   );
   const calls = Object.keys(tokens).map((c) => getTokenPrices(c, timestamp));
   const callsQiDAO = Object.keys(tokensQiDAO).map((c) =>
     getQiDAOTokenPrices(c, timestamp),
   );
-  return Promise.all([calls, callsQiDAO, metaMorphos].flat());
+  return Promise.all([calls, callsQiDAO, metaMorphos, tokemakPools].flat());
+}
+
+async function getTokemakVaults(chain: string, timestamp: number) {
+  const registry = tokemakConfig[chain];
+  const api = await getApi(chain, timestamp);
+  const vaults: string[] = await api.call({
+    target: registry,
+    abi: "function listVaults() view returns (address[])",
+  });
+  return (
+    await calculate4626Prices(chain, timestamp, vaults, "tokemak")
+  ).filter((r) => isFinite(r.price ?? 0));
 }
 
 async function getQiDAOTokenPrices(chain: string, timestamp: number) {

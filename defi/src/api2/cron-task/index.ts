@@ -1,17 +1,9 @@
 import { cache, initCache, getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, } from "../cache";
 import { readRouteData, storeRouteData, storeTvlCacheAllFile, } from "../cache/file-cache";
 import { getLatestProtocolItems, initializeTVLCacheDB } from "../db";
-import { shuffleArray } from "../../utils/shared/shuffleArray";
-import PromisePool from "@supercharge/promise-pool";
-import { IChain, IProtocol } from "../../types";
-import { craftProtocolV2 } from "../utils/craftProtocolV2";
+import { IChain, } from "../../types";
 import { craftChainsResponse } from "../routes/getChains";
 import { craftProtocolsResponseInternal as craftAllProtocolResponse } from "../../getProtocols";
-import { craftParentProtocolV2 } from "../utils/craftParentProtocolV2";
-import { getRaisesInternal } from "../routes/getRaises";
-import { getHacksInternal } from "../routes/getHacks";
-import { getTokenRightsInternal } from "../routes/getTokenRights";
-import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "../../storeGetCharts";
 import { getOraclesInternal } from "../routes/getOracles";
 import { getForksInternal } from "../routes/getForks";
@@ -25,15 +17,38 @@ import { RUN_TYPE, runWithRuntimeLogging } from "../utils";
 import { genFormattedChains } from "./genFormattedChains";
 import { fetchRWAStats } from "../../rwa";
 import { sendMessage } from "../../utils/discord";
-import { chainKeyToLabelMap } from "../../utils/normalizeChain";
-import { getActiveUsers } from "../routes/getActiveUsers";
+import { extraSections, chainKeyToLabelMap } from "../../utils/normalizeChain";
+import { dailyTvl, hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 
 const protocolDataMap: { [key: string]: any } = {}
 
 let getYesterdayTvl: Function, getLastWeekTvl: Function, getLastMonthTvl: Function
 let getYesterdayTokensUsd: Function, getLastWeekTokensUsd: Function, getLastMonthTokensUsd: Function
 
+// written to r2 in the cron-raises script
+async function storeCachedR2Files() {
+  const r2Data = [
+    'raises', 'hacks',
+    'token-rights',
+    'news/articles'
+  ]
+
+  for (const subPath of r2Data) {
+    try {
+      const data = await sdk.cache.readCache(`cron-task/${subPath}`, {
+        readFromR2Cache: true,
+        skipCompression: true,
+      })
+      await storeRouteData(subPath, data)
+    } catch (e) {
+      console.log(`Failed to read/write ${subPath} from R2 cache, skipping:`, e)
+    }
+  }
+}
+
+
 async function run() {
+  await storeCachedR2Files()
 
   await initializeTVLCacheDB()
   await initCache({ cacheType: RUN_TYPE.CRON })
@@ -53,13 +68,13 @@ async function run() {
     getAllTvlData: (protocol: any) => protocolDataMap[protocol.id]?.tvlData,
   }
 
-  // await writeProtocolTvlData()  // to be served from rest api instead
   await writeBitcoinAddressesFile()
   await writeProtocols()
   await writeConfig()
   await writeOracles()
   await writeForks()
   await writeCategories()
+  await writeChainAssetsCache()
 
   console.time('write /langs')
   await storeLangs(processProtocolsOptions)
@@ -72,17 +87,9 @@ async function run() {
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
-  await storeActiveUsers()
   await storeRWAStats()
 
-
-  // await storeRouteData('twitter/overview', await getTwitterOverviewFileV2())
-
-  // await writeRaises() // moved to different cron task
-  // await writeHacks()  // moved to different cron task
-
-  // Commenting this out as it takes long time to run, will be served from rest api instead
-  // await writeProtocolRoute()
+  await genFormattedChains()
 
   async function initializeProtocolDataMap() {
 
@@ -159,104 +166,6 @@ async function run() {
     console.timeEnd('getAllProtocolItems')
   }
 
-  async function writeProtocolRoute() {
-    console.time('write /protocol/:name')
-    const withConcurrency = 25
-    const options = { useNewChainNames: false, skipAggregatedTvl: false }
-
-    let items = shuffleArray(Object.entries(cache.protocolSlugMap))
-
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `protocol/${slugName}`
-        const data = await craftProtocolV2({ ...options, protocolData })
-        await storeRouteData(key, data)
-      })
-
-    items = shuffleArray(Object.entries(cache.parentProtocolSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, parentProtocol]: [string, IProtocol]) => {
-        const key = `protocol/${slugName}`
-        const data = await craftParentProtocolV2({ ...options, parentProtocol: parentProtocol as any })
-        await storeRouteData(key, data)
-      })
-
-    options.skipAggregatedTvl = true
-    options.useNewChainNames = true
-    items = shuffleArray(Object.entries(cache.protocolSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `updatedProtocol/${slugName}`
-        const data = await craftProtocolV2({ ...options, protocolData })
-        await storeRouteData(key, data)
-      })
-
-    items = shuffleArray(Object.entries(cache.parentProtocolSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, parentProtocol]: [string, IProtocol]) => {
-        const key = `updatedProtocol/${slugName}`
-        const data = await craftParentProtocolV2({ ...options, parentProtocol: parentProtocol as any })
-        await storeRouteData(key, data)
-      })
-
-
-    // write treasury data
-    items = shuffleArray(Object.entries(cache.treasurySlugMap))
-
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `treasury/${slugName}`
-        const data = await craftProtocolV2({ ...options, protocolData })
-        await storeRouteData(key, data)
-      })
-
-
-
-    // write entity data
-    items = shuffleArray(Object.entries(cache.entitiesSlugMap))
-    await PromisePool.withConcurrency(withConcurrency).for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `entity/${slugName}`
-        const data = await craftProtocolV2({ ...options, protocolData })
-        await storeRouteData(key, data)
-      })
-    console.timeEnd('write /protocol/:name')
-  }
-
-  async function writeProtocolTvlData() {
-    console.time('write /tvl/:name')
-    const withConcurrency = 25
-    let items = shuffleArray(Object.entries(cache.protocolSlugMap))
-
-    await PromisePool
-      .withConcurrency(withConcurrency)
-      .for(items)
-      .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-        const key = `tvl/${slugName}`
-        const data = getLastHourlyRecord(protocolData)
-        await storeRouteData(key, data?.tvl)
-      })
-
-    items = shuffleArray(Object.entries(cache.parentProtocolSlugMap))
-
-    await PromisePool
-      .withConcurrency(withConcurrency)
-      .for(items)
-      .process(async ([slugName, parentProtocol]: [string, IProtocol]) => {
-        const key = `tvl/${slugName}`
-        const childProtocols = cache.childProtocols[parentProtocol.id] ?? []
-        if (childProtocols.length < 1 || childProtocols.map((p: any) => p.name).includes(parentProtocol.name)) {
-          console.log('bad parent protocol', parentProtocol.name)
-          return;
-        }
-
-        const tvl = childProtocols.map(getLastHourlyRecord).reduce((acc: number, cur: any) => acc + cur.tvl, 0);
-
-        await storeRouteData(key, tvl)
-      })
-    console.timeEnd('write /tvl/:name')
-  }
-
   async function writeProtocols() {
     console.time('write /protocols')
 
@@ -328,38 +237,7 @@ async function run() {
     await storeRouteData('configs', data)
     await storeRouteData('/_fe/static/configs', data)
 
-
-    // this is handled in rest server now
-    // const withConcurrency = 25
-
-    // let items = shuffleArray(Object.entries(cache.protocolSlugMap))
-    // await PromisePool.withConcurrency(withConcurrency).for(items)
-    //   .process(async ([slugName, protocolData]: [string, IProtocol]) => {
-    //     const key = `config/smol/${slugName}`
-    //     await storeRouteData(key, protocolData)
-    //   })
     console.timeEnd('write /config')
-  }
-
-  async function writeRaises() {
-    console.time('write /raises')
-    const data = await getRaisesInternal()
-    await storeRouteData('raises', data)
-    console.timeEnd('write /raises')
-  }
-
-  async function writeHacks() {
-    console.time('write /hacks')
-    const data = await getHacksInternal()
-    await storeRouteData('hacks', data)
-    console.timeEnd('write /hacks')
-  }
-
-  async function writeTokenRights() {
-    console.time('write /token-rights')
-    const data = await getTokenRightsInternal()
-    await storeRouteData('token-rights', data)
-    console.timeEnd('write /token-rights')
   }
 
   async function writeOracles() {
@@ -369,32 +247,47 @@ async function run() {
 
     // keep old cache file for old api routes
     await storeRouteData('oracles', data)
-    
+
     // write breakdown oracles cache files for v2 routes
     await writeOraclesBreakdown(data);
-    
+
     console.timeEnd(debugString)
-    
+
     async function writeOraclesBreakdown(data: any) {
       // overview data without charts
+      function transformOraclesTVS(oraclesTVS: any): any {
+        const transformedOraclesTVS = oraclesTVS;
+
+        for (const [oracle, protocolTvs] of Object.entries(oraclesTVS)) {
+          // delete keys from oraclesTVS
+          for (const [protocolName, keyAndTvs] of Object.entries(protocolTvs as any)) {
+            for (const key of extraSections) {
+              delete transformedOraclesTVS[oracle][protocolName][key];
+            }
+          }
+        }
+
+        return transformedOraclesTVS;
+      }
+
       await storeRouteData('oracles-v2/overview', {
         oracles: data.oracles,
         chainsByOracle: data.chainsByOracle,
-        oraclesTVS: data.oraclesTVS,
+        oraclesTVS: transformOraclesTVS(data.oraclesTVS),
       })
-      
+
       // total chart per key, key => timestamp => value
       const totalChartByKeys: Record<string, Record<number, number>> = {};
       // total chart per oracle, oracle => timestamp => value
       const totalChartByOracles: Record<string, Record<number, number>> = {};
       // total chart per chain, chain => timestamp => value
       const totalChartByChains: Record<string, Record<number, number>> = {};
-      
+
       // total chart per key, key => timestamp => chain => value
       const totalChartByKeysAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
       // total chart per key, key => timestamp => protocol => value
       const totalChartByKeysAndProtocolBreakdown: Record<string, Record<number, Record<string, number>>> = {};
-      
+
       // chart protocol chain-breakdown => key => timestamp => chain => value
       const totalChartByProtocolsAndChainBreakdown: Record<string, Record<number, Record<string, number>>> = {};
 
@@ -404,44 +297,45 @@ async function run() {
       for (const [timestamp, oracles] of Object.entries(data.chainChart)) {
         const ts = Number(timestamp);
         const os = oracles as any;
-        
+
         // { Chronicle: { Ethereum: 1, Ethereum-staking: 0 } }
         for (const [oracle, chains] of Object.entries(os)) {
           for (const [itemKey, itemValue] of Object.entries(chains as any)) {
             let [chain, key] = itemKey.split('-'); // Ethereum-staking
+            if (extraSections.includes(chain)) continue; // they are: staking, pool2, borrowed, just ignore these cases
             if (key === undefined) key = 'tvl';
 
             // add to total
             ensureItemValue(totalChartByKeys, key, ts, Number(itemValue));
             ensureItemValue(totalChartByKeys, 'all', ts, Number(itemValue));
-            
+
             // add to chain total
             ensureItemValue(totalChartByChains, `${chain}-${key}`, ts, Number(itemValue));
             ensureItemValue(totalChartByChains, `${chain}-all`, ts, Number(itemValue));
-            
+
             // add to protocol total
             ensureItemValue(totalChartByOracles, `${oracle}-${key}`, ts, Number(itemValue));
             ensureItemValue(totalChartByOracles, `${oracle}-all`, ts, Number(itemValue));
-            
+
             // add to total chain-breakdown
             ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, key, ts, chain, Number(itemValue));
             ensureItemValueBreakdown(totalChartByKeysAndChainBreakdown, 'all', ts, chain, Number(itemValue));
-            
+
             // add to total protocol-breakdown
             ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, key, ts, oracle, Number(itemValue))
             ensureItemValueBreakdown(totalChartByKeysAndProtocolBreakdown, 'all', ts, oracle, Number(itemValue))
-            
+
             // add to protocol chain-breakdown
             ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-${key}`, ts, chain, Number(itemValue))
             ensureItemValueBreakdown(totalChartByProtocolsAndChainBreakdown, `${oracle}-all`, ts, chain, Number(itemValue))
-            
+
             // add to chain protocol-breakdown
             ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-${key}`, ts, oracle, Number(itemValue))
             ensureItemValueBreakdown(totalChartByChainsAndProtocolBreakdown, `${chain}-all`, ts, oracle, Number(itemValue))
           }
         }
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(totalChartByKeys)) {
         await storeRouteData(`oracles-v2/charts/total-${key}`, buildTimeseriesItemValue(valueByTimestamp));
       }
@@ -451,7 +345,7 @@ async function run() {
       for (const [key, valueByTimestamp] of Object.entries(totalChartByKeysAndProtocolBreakdown)) {
         await storeRouteData(`oracles-v2/charts/total-${key}-protocol-breakdown`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(totalChartByOracles)) {
         await storeRouteData(`oracles-v2/charts/protocols/${key}`, buildTimeseriesItemValue(valueByTimestamp));
       }
@@ -475,34 +369,34 @@ async function run() {
 
     // keep old cache file for old api routes
     await storeRouteData('forks', data)
-    
+
     // write breakdown forks cache files for v2 routes
     await writeForksBreakdown(data);
-    
+
     console.timeEnd(debugString)
-    
+
     async function writeForksBreakdown(data: any) {
       // overview data without charts
       await storeRouteData('forks-v2/overview', data.forks)
-      
+
       // key => timestamp => protocol => value
       const chartByKeys: Record<string, Record<number, Record<string, number>>> = {};
-      
+
       // protocol => timestamp => value
       const chartByProtocols: Record<string, Record<number, number>> = {};
-      
+
       for (const [timestamp, forks] of Object.entries(data.chart)) {
         for (const [protocol, items] of Object.entries(forks as any)) {
           for (const [key, value] of Object.entries(items as any)) {
             ensureItemValue(chartByProtocols, `${protocol}-${key}`, Number(timestamp), Number(value));
             ensureItemValue(chartByProtocols, `${protocol}-all`, Number(timestamp), Number(value));
-            
+
             ensureItemValueBreakdown(chartByKeys, `total-${key}-protocol-breakdown`, Number(timestamp), protocol, Number(value));
             ensureItemValueBreakdown(chartByKeys, 'total-all-protocol-breakdown', Number(timestamp), protocol, Number(value));
           }
         }
       }
-      
+
       for (const [key, valueByTimestamp] of Object.entries(chartByKeys)) {
         await storeRouteData(`forks-v2/charts/${key}`, buildTimeseriesItemValueBreakdown(valueByTimestamp));
       }
@@ -538,6 +432,19 @@ async function run() {
       const Bucket = "tvl-adapter-cache"
       const data = await await sdk.cache.readCache(`${Bucket}/bitcoin-addresses.json`)
       await storeRouteData('/config/smol/bitcoin-addresses.json', data)
+      console.timeEnd(debugString)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function writeChainAssetsCache() {
+    try {
+
+      const debugString = 'write /chain-assets/flows/24h'
+      console.time(debugString)
+      const data = await await sdk.cache.readCache(`chain-assets/flows/24h`)
+      await storeRouteData('/chain-assets/flows/24h', data)
       console.timeEnd(debugString)
     } catch (e) {
       console.error(e)
@@ -580,20 +487,6 @@ async function storeRWAStats() {
   }
 }
 
-
-async function storeActiveUsers() {
-  try {
-
-    const debugString = 'write /activeUsers'
-    console.time(debugString)
-    const data = await getActiveUsers()
-    await storeRouteData('/activeUsers', data)
-    console.timeEnd(debugString)
-  } catch (e) {
-    console.error(e)
-  }
-}
-
 function ensureItemValue(items: Record<string, Record<number, number>>, key: string, ts: number, value: number) {
   items[key] = items[key] || {};
   items[key][ts] = items[key][ts] || 0;
@@ -630,7 +523,6 @@ runWithRuntimeLogging(run, {
   application: "cron-task",
   type: 'tvl-data',
 })
-  .then(genFormattedChains)
   .catch(async e => {
     console.error(e)
     const errorMessage = (e as any)?.message ?? (e as any)?.stack ?? JSON.stringify(e)

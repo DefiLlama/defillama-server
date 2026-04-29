@@ -18,11 +18,8 @@ const handler = async (
         return errorResponse({ message: "Coin doesn't exist" })
     }
 
-    if (typeof coin.decimals === 'string' && !isNaN(Number(coin.decimals)))
-        coin.decimals = Number(coin.decimals);
-
     const response = {
-        decimals: coin.decimals,
+        decimals: coin.decimals == null ? undefined : Number(coin.decimals),
         symbol: coin.symbol,
         prices: [] as {
             timestamp: number,
@@ -35,7 +32,7 @@ const handler = async (
             return
         }
         response.prices.push({
-            price: finalCoin.price,
+            price: Number(finalCoin.price),
             timestamp: finalCoin.SK
         });
     }))

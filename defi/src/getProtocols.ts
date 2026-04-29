@@ -12,6 +12,7 @@ import {
 } from "./utils/normalizeChain";
 import type { IProtocol, ITvlsByChain } from "./types";
 import fetch from "node-fetch";
+import { fetchMcaps } from "./utils/coinsApi";
 import cgSymbolsJson from "./utils/symbols/symbols.json";
 import { parentProtocolsById } from "./protocols/parentProtocols";
 
@@ -347,14 +348,11 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
 
 const apiV1Functions = {
   getCoinMarkets: async (protocols: Protocol[]) =>
-    fetch("https://coins.llama.fi/mcaps", {
-      method: "POST",
-      body: JSON.stringify({
-        coins: protocols
-          .filter((protocol) => typeof protocol.gecko_id === "string")
-          .map((protocol) => `coingecko:${protocol.gecko_id}`),
-      }),
-    }).then((r) => r.json()),
+    fetchMcaps(
+      protocols
+        .filter((protocol) => typeof protocol.gecko_id === "string")
+        .map((protocol) => `coingecko:${protocol.gecko_id}`),
+    ),
   getLastHourlyRecord: async (protocol: Protocol) => getLastRecord(hourlyTvl(protocol.id)),
   getLastHourlyTokensUsd: async (protocol: Protocol) => getLastRecord(hourlyUsdTokensTvl(protocol.id)),
 };

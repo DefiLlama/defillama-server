@@ -18,7 +18,7 @@ export async function getHacksInternal() {
         chain: r.fields["Chain"] ?? null,
         bridgeHack: r.fields["Bridge / Multichain Application"] ?? false,
         targetType: r.fields["Target Type"] ?? null,
-        source: r.fields["Link"],
+        source: "",
         returnedFunds: r.fields["Refunded funds to users"] ?? null,
         defillamaId,
         ...(protocol?.parentProtocol ? { parentProtocolId: protocol.parentProtocol } : {}),

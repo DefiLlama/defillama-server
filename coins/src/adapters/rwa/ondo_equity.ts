@@ -53,7 +53,13 @@ export async function ondo_equity(timestamp: number): Promise<Write[]> {
     pkMap[symbol] = [];
     return addresses.map(({ address, decimals, networkChainId }) => {
       const chainId: any = networkChainId.split("-")[1];
-      const chain = chainIdMap[chainId];
+      let chain = chainIdMap[chainId];
+      if (chainId === '900') chain = 'solana'
+
+      if (!chain) {
+        console.log("Unknown chainId", networkChainId);
+        return;
+      }
       pkMap[symbol].push({
         address,
         decimals,
@@ -65,7 +71,7 @@ export async function ondo_equity(timestamp: number): Promise<Write[]> {
   const writes: Write[] = [];
   prices.map(({ timestamp, primaryMarket: { price, symbol } }: PriceRes) => {
     if (timestamp < now - margin) return;
-    
+
     // because there are some price items with no addresses
     if (!pkMap[symbol]) return;
 
@@ -74,7 +80,7 @@ export async function ondo_equity(timestamp: number): Promise<Write[]> {
         writes,
         chain,
         address,
-        price,
+        Number(price),
         decimals,
         symbol,
         0,

@@ -8,6 +8,8 @@ import { IChainMetadata, IProtocolMetadata } from "./api2/cron-task/types";
 import { sendMessage } from "./utils/discord";
 import sleep from "./utils/shared/sleep";
 import { getEnv } from "./api2/env";
+import { rwaSlug } from "./rwa/utils";
+import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
@@ -17,7 +19,7 @@ const splitCamelCase = (str: string) =>
 
 // Build search name variants (no-spaces + camelCase-split) for a list of names, excluding duplicates and the original names
 function buildNameVariants(names: string[]): string[] {
-  const originals = new Set(names.map(n => n.toLowerCase()));
+  const originals = new Set(names.map((n) => n.toLowerCase()));
   const variants = new Set<string>();
   for (const name of names) {
     const noSpaces = name.replace(/\s+/g, "");
@@ -44,7 +46,104 @@ interface SearchResult {
   mcapRank?: number;
   previousNames?: string[];
   nameVariants?: string[];
+  keywords?: string[];
+  // Up to 5 single-value copies of `keywords`. Meilisearch's `exactness`
+  // ranking rule concatenates array attributes, so an array-valued `keywords`
+  // field can only ever produce `matchesStart` for a single-word query. By
+  // mirroring each keyword into its own scalar field at the top of
+  // `searchable-attributes`, a query matching that keyword yields
+  // `exactMatch` (score 1.0) and lets `r:desc` rank important pages above
+  // same-named entities.
+  alias1?: string;
+  alias2?: string;
+  alias3?: string;
+  alias4?: string;
+  alias5?: string;
+  r?: number;
   v: number;
+}
+
+interface TokenSearchData {
+  name: string;
+  symbol: string;
+  token_nk: string;
+  route: string;
+  is_yields: boolean;
+  mcap_rank?: number;
+  logo?: string;
+}
+
+const SEARCH_RANK = {
+  navPage: 4,
+  entity: 3,
+  collection: 2,
+  subPage: 1,
+  deprecated: -1,
+} as const;
+
+function getPageSearchKeywords(keywords?: string[]): string[] | undefined {
+  if (!Array.isArray(keywords)) return undefined;
+
+  const cleaned = Array.from(new Set(keywords.map((keyword) => keyword?.trim()).filter(Boolean)));
+  return cleaned.length > 0 ? cleaned : undefined;
+}
+
+function getPageSearchAliases(
+  keywords: string[] | undefined
+): Pick<SearchResult, "alias1" | "alias2" | "alias3" | "alias4" | "alias5"> {
+  if (!keywords?.length) return {};
+  const aliases: Record<string, string> = {};
+  for (let i = 0; i < Math.min(keywords.length, 5); i++) {
+    aliases[`alias${i + 1}`] = keywords[i];
+  }
+  return aliases;
+}
+
+function mergeKeywords(...keywordSets: Array<string[] | undefined>): string[] | undefined {
+  const merged = Array.from(
+    new Set(keywordSets.flatMap((keywords) => keywords ?? []).map((keyword) => keyword.trim()))
+  );
+  return merged.length > 0 ? merged : undefined;
+}
+
+function dedupeFrontendPageResults(results: SearchResult[]): SearchResult[] {
+  const deduped = new Map<string, SearchResult>();
+
+  for (const result of results) {
+    const dedupeKey = result.route;
+    const existing = deduped.get(dedupeKey);
+    if (!existing) {
+      deduped.set(dedupeKey, result);
+      continue;
+    }
+
+    // Two frontend pages resolve to the same route (e.g. sidebar "Stablecoins"
+    // and metric "Stablecoins by Market Cap" both point to `/stablecoins`).
+    // Collapse into one doc: keep the shorter/cleaner name for the UI, drop
+    // the longer one into `nameVariants` so it still matches at search time,
+    // and union `keywords` + recompute aliases.
+    const sameName = existing.name.trim().toLowerCase() === result.name.trim().toLowerCase();
+    const [primary, secondary] =
+      result.name.length < existing.name.length ? [result, existing] : [existing, result];
+
+    const nameVariants = sameName
+      ? mergeKeywords(existing.nameVariants, result.nameVariants)
+      : mergeKeywords(existing.nameVariants, result.nameVariants, [secondary.name]);
+    const previousNames = mergeKeywords(existing.previousNames, result.previousNames);
+    const keywords = mergeKeywords(existing.keywords, result.keywords);
+
+    deduped.set(dedupeKey, {
+      ...primary,
+      ...(keywords ? { keywords } : {}),
+      ...(previousNames ? { previousNames } : {}),
+      ...(nameVariants ? { nameVariants } : {}),
+      ...getPageSearchAliases(keywords),
+      r: Math.max(existing.r ?? 0, result.r ?? 0),
+      v: Math.max(existing.v ?? 0, result.v ?? 0),
+    });
+  }
+
+  return Array.from(deduped.values());
 }
 
 const getProtocolSubSections = ({
@@ -264,10 +363,19 @@ const getProtocolSubSections = ({
     });
   }
 
-  return subSections.map((result) => ({
-    ...result,
-    v: tastyMetrics[result.route] ?? 0,
-    r: 0,
+  if (metadata?.tokenRights) {
+    subSections.push({
+      ...result,
+      id: `${result.id}_tokenRights`,
+      subName: "Token Rights",
+      route: `/protocol/token-rights/${sluggifyString(protocolData.name)}`,
+    });
+  }
+
+  return subSections.map(({ symbol, ...rest }) => ({
+    ...rest,
+    v: tastyMetrics[rest.route] ?? 0,
+    r: rest.r === SEARCH_RANK.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.subPage,
   }));
 };
 
@@ -286,6 +394,11 @@ async function getAllCurrentSearchResults(index: string) {
         },
       }
     );
+
+    if (!Array.isArray(res?.results)) {
+      console.log("Unexpected response while fetching search results:", res);
+      throw new Error("Failed to fetch search results from Search API");
+    }
 
     allResults.push(...res.results);
 
@@ -322,16 +435,16 @@ for (const p of parentProtocolsList) {
 function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
-  tastyMetrics: Record<string, number>,
+  tastyMetrics: Record<string, number>
 ) {
   const otherPages = [
-  {
-    "name": "LlamaFeed",
-    "route": "https://llamafeed.io"
-  }].map(page=>({
+    { name: "LlamaFeed", route: "https://llamafeed.io" },
+    { name: "Etherscan", route: "https://etherscan.io/" },
+  ].map((page) => ({
     id: `others_${normalize(page.name)}`,
     name: page.name,
     route: page.route,
+    r: SEARCH_RANK.navPage,
     v: 1000,
   })) as Array<SearchResult>;
 
@@ -345,7 +458,8 @@ function buildDirectoryResults(
   for (const parent of tvlData.parentProtocols) {
     const route = `/protocol/${sluggifyString(parent.name)}`;
     const prevNames = previousNamesMap.get(parent.name);
-    if (parent.referralUrl || parent.url) urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
+    if (parent.referralUrl || parent.url)
+      urlToIndex.set(stripTrailingSlash(parent.referralUrl ?? parent.url), directoryResults.length);
     const allNames = [parent.name, ...(prevNames ?? [])];
     const variants = buildNameVariants(allNames);
     if (parent.deadUrl) deadUrlsBlacklist.add(parent.url);
@@ -359,15 +473,17 @@ function buildDirectoryResults(
       ...(parent.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
-      v: tastyMetrics[route] ?? 0
+      r: parent.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
+      v: tastyMetrics[route] ?? 0,
     });
   }
 
   for (const protocol of tvlData.protocols) {
     const prevNames = previousNamesMap.get(protocol.name) ?? [];
-    const protocolUrl = protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
+    const protocolUrl =
+      protocol.referralUrl || protocol.url ? stripTrailingSlash(protocol.referralUrl ?? protocol.url) : "";
     if (protocolUrl && urlToIndex.has(protocolUrl)) {
-      if(prevNames.length > 0){
+      if (prevNames.length > 0) {
         // Child shares URL with an existing entry — merge its previousNames into the parent
         const parentIdx = urlToIndex.get(protocolUrl)!;
         const parentEntry = directoryResults[parentIdx];
@@ -399,23 +515,29 @@ function buildDirectoryResults(
       ...(protocol.deprecated ? { deprecated: true } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: protocol.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[route] ?? 0,
     });
   }
 
   const cexs: Array<SearchResult> = cexsData
-  .filter((c) => c.slug && c.url).map(cex=>({
-    id: `cex_${normalize(cex.name)}`,
-    name: cex.name,
-    ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
-    route: cex.url!,
-    logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
-    v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
-  }));
+    .filter((c) => c.slug && c.url)
+    .map((cex) => ({
+      id: `cex_${normalize(cex.name)}`,
+      name: cex.name,
+      ...(cex.coinSymbol ? { symbol: cex.coinSymbol } : {}),
+      route: cex.url!,
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(cex.slug!)}?w=48&h=48`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/cex/${sluggifyString(cex.slug!)}`] ?? 0,
+    }));
 
-  const allResults = directoryResults.concat(otherPages).concat(cexs).filter(r => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
-  const maxV = Math.max(...allResults.map(r => r.v));
-  const swapEntry = allResults.find(r => r.route === "https://swap.defillama.com");
+  const allResults = directoryResults
+    .concat(otherPages)
+    .concat(cexs)
+    .filter((r) => r.route && r.route !== "" && !deadUrlsBlacklist.has(r.route));
+  const maxV = Math.max(...allResults.map((r) => r.v));
+  const swapEntry = allResults.find((r) => r.route === "https://swap.defillama.com");
   if (swapEntry) swapEntry.v = maxV;
   return allResults;
 }
@@ -433,6 +555,11 @@ async function generateSearchList() {
     chainsMetadata,
     coinsData,
     datsData,
+    rwaListData,
+    rwaTickerToNameMap,
+    rwaPerpsListData,
+    rwaPerpContractToNameMap,
+    equitiesData,
   ]: [
     {
       chains: string[];
@@ -442,47 +569,98 @@ async function generateSearchList() {
     },
     { peggedAssets: Array<{ name: string; symbol: string; circulating: { peggedUSD: number } }> },
     { bridges: Array<{ name: string; displayName: string; icon: string; monthlyVolume: number; slug?: string }> },
-    Record<string, Array<{ name: string; route: string }>>,
+    Record<string, Array<{ name: string; route: string; searchKeywords?: string[] }>>,
     Record<string, number>,
     Record<string, IProtocolMetadata>,
     Record<string, IChainMetadata>,
-    Array<{ symbol: string; name: string; token_nk: string; mcap_rank: number; on_yields: boolean }>,
+    Record<string, TokenSearchData>,
     {
       assetMetadata: Record<string, { name: string; ticker: string }>;
       institutionMetadata: Record<string, { name: string; ticker: string }>;
-    }
+    },
+    {
+      canonicalMarketIds: Array<string>;
+      platforms: Array<string>;
+      categories: Array<string>;
+      chains: Array<string>;
+    },
+    Record<string, string>,
+    { contracts: string[]; venues: string[]; assetGroups: string[] },
+    Record<string, string>,
+    Array<{ name: string; ticker: string }>
   ] = await Promise.all([
-    fetchJson("https://api.llama.fi/lite/protocols2"),
-    fetchJson("https://stablecoins.llama.fi/stablecoins"),
-    fetchJson("https://bridges.llama.fi/bridges"),
-    fetchJson("https://defillama.com/pages.json").catch((e) => {
-      console.log("Error fetching frontend pages", e);
-      return {};
-    }),
-    fetchJson(`${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`, {
+    cachedJSONPull("https://api.llama.fi/lite/protocols2"),
+    cachedJSONPull("https://stablecoins.llama.fi/stablecoins"),
+    cachedJSONPull("https://bridges.llama.fi/bridges"),
+    cachedJSONPull("https://defillama.com/pages.json"),
+    cachedJSONPull({
+      endpoint: `${process.env.TASTY_API_URL}/metrics?startAt=${startAt}&endAt=${endAt}&unit=day&type=url&limit=10000`,
       headers: {
         Authorization: `Bearer ${process.env.TASTY_API_KEY}`,
       },
-    })
-      .then((res: Array<{ x: string; y: number }>) => {
-        const final = {} as Record<string, number>;
-        for (const xy of res) {
-          final[xy.x] = xy.y;
-        }
-        return final;
-      })
-      .catch((e) => {
-        console.log("Error fetching tasty metrics", e);
-        return {};
-      }),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
-    fetchJson("https://api.llama.fi/config/smol/appMetadata-chains.json"),
-    fetchJson("https://ask.llama.fi/coins"),
-    fetchJson(`https://pro-api.llama.fi/${getEnv('INTERNAL_API_KEY')}/dat/institutions`).catch((e) => {
-      console.log("Error fetching institutions", e);
-      return {};
+      defaultResponse: [],
+    }).then((res: Array<{ x: string; y: number }>) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching tasty metrics:", res);
+        throw new Error("Failed to fetch tasty metrics from Tasty API");
+        // return {};
+      }
+
+      const final = {} as Record<string, number>;
+      for (const xy of res) {
+        final[xy.x] = xy.y;
+      }
+      return final;
     }),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-protocols.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/appMetadata-chains.json"),
+    cachedJSONPull("https://api.llama.fi/config/smol/token.json"),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/dat/institutions`),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/list`),
+    cachedJSONPull({
+      endpoint: `https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa/current`,
+      defaultResponse: [],
+    }).then((res) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching RWA canonical market id to name map:", res);
+        throw new Error("Failed to fetch RWA canonical market id to name map from RWA API");
+      }
+      const final = {} as Record<string, string>;
+      for (const rwa of res) {
+        if (rwa.category?.includes("RWA Perps")) continue;
+        if (!rwa.canonicalMarketId) continue;
+        if (final[rwa.canonicalMarketId]) continue;
+        final[rwa.canonicalMarketId] = rwa.assetName;
+      }
+      return final;
+    }),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa-perps/list`),
+    cachedJSONPull({
+      endpoint: `https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/rwa-perps/current`,
+      defaultResponse: [],
+    }).then((res) => {
+      if (!Array.isArray(res)) {
+        console.log("Unexpected response while fetching RWA perps contract to name map:", res);
+        throw new Error("Failed to fetch RWA perps contract to name map from RWA API");
+      }
+      const final = {} as Record<string, string>;
+      for (const rwa of res) {
+        final[rwa.contract] = `${rwa.referenceAsset} - ${rwa.parentPlatform}`;
+      }
+      return final;
+    }),
+    cachedJSONPull(`https://pro-api.llama.fi/${getEnv("INTERNAL_API_KEY")}/equities/v1/companies`),
   ]);
+  if (!coinsData || Array.isArray(coinsData)) {
+    console.log("Unexpected response while reading token cache:", coinsData);
+    throw new Error("Failed to fetch token cache from https://api.llama.fi/config/smol/token.json");
+  }
+  const slugToProtocolName = new Map<string, string>();
+  for (const id in protocolsMetadata) {
+    const meta = protocolsMetadata[id];
+    if (!meta?.name || !meta?.displayName) continue;
+    slugToProtocolName.set(meta.name, meta.displayName);
+  }
   const parentTvl = {} as any;
   const chainTvl = {} as any;
   const categoryTvl = {} as any;
@@ -523,6 +701,7 @@ async function generateSearchList() {
       ...(parent.deprecated ? { deprecated: true, r: -1 } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: parent.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[`/protocol/${sluggifyString(parent.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -557,6 +736,7 @@ async function generateSearchList() {
       ...(protocol.deprecated ? { deprecated: true, r: -1 } : {}),
       ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
       ...(variants.length ? { nameVariants: variants } : {}),
+      r: protocol.deprecated ? SEARCH_RANK.deprecated : SEARCH_RANK.entity,
       v: tastyMetrics[`/protocol/${sluggifyString(protocol.name)}`] ?? 0,
       type: "Protocol",
     };
@@ -574,6 +754,7 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
+  const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
   for (const chain of tvlData.chains) {
@@ -583,6 +764,7 @@ async function generateSearchList() {
       logo: `https://icons.llamao.fi/icons/chains/rsz_${sluggifyString(chain)}?w=48&h=48`,
       tvl: chainTvl[chain],
       route: `/chain/${sluggifyString(chain)}`,
+      r: SEARCH_RANK.entity,
       v: tastyMetrics[`/chain/${sluggifyString(chain)}`] ?? 0,
       type: "Chain",
     };
@@ -808,18 +990,52 @@ async function generateSearchList() {
       });
     }
 
-    subChains.push(...subSections.map((result) => ({ ...result, v: tastyMetrics[result.route] ?? 0, r: 0 })));
+    if (metadata?.normalizedVolume) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_normalizedVolume`,
+        subName: "Normalized Volume",
+        route: `/normalized-volume/chain/${sluggifyString(chain)}`,
+      });
+    }
+
+    if (rwaChainsSet.has(chain)) {
+      subSections.push({
+        ...result,
+        id: `${result.id}_rwa`,
+        subName: "RWA",
+        route: `/rwa/chain/${rwaSlug(chain)}`,
+      });
+    }
+
+    subChains.push(
+      ...subSections.map(({ symbol, ...rest }) => ({
+        ...rest,
+        v: tastyMetrics[rest.route] ?? 0,
+        r: SEARCH_RANK.subPage,
+      }))
+    );
   }
 
   const categories: Array<SearchResult> = [];
+  const categoriesToExclude = new Set([
+    "RWA",
+    "RWA Perps",
+    "Dex Aggregator",
+    "Bridge Aggregator",
+    "Perp Aggregator",
+    "Derivatives",
+    "Liquidations",
+  ]);
 
   for (const category in categoryTvl) {
-    if (category === "RWA") continue;
+    if (categoriesToExclude.has(category)) continue;
     categories.push({
       id: `category_${normalize(category)}`,
       name: category,
       tvl: categoryTvl[category],
       route: `/protocols/${sluggifyString(category)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/protocols/${sluggifyString(category)}`] ?? 0,
       type: "Category",
     });
@@ -833,6 +1049,7 @@ async function generateSearchList() {
       name: tag,
       tvl: tagTvl[tag],
       route: `/protocols/${sluggifyString(tag)}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/protocols/${sluggifyString(tag)}`] ?? 0,
       type: "Tag",
     });
@@ -845,6 +1062,7 @@ async function generateSearchList() {
     mcap: stablecoin.circulating.peggedUSD,
     logo: `https://icons.llamao.fi/icons/pegged/${sluggifyString(stablecoin.name)}?w=48&h=48`,
     route: `/stablecoin/${sluggifyString(stablecoin.name)}`,
+    r: SEARCH_RANK.entity,
     v: tastyMetrics[`/stablecoin/${sluggifyString(stablecoin.name)}`] ?? 0,
     type: "Stablecoin",
   }));
@@ -858,41 +1076,63 @@ async function generateSearchList() {
       volume: brg.monthlyVolume,
       logo: `https://icons.llamao.fi/icons/protocols/${brg.icon.split(":")[1]}?w=48&h=48`,
       route: `/bridge/${brg.slug ?? sluggifyString(brg.displayName ?? brg.name)}`,
+      r: SEARCH_RANK.entity,
       v: tastyMetrics[`/bridge/${brg.slug}`] ?? 0,
       type: "Bridge",
     });
   }
 
-  const metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => ({
-    id: `metric_${normalize(i.name)}`,
-    name: i.name,
-    route: i.route,
-    v: tastyMetrics[i.route] ?? 0,
-    type: "Metric",
-  }));
+  let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => {
+    const keywords = getPageSearchKeywords(i.searchKeywords);
+    return {
+      id: `metric_${normalize(i.name)}`,
+      name: i.name,
+      route: i.route,
+      ...(keywords ? { keywords } : {}),
+      ...getPageSearchAliases(keywords),
+      r: SEARCH_RANK.navPage,
+      v: tastyMetrics[i.route] ?? 0,
+      type: "Metric",
+    };
+  });
 
-  const tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => ({
-    id: `tool_${normalize(t.name)}`,
-    name: t.name,
-    route: t.route,
-    v: tastyMetrics[t.route] ?? 0,
-    type: "Tool",
-  }));
+  let tools: Array<SearchResult> = (frontendPages["Tools"] ?? []).map((t) => {
+    const keywords = getPageSearchKeywords(t.searchKeywords);
+    return {
+      id: `tool_${normalize(t.name)}`,
+      name: t.name,
+      route: t.route,
+      ...(keywords ? { keywords } : {}),
+      ...getPageSearchAliases(keywords),
+      r: SEARCH_RANK.navPage,
+      v: tastyMetrics[t.route] ?? 0,
+      type: "Tool",
+    };
+  });
 
-  const otherPages: Array<SearchResult> = [];
+  let otherPages: Array<SearchResult> = [];
   for (const category in frontendPages) {
     if (["Metrics", "Tools"].includes(category)) continue;
     for (const page of frontendPages[category]) {
+      const keywords = getPageSearchKeywords(page.searchKeywords);
       otherPages.push({
         id: `others_${normalize(page.name)}`,
         name: page.name,
         route: page.route,
+        ...(keywords ? { keywords } : {}),
+        ...getPageSearchAliases(keywords),
+        r: SEARCH_RANK.navPage,
         v: tastyMetrics[page.route] ?? 0,
         type: "Others",
         hideType: true,
       });
     }
   }
+
+  const dedupedFrontendPages = dedupeFrontendPageResults([...metrics, ...tools, ...otherPages]);
+  metrics = dedupedFrontendPages.filter((page) => page.type === "Metric");
+  tools = dedupedFrontendPages.filter((page) => page.type === "Tool");
+  otherPages = dedupedFrontendPages.filter((page) => page.type === "Others");
 
   const cexs: Array<SearchResult> = cexsData
     .filter((c) => c.slug)
@@ -901,104 +1141,177 @@ async function generateSearchList() {
       name: c.name,
       route: `/cex/${sluggifyString(c.slug!)}`,
       logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(c.slug!)}?w=48&h=48`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/cex/${sluggifyString(c.slug!)}`] ?? 0,
       type: "CEX",
     }));
 
   const coins: Array<SearchResult> = [];
-  for (const coin of coinsData) {
+  for (const tokenKey in coinsData) {
+    const coin = coinsData[tokenKey];
     coins.push({
-      id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_usage`,
+      id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token`,
       name: coin.symbol,
-      subName: "Token Usage",
-      route: `/token-usage?token=${coin.symbol}`,
+      route: `/token/${encodeURIComponent(coin.symbol)}`,
+      ...(coin.logo ? { logo: coin.logo } : {}),
       mcapRank: coin.mcap_rank ?? 0,
-      v: tastyMetrics[`/token-usage?token=${coin.symbol}`] ?? 0,
-      type: "Token Usage",
+      r: SEARCH_RANK.subPage,
+      v: tastyMetrics[`/token/${coin.symbol}`] ?? 0,
+      type: "Token",
     });
-    if (coin.on_yields) {
-      coins.push({
-        id: `${coin.token_nk.replace(/[^a-zA-Z0-9_-]/g, "_")}_token_yields`,
-        name: coin.symbol,
-        subName: "Token Yields",
-        route: `/yields?token=${coin.symbol}`,
-        mcapRank: coin.mcap_rank ?? 0,
-        v: tastyMetrics[`/yields?token=${coin.symbol}`] ?? 0,
-        type: "Token Yields",
-      });
-    }
   }
 
   const dats: Array<SearchResult> = [];
-  for (const asset in (datsData.assetMetadata ?? {})) {
+  for (const asset in datsData.assetMetadata ?? {}) {
     dats.push({
       id: `dat_asset_${normalize(datsData.assetMetadata[asset].name)}`,
       name: datsData.assetMetadata[asset].name,
       symbol: datsData.assetMetadata[asset].ticker,
       route: `/digital-asset-treasuries/${asset}`,
+      r: SEARCH_RANK.collection,
       v: tastyMetrics[`/digital-asset-treasuries/${asset}`] ?? 0,
       type: "DAT",
     });
   }
-  for (const institution in (datsData.institutionMetadata ?? {})) {
+  for (const institution in datsData.institutionMetadata ?? {}) {
     dats.push({
       id: `dat_institution_${normalize(datsData.institutionMetadata[institution].ticker)}`,
       name: datsData.institutionMetadata[institution].name,
       symbol: datsData.institutionMetadata[institution].ticker,
       route: `/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`,
+      r: SEARCH_RANK.collection,
       v:
         tastyMetrics[`/digital-asset-treasury/${sluggifyString(datsData.institutionMetadata[institution].ticker)}`] ??
         0,
       type: "DAT",
     });
   }
+  const rwaList: Array<SearchResult> = [];
+  for (const canonicalMarketId of rwaListData.canonicalMarketIds) {
+    const name = rwaTickerToNameMap[canonicalMarketId];
+    const encodedCanonicalMarketId = encodeURIComponent(canonicalMarketId);
+    rwaList.push({
+      id: `rwa_asset_${normalize(canonicalMarketId)}`,
+      ...(name ? { name, symbol: canonicalMarketId } : { name: canonicalMarketId }),
+      route: `/rwa/asset/${encodedCanonicalMarketId}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/asset/${encodedCanonicalMarketId}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const platform of rwaListData.platforms) {
+    const platformSlug = rwaSlug(platform);
+    rwaList.push({
+      id: `rwa_platform_${normalize(platformSlug)}`,
+      name: platform,
+      route: `/rwa/platform/${platformSlug}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/platform/${platformSlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  for (const category of rwaListData.categories) {
+    const categorySlug = rwaSlug(category);
+    if (categorySlug === "rwa-perps") continue;
+    rwaList.push({
+      id: `rwa_category_${normalize(categorySlug)}`,
+      name: category,
+      route: `/rwa/category/${categorySlug}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/category/${categorySlug}`] ?? 0,
+      type: "RWA",
+    });
+  }
+  const rwaPerpsList: Array<SearchResult> = [];
+  for (const contract of rwaPerpsListData.contracts) {
+    const name = rwaPerpContractToNameMap[contract];
+    if (!name) continue;
+    rwaPerpsList.push({
+      id: `rwa_perps_contract_${normalize(contract)}`,
+      name: name,
+      route: `/rwa/perps/contract/${encodeURIComponent(contract)}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/perps/contract/${encodeURIComponent(contract)}`] ?? 0,
+      type: "RWA Perps",
+    });
+  }
+  for (const venue of rwaPerpsListData.venues) {
+    rwaPerpsList.push({
+      id: `rwa_perps_venue_${normalize(venue)}`,
+      name: venue,
+      route: `/rwa/perps/venue/${rwaSlug(venue)}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/perps/venue/${rwaSlug(venue)}`] ?? 0,
+      type: "RWA Perps",
+    });
+  }
+  for (const assetGroup of rwaPerpsListData.assetGroups) {
+    rwaPerpsList.push({
+      id: `rwa_perps_asset_group_${normalize(assetGroup)}`,
+      name: assetGroup,
+      route: `/rwa/perps/asset-group/${rwaSlug(assetGroup)}`,
+      r: SEARCH_RANK.collection,
+      v: tastyMetrics[`/rwa/perps/asset-group/${rwaSlug(assetGroup)}`] ?? 0,
+      type: "RWA Perps",
+    });
+  }
+  const equities: Array<SearchResult> = equitiesData.map((equity) => ({
+    id: `equity_${normalize(equity.name)}_${normalize(equity.ticker)}`,
+    name: equity.name,
+    symbol: equity.ticker,
+    logo: `https://icons.llamao.fi/icons/equities/${equity.ticker}?w=48&h=48`,
+    route: `/equities/${equity.ticker.toLowerCase()}`,
+    r: SEARCH_RANK.collection,
+    v: tastyMetrics[`/equities/${equity.ticker.toLowerCase()}`] ?? 0,
+    type: "Equities",
+  }));
 
-  const results = {
-    chains: chains.sort((a, b) => b.v - a.v),
-    protocols: protocols.sort((a, b) => b.v - a.v),
-    stablecoins: stablecoins.sort((a, b) => b.v - a.v),
-    bridges: bridges.sort((a, b) => b.v - a.v),
-    metrics: metrics.sort((a, b) => b.v - a.v),
-    tools: tools.sort((a, b) => b.v - a.v),
-    categories: categories.sort((a, b) => b.v - a.v),
-    tags: tags.sort((a, b) => b.v - a.v),
-    cexs: cexs.sort((a, b) => b.v - a.v),
-    otherPages: otherPages.sort((a, b) => b.v - a.v),
-    dats: dats.sort((a, b) => b.v - a.v),
-  };
+  const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
+  const sortedGroups = [
+    chains,
+    protocols,
+    stablecoins,
+    bridges,
+    metrics,
+    tools,
+    categories,
+    tags,
+    cexs,
+    otherPages,
+    dats,
+    rwaList,
+    rwaPerpsList,
+    equities,
+  ] as const;
+  for (const group of sortedGroups) group.sort(sortDesc);
 
   return {
-    results: results.chains
-      .concat(results.protocols)
-      .concat(results.stablecoins)
-      .concat(results.bridges)
-      .concat(results.metrics)
-      .concat(results.tools)
-      .concat(results.categories)
-      .concat(results.tags)
-      .concat(results.cexs)
-      .concat(results.otherPages)
-      .concat(subProtocols)
-      .concat(subChains)
-      .concat(coins)
-      .concat(results.dats)
-      .map((result: any) => ({
-        ...result,
-        r: result.r ?? 1,
-      })),
+    results: [
+      ...chains,
+      ...protocols,
+      ...stablecoins,
+      ...bridges,
+      ...metrics,
+      ...tools,
+      ...categories,
+      ...tags,
+      ...cexs,
+      ...otherPages,
+      ...subProtocols,
+      ...subChains,
+      ...coins,
+      ...dats,
+      ...rwaList,
+      ...rwaPerpsList,
+      ...equities,
+    ].map((result: any) => ({
+      ...result,
+      r: result.r ?? 1,
+    })),
     directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
-    topResults: results.chains
-      .slice(0, 3)
-      .concat(results.protocols.slice(0, 3))
-      .concat(results.stablecoins.slice(0, 3))
-      .concat(results.metrics.slice(0, 3))
-      .concat(results.categories.slice(0, 3))
-      .concat(results.tools.slice(0, 3))
-      .concat(results.tags.slice(0, 3))
-      .map((r) => ({
-        ...r,
-        v: 0,
-      }))
+    topResults: [chains, protocols, stablecoins, metrics, categories, tools, tags]
+      .flatMap((g) => g.slice(0, 3))
+      .map((r) => ({ ...r, v: 0 })),
   };
 }
 

@@ -35,6 +35,7 @@ export default async function (
   overwriteExistingData = false,
   extraOptions: any = {},
 ) {
+ 
   const { debugData } = extraOptions
   const hourlyPK = hourlyTvl(protocol.id);
   const currentTvl = calculateTVLWithAllExtraSections(tvl)
@@ -83,10 +84,26 @@ export default async function (
             errorMessage += `\n${token} has ${humanizeNumber(value)}`
           }
       })
-      console.log(errorMessage, usdTokenBalances, currentTvl, tvl, debugData)
+      
+      const problemTable: any = {}
+      for (const [token, value] of Object.entries(usdTokenBalances.tvl ?? {})) {
+        if (value > 1e8) {
+          problemTable[token] = {
+            value: humanizeNumber(value),
+            addresses: debugData?.symbolToAddresses?.[token] ?? []
+          }
+        }
+      }
+
+      console.log(errorMessage, problemTable, currentTvl, tvl)
 
 
-      if (currentTvl < 2e12) // less than 2 trillion
+      let tvlToCompareAgainst = await lastWeeklyTVLRecord;
+      let lastWeekTvlValue = 0
+      if (tvlToCompareAgainst.SK !== undefined)
+        lastWeekTvlValue = calculateTVLWithAllExtraSections(tvlToCompareAgainst)
+
+      if (currentTvl < 2e12 || lastWeekTvlValue > 2e7) // less than 2 trillion and last week less than 20 million
         await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
       throw new Error(errorMessage)
     }
@@ -96,6 +113,57 @@ export default async function (
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl
       )}`;
+
+      const buildSpikeDetails = () => {
+
+
+        try {
+
+          const symToAddr: { [symbol: string]: string[] } = debugData?.symbolToAddresses ?? {};
+          let spikedTokens: { coin: string, value: number, prevValue: number, pctChange: number }[] = [];
+          let newTokens: { coin: string, value: number }[] = [];
+          ;[...extraSections, "tvl"].forEach(section => {
+            const currentSection = usdTokenBalances[section];
+            const prevSection = lastHourlyUsdTVLObject?.[section];
+            if (!currentSection) return;
+            Object.entries(currentSection).forEach(([coin, currentVal]) => {
+              const val = Number(currentVal);
+              if (val < 1e4) return; // skip dust
+              const addrs = symToAddr[coin];
+              const label = addrs?.length ? `${coin}(${addrs.join(', ')})` : coin;
+              const prevVal = Number(prevSection?.[coin] ?? 0);
+              if (prevVal === 0 || prevSection?.[coin] === undefined) {
+                if (val > 1e5) newTokens.push({ coin: label, value: val });
+              } else if (val > prevVal * 1.5) {
+                const pctChange = ((val - prevVal) / prevVal) * 100;
+                spikedTokens.push({ coin: label, value: val, prevValue: prevVal, pctChange });
+              }
+            });
+          });
+
+          spikedTokens = spikedTokens.sort((a, b) => (b.value - b.prevValue) - (a.value - a.prevValue));
+          newTokens = newTokens.sort((a, b) => b.value - a.value);
+          let details = '';
+          if (spikedTokens.length) {
+            const displayTable = spikedTokens.slice(0, 5).map(t => ({
+              jump: `${t.pctChange.toFixed(0)}%`,
+              message: ` ${humanizeNumber(t.prevValue)} → ${humanizeNumber(t.value)}`,
+              coin: t.coin,
+            }));
+            details += util.tableToString(displayTable, {title: 'Spiked Tokens', }) + '\n';
+          }
+          if (newTokens.length) {
+            details += ' new tokens: ' + newTokens.slice(0, 10).map(t =>
+              `${t.coin}: ${humanizeNumber(t.value)}`
+            ).join(', ');
+          }
+          return details;
+        } catch (e) {
+          console.error('Error building spike details', e)
+          return ''
+        }
+      };
+
       let tvlToCompareAgainst = lastWeeklyTVLRecord;
       if (tvlToCompareAgainst.SK === undefined) {
         tvlToCompareAgainst = lastDailyTVLRecord;
@@ -108,7 +176,7 @@ export default async function (
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       const timeLimitDisableHours = 15;
       let spikeRatio = 5
-      if (currentTvl > 50e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
+      if (currentTvl > 10e6) spikeRatio = 2 // block if tvl jumps over 2x for high tvl protocols
 
 
       if (
@@ -118,7 +186,8 @@ export default async function (
         currentTvl > 1e6
       ) {
 
-        const errorMessage = `TVL for ${protocol.name} has >${spikeRatio}x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours`
+        const spikeDetails = buildSpikeDetails();
+        const errorMessage = `TVL for ${protocol.name} has >${spikeRatio}x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed / HOUR).toFixed(2)} hours.${spikeDetails}`
         if (timeElapsed > (3 * HOUR)) {
           if (currentTvl > 10e6) {
             await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
@@ -130,8 +199,9 @@ export default async function (
 
 
       } else {
-        
-        const errorMessage = `TVL of ${protocol.name} has >2x (${change})`
+
+        const spikeDetails = buildSpikeDetails();
+        const errorMessage = `TVL of ${protocol.name} has >2x (${change}).${spikeDetails}`
         if (currentTvl > 10e6) {
           await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
         }
@@ -143,32 +213,43 @@ export default async function (
 
 
     if (storePreviousData && lastHourlyTVL / 2 > currentTvl && Math.abs(lastHourlyUsdTVLObject.SK - unixTimestamp) < 12 * HOUR) {
-      let tvlFromMissingTokens = 0;
-      let missingTokens: { coin: string, value: number, valueHN: string }[] = [];
-      let highValueDrop: { coin: string, value: number, valueHN: string }[] = [];
-      [...extraSections, "tvl"].forEach(section => {
-        if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
-        Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
-          const currentTokenUSDTvl = usdTokenBalances[section]?.[coin]
-          if (currentTokenUSDTvl === undefined) {
-            tvlFromMissingTokens += Number(tvl)
-            missingTokens.push({ coin, valueHN: humanizeNumber(tvl as any), value: tvl as number })
-          }
+      const buildDropDetails = () => {
+        try {
+          const symToAddr: { [symbol: string]: string[] } = debugData?.symbolToAddresses ?? {};
+          let missingTokens: { coin: string, value: number, valueHN: string }[] = [];
+          let highValueDrop: { coin: string, value: number, valueHN: string }[] = [];
+          ;[...extraSections, "tvl"].forEach(section => {
+            if (!lastHourlyUsdTVLObject || !lastHourlyUsdTVLObject[section]) return;
+            Object.entries(lastHourlyUsdTVLObject[section]).forEach(([coin, tvl]) => {
+              const currentTokenUSDTvl = usdTokenBalances[section]?.[coin]
+              const addrs = symToAddr[coin];
+              const label = addrs?.length ? `${coin}(${addrs.join(', ')})` : coin;
+              if (currentTokenUSDTvl === undefined) {
+                missingTokens.push({ coin: label, valueHN: humanizeNumber(tvl as any), value: tvl as number })
+              }
 
-          if (tvl as number > 10e6 && typeof +currentTokenUSDTvl === 'number' && (tvl as number) / 4 > +currentTokenUSDTvl) {
-            const diff = (tvl as number) - (+currentTokenUSDTvl || 0)
-            highValueDrop.push({ coin, valueHN: humanizeNumber(diff as any), value: diff as number })
-          }
-        })
-      })
+              if (tvl as number > 10e6 && typeof +currentTokenUSDTvl === 'number' && (tvl as number) / 4 > +currentTokenUSDTvl) {
+                const diff = (tvl as number) - (+currentTokenUSDTvl || 0)
+                highValueDrop.push({ coin: label, valueHN: humanizeNumber(diff as any), value: diff as number })
+              }
+            })
+          })
 
-      missingTokens = missingTokens.sort((a, b) => b.value - a.value)
-      let missingTokenString = missingTokens.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
-      missingTokenString = missingTokenString.length ? `missing tokens: ${missingTokenString}` : ""
-      highValueDrop = highValueDrop.sort((a, b) => b.value - a.value)
-      const highValueDropString = highValueDrop.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
-      if (highValueDrop.length)
-        missingTokenString += ` high drop: ${highValueDropString}`
+          missingTokens = missingTokens.sort((a, b) => b.value - a.value)
+          let result = missingTokens.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+          result = result.length ? `missing tokens: ${result}` : ""
+          highValueDrop = highValueDrop.sort((a, b) => b.value - a.value)
+          const highValueDropString = highValueDrop.map(token => `${token.coin}: ${token.valueHN}`).join(", ")
+          if (highValueDrop.length)
+            result += ` high drop: ${highValueDropString}`
+          return result;
+        } catch (e) {
+          console.error('Error building drop details', e)
+          return ''
+        }
+      };
+
+      const missingTokenString = buildDropDetails();
       const lastHourlyTVLHN = humanizeNumber(lastHourlyTVL)
       const currentTvlHN = humanizeNumber(currentTvl)
 

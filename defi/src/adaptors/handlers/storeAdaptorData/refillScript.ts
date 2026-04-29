@@ -217,6 +217,10 @@ async function refillAllProtocols() {
   const aTypes = [...ADAPTER_TYPES]
   // randomize order
   aTypes.sort(() => Math.random() - 0.5)
+  const skippedAdapterTypes = [
+    AdapterType.ACTIVE_USERS,
+    AdapterType.NEW_USERS,
+  ] as AdapterType[]
   const tasks = await Promise.all(aTypes.map(runAdapterType))
   const allTasks = tasks.flat()
   console.log('Total protocols to process:', allTasks.length, 'with parallel count of', 5)
@@ -227,6 +231,12 @@ async function refillAllProtocols() {
 
 
   async function runAdapterType(adapterType: AdapterType) {
+
+    if (skippedAdapterTypes.includes(adapterType)) {
+      console.log(`Skipping adapter type ${adapterType} as it's in the skipped list`)
+      return [];
+    }
+
     console.log('Refilling missing datapoints for adapter type:', adapterType)
     const allAdaptorsData = await getAllDimensionsRecordsTimeS({ adapterType, timestamp: startTime })
     for (const data of allAdaptorsData) {

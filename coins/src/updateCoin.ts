@@ -1,5 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { batchWrite } from "./utils/shared/dynamodb";
+import { dualWriteToChRedis } from "./adapters/utils/chRedisWrite";
 import {
   CoinsResponse,
   fetchCgPriceData,
@@ -7,7 +8,6 @@ import {
   getBasicCoins,
 } from "./utils/getCoinsUtils";
 import { setTimer } from "./utils/shared/coingeckoLocks";
-import setEnvSecrets from "./utils/shared/setEnvSecrets";
 import { getR2, storeR2JSONString } from "./utils/r2";
 import { quantisePeriod } from "./utils/timestampUtils";
 
@@ -47,8 +47,8 @@ const currentCoins = async (
       if (isFresh(coin.timestamp, searchWidth)) {
         PKTransforms[coin.PK].forEach((coinName) => {
           response[coinName] = {
-            decimals: coin.decimals,
-            price: coin.price,
+            decimals: coin.decimals == null ? undefined : Number(coin.decimals),
+            price: Number(coin.price),
             symbol: coin.symbol,
             timestamp: coin.timestamp,
             confidence: coin.confidence,
@@ -70,9 +70,9 @@ const currentCoins = async (
         if (isFresh(redirectedCoin.timestamp, searchWidth)) {
           PKTransforms[ogCoin.PK].forEach((coinName) => {
             response[coinName] = {
-              decimals: ogCoin.decimals,
+              decimals: ogCoin.decimals == null ? undefined : Number(ogCoin.decimals),
               symbol: ogCoin.symbol,
-              price: redirectedCoin.price,
+              price: Number(redirectedCoin.price),
               timestamp: redirectedCoin.timestamp,
               confidence: redirectedCoin.confidence,
             };
@@ -87,8 +87,6 @@ const currentCoins = async (
 
 const handler = async (event: any): Promise<IResponse> => {
   // set up env and init promises
-  await setEnvSecrets();
-  process.env.tableName = "prod-coins-table";
   const start = new Date().getTime();
   const currentPromise = currentCoins(event);
   const bulkPromise: Promise<any> = getR2(`updated-coins`).then((r) =>
@@ -159,8 +157,8 @@ const handler = async (event: any): Promise<IResponse> => {
 
     PKTransforms[PK].forEach((coinName) => {
       response[coinName] = {
-        decimals,
-        price,
+        decimals: decimals == null ? undefined : Number(decimals),
+        price: Number(price),
         symbol,
         timestamp: SK,
         confidence,
@@ -199,6 +197,9 @@ const handler = async (event: any): Promise<IResponse> => {
     batchWrite(writes, false),
     storeR2JSONString("updated-coins", JSON.stringify(bulk)),
   ]);
+  await dualWriteToChRedis(writes).catch(e => {
+    console.error(`[CH/Redis dual-write] updateCoin non-fatal: ${(e as Error).message}`);
+  });
 
   // respond
   const end = new Date().getTime();

@@ -4,7 +4,6 @@ import { appendToStaleCoins, checkForStaleness, StaleCoins } from "./staleCoins"
 import * as sdk from '@defillama/sdk'
 import { once, EventEmitter } from 'events'
 import { searchWidth } from "../utils/shared/constants";
-import { Client } from "@elastic/elasticsearch";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -16,10 +15,8 @@ type Balances = {
 export default async function (balances: { [address: string]: string }, timestamp: "now" | number, protocol: string, staleCoins: StaleCoins) {
   replaceETHwithWETH(balances)
 
-  if (priceQueryFilterCoins) await initializePriceQueryFilter()
-
   const PKsToTokens = {} as { [t: string]: string[] };
-  let readKeys = Object.keys(balances)
+  const readKeys = Object.keys(balances)
     .map((address) => {
       if (+balances[address] === 0) return undefined;
       let prefix = "";
@@ -43,20 +40,10 @@ export default async function (balances: { [address: string]: string }, timestam
     })
     .filter((item) => item !== undefined) as string[];
 
-  if (readKeys.length > 210) {
-    await initializePriceQueryFilter()
-
-    if (whitelistedTokenSet.size) {
-      const currentReadKeysCount = readKeys.length;
-      readKeys = readKeys.filter((PK) => whitelistedTokenSet.has(normalizeCoinId(PK)))
-      sdk.log(`Filtered out ${currentReadKeysCount - readKeys.length} tokens from price query, remaining: ${readKeys.length} tokens for ${protocol}`)
-    }
-  }
-
-
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
+  const symbolToAddresses: { [symbol: string]: string[] } = {};
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   const tokenData = await getTokenData(readKeys, timestamp)
   const staleCoinsInclusive: any = {};
@@ -66,15 +53,17 @@ export default async function (balances: { [address: string]: string }, timestam
         const balance = balances[address];
         const { price, decimals } = response;
         if (!price) return;
-        
+
         const symbol = (response.symbol as string).toUpperCase();
         const amount = response.PK.startsWith('coingecko:') ? Number(balance) : new BigNumber(balance).div(10 ** decimals).toNumber();
-        
+
         const usdAmount = amount * price;
         checkForStaleness(usdAmount, response, now, protocol, staleCoinsInclusive);
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;
+        if (!symbolToAddresses[symbol]) symbolToAddresses[symbol] = [];
+        if (!symbolToAddresses[symbol].includes(address)) symbolToAddresses[symbol].push(address);
       });
     }
   });
@@ -85,6 +74,7 @@ export default async function (balances: { [address: string]: string }, timestam
     usdTvl,
     tokenBalances,
     usdTokenBalances,
+    symbolToAddresses,
   };
 }
 
@@ -114,6 +104,7 @@ const priceCache: { [PK: string]: any } = {
   "coingecko:tether": {
     price: 1,
     symbol: "USDT",
+    PK: "coingecko:tether",
     timestamp: Math.floor(Date.now() / 1e3 + 3600) // an hour from script start time
   }
 }
@@ -167,47 +158,118 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
   async function _getTokenData() {
     let cachedTokenData: any[] = []
 
-    // read data from cache where possible
-    readKeys = readKeys.filter((PK: string) => {
-      if (timestamp !== 'now') return true
-      if (priceCache[PK]) {
-        cachedTokenData.push({ ...priceCache[PK], PK })
-        return false
+    function filterReadKeys() {
+      // read data from cache where possible
+      readKeys = readKeys.filter((PK: string) => {
+        if (timestamp !== 'now') return true
+        if (priceCache[PK]) {
+          cachedTokenData.push({...priceCache[PK]})
+          return false
+        }
+        return true
+      })
+    }
+
+    function addToCache(tokenData: any) {
+      // Only cache current-price responses — historical prices would skew later "now" lookups.
+
+      if (timestamp !== 'now') return;
+      for (const [PK, value] of Object.entries(tokenData)) {
+        priceCache[PK] = {...(value as any), PK}
       }
-      return true
-    })
+    }
+
+    function addPKToResponse(res: any) {
+      if (!res) return;
+      for ( const [PK, value] of Object.entries(res)) {
+        (value as any).PK = PK
+      }
+    }
+
 
     if (!readKeys.length) return cachedTokenData
 
-    const readRequests = [];
     sdk.log(`price request count:  ${readKeys.length}`)
-    for (let i = 0; i < readKeys.length; i += 100) {
-      const body = {
-        "coins": readKeys.slice(i, i + 100),
-      } as any
-      if (timestamp !== "now") {
-        body.timestamp = timestamp;
+
+    if (process.env.COINS_V4_API_URL) {
+      try {
+
+        filterReadKeys()
+
+        const headers: any = { "Content-Type": "application/json" }
+        if (process.env.COINS_V4_INTERNAL_PASSWORD) headers["x-coins-password"] = process.env.COINS_V4_INTERNAL_PASSWORD
+        const url = `${process.env.COINS_V4_API_URL.replace(/\/$/, '')}/prices`
+        const chunkSize = 40000
+        const chunks: string[][] = []
+        for (let i = 0; i < readKeys.length; i += chunkSize) {
+          chunks.push(readKeys.slice(i, i + chunkSize))
+        }
+        const allCoins: Record<string, any> = {}
+        await sdk.util.runInPromisePool({
+          items: chunks,
+          permitFailure: false,
+          concurrency: 5,
+          processor: async (chunk: any) => {
+            const body: any = { coins: chunk }
+            if (timestamp !== "now") body.timestamp = timestamp
+
+            const r = await fetch(url, { method: "POST", body: JSON.stringify(body), headers }).then((res) => res.json())
+            
+            if (!r?.coins) 
+              throw new Error(`Invalid response from coins v4 API: ${JSON.stringify(r)}`)
+
+            addPKToResponse(r.coins)
+            addToCache(r.coins)
+
+            Object.assign(allCoins, r.coins) // we are doing this instead of pushing to an array to avoid duplicates if v4 fails and we have to fallback to the old method 
+          }
+        })
+
+        const allCoinsArray = Object.values(allCoins)
+        sdk.log(`fetched ${allCoinsArray.length} coins from coins v4 API`)
+        return cachedTokenData.concat(allCoinsArray)
+
+      } catch (e) {
+        console.log(`Coins v4 API failed, falling back to old method: ${e}`)
       }
-      readRequests.push(
-        fetch("https://coins.llama.fi/prices?source=internal", {
+    }
+
+    filterReadKeys()
+
+    const chunks: string[][] = []
+
+    for (let i = 0; i < readKeys.length; i += 100) {
+      chunks.push(readKeys.slice(i, i + 100))
+    }
+
+    await sdk.util.runInPromisePool({
+      items: chunks,
+      permitFailure: false,
+      concurrency: 11,
+      processor: async (chunk: any) => {
+        if (!chunk.length) return;
+
+        const body: any = { coins: chunk }
+        if (timestamp !== "now") body.timestamp = timestamp
+        const r = await fetch("https://coins.llama.fi/prices?source=internal", {
           method: "POST",
           body: JSON.stringify(body),
           headers: { "Content-Type": "application/json" },
-        }).then((r) => r.json()).then(r => {
-          for (const [PK, value] of Object.entries(r.coins)) {
-            priceCache[PK] = value
-          }
-          return Object.entries(r.coins).map(
-            ([PK, value]) => ({
-              ...(value as any),
-              PK
-            })
-          )
-        })
-      );
-    }
-    const tokenData = cachedTokenData.concat(...(await Promise.all(readRequests)));
-    return tokenData
+        }).then((res) => res.json())
+        if (!r.coins) {
+          console.log(`Invalid response from price API for keys ${chunk.join(", ")}: ${JSON.stringify(r)}`)
+          return;
+        }
+
+        addPKToResponse(r.coins)
+        addToCache(r.coins)
+
+        const resultsArray = Object.values(r.coins)
+        cachedTokenData = cachedTokenData.concat(resultsArray)
+      }
+    })
+
+    return cachedTokenData
   }
 }
 
@@ -216,99 +278,4 @@ interface Counter {
   requestCount: number;
   queue: string[];
   pickFromTop: boolean;
-}
-
-
-// some protocols have a lot of tokens, but we dont have price support for most of them, so we first fetch a list of tokens for which we do have price, then filter out the rest
-
-const priceQueryFilterCoins = !!process.env.PRICE_QUERY_FILTER_FOR_KNOWN_COINS
-const whitelistedTokenSet = new Set() as Set<string>;
-export const whitelistedTokenSetRawPids = new Set() as Set<string>;
-let priceQueryFilterInitializedPromise: any
-
-export async function initializePriceQueryFilter() {
-  if (!priceQueryFilterInitializedPromise) priceQueryFilterInitializedPromise = _initializePriceQueryFilter()
-  return priceQueryFilterInitializedPromise
-  async function _initializePriceQueryFilter() {
-
-    try {
-
-      const client = getClient();
-      if (!client) throw new Error("Elasticsearch client not configured");
-      let response: any = await client.search({
-        index: 'coins-metadata',
-        scroll: "1m",
-        body: {
-          query: {
-            match_all: {},
-          },
-          size: 100000,
-        },
-      });
-
-      while (response.hits.hits.length) {
-        response.hits.hits.map((i: any) => {
-          whitelistedTokenSetRawPids.add(`${i._source.chain}:${i._source.address}`);
-          whitelistedTokenSet.add(normalizeCoinId(i._source.pid));
-        })
-        sdk.log(`Fetched ${whitelistedTokenSet.size} records, ${response.hits.hits.length} in batch`);
-        response = await client.scroll({
-          scroll_id: response._scroll_id,
-          scroll: "1m",
-        });
-      }
-
-    } catch (e: any) {
-      console.error("Error fetching coins metadata:", e.message);
-      return;
-    }
-
-  }
-}
-
-
-function normalizeCoinId(coinId: string): string {
-  coinId = coinId.toLowerCase();
-  const replaceSubStrings = ["asset#", "coingecko#", "coingecko:", "ethereum:"];
-  const replaceSubStringLengths = replaceSubStrings.map((str) => str.length);
-
-  for (let i = 0; i < replaceSubStrings.length; i++) {
-    const subStr = replaceSubStrings[i];
-    const subStrLength = replaceSubStringLengths[i];
-    if (coinId.startsWith(subStr)) {
-      coinId = coinId.slice(subStrLength);
-    }
-  }
-  coinId = coinId.replace(/\//g, ":");
-  if (coinId.length === 75 && coinId.startsWith('starknet:'))
-    coinId = coinId.replace('0x0', '0x')
-  return coinId;
-}
-
-let _client: Client | undefined;
-export function getClient(): Client | undefined {
-  if (_client) return _client;
-  let config;
-  try {
-    const envString = process.env["COINS_ELASTICSEARCH_CONFIG"];
-    if (!envString) return;
-    config = JSON.parse(envString.replace(/\\"/g, '"')); // replace escaped quotes
-  } catch (error) {
-    return;
-  }
-  if (!_client)
-    _client = new Client({
-      maxRetries: 3,
-      requestTimeout: 5000,
-      compression: true,
-      node: config.host,
-      auth: {
-        username: config.username,
-        password: config.password,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
-  return _client;
 }

@@ -10,6 +10,7 @@ const { spawn, } = require('child_process');
 import { dimensionFormChoices, removeWaitingRecords, runDimensionsRefill, sendWaitingRecords, storeAllWaitingRecords, dimensionsDeleteGetList, dimensionsDeleteSelectedRecords, dimensionsDeleteAllRecords, dimensionsDeleteClearList, sendDimensionsDeleteWaitingRecords } from './dimensions'
 import { runMiscCommand } from './misc';
 import { apiTestFormChoices, runApiTests, stopApiTests } from './api-tests';
+import { runSpikesCommand } from './spikes';
 import { runTvlAction, tvlProtocolList, tvlStoreAllWaitingRecords, removeTvlStoreWaitingRecords, sendTvlStoreWaitingRecords, sendTvlDeleteWaitingRecords, tvlDeleteClearList, tvlDeleteSelectedRecords, tvlDeleteAllRecords, } from './tvl'
 
 import { setConfig } from './utils/config';
@@ -243,6 +244,8 @@ async function start() {
           break;
         case 'api-test-stop':
           stopApiTests();
+        case 'spikes-runCommand':
+          runSpikesCommand(ws, data.data);
           break;
 
         default: console.error('Unknown message type:', data.type); break;

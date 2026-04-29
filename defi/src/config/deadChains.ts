@@ -8,7 +8,11 @@ export const deadChains = [
   'nos', 'dfs','curio', 'cube', 
   'saga', // chain paused after the hack
   'vision',
-   'kinto', // chain is dead
+  'kinto', // chain is dead,
+  'inevm',
+  'fluence',
+  'sx',  // deprecated in favor of sx rollup?
+  'mint', // shutdown 2026-04-17: https://x.com/Mint_Blockchain/status/2044980026819617147
 ]
 
 

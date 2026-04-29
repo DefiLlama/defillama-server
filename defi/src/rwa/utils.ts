@@ -1,5 +1,16 @@
 import { bridgedTvlMixedCaseChains } from "../utils/shared/constants";
-import { getChainDisplayName } from "../utils/normalizeChain";
+import { getChainDisplayName, getChainIdFromDisplayName } from "../utils/normalizeChain";
+
+/**
+ * Normalize an Airtable chain value (which may be a chain key like "optimism",
+ * a display name like "OP Mainnet", or a typo'd casing like "op mainnet") to
+ * the canonical display name. Going through getChainIdFromDisplayName first
+ * collapses casing/spelling variants to the chain key, then back to the
+ * canonical display so chain[] and contracts keys always agree.
+ */
+function rwaChainLabel(rawChain: string): string {
+  return getChainDisplayName(getChainIdFromDisplayName(rawChain), true);
+}
 import {
   RWA_ALWAYS_STRING_ARRAY_FIELDS,
   RWA_BOOLEAN_OR_NULL_FIELDS,
@@ -236,13 +247,17 @@ export const formatNumAsNumber = (value: any, maxDecimals?: number): number => {
 export function toStringArrayOrNull(value: any): string[] | null {
   if (value == null) return null;
 
+  // Collapse internal whitespace (newlines, tabs, multi-spaces) to a single space
+  // before trimming. Without this, values like "Stablecoins\n  backed by RWAs"
+  // survive as distinct keys in aggregation maps but slugify identically, causing
+  // one to silently overwrite the other when saved to disk.
   const items = (Array.isArray(value) ? value : [value])
     .flatMap((v) => {
       if (v == null) return [];
       if (typeof v === "string") return [v];
       return [String(v)];
     })
-    .map((s) => s.trim())
+    .map((s) => s.replace(/\s+/g, " ").trim())
     .filter(Boolean);
 
   if (!items.length) return null;
@@ -266,16 +281,19 @@ export function normalizeDashToNull(value: any) {
   return value;
 }
 
-function toStringOrNull(value: any): string | null {
+export function toStringOrNull(value: any): string | null {
   value = normalizeDashToNull(value);
   if (value == null) return null;
+  if (typeof value === "boolean") return null;
   if (typeof value === "string") {
-    const s = value.trim();
+    // Collapse internal whitespace (newlines, tabs, multi-spaces) to single space,
+    // matching the same normalization applied to array fields in toStringArrayOrNull.
+    const s = value.replace(/\s+/g, " ").trim();
     return s ? s : null;
   }
-  // Preserve existing semantics (avoid "[object Object]" as much as possible)
-  if (typeof value === "number" && !Number.isFinite(value)) return String(value);
-  return String(value);
+  if (typeof value === "number" && !Number.isFinite(value)) return null;
+  if (typeof value === "number") return String(value);
+  return null;
 }
 
 function toBooleanOrNull(value: any): boolean | null {
@@ -335,6 +353,22 @@ function getAccessModel(asset: {
 }
 
 function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: string[] } | null {
+  // Already in parsed { chainLabel: string[] } form (e.g. re-normalization of DB data) —
+  // re-normalize the keys so they match the chain[] array (Airtable labels like
+  // "OP Mainnet" / "Plume Mainnet" must round-trip to the canonical display).
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    const keys = Object.keys(value);
+    if (keys.length && keys.every((k) => Array.isArray(value[k]))) {
+      const renamed: { [chainLabel: string]: string[] } = {};
+      for (const k of keys) {
+        const label = rwaChainLabel(k);
+        renamed[label] = renamed[label] ? [...renamed[label], ...value[k]] : value[k];
+      }
+      for (const k of Object.keys(renamed)) renamed[k] = Array.from(new Set(renamed[k]));
+      return renamed;
+    }
+  }
+
   const items = toStringArrayOrNull(value);
   if (!items || !items.length) return null;
 
@@ -346,7 +380,7 @@ function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: st
     const chainRaw = raw.slice(0, idx);
     const address = raw.slice(idx + 1);
     if (!chainRaw || !address) continue;
-    const chainLabel = getChainDisplayName(chainRaw.toLowerCase(), true);
+    const chainLabel = rwaChainLabel(chainRaw);
     if (!out[chainLabel]) out[chainLabel] = [];
     out[chainLabel].push(address);
   }
@@ -360,11 +394,15 @@ function parseChainAddressListToLabelMap(value: any): { [chainLabel: string]: st
 }
 
 function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean; governance: boolean } {
+  // Collapse whitespace so exact-match checks against RWA_STABLECOIN_CATEGORIES
+  // and RWA_GOVERNANCE_CATEGORIES Sets work even with messy Airtable input.
+  const cleanStr = (s: string) => s.replace(/\s+/g, " ").trim();
+
   const normalizeStringList = (value: any): string[] => {
     if (!Array.isArray(value)) return [];
     return value
       .filter((v) => typeof v === "string")
-      .map((v: string) => v.trim())
+      .map((v: string) => cleanStr(v))
       .filter(Boolean);
   };
 
@@ -374,7 +412,7 @@ function deriveStablecoinAndGovernanceFlags(target: any): { stablecoin: boolean;
   const classifications = Array.isArray(target?.rwaClassification)
     ? normalizeStringList(target?.rwaClassification)
     : typeof target?.rwaClassification === "string"
-      ? [target.rwaClassification.trim()].filter(Boolean)
+      ? [cleanStr(target.rwaClassification)].filter(Boolean)
       : [];
 
   const hasAny = (arr: string[], pred: (s: string) => boolean) => arr.some(pred);
@@ -420,14 +458,17 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
   // Must always be a valid enum value (default to "Unknown" when missing/unknown)
   target.accessModel = getAccessModel(target as any);
 
-  // Normalize chain display names
+  // Normalize chain display names. Use rwaChainLabel (display->id->display roundtrip)
+  // so Airtable labels like "OP Mainnet" / "Plume Mainnet" don't get downcased into
+  // unrecognized keys ("op mainnet") that fall through to title-case ("Op mainnet")
+  // and then mismatch the contracts map keys.
   if (Array.isArray(target.chain)) {
     target.chain = target.chain.length
-      ? target.chain.map((c: any) => (typeof c === "string" ? getChainDisplayName(c.toLowerCase(), true) : c)).filter(Boolean)
+      ? Array.from(new Set(target.chain.map((c: any) => (typeof c === "string" ? rwaChainLabel(c) : c)).filter(Boolean)))
       : null;
   }
   if (typeof target.primaryChain === "string" && target.primaryChain) {
-    target.primaryChain = getChainDisplayName(target.primaryChain.toLowerCase(), true);
+    target.primaryChain = rwaChainLabel(target.primaryChain);
   }
 
   // Normalize Contracts -> { [chainLabel]: string[] }
@@ -448,15 +489,16 @@ export function normalizeRwaMetadataForApiInPlace(target: any): any {
     delete target.excludedWallets;
   }
 
-  // Derive category flags
+  // Derive category flags — must run AFTER normalizeStringArrayFieldsInPlace so
+  // that category/assetClass values have consistent whitespace for Set.has() checks.
   const flags = deriveStablecoinAndGovernanceFlags(target);
   target.stablecoin = flags.stablecoin;
   target.governance = flags.governance;
 
-  // Normalize price
+  // Normalize price (do not run through formatNumAsNumber — it lossy-rounds tiny
+  // values like 0.0000397 to 0).
   if (!("price" in target)) target.price = null;
   target.price = toFiniteNumberOrNull(target.price);
-  if (target.price != null) target.price = formatNumAsNumber(target.price);
 
   return target;
 }
@@ -557,9 +599,11 @@ function removeSpikes(data: HistoricalRecord[]): HistoricalRecord[] {
       const prevVal = lastGoodVal;
       const nextVal = result[nextGoodIdx][key] as number;
 
+      const isZeroDip = currVal < 1;
       for (let k = i; k < nextGoodIdx; k++) {
         const t = (result[k].timestamp - prevTs) / (nextTs - prevTs);
-        (result[k] as any)[key] = prevVal + (nextVal - prevVal) * t;
+        const interpolated = prevVal + (nextVal - prevVal) * t;
+        (result[k] as any)[key] = isZeroDip ? Math.max(interpolated, prevVal) : interpolated;
       }
 
       lastGoodIdx = nextGoodIdx;

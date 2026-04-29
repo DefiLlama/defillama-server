@@ -253,6 +253,7 @@
 
 <nav id="top-tab-bar">
   <button class="top-tab" data-top="dimensions">Dimensions</button>
+  <button class="top-tab" data-top="checks">Checks</button>
   <button class="top-tab" data-top="tvl">TVL</button>
 </nav>
 
@@ -262,6 +263,10 @@
     <div id="dim-summary"></div>
     <div id="dim-detail"><div class="loading">Loading…</div></div>
   </main>
+</div>
+
+<div class="top-panel" id="panel-checks">
+  <main id="checks-content"><div class="loading">Loading…</div></main>
 </div>
 
 <div class="top-panel" id="panel-tvl">
@@ -275,6 +280,7 @@ const RUN_TYPES = [
   'fees', 'dexs', 'derivatives', 'aggregators', 'options',
   'open-interest',
   'aggregator-derivatives', 'bridge-aggregators', 'normalized-volume',
+  'nft-volume', 'active-users', 'new-users',
 ]
 
 const SUB_SECTIONS = [
@@ -364,6 +370,19 @@ function humanTvl(n) {
   if (abs >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
   if (abs >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
   return '$' + n.toFixed(0);
+}
+
+function fmtCacheAge(sec) {
+  if (sec == null) return '—';
+  sec = Number(sec);
+  if (isNaN(sec)) return '—';
+  if (sec < 60)      return sec + 's';
+  if (sec < 3600)    return Math.floor(sec / 60) + 'm';
+  if (sec < 86400)   return Math.floor(sec / 3600) + 'h ' + Math.floor((sec % 3600) / 60) + 'm';
+  if (sec < 2592000) { const d = Math.floor(sec / 86400); return d + 'd ' + Math.floor((sec % 86400) / 3600) + 'h'; }
+  const months = Math.floor(sec / 2592000);
+  const days = Math.floor((sec % 2592000) / 86400);
+  return months + 'mo ' + days + 'd';
 }
 
 function sluggify(name) {
@@ -754,6 +773,234 @@ async function loadDimSummary() {
   }
 }
 
+// ── Checks tab ──────────────────────────────────────────────────────────────────
+let checksLoaded = false;
+
+const DIM_ADAPTER_BASE = 'https://github.com/DefiLlama/dimension-adapters/blob/master';
+
+function adapterGithubUrl(adapterType, module) {
+  if (!module) return '';
+  // Map adapter type to directory name in the repo
+  const dirMap = {
+    'fees': 'fees', 'dexs': 'dexs', 'derivatives': 'derivatives',
+    'aggregators': 'aggregators', 'options': 'options',
+    'open-interest': 'dexs', 'aggregator-derivatives': 'aggregator-derivatives',
+    'bridge-aggregators': 'bridge-aggregators', 'normalized-volume': 'normalized-volume',
+    'nft-volume': 'nft-volume', 'active-users': 'users', 'new-users': 'users',
+  };
+  const dir = dirMap[adapterType] || adapterType;
+  return `${DIM_ADAPTER_BASE}/${dir}/${module}`;
+}
+
+async function loadChecksTab() {
+  const content = document.getElementById('checks-content');
+  content.innerHTML = '<div class="loading">Loading…</div>';
+
+  try {
+    const [dropsData, checkData] = await Promise.allSettled([
+      getJson('detect-drops'),
+      getJson('check-results'),
+    ]);
+
+    const drops = dropsData.status === 'fulfilled' ? dropsData.value : null;
+    const checks = checkData.status === 'fulfilled' ? checkData.value : null;
+
+    const sustainedDrops = drops?.drops ?? [];
+    const missingData = checks?.missingData ?? [];
+    const spikes = checks?.spikes ?? [];
+    const dailyDrops = checks?.drops ?? [];
+
+    // Collect unique adapter types for filtering
+    const allAdapterTypes = [...new Set([
+      ...sustainedDrops.map(d => d.adapterType),
+      ...missingData.map(d => d.adapterType),
+      ...spikes.map(d => d.adapterType),
+      ...dailyDrops.map(d => d.adapterType),
+    ])].sort();
+
+    const typeOptions = allAdapterTypes.map(t => '<option value="' + esc(t) + '">' + esc(t) + '</option>').join('');
+
+    content.innerHTML = `
+      <div style="padding:20px;overflow-y:auto;flex:1">
+
+        <!-- Sustained Drops -->
+        <div class="card" style="margin-bottom:20px">
+          <button class="collapse-toggle open" id="drops-toggle">
+            <span class="collapse-arrow">▶</span>
+            Sustained Drops
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${sustainedDrops.length} protocols${drops?.months ? ', past ' + drops.months + ' months' : ''})</span>
+          </button>
+          <div class="collapse-body open" id="drops-body" style="padding:0 16px 16px">
+            <div class="filter-bar">
+              <label>Search</label>
+              <input type="text" id="drops-filter-name" placeholder="Protocol name…" style="width:180px">
+              <label>Type</label>
+              <select id="drops-filter-type"><option value="">All</option>${typeOptions}</select>
+            </div>
+            <div class="stats-header" style="justify-content:space-between">
+              <div id="drops-filter-count" style="font-size:11px;color:var(--muted)"></div>
+              <div class="gen-time">${drops?.generationTime ? fmtDate(drops.generationTime) + '<span class="rel">' + relTime(drops.generationTime) + '</span>' : ''}</div>
+            </div>
+            <div id="tbl-sustained-drops"></div>
+          </div>
+        </div>
+
+        <!-- Daily Checks: Missing Data -->
+        <div class="card" style="margin-bottom:20px">
+          <button class="collapse-toggle open" id="missing-toggle">
+            <span class="collapse-arrow">▶</span>
+            Missing Data (significant protocols)
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${missingData.length})</span>
+          </button>
+          <div class="collapse-body open" id="missing-body" style="padding:0 16px 16px">
+            <div class="filter-bar">
+              <label>Search</label>
+              <input type="text" id="missing-filter-name" placeholder="Protocol name…" style="width:180px">
+              <label>Type</label>
+              <select id="missing-filter-type"><option value="">All</option>${typeOptions}</select>
+            </div>
+            <div class="stats-header" style="justify-content:space-between">
+              <div id="missing-filter-count" style="font-size:11px;color:var(--muted)"></div>
+              <div class="gen-time">${checks?.generationTime ? fmtDate(checks.generationTime) + '<span class="rel">' + relTime(checks.generationTime) + '</span>' : ''}</div>
+            </div>
+            <div id="tbl-missing-data"></div>
+          </div>
+        </div>
+
+        <!-- Daily Checks: Spikes -->
+        <div class="card" style="margin-bottom:20px">
+          <button class="collapse-toggle" id="spikes-toggle">
+            <span class="collapse-arrow">▶</span>
+            Big Spikes (>400%)
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${spikes.length})</span>
+          </button>
+          <div class="collapse-body" id="spikes-body" style="padding:0 16px 16px">
+            <div id="tbl-spikes"></div>
+          </div>
+        </div>
+
+        <!-- Daily Checks: Drops -->
+        <div class="card" style="margin-bottom:20px">
+          <button class="collapse-toggle" id="daily-drops-toggle">
+            <span class="collapse-arrow">▶</span>
+            Daily Drops (>65%)
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${dailyDrops.length})</span>
+          </button>
+          <div class="collapse-body" id="daily-drops-body" style="padding:0 16px 16px">
+            <div id="tbl-daily-drops"></div>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+    // Wire collapse toggles
+    ['drops', 'missing', 'spikes', 'daily-drops'].forEach(id => {
+      document.getElementById(id + '-toggle')?.addEventListener('click', () => {
+        document.getElementById(id + '-toggle')?.classList.toggle('open');
+        document.getElementById(id + '-body')?.classList.toggle('open');
+      });
+    });
+
+    // ── Sustained Drops (filterable) ──
+    function renderDropsTable() {
+      const nameF = (document.getElementById('drops-filter-name')?.value ?? '').toLowerCase();
+      const typeF = document.getElementById('drops-filter-type')?.value ?? '';
+      let filtered = sustainedDrops;
+      if (nameF) filtered = filtered.filter(r => r.name.toLowerCase().includes(nameF));
+      if (typeF) filtered = filtered.filter(r => r.adapterType === typeF);
+
+      const countEl = document.getElementById('drops-filter-count');
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + sustainedDrops.length;
+
+      renderTable('tbl-sustained-drops', filtered, [
+        { key: 'adapterType', label: 'Type',      render: r => '<span class="tag">' + esc(r.adapterType) + '</span>' },
+        { key: 'metric',      label: 'Metric' },
+        { key: 'name',        label: 'Protocol',  render: r => '<span class="bold">' + esc(r.name) + '</span>' },
+        { key: 'id',          label: 'ID' },
+        { key: 'totalAllTime',label: 'All Time',  render: r => humanTvl(r.totalAllTime), sortVal: r => r.totalAllTime },
+        { key: 'average1y',   label: 'Avg 1Y',    render: r => humanTvl(r.average1y),    sortVal: r => r.average1y },
+        { key: 'preDropAvg',  label: 'Pre-Drop',  render: r => humanTvl(r.preDropAvg),   sortVal: r => r.preDropAvg },
+        { key: 'postDropAvg', label: 'Post-Drop', render: r => humanTvl(r.postDropAvg),  sortVal: r => r.postDropAvg },
+        { key: 'dropPct',     label: 'Drop %',    render: r => '<span style="color:var(--red)">' + (r.dropPct?.toFixed(1) ?? '—') + '%</span>', sortVal: r => r.dropPct },
+        { key: 'dropDurationDays', label: 'Days',  sortVal: r => r.dropDurationDays },
+        { key: 'module',      label: 'Code',      render: r => {
+          const url = adapterGithubUrl(r.adapterType, r.module);
+          return url ? '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + esc(r.module) + '</a>' : '';
+        }},
+      ], 'dropDurationDays', 1);
+    }
+    renderDropsTable();
+    document.getElementById('drops-filter-name')?.addEventListener('input', renderDropsTable);
+    document.getElementById('drops-filter-type')?.addEventListener('change', renderDropsTable);
+
+    // ── Missing Data (filterable) ──
+    function renderMissingTable() {
+      const nameF = (document.getElementById('missing-filter-name')?.value ?? '').toLowerCase();
+      const typeF = document.getElementById('missing-filter-type')?.value ?? '';
+      let filtered = missingData;
+      if (nameF) filtered = filtered.filter(r => r.name.toLowerCase().includes(nameF));
+      if (typeF) filtered = filtered.filter(r => r.adapterType === typeF);
+
+      const countEl = document.getElementById('missing-filter-count');
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + missingData.length;
+
+      renderTable('tbl-missing-data', filtered, [
+        { key: 'adapterType', label: 'Type',      render: r => '<span class="tag">' + esc(r.adapterType) + '</span>' },
+        { key: 'name',        label: 'Protocol',  render: r => '<span class="bold">' + esc(r.name) + '</span>' },
+        { key: 'id',          label: 'ID' },
+        { key: 'category',    label: 'Category',  render: r => r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '—' },
+        { key: 'average',     label: 'Avg 30d',   render: r => humanTvl(r.average), sortVal: r => r.average },
+        { key: 'missingDaysSinceLastData', label: 'Days Since', sortVal: r => r.missingDaysSinceLastData },
+        { key: 'missingCount',label: 'Missing 30d', sortVal: r => r.missingCount },
+        { key: 'lastDayWithData', label: 'Last Data' },
+        { key: 'module',      label: 'Code',      render: r => {
+          const url = adapterGithubUrl(r.adapterType, r.module);
+          return url ? '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + esc(r.module) + '</a>' : '';
+        }},
+      ], 'average', -1);
+    }
+    renderMissingTable();
+    document.getElementById('missing-filter-name')?.addEventListener('input', renderMissingTable);
+    document.getElementById('missing-filter-type')?.addEventListener('change', renderMissingTable);
+
+    // ── Spikes ──
+    renderTable('tbl-spikes', spikes, [
+      { key: 'adapterType',  label: 'Type',      render: r => '<span class="tag">' + esc(r.adapterType) + '</span>' },
+      { key: 'name',         label: 'Protocol',  render: r => '<span class="bold">' + esc(r.name) + '</span>' },
+      { key: 'category',     label: 'Category',  render: r => r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '—' },
+      { key: 'increaseAgainstAverage4', label: 'Spike %', render: r => '<span style="color:var(--yellow)">' + (r.increaseAgainstAverage4?.toFixed(0) ?? '—') + '%</span>', sortVal: r => r.increaseAgainstAverage4 },
+      { key: 'todayValue',   label: 'Today',     render: r => humanTvl(r.todayValue),     sortVal: r => r.todayValue },
+      { key: 'yesterdayValue',label: 'Yesterday', render: r => humanTvl(r.yesterdayValue),  sortVal: r => r.yesterdayValue },
+      { key: 'average2',     label: 'Avg (excl 4d)', render: r => humanTvl(r.average2),    sortVal: r => r.average2 },
+      { key: 'module',       label: 'Code',      render: r => {
+        const url = adapterGithubUrl(r.adapterType, r.module);
+        return url ? '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + esc(r.module) + '</a>' : '';
+      }},
+    ], 'increaseAgainstAverage4', -1);
+
+    // ── Daily Drops ──
+    renderTable('tbl-daily-drops', dailyDrops, [
+      { key: 'adapterType',  label: 'Type',      render: r => '<span class="tag">' + esc(r.adapterType) + '</span>' },
+      { key: 'name',         label: 'Protocol',  render: r => '<span class="bold">' + esc(r.name) + '</span>' },
+      { key: 'category',     label: 'Category',  render: r => r.category ? '<span class="tag">' + esc(r.category) + '</span>' : '—' },
+      { key: 'increaseAgainstAverage4', label: 'Drop %', render: r => '<span style="color:var(--red)">' + (Math.abs(r.increaseAgainstAverage4)?.toFixed(0) ?? '—') + '%</span>', sortVal: r => r.increaseAgainstAverage4 },
+      { key: 'todayValue',   label: 'Today',     render: r => humanTvl(r.todayValue),     sortVal: r => r.todayValue },
+      { key: 'yesterdayValue',label: 'Yesterday', render: r => humanTvl(r.yesterdayValue),  sortVal: r => r.yesterdayValue },
+      { key: 'average2',     label: 'Avg (excl 4d)', render: r => humanTvl(r.average2),    sortVal: r => r.average2 },
+      { key: 'module',       label: 'Code',      render: r => {
+        const url = adapterGithubUrl(r.adapterType, r.module);
+        return url ? '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-size:11px">' + esc(r.module) + '</a>' : '';
+      }},
+    ], 'increaseAgainstAverage4', 1);
+
+    checksLoaded = true;
+  } catch (err) {
+    content.innerHTML = '<div class="err-state">Error loading checks data: ' + esc(err.message) + '</div>';
+    console.error(err);
+  }
+}
+
 // ── TVL tab ────────────────────────────────────────────────────────────────────
 let tvlLoaded = false;
 
@@ -806,47 +1053,56 @@ async function loadTvlTab() {
           </div>
         </div>
 
-        <h3 style="margin:20px 0 8px;font-size:14px;font-weight:600">
-          Hourly Outdated Protocols
-          <span style="font-weight:400;color:var(--muted);font-size:12px;margin-left:6px">(${outdated.length})</span>
-        </h3>
+        <div id="tvl-cache-section"></div>
 
-        <div class="filter-bar" id="tvl-filters">
-          <label>Search</label>
-          <input type="text" id="tvl-filter-name" placeholder="Protocol name…" style="width:180px">
-          <label>Category</label>
-          <select id="tvl-filter-category">
-            <option value="">All</option>
-            ${categories.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('')}
-          </select>
-          <label>Min TVL</label>
-          <select id="tvl-filter-min-tvl">
-            <option value="0">Any</option>
-            <option value="1000">$1K</option>
-            <option value="10000">$10K</option>
-            <option value="100000">$100K</option>
-            <option value="1000000" selected>$1M</option>
-            <option value="10000000">$10M</option>
-            <option value="100000000">$100M</option>
-          </select>
-          <label>Min Age</label>
-          <select id="tvl-filter-min-age">
-            <option value="0" selected>Any</option>
-            <option value="3600">1 hour</option>
-            <option value="21600">6 hours</option>
-            <option value="86400">1 day</option>
-            <option value="259200">3 days</option>
-            <option value="604800">1 week</option>
-            <option value="2592000">30 days</option>
-          </select>
-        </div>
-        <div id="tvl-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
-
-        <div class="card">
-          <div id="tbl-tvl-outdated"></div>
+        <div class="card" style="margin-top:20px">
+          <button class="collapse-toggle open" id="tvl-errors-toggle">
+            <span class="collapse-arrow">▶</span>
+            Hourly Outdated Protocols
+            <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${outdated.length})</span>
+          </button>
+          <div class="collapse-body open" id="tvl-errors-body" style="padding:0 16px 16px">
+            <div class="filter-bar" id="tvl-filters">
+              <label>Search</label>
+              <input type="text" id="tvl-filter-name" placeholder="Protocol name…" style="width:180px">
+              <label>Category</label>
+              <select id="tvl-filter-category">
+                <option value="">All</option>
+                ${categories.map(c => '<option value="' + esc(c) + '">' + esc(c) + '</option>').join('')}
+              </select>
+              <label>Min TVL</label>
+              <select id="tvl-filter-min-tvl">
+                <option value="0">Any</option>
+                <option value="1000">$1K</option>
+                <option value="10000">$10K</option>
+                <option value="100000">$100K</option>
+                <option value="1000000" selected>$1M</option>
+                <option value="10000000">$10M</option>
+                <option value="100000000">$100M</option>
+              </select>
+              <label>Min Age</label>
+              <select id="tvl-filter-min-age">
+                <option value="0" selected>Any</option>
+                <option value="3600">1 hour</option>
+                <option value="21600">6 hours</option>
+                <option value="86400">1 day</option>
+                <option value="259200">3 days</option>
+                <option value="604800">1 week</option>
+                <option value="2592000">30 days</option>
+              </select>
+            </div>
+            <div id="tvl-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+            <div id="tbl-tvl-outdated"></div>
+          </div>
         </div>
       </div>
     `;
+
+    // Wire errors collapsible toggle
+    document.getElementById('tvl-errors-toggle').addEventListener('click', () => {
+      document.getElementById('tvl-errors-toggle').classList.toggle('open');
+      document.getElementById('tvl-errors-body').classList.toggle('open');
+    });
 
     // Current filtered+indexed data — shared with the click handler
     let currentIndexed = [];
@@ -931,10 +1187,123 @@ async function loadTvlTab() {
     document.getElementById('tvl-filter-min-tvl')?.addEventListener('change', renderTvlTable);
     document.getElementById('tvl-filter-min-age')?.addEventListener('change', renderTvlTable);
 
+    // ── Cache Usage Logs ──
+    loadTvlCacheUsage();
+
     tvlLoaded = true;
   } catch (err) {
     content.innerHTML = '<div class="err-state">Error loading TVL data: ' + esc(err.message) + '</div>';
     console.error(err);
+  }
+}
+
+async function loadTvlCacheUsage() {
+  try {
+    const logs = await getJson('tvl-cache-usage');
+    if (!Array.isArray(logs) || !logs.length) return;
+
+    // Flatten: one row per cached item, with parent metadata
+    const allRows = logs.flatMap(log => {
+      const meta = log.metadata ?? {};
+      const data = log.data ?? {};
+      return (data.cachedItems ?? []).map(item => ({
+        protocolName:   meta.name ?? item.protocolName ?? '',
+        protocolId:     meta.id ?? '',
+        chain:          item.storeKey ?? '',
+        chainTvl:       item.storeKeyTvl ?? 0,
+        totalTvl:       item.totalTvl ?? 0,
+        cacheAge:       item.cacheTime ? Math.floor(Date.now() / 1000) - item.cacheTime : null,
+        invalidCache:   item.invalidCacheTime > 0,
+        totalCached:    data.totalCachedItems ?? 0,
+        aggregatedTvl:  data.aggregatedTvl ?? 0,
+        timeDiff:       data.timeDiffFromNowSeconds ?? null,
+        timestamp:      log.timestamp ?? 0,
+      }));
+    });
+
+    // Retain only the latest log per protocol (by timestamp)
+    const latestByProtocol = new Map();
+    for (const row of allRows) {
+      const key = row.protocolName;
+      const existing = latestByProtocol.get(key);
+      if (!existing || row.timestamp > existing.timestamp) {
+        latestByProtocol.set(key, row);
+      }
+    }
+    const rows = [...latestByProtocol.values()];
+
+    const section = document.getElementById('tvl-cache-section');
+    if (!section) return;
+
+    section.innerHTML = `
+      <div class="card" style="margin-top:20px">
+        <button class="collapse-toggle open" id="cache-usage-toggle">
+          <span class="collapse-arrow">▶</span>
+          TVL Cache Usage
+          <span style="font-weight:400;color:var(--muted);font-size:11px;margin-left:6px">(${rows.length} protocols, last 6h)</span>
+        </button>
+        <div class="collapse-body open" id="cache-usage-body" style="padding:0 16px 16px">
+          <div class="filter-bar">
+            <label>Search</label>
+            <input type="text" id="cache-filter-name" placeholder="Protocol name…" style="width:180px">
+            <label>Chain</label>
+            <input type="text" id="cache-filter-chain" placeholder="Chain…" style="width:120px">
+            <label>Min Cache Age</label>
+            <select id="cache-filter-min-age">
+              <option value="0">Any</option>
+              <option value="3600">1 hour</option>
+              <option value="21600">6 hours</option>
+              <option value="36000" selected>10 hours</option>
+              <option value="86400">1 day</option>
+              <option value="259200">3 days</option>
+              <option value="604800">1 week</option>
+              <option value="2592000">30 days</option>
+            </select>
+          </div>
+          <div id="cache-filter-count" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+          <div id="tbl-tvl-cache-usage"></div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('cache-usage-toggle').addEventListener('click', () => {
+      document.getElementById('cache-usage-toggle').classList.toggle('open');
+      document.getElementById('cache-usage-body').classList.toggle('open');
+    });
+
+    function renderCacheTable() {
+      const nameFilter = (document.getElementById('cache-filter-name')?.value ?? '').toLowerCase();
+      const chainFilter = (document.getElementById('cache-filter-chain')?.value ?? '').toLowerCase();
+      const minAgeSec = Number(document.getElementById('cache-filter-min-age')?.value ?? 0);
+
+      let filtered = rows;
+      if (nameFilter) filtered = filtered.filter(r => r.protocolName.toLowerCase().includes(nameFilter));
+      if (chainFilter) filtered = filtered.filter(r => r.chain.toLowerCase().includes(chainFilter));
+      if (minAgeSec > 0) filtered = filtered.filter(r => r.cacheAge != null && r.cacheAge >= minAgeSec);
+
+      const countEl = document.getElementById('cache-filter-count');
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + rows.length + ' protocols';
+
+      renderTable('tbl-tvl-cache-usage', filtered, [
+        { key: 'protocolName', label: 'Protocol',     render: r => '<span class="bold">' + esc(r.protocolName) + '</span>', sortVal: r => r.protocolName },
+        { key: 'protocolId',   label: 'ID',           sortVal: r => Number(r.protocolId) },
+        { key: 'chain',        label: 'Chain',        render: r => '<span class="tag">' + esc(r.chain) + '</span>' },
+        { key: 'chainTvl',     label: 'Chain TVL',    render: r => humanTvl(r.chainTvl), sortVal: r => r.chainTvl },
+        { key: 'totalTvl',     label: 'Total TVL',    render: r => humanTvl(r.totalTvl), sortVal: r => r.totalTvl },
+        { key: 'cacheAge',     label: 'Cache Age',    render: r => r.cacheAge != null ? fmtCacheAge(r.cacheAge) : '—', sortVal: r => r.cacheAge },
+        { key: 'invalidCache', label: 'Invalid',      render: r => r.invalidCache ? '<span style="color:var(--red)">Yes</span>' : '<span style="color:var(--green)">No</span>', sortVal: r => r.invalidCache ? 1 : 0 },
+        { key: 'timestamp',    label: 'Logged',       render: r => r.timestamp ? relTime(new Date(r.timestamp).toISOString()) : '—', sortVal: r => r.timestamp },
+      ], 'cacheAge', -1);
+    }
+
+    renderCacheTable();
+
+    document.getElementById('cache-filter-name')?.addEventListener('input', renderCacheTable);
+    document.getElementById('cache-filter-chain')?.addEventListener('input', renderCacheTable);
+    document.getElementById('cache-filter-min-age')?.addEventListener('change', renderCacheTable);
+
+  } catch (err) {
+    console.error('Error loading TVL cache usage:', err);
   }
 }
 
@@ -950,6 +1319,7 @@ function switchTopTab(tab) {
   lsSet(LS_KEYS.topTab, tab);
 
   if (tab === 'tvl' && !tvlLoaded) loadTvlTab();
+  if (tab === 'checks' && !checksLoaded) loadChecksTab();
   if (tab === 'dimensions' && !summaryLoaded) loadDimSummary();
 }
 
@@ -984,7 +1354,7 @@ function init() {
 
   // Restore top tab from localStorage
   const savedTopTab = lsGet(LS_KEYS.topTab, 'dimensions');
-  switchTopTab(['dimensions', 'tvl'].includes(savedTopTab) ? savedTopTab : 'dimensions');
+  switchTopTab(['dimensions', 'checks', 'tvl'].includes(savedTopTab) ? savedTopTab : 'dimensions');
 }
 
 init();

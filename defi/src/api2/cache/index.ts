@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
 import { IRaise, IProtocol } from '../../types';
+import { fetchMcaps } from '../../utils/coinsApi';
 import sluggify, { sluggifyString } from '../../utils/sluggify';
 import { getLatestProtocolItems, } from '../db';
 import { dailyTvl, dailyUsdTokensTvl, dailyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, hourlyTokensTvl, } from "../../utils/getLastRecord";
@@ -11,7 +12,6 @@ import { Protocol } from "../../protocols/types";
 import { shuffleArray } from "../../utils/shared/shuffleArray";
 import PromisePool from "@supercharge/promise-pool";
 import { getProtocolAllTvlData } from "../utils/cachedFunctions";
-import { getTwitterOverviewFileV2 } from "../../../dev-metrics/utils/r2";
 import { RUN_TYPE } from "../utils";
 import { updateProtocolMetadataUsingCache } from "../../protocols/data";
 
@@ -40,7 +40,6 @@ export const cache: {
   allTvlData: any,
   historicalTvlForAllProtocolsMeta: any,
   feesAdapterCache: any,
-  twitterOverview: any,
   otherProtocolsMap: any,
   latestHourlyData: {
     tvl: any,
@@ -72,7 +71,6 @@ export const cache: {
   allTvlData: {},
   historicalTvlForAllProtocolsMeta: {},
   feesAdapterCache: {},
-  twitterOverview: {},
   otherProtocolsMap: {},
   latestHourlyData: {
     tvl: {},
@@ -116,8 +114,6 @@ export async function initCache({ cacheType = RUN_TYPE.API_SERVER }: { cacheType
     addChildProtocolNames()
   }
 
-
-  cache.twitterOverview = await getTwitterOverviewFileV2()
 
   console.timeEnd('Cache initialized: ' + cacheType)
 }
@@ -180,15 +176,21 @@ async function updateMetadata() {
 }
 
 async function updateRaises() {
-  const { raises } = await fetch("https://api.llama.fi/raises").then((res) => res.json())
-  const raisesObject: any = {}
-  raises.forEach((r: any) => {
-    const id = r.defillamaId
-    if (!id) return;
-    if (!raisesObject[id]) raisesObject[id] = []
-    raisesObject[id].push(r)
-  })
-  cache.raises = raisesObject
+  try {
+
+    const { raises } = await readRouteData("/raises")
+    const raisesObject: any = {}
+    raises.forEach((r: any) => {
+      const id = r.defillamaId
+      if (!id) return;
+      if (!raisesObject[id]) raisesObject[id] = []
+      raisesObject[id].push(r)
+    })
+    cache.raises = raisesObject
+  } catch (e) {
+    console.error('Error updating raises', e);
+    cache.raises = {}
+  }
 }
 
 async function updateAllTvlData(cacheType?: string) {
@@ -240,18 +242,11 @@ async function updateMCaps() {
   })
 
   async function getProtocolMcaps(geckoIds: string[]) {
-    const mcaps = await fetch("https://coins.llama.fi/mcaps", {
-      method: "POST",
-      body: JSON.stringify({
-        coins: geckoIds.map((id) => `coingecko:${id}`),
-      }),
-    }).then((r) => r.json())
+    return fetchMcaps(geckoIds.map((id) => `coingecko:${id}`))
       .catch((err) => {
         console.log(err);
         return {};
       });
-
-    return mcaps
   };
 }
 
@@ -324,7 +319,7 @@ async function tvlProtocolDataUpdate(cacheType?: string) {
 }
 
 export function getLastHourlyRecord(protocol: IProtocol) {
-  return cache.tvlProtocol[protocol.id]  
+  return cache.tvlProtocol[protocol.id]
 }
 
 export function getLastHourlyTokensUsd(protocol: IProtocol) {

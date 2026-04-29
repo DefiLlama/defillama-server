@@ -27,7 +27,19 @@ export const CategoryTagMap = {
     "Hook-based AMM",
     "Prop AMM",
     "Order Book",
-    "DLMM"
+    "DLMM",
+    "DLL",
+    "RFQ"
+  ],
+  Interface: [
+    "Hyperliquid HIP3 Deployer",
+    "Hyperliquid Builder",
+    "Orderly Builder",
+    "SYMMIO Builder",
+    "Extended Builder"
+  ],
+  'Staking Pool': [
+    'Hyperliquid Staking',
   ],
 }
 

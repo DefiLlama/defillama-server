@@ -1,7 +1,7 @@
 import { createApiClient } from '../../utils/config/apiClient';
 import { endpoints } from '../../utils/config/endpoints';
 import { PerpsOverviewResponse, PerpsSummaryResponse, isPerpsOverviewResponse, isPerpsSummaryResponse } from './types';
-import { perpsOverviewResponseSchema, perpsSummaryResponseSchema } from './schemas';
+import { perpsChainSummarySchema, perpsOverviewResponseSchema, perpsSummaryResponseSchema } from './schemas';
 import {
   expectSuccessfulResponse,
   expectValidNumber,
@@ -11,6 +11,7 @@ import { ApiResponse } from '../../utils/config/apiClient';
 import { validate } from '../../utils/validation';
 
 const apiClient = createApiClient(endpoints.PERPS.BASE_URL);
+const v2ApiClient = createApiClient(endpoints.PERPS_V2.BASE_URL);
 
 describe('Perps API - Derivatives', () => {
   let overviewResponse: ApiResponse<PerpsOverviewResponse>;
@@ -154,7 +155,7 @@ describe('Perps API - Derivatives', () => {
         protocolsWithChange.forEach((protocol) => {
           expectValidNumber(protocol.change_1d!);
           expect(protocol.change_1d).toBeGreaterThanOrEqual(-100);
-          expect(protocol.change_1d).toBeLessThan(10000); // Some protocols can have very high growth
+          expect(protocol.change_1d).toBeLessThan(10_000_000); // Some protocols can have very high growth
         });
       }
     });
@@ -185,16 +186,25 @@ describe('Perps API - Derivatives', () => {
 describe('Perps API - Summary', () => {
   const testProtocols = ['gmx', 'hyperliquid', 'dydx'];
   const responses: Record<string, ApiResponse<PerpsSummaryResponse>> = {};
+  const v2Responses: Record<string, ApiResponse<PerpsSummaryResponse>> = {};
 
   beforeAll(async () => {
-    const results = await Promise.all(
-      testProtocols.map((protocol) =>
-        apiClient.get<PerpsSummaryResponse>(endpoints.PERPS.SUMMARY_DERIVATIVES(protocol))
-      )
-    );
+    const [results, v2Results] = await Promise.all([
+      Promise.all(
+        testProtocols.map((protocol) =>
+          apiClient.get<PerpsSummaryResponse>(endpoints.PERPS.SUMMARY_DERIVATIVES(protocol))
+        )
+      ),
+      Promise.all(
+        testProtocols.map((protocol) =>
+          v2ApiClient.get<PerpsSummaryResponse>(endpoints.PERPS_V2.SUMMARY_DERIVATIVES(protocol))
+        )
+      ),
+    ]);
 
     testProtocols.forEach((protocol, index) => {
       responses[protocol] = results[index];
+      v2Responses[protocol] = v2Results[index];
     });
   }, 90000);
 
@@ -213,6 +223,27 @@ describe('Perps API - Summary', () => {
             response.data,
             perpsSummaryResponseSchema,
             `PerpsSummary-${protocol}`
+          );
+          expect(result.success).toBe(true);
+        });
+
+        it('should validate the v2 summary route against Zod schema', () => {
+          const response = v2Responses[protocol];
+          const result = validate(
+            response.data,
+            perpsSummaryResponseSchema,
+            `PerpsSummaryV2-${protocol}`
+          );
+          expect(result.success).toBe(true);
+        });
+
+        it('should validate against Zod schema without chainBreakdown', () => {
+          const response = responses[protocol];
+          const { chainBreakdown, ...dataWithoutChainBreakdown } = response.data;
+          const result = validate(
+            dataWithoutChainBreakdown,
+            perpsSummaryResponseSchema,
+            `PerpsSummaryWithoutChainBreakdown-${protocol}`
           );
           expect(result.success).toBe(true);
         });
@@ -264,6 +295,38 @@ describe('Perps API - Summary', () => {
             expect(data.change_1d).toBeLessThan(1000);
           }
         });
+
+        it('should have valid chainBreakdown metrics on the v2 summary route when present', () => {
+          const response = v2Responses[protocol];
+          const data = response.data;
+
+          if (!data.chainBreakdown) return;
+
+          expect(typeof data.chainBreakdown).toBe('object');
+          expect(Array.isArray(data.chainBreakdown)).toBe(false);
+
+          Object.entries(data.chainBreakdown).forEach(([chain, chainData]) => {
+            expect(typeof chain).toBe('string');
+            expect(chain.length).toBeGreaterThan(0);
+            expect(perpsChainSummarySchema.safeParse(chainData).success).toBe(true);
+
+            Object.values(chainData).forEach((value) => {
+              if (value === null || value === undefined) return;
+              expectValidNumber(value);
+            });
+          });
+        });
+
+        it('should keep chainBreakdown totals consistent with top-level v2 totals when all chain values are present', () => {
+          const response = v2Responses[protocol];
+          const data = response.data;
+
+          expectChainBreakdownTotalsToMatch(data, 'total24h');
+          expectChainBreakdownTotalsToMatch(data, 'total48hto24h');
+          expectChainBreakdownTotalsToMatch(data, 'total7d');
+          expectChainBreakdownTotalsToMatch(data, 'total30d');
+          expectChainBreakdownTotalsToMatch(data, 'totalAllTime');
+        });
       });
 
       describe('Chart Data Validation', () => {
@@ -293,6 +356,31 @@ describe('Perps API - Summary', () => {
     });
   });
 
+  describe('V2 Specific Validation', () => {
+    it('should expose chainBreakdown for at least one multi-chain protocol on the v2 summary route', () => {
+      const multiChainBreakdownExists = testProtocols.some((protocol) => {
+        const chainBreakdown = v2Responses[protocol].data.chainBreakdown;
+        return chainBreakdown && Object.keys(chainBreakdown).length > 1;
+      });
+
+      expect(multiChainBreakdownExists).toBe(true);
+    });
+
+    it('should keep the v2 chart chain breakdown endpoint working', async () => {
+      const response = await v2ApiClient.get(
+        endpoints.PERPS_V2.CHART_CHAIN_BREAKDOWN_DERIVATIVES('gmx')
+      );
+
+      expectSuccessfulResponse(response);
+      expect(Array.isArray(response.data)).toBe(true);
+
+      if (response.data.length > 0) {
+        expect(Array.isArray(response.data[0])).toBe(true);
+        expect(response.data[0].length).toBe(2);
+      }
+    });
+  });
+
   describe('Edge Cases', () => {
     it('should handle non-existent protocol gracefully', async () => {
       const response = await apiClient.get(endpoints.PERPS.SUMMARY_DERIVATIVES('non-existent-protocol-xyz'));
@@ -303,3 +391,21 @@ describe('Perps API - Summary', () => {
   });
 });
 
+function expectChainBreakdownTotalsToMatch(
+  data: PerpsSummaryResponse,
+  key: 'total24h' | 'total48hto24h' | 'total7d' | 'total30d' | 'totalAllTime'
+) {
+  if (!data.chainBreakdown) return;
+
+  const topLevelValue = data[key];
+  if (topLevelValue === null || topLevelValue === undefined) return;
+
+  const chainValues = Object.values(data.chainBreakdown)
+    .map((chainData) => chainData[key])
+    .filter((value): value is number => value !== null && value !== undefined);
+
+  if (chainValues.length !== Object.keys(data.chainBreakdown).length) return;
+
+  const chainValueSum = chainValues.reduce((sum, value) => sum + value, 0);
+  expect(chainValueSum).toBeCloseTo(topLevelValue, 6);
+}

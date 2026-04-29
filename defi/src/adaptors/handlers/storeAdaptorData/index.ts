@@ -138,6 +138,8 @@ export const handler2 = async (options: DimensionRunOptions) => {
   // Import some utils
   const { importModule, KEYS_TO_STORE, protocolAdaptors } = dataModule
 
+  if (!KEYS_TO_STORE) console.error(`No KEYS_TO_STORE found for adapter type ${adapterType}`)
+
   // Get list of adaptors to run
   let protocols = protocolAdaptors
 
@@ -319,7 +321,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       if (isRunFromRefillScript) {
         recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
         const todayStartOfDay = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000))
-        if (toTimestamp >= todayStartOfDay) {
+        if (toTimestamp >= todayStartOfDay+ONE_HOUR_IN_SECONDS) {
           if (isAdapterVersionV1 && !runAtCurrTime) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
           recordTimestamp = toTimestamp
         }
@@ -395,7 +397,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           }
         } else { // it is a version 1 adapter - we pull yesterday's data
           if (haveYesterdayData) {
-            // console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
+            console.log(`Skipping ${adapterType} - ${protocol.module} already have yesterday data`)
             return;
           }
 
@@ -472,7 +474,9 @@ export const handler2 = async (options: DimensionRunOptions) => {
           tbl = tbl ?? built.tbl
           tblc = tblc ?? built.tblc
         }
+
       }
+
 
       convertRecordTypeToKeys(adaptorRecordV2JSON, KEYS_TO_STORE)   // remove unmapped record types and convert keys to short names
 
@@ -783,5 +787,5 @@ function calculateStats(numbers: number[]) {
     median = numbers[mid];
   }
 
-  return { sum, average, median, size: numbers.length, highest: numbers[numbers.length - 1], lowest: numbers[0] };
+  return { sum, average, median, size: numbers.length, highest: Math.max(Math.abs(numbers[0]), numbers[numbers.length - 1]), lowest: numbers[0] };
 }

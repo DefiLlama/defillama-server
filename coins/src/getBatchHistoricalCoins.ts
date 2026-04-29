@@ -7,48 +7,41 @@ import {
 import { getRecordClosestToTimestamp } from "./utils/shared/getRecordClosestToTimestamp";
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
-import { lowercaseAddress } from "./utils/processCoin";
 import { runInPromisePool } from "@defillama/sdk/build/generalUtil";
 
-async function fetchDBData(
+const defaultSearchWidth = quantisePeriod("6h");
+
+export async function fetchDBData(
   coinsObj: any,
-  coins: any[],
-  coinQueries: string[],
-  PKTransforms: { [key: string]: string[] },
-  searchWidth: number
+  searchWidth: number = defaultSearchWidth
 ) {
   let response = {} as any;
   const promises: Promise<any>[] = [];
 
-  coinQueries.map((coinAddress) => {
-    const timestamps: number[] = coinsObj[coinAddress as keyof typeof coins];
-    if (isNaN(timestamps.length)) return;
-    const coin = coins.find((c) =>
-      c.PK.includes(
-        coinAddress.includes("coingecko")
-          ? coinAddress.replace(":", "#").toLowerCase()
-          : lowercaseAddress(coinAddress)
-      )
-    );
-    if (coin == null) return;
-    promises.push(
-      ...timestamps.map(async (timestamp) => {
-        const finalCoin: any = await getRecordClosestToTimestamp(
-          coin.redirect ?? coin.PK,
-          timestamp,
-          searchWidth
-        );
-        if (finalCoin.SK === undefined) {
-          return;
-        }
-        PKTransforms[coin.PK].forEach((coinName) => {
+  const coinQueries: string[] = Object.keys(coinsObj);
+  const { PKTransforms, coins } = await getBasicCoins(coinQueries);
+
+  coins.forEach((coin) => {
+    PKTransforms[coin.PK].forEach((coinName) => {
+      const timestamps: number[] = coinsObj[coinName];
+      if (!Array.isArray(timestamps)) return;
+      promises.push(
+        ...timestamps.map(async (timestamp) => {
+          const finalCoin: any = await getRecordClosestToTimestamp(
+            coin.redirect ?? coin.PK,
+            timestamp,
+            searchWidth
+          );
+          if (finalCoin?.SK === undefined) {
+            return;
+          }
           if (response[coinName] == undefined) {
             response[coinName] = {
               symbol: coin.symbol,
               prices: [
                 {
                   timestamp: finalCoin.SK,
-                  price: finalCoin.price,
+                  price: Number(finalCoin.price),
                   confidence: coin.confidence,
                 },
               ],
@@ -56,13 +49,13 @@ async function fetchDBData(
           } else {
             response[coinName].prices.push({
               timestamp: finalCoin.SK,
-              price: finalCoin.price,
+              price: Number(finalCoin.price),
               confidence: coin.confidence,
             });
           }
-        });
-      })
-    );
+        })
+      );
+    });
   });
 
   await runInPromisePool({
@@ -83,15 +76,8 @@ const handler = async (event: any): Promise<IResponse> => {
     const searchWidth: number = quantisePeriod(
       event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
     );
-    const { PKTransforms, coins } = await getBasicCoins(coinQueries);
 
-    const dbData = await fetchDBData(
-      coinsObj,
-      coins,
-      coinQueries,
-      PKTransforms,
-      searchWidth
-    );
+    const dbData = await fetchDBData(coinsObj, searchWidth);
 
     return successResponse({ coins: dbData }, 3600); // 1 hour cache
   } catch (e: any) {

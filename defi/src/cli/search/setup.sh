@@ -25,11 +25,17 @@ curl \
   -H "Authorization: Bearer $SEARCH_MASTER_KEY" \
   -H 'Content-Type: application/json' \
   --data-binary '[
+    "alias1",
+    "alias2",
+    "alias3",
+    "alias4",
+    "alias5",
     "name",
     "symbol",
     "previousNames",
     "nameVariants",
-    "type"
+    "keywords",
+    "subName"
   ]'
 
 curl \
@@ -38,13 +44,13 @@ curl \
   -H 'Content-Type: application/json' \
   --data-binary '[
     "words",
-    "v:desc",
     "typo",
     "proximity",
-    "attribute",
-    "sort",
     "exactness",
-    "r:desc"
+    "r:desc",
+    "attribute",
+    "v:desc",
+    "sort"
   ]'
 
 curl \
@@ -63,7 +69,6 @@ curl \
     "v",
     "tvl",
     "name",
-    "deprecated",
     "mcapRank",
     "r"
   ]'
@@ -85,6 +90,33 @@ curl \
     "symbol"
   ]'
 
+# Synonyms: lets short/partial queries resolve to their long forms (and vice
+# versa) so e.g. `stable` is treated as an exact-form match for `stablecoins`
+# during the `exactness` ranking stage. Without this, an array-valued
+# `keywords` attribute only produces `matchesStart` (~0.67) instead of
+# `exactMatch` (1.0), so high-`r` metric pages lose to lower-`r` entities that
+# happen to have an exact single-word name match.
+curl \
+  -X PUT 'https://search-core.defillama.com/indexes/pages/settings/synonyms' \
+  -H "Authorization: Bearer $SEARCH_MASTER_KEY" \
+  -H 'Content-Type: application/json' \
+  --data-binary '{
+    "stable": ["stablecoin", "stablecoins"],
+    "stablecoin": ["stable", "stablecoins"],
+    "stablecoins": ["stable", "stablecoin"],
+    "mcap": ["market cap", "marketcap"],
+    "marketcap": ["market cap", "mcap"],
+    "market cap": ["mcap", "marketcap"],
+    "tvl": ["total value locked"],
+    "apy": ["yield", "yields"],
+    "yield": ["apy", "yields"],
+    "yields": ["apy", "yield"],
+    "dex": ["dexs", "exchange"],
+    "dexs": ["dex", "exchanges"],
+    "cex": ["cexs", "exchange"],
+    "cexs": ["cex", "exchanges"]
+  }'
+
 # --- Directory index setup ---
 
 curl \
@@ -93,13 +125,13 @@ curl \
   -H 'Content-Type: application/json' \
   --data-binary '[
     "words",
-    "v:desc",
     "typo",
     "proximity",
-    "attribute",
-    "sort",
     "exactness",
-    "r:desc"
+    "r:desc",
+    "attribute",
+    "v:desc",
+    "sort"
   ]'
 
 curl \
@@ -121,9 +153,9 @@ curl \
   -H 'Content-Type: application/json' \
   --data-binary '[
     "name",
+    "symbol",
     "previousNames",
     "nameVariants",
-    "symbol",
     "route"
   ]'
 
@@ -135,6 +167,5 @@ curl \
     "v",
     "tvl",
     "name",
-    "r",
-    "deprecated"
+    "r"
   ]'

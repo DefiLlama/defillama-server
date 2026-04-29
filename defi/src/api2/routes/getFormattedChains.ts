@@ -1,8 +1,10 @@
 import { chainCoingeckoIds } from "../../utils/normalizeChain";
 import fetch from "node-fetch";
+import { fetchMcaps, McapsResponse } from "../../utils/coinsApi";
 import { LiteProtocol } from "../../types";
 import { errorResponse, } from "../../utils/shared";
 import { readRouteData } from "../cache/file-cache";
+import { getPrevTvlFromChart } from "../utils/tvlChart";
 
 interface IResponse {
   chains: string[];
@@ -29,10 +31,6 @@ interface IExtraPropPerChain {
     };
   };
 }
-
-export const getPrevTvlFromChart = (chart: any, daysBefore: number) => {
-  return chart[chart.length - 1 - daysBefore]?.[1] ?? null;
-};
 
 export const getPercentChange = (valueNow: string, value24HoursAgo: string) => {
   const adjustedPercentChange =
@@ -138,18 +136,14 @@ export const getFormattedChains = async (category: string) => {
     })
   );
 
-  const chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: Object.values(chainCoingeckoIds)
-        .filter((c) => c.geckoId)
-        .map((c) => `coingecko:${c.geckoId}`),
-    }),
-  })
-    .then((r) => r.json())
+  const chainMcaps: McapsResponse = await fetchMcaps(
+    Object.values(chainCoingeckoIds)
+      .filter((c) => c.geckoId)
+      .map((c) => `coingecko:${c.geckoId}`),
+  )
     .catch((err) => {
       console.log(err);
-      return {};
+      return {} as McapsResponse;
     });
 
   // calc no.of protocols present in each chains as well as extra tvl data like staking , pool2 etc

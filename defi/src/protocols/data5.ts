@@ -2774,7 +2774,7 @@ const data5: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "piku-dao/index.js",
-    treasury: "piku-dao",
+    treasury: "piku-dao.js", // need to add .js otherwise the link will be broken on the information page
     twitter: "piku_dao",
     audit_links: ["https://docs.piku.co/piku/piku/security-and-risks/audits"],
     github: ["piku-co"],

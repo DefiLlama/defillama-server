@@ -1,5 +1,5 @@
 import fetch from "node-fetch"
-import { runComparisons, Config } from "./runComparisons"
+import { runComparisons, Config, ConfigSchema } from "./runComparisons"
 
 jest.mock("node-fetch", () => jest.fn())
 const mockFetch = fetch as unknown as jest.Mock
@@ -17,6 +17,65 @@ const errResponse = (status: number) => ({
   statusText: "err",
   json: async () => ({}),
   text: async () => "err",
+})
+
+const validComparison = {
+  entity: "x",
+  metric: "y",
+  llamaUrl: "https://llama.test/x",
+  llamaPath: "value",
+  externalProvider: "external",
+  externalUrl: "https://external.test/x",
+  externalPath: "value",
+}
+
+describe("ConfigSchema", () => {
+  test("rejects unknown config keys so threshold typos do not silently default", () => {
+    const parsed = ConfigSchema.safeParse({
+      comparisons: [
+        {
+          ...validComparison,
+          warnThreshold: 0.1,
+        },
+      ],
+    })
+
+    expect(parsed.success).toBe(false)
+  })
+
+  test("rejects negative threshold values", () => {
+    const parsed = ConfigSchema.safeParse({
+      comparisons: [
+        {
+          ...validComparison,
+          minAbsDiff: -1,
+        },
+      ],
+    })
+
+    expect(parsed.success).toBe(false)
+  })
+
+  test("rejects criticalThreshold below warningThreshold", () => {
+    const parsed = ConfigSchema.safeParse({
+      comparisons: [
+        {
+          ...validComparison,
+          warningThreshold: 0.1,
+          criticalThreshold: 0.05,
+        },
+      ],
+    })
+
+    expect(parsed.success).toBe(false)
+    if (!parsed.success) {
+      expect(parsed.error.issues[0].path).toEqual([
+        "comparisons",
+        0,
+        "criticalThreshold",
+      ])
+    }
+  })
 })
 
 describe("runComparisons (integration)", () => {

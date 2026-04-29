@@ -79,8 +79,9 @@ export function valueAtPath(input: any, path: string): any {
 /**
  * Like {@link valueAtPath} but coerces the result to a finite number.
  *
- * Returns `null` for `null`, `undefined`, empty string, NaN, Infinity,
- * or any non-numeric content.
+ * Only accepts finite numbers and strict numeric strings. Returns `null`
+ * for `null`, `undefined`, whitespace-only strings, booleans, arrays,
+ * objects, NaN, Infinity, or any non-numeric content.
  *
  * @param input - Object to extract from.
  * @param path - Dot-separated key path.
@@ -88,9 +89,16 @@ export function valueAtPath(input: any, path: string): any {
  */
 export function numberAtPath(input: any, path: string): number | null {
   const value = valueAtPath(input, path)
-  if (value === null || value === undefined || value === "") return null
+  if (value === null || value === undefined) return null
+  if (typeof value === "number") return Number.isFinite(value) ? value : null
+  if (typeof value !== "string") return null
 
-  const parsed = typeof value === "number" ? value : Number(value)
+  const trimmed = value.trim()
+  if (!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(trimmed)) {
+    return null
+  }
+
+  const parsed = Number(trimmed)
   return Number.isFinite(parsed) ? parsed : null
 }
 
@@ -124,6 +132,18 @@ export function compareMetricSample(
   const criticalThreshold = options.criticalThreshold ?? 0.25
   const minAbsDiff = options.minAbsDiff ?? 0
 
+  if (!isUsableNumber(llama.value) || !isUsableNumber(external.value)) {
+    return result(
+      llama,
+      external,
+      "missing",
+      null,
+      null,
+      getTimestampDrift(llama, external),
+      "missing metric value",
+    )
+  }
+
   const timestampDriftSeconds = getTimestampDrift(llama, external)
   if (
     timestampDriftSeconds !== null &&
@@ -138,18 +158,6 @@ export function compareMetricSample(
       null,
       timestampDriftSeconds,
       "timestamps are outside allowed drift",
-    )
-  }
-
-  if (!isUsableNumber(llama.value) || !isUsableNumber(external.value)) {
-    return result(
-      llama,
-      external,
-      "missing",
-      null,
-      null,
-      timestampDriftSeconds,
-      "missing metric value",
     )
   }
 

@@ -83,7 +83,10 @@ export class UrlPayloadCache {
   get(url: string, opts?: FetchOptions): Promise<unknown> {
     let payload = this.cache.get(url)
     if (!payload) {
-      payload = fetchJsonWithRetry(url, opts)
+      payload = fetchJsonWithRetry(url, opts).catch((error) => {
+        this.cache.delete(url)
+        throw error
+      })
       this.cache.set(url, payload)
     }
     return payload

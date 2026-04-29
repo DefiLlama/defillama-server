@@ -27,28 +27,40 @@ import {
 import { UrlPayloadCache } from "./fetchWithRetry"
 
 /** Zod schema for a single comparison entry. */
-export const ComparisonConfigSchema = z.object({
-  entity: z.string(),
-  metric: z.string(),
-  llamaUrl: z.string().url(),
-  llamaPath: z.string(),
-  /** Optional path for `llama` timestamp (refs #11830 Bug #2 fix). */
-  llamaTimestampPath: z.string().optional(),
-  externalProvider: z.string(),
-  externalUrl: z.string().url(),
-  externalPath: z.string(),
-  /** Optional path for external timestamp (refs #11830 Bug #2 fix). */
-  externalTimestampPath: z.string().optional(),
-  warningThreshold: z.number().optional(),
-  criticalThreshold: z.number().optional(),
-  minAbsDiff: z.number().optional(),
-  maxTimestampDriftSeconds: z.number().optional(),
-})
+export const ComparisonConfigSchema = z
+  .object({
+    entity: z.string(),
+    metric: z.string(),
+    llamaUrl: z.string().url(),
+    llamaPath: z.string(),
+    /** Optional path for `llama` timestamp (refs #11830 Bug #2 fix). */
+    llamaTimestampPath: z.string().optional(),
+    externalProvider: z.string(),
+    externalUrl: z.string().url(),
+    externalPath: z.string(),
+    /** Optional path for external timestamp (refs #11830 Bug #2 fix). */
+    externalTimestampPath: z.string().optional(),
+    warningThreshold: z.number().nonnegative().optional(),
+    criticalThreshold: z.number().nonnegative().optional(),
+    minAbsDiff: z.number().nonnegative().optional(),
+    maxTimestampDriftSeconds: z.number().nonnegative().optional(),
+  })
+  .strict()
+  .refine(
+    ({ warningThreshold, criticalThreshold }) =>
+      warningThreshold === undefined ||
+      criticalThreshold === undefined ||
+      criticalThreshold >= warningThreshold,
+    {
+      path: ["criticalThreshold"],
+      message: "criticalThreshold must be greater than or equal to warningThreshold",
+    },
+  )
 
 /** Zod schema for a full config file. */
 export const ConfigSchema = z.object({
   comparisons: z.array(ComparisonConfigSchema),
-})
+}).strict()
 
 /** A single comparison entry. */
 export type Comparison = z.infer<typeof ComparisonConfigSchema>

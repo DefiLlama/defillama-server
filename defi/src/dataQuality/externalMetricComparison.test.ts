@@ -14,8 +14,17 @@ describe("numberAtPath / valueAtPath", () => {
 
   test("returns null for empty / non-numeric / missing", () => {
     expect(numberAtPath({ data: { fees: "" } }, "data.fees")).toBeNull()
+    expect(numberAtPath({ data: { fees: "   " } }, "data.fees")).toBeNull()
     expect(numberAtPath({ data: { fees: "bad" } }, "data.fees")).toBeNull()
     expect(numberAtPath({}, "missing.path")).toBeNull()
+  })
+
+  test("rejects JS-coercible non-numeric payload values", () => {
+    expect(numberAtPath({ x: false }, "x")).toBeNull()
+    expect(numberAtPath({ x: true }, "x")).toBeNull()
+    expect(numberAtPath({ x: [] }, "x")).toBeNull()
+    expect(numberAtPath({ x: [1] }, "x")).toBeNull()
+    expect(numberAtPath({ x: {} }, "x")).toBeNull()
   })
 
   test("supports array index segments", () => {
@@ -30,6 +39,10 @@ describe("numberAtPath / valueAtPath", () => {
 
   test("handles numeric strings with exponent notation", () => {
     expect(numberAtPath({ x: "1e3" }, "x")).toBe(1000)
+    expect(numberAtPath({ x: "-1.25e-3" }, "x")).toBe(-0.00125)
+    expect(numberAtPath({ x: ".5" }, "x")).toBe(0.5)
+    expect(numberAtPath({ x: "1." }, "x")).toBe(1)
+    expect(numberAtPath({ x: "1,000" }, "x")).toBeNull()
   })
 
   test("dotted-key limitation is documented (returns null for `uniswap.v3` key)", () => {
@@ -130,6 +143,24 @@ describe("compareMetricSample — thresholds and dust suppression", () => {
     )
     expect(nanResult.status).toBe("missing")
     expect(undefResult.status).toBe("missing")
+  })
+
+  test("missing metric values take precedence over stale timestamps", () => {
+    const r = compareMetricSample(
+      { provider: "llama", entity: "x", metric: "y", value: null, timestamp: 1 },
+      {
+        provider: "external",
+        entity: "x",
+        metric: "y",
+        value: 100,
+        timestamp: 10_000,
+      },
+      { maxTimestampDriftSeconds: 600 },
+    )
+
+    expect(r.status).toBe("missing")
+    expect(r.message).toMatch(/missing metric value/i)
+    expect(r.timestampDriftSeconds).toBe(9_999)
   })
 })
 

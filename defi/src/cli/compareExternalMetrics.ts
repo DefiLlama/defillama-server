@@ -57,21 +57,31 @@ Examples:
   npm run compare-external-metrics -- --dry-run \\
     src/dataQuality/configs/llama-tvl-spot-check.json
 
-  npm run compare-external-metrics -- --no-discord \\
+  npm run compare-external-metrics -- --dry-run \\
     --json /tmp/report.json --md /tmp/report.md \\
     src/dataQuality/configs/llama-tvl-spot-check.json
 `
 
-function parseArgs(argv: string[]): CliFlags {
+export function parseArgs(argv: string[]): CliFlags {
   const flags: CliFlags = { dryRun: false, help: false }
   const positional: string[] = []
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
+    const takeValue = () => {
+      const value = argv[i + 1]
+      if (!value || value.startsWith("-")) {
+        throw new Error(`Missing value for ${a}`)
+      }
+      i += 1
+      return value
+    }
+
     if (a === "--dry-run") flags.dryRun = true
     else if (a === "--help" || a === "-h") flags.help = true
-    else if (a === "--json") flags.json = argv[++i]
-    else if (a === "--md") flags.md = argv[++i]
-    else if (a === "--config") flags.config = argv[++i]
+    else if (a === "--json") flags.json = takeValue()
+    else if (a === "--md") flags.md = takeValue()
+    else if (a === "--config") flags.config = takeValue()
+    else if (a.startsWith("-")) throw new Error(`Unknown option: ${a}`)
     else positional.push(a)
   }
   if (!flags.config && positional[0]) flags.config = positional[0]
@@ -132,7 +142,9 @@ async function main(): Promise<void> {
   if (results.some((r) => r.status === "critical")) process.exitCode = 1
 }
 
-main().catch((e) => {
-  console.error(e)
-  process.exit(1)
-})
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+}

@@ -131,4 +131,21 @@ describe("UrlPayloadCache", () => {
     await cache.get("https://example.com/x")
     expect(mockFetch).toHaveBeenCalledTimes(2)
   })
+
+  test("evicts rejected fetches so later calls can recover", async () => {
+    mockFetch
+      .mockResolvedValueOnce(errResponse(404, "Not Found"))
+      .mockResolvedValueOnce(okResponse({ x: 1 }))
+
+    const cache = new UrlPayloadCache()
+    await expect(
+      cache.get("https://example.com/recover", { retries: 0, backoffMs: 1 }),
+    ).rejects.toThrow(/404/)
+
+    await expect(
+      cache.get("https://example.com/recover", { retries: 0, backoffMs: 1 }),
+    ).resolves.toEqual({ x: 1 })
+
+    expect(mockFetch).toHaveBeenCalledTimes(2)
+  })
 })

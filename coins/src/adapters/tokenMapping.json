@@ -2665,6 +2665,18 @@
       "decimals": "0",
       "symbol": "STBX",
       "to": "asset#arbitrum:0x998a0beaf37ca4ba61b5cfac59fdee0da2211a46"
+    },
+    "0xEB5Cb93C27A11782D146863a340455E614B10302": {
+      "decimals": "6",
+      "symbol": "ftSparkUSDC",
+      "name": "Flying Tulip Spark USD Coin",
+      "to": "coingecko#usd-coin"
+    },
+    "0x4f47c4aDC71E1d33fdA433FadDA596a529307af5": {
+      "decimals": "6",
+      "symbol": "ftSparkUSDT",
+      "name": "Flying Tulip Spark Tether USD",
+      "to": "coingecko#tether"
     }
   },
   "fantom": {
@@ -12829,6 +12841,12 @@
       "decimals": "18",
       "symbol": "AMPED",
       "to": "coingecko#amped-finance"
+    },
+    "0x6EC218FC45aC0C7B83D16557befABB62ed7455Ae": {
+      "decimals": "6",
+      "symbol": "ftDNS-USDC",
+      "name": "Flying Tulip Delta Neutral USDC/wS/stS",
+      "to": "coingecko#usd-coin"
     }
   },
   "vinu": {

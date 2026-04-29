@@ -1249,5 +1249,45 @@ const data6: Protocol[] = [
     parentProtocol: "parent#spreads-finance",
     listedAt: 1777478521
   },
+  {
+    id: "7766",
+    name: "R25",
+    address: null,
+    symbol: "-",
+    url: "https://www.r25.xyz/",
+    description:
+      "R25 is an RWA stablecoin protocol that issues rcUSD against tokenized money market funds and stablecoins",
+    chain: "Pharos",
+    logo: `${baseIconsUrl}/r25.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Money Market Funds"],
+    chains: ["Pharos"],
+    module: "r25/index.js",
+    twitter: "R25Official",
+    listedAt: 1777489095
+  },
+  {
+    id: "7767",
+    name: "x402",
+    address: null,
+    symbol: "-",
+    url: "https://www.x402.org/",
+    description:
+      "x402 is an open payments standard that lets services charge for API and content access directly over HTTP, with payments settled through crypto-native rails",
+    chain: "Base",
+    logo: `${baseIconsUrl}/x402.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Base","Arbitrum","Optimism","Polygon","Celo", "Hyperliquid L1","Binance","Avalanche","Abstract"],
+    module: "dummy.js",
+    twitter: null,
+    dimensions: {
+      dexs: "x402",
+    }
+  },
 ];
 export default data6;

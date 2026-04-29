@@ -126,7 +126,31 @@ function getCacheFile(key: string) {
   return `pg-cache/${key}`
 }
 
+const INVALID_CACHE_KEY_ERROR = 'Invalid cache key'
+
+function normalizePGCacheKey(key: string) {
+  if (typeof key !== 'string' || !key.length)
+    throw new Error(INVALID_CACHE_KEY_ERROR)
+
+  if (key.includes('\\'))
+    throw new Error(INVALID_CACHE_KEY_ERROR)
+
+  const normalizedKey = path.posix.normalize(key)
+
+  if (
+    normalizedKey === '.' ||
+    normalizedKey.startsWith('..') ||
+    normalizedKey.includes('/../') ||
+    normalizedKey.startsWith('/')
+  ) {
+    throw new Error(INVALID_CACHE_KEY_ERROR)
+  }
+
+  return normalizedKey
+}
+
 export async function readFromPGCache(key: string, { withTimestamp = false } = {}) {
+  key = normalizePGCacheKey(key)
   const item: any = await readFileData(getCacheFile(key))
   if (!item) return null
   if (withTimestamp) return item
@@ -134,6 +158,7 @@ export async function readFromPGCache(key: string, { withTimestamp = false } = {
 }
 
 export async function writeToPGCache(key: string, data: any) {
+  key = normalizePGCacheKey(key)
   const id = getCacheFile(key)
   return storeData(id, { id, timestamp: Math.floor(Date.now() / 1e3), data })
 }
@@ -172,6 +197,7 @@ export function getDailyTvlCacheId(id: string) {
 
 export async function deleteFromPGCache(key: string) {
   log('Deleting from db cache:', key)
+  key = normalizePGCacheKey(key)
   let keySplit = key.split('/')
   if (typeof keySplit[1] === 'string' && keySplit[1].startsWith('tvl-cache-daily')) {
     keySplit[1] = TVL_CACHE_FOLDER

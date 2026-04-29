@@ -10,13 +10,11 @@ import { protocolsById } from "../../protocols/data";
 import * as sdk from '@defillama/sdk';
 import { clearDimensionsCacheV2 } from "../utils/dimensionsUtils";
 
+const INTERNAL_SECRET_KEY = process.env.LLAMA_INTERNAL_ROUTE_KEY;
+const INTERNAL_SECRET_HEADER = 'x-internal-secret';
 
-const INTERNAL_SECRET_KEY = process.env.LLAMA_INTERNAL_ROUTE_KEY ?? process.env.LLAMA_PRO_API2_SECRET_KEY ?? process.env.API2_SUBPATH
-
-export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: string) {
-
+export function setInternalRoutes(router: HyperExpress.Router, _routerBasePath: string) {
   // router.get('/_internal/all-protocol-data', getAllProtocolLatestData)
-
 
   router.get('/debug-pg/*', debugHandler)
   router.delete('/debug-pg/*', debugHandler)
@@ -24,19 +22,20 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
   async function debugHandler(req: any, res: any) {
     const fullPath = req.path;
     const routerPath = fullPath.split('debug-pg')[1];
+    const cachePath = routerPath.replace(/^\/+/, '');
+    const internalSecret = req.headers[INTERNAL_SECRET_HEADER];
     try {
-
-      if (process.env.API2_SKIP_SUBPATH === 'true')
-        if (!req.headers['x-internal-secret'] || req.headers['x-internal-secret'] !== INTERNAL_SECRET_KEY) throw new Error('Unauthorized')
+      if (!INTERNAL_SECRET_KEY || !internalSecret || internalSecret !== INTERNAL_SECRET_KEY)
+        return errorResponse(res, 'Unauthorized', { statusCode: 401 })
 
       switch (req.method) {
         case 'GET':
-          return res.json(await readFromPGCache(routerPath))
+          return res.json(await readFromPGCache(cachePath))
         case 'DELETE':
-          if (routerPath === '/clear-dimensions-cache') {
+          if (cachePath === 'clear-dimensions-cache') {
             await clearDimensionsCacheV2()
           } else
-            await deleteFromPGCache(routerPath)
+            await deleteFromPGCache(cachePath)
           return res.json({ success: true })
         default:
           throw new Error('Unsupported method')
@@ -46,8 +45,6 @@ export function setInternalRoutes(router: HyperExpress.Router, routerBasePath: s
       return errorResponse(res, 'Internal server error', { statusCode: 500 })
     }
   }
-
-
 }
 
 async function getAllProtocolLatestData(_req: HyperExpress.Request, res: HyperExpress.Response) {

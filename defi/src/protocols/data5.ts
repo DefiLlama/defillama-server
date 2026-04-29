@@ -15255,6 +15255,7 @@ const data5: Protocol[] = [
     module: "aave-v4/index.js",
     twitter: "aave",
     audit_links: ["https://aave.com/security"],
+    oraclesBreakdown: [ { name: "Chainlink", type: "Primary", proof: ["https://governance.aave.com/t/arfc-aave-v4-activation-on-ethereum-mainnet/24293/4", "https://aave.com/docs/ecosystem/oracle"]} ],
     listedAt: 1774886314,
     parentProtocol: "parent#aave",
     dimensions: {

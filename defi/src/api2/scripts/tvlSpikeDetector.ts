@@ -156,7 +156,7 @@ function detectSelfFixingEvents(
 /**
  * Find which tokens caused a spike/drop by comparing USD token data before/during/after
  */
-function findTokenContributions(
+export function findTokenContributions(
   usdTokenSeries: any[],
   event: SpikeEvent
 ): TokenContribution[] {

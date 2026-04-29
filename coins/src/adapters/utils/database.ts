@@ -412,7 +412,7 @@ export async function filterWritesWithLowConfidence(
       const now = getCurrentUnixTimestamp();
       const returnedPKs = new Set(cgEntries.map((e: any) => e?.PK).filter(Boolean));
       for (const pk of uniqueCgPKs) {
-        if (!returnedPKs.has(pk)) staleCgEntries[pk] = { PK: pk, price: undefined };
+        if (!returnedPKs.has(pk)) sdk.log(`filterWrites: CG entry ${pk} missing, skipping override`);
       }
       for (const entry of cgEntries) {
         if (!entry) continue;

@@ -14408,7 +14408,12 @@ const data4: Protocol[] = [
     stablecoins: ["usdai"],
     listedAt: 1747659245,
     dimensions: {
-      fees: "usdai"
+      fees: {
+        adapter: "usdai",
+        genuineSpikes: [
+          ["2026-04-28", "PYUSD yields harvested"], //https://arbiscan.io/tx/0xcb01527d233d11bfe52ce21c7e3aec5d875829421962966a45fb91946233a1c6
+        ]
+      },
     }
   },
   {

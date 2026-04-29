@@ -1155,7 +1155,7 @@ const data6: Protocol[] = [
     oraclesBreakdown: [{name: "Pyth", type: "Primary", proof: ["https://docs.bullet.xyz/bullet-network/architecture/oracle"]}],
     parentProtocol: "parent#bullet",
     dimensions: {
-      derivatives: "bullet-perps",
+      derivatives: "bullet-perp",
       "open-interest": "bullet"
     }
   },

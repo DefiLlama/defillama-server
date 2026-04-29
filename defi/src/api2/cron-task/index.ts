@@ -176,6 +176,58 @@ async function run() {
 
     await storeRouteData('protocols', data)
 
+    const coinMarkets = getCoinMarkets()
+    const parentProtocolsPayload = cache.metadata.parentProtocols
+      .map((parent: any) => {
+        const children = data.filter((p: any) => p.parentProtocol === parent.id)
+        if (children.length === 0) return null
+        if (children.every((c: any) => c.deadFrom || c.deprecated)) return null
+
+        const chainSet = new Set<string>()
+        let symbol = "-"
+        let tvl = 0
+        const chainTvls: Record<string, number> = {}
+
+        children.forEach((child: any) => {
+          if (child.symbol && child.symbol !== "-") symbol = child.symbol
+          tvl += child.tvl ?? 0
+          Object.entries(child.chainTvls ?? {}).forEach(([chain, value]) => {
+            chainTvls[chain] = (chainTvls[chain] ?? 0) + (value as number)
+          })
+          child.chains?.forEach((c: string) => chainSet.add(c))
+        })
+
+        const mcap = parent.gecko_id
+          ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null
+          : null
+
+        const childProtocols = children.map((child: any) => ({
+          id: child.id,
+          name: child.name,
+          slug: child.slug,
+          chains: child.chains ?? [],
+          ...(child.category ? { category: child.category } : {}),
+          tvl: child.tvl ?? null,
+          chainTvls: child.chainTvls ?? {},
+          ...(child.mcap != null ? { mcap: child.mcap } : {}),
+          ...(child.deadFrom || child.deprecated ? { deprecated: true } : {}),
+        }))
+
+        return {
+          ...parent,
+          symbol,
+          chains: Array.from(chainSet),
+          tvl,
+          chainTvls,
+          mcap,
+          childProtocols,
+        }
+      })
+      .filter(Boolean)
+      .sort((a: any, b: any) => (b.tvl ?? 0) - (a.tvl ?? 0))
+
+    await storeRouteData('parent-protocols', parentProtocolsPayload)
+
     const excludeProtocolFields = [
       'description', 'forkedFromIds', 'logo', 'misrepresentedTokens', 'github',
       'audits', 'audit_links', 'hallmarks', 'oraclesBreakdown',

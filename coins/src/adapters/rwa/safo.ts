@@ -78,7 +78,7 @@ export async function safo(timestamp: number = 0): Promise<Write[]> {
       symbol,
       timestamp,
       "safo",
-      0.8,
+      1,
     );
 
     for (const chain of Object.keys(chains)) {
@@ -92,7 +92,7 @@ export async function safo(timestamp: number = 0): Promise<Write[]> {
         symbol,
         timestamp,
         "safo",
-        0.8,
+        1,
         `asset#arbitrum:${arbitrumAddress}`,
       );
     }

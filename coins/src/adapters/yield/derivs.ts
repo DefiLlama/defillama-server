@@ -873,6 +873,20 @@ const configs: { [adapter: string]: Config } = {
     chain: "ethereum",
     underlying: "0xb492B4aFD9658093694CF9452D5C272e8230F3B0",
     address: "0xE346C29b5B60Ef870b9724c57ccfbBc631e47DEE",
+  },
+  USDnr: {
+    rate: async ({ api }) => {
+      const m = "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b"
+      const usdNr = "0xD48e565561416dE59DA1050ED70b8d75e8eF28f9"
+      const [bal, supply] = await Promise.all([
+        api.call({ abi: "erc20:balanceOf", target: m, params: [usdNr] }),
+        api.call({ abi: "erc20:totalSupply", target: usdNr })
+      ]);
+      return bal / supply;
+    },
+    chain: "fluent",
+    underlying: "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b",
+    address: "0xD48e565561416dE59DA1050ED70b8d75e8eF28f9",
   }
 };
 

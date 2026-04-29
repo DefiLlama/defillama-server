@@ -443,6 +443,7 @@ export async function processHourlyAdapter(params: {
   isDryRun: boolean
   checkBeforeInsert: boolean
   parallelProcessCount?: number
+  metadata?: Record<string, any>
 }): Promise<ProcessHourlyAdapterResult> {
   let {
     adapterType,
@@ -456,6 +457,7 @@ export async function processHourlyAdapter(params: {
     isDryRun,
     checkBeforeInsert,
     parallelProcessCount = 1,
+    metadata = {},
   } = params
 
   // if the end timestamp is current time & this hour is not complete yet, we pull the last complete hour instead to avoid having incomplete data for the current hour
@@ -532,6 +534,7 @@ export async function processHourlyAdapter(params: {
           cacheResults: false,
           deadChains: deadChainsSet,
           runWindowInSeconds: ONE_HOUR_IN_SECONDS,
+          metadata,
         })
 
         const sliceRecord = res.adaptorRecordV2JSON as any

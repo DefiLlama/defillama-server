@@ -321,7 +321,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
       if (isRunFromRefillScript) {
         recordTimestamp = fromTimestamp // when we are storing data, irrespective of version, store at start timestamp while running from refill script? 
         const todayStartOfDay = getTimestampAtStartOfDayUTC(Math.floor(Date.now() / 1000))
-        if (toTimestamp >= todayStartOfDay+ONE_HOUR_IN_SECONDS) {
+        if (toTimestamp >= todayStartOfDay + ONE_HOUR_IN_SECONDS) {
           if (isAdapterVersionV1 && !runAtCurrTime) throw new Error(`V1 adapters cannot be run for today as they pull data for the previous day`)
           recordTimestamp = toTimestamp
         }
@@ -427,9 +427,19 @@ export const handler2 = async (options: DimensionRunOptions) => {
       let tblc: any // token breakdown by label by chain
       let hourlySlicesForDebug: any[] | undefined
       let hourlyStoreFn: (() => Promise<void>) | undefined
+      const protocolMetadata: any = {
+        adapterType,
+        name: protocol.displayName,
+        runType: 'dimensions',
+        module: protocol.module,
+        id: id2,
+      }
 
       // if the adapter supports pulling hourly data, we process it with a different function that handles pulling and storing hourly slices, otherwise we run the adapter as normal - we only use the hourly cache for store-all to speed up processing, for refill we want to pull fresh data even for hourly adapters
       if (isHourlyAdapter) {
+
+        protocolMetadata.isHourlyAdapter = true
+
         const result = await processHourlyAdapter({
           adapterType,
           id: id2,
@@ -442,6 +452,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           isDryRun,
           checkBeforeInsert,
           parallelProcessCount: parallelHourlyProcessCount,
+          metadata: protocolMetadata,
         })
         adaptorRecordV2JSON = result.adaptorRecordV2JSON
         tb = result.tb
@@ -459,6 +470,7 @@ export const handler2 = async (options: DimensionRunOptions) => {
           withMetadata: true,
           cacheResults: runType === 'store-all',
           deadChains: deadChainsSet,
+          metadata: protocolMetadata,
         })
         adaptorRecordV2JSON = res.adaptorRecordV2JSON
         tb = res.breakdownByToken

@@ -21,6 +21,17 @@ const _getLastMonthTvl = (protocol: Protocol) => getRecordClosestToTimestamp(hou
 
 const includeSection = (chainDisplayName: string) => !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")
 
+export function allKeysAreAdditionalTvl(chainTvls: Record<string, unknown>): boolean {
+  const keys = Object.keys(chainTvls);
+  if (keys.length === 0) return false;
+  for (const key of keys) {
+    if (key !== "doublecounted" && key !== "liquidstaking" && key !== "dcAndLsOverlap") {
+      return false;
+    }
+  }
+  return true;
+}
+
 export async function getProtocolTvl(
   protocol: Readonly<Protocol>,
   useNewChainNames: boolean, {
@@ -181,14 +192,7 @@ export async function getProtocolTvl(
 
       const chainsLength = Object.keys(chainTvls).length;
 
-      let allTvlsAreAddl = false;
-
-      Object.keys(chainTvls).forEach((type) => {
-        allTvlsAreAddl =
-          type === "doublecounted" ||
-          type === "liquidstaking" ||
-          type === "dcAndLsOverlap";
-      });
+      const allTvlsAreAddl = allKeysAreAdditionalTvl(chainTvls);
 
       if (chainsLength === 0 || (chainsLength <= 3 && allTvlsAreAddl)) {
         // let defaultChain = protocol.chains[0] ?? protocolsById[protocol.id]?.chains[0] ?? protocolsById[protocol.id]?.chain

@@ -161,9 +161,7 @@ export async function runApiTests(
     console.log(`[API Tests] Category: ${category}${testFile ? `, File: ${testFile}` : ''}`);
 
     return new Promise((resolve) => {
-        const npxPath = 'npx';
-
-        const testProcess = spawn(npxPath, ['jest', ...args], {
+        const testProcess = spawn('npx', ['jest', ...args], {
             cwd: apiTestsDir,
             env: {
                 ...process.env,
@@ -174,7 +172,7 @@ export async function runApiTests(
                 ...(yieldsUrl ? { BETA_YIELDS_URL: yieldsUrl } : {}),
             },
             detached: false,
-            shell: false,
+            shell: process.platform === 'win32',
         });
 
         currentTestProcess = testProcess;

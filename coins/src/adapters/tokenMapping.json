@@ -16786,6 +16786,13 @@
       "symbol": "USDC.e"
     }
   },
+  "pharos": {
+    "0xc879c018db60520f4355c26ed1a6d572cdac1815": {
+      "to": "coingecko#usd-coin",
+      "decimals": 6,
+      "symbol": "USDC"
+    }
+  },
   "open": {
     "0x0000000000000000000000000000000000000000": {
       "to": "coingecko#openledger-2",

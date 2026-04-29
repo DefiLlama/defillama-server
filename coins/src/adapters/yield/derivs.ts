@@ -887,6 +887,20 @@ const configs: { [adapter: string]: Config } = {
     chain: "fluent",
     underlying: "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b",
     address: "0xD48e565561416dE59DA1050ED70b8d75e8eF28f9",
+  },
+  ctUSD: {
+    rate: async ({ api }) => {
+      const m = "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b"
+      const ctUsd = "0x8D82c4E3c936C7B5724A382a9c5a4E6Eb7aB6d5D"
+      const [bal, supply] = await Promise.all([
+        api.call({ abi: "erc20:balanceOf", target: m, params: [ctUsd] }),
+        api.call({ abi: "erc20:totalSupply", target: ctUsd })
+      ]);
+      return bal / supply;
+    },
+    chain: "citrea",
+    underlying: "0x866a2bf4e572cbcf37d5071a7a58503bfb36be1b",
+    address: "0x8D82c4E3c936C7B5724A382a9c5a4E6Eb7aB6d5D",
   }
 };
 

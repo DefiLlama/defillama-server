@@ -244,6 +244,7 @@ async function start() {
           break;
         case 'api-test-stop':
           stopApiTests();
+          break;
         case 'spikes-runCommand':
           runSpikesCommand(ws, data.data);
           break;

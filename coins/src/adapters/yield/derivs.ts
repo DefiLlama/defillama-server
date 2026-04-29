@@ -835,6 +835,45 @@ const configs: { [adapter: string]: Config } = {
     underlying: "0x1aad217b8f78dba5e6693460e8470f8b1a3977f3",
     address: "0x546E01d65f2B1C64C657bD69Ce00f8584Ed798cc",
   },
+  iTRY: {
+    rate: async ({ api }) => {
+      const [navPrice, navUpdatedAt, tryUsd] = await Promise.all([
+        api.call({
+          abi: "uint256:price",
+          target: "0xa5b6f7404D960BaC4075EcAEc31E37B940c2A145",
+        }),
+        api.call({
+          abi: "uint256:updatedAt",
+          target: "0xa5b6f7404D960BaC4075EcAEc31E37B940c2A145",
+        }),
+        api.call({
+          abi: "function latestRoundData() view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound)",
+          target: "0xB09fC5fD3f11Cf9eb5E1C5Dba43114e3C9f477b5",
+        }),
+      ]);
+      if (navUpdatedAt < api.timestamp - 14 * 24 * 60 * 60)
+        throw new Error(`iTRY NAV stale rate`);
+      if (tryUsd.updatedAt < api.timestamp - 24 * 60 * 60)
+        throw new Error(`TRY/USD stale rate`);
+      return (navPrice / 1e18) * (tryUsd.answer / 1e8);
+    },
+    chain: "ethereum",
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    address: "0xb492B4aFD9658093694CF9452D5C272e8230F3B0",
+  },
+  wiTRY: {
+    rate: async ({ api }) => {
+      const rate = await api.call({
+        abi: "function convertToAssets(uint256) external view returns (uint256)",
+        target: "0xE346C29b5B60Ef870b9724c57ccfbBc631e47DEE",
+        params: 1e12,
+      });
+      return rate / 1e12;
+    },
+    chain: "ethereum",
+    underlying: "0xb492B4aFD9658093694CF9452D5C272e8230F3B0",
+    address: "0xE346C29b5B60Ef870b9724c57ccfbBc631e47DEE",
+  }
 };
 
 export async function derivs(timestamp: number) {

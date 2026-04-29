@@ -16675,6 +16675,16 @@
       "to": "coingecko#wrapped-steth",
       "decimals": 18,
       "symbol": "wstETH"
+    },
+    "0x996ce957408804fEC19237D866799d9C7076E48c": {
+      "to": "asset#ethereum:0xb492b4afd9658093694cf9452d5c272e8230f3b0",
+      "decimals": 18,
+      "symbol": "iTRY"
+    },
+    "0x15B271D9012b5820FC42b1c495B4C1e206547De5": {
+      "to": "asset#ethereum:0xe346c29b5b60ef870b9724c57ccfbbc631e47dee",
+      "decimals": 18,
+      "symbol": "wiTRY"
     }
   },
   "quai": {

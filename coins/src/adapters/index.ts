@@ -190,6 +190,7 @@ export default {
   wisdomtree: require("./rwa/wisdomtree"),
   townsquare: require("./townsquare"),
   axc: require("./rwa/axc"),
+  alphatoken: require("./rwa/alphatoken"),
   notional: require("./yield/notional"),
   shift: require("./yield/shift"),
   makina: require("./yield/makina"),

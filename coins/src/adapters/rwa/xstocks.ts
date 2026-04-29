@@ -5,6 +5,8 @@ import {
 } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
+import { calculate4626Prices } from "../utils/erc4626";
+import { fetch } from "../utils";
 
 // Same factory address on every supported EVM chain.
 // Emits NewToken(address, string, string) when an xStocks token is deployed.
@@ -103,4 +105,47 @@ async function getTokenPrices(timestamp: number) {
 
 export function xstocks(timestamp: number = 0) {
   return getTokenPrices(timestamp);
+}
+
+// Wrapped xStocks are ERC-4626 vaults around the rebasing xStock — both V1 and V2 wrappers.
+const TOKENS_API = "https://api.backed.fi/api/v1/token?type=xstocks";
+
+const networkToChain: { [network: string]: string } = {
+  Ethereum: "ethereum",
+  Polygon: "polygon",
+  Gnosis: "xdai",
+  BinanceSmartChain: "bsc",
+  Arbitrum: "arbitrum",
+  Avalanche: "avax",
+  Fantom: "fantom",
+  Base: "base",
+  Sonic: "sonic",
+  Mantle: "mantle",
+  HyperEVM: "hyperliquid",
+  Ink: "ink",
+};
+
+export async function wrappedXstocks(timestamp: number = 0) {
+  const res = await fetch(TOKENS_API);
+  const nodes: any[] = res?.nodes ?? [];
+
+  const wrappersByChain: { [chain: string]: Set<string> } = {};
+  for (const token of nodes) {
+    for (const d of token.deployments ?? []) {
+      const chain = networkToChain[d.network];
+      if (!chain) continue;
+      for (const w of [d.wrapperAddress, d.wrapperAddressV2]) {
+        if (typeof w !== "string" || !w.startsWith("0x")) continue;
+        wrappersByChain[chain] ??= new Set();
+        wrappersByChain[chain].add(w.toLowerCase());
+      }
+    }
+  }
+
+  const results = await Promise.all(
+    Object.entries(wrappersByChain).map(([chain, addrs]) =>
+      calculate4626Prices(chain, timestamp, [...addrs], "xstocks"),
+    ),
+  );
+  return results.flat();
 }

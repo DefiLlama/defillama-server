@@ -97,4 +97,10 @@ describe('findTokenContributions', () => {
     const event = { type: 'spike', level: 'global', startTimestamp: 50, endTimestamp: 100 };
     expect(findTokenContributions(series, event as any)).toEqual(oldFindTokenContributions(series, event));
   });
+
+  test('matches previous implementation when no during records exist', () => {
+    const event = { type: 'spike', level: 'global', startTimestamp: 210, endTimestamp: 290 };
+    expect(findTokenContributions(series, event as any)).toEqual([]);
+    expect(findTokenContributions(series, event as any)).toEqual(oldFindTokenContributions(series, event));
+  });
 });

@@ -114,7 +114,10 @@ async function getOsmosisSupplies(tokens: string[], timestamp?: number): Promise
 async function getAptosSupplies(tokens: string[], timestamp?: number): Promise<{ [token: string]: number }> {
   if (timestamp) throw new Error(`timestamp incompatible with Aptos adapter!`);
   const supplies: { [token: string]: number } = {};
-  const rpc = process.env.APTOS_RPC;
+  // Public fullnode is rate-limited but keeps the pipeline working when
+  // APTOS_RPC isn't set (e.g. local dev). Prod should still set APTOS_RPC
+  // to a dedicated endpoint.
+  const rpc = process.env.APTOS_RPC || "https://fullnode.mainnet.aptoslabs.com";
 
   await PromisePool.withConcurrency(1)
     .for(tokens)
@@ -294,14 +297,44 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
   if (timestamp) throw new Error(`timestamp incompatible with Stellar adapter!`);
   const supplies: { [token: string]: number } = {};
 
+  // ES stores versioned variants of the same Stellar asset (e.g.
+  // "blnd-gdjehtbe...-1" in addition to "blnd-gdjehtbe..."). Both hit the
+  // same Horizon record, and both would otherwise be summed by symbol
+  // downstream — doubling the USDC / USDY / etc. figures for stellar.
+  // Dedupe by (code, issuer) pair, keeping the first-seen rawToken as the
+  // canonical key we store the supply under.
+  const seen = new Map<string, string>();
+  const dedupedTokens: string[] = [];
+  for (const rawToken of tokens) {
+    const upper = rawToken.toUpperCase();
+    let canonicalKey: string;
+    if (isSorobanContractId(upper)) {
+      canonicalKey = upper;
+    } else {
+      const classicKey = stellarSacToClassic[upper] ?? upper;
+      // base (code, issuer); issuer is the trailing 56-char G-prefixed string;
+      // anything after that (e.g. "-1", "-2") is a versioning artifact.
+      const m = classicKey.match(/^(.+-[A-Z2-7]{55})(?:-\d+)?$/);
+      canonicalKey = m ? m[1] : classicKey;
+    }
+    if (seen.has(canonicalKey)) continue;
+    seen.set(canonicalKey, rawToken);
+    dedupedTokens.push(rawToken);
+  }
+
   await PromisePool.withConcurrency(3)
-    .for(tokens)
-    .process(async (token) => {
+    .for(dedupedTokens)
+    .process(async (rawToken) => {
       try {
+        // Upstream (ES whitelist) stores stellar keys lowercased. Stellar asset
+        // issuers and Soroban contract IDs are G/C-prefixed base32 strings that
+        // are case-sensitive on Horizon — re-uppercase before querying.
+        const token = rawToken.toUpperCase();
+
         // Native Soroban contracts: call total_supply() via RPC
         if (isSorobanContractId(token)) {
           const supply = await getSorobanTokenSupply(token);
-          if (supply != null && supply > BigInt(0)) supplies[`stellar:${token}`] = Number(supply);
+          if (supply != null && supply > BigInt(0)) supplies[`stellar:${rawToken}`] = Number(supply);
           return;
         }
 
@@ -309,11 +342,13 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
         const classicKey = stellarSacToClassic[token] ?? token;
         if (classicKey === "XLM") return; // native asset handled by ownTokens
 
-        // Token format: "{asset_code}-{asset_issuer}" (dash-separated)
+        // Token format: "{asset_code}-{asset_issuer}" (dash-separated).
+        // Horizon is case-insensitive for asset_code but case-sensitive for
+        // asset_issuer.
         const dashIdx = classicKey.lastIndexOf("-");
         if (dashIdx === -1) return;
         const asset_code = classicKey.substring(0, dashIdx);
-        const asset_issuer = classicKey.substring(dashIdx + 1);
+        const asset_issuer = classicKey.substring(dashIdx + 1).toUpperCase();
         const res = await fetch(
           `https://horizon.stellar.org/assets?asset_code=${asset_code}&asset_issuer=${asset_issuer}&limit=1`
         ).then((r) => r.json());
@@ -321,7 +356,9 @@ async function getStellarSupplies(tokens: string[], timestamp?: number): Promise
         if (record?.balances?.authorized != null) {
           // Horizon exposes amount in display units with 7 implicit decimal places.
           // Multiply by 1e7 to align with decimals=7 returned by the price API.
-          supplies[`stellar:${token}`] = Math.round(parseFloat(record.balances.authorized) * 1e7);
+          // Key the supply under the original (lowercase) token so it matches
+          // the keys coins.getPrices returned.
+          supplies[`stellar:${rawToken}`] = Math.round(parseFloat(record.balances.authorized) * 1e7);
         }
       } catch (e) {}
     });

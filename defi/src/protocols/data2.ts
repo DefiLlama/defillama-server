@@ -9307,7 +9307,7 @@ const data2: Protocol[] = [
     url: "https://www.zeta.markets",
     description: "Zeta Markets is the premier derivatives protocol on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/zeta.png`,
+    logo: `${baseIconsUrl}/zeta.jpg`,
     audits: "0",
     gecko_id: "zeta",
     cmcId: "32002",

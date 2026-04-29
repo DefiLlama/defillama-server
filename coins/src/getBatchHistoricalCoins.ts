@@ -25,8 +25,8 @@ export async function fetchDBData(
     PKTransforms[coin.PK].forEach((coinName) => {
       const timestamps: number[] = coinsObj[coinName];
       if (!Array.isArray(timestamps)) return;
-      tasks.push(
-        ...timestamps.map((timestamp) => async () => {
+      for (const timestamp of timestamps) {
+        tasks.push(async () => {
           const finalCoin: any = await getRecordClosestToTimestamp(
             coin.redirect ?? coin.PK,
             timestamp,
@@ -53,8 +53,8 @@ export async function fetchDBData(
               confidence: coin.confidence,
             });
           }
-        })
-      );
+        });
+      }
     });
   });
 

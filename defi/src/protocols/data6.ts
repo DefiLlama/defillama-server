@@ -1289,5 +1289,26 @@ const data6: Protocol[] = [
       dexs: "x402",
     }
   },
+  {
+    id: "7768",
+    name: "Terminal",
+    address: "solana:pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+    symbol: "PUMP",
+    url: "https://terminal.pump.fun/",
+    description: "Terminal is Pump.fun's advanced memecoin trading terminal",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/terminal.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Telegram Bot",
+    chains: ["Solana"],
+    module: "dummy.js",
+    twitter: "Pumpfun",
+    parentProtocol: "parent#pump",
+    dimensions: {
+      fees: "trading-terminal"
+    }
+  },
 ];
 export default data6;

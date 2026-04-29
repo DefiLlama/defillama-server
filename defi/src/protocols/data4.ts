@@ -17809,8 +17809,8 @@ const data4: Protocol[] = [
   {
     id: "6328",
     name: "Padre",
-    address: "solana:pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
-    symbol: "PUMP",
+    address: null,
+    symbol: "-",
     url: "https://trade.padre.gg/rk/defillama",
     referralUrl: "https://trade.padre.gg/rk/defillama",
     description: "Memecoin trading terminal built for traders",
@@ -17823,7 +17823,6 @@ const data4: Protocol[] = [
     chains: ["Solana"],
     module: "dummy.js",
     twitter: "PadreApp",
-    parentProtocol: "parent#pump",
     dimensions: {
       fees: "padre"
     }

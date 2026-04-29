@@ -1,7 +1,7 @@
 import * as HyperExpress from 'hyper-express';
 import { readRouteData, getCacheVersion, readPGCacheForId } from './file-cache';
 import { rwaSlug } from './utils';
-import { initPG, fetchDailyFlowsForIdPG } from './db';
+import { initPG, fetchDailyFlowsForIdPG, computeFlowSeries } from './db';
 import { getChainLabelFromKey } from '../utils/normalizeChain';
 
 const webserver = new HyperExpress.Server();
@@ -305,34 +305,7 @@ function setRoutes(router: HyperExpress.Router): void {
 
             await initPG();
             const rows = await fetchDailyFlowsForIdPG(String(id), startTs, endTs);
-            if (rows.length === 0) {
-                return successResponse(res, { id, start: startTs, end: endTs, data: [] }, 30);
-            }
-
-            // Anchor supply per chain comes from the first row in range (closest to start).
-            const supplyStart: { [chain: string]: number } = {};
-            const allChains = new Set<string>();
-            for (const row of rows) {
-                for (const c of Object.keys(row.totalsupply || {})) allChains.add(c);
-                for (const c of Object.keys(row.mcap || {})) allChains.add(c);
-            }
-            for (const c of allChains) supplyStart[c] = Number(rows[0].totalsupply?.[c]) || 0;
-
-            const data = rows.map((row) => {
-                const byChain: { [chain: string]: number } = {};
-                let netFlowUsd = 0;
-                for (const chainKey of allChains) {
-                    const supplyT = Number(row.totalsupply?.[chainKey]) || 0;
-                    const mcapT = Number(row.mcap?.[chainKey]) || 0;
-                    // price_t = mcap / supply, derived from stored fields. Skip chains with zero supply.
-                    const priceT = supplyT > 0 ? mcapT / supplyT : 0;
-                    const flow = (supplyT - (supplyStart[chainKey] || 0)) * priceT;
-                    if (flow !== 0) byChain[getChainLabelFromKey(chainKey)] = flow;
-                    netFlowUsd += flow;
-                }
-                return { timestamp: row.timestamp, netFlowUsd, netFlowByChain: byChain };
-            });
-
+            const data = computeFlowSeries(rows, getChainLabelFromKey);
             return successResponse(res, { id, start: startTs, end: endTs, data }, 30);
         })
     );

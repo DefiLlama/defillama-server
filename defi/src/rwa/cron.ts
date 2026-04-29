@@ -315,7 +315,7 @@ function removePGSpikes(
  *   1. Removing spikes/dips (including multi-day runs) at aggregate and per-chain level.
  *   2. Filling multi-day gaps with linear interpolation.
  */
-function smoothPGCacheData(data: PGCacheData): PGCacheData {
+export function smoothPGCacheData(data: PGCacheData): PGCacheData {
   const timestamps = Object.keys(data).map(Number).sort((a, b) => a - b);
   if (timestamps.length < 2) return data;
 
@@ -398,7 +398,7 @@ function smoothPGCacheData(data: PGCacheData): PGCacheData {
   return result;
 }
 
-function processRecordsToPGCache(records: any[]): PGCacheData {
+export function processRecordsToPGCache(records: any[]): PGCacheData {
   const data: PGCacheData = {};
   const zeroChain = { onChainMcap: 0, activeMcap: 0, defiActiveTvl: 0, totalSupply: 0 };
   for (const record of records) {
@@ -1360,11 +1360,15 @@ async function main() {
   }
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error('Fatal error:', error);
-    process.exit(1);
-  });
+// Only auto-run when invoked directly (e.g. `ts-node defi/src/rwa/cron.ts`).
+// This guard keeps importing the module from tests / scripts side-effect-free.
+if (require.main === module) {
+  main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+      console.error('Fatal error:', error);
+      process.exit(1);
+    });
+}
 
 // Run with: npx ts-node defi/src/rwa/cron.ts

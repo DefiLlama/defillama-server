@@ -470,16 +470,47 @@ export async function fetchDailyRecordsWithChainsForIdPG(id: string): Promise<an
     return results;
 }
 
+export interface FlowRow { timestamp: number; mcap: { [chain: string]: any }; totalsupply: { [chain: string]: any }; }
+export interface FlowPoint { timestamp: number; netFlowUsd: number; netFlowByChain: { [chainLabel: string]: number }; }
+
+// Pure flow-series computation. Anchors supply per-chain to the first row in the input (closest to start),
+// then for every row computes (supply_t - supply_anchor) * (mcap_t / supply_t) per chain.
+// Exported so the /flows route and tests share the exact same logic.
+export function computeFlowSeries(rows: FlowRow[], chainLabelFn: (slug: string) => string = (s) => s): FlowPoint[] {
+    if (rows.length === 0) return [];
+    const allChains = new Set<string>();
+    for (const row of rows) {
+        for (const c of Object.keys(row.totalsupply || {})) allChains.add(c);
+        for (const c of Object.keys(row.mcap || {})) allChains.add(c);
+    }
+    const supplyStart: { [chain: string]: number } = {};
+    for (const c of allChains) supplyStart[c] = Number(rows[0].totalsupply?.[c]) || 0;
+
+    return rows.map((row) => {
+        const byChain: { [chain: string]: number } = {};
+        let netFlowUsd = 0;
+        for (const chainKey of allChains) {
+            const supplyT = Number(row.totalsupply?.[chainKey]) || 0;
+            const mcapT = Number(row.mcap?.[chainKey]) || 0;
+            const priceT = supplyT > 0 ? mcapT / supplyT : 0;
+            const flow = (supplyT - (supplyStart[chainKey] || 0)) * priceT;
+            if (flow !== 0) byChain[chainLabelFn(chainKey)] = flow;
+            netFlowUsd += flow;
+        }
+        return { timestamp: row.timestamp, netFlowUsd, netFlowByChain: byChain };
+    });
+}
+
 // Fetch daily records for a single ID within a timestamp range, with chain-level mcap + totalsupply.
 // Used by the flows endpoint to compute net-flow time-series for an arbitrary window.
-export async function fetchDailyFlowsForIdPG(id: string, startTs: number, endTs: number): Promise<Array<{ timestamp: number; mcap: any; totalsupply: any }>> {
+export async function fetchDailyFlowsForIdPG(id: string, startTs: number, endTs: number): Promise<FlowRow[]> {
     const records = await DAILY_RWA_DATA.findAll({
         attributes: ['timestamp', 'mcap', 'totalsupply'],
         where: { id, timestamp: { [Op.gte]: startTs, [Op.lte]: endTs } },
         order: [['timestamp', 'ASC']],
         raw: true,
     }) as any[];
-    return records.map((r) => ({
+    return records.map((r): FlowRow => ({
         timestamp: r.timestamp,
         mcap: parseJsonSafe(r.mcap),
         totalsupply: parseJsonSafe(r.totalsupply),

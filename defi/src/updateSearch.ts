@@ -11,6 +11,13 @@ import { getEnv } from "./api2/env";
 import { rwaSlug } from "./rwa/utils";
 import { cachedJSONPull } from "./api2/utils/cachedFunctions";
 
+// This script builds two Meilisearch indexes:
+// - `pages`: internal DefiLlama routes shown in app/global search.
+// - `directory`: external project URLs shown in directory-style search.
+//
+// Most top-level protocol and chain entities intentionally come from
+// `/lite/protocols2`. The smol appMetadata files are used to decide which
+// metric subpages each entity should expose, not as the default entity source.
 const normalize = (str: string) => (str ? sluggifyString(str).replace(/[^a-zA-Z0-9_-]/g, "") : "");
 
 // Split camelCase/PascalCase into space-separated words: "MakerDAO" → "Maker DAO", "DexScreener" → "Dex Screener"
@@ -74,6 +81,9 @@ interface TokenSearchData {
 }
 
 const SEARCH_RANK = {
+  // Higher `r` wins after textual relevance. Keep navigation pages above
+  // entities for exact aliases like "yields", while subpages stay below their
+  // parent entity unless the query specifically matches the subpage text.
   navPage: 4,
   entity: 3,
   collection: 2,
@@ -163,6 +173,9 @@ const getProtocolSubSections = ({
 }) => {
   const subSections: Array<SearchResult> = [];
 
+  // Protocol metadata is a capability map. If a flag exists here, the
+  // frontend has a protocol route/query state for that metric, so we add a
+  // searchable child result for it.
   if (result.tvl) {
     subSections.push({
       ...result,
@@ -402,7 +415,8 @@ async function getAllCurrentSearchResults(index: string) {
 
     allResults.push(...res.results);
 
-    // Check if we've fetched all results
+    // The delete step needs the complete current index so stale documents
+    // disappear when routes or ids are removed from this generator.
     if (res.results.length < limit || allResults.length >= res.total) {
       hasMore = false;
     } else {
@@ -432,11 +446,41 @@ for (const p of parentProtocolsList) {
   if ((p as any).previousNames?.length) previousNamesMap.set(p.name, (p as any).previousNames);
 }
 
+// Local protocol data has richer display fields than smol metadata for some
+// rows. These maps let metadata-driven fallbacks recover the canonical display
+// name and symbol without changing the main `/lite/protocols2` entity source.
+const localProtocolById = new Map<string, any>();
+const localProtocolBySlug = new Map<string, any>();
+for (const p of protocols) {
+  localProtocolById.set(p.id, p);
+  localProtocolBySlug.set(sluggifyString(p.name), p);
+}
+for (const p of parentProtocolsList) {
+  localProtocolById.set((p as any).id, p);
+  localProtocolBySlug.set(sluggifyString((p as any).name), p);
+}
+
+function getMetadataProtocolName(protocolId: string, metadata: IProtocolMetadata) {
+  if (metadata.displayName) return metadata.displayName;
+
+  const localProtocol = localProtocolById.get(protocolId);
+  if (localProtocol?.name) return localProtocol.name;
+
+  const metadataSlug = metadata.name ?? (protocolId.startsWith("chain#") ? protocolId.slice("chain#".length) : "");
+  const protocolBySlug = metadataSlug ? localProtocolBySlug.get(metadataSlug) : null;
+  if (protocolBySlug?.name) return protocolBySlug.name;
+
+  return metadataSlug;
+}
+
 function buildDirectoryResults(
   tvlData: { parentProtocols: any[]; protocols: any[] },
   parentTvl: Record<string, number>,
   tastyMetrics: Record<string, number>
 ) {
+  // Directory results are for external project URLs, not DefiLlama routes.
+  // They share much of the protocol naming/ranking data but dedupe by project
+  // URL because parent/child protocols often point to the same website.
   const otherPages = [
     { name: "LlamaFeed", route: "https://llamafeed.io" },
     { name: "Etherscan", route: "https://etherscan.io/" },
@@ -448,7 +492,7 @@ function buildDirectoryResults(
     v: 1000,
   })) as Array<SearchResult>;
 
-  // Deduplicate by protocol url, preferring parent protocols
+  // Deduplicate by protocol URL, preferring parent protocols.
   const stripTrailingSlash = (url: string) => url.replace(/\/+$/, "");
   const urlToIndex = new Map<string, number>();
   const directoryResults: Array<SearchResult> = [];
@@ -545,6 +589,12 @@ function buildDirectoryResults(
 async function generateSearchList() {
   const endAt = Date.now();
   const startAt = endAt - 1000 * 60 * 60 * 24 * 90;
+  // Fetch all source datasets up front. The important split:
+  // - `/lite/protocols2` supplies protocol, parent protocol, and chain entities.
+  // - `appMetadata-protocols.json` and `appMetadata-chains.json` only describe
+  //   which metric pages exist for those entities.
+  // - `pages.json` supplies static frontend navigation pages.
+  // - Tasty metrics provide recent route popularity for ranking within groups.
   const [
     tvlData,
     stablecoinsData,
@@ -673,6 +723,8 @@ async function generateSearchList() {
     }
   };
   for (const p of tvlData.protocols) {
+    // Aggregate protocol TVL into the collection entities that search exposes:
+    // chains, categories, tags, and parent protocols.
     for (const chain in p.chainTvls) {
       addOrCreate(chainTvl, chain, (p.chainTvls[chain] as any).tvl);
     }
@@ -687,6 +739,13 @@ async function generateSearchList() {
 
   const protocols: Array<SearchResult> = [];
   const subProtocols: Array<SearchResult> = [];
+  const tvlChainSlugs = new Set<string>();
+  for (const chain of tvlData.chains) {
+    tvlChainSlugs.add(sluggifyString(chain));
+  }
+
+  // Parent protocols are first-class protocol search results. Their child
+  // protocol names are only needed for subpage routes like grouped yields.
   for (const parent of tvlData.parentProtocols) {
     const prevNames = previousNamesMap.get(parent.name);
     const allNames = [parent.name, ...(prevNames ?? [])];
@@ -721,6 +780,9 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
+  // Child protocols are also first-class protocol search results. This list is
+  // still `/lite/protocols2`, so protocols missing there are intentionally not
+  // added unless they hit the narrow `chain#` fallback below.
   for (const protocol of tvlData.protocols) {
     if (protocol.name === "LlamaSwap") continue;
     const prevNames = previousNamesMap.get(protocol.name);
@@ -754,9 +816,54 @@ async function generateSearchList() {
     subProtocols.push(...subSections);
   }
 
+  // Some chains are represented as protocol metadata rows named `chain#slug`
+  // because they have app-level dimensions such as fees/revenue, but they may
+  // not appear in `tvlData.chains`, which is the list used to create chain
+  // pages. If no chain page exists, promote that `chain#` row into protocol
+  // search so users can still reach `/protocol/:chainName` and its metric
+  // subpages. Do not use this as a generic metadata-only protocol fallback.
+  for (const protocolId in protocolsMetadata) {
+    if (!protocolId.startsWith("chain#")) continue;
+    if (tvlChainSlugs.has(protocolId.slice("chain#".length))) continue;
+
+    const metadata = protocolsMetadata[protocolId];
+    const name = getMetadataProtocolName(protocolId, metadata);
+    if (!name) continue;
+
+    const prevNames = previousNamesMap.get(name);
+    const allNames = [name, ...(prevNames ?? [])];
+    const variants = buildNameVariants(allNames);
+    const symbol = localProtocolBySlug.get(sluggifyString(name))?.symbol;
+    const result = {
+      id: `protocol_${normalize(protocolId)}`,
+      name,
+      ...(symbol && symbol !== "-" ? { symbol } : {}),
+      logo: `https://icons.llamao.fi/icons/protocols/${sluggifyString(name)}?w=48&h=48`,
+      route: `/protocol/${sluggifyString(name)}`,
+      ...(prevNames?.length ? { previousNames: [...prevNames] } : {}),
+      ...(variants.length ? { nameVariants: variants } : {}),
+      r: SEARCH_RANK.entity,
+      v: tastyMetrics[`/protocol/${sluggifyString(name)}`] ?? 0,
+      type: "Protocol",
+    };
+
+    protocols.push(result);
+    subProtocols.push(
+      ...getProtocolSubSections({
+        result,
+        metadata,
+        geckoId: metadata.gecko_id ?? null,
+        tastyMetrics,
+        protocolData: { name, id: protocolId },
+      })
+    );
+  }
+
   const rwaChainsSet = new Set<string>(rwaListData.chains ?? []);
   const chains: Array<SearchResult> = [];
   const subChains: Array<SearchResult> = [];
+  // Chain entities only come from `tvlData.chains`. App metadata can add
+  // chain metric subpages, but it should not create a chain result by itself.
   for (const chain of tvlData.chains) {
     const result = {
       id: `chain_${normalize(chain)}`,
@@ -1082,6 +1189,8 @@ async function generateSearchList() {
     });
   }
 
+  // Frontend pages are static navigation/search shortcuts. They can have
+  // keyword aliases, and duplicate routes are collapsed below.
   let metrics: Array<SearchResult> = (frontendPages["Metrics"] ?? []).map((i) => {
     const keywords = getPageSearchKeywords(i.searchKeywords);
     return {
@@ -1267,6 +1376,8 @@ async function generateSearchList() {
   }));
 
   const sortDesc = (a: any, b: any) => (b.v ?? 0) - (a.v ?? 0);
+  // Sort each visible group by recent route popularity before concatenating.
+  // Cross-group ordering is mostly controlled by Meilisearch relevance + `r`.
   const sortedGroups = [
     chains,
     protocols,
@@ -1286,6 +1397,8 @@ async function generateSearchList() {
   for (const group of sortedGroups) group.sort(sortDesc);
 
   return {
+    // The pages index contains entities, frontend pages, metric subpages, and
+    // long-tail token/RWA/equity routes.
     results: [
       ...chains,
       ...protocols,
@@ -1309,6 +1422,8 @@ async function generateSearchList() {
       r: result.r ?? 1,
     })),
     directoryResults: buildDirectoryResults(tvlData, parentTvl, tastyMetrics),
+    // `searchlist.json` is a small popular-results fallback, not the complete
+    // search corpus.
     topResults: [chains, protocols, stablecoins, metrics, categories, tools, tags]
       .flatMap((g) => g.slice(0, 3))
       .map((r) => ({ ...r, v: 0 })),

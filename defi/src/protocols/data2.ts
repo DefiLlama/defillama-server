@@ -1552,6 +1552,7 @@ const data2: Protocol[] = [
     listedAt: 1645572803,
     github: ["impactMarket"],
     deadUrl: true,
+    deprecated: true
   },
   {
     id: "1450",

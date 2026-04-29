@@ -11569,14 +11569,14 @@ const data5: Protocol[] = [
   },
   {
     id: "7420",
-    name: "Spreads Finance",
+    name: "Spreads Finance Yield",
     address: null,
     symbol: "-",
     url: "https://spreads.fi/",
     description:
       "Spreads Finance has a suite of DeFi products starting with a yield and points vault for users to passively earn yield via market neutral derivative strategies or points from tokenless DeFi markets, all via a vault.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spreads-finance.jpg`,
+    logo: `${baseIconsUrl}/spreads-finance-yield.jpg`,
     audits: "0",
     gecko_id: null,
     cmcId: null,
@@ -11584,6 +11584,7 @@ const data5: Protocol[] = [
     chains: ["Ethereum"],
     module: "spreads-fi/index.js",
     twitter: "spreads_fi",
+    parentProtocol: "parent#spreads-finance",
     listedAt: 1771346989
   },
   {

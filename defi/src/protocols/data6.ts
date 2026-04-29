@@ -1229,5 +1229,25 @@ const data6: Protocol[] = [
     audit_links: ["https://github.com/pessimistic-io/audits/blob/b886ee548241bc8066843ab110287058ff33ba4f/DefiPlaza%20Radix%20Security%20Analysis%20by%20Pessimistic.pdf"],
     listedAt: 1777404095,
   },
+  {
+    id: "7765",
+    name: "Spreads Finance Leverage",
+    address: null,
+    symbol: "-",
+    url: "https://spreads.fi/",
+    description:
+      "Spreads Finance has a suite of DeFi products starting with a yield and points vault for users to passively earn yield via market neutral derivative strategies or points from tokenless DeFi markets, all via a vault.",
+    chain: "Ink",
+    logo: `${baseIconsUrl}/spreads-finance-leverage.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ink"],
+    module: "spreads-strc-leverage/index.js",
+    twitter: "spreads_fi",
+    parentProtocol: "parent#spreads-finance",
+    listedAt: 1777478521
+  },
 ];
 export default data6;

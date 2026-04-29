@@ -9565,6 +9565,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "shape",
   },
+  {
+    id: "parent#spreads-finance",
+    name: "Spreads Finance",
+    url: "https://spreads.fi/", 
+    description: "Spreads Finance has a suite of DeFi products starting with a yield and points vault for users to passively earn yield via market neutral derivative strategies or points from tokenless DeFi markets, all via a vault.",
+    logo: `${baseIconsUrl}/spreads-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spreads_fi",
+  },
 ];
 
 export default parentProtocols;

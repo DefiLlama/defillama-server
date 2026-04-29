@@ -1051,10 +1051,10 @@ export const chainCoingeckoIds = {
     },
   },
   "Ronin": {
-    geckoId: null,
+    geckoId: "ronin",
     github: ["axieinfinity"],
     symbol: "RON",
-    cmcId: null,
+    cmcId: "14101",
     categories: ["EVM"],
     chainId: 2020,
     twitter: "Ronin_Network",
@@ -2667,9 +2667,9 @@ export const chainCoingeckoIds = {
     },
   },
   "Beam": {
-    geckoId: null,
-    symbol: "MC",
-    cmcId: null,
+    geckoId: "beam-2",
+    symbol: "BEAM",
+    cmcId: "28298",
     categories: ["EVM"],
     parent: {
       chain: "Avalanche",
@@ -3472,9 +3472,9 @@ export const chainCoingeckoIds = {
     chainId: 111188,
   },
   "Taiko": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "taiko",
+    symbol: "TAIKO",
+    cmcId: "31525",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -3594,9 +3594,9 @@ export const chainCoingeckoIds = {
     },
   },
   "Rari": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "rarible",
+    symbol: "RARI",
+    cmcId: "5877",
     categories: ["EVM", "Arbitrum Chains"],
     parent: {
       chain: "Arbitrum",
@@ -4947,9 +4947,9 @@ export const chainCoingeckoIds = {
     twitter: "kamigotchiworld",
   },
   "Katana": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "katana-network-token",
+    symbol: "KAT",
+    cmcId: "38769",
     categories: ["EVM"],
     twitter: "katana",
     url: "https://katana.network/",

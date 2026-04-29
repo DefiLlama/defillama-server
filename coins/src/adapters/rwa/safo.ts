@@ -1,7 +1,7 @@
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import { addToDBWritesList } from "../utils/database";
-import { getCurrentUnixTimestamp } from "../../utils/date";
+import { checkOracleFresh } from "../utils/oracle";
 
 const oracles: { [symbol: string]: string } = {
   SAFO: "0x372e37cA79747A2d1671EDBC5f1e2853B96BA351",
@@ -58,12 +58,11 @@ export async function safo(timestamp: number = 0): Promise<Write[]> {
     calls: symbols.map((s) => oracles[s]),
   });
 
-  const now = timestamp === 0 ? getCurrentUnixTimestamp() : timestamp;
   const writes: Write[] = [];
 
   symbols.forEach((symbol, i) => {
     const [, answer, , updatedAt] = results[i];
-    if (updatedAt < now - 27 * 60 * 60) return;
+    if (!checkOracleFresh(updatedAt, { timestamp, label: symbol, throwIfStale: false })) return;
 
     const price = answer / 1e6;
     const chains = config[symbol];

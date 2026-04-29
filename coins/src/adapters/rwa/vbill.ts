@@ -1,7 +1,7 @@
-import { getCurrentUnixTimestamp } from "../../utils/date";
 import { addToDBWritesList } from "../utils/database";
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
+import { checkOracleFresh } from "../utils/oracle";
 
 const vbillAddresses: { [key: string]: string } = {
   ethereum: "0x2255718832bC9fD3bE1CaF75084F4803DA14FF01",
@@ -17,11 +17,7 @@ export async function vbill(timestamp: number = 0) {
     target: "0xA569E68B5D110F2A255482c2997DFDBe1b2ab912",
   });
 
-  if (
-    priceData.updatedAt <
-    (timestamp == 0 ? getCurrentUnixTimestamp() : timestamp) - 27 * 60 * 60
-  )
-    throw new Error("VBILL price is stale");
+  checkOracleFresh(priceData.updatedAt, { timestamp, label: "VBILL" });
 
   const writes: Write[] = [];
   Object.keys(vbillAddresses).map(async (chain) => {

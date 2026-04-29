@@ -204,6 +204,8 @@ async function _storeAppMetadata() {
   await notifyMissingChainIds(missingChainIds);
 
   async function _storeMetadataFile() {
+    const yieldProjects = new Set(yieldsData.map((pool: any) => pool.project));
+
     for (const chain of tvlData.chains) {
       finalChains[slug(chain)] = { name: chain, id: chain };
     }
@@ -225,7 +227,7 @@ async function _storeAppMetadata() {
         tvl: hasTvl,
         inflows: hasInflows,
         ...(hasBorrowed ? { borrowed: true } : {}),
-        yields: yieldsData.find((pool: any) => pool.project === slugName) ? true : false,
+        yields: yieldProjects.has(slugName),
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),
       };
@@ -264,13 +266,10 @@ async function _storeAppMetadata() {
       }
       const { name: _, ...rest } = finalProtocols[protocol.id];
       const slugName: string = slug(protocol.name);
+      const childProtocols = parentToChildProtocols[protocol.id] ?? [];
       finalProtocols[protocol.id] = {
         name: slugName,
-        yields: yieldsData.find(
-          (pool: any) => pool.project === slugName || parentToChildProtocols[protocol.id]?.includes(pool.project)
-        )
-          ? true
-          : false,
+        yields: yieldProjects.has(slugName) || childProtocols.some((child: string) => yieldProjects.has(child)),
         ...rest,
         ...(protocol.governanceID ? { governance: true } : {}),
         ...(forksData.forks[protocol.name] ? { forks: true } : {}),

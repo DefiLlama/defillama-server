@@ -20,6 +20,19 @@ describe("parseArgs", () => {
     })
   })
 
+  test("--config takes precedence over positional config", () => {
+    expect(parseArgs(["--config", "flag.json", "pos.json"])).toEqual({
+      dryRun: false,
+      help: false,
+      config: "flag.json",
+    })
+  })
+
+  test("sets help for both help aliases", () => {
+    expect(parseArgs(["-h"]).help).toBe(true)
+    expect(parseArgs(["--help"]).help).toBe(true)
+  })
+
   test("throws for unknown options instead of treating them as config paths", () => {
     expect(() => parseArgs(["--no-discord"])).toThrow(
       /Unknown option: --no-discord/,

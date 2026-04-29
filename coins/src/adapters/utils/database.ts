@@ -390,7 +390,7 @@ export async function filterWritesWithLowConfidence(
   // For asset writes with a stale coingecko redirect, rewrite PK to coingecko#<id>
   // so all chain deployments get repriced from this secondary source
   const redirectMap: Record<string, string> = {}; // asset PK -> coingecko PK
-  let staleCgEntries: Record<string, any> = {}; // cgPK -> entry (only if stale or missing)
+  let staleCgEntries: Record<string, any> = {}; // cgPK -> entry (stale, or absent from batchGet)
 
   const assetWrites = filteredWrites.filter(
     (w) => w?.PK?.startsWith("asset#") && w.confidence >= staleCgConfidenceThreshold,
@@ -412,23 +412,20 @@ export async function filterWritesWithLowConfidence(
       const now = getCurrentUnixTimestamp();
       const returnedPKs = new Set(cgEntries.map((e: any) => e?.PK).filter(Boolean));
       for (const pk of uniqueCgPKs) {
-        if (!returnedPKs.has(pk)) {
-          staleCgEntries[pk] = { PK: pk, price: undefined };
-        }
+        if (!returnedPKs.has(pk)) staleCgEntries[pk] = { PK: pk, price: undefined };
       }
       for (const entry of cgEntries) {
         if (!entry) continue;
-        // Allow override when: CG feed is stale, OR a secondary source already took over
         const isCgAdapter = entry.adapter === "coingecko";
         const isStale = (now - (entry.timestamp ?? 0)) >= staleMargin;
-        if (isCgAdapter && isStale) {
-          staleCgEntries[entry.PK] = entry;
-        } else if (!isCgAdapter) {
-          staleCgEntries[entry.PK] = entry;
-        }
+        // Override when: CG feed is stale, OR a secondary source already took over
+        if (!isCgAdapter || isStale) staleCgEntries[entry.PK] = entry;
       }
 
-      // Rewrite qualifying writes to target the coingecko PK
+      // Pick one winning asset PK per cgPK so multiple chain deployments don't
+      // collide on the same {PK, SK} after rewrite. Highest conf wins; ties
+      // break by PK alphabetical.
+      const winnerByCgPK: Record<string, { PK: string; confidence: number }> = {};
       for (const w of filteredWrites) {
         if (!w?.PK?.startsWith("asset#")) continue;
         const cgPK = redirectMap[w.PK];
@@ -436,20 +433,25 @@ export async function filterWritesWithLowConfidence(
         if (w.confidence < staleCgConfidenceThreshold) continue;
 
         const cgEntry = staleCgEntries[cgPK];
-        if (cgEntry.price && w.price) {
+        // Explicit null/zero check — a 0 price (bad adapter, depeg) must not bypass the guard
+        if (cgEntry.price != null && cgEntry.price > 0 && w.price != null) {
           const priceChange = Math.abs(w.price - cgEntry.price) / cgEntry.price;
           if (priceChange > staleCgPriceChangeThreshold) {
-            sdk.log(
-              `filterWrites: skipping stale CG override for ${w.PK} -> ${cgPK}: ` +
-              `price change ${(priceChange * 100).toFixed(1)}% exceeds ${staleCgPriceChangeThreshold * 100}% threshold`,
-            );
+            sdk.log(`filterWrites: skipping stale CG override for ${w.PK} -> ${cgPK}: price change ${(priceChange * 100).toFixed(1)}% exceeds ${staleCgPriceChangeThreshold * 100}%`);
             continue;
           }
         }
+        const c = winnerByCgPK[cgPK];
+        if (!c || w.confidence > c.confidence || (w.confidence === c.confidence && w.PK < c.PK)) {
+          winnerByCgPK[cgPK] = { PK: w.PK, confidence: w.confidence };
+        }
+      }
 
-        sdk.log(
-          `filterWrites: ${w.PK} -> ${cgPK} (stale CG feed, confidence ${w.confidence}, $${w.price?.toFixed(4)})`,
-        );
+      for (const w of filteredWrites) {
+        if (!w?.PK?.startsWith("asset#")) continue;
+        const cgPK = redirectMap[w.PK];
+        if (!cgPK || winnerByCgPK[cgPK]?.PK !== w.PK) continue;
+        sdk.log(`filterWrites: ${w.PK} -> ${cgPK} (stale CG, confidence ${w.confidence}, $${w.price?.toFixed(4)})`);
         w.PK = cgPK;
       }
     }
@@ -462,7 +464,7 @@ export async function filterWritesWithLowConfidence(
     if (!f.PK?.startsWith("asset#")) return true;
     const cgPK = redirectMap[f.PK];
     if (!cgPK) return true; // no CG redirect, keep it
-    if (staleCgEntries[cgPK]) return true; // CG is stale, keep it (was already rewritten above)
+    if (staleCgEntries[cgPK]) return true; // CG is stale or missing, keep it (was already rewritten above)
     return false; // CG is fresh, drop the redundant asset write
   });
 }
@@ -649,12 +651,13 @@ async function checkMovement(
     filteredItems.push(...[items[i], items[i + 1]]);
   });
 
+  // Fire-and-forget: a Discord outage must not block the writes we just validated
   if (staleAlerts != "" && process.env.STALE_COINS_ADAPTERS_WEBHOOK)
-    await sendMessage(
+    sendMessage(
       `Stale coins (>12h) accepting updates:\n${staleAlerts}`,
       process.env.STALE_COINS_ADAPTERS_WEBHOOK,
       true,
-    );
+    ).catch((e) => sdk.log(`checkMovement: stale-coins alert failed: ${e}`));
 
   return filteredItems.filter((v: any) => v != null);
 }

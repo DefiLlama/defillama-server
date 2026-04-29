@@ -1310,5 +1310,47 @@ const data6: Protocol[] = [
       fees: "trading-terminal"
     }
   },
+  {
+    id: "7769",
+    name: "Trust Wallet Perps",
+    address: "bsc:0x4b0f1812e5df2a09796481ff14017e6005508003",
+    symbol: "TWT",
+    url: "https://trustwallet.com/download",
+    description: "Trust Wallet Perps is Trust Wallet's Perps platform",
+    chain: "Hyperliquid L1",
+    logo: `${baseIconsUrl}/trust-wallet-perps.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["Hyperliquid Builder"],
+    chains: ["Hyperliquid L1"],
+    module: "dummy.js",
+    twitter: "TrustWallet",
+    parentProtocol: "parent#trust-wallet",
+    dimensions: {
+      fees: "trust-wallet-perps",
+      derivatives: "trust-wallet-perps",
+    }
+  },
+  {
+    id: "7770",
+    name: "NextRare",
+    address: null,
+    symbol: "-",
+    url: "https://nextrare.cards/",
+    description: "First perpetual TCG Gacha live on iOS and Android",
+    chain: "MegaETH",
+    logo: `${baseIconsUrl}/nextrare.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    category: "Physical TCG",
+    chains: ["MegaETH"],
+    module: "dummy.js",
+    twitter: "NextRare_cards",
+    dimensions: {
+      fees: "nextrare",
+    }
+  },
 ];
 export default data6;

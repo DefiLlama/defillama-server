@@ -392,21 +392,21 @@ const data4: Protocol[] = [
   },
   {
     id: "5577",
-    name: "Trust Wallet",
+    name: "Trust Wallet Wallet",
     address: "bsc:0x4b0f1812e5df2a09796481ff14017e6005508003",
     symbol: "TWT",
     url: "https://trustwallet.com/download",
     description: "Non-custodial crypto wallet",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/trust-wallet.jpg`,
+    logo: `${baseIconsUrl}/trust-wallet-wallet.jpg`,
     audits: "0",
-    gecko_id: "trust-wallet-token",
-    cmcId: "5964",
+    gecko_id: null,
+    cmcId: null,
     category: "Wallets",
     chains: ["Ethereum"],
-    treasury: "trust-wallet.js",
     module: "trust-wallet/index.js",
     twitter: "TrustWallet",
+    parentProtocol: "parent#trust-wallet",
     dimensions: {
       fees: "trust-wallet"
     }

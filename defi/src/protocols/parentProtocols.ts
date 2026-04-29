@@ -9576,6 +9576,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "spreads_fi",
   },
+  {
+    id: "parent#trust-wallet",
+    name: "Trust Wallet",
+    url: "https://trustwallet.com/", 
+    description: "Trust Wallet is a non-custodial crypto wallet",
+    logo: `${baseIconsUrl}/trust-wallet.jpg`,
+    gecko_id: "trust-wallet-token",
+    cmcId: "5964",
+    chains: [],
+    twitter: "TrustWallet",
+    treasury: "trust-wallet.js",
+  },
 ];
 
 export default parentProtocols;

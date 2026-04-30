@@ -8,6 +8,7 @@ import { getHistoricalTvlForAllProtocolsOptionalOptions, storeGetCharts } from "
 import { getOraclesInternal } from "../routes/getOracles";
 import { getForksInternal } from "../routes/getForks";
 import { getCategoriesInternal } from "../routes/getCategories";
+import { getParentProtocolsInternal } from "../routes/getParentProtocols";
 import { storeLangs } from "../routes/storeLangs";
 import { storeGetProtocols } from "../../storeGetProtocols";
 import { getYieldsConfig } from "../../getYieldsConfig";
@@ -83,7 +84,8 @@ async function run() {
   console.time('write /charts')
   await storeGetCharts(processProtocolsOptions)
   console.timeEnd('write /charts')
-  await writeProtocolsChart()
+  const protocols2Data = await writeProtocolsChart()
+  await writeParentProtocols(protocols2Data)
   await storeRouteData('config/yields', getYieldsConfig())
   await storeRouteData('outdated', await getOutdated(getLastHourlyRecord))
 
@@ -416,12 +418,28 @@ async function run() {
   }
 
   async function writeProtocolsChart() {
-    const debugString = 'write /lite/protocols2'
-    console.time(debugString)
+    console.time('write /lite/protocols2')
     const { protocols2Data, v2ProtocolData } = await storeGetProtocols({ getCoinMarkets, getLastHourlyRecord, getLastHourlyTokensUsd, getYesterdayTvl, getLastWeekTvl, getLastMonthTvl, getYesterdayTokensUsd, getLastWeekTokensUsd, getLastMonthTokensUsd, })
     await storeRouteData('lite/protocols2', protocols2Data)
     await storeRouteData('lite/v2/protocols', v2ProtocolData)
-    console.timeEnd(debugString)
+    console.timeEnd('write /lite/protocols2')
+    return protocols2Data
+  }
+
+  async function writeParentProtocols(protocols2Data: Awaited<ReturnType<typeof writeProtocolsChart>>) {
+    console.time('write /parent-protocols')
+    const childMetadataById = new Map(
+      (cache.metadata.protocols ?? []).map((p: any) => [
+        p.id,
+        {
+          excludeTvlFromParent: p.excludeTvlFromParent,
+          tokensExcludedFromParent: p.tokensExcludedFromParent,
+        },
+      ]),
+    )
+    const data = getParentProtocolsInternal(protocols2Data, childMetadataById)
+    await storeRouteData('parent-protocols', data)
+    console.timeEnd('write /parent-protocols')
   }
 
   async function writeBitcoinAddressesFile() {

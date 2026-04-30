@@ -1,0 +1,16 @@
+{
+  "comparisons": [
+    {
+      "entity": "aave-v3-ethereum-tvl",
+      "metric": "tvl_usd",
+      "llamaUrl": "https://api.llama.fi/protocol/aave-v3",
+      "llamaPath": "currentChainTvls.Ethereum",
+      "externalProvider": "defillama-protocol-detail",
+      "externalUrl": "https://api.llama.fi/protocol/aave-v3",
+      "externalPath": "currentChainTvls.Ethereum",
+      "warningThreshold": 0.001,
+      "criticalThreshold": 0.005,
+      "minAbsDiff": 1000
+    }
+  ]
+}

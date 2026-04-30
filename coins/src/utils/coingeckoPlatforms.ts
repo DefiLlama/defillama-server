@@ -32,7 +32,7 @@ export interface CoinMetadata {
 
 export function padAddress(address: string, length: number = 66): string {
   let prefix = "0x";
-  const data = address.substring(address.indexOf(prefix) + prefix.length);
+  const data = address.startsWith(prefix) ? address.slice(prefix.length) : address;
   const zeros = length - prefix.length - data.length;
   for (let i = 0; i < zeros; i++) prefix += "0";
   return prefix + data;

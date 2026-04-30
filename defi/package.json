@@ -61,6 +61,7 @@
     "fillOld-dimensions-all": "refill_all_missing_protocols=true NODE_OPTIONS=\"--max-old-space-size=16144\"  npx ts-node --logError --transpile-only src/adaptors/handlers/storeAdaptorData/refillScript.ts",
     "notify-outdated": "npx ts-node --logError --transpile-only src/server-scripts/notifyOutdated.ts",
     "notify-stablecoin-spike": "npx ts-node --logError --transpile-only src/server-scripts/notifyStablecoinSpikes.ts",
+    "compare-external-metrics": "npx ts-node --logError --transpile-only src/cli/compareExternalMetrics.ts",
     "store-block-explorers": "npx ts-node --logError --transpile-only src/server-scripts/storeBlockExplorers.ts",
     "dead-protocols-check": "npx ts-node --logError --transpile-only src/api2/scripts/checkForDeadProtocols.ts",
     "local-test-por": "npx ts-node --logError --transpile-only proof-of-reserves/cli/test.ts",

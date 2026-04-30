@@ -128,7 +128,13 @@ export async function notifyChainTvlFailures(): Promise<void> {
     }
     await Promise.all(promises);
   } catch (e) {
-    console.error(`notifyChainTvlFailures failed: ${e}`);
+    // Re-throw so the RUN_SCRIPT_MODE caller below exits non-zero. Unlike
+    // recordChainFailure / clearChainFailure (called from the live TVL pipeline
+    // where a Postgres outage must NOT crash the run), notifyChainTvlFailures
+    // runs as its own scheduled-job entry point — silent failure here means
+    // the team's monitoring sees a clean run when it isn't.
+    console.error("notifyChainTvlFailures failed:", e);
+    throw e;
   }
 }
 

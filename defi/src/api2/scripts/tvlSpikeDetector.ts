@@ -156,16 +156,26 @@ function detectSelfFixingEvents(
 /**
  * Find which tokens caused a spike/drop by comparing USD token data before/during/after
  */
-function findTokenContributions(
+export function findTokenContributions(
   usdTokenSeries: any[],
   event: SpikeEvent
 ): TokenContribution[] {
   const sorted = [...usdTokenSeries].sort((a, b) => a.SK - b.SK)
 
   // Find the records closest to before, during, and after the event
-  const beforeRecord = sorted.filter(r => r.SK < event.startTimestamp).pop()
-  const duringRecords = sorted.filter(r => r.SK >= event.startTimestamp && r.SK <= event.endTimestamp)
-  const afterRecord = sorted.filter(r => r.SK > event.endTimestamp)[0]
+  let beforeRecord: any
+  let afterRecord: any
+  const duringRecords: any[] = []
+  for (const record of sorted) {
+    if (record.SK < event.startTimestamp) {
+      beforeRecord = record
+    } else if (record.SK <= event.endTimestamp) {
+      duringRecords.push(record)
+    } else {
+      afterRecord = record
+      break
+    }
+  }
 
   if (!beforeRecord || !duringRecords.length) return []
 
@@ -196,14 +206,15 @@ function findTokenContributions(
   const beforeTokens = getTokens(beforeRecord)
 
   // Pick the during record with the most extreme value
+  const getTokensTotal = (record: any) => Object.values(getTokens(record)).reduce((s: number, v: any) => s + (v || 0), 0)
   let peakDuringRecord = duringRecords[0]
-  for (const rec of duringRecords) {
-    const duringTokens = getTokens(rec)
-    const peakTokens = getTokens(peakDuringRecord)
-    const duringTotal = Object.values(duringTokens).reduce((s: number, v: any) => s + (v || 0), 0)
-    const peakTotal = Object.values(peakTokens).reduce((s: number, v: any) => s + (v || 0), 0)
+  let peakTotal = getTokensTotal(peakDuringRecord)
+  for (let i = 1; i < duringRecords.length; i++) {
+    const rec = duringRecords[i]
+    const duringTotal = getTokensTotal(rec)
     if (event.type === 'spike' ? duringTotal > peakTotal : duringTotal < peakTotal) {
       peakDuringRecord = rec
+      peakTotal = duringTotal
     }
   }
   const duringTokens = getTokens(peakDuringRecord)

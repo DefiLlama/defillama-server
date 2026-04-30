@@ -1352,5 +1352,42 @@ const data6: Protocol[] = [
       fees: "nextrare",
     }
   },
+  {
+    id: "7771",
+    name: "Pool Party",
+    address: "base:0xEab49138BA2Ea6dd776220fE26b7b8E446638956",
+    symbol: "SEND",
+    url: "https://poolparty.fun",
+    description: "First AMM on Canton Network. Built by Send Foundation. Accessible from the Send Canton Wallet. Launched February 2026",
+    chain: "Canton",
+    logo: `${baseIconsUrl}/pool-party.jpg`,
+    audits: "0",
+    gecko_id: "send-token-2",
+    cmcId: "27376",
+    tags: ["AMM"],
+    chains: ["Canton"],
+    module: "pool-party/index.js",
+    twitter: "Send",
+    listedAt: 1777517069
+  },
+  {
+    id: "7772",
+    name: "Phlox",
+    address: null,
+    symbol: "-",
+    url: " ", // pending to add url https://phlox.finance
+    description: "Phlox is a LUKSO-focused DeFi app with a Uniswap V3-style DEX",
+    chain: "LUKSO",
+    logo: `${baseIconsUrl}/phlox.jpg`,
+    audits: "0",
+    gecko_id: null,
+    cmcId: null,
+    tags: ["CLMM"],
+    forkedFromIds: ["2198"],
+    chains: ["LUKSO"],
+    module: "phlox/index.js",
+    twitter: null,
+    listedAt: 1777517385
+  },
 ];
 export default data6;

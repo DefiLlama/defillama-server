@@ -1389,5 +1389,25 @@ const data6: Protocol[] = [
     twitter: null,
     listedAt: 1777517385
   },
+  {
+    id: "7773",
+    name: "Monolith",
+    address: null,
+    symbol: '-',
+    url: "https://monolith.market",
+    description:
+      "Monolith is a permissionless protocol for creating crypto-backed stablecoins built to last: choose the collateral, oracle, and parameters, then deploy your own crypto-backed stablecoin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/monolith-market.png`,
+    audits: "2",
+    audit_links: ["https://docs.monolith.market/security/audits"],
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "monolith-market/index.js",
+    twitter: "MonolithMarket",
+    listedAt: 1777531121,
+  },
 ];
 export default data6;

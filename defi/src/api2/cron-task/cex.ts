@@ -6,6 +6,7 @@ import { cexsData, cg_volume_cexs } from "../../protocols/cex";
 import { getLatestProtocolItems } from "../db";
 import { hourlyTvl, hourlyUsdTokensTvl } from "../../utils/getLastRecord";
 import { pgGetInflows } from "../db/inflows";
+import { fetchAllFirstPartyData } from "./cexFirstParty";
 
 const isTESTMode = process.env.CEX_TEST_MODE === "true";
 const cacheKey = "cron-task/cex-last-update";
@@ -208,6 +209,21 @@ function sortDataAndFormatNumbers(src: any) {
 }
 
 async function addSpotAndDerivData() {
+  // Step 1: Fetch first-party data for supported exchanges (cached, direct from exchange APIs)
+  const firstPartyResults = await fetchAllFirstPartyData(isTESTMode);
+
+  // Step 2: Apply first-party data to matching CEX entries
+  for (const [name, data] of Object.entries(firstPartyResults)) {
+    const cex = cexDataNameMap[name] as any;
+    if (!cex) continue;
+    cex.spotVolume = data.spotVolume;
+    cex.derivVolume = data.derivVolume;
+    cex.oi = data.oi;
+    if (cex.cleanAssetsTvl) cex.leverage = cex.oi / cex.cleanAssetsTvl;
+    cex._dataSource = "first-party";
+  }
+
+  // Step 3: Fall back to CoinGecko for exchanges without first-party data
   const SPOT_DATA_URL = "https://api.coingecko.com/api/v3/exchanges?per_page=1000";
   const DERIV_DATA_URL = "https://api.coingecko.com/api/v3/derivatives/exchanges?per_page=1000";
 
@@ -219,21 +235,13 @@ async function addSpotAndDerivData() {
 
   spotData.forEach((item: any) => {
     const cex = cexCgIdMap[item.id] as any;
-    if (!cex) {
-      // console.warn(`CEX with cgId ${item.id} not found in protocols data spot volume: ${item.name}`)
-      return;
-    }
-
+    if (!cex || cex._dataSource === "first-party") return;
     cex.spotVolume = item.trade_volume_24h_btc * btcPrice;
   });
 
   derivData.forEach((item: any) => {
     const cex = cexCgDerivIdMap[item.id] as any;
-    if (!cex) {
-      // console.warn(`CEX with cgDeriv ${item.id} not found in protocols data deriv volume: ${item.name}`)
-      return;
-    }
-
+    if (!cex || cex._dataSource === "first-party") return;
     cex.oi = item.open_interest_btc * btcPrice;
     cex.derivVolume = item.trade_volume_24h_btc * btcPrice;
     if (cex.cleanAssetsTvl) cex.leverage = cex.oi / cex.cleanAssetsTvl;

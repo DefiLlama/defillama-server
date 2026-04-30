@@ -16566,7 +16566,8 @@ const data5: Protocol[] = [
     twitter: "thorwallet",
     audit_links: ["https://code4rena.com/reports/2025-02-thorwallet"],
     dimensions: {
-      fees: "thorwallet"
+      fees: "thorwallet",
+      dexs: "thorwallet",
     }
   },
   {

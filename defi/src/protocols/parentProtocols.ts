@@ -4520,15 +4520,15 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#dhedge",
-    name: "dHEDGE",
-    url: "https://www.dhedge.org/",
+    name: "Chamber", // previous dHEDGE
+    url: "https://chamberfi.com/",
     description:
-      "Explore the universe of top-tier tokenized vaults.",
-    logo: `${baseIconsUrl}/dhedge.png`,
+      "Chamber, formerly dHEDGE, is a non-custodial vault protocol for creating and managing onchain vaults. The protocol uses smart contracts to manage how vaults interact with supported assets, integrations, and DeFi protocols. Chamber also powers products and strategies across its wider ecosystem, including Toros Finance and mStable.",
+    logo: `${baseIconsUrl}/chamber.jpg`,
     gecko_id: "dhedge-dao",
     cmcId: "7094",
     chains: [],
-    twitter: "dHedgeOrg",
+    twitter: "chamberfi",
     governanceID: ["snapshot:gov.dhedge.eth","snapshot:mstablegovernance.eth"],
     treasury: "dhedge.js",
     github: ["dhedge","mstable"],

@@ -1,6 +1,7 @@
 import { Write } from "../utils/dbInterfaces";
 import { getApi } from "../utils/sdk";
 import getWrites from "../utils/getWrites";
+import { checkOracleFresh } from "../utils/oracle";
 
 const DATA_FEED_ABI =
   "function getDataInBase18() external view returns (int256 answer)";
@@ -257,6 +258,10 @@ async function getBaseAssetPrices(
 
     oracles.forEach((oracle, i) => {
       if (calls[i]?.answer) {
+        if (!checkOracleFresh(calls[i].updatedAt, { timestamp, label: `midas-${oracle.asset}`, throwIfStale: false })) {
+          console.warn(`Stale base asset oracle for ${oracle.asset} on ${chain}, skipping`);
+          return;
+        }
         prices[oracle.asset] =
           Number(calls[i].answer) / Math.pow(10, oracle.decimals);
       } else {

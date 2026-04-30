@@ -3,8 +3,8 @@ import protocols, { Protocol} from "./protocols/data";
 import { getLastRecord, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-async function _protocolHasMisrepresentedTokens(protocol: Protocol){
-  const module = await importAdapter(protocol);
+function _protocolHasMisrepresentedTokens(protocol: Protocol): boolean{
+  const module = importAdapter(protocol);
   return module.misrepresentedTokens
 }
 
@@ -19,10 +19,7 @@ export async function getTokensInProtocolsInternal(symbol: string, {
 } = {}){
   return (await Promise.all(
     protocolList.map(async (protocol) => {
-      const [lastTvl, misrepresentedTokens] = await Promise.all([
-        getLastHourlyTokensUsd(protocol),
-        protocolHasMisrepresentedTokens(protocol),
-      ]);
+      const lastTvl = await getLastHourlyTokensUsd(protocol);
       if(typeof lastTvl?.tvl !== "object"){
         return null
       }
@@ -37,6 +34,7 @@ export async function getTokensInProtocolsInternal(symbol: string, {
       if(matches === 0){
         return null
       }
+      const misrepresentedTokens = protocolHasMisrepresentedTokens(protocol);
       return {
           name: protocol.name,
           category: protocol.category,

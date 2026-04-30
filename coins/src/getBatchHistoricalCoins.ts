@@ -16,7 +16,7 @@ export async function fetchDBData(
   searchWidth: number = defaultSearchWidth
 ) {
   let response = {} as any;
-  const promises: Promise<any>[] = [];
+  const tasks: Array<() => Promise<void>> = [];
 
   const coinQueries: string[] = Object.keys(coinsObj);
   const { PKTransforms, coins } = await getBasicCoins(coinQueries);
@@ -25,8 +25,8 @@ export async function fetchDBData(
     PKTransforms[coin.PK].forEach((coinName) => {
       const timestamps: number[] = coinsObj[coinName];
       if (!Array.isArray(timestamps)) return;
-      promises.push(
-        ...timestamps.map(async (timestamp) => {
+      for (const timestamp of timestamps) {
+        tasks.push(async () => {
           const finalCoin: any = await getRecordClosestToTimestamp(
             coin.redirect ?? coin.PK,
             timestamp,
@@ -53,15 +53,15 @@ export async function fetchDBData(
               confidence: coin.confidence,
             });
           }
-        })
-      );
+        });
+      }
     });
   });
 
   await runInPromisePool({
-    items: promises,
+    items: tasks,
     concurrency: 7,
-    processor: async (promise: any) => await promise,
+    processor: async (task: () => Promise<void>) => task(),
   });
 
   return response;

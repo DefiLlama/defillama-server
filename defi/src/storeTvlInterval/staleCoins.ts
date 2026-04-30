@@ -22,7 +22,7 @@ export const columns = ["latency", "usd_amount", "symbol", "percentage", "key", 
 
 export function addStaleCoin(staleCoins: any, data: StaleCoinData) {
   if (!data.key) return;
-  if (data.key in staleCoins && staleCoins[data.key].usdAmount > data.usd_amount) return;
+  if (data.key in staleCoins && staleCoins[data.key].usd_amount > data.usd_amount) return;
   staleCoins[data.key] = data;
 }
 

@@ -100,13 +100,38 @@ const counter: Counter = {
 const emitter = new EventEmitter()
 emitter.setMaxListeners(500000)
 
-const priceCache: { [PK: string]: any } = {
+const DEFAULT_PRICE_CACHE_TTL_MS = 15 * 60 * 1000
+const parsedPriceCacheTtlMs = Number(process.env.PRICE_CACHE_TTL_MS ?? DEFAULT_PRICE_CACHE_TTL_MS)
+const PRICE_CACHE_TTL_MS =
+  Number.isFinite(parsedPriceCacheTtlMs) && parsedPriceCacheTtlMs > 0
+    ? parsedPriceCacheTtlMs
+    : DEFAULT_PRICE_CACHE_TTL_MS
+
+type PriceCacheEntry = { value: any; expiresAt: number }
+const priceCache: { [PK: string]: PriceCacheEntry } = {
   "coingecko:tether": {
-    price: 1,
-    symbol: "USDT",
-    PK: "coingecko:tether",
-    timestamp: Math.floor(Date.now() / 1e3 + 3600) // an hour from script start time
+    value: {
+      price: 1,
+      symbol: "USDT",
+      PK: "coingecko:tether",
+      timestamp: Math.floor(Date.now() / 1e3 + 3600) // an hour from script start time
+    },
+    expiresAt: Number.POSITIVE_INFINITY,
   }
+}
+
+function readPriceCache(PK: string): any | undefined {
+  const entry = priceCache[PK]
+  if (!entry) return undefined
+  if (entry.expiresAt <= Date.now()) {
+    delete priceCache[PK]
+    return undefined
+  }
+  return entry.value
+}
+
+function writePriceCache(PK: string, value: any) {
+  priceCache[PK] = { value, expiresAt: Date.now() + PRICE_CACHE_TTL_MS }
 }
 
 export function clearPriceCache() {
@@ -162,8 +187,9 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
       // read data from cache where possible
       readKeys = readKeys.filter((PK: string) => {
         if (timestamp !== 'now') return true
-        if (priceCache[PK]) {
-          cachedTokenData.push({...priceCache[PK]})
+        const cached = readPriceCache(PK)
+        if (cached) {
+          cachedTokenData.push({ ...cached })
           return false
         }
         return true
@@ -175,7 +201,7 @@ async function getTokenData(readKeys: string[], timestamp: string | number): Pro
 
       if (timestamp !== 'now') return;
       for (const [PK, value] of Object.entries(tokenData)) {
-        priceCache[PK] = {...(value as any), PK}
+        writePriceCache(PK, { ...(value as any), PK })
       }
     }
 

@@ -6,7 +6,6 @@ import treasuries from "./protocols/treasury";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
 import * as sdk from '@defillama/sdk'
-import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 import { hourlyTvl, } from "./utils/getLastRecord";
 import { closeConnection, getLatestProtocolItems, initializeTVLCacheDB } from "./api2/db";
 import { shuffleArray } from "./utils/shared/shuffleArray";
@@ -153,7 +152,6 @@ async function main() {
     .process(runProcess(filterProtocol as any))
 
   await normalAdapterRuns
-  clearPriceCache()
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s | skipped: ${skipped}`)
   await Promise.all(staleCoinWrites)

@@ -54,17 +54,29 @@ function getGraphCoinsAdapter({ chain, endpoint, minVolume = 1e4, minTVL = 1e5, 
   }
 
   async function beraswapAdapter(timestamp: number = 0) {
-    const chainApi = await getApi(chain, timestamp);
-    const block = await chainApi.getBlock();
-    const queryString = beraswapQuery({ block, });
-    const { pools } = await graph.request(endpoint, queryString);
+    const poolsQuery = `{
+      poolGetPools(first: 1000, orderBy: totalLiquidity, orderDirection: desc, where: { minTvl: ${minTVL} }) {
+        address
+      }
+    }`
+    const { poolGetPools } = await graph.request(endpoint, poolsQuery)
+    const addresses: string[] = poolGetPools.map((p: any) => p.address)
 
     const pricesObject: any = {}
-    pools.forEach((token: any) => {
-      let price = token.totalLiquidity / token.totalShares
-      pricesObject[token.address] = { price, }
+    if (!addresses.length) return getWrites({ chain, timestamp, pricesObject, projectName, })
+
+    const pricesQuery = `{
+      tokenGetCurrentPrices(addressIn: ${JSON.stringify(addresses)}, chains: [BERACHAIN]) {
+        price
+        address
+      }
+    }`
+    const { tokenGetCurrentPrices } = await graph.request(endpoint, pricesQuery)
+    tokenGetCurrentPrices.forEach((token: any) => {
+      if (!token?.price) return
+      pricesObject[token.address] = { price: token.price }
     })
-    return getWrites({ chain, timestamp, pricesObject, projectName, });
+    return getWrites({ chain, timestamp, pricesObject, projectName, })
   }
 
   switch (projectName) {
@@ -90,29 +102,11 @@ const taraswapQuery = ({ block, }: BlockQueryArgs) => `{
   }
 }`
 
-const beraswapQuery = ({ block, }: BlockQueryArgs) => `query SFPMChunks {
-  pools ( 
-    block: {number: ${block - 100}}
-    first:1000 where: {
-    totalLiquidity_gt: 50000
-    totalSwapFee_gt: 100
-  } orderBy: totalLiquidity orderDirection:desc) {
-    id
-    totalSwapFee
-    totalLiquidity
-    swapsCount
-    address
-    name
-    symbol
-    totalShares
-  }
-}`
-
 const items = [
   { chain: 'ace', endpoint: 'https://endurance-subgraph-v2.fusionist.io/subgraphs/name/catalist/exchange-v3-v103', minTVL: 1e4, projectName: 'catalist' },
   { chain: 'vana', endpoint: 'https://api.goldsky.com/api/public/project_clnbo3e3c16lj33xva5r2aqk7/subgraphs/data-dex-vana/prod/gn', minTVL: 1e4, projectName: 'datadex' },
   { chain: 'tara', endpoint: 'https://indexer.lswap.app/subgraphs/name/taraxa/uniswap-v3', minTVL: 1e4, projectName: 'taraswap', },
-  { chain: 'berachain', endpoint: 'https://api.goldsky.com/api/public/project_clq1h5ct0g4a201x18tfte5iv/subgraphs/bex-subgraph/mainnet-v1.0.1/gn', projectName: 'beraswap', },
+  { chain: 'berachain', endpoint: 'https://api.berachain.com/', minTVL: 1e4, projectName: 'beraswap', },
 ]
 
 items.forEach((config: any) => adapters[config.projectName] = getGraphCoinsAdapter(config));

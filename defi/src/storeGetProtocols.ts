@@ -120,6 +120,27 @@ export async function storeGetProtocols({
     getLastHourlyTokensUsd,
   });
 
+  const getParentCoinMarkets = () =>
+    fetch("https://coins.llama.fi/mcaps", {
+      method: "POST",
+      body: JSON.stringify({
+        coins: parentProtocolsList
+          .filter((parent) => typeof parent.gecko_id === "string")
+          .map((parent) => `coingecko:${parent.gecko_id}`),
+      }),
+    }).then((r) => r.json());
+
+  const _getCoinMarkets = getCoinMarkets ?? getParentCoinMarkets;
+  const coinMarketsPromise = _getCoinMarkets();
+
+  const childrenByParent = new Map<string, IProtocol[]>();
+  for (const protocol of response) {
+    if (!protocol.parentProtocol) continue;
+    const children = childrenByParent.get(protocol.parentProtocol);
+    if (children) children.push(protocol);
+    else childrenByParent.set(protocol.parentProtocol, [protocol]);
+  }
+
   const trimmedResponse: LiteProtocol[] = (
     await Promise.all(
       response.map(async (protocol: IProtocol) => {
@@ -194,24 +215,13 @@ export async function storeGetProtocols({
     }
   });
 
-  const getParentCoinMarkets = () =>
-    fetch("https://coins.llama.fi/mcaps", {
-      method: "POST",
-      body: JSON.stringify({
-        coins: parentProtocolsList
-          .filter((parent) => typeof parent.gecko_id === "string")
-          .map((parent) => `coingecko:${parent.gecko_id}`),
-      }),
-    }).then((r) => r.json());
-
-  const _getCoinMarkets = getCoinMarkets ?? getParentCoinMarkets;
-  const coinMarkets = await _getCoinMarkets();
+  const coinMarkets = await coinMarketsPromise;
 
   const extendedParentProtocols = [] as any[];
   const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
     const chains: Set<string> = new Set();
 
-    const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
+    const children = childrenByParent.get(parent.id) ?? [];
     let symbol = "-",
       tvl = 0,
       chainTvls = {} as { [chain: string]: number };
@@ -220,7 +230,7 @@ export async function storeGetProtocols({
         symbol = child.symbol;
       }
       tvl += child.tvl ?? 0;
-      Object.entries(child.chainTvls).forEach(([chain, chainTvl]) => {
+      Object.entries(child.chainTvls ?? {}).forEach(([chain, chainTvl]) => {
         chainTvls[chain] = (chainTvls[chain] ?? 0) + chainTvl;
       });
       child.chains?.forEach((chain: string) => chains.add(chain));
